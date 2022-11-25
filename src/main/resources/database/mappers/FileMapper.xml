@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodee.everydoctor.file.FileMapper">
+
+	<select id="getFileByFileNum" parameterType="fileVO" resultType="fileVO">
+		SELECT ${label}FILENUM as FILENUM, 
+				${label}NUM as NUM, 
+				${label}FILENAME as fileName, 
+				${label}FILEORINAME as fileOriName, 
+				"${label}" as label
+		FROM ${label}FILE WHERE ${label}FILENUM=#{fileNum}
+	</select>
+	
+	<insert id="inputFile" parameterType="fileVO" useGeneratedKeys="true" keyProperty="fileNum">
+		INSERT INTO ${label}FILE (${label}FILENUM, ${label}NUM, ${label}FILENAME, ${label}FILEORINAME)
+		VALUES (0, #{num}, #{fileName}, #{fileOriName})
+	</insert>
+	
+	<delete id="deleteFileByFileNum" parameterType="fileVO">
+		DELETE FROM ${label}FILE WHERE ${label}FILENUM = #{fileNum};
+	</delete>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodee.everydoctor.drug.DrugMapper">
+
+	<sql id="search">
+		WHERE
+		<choose>
+			<when test="kind =='drugNum'">drugNum</when>
+			<when test="kind == 'drugName'">drugName</when>
+			<otherwise>contents</otherwise>
+		</choose>
+		LIKE CONCAT('%', #{search}, '%')
+	</sql>
+
+	<select id="getList" resultType="DrugVO" parameterType="Pager">
+		SELECT * FROM DRUG
+		ORDER BY DRUGNUM
+		LIMIT #{page} , #{perPage}
+	</select>
+
+	<select id="getDetail" parameterType="DrugVO">
+		SELECT * FROM DRUG
+	</select>
+
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+	<typeAliases>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="java.lang.Integer" alias="Integer"/>
+		<typeAlias type="com.goodee.everydoctor.util.Pager" alias="Pager"/>
+		<typeAlias type="com.goodee.everydoctor.drug.DrugVO" alias="DrugVO"/>
+		<typeAlias type="com.goodee.everydoctor.board.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.goodee.everydoctor.report.ReportVO" alias="ReportVO"/>
+		<typeAlias type="com.goodee.everydoctor.board.BoardFileVO" alias="BoardFileVO"/>
+		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
+	</typeAliases>
+</configuration>
