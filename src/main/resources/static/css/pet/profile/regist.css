@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#speciesName {
+	width: 70%;
+}
+
+.radioFrame {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.radioDetailFrameFirst {
+	display: flex;
+	align-items: center;
+}
+
+.radioDetailFrameOther {
+	display: flex;
+	align-items: center;
+	margin-left: 0.8rem;
+}
+
+.radioDetail {
+	width: 1rem!important;
+	height: 1rem!important;
+}
+
+.petBioListItem {
+	cursor: pointer;
+}

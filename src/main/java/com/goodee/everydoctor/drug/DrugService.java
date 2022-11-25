@@ -13,16 +13,18 @@ import com.goodee.everydoctor.util.Pager;
 public class DrugService {
 	@Autowired
 	private DrugMapper drugMapper;
-	
+
 	public List<DrugVO> getList(Pager pager)throws Exception {
 		// TODO Auto-generated method stub
+		Long drugTotalCount = drugMapper.getDrugTotalCount(); //페이지토탈
 		pager.getRowNum();
+		pager.getNum(drugTotalCount);
 		return drugMapper.getList(pager);
 	}
-	
+
 	public DrugVO getDetail(DrugVO drugVO)throws Exception {
 		// TODO Auto-generated method stub
 		return drugMapper.getDetail(drugVO);
 	}
-	
+
 }

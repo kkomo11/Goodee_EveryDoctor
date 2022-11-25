@@ -9,20 +9,29 @@
 		WHERE
 		<choose>
 			<when test="kind =='drugNum'">drugNum</when>
-			<when test="kind == 'drugName'">drugName</when>
-			<otherwise>contents</otherwise>
+			<when test="kind =='drugName'">drugName</when>
+			<otherwise>drugInfo</otherwise>
 		</choose>
 		LIKE CONCAT('%', #{search}, '%')
 	</sql>
 
 	<select id="getList" resultType="DrugVO" parameterType="Pager">
 		SELECT * FROM DRUG
+		<include refid="search"></include>
 		ORDER BY DRUGNUM
-		LIMIT #{page} , #{perPage}
+		LIMIT #{startRow} , #{perPage}
+
 	</select>
 
-	<select id="getDetail" parameterType="DrugVO">
-		SELECT * FROM DRUG
+	<select id="getDetail" parameterType="DrugVO"
+		resultType="DrugVO">
+		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
+	</select>
+	
+	<select id="getDrugTotalCount" resultType="Long">
+		SELECT COUNT(DRUGNUM)
+		FROM DRUG
+		<include refid="search"></include>
 	</select>
 
 

@@ -9,7 +9,6 @@ public class Pager {
 	private Long startNum;
 	private Long lastNum;
 	private Long startRow;
-	private Long lastRow;
 	private Long perPage;
 	private Long perBlock;
 
@@ -29,8 +28,7 @@ public class Pager {
 
 	//1. mapper에서 사용할 값 계산
 	public void getRowNum()throws Exception {
-		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
-		this.lastRow = this.getPage()*this.getPerPage();
+		this.startRow = (this.getPage()-1)*this.getPerPage();
 	}
 
 	//2. Jsp에서 사용할 값 계산

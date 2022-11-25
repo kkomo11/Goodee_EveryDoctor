@@ -35,7 +35,7 @@ public class DrugController {
 	public ModelAndView getDetail(DrugVO drugVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		drugVO=drugService.getDetail(drugVO);
-		mv.addObject("drug",drugVO);
+		mv.addObject("detail",drugVO);
 		mv.setViewName("drug/detail");
 		return mv;
 	}

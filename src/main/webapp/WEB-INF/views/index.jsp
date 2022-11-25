@@ -52,6 +52,7 @@
 
 	<!-- Header -->
     <c:import url="./temp/header.jsp"></c:import>
+    <c:import url="./temp/chatbot.jsp"></c:import>
 
     <!-- Start Hero Area -->
     <section class="hero-area overlay">

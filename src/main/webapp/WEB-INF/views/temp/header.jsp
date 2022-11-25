@@ -45,6 +45,19 @@
                                       </ul>
                                 </li>
                                 <li class="nav-item">
+                                    <a class=" dd-menu collapsed" href="../location/viewCorona"
+                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">선별진료소</a>
+                                    <ul class="sub-menu collapse" id="submenu-1-5">
+                                        <li class="nav-item"><a href="../location/viewCorona">선별진료소보러가기</a>
+                                        </li>
+                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single
+                                                Sibebar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -106,6 +119,7 @@
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
                             <ul>
+                            
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-enter"></i> Login</a>
                                 </li>

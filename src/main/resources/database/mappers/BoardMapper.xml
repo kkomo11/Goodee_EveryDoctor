@@ -9,6 +9,11 @@
 		SELECT * FROM BOARD
 	</select>
 
+	<select id="getDetail" parameterType="BoardVO"
+		resultType="BoardVO">
+		SELECT * FROM BOARD WHERE BOARDNUM = #{boardNum}
+	</select>
+
 </mapper>
     
     

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.pet.profile.PetProfileMapper">
+
+	<delete id="deletePetProfile" parameterType="PetVO">
+		DELETE FROM PET WHERE PETNUM = #{petNum}
+	</delete>
+
+	<update id="modifyPetProfile" parameterType="PetVO">
+		UPDATE PET SET PETBIONUM = #{petBioNum}, PETNAME = #{petName}, PETBIRTH = #{petBirth}, PETAGE = #{petAge}, PETSEX = #{petSex}, NEUTERED = #{neutered}, VACCINNATION = #{vaccinnation}, PETFILENAME = #{petFileName}
+			WHERE PETNUM = #{petNum}
+	</update>
+
+	<select id="findPetBioDetail" parameterType="PetBioVO" resultType="PetBioVO">
+		SELECT * FROM PETBIO WHERE PETBIONUM = #{petBioNum}
+	</select>
+
+	<select id="findPetProfileDetail" parameterType="PetVO" resultType="PetVO">
+		SELECT * FROM PET WHERE PETNUM = #{petNum}
+	</select>
+
+	<insert id="inputPetProfile" parameterType="PetVO">
+		INSERT INTO PET VALUES (NULL, #{userName}, #{petBioNum}, #{petName}, #{petBirth}, #{petAge}, #{petSex}, #{neutered}, #{vaccinnation}, #{petFileName})
+	</insert>
+
+	<select id="findPetBioList" resultType="PetBioVO">
+		SELECT PETBIONUM, PETBIONAME FROM PETBIO WHERE PETBIONUMREF IS NULL
+	</select>
+	
+	<select id="findPetBioDetailList" parameterType="PetBioVO" resultType="PetBioVO">
+		SELECT PETBIONUM, PETBIONUMREF, PETBIONAME FROM PETBIO WHERE PETBIONUMREF = #{petBioNumRef} ORDER BY PETBIONUM ASC
+	</select>
+	
+	<select id="findPetBioDetailSearch" parameterType="PetBioVO" resultType="PetBioVO">
+		SELECT * FROM PETBIO WHERE PETBIONUMREF = #{petBioNumRef} AND PETBIONAME LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+	
+</mapper>
