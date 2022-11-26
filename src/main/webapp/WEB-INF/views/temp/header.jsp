@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- SPRING_SECURITY_CONTEXT를 쉽게 사용할 수 있도록 도와주는 taglib -->
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- Start Header Area -->
 <header class="header navbar-area">
     <div class="container">
@@ -119,6 +121,11 @@
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
                             <ul>
+                                <sec:authentication property="Principal" var="member"/>
+                                <sec:authorize access="isAuthenticated()">
+                                    ${member.username},${member.nickname}, ${member.roles}
+ 
+                                </sec:authorize>
                             
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-enter"></i> Login</a>
