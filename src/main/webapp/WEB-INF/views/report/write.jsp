@@ -20,7 +20,6 @@
          <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
          <c:import url="../temp/boot.jsp"></c:import>
-         <%-- <c:import url="../temp/summer.jsp"></c:import> --%>
          <!-- ========================= CSS here ========================= -->
          <link rel="stylesheet" href="/css/bootstrap.min.css" />
          <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
@@ -120,15 +119,24 @@
                               <!-- Start Post Ad Tab -->
                               <div class="post-ad-tab">
                                  <div>아래 양식에 따라 작성해주세요</div>
-                                       <!-- Start Post Ad Step One Content -->
-                                       <div class="step-one-content">
-                                          <form class="default-form-style" method="post" action="./write" enctype="multipart/form-data">
+                                 <!-- Start Post Ad Step One Content -->
+                                 <div class="step-one-content">
+                                    <form:form class="default-form-style" modelAttribute="reportVO" method="post" action="./write" enctype="multipart/form-data" id="form">
+                                              <!-- 더미값 -->
+                                             <input type="hidden" name="reporterId" value="1">
+                                             <input type="hidden" name="reportedId" value="2">
+                                             <input type="hidden" name="consultNum" value="3">
+                                             <input type="hidden" name="consultNum" value="3">
+                                             <input type="hidden" name="reportChecked" value="0">
                                              <div class="row">
                                                 <!-- 신고 제목 -->
                                                 <div class="col-12">
                                                    <div class="form-group">
                                                       <label>제목*</label> 
-                                                      <input name="reportTitle" type="text" placeholder="제목을 입력해주세요" />
+                                                      <form:input path="reportTitle" type="text" placeholder="제목을 입력해주세요" id="reportTitle" />
+                                                      <!-- 신고 제목 검증 메세지 -->
+                                                      <div class="reportTitlem m" style="color: #55DDBD;"></div>
+                                                      <form:errors path="reportTitle"></form:errors>
                                                    </div>
                                                 </div>
                                                 <!-- 신고 유형 -->
@@ -137,14 +145,15 @@
                                                       <label>신고유형*</label>
                                                       <div class="selector-head">
                                                          <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                         <select class="user-chosen-select" name="reportTypeNum">
-                                                            <option value=null>신고 유형을 선택해주세요</option>
-                                                            <option value=1>서비스와 관련 없는 내용</option>
-                                                            <option value=2>개인정보 유출 위험</option>
-                                                            <option value=3>광고 또는 홍보 글</option>
-                                                            <option value=4>음란성, 욕설 등 부적절한 내용</option>
-                                                            <option value=5>기타</option>
-                                                         </select>
+                                                         <form:select class="user-chosen-select" path="reportTypeNum" id="reportTypeNum">
+                                                            <option disabled selected>신고 유형을 선택해주세요</option>
+                                                            <form:option value="1">서비스와 관련 없는 내용</form:option>
+                                                            <form:option value="2">개인정보 유출 위험</form:option>
+                                                            <form:option value="3">광고 또는 홍보 글</form:option>
+                                                            <form:option value="4">음란성, 욕설 등 부적절한 내용</form:option>
+                                                            <form:option value="5">기타</form:option>
+                                                         </form:select>
+                                                         <form:errors path="reportTypeNum"></form:errors>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -152,7 +161,10 @@
                                                 <div class="col-12">
                                                    <div class="form-group">
                                                       <label>신고내용*</label>
-                                                      <textarea name="reportContents" id="reportContents"></textarea>
+                                                      <form:textarea path="reportContents" id="reportContents"></form:textarea>
+                                                      <!-- 신고 내용 검증 메세지 -->
+                                                      <div class="reportContentsm m" style="color: #55DDBD;"></div>
+                                                      <form:errors path="reportContents"></form:errors>
                                                    </div>
                                                 </div>
 
@@ -169,11 +181,11 @@
                                                 <!-- 신고하기 버튼 -->
                                                 <div class="col-12">
                                                    <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
-                                                      <button type="submit" class="btn ">신고하기</button>
+                                                      <button type="button" class="btn report">신고하기</button>
                                                    </div>
                                                 </div>
                                              </div>
-                                          </form>
+                                          </form:form>
                                        </div>
                                        <!-- Finish Post Ad Step One Content -->
                                  </div>
@@ -185,39 +197,8 @@
                      </div>
                   </div>
                </div>
-            </div>
          </section>
          <!-- End Dashboard Section -->
-
-         <!-- Start Newsletter Area -->
-         <div class="newsletter section">
-            <div class="container">
-               <div class="inner-content">
-                  <div class="row align-items-center">
-                     <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                           <i class="lni lni-alarm"></i>
-                           <h2>Newsletter</h2>
-                           <p>We don't send spam so don't worry.</p>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                           <form action="#" method="get" target="_blank" class="newsletter-form">
-                              <input name="EMAIL" placeholder="Your email address" type="email">
-                              <div class="button">
-                                 <button class="btn">
-                                    Subscribe<span class="dir-part"></span>
-                                 </button>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- End Newsletter Area -->
 
          <!-- Footer -->
          <c:import url="../temp/footer.jsp"></c:import>
@@ -233,6 +214,8 @@
          <script src="/js/glightbox.min.js"></script>
          <script src="/js/main.js"></script>
          <script src="/js/report/write.js"></script>
+         <script src="/js/report/nullCheck.js"></script>
+
 
          <!-- 파일추가 버튼 누르면 파일추가 폼 생성 -->
 

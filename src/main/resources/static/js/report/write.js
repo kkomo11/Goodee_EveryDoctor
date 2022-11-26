@@ -1,5 +1,9 @@
 let count = 0;
+let check = [false, false, false];
+let titleCheck = false;
+let contentsCheck = false;
 
+//파일 추가 버튼 클릭하면 파일추가 폼 생성
 $("#fileAddButton").click(function(){
     console.log(count);
 
@@ -19,20 +23,62 @@ $("#fileAdd").on("click", ".del", function(){
     count--;
 })
 
-// <span id="upload-name">첨부파일명</span>
+//입력내용 검증
+//신고제목 검증
+$("#reportTitle").blur(function(){
+    let title = $("#reportTitle").val();
+    let titleResult = nullCheck(title, ".reportTitlem", "제목은");
+    check[0] = titleResult;
+})
 
-// $("부모선택자").on("이벤트명", "자식선택자", callback function)
 
-// $("#fileAdd").on("change", ".uploadFile",function(event){
-//     console.log(event.target.value);
-//     let fileName = $(this).val();
 
-//     $(this).parent().find(".upload-name").text(fileName);
-//     console.log(fileName);
-//     // $("#upload-name").text(fileName);
-// });
+// $("#reportTypeNum").blur(function(){
+    //     console.log($("#reportTypeNum").val());
+    //     if($("#reportTypeNum").val() == null){
+        //         $(".reportTypem").text("신고 유형을 선택해주세요");
+        //     }else{
+            //         $(".reportTypem").text("");
+            //     }
+            // })
+            
+            //신고내용 검증
+            $("#reportContents").blur(function(){
+                let contents = $("#reportContents").val();
+                let contentsResult = nullCheck(contents, ".reportContentsm", "내용은");
+                check[1] = contentsResult;
+            })
+            
+            // <span id="upload-name">첨부파일명</span>
+            
+            // $("부모선택자").on("이벤트명", "자식선택자", callback function)
+            
+            // $("#fileAdd").on("change", ".uploadFile",function(event){
+                //     console.log(event.target.value);
+                //     let fileName = $(this).val();
+                
+                //     $(this).parent().find(".upload-name").text(fileName);
+                //     console.log(fileName);
+                //     // $("#upload-name").text(fileName);
+                // });
+                
+                // $("#fileAdd").on("click", ".step-two-content", function(event){
+                    //     console.log($(this).find(".uploadFile"));
+                    //     $(this).find(".uploadFile").click();
+                    // })
+//신고 유형 검증
+let type = $("#reportTypeNum").val();
 
-// $("#fileAdd").on("click", ".step-two-content", function(event){
-//     console.log($(this).find(".uploadFile"));
-//     $(this).find(".uploadFile").click();
-// })
+$(".report").click(function(){
+    console.log($("#reportTypeNum").val());
+    if($("#reportTypeNum").val() != null){
+        check[2] = true;
+    }
+
+    if(check.includes(false)){
+        alert("입력 조건을 지켜주세요")
+    }else{
+        alert("신고 성공")
+        $("#form").submit();
+    }
+})

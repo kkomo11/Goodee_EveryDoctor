@@ -4,10 +4,8 @@
 	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.goodee.everydoctor.report.ReportMapper">
-		<insert id="setReport" parameterType="ReportVO">
-			INSERT INTO REPORT (REPORTNUM, REPORTTYPENUM, REPORTID, REPORTEDID, 
-			CONSULTNUM, ANSWERNUM, REPORTCONTENTS, REPORTCHECKED)
-			VALUES (NULL, #{reportTypeNum}, #{reportId}, #{reportedId}, #{consultNum},
-			#{answerNum}, #{reportContents}, #{reportChecked})
+		<insert id="inputReport" parameterType="ReportVO" useGeneratedKeys="true" keyProperty="reportNum">
+			INSERT INTO REPORT (REPORTNUM, REPORTTYPENUM, REPORTERNAME, REPORTEDNAME, CONSULTNUM, REPORTTITLE, REPORTCONTENTS, REPORTCHECKED)
+			VALUES (NULL, #{reportTypeNum}, #{reporterName}, #{reportedName}, #{consultNum}, #{reportTitle}, #{reportContents}, #{reportChecked})
 		</insert>
 	</mapper>
