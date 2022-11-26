@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WebConfig implements WebMvcConfigurer{
 
-	@Value("${app.upload.base}")
+	@Value("${app.file.path}")
 	private String filePath;
 	@Value("${app.url.path}")
 	private String urlPath;

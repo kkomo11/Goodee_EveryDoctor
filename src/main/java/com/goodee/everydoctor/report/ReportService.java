@@ -26,7 +26,7 @@ public class ReportService {
 	@Autowired
 	private FileMapper fileMapper;
 	
-	@Value("${app.upload.base}")
+	@Value("${app.file.base}")
 	private String path;
 	
 	private String label = "report";
@@ -34,19 +34,11 @@ public class ReportService {
 	//신고 Insert
 	public int setReport(ReportVO reportVO)throws Exception{
 		int result = reportMapper.setReport(reportVO);
-		//해당경로의 파일 객체 생성
-		File file = new File(path);
-		
-		//해당 경로에 폴더가 생성되있지 않으면 폴더 생성
-		if(!file.exists()) {
-			boolean check = file.mkdirs();
-			log.info("Check : ", check);
-		}
 		
 		//받아온 파일들을 반복문 돌려서 HDD 저장 및 DB에 저장
 		for(MultipartFile f : reportVO.getFiles()) {
 			log.info("fileName : ", f.getOriginalFilename());
-			String fileName = fileManager.saveFile(f, path, label);
+			String fileName = fileManager.saveFile(f, label);
 			FileVO fileVO = new FileVO();
 			fileVO.setFileName(fileName);
 			fileVO.setNum(reportVO.getReportNum());			

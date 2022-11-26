@@ -14,9 +14,6 @@ import com.goodee.everydoctor.util.FileManager;
 @Service
 public class PetProfileService {
 	
-	@Value("${app.download.base}")
-	private String base;
-	
 	@Autowired
 	private PetProfileMapper petProfileMapper;
 	
@@ -26,7 +23,7 @@ public class PetProfileService {
 	public int deletePetProfile(PetVO petVO) throws Exception {
 		
 		if(petVO.getPetFileName() != null) {
-			this.deleteFile(petVO.getPetFileName(), base + "PET/");
+			this.deleteFile(petVO.getPetFileName(), "PET/");
 		}
 		
 		return petProfileMapper.deletePetProfile(petVO);
@@ -35,7 +32,7 @@ public class PetProfileService {
 	public int modifyPetProfile(PetVO petVO, MultipartFile petFile) throws Exception {
 		
 		if(petVO.getPetFileName() != null && !petFile.isEmpty()) {
-			this.deleteFile(petVO.getPetFileName(), base + "PET/");
+			this.deleteFile(petVO.getPetFileName(), "PET/");
 		} // 기존에 프로필 사진이 등록되어 있고 새로 등록한 프로필 사진이 있으면 기존 파일 삭제
 		
 		if(!petFile.isEmpty()) {
@@ -82,7 +79,7 @@ public class PetProfileService {
 		String fileName ="";
 		//saveFile
 		//HDD저장 (저장경로에 label을 추가해준다.)
-		fileName = fileManager.saveFile(petFile, base, label);
+		fileName = fileManager.saveFile(petFile, label);
 		
 		return fileName;
 	}

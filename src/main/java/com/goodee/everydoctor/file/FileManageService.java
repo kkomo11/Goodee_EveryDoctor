@@ -16,8 +16,7 @@ public class FileManageService {
 	
 	@Autowired
 	private FileMapper fileMapper;
-	@Value("${app.download.base}")
-	private String base;
+
 	@Autowired
 	private FileManager fileManager;
 
@@ -41,7 +40,7 @@ public class FileManageService {
 		//saveFile
 		for(MultipartFile f: fileVO.getFiles()) {
 			//HDD저장 (저장경로에 label을 추가해준다.)
-			fileName = fileManager.saveFile(f, base, label);
+			fileName = fileManager.saveFile(f, label);
 			fileVO.setFileName(fileName);
 			fileVO.setFileOriName(f.getOriginalFilename());
 			
@@ -63,7 +62,7 @@ public class FileManageService {
 		
 		//db삭제 완료되면 HDD삭제
 		if(result == 1) {
-			result2 =fileManager.deleteFile(fileVO, base);
+			result2 =fileManager.deleteFile(fileVO);
 		}
 		
 		log.info("파일삭제? {}", result2);
