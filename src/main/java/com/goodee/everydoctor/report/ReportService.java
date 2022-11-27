@@ -26,33 +26,28 @@ public class ReportService {
 	@Autowired
 	private FileMapper fileMapper;
 	
-	@Value("${app.download.base}")
+	@Value("${app.file.base}")
 	private String path;
 	
-	private String label = "REPORT";
+	private String label = "report";
 	
 	//신고 Insert
-	public int inputReport(ReportVO reportVO)throws Exception{
-		int result = reportMapper.inputReport(reportVO);
+	public int setReport(ReportVO reportVO)throws Exception{
+		int result = reportMapper.setReport(reportVO);
 		
 		//받아온 파일들을 반복문 돌려서 HDD 저장 및 DB에 저장
-		if(reportVO.getFiles() != null) {
-			for(MultipartFile f : reportVO.getFiles()) {
-				if(!f.isEmpty()) {
-					log.info("fileName : ", f.getOriginalFilename());
-					String fileName = fileManager.saveFile(f, path, label);
-					FileVO fileVO = new FileVO();
-					fileVO.setFileName(fileName);
-					fileVO.setLabel(label);
-					fileVO.setNum(reportVO.getReportNum());
-					fileVO.setFileOriName(f.getOriginalFilename());
-					
-					//DB저장
-					fileMapper.inputFile(fileVO);
-				}
-			}
+		for(MultipartFile f : reportVO.getFiles()) {
+			log.info("fileName : ", f.getOriginalFilename());
+			String fileName = fileManager.saveFile(f, label);
+			FileVO fileVO = new FileVO();
+			fileVO.setFileName(fileName);
+			fileVO.setNum(reportVO.getReportNum());			
+			fileVO.setFileOriName(f.getOriginalFilename());
+			
+			//DB저장
+			fileMapper.inputFile(fileVO);
 		}
-	return result;
+		return result;
 	}
 
 }

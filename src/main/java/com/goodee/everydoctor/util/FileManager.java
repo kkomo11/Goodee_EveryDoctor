@@ -24,8 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileManager extends AbstractView {
 
-	@Value("${app.download.base}")
-	private String base; //파일 다운로드 시 사용
+	@Value("${app.file.base}")
+	private String base; //파일 다운로드와 저장, 삭제 시 사용
 
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
@@ -64,8 +64,8 @@ public class FileManager extends AbstractView {
 
 	}
 
-	public String saveFile(MultipartFile multipartFile, String path, String label)throws Exception {
-		path+=label+"/";
+	public String saveFile(MultipartFile multipartFile, String label)throws Exception {
+		String path=base+label+"/";
 		
 		//0. 저장경로에 폴더(directory)가 없으면 만든다.
 		File file = new File(path);
@@ -99,8 +99,8 @@ public class FileManager extends AbstractView {
 	}
 	
 	//파일 삭제 (label 값과 FileName 필수)//
-	public boolean deleteFile(FileVO fileVO, String path)throws Exception{
-		path+=fileVO.getLabel()+"/";
+	public boolean deleteFile(FileVO fileVO)throws Exception{
+		String path = base + fileVO.getLabel()+"/";
 		
 		File file = new File(path, fileVO.getFileName());
 		
