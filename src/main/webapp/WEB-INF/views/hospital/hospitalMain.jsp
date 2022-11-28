@@ -11,6 +11,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
+	<c:import url="../temp/boot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- Web Font -->
@@ -20,12 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
     <link rel="stylesheet" href="/css/animate.css" />
     <link rel="stylesheet" href="/css/tiny-slider.css" />
     <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" /> -->
 
 </head>
 
@@ -112,7 +113,7 @@
                                                 data-wow-delay="1s">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/stamp_icon.svg" alt="#">
-                                                </div> 
+                                                </div>
                                                 <h3>건강 팁</h3>
                                                 <!-- <h5 class="total">55</h5> -->
                                             </a>
@@ -1634,13 +1635,13 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
+    <!-- <script src="/js/bootstrap.min.js"></script>
     <script src="/js/wow.min.js"></script>
     <script src="/js/tiny-slider.js"></script>
     <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js"></script> -->
     <script type="text/javascript">
-        //========= testimonial 
+        //========= testimonial
         tns({
             container: '.testimonial-slider',
             items: 3,
