@@ -38,7 +38,6 @@
   <a href="https://tracker.delivery/#/:carrier_id/:track_id" target="_blank">배송조회</a>
   <a href="https://tracker.delivery/#/kr.epost/1111111111111" target="_blank">배송조회</a>
 
-  <link rel="stylesheet" href="/css/delivery.css" />
 
   <!-- 택배조회Coll -->
   <script type="text/javascript">
