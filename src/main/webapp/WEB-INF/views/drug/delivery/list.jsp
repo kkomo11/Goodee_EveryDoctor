@@ -11,6 +11,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
+<c:import url="../temp/boot.jsp"></c:import>
 <!-- Place favicon.ico in the root directory -->
 
 <!-- Web Font -->
@@ -21,12 +22,6 @@
 	rel="stylesheet">
 
 <!-- ========================= CSS here ========================= -->
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-<link rel="stylesheet" href="/css/animate.css" />
-<link rel="stylesheet" href="/css/tiny-slider.css" />
-<link rel="stylesheet" href="/css/glightbox.min.css" />
-<link rel="stylesheet" href="/css/main.css" />
 <link rel="stylesheet" href="/css/delivery.css" />
 
 </head>
@@ -36,9 +31,7 @@
 
 <body>
   <a href="https://tracker.delivery/#/:carrier_id/:track_id" target="_blank">배송조회</a>
-  <a href="https://tracker.delivery/#/kr.epost/1111111111111" target="_blank">배송조회</a>
 
-  <link rel="stylesheet" href="/css/delivery.css" />
 
   <!-- 택배조회Coll -->
   <script type="text/javascript">
@@ -158,12 +151,6 @@
 	</a>
 
 	<!-- ========================= JS here ========================= -->
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/wow.min.js"></script>
-	<script src="/js/tiny-slider.js"></script>
-	<script src="/js/glightbox.min.js"></script>
-	<script src="/js/main.js"></script>
-	<script src="/js/drug.js"></script>
-  <script src="/js/delivery.js"></script>
+  	<script src="/js/delivery.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.drugDelivery;
+package com.goodee.everydoctor.drug.delivery;
 
 import java.util.List;
 

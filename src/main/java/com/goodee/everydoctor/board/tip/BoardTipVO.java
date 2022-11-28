@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.boardTip;
+package com.goodee.everydoctor.board.tip;
 
 import java.util.List;
 
