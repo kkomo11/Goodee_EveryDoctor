@@ -3703,7 +3703,7 @@ blockquote .shape {
 }
 
 .category-page .category-grid-topbar .nav button.active {
-  background-color: #55DDBD;
+  background-color: #55DDBD !important;
   border-color: transparent;
   color: #fff;
 }
