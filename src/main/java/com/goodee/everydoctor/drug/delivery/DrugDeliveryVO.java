@@ -9,4 +9,25 @@ public class DrugDeliveryVO {
 	private Long drugDeliveryNum;
 	//주문번호
 	private Long payNum;
+	
+	//sweet tracker
+	//택배 회사 코드
+//	private String t_code;
+//	//운송장 번호
+//	private String t_invoice;
+	//발급받은 키
+	private String t_key;
+	
+	//택배 회사 코드
+	private String code;
+	//택배 회사 이름
+	private String name;
+	
+	
+	//Status 뭔지 모름
+	private String msg;
+	private boolean status;
+	
+	
+	
 }
