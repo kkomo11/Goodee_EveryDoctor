@@ -11,7 +11,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
-<c:import url="../temp/boot.jsp"></c:import>
+<c:import url="../../temp/boot.jsp"></c:import>
 <!-- Place favicon.ico in the root directory -->
 
 <!-- Web Font -->
@@ -27,7 +27,7 @@
 </head>
 
 	<!-- Header -->
-	<c:import url="../temp/header.jsp"></c:import>
+	<c:import url="../../temp/header.jsp"></c:import>
 
 <body>
   <a href="https://tracker.delivery/#/:carrier_id/:track_id" target="_blank">배송조회</a>
@@ -143,7 +143,7 @@
   <!-- end 택배조회Coll -->
 
 	<!-- Footer -->
-	<c:import url="../temp/footer.jsp"></c:import>
+	<c:import url="../../temp/footer.jsp"></c:import>
 
 	<!-- ========================= scroll-top ========================= -->
 	<a href="#" class="scroll-top btn-hover"> <i
@@ -151,6 +151,6 @@
 	</a>
 
 	<!-- ========================= JS here ========================= -->
-  	<script src="/js/delivery.js"></script>
+  	<script src="/js/drug/delivery.js"></script>
 </body>
 </html>

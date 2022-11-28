@@ -220,6 +220,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
+    <script src="/js/board/board.js"></script>
 </body>
 
 </html>

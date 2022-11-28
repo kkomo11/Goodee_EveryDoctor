@@ -142,7 +142,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/board.js"></script>
+    <script src="/js/board/board.js"></script>
     
 </body>
 
