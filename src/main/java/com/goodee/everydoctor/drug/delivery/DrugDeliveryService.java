@@ -16,4 +16,9 @@ public class DrugDeliveryService {
 	public List<DrugDeliveryVO> getList(DrugDeliveryVO drugDeliveryVO)throws Exception {
 		return drugDeliveryMapper.getList(drugDeliveryVO);
 	}
+
+	public DrugDeliveryVO getDetail(DrugDeliveryVO drugDeliveryVO) throws Exception {
+		// TODO Auto-generated method stub
+		return drugDeliveryMapper.getDetail(drugDeliveryVO);
+	}
 }

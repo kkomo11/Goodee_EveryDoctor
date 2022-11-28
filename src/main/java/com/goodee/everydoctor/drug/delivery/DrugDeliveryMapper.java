@@ -8,5 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface DrugDeliveryMapper {
 	
 	public List<DrugDeliveryVO> getList(DrugDeliveryVO drugDeliveryVO)throws Exception;
+
+	public DrugDeliveryVO getDetail(DrugDeliveryVO drugDeliveryVO)throws Exception;
 	
 }
