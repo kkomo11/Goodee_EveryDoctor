@@ -80,7 +80,7 @@ public class UserDetailsServiceImpl extends DefaultOAuth2UserService implements 
 			Map<String, Object> ka = auth2User.getAttribute("kakao_account");
 			userVO.setUsername(userName);
 			userVO.setPassword(userName);
-			userVO.setNickname(properties.get("nickname"));
+			userVO.setName(properties.get("nickname"));
 			userVO.setFileName(properties.get("profile_image"));
 			userVO.setEmail(ka.get("email").toString());
 			
