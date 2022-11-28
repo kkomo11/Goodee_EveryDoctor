@@ -22,7 +22,7 @@
 	rel="stylesheet">
 
 <!-- ========================= CSS here ========================= -->
-<link rel="stylesheet" href="/css/delivery.css" />
+<link rel="stylesheet" href="/css/drug/delivery.css" type="text/css"/>
 
 </head>
 

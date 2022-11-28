@@ -20,7 +20,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
       <!-- ========================= CSS here ========================= -->
-      <link rel="stylesheet" href="/css/drug.css" type="text/css" />
+      <link rel="stylesheet" href="/css/drug/drug.css" type="text/css"/>
 
     </head>
 
