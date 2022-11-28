@@ -201,35 +201,15 @@
                                     <div class="category-sidebar">
                                         <!-- Start Single Widget -->
                                         <div class="single-widget">
-                                            <h3>All Categories</h3>
+                                            <h3>진료 과목</h3>
                                             <ul class="list">
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-dinner"></i> Hotel &
-                                                        Travels<span>15</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-control-panel"></i> Services
-                                                        <span>20</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-bullhorn"></i> Marketing
-                                                        <span>55</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-home"></i> Real Estate<span>35</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-bolt"></i> Electronics
-                                                        <span>60</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-tshirt"></i> Dress & Clothing
-                                                        <span>55</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)"><i class="lni lni-diamond-alt"></i> Jewelry & Accessories
-                                                        <span>45</span></a>
-                                                </li>
+                                                <c:forEach items="${sectionList}" var="sectionVO">
+                                                	<li>
+	                                                    <a href="javascript:void(0)"><i class="lni lni-dinner"></i>
+	                                                    	${sectionVO.sectionName}
+	                                                    </a>
+	                                                </li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                         <!-- End Single Widget -->
@@ -724,7 +704,11 @@
                             </div>
                         </div>
                     </section>
-                    <!-- End Category -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Category -->
 
     <!-- Start Items Grid Area -->
     <section class="items-grid section">
@@ -732,7 +716,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">반려동물 팁</h2>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">건강 꿀팁</h2>
                         <p class="wow fadeInUp" data-wow-delay=".6s">반려동물의 몰랐던 정보와 상식을 얻어가세요.</p>
                     </div>
                 </div>

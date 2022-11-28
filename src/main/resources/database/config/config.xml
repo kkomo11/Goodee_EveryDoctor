@@ -20,5 +20,6 @@
 		<typeAlias type="com.goodee.everydoctor.report.ReportVO" alias="ReportVO"/>
 		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
 		<typeAlias type="com.goodee.everydoctor.user.UserVO" alias="UserVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.HospitalSectionVO" alias="HospitalSectionVO"/>
 	</typeAliases>
 </configuration>
