@@ -63,12 +63,6 @@ public class UserVO implements UserDetails, OAuth2User{
 		return null;
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 	
 	
