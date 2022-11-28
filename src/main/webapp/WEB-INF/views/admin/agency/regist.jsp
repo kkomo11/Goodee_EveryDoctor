@@ -19,6 +19,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
+    <c:import url="../../temp/boot.jsp"></c:import>
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
@@ -116,12 +117,15 @@
                                 </div>
                                 <form class="profile-setting-form" method="post" modelAttribute="AgencyVO" action="./regist" enctype="multipart/form-data" id="form">
                                     <div class="row">
+                                        <!-- 상호명 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>상호명*</label>
-                                                <input name="agencyName" type="text" placeholder="상호명">
+                                                <input name="agencyName" type="text" placeholder="상호명" id="agencyName">
+                                                <div class="agencyNamem" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
+                                        <!-- 주소 입력 -->
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>주소*</label>
@@ -130,30 +134,37 @@
                                                         <input type="text" id="postcode" placeholder="우편번호" readonly="readonly" name="postcode">
                                                     </div>
                                                     <div class="form-group button mb-0">
-                                                        <button class="btn " type="button" onclick="checkPost();" value="우편번호 찾기">우편번호 찾기</button>
+                                                        <button class="btn findPost" type="button" onclick="checkPost();" value="우편번호 찾기">우편번호 찾기</button>
                                                     </div>
                                                 </div>
-                                                <input type="text" id="mainAddress" placeholder="주소" readonly="readonly">
+                                                <div>
+                                                    <input type="text" id="mainAddress" placeholder="주소" readonly="readonly">
+                                                </div>
                                                 <div class="d-flex flex-row">
                                                     <input type="text" id="detailAddress" placeholder="상세주소">
                                                 </div>
-                                                <div class="addressm m"></div>
+                                                <div class="addressm m" style="color: #55DDBD;"></div>
+                                                <input type="hidden" name="agencyAddr" id="agencyAddr">
                                             </div>
                                         </div>
+                                        <!-- 전화번호 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>전화번호*</label>
-                                                <input name="agencyTel" type="text" placeholder="02-111-1111">
+                                                <input name="agencyTel" type="text" placeholder="02-111-1111" id="agencyTel">
+                                                <div class="agencyTelm" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
+                                        <!-- 기관 소개글 입력 -->
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>소개글*</label>
                                                 <textarea name="agencyInfo" placeholder="기관에 대한 정보를 입력해주세요"></textarea>
                                             </div>
                                         </div>
+                                        <!-- 기관 등록 신청 버튼 -->
                                             <div class="form-group button mb-0">
-                                                <button type="button" class="btn ">기관 등록 신청</button>
+                                                <button type="button" class="btn regist">기관 등록 신청</button>
                                             </div>
                                         </div>
                                     </div>
@@ -183,6 +194,7 @@
     <script src="/js/glightbox.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/admin/agency/regist.js"></script>
+    <script src="/js/admin/util/nullCheck.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 

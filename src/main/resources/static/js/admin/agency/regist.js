@@ -2,9 +2,42 @@ const postcode = document.getElementById('postcode');
 const mainAddress = document.getElementById("mainAddress");
 const detailAddress = document.getElementById("detailAddress")
 
-function registCheck(){
+//유효성 검사
+let check = [false, false, false];
+let address = $("#mainAddress").val();
 
-}
+//상호명 유효성 검사
+$("#agencyName").blur(function(){
+    let agencyName = $("#agencyName").val();
+    let agencyNameResult = nullCheck(agencyName, ".agencyNamem", "상호명은");
+    check[0] = agencyNameResult;
+})
+
+//주소 유효성 검사
+$("#detailAddress").blur(function(){
+    let detailAddress = $("#detailAddress").val();
+    let addressResult = nullCheck(detailAddress, ".addressm", "주소는");
+    check[1] = addressResult;
+})
+
+//전화번호 유효성 검사
+$("#agencyTel").blur(function(){
+    let agencyTel = $('#agencyTel').val();
+    let agencyTelResult = nullCheck(agencyTel, ".agencyTelm", "전화번호는");
+    check[2] = agencyTelResult;
+})
+
+
+$(".regist").click(function(){
+    //주소 하나로 합치기
+    $("#agencyAddr").val($("#mainAddress").val()+$("#detailAddress").val());
+
+    if(check.includes(false)){
+        alert("입력 조건을 확인해주세요");
+    }else{
+        $("#form").submit();
+    }
+})
 
 //다음 주소 api
 function checkPost() {
@@ -45,6 +78,7 @@ function checkPost() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             postcode.value = data.zonecode;
             mainAddress.value = addr + extraAddr;
+
             // 커서를 상세주소 필드로 이동한다.
             detailAddress.focus();
         }

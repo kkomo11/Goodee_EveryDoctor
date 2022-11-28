@@ -19,7 +19,7 @@
             rel="stylesheet">
          <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
-         <c:import url="../temp/boot.jsp"></c:import>
+         <c:import url="../../temp/boot.jsp"></c:import>
          <!-- ========================= CSS here ========================= -->
          <link rel="stylesheet" href="/css/bootstrap.min.css" />
          <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
@@ -214,7 +214,7 @@
          <script src="/js/glightbox.min.js"></script>
          <script src="/js/main.js"></script>
          <script src="/js/admin/report/write.js"></script>
-         <script src="/js/admin/report/nullCheck.js"></script>
+         <script src="/js/admin/util/nullCheck.js"></script>
 
 
          <!-- 파일추가 버튼 누르면 파일추가 폼 생성 -->
