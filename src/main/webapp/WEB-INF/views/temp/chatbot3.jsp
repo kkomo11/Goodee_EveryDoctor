@@ -17,11 +17,11 @@
         <div class="Chat_Chat__l9gIS" data-testid="chat-root">
             <div class="ChatContainer_Container__Bz-YZ ChatContainer_Closed__XFx+C" id="chatContainer" data-testid="container">
                 <div class="ChatContainer_Header__Gs2e6">
-                    <div class="ChatContainer_Logo__c6ufe">
+                    <!-- <div class="ChatContainer_Logo__c6ufe">
                         <span class="ChatContainer_Blind__7omeh">CLOVA Chatbot</span>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="ChatContainer_Body__LEr-q">
+                <div class="ChatContainer_Body__LEr-q" id="chatBody">
                     <!-- <div class="ChatContainer_Opening__BuUR+">
                         <div class="ChatContainer_Title__yVoiL">
                             <p class="ChatContainer_Description__t5ueD">HyperCLOVA
@@ -31,7 +31,7 @@
                         </div>
                         <i class="ChatContainer_Image__Byitv" role="img"></i>
                     </div> -->
-                    <ul class="ChatContainer_ConversationList__aR5OV">
+                    <ul class="ChatContainer_ConversationList__aR5OV" id="chatList">
                         <li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem">
                             <div class="CompleteMessage_CompleteMessage__KWS7v">
                                 <div class="BubbleMessage_BubbleMessage__d2tka" data-testid="bubble-message">

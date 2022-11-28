@@ -96,9 +96,6 @@
     overflow: hidden;
     vertical-align: top;
 }
-.MessageChunk_MessageChunk__Q3D\+1 .MessageChunk_WithVerticalMargin__RhSp3 {
-    margin: 12px 0;
-}
 .BoxMessage_BoxMessage__8JUew {
     margin-left: 15px;
     margin-right: 15px;
@@ -131,6 +128,13 @@
 }
 .ButtonMessageGroup_ButtonMessageGroup__\+wRrg .ButtonMessageGroup_Item__K2Y1r {
     margin-top: 0;
+}
+li {
+    text-align: -webkit-match-parent;
+}
+.CompleteMessage_CompleteMessage__KWS7v .CompleteMessage_BotIcon__L-jGa {
+    height: 30px;
+    margin-bottom: 6px;
 }
 .ButtonMessage_ButtonMessage__z6JjE {
     border: 0;
@@ -289,20 +293,15 @@
     text-align: right;
 }
 .UserMessage_UserMessage__K5Ywg {
-    /* display: inline-block; */
+    display: inline-block;
     background-color: #2284f5;
     padding: 10px 15px;
     max-width: 234px;
     border-radius: 20px 0 20px 20px;
     margin-left: 6px;
-    float: right;
 }
 .MessageChunk_MessageChunk__Q3D\+1 .MessageChunk_WithVerticalMargin__RhSp3 {
     margin: 12px 0;
-}
-.BoxMessage_BoxMessage__8JUew {
-    margin-left: 15px;
-    margin-right: 15px;
 }
 .TextMessage_TextMessage__EDD4r {
     white-space: pre-wrap;
@@ -318,4 +317,11 @@
 .BoxMessage_BoxMessage__8JUew .BoxMessage_WithoutMargin__MdLiN {
     margin-left: 0;
     margin-right: 0;
+}
+.UserMessage_UserMessage__K5Ywg .UserMessage_Content__LSbVx {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.47;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
