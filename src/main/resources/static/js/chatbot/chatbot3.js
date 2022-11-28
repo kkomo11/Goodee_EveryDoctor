@@ -1,3 +1,15 @@
+$("#chatbtn").click(function(){
+    $('#chatbtn').toggleClass('ChatButton_Closed__sKzUx')
+    $('#chatbtn').toggleClass('ChatButton_Opened__urOH2')
+
+    $('#chatContainer').toggleClass('ChatContainer_Closed__XFx+C')
+
+    if($('#chatbtn').hasClass('ChatButton_Closed__sKzUx')) {
+        disconnect();
+    }else {
+        connect();
+    }
+})
 let stompClient = null;
 
 function setConnected(connected) {
@@ -25,21 +37,9 @@ function connect() {
     });
 }
 
-function disconnect() {
-    if (stompClient !== null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
+function showBotReply(message){
+	$("#communicate").append('<div class="SpeechBubble_SpeechBubble__dPnRi">'+message+'</div>')
 }
-
-// function sendMessage() {
-//     let message = $("#msg").val()
-//     console.log(message);
-//     showMessage("보낸 메시지: " + message);
-
-//     stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
-// }
 
 function sendMessage(messages){
     showMessage("보낸 메시지: " + messages);
@@ -47,19 +47,14 @@ function sendMessage(messages){
     stompClient.send("/app/sendMessage", {}, JSON.stringify(messages)); //서버에 보낼 메시지
 }
 
-function showBotReply(message){
-	$("#communicate").append('<div class="message-sender">'+message+'</div>')
-}
-
 function showMessage(message) {
-    $("#communicate").append('<div class="message-parker">' + message + '</div><br>');
+    $("#communicate").append('<div class="UserMessage_UserMessage__K5Ywg">' + message + '</div><br>');
 }
 
-$(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
-    });
-    $( "#connect" ).click(function() { connect(); });
-    $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendMessage(); });
-});
+function disconnect() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
+}
