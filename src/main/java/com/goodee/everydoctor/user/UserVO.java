@@ -25,7 +25,7 @@ public class UserVO implements UserDetails, OAuth2User{
 	private String password;
 	private String password2;
 	@NotBlank
-	private String nickname;
+	private String name;
 	@NotBlank
 	private String email;
 	private Integer birth;
