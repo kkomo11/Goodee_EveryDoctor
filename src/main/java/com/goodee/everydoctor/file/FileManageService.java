@@ -24,7 +24,7 @@ public class FileManageService {
 	//FileDetail 가져오기 TEST
 	public FileVO getFileDetail(FileVO fileVO)throws Exception {
 		
-		return fileMapper.getFileByFileNum(fileVO);
+		return fileMapper.findFileByFileNum(fileVO);
 
 	}
 	
@@ -54,7 +54,7 @@ public class FileManageService {
 	public int fileDelete(FileVO fileVO) throws Exception{
 		log.info("삭제할 fileVO {}",fileVO);
 		//fileName가져오기
-		fileVO = fileMapper.getFileByFileNum(fileVO);
+		fileVO = fileMapper.findFileByFileNum(fileVO);
 		
 		//db에서 삭제
 		int result = fileMapper.deleteFileByFileNum(fileVO);
