@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.drugDelivery;
+package com.goodee.everydoctor.drug.delivery;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/drugDelivery/*")
+@RequestMapping("/drug/delivery/*")
 public class DrugDeliveryController {
 	
 	@Autowired
@@ -20,7 +20,7 @@ public class DrugDeliveryController {
 		ModelAndView mv = new ModelAndView();
 		List<DrugDeliveryVO> ar = drugDeliveryService.getList(drugDeliveryVO);
 		mv.addObject("list",ar);
-		mv.setViewName("drugDelivery/list");
+		mv.setViewName("drug/delivery/list");
 		return mv;
 	}
 

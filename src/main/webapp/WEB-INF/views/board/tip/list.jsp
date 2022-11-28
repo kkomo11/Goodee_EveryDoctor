@@ -11,6 +11,7 @@
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
+      <c:import url="../../temp/boot.jsp"></c:import>
       <!-- Place favicon.ico in the root directory -->
 
       <!-- Web Font -->
@@ -69,7 +70,7 @@
       <!-- End Breadcrumbs -->
 
       <!-- Header -->
-      <c:import url="../temp/header.jsp"></c:import>
+      <c:import url="../../temp/header.jsp"></c:import>
 
       <!-- Start Faq Area -->
       <section class="faq section">
@@ -349,49 +350,15 @@
       </section>
       <!--/ End Faq Area -->
 
-      <!-- Start Newsletter Area -->
-      <div class="newsletter section">
-        <div class="container">
-          <div class="inner-content">
-            <div class="row align-items-center">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="title">
-                  <i class="lni lni-alarm"></i>
-                  <h2>Newsletter</h2>
-                  <p>We don't send spam so don't worry.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form">
-                  <form action="#" method="get" target="_blank" class="newsletter-form">
-                    <input name="EMAIL" placeholder="Your email address" type="email">
-                    <div class="button">
-                      <button class="btn">
-                        Subscribe<span class="dir-part"></span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Newsletter Area -->
-
       <!-- Footer -->
-      <c:import url="../temp/footer.jsp"></c:import>
+      <c:import url="../../temp/footer.jsp"></c:import>
 
       <!-- ========================= scroll-top ========================= -->
       <a href="#" class="scroll-top btn-hover"> <i class="lni lni-chevron-up"></i>
       </a>
 
       <!-- ========================= JS here ========================= -->
-      <script src="/js/bootstrap.min.js"></script>
-      <script src="/js/wow.min.js"></script>
-      <script src="/js/tiny-slider.js"></script>
-      <script src="/js/glightbox.min.js"></script>
-      <script src="/js/main.js"></script>
+      <script src="/js/board/boardTip.js"></script>
     </body>
 
     </html>
