@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/report/*")
+@RequestMapping("/admin/report/*")
 public class ReportController {
 	
 	@Autowired

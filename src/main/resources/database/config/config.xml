@@ -16,9 +16,9 @@
 		<typeAlias type="com.goodee.everydoctor.drugDelivery.DrugDeliveryVO" alias="DrugDeliveryVO"/>
 		<typeAlias type="com.goodee.everydoctor.board.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.goodee.everydoctor.boardTip.BoardTipVO" alias="BoardTipVO"/>
-		<typeAlias type="com.goodee.everydoctor.board.BoardFileVO" alias="BoardFileVO"/>
 		<typeAlias type="com.goodee.everydoctor.report.ReportVO" alias="ReportVO"/>
 		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
 		<typeAlias type="com.goodee.everydoctor.user.UserVO" alias="UserVO"/>
+		<typeAlias type="com.goodee.everydoctor.agency.AgencyVO" alias="AgencyVO"/>
 	</typeAliases>
 </configuration>

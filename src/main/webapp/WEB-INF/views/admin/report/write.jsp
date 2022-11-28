@@ -51,7 +51,7 @@
          <!-- /End Preloader -->
 
          <!-- Header -->
-         <c:import url="../temp/header.jsp"></c:import>
+         <c:import url="../../temp/header.jsp"></c:import>
 
          <!-- Start Breadcrumbs -->
          <div class="breadcrumbs">
@@ -201,7 +201,7 @@
          <!-- End Dashboard Section -->
 
          <!-- Footer -->
-         <c:import url="../temp/footer.jsp"></c:import>
+         <c:import url="../../temp/footer.jsp"></c:import>
 
          <!-- ========================= scroll-top ========================= -->
          <a href="#" class="scroll-top btn-hover"> <i class="lni lni-chevron-up"></i>
@@ -213,8 +213,8 @@
          <script src="/js/tiny-slider.js"></script>
          <script src="/js/glightbox.min.js"></script>
          <script src="/js/main.js"></script>
-         <script src="/js/report/write.js"></script>
-         <script src="/js/report/nullCheck.js"></script>
+         <script src="/js/admin/report/write.js"></script>
+         <script src="/js/admin/report/nullCheck.js"></script>
 
 
          <!-- 파일추가 버튼 누르면 파일추가 폼 생성 -->
