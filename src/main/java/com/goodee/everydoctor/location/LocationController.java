@@ -38,5 +38,10 @@ public class LocationController {
 		List<AgencyVO> al = locationService.findPharmacyList();
 		return al;
 	}
+	
+	@GetMapping("categoryLocation")
+	public void categoryLocation()throws Exception{
+		
+	}
 
 }
