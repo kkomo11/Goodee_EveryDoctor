@@ -6,4 +6,8 @@
 	<select id="findHospitalSection" resultType="HospitalSectionVO">
 		SELECT * FROM SECTION WHERE SECTIONKIND=0
 	</select>
+	
+	<select id="findHospitalCategory" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
+	</select>
 </mapper>

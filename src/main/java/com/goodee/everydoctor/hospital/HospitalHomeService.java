@@ -14,5 +14,9 @@ public class HospitalHomeService {
 	public List<HospitalSectionVO> findHospitalSection() throws Exception {
 		return hospitalHomeMapper.findHospitalSection();
 	}
+	
+	public List<HospitalCategoryVO> findHospitalCategory() throws Exception {
+		return hospitalHomeMapper.findHospitalCategory();
+	}
 
 }

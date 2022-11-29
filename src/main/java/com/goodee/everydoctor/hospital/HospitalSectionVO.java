@@ -8,4 +8,5 @@ public class HospitalSectionVO {
 	private Integer sectionNum;
 	private String sectionName;
 	private boolean sectionKind;
+	private String sectionIcon;
 }

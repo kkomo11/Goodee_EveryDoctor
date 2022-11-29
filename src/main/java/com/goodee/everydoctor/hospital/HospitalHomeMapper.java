@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface HospitalHomeMapper {
 
 	public List<HospitalSectionVO> findHospitalSection() throws Exception;
+	public List<HospitalCategoryVO> findHospitalCategory() throws Exception;
 }
