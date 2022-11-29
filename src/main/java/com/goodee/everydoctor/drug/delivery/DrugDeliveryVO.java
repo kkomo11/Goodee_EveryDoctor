@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.drug.delivery;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -17,17 +19,15 @@ public class DrugDeliveryVO {
 //	private String t_invoice;
 	//발급받은 키
 	private String t_key;
-	
 	//택배 회사 코드
 	private String code;
 	//택배 회사 이름
 	private String name;
 	
-	
 	//Status 뭔지 모름
 	private String msg;
 	private boolean status;
 	
-	
-	
+	private MultipartFile []files;
+		
 }
