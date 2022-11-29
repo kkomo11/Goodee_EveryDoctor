@@ -20,7 +20,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/public', function (message) {
-            showMessage("받은 메시지: " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
+            showBotReply("받은 메시지: " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
         });
     });
 }
@@ -33,15 +33,26 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendMessage() {
-    let message = $("#msg").val()
-    showMessage("보낸 메시지: " + message);
+// function sendMessage() {
+//     let message = $("#msg").val()
+//     console.log(message);
+//     showMessage("보낸 메시지: " + message);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
+//     stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
+// }
+
+function sendMessage(messages){
+    showMessage("보낸 메시지: " + messages);
+
+    stompClient.send("/app/sendMessage", {}, JSON.stringify(messages)); //서버에 보낼 메시지
+}
+
+function showBotReply(message){
+	$("#communicate").append('<div class="message-sender">'+message+'</div>')
 }
 
 function showMessage(message) {
-    $("#communicate").append("<tr><td>" + message + "</td></tr>");
+    $("#communicate").append('<div class="message-parker">' + message + '</div><br>');
 }
 
 $(function () {

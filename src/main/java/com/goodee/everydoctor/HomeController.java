@@ -10,4 +10,8 @@ public class HomeController {
 	public String home() throws Exception {
 		return "index";
 	}
+	@GetMapping("/temp/chatbot3")
+	public void chatbot3()throws Exception{
+		
+	}
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.hospital.HospitalHomeMapper">
+	<select id="findHospitalSection" resultType="HospitalSectionVO">
+		SELECT * FROM SECTION WHERE SECTIONKIND=0
+	</select>
+	
+	<select id="findHospitalCategory" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
+	</select>
+</mapper>
