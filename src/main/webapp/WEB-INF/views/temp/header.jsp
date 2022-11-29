@@ -123,7 +123,7 @@
                             <ul>
                                 <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
-                                    ${member.username},${member.nickname}, ${member.roles}
+                                    ${member.username},${member.name}, ${member.roles}
  
                                 </sec:authorize>
                             

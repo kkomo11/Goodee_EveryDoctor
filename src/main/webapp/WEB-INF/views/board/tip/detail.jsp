@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
-      <c:import url="../temp/boot.jsp"></c:import>
+      <c:import url="../../temp/boot.jsp"></c:import>
       <!-- Place favicon.ico in the root directory -->
 
       <!-- Web Font -->
@@ -50,7 +50,7 @@
       <!-- /End Preloader -->
 
       <!-- Header -->
-      <c:import url="../temp/header.jsp"></c:import>
+      <c:import url="../../temp/header.jsp"></c:import>
 
       <!-- Start Breadcrumbs -->
       <div class="breadcrumbs">
@@ -291,20 +291,14 @@
       <!--/ End Footer Area -->
 
       <!-- Footer -->
-      <c:import url="../temp/footer.jsp"></c:import>
+      <c:import url="../../temp/footer.jsp"></c:import>
 
       <!-- ========================= scroll-top ========================= -->
       <a href="#" class="scroll-top btn-hover"> <i class="lni lni-chevron-up"></i>
       </a>
 
       <!-- ========================= JS here ========================= -->
-      <script src="/js/bootstrap.min.js"></script>
-      <script src="/js/wow.min.js"></script>
-      <script src="/js/tiny-slider.js"></script>
-      <script src="/js/glightbox.min.js"></script>
-      <script src="/js/count-up.min.js"></script>
-      <script src="/js/main.js"></script>
-      <script src="/js/boardTip.js"></script>
+      <script src="/js/board/boardTip.js"></script>
       
     </body>
 

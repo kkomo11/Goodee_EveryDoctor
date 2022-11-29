@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper
-	namespace="com.goodee.everydoctor.boardTip.BoardTipMapper">
+	namespace="com.goodee.everydoctor.board.tip.BoardTipMapper">
 	<select id="getList" resultType="BoardTipVO"
 		parameterType="BoardTipVO">
 		SELECT * FROM BOARD
