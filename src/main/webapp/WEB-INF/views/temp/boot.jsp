@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/main.css" />
 
 <!-- Template JS-->
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script defer src="/js/bootstrap.min.js"></script>
 <script defer src="/js/wow.min.js"></script>
 <script defer src="/js/tiny-slider.js"></script>

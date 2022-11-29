@@ -9,4 +9,5 @@ public class HospitalCategoryVO {
 	private String categoryName;
 	private boolean categoryKind;
 	private Integer categoryNumRef;
+	private String categoryIcon;
 }
