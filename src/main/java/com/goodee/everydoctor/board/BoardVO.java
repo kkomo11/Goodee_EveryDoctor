@@ -17,6 +17,5 @@ public class BoardVO {
 	private String boardContents;
 	
 	private MultipartFile [] files;
-	private List<BoardFileVO> boardFileVOs;
 
 }
