@@ -68,11 +68,11 @@
               <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                 <div class="form-head">
                   <h4 class="title">배송조회</h4>
-                  <!-- <form action="http://info.sweettracker.co.kr/tracking/5" method="post"> -->
-                  <form action="http://localhost/drug/delivery/detail" method="get">
+                   <form action="http://info.sweettracker.co.kr/tracking/5" method="post"> 
+                  <!-- <form action="http://localhost/drug/delivery/detail" method="get"> -->
                     <div class="form-group">
                       <label for="t_key">API key</label>
-                      <input type="text" class="form-control" id="t_key" name="t_key" value="${t_key}">
+                      <input type="hidden" class="form-control" id="t_key" name="t_key" value="${t_key}">
                     </div>
                     <div class="form-group">
                       <label for="t_code">택배사 코드</label>
