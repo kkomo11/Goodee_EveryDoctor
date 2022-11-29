@@ -108,20 +108,21 @@
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="main-content">
-                        <!-- Start Profile Settings Area -->
+                        <!-- 기관 등록 폼 시작 -->
                         <div class="dashboard-block mt-0 profile-settings-block">
                             <h3 class="block-title">기관 등록</h3>
                             <div class="inner-block">
                                 <div class="image">
                                     <img src="https://via.placeholder.com/300x300" alt="#">
                                 </div>
-                                <form class="profile-setting-form" method="post" modelAttribute="AgencyVO" action="./regist" enctype="multipart/form-data" id="form">
+                                <form:form class="profile-setting-form" method="post" modelAttribute="AgencyVO" action="./regist" enctype="multipart/form-data" id="form">
                                     <div class="row">
                                         <!-- 상호명 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>상호명*</label>
-                                                <input name="agencyName" type="text" placeholder="상호명" id="agencyName">
+                                                <form:input path="agencyName" type="text" placeholder="상호명" id="agencyName">
+                                                <form:errors path="agencyName"></form:errors>
                                                 <div class="agencyNamem" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
@@ -144,14 +145,16 @@
                                                     <input type="text" id="detailAddress" placeholder="상세주소">
                                                 </div>
                                                 <div class="addressm m" style="color: #55DDBD;"></div>
-                                                <input type="hidden" name="agencyAddr" id="agencyAddr">
+                                                <form:input type="hidden" path="agencyAddr" id="agencyAddr">
+                                                <form:errors path="agencyAddr"></form:errors>
                                             </div>
                                         </div>
                                         <!-- 전화번호 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>전화번호*</label>
-                                                <input name="agencyTel" type="text" placeholder="02-111-1111" id="agencyTel">
+                                                <form:input path="agencyTel" type="text" placeholder="02-111-1111" id="agencyTel">
+                                                <form:errors path="agencyTel"></form:errors>
                                                 <div class="agencyTelm" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
@@ -171,7 +174,7 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- End Profile Settings Area -->
+                        <!-- 기관 등록 폼 끝 -->
                     </div>
                 </div>
             </div>

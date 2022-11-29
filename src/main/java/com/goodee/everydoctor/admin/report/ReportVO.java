@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.report;
+package com.goodee.everydoctor.admin.report;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

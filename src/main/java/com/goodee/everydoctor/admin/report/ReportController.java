@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.report;
+package com.goodee.everydoctor.admin.report;
 
 import javax.validation.Valid;
 
@@ -27,10 +27,10 @@ public class ReportController {
 	}
 	
 	@PostMapping("write")
-	public ModelAndView setReport(@Valid ReportVO reportVO, BindingResult bindingResult, ModelAndView mv)throws Exception{
+	public ModelAndView inputReport(@Valid ReportVO reportVO, BindingResult bindingResult, ModelAndView mv)throws Exception{
 		if(bindingResult.hasErrors()) {
 			log.info("======== 검증 Error 발생 ========");
-			mv.setViewName("report/write");
+			mv.setViewName("./write");
 			return mv;
 		}
 		

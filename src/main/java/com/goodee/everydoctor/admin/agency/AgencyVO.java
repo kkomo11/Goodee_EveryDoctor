@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.agency;
+package com.goodee.everydoctor.admin.agency;
 
 import lombok.Data;
 
