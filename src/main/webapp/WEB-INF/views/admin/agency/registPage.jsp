@@ -20,13 +20,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
     <c:import url="../../temp/boot.jsp"></c:import>
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
 
 </head>
 
@@ -191,11 +184,6 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
     <script src="/js/admin/agency/regist.js"></script>
     <script src="/js/admin/util/nullCheck.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
