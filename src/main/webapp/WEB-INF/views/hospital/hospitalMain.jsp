@@ -10,7 +10,6 @@
     <title>Hospital Home</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
     <link rel="stylesheet" href="/css/hospital/hospitalMain.css">
 	<c:import url="../temp/boot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->

@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
-import com.goodee.everydoctor.report.ReportVO;
 import com.goodee.everydoctor.util.FileManager;
 
 @Service
