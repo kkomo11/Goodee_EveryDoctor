@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <!--properties spring  -->
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
       <!DOCTYPE html>
       <html class="no-js" lang="zxx">
@@ -27,6 +28,7 @@
 
       <body>
         <spring:eval expression="@deliveryPropertiesFactoryBean['spring.delivery.t_key']" var="t_key"></spring:eval>
+        <spring:eval expression="@deliveryPropertiesFactoryBean['spring.delivery.t_code']" var="t_code"></spring:eval>
         <!-- Preloader -->
         <div class="preloader">
           <div class="preloader-inner">
@@ -68,22 +70,38 @@
               <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                 <div class="form-head">
                   <h4 class="title">배송조회</h4>
-                   <form action="http://info.sweettracker.co.kr/tracking/5" method="post"> 
-                  <!-- <form action="http://localhost/drug/delivery/detail" method="get"> -->
+                   <form action="http://info.sweettracker.co.kr/tracking/5" method="post">
+                   <!-- <form action="http://localhost/drug/delivery/detail" method="get"> -->
                     <div class="form-group">
-                      <label for="t_key">API key</label>
+                      <!-- <label for="t_key">API key</label> -->
                       <input type="hidden" class="form-control" id="t_key" name="t_key" value="${t_key}">
                     </div>
                     <div class="form-group">
-                      <label for="t_code">택배사 코드</label>
-                      <input type="text" class="form-control" name="t_code" id="t_code" placeholder="택배사 코드" value="04">
+                      <!-- <label for="t_code">택배사 코드</label> -->
+                      <input type="hidden" class="form-control" name="t_code" id="t_code" placeholder="택배사 코드" value="${t_code}">
+                    </div>
+                    <div class="form-group">
+                      <!-- <label for="t_code">택배사 코드</label> -->
+                      <label for="t_code2">제휴 택배사</label>
+                      <input type="text" class="form-control" name="t_code2" id="t_code2" placeholder="택배사 코드" value="대한통운">
                     </div>
                     <div class="form-group">
                       <label for="t_invoice">운송장 번호</label>
-                      <input type="text" class="form-control" name="t_invoice" id="t_invoice" placeholder="운송장 번호">
+                      <input type="text" class="form-control" name="t_invoice" id="t_invoice" placeholder="운송장 번호 - 없이 입력">
                     </div>
 
-                    <div class="button">
+
+                    <title>POPUP TEST</title>
+<script type="text/javascript">
+	function openPopUp() {
+		// 함수 동작 테스트 
+		//alert("팝업 테스트");
+		
+		//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
+		 window.open("/drug/delivery/list.jsp", "mypopup", "width=450, height=250, top=150, left=200");
+	}
+  </script>
+                    <div class="popuptestbtn">
                       <button type="submit" class="btn">조회하기</button>
                     </div>
 
