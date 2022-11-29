@@ -174,14 +174,14 @@
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span>닥터나우를 통한 비대면 진료는 병원에서 어떻게 진행이 되나요?</span><i
+                                    <span>에브리닥터를 통한 비대면 진료는 병원에서 어떻게 진행이 되나요?</span><i
                                         class="lni lni-plus"></i>
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>닥터나우가 제공하는 의사 전용 사이트를 통해 진행됩니다.
+                                    <p>에브리닥터가 제공하는 의사 전용 사이트를 통해 진행됩니다.
                                         진료접수(알람) → 진료정보 확인 → 진료시작 (전화/화상) → 처방전 업로드 및 진료비 입력 순서로 진행이 됩니다.</p>
                                     <p>비대면 진료는 유무선 전화, 화상통화 등을 활용하여 이루어지며 진료의 질을 보장하기 위하여 문자메시지, 메신저만을 이용한 진료는 불가합니다.</p>
                                 </div>
@@ -212,7 +212,7 @@
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>닥터나우 의사 전용 사이트에서 별도의 프로그램 설치 없이 진행 가능합니다.</p>
+                                    <p>에브리닥터 의사 전용 사이트에서 별도의 프로그램 설치 없이 진행 가능합니다.</p>
                                     <p>원내에 웹캠과 이어폰(마이크 포함)이 있으시면 진행하실 수 있습니다.</p>
                                 </div>
                             </div>
@@ -238,123 +238,6 @@
     </section>
     <!--/ End Faq Area -->
 
-    <!-- Start Browse Cities Area -->
-    <section class="browse-cities section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Browse By Cities</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col-lg-4 col-md-4 col-12">
-                    <!-- Start Single City -->
-                    <div class="single-city wow fadeInUp" data-wow-delay=".2s">
-                        <a href="category.html" class="info-box">
-                            <div class="image">
-                                <img src="https://via.placeholder.com/425x290" alt="#">
-                            </div>
-                            <div class="content">
-                                <h4 class="name">
-                                    New York City
-                                    <span>155 Ads</span>
-                                </h4>
-                            </div>
-                            <div class="more-btn">
-                                <i class="lni lni-circle-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Start Single City -->
-                </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <!-- Start Single City -->
-                    <div class="single-city wow fadeInUp" data-wow-delay=".4s">
-                        <a href="category.html" class="info-box">
-                            <div class="image">
-                                <img src="https://via.placeholder.com/425x290" alt="#">
-                            </div>
-                            <div class="content">
-                                <h4 class="name">
-                                    Philadelphia
-                                    <span>288 Ads</span>
-                                </h4>
-                            </div>
-                            <div class="more-btn">
-                                <i class="lni lni-circle-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Start Single City -->
-                </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <!-- Start Single City -->
-                    <div class="single-city wow fadeInUp" data-wow-delay=".6s">
-                        <a href="category.html" class="info-box">
-                            <div class="image">
-                                <img src="https://via.placeholder.com/425x290" alt="#">
-                            </div>
-                            <div class="content">
-                                <h4 class="name">
-                                    Los Angeles
-                                    <span>95 Ads</span>
-                                </h4>
-                            </div>
-                            <div class="more-btn">
-                                <i class="lni lni-circle-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Start Single City -->
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <!-- Start Single City -->
-                    <div class="single-city wow fadeInUp" data-wow-delay=".2s">
-                        <a href="category.html" class="info-box">
-                            <div class="image">
-                                <img src="https://via.placeholder.com/635x325" alt="#">
-                            </div>
-                            <div class="content">
-                                <h4 class="name">
-                                    San Francisco
-                                    <span>355 Ads</span>
-                                </h4>
-                            </div>
-                            <div class="more-btn">
-                                <i class="lni lni-circle-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Start Single City -->
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <!-- Start Single City -->
-                    <div class="single-city wow fadeInUp" data-wow-delay=".4s">
-                        <a href="category.html" class="info-box">
-                            <div class="image">
-                                <img src="https://via.placeholder.com/635x325" alt="#">
-                            </div>
-                            <div class="content">
-                                <h4 class="name">
-                                    Newe Orleans
-                                    <span>76 Ads</span>
-                                </h4>
-                            </div>
-                            <div class="more-btn">
-                                <i class="lni lni-circle-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Start Single City -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /End Browse Cities Area -->
 
     <!-- Start Footer Area -->
 	<c:import url="../../temp/footer.jsp"></c:import>
