@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.goodee.everydoctor.file.FileVO;
-
 @Mapper
 public interface DrugDeliveryMapper {
 	
