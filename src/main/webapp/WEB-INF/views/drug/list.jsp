@@ -82,7 +82,7 @@
                         <div class="navbar bg-light">
                           <label class="visually-hidden" for="Kind">Kind</label>
                           <select name="kind" class="form-select" id="Kind">
-                            <option class="kinds" value="drugNum">약번호</option>
+                            <!-- <option class="kinds" value="drugNum">약번호</option> -->
                             <option class="kinds" value="drugName">약이름</option>
                           </select>
                         </div>

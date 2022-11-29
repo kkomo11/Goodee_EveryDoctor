@@ -9,4 +9,9 @@
     SELECT * FROM DRUGDELIVERY
     </select>
     
+    	<select id="getDetail" parameterType="DrugDeliveryVO"
+		resultType="DrugDeliveryVO">
+		SELECT * FROM DRUGDELIVERY WHERE DRUGDELIVERYNUM = #{drugDeliveryNum}
+	</select>
+    
     </mapper>
