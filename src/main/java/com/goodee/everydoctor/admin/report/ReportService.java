@@ -1,4 +1,4 @@
-package com.goodee.everydoctor.report;
+package com.goodee.everydoctor.admin.report;
 
 import java.io.File;
 
@@ -29,11 +29,11 @@ public class ReportService {
 	@Value("${app.file.base}")
 	private String path;
 	
-	private String label = "report";
+	private String label = "REPORT";
 	
 	//신고 Insert
-	public int setReport(ReportVO reportVO)throws Exception{
-		int result = reportMapper.setReport(reportVO);
+	public int inputReport(ReportVO reportVO)throws Exception{
+		int result = reportMapper.inputReport(reportVO);
 		
 		//받아온 파일들을 반복문 돌려서 HDD 저장 및 DB에 저장
 		for(MultipartFile f : reportVO.getFiles()) {

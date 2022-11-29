@@ -1,4 +1,7 @@
-package com.goodee.everydoctor.report;
+package com.goodee.everydoctor.admin.report;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,11 +11,14 @@ import lombok.Data;
 public class ReportVO {
 	
 	private int reportNum;
+	@NotNull
 	private int reportTypeNum;
-	private int reporterId;
-	private int reportedId;
+	private int reporterName;
+	private int reportedName;
 	private int consultNum;
-	private int AnswerNum;
+	@NotBlank
+	private String reportTitle;
+	@NotBlank
 	private String reportContents;
 	private int reportChecked;
 	
