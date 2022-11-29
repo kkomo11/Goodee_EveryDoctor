@@ -1,6 +1,7 @@
 $("#chatbtn").click(function(){
-    $('#chatbtn').toggleClass('ChatButton_Closed__sKzUx')
-    $('#chatbtn').toggleClass('ChatButton_Opened__urOH2')
+    $('#chatbtn').toggleClass('ChatButton_Closed__sKzUx');
+    $('#chatbtn').toggleClass('ChatButton_ChatButton__utC8a ChatButton_Opened__urOH2');
+    // $('chatbtn').toggleClass('ChatButton_ChatButton__utC8a');
 
     $('#chatContainer').toggleClass('ChatContainer_Closed__XFx+C')
 

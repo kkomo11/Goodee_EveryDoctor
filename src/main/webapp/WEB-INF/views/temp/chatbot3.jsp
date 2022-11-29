@@ -17,9 +17,10 @@
         <div class="Chat_Chat__l9gIS" data-testid="chat-root">
             <div class="ChatContainer_Container__Bz-YZ ChatContainer_Closed__XFx+C" id="chatContainer" data-testid="container">
                 <div class="ChatContainer_Header__Gs2e6">
-                    <!-- <div class="ChatContainer_Logo__c6ufe">
-                        <span class="ChatContainer_Blind__7omeh">CLOVA Chatbot</span>
-                    </div> -->
+                    <div class="ChatContainer_Logo__c6ufe">
+                        <img class="chatLogo" src="/images/logo/logo.jpg" alt="" >
+                        <span class="ChatContainer_Blind__7omeh">EveryD Chatbot</span>
+                    </div>
                 </div>
                 <div class="ChatContainer_Body__LEr-q" id="chatBody">
                     <!-- <div class="ChatContainer_Opening__BuUR+">
@@ -99,7 +100,7 @@
                     챗봇을 만나보세요!
                 </span>
             </div> -->
-            <button type="button" class="ChatButton_ChatButton__utC8a ChatButton_Closed__sKzUx" id="chatbtn" data-testid="chatButton"></button>
+            <button type="button" class="ChatButton_Closed__sKzUx" id="chatbtn" data-testid="chatButton"></button>
         </div>
     </div>
     <script src="/js/chatbot/chatbot3.js"></script>
