@@ -10,7 +10,7 @@
                 <div class="nav-inner">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="index.html">
-                            <img src="/images/logo/logo.svg" alt="Logo">
+                            <img src="/images/logo/logo.jpg" alt="Logo">
                         </a>
                         <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -124,9 +124,9 @@
                                 <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
                                     ${member.username},${member.name}, ${member.roles}
- 
+
                                 </sec:authorize>
-                            
+
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-enter"></i> Login</a>
                                 </li>
