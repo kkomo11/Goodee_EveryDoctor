@@ -224,7 +224,7 @@
                                                                 <!-- Start Single Item -->
                                                                 <div class="single-item-grid">
                                                                     <div class="image">
-                                                                        <a href="item-details.html"><img
+                                                                        <a href="doctor/detail"><img
                                                                                 src="https://via.placeholder.com/600x400"
                                                                                 alt="#"></a>
                                                                         <span class="flat-badge sale">즉시</span>
@@ -232,14 +232,15 @@
                                                                     <div class="content">
                                                                         <a href="javascript:void(0)" class="tag">가정의학과 전문의</a>
                                                                         <h3 class="title">
-                                                                            <a href="item-details.html">이정철 의사</a>
+                                                                            <a href="doctor/detail">이정철 의사</a>
                                                                         </h3>
                                                                         <p class="location"><a href="javascript:void(0)"><i
                                                                                     class="lni lni-map-marker">
                                                                                 </i>현대제일의원</a></p>
                                                                         <ul class="info">
-                                                                            <li class="price">4.9(300+)</li>
-                                                                            <li class="like"><a href="javascript:void(0)"><i
+                                                                            <li class="price">
+                                                                                <img class="star" src="/images/star.png"> 4.9(300+)</li>
+                                                                            <li class="like"><a href="doctor/detail"><i
                                                                                         class="lni lni-heart"></i></a>
                                                                             </li>
                                                                         </ul>
