@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
@@ -60,39 +59,35 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="https://via.placeholder.com/1200x900" id="current" alt="#">
+                                    <img src="/images/star.png" alt="#">
                                 </div>
                             </main>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">이정철 의사</h2>
-                            <p class="location"><i class="lni lni-map-marker"></i>
-                            	<a href="javascript:void(0)">현대 제일 의원</a>
-                            </p>
-                            <h3 class="price">$999</h3>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h2 class="title">이주은 의사</h2>
+                                    <p class="location"><i class="lni lni-map-marker"></i>
+                                        <a href="javascript:void(0)">현대 제일 의원</a>
+                                    </p>
+                                    <i class="lni lni-heart like"></i>
+                                </div>
+                                <img src="/images/hospital/manager.jpg" style="width: 50%; height: 50%;">
+                            </div>
                             <div class="list-info">
-                                <h4>Informations</h4>
+                                <h3 class="price mb-3"><img class="grade-star" src="/images/star.png"> 4.9</h3> 후기 2059개
                                 <ul>
-                                    <li><span>Condition:</span> New</li>
-                                    <li><span>Brand:</span> Apple</li>
-                                    <li><span>Model:</span> Mackbook Pro</li>
+                                    <li><span>친절하게 알려주셨어요</span> 1517</li>
+                                    <li><span>꼼꼼하게 진단해주셨어요</span> 1278</li>
+                                    <li><span>차후에 대해 걱정해주셨어요</span> 922</li>
                                 </ul>
                             </div>
                             <div class="contact-info">
                                 <ul>
                                     <li>
-                                        <a href="tel:+002562352589" class="call">
-                                            <i class="lni lni-phone-set"></i>
-                                            +00 256 235 2589
-                                            <span>Call & Get more info</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:example@gmail.com" class="mail">
-                                            <i class="lni lni-envelope"></i>
-                                        </a>
+                                        <a href="javascript:void(0)" class="call" style="padding-left: 40px;">진료 신청</a>
                                     </li>
                                 </ul>
                             </div>
@@ -103,16 +98,6 @@
             <div class="item-details-blocks">
                 <div class="row">
                     <div class="col-lg-8 col-md-7 col-12">
-                        <!-- Start Single Block -->
-                        <div class="single-block tags">
-                            <h3>Tags</h3>
-                            <ul>
-                                <li><a href="javascript:void(0)">이비인후과</a></li>
-                                <li><a href="javascript:void(0)">내과</a></li>
-                                <li><a href="javascript:void(0)">피부과</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Block -->
                         <!-- Start Single Block -->
                         <div class="single-block description">
                             <h3>의사상세</h3>
@@ -132,102 +117,18 @@
                                 non-characteristic words etc.</p>
                         </div>
                         <!-- End Single Block -->
-                        <!-- Start Single Block -->
-                        <div class="single-block comments">
-                            <h3>Comments</h3>
-                            <!-- Start Single Comment -->
-                            <div class="single-comment">
-                                <img src="https://via.placeholder.com/300x300" alt="#">
-                                <div class="content">
-                                    <h4>Luis Havens</h4>
-                                    <span>25 Feb, 2023</span>
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable.
-                                    </p>
-                                    <a href="javascript:void(0)" class="reply"><i class="lni lni-reply"></i> Reply</a>
-                                </div>
-                            </div>
-                            <!-- End Single Comment -->
-                        </div>
-                        <!-- End Single Block -->
-                        <!-- Start Single Block -->
-                        <div class="single-block comment-form">
-                            <h3>Post a comment</h3>
-                            <form action="#" method="POST">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-box form-group">
-                                            <input type="text" name="name" class="form-control form-control-custom"
-                                                placeholder="Your Name" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-box form-group">
-                                            <input type="email" name="email" class="form-control form-control-custom"
-                                                placeholder="Your Email" />
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-box form-group">
-                                            <textarea name="#" class="form-control form-control-custom"
-                                                placeholder="Your Comments"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="button">
-                                            <button type="submit" class="btn">Post Comment</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- End Single Block -->
+
                     </div>
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="item-details-sidebar">
                             <!-- Start Single Block -->
-                            <div class="single-block author">
-                                <h3>Author</h3>
-                                <div class="content">
-                                    <img src="https://via.placeholder.com/200x200" alt="#">
-                                    <h4>Miliya Jessy</h4>
-                                    <span>Member Since May 15,2023</span>
-                                    <a href="javascript:void(0)" class="see-all">See All Ads</a>
-                                </div>
-                            </div>
-                            <!-- End Single Block -->
-                            <!-- Start Single Block -->
-                            <div class="single-block contant-seller comment-form ">
-                                <h3>Contact Seller</h3>
-                                <form action="#" method="POST">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <input type="text" name="name" class="form-control form-control-custom"
-                                                    placeholder="Your Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <input type="email" name="email"
-                                                    class="form-control form-control-custom" placeholder="Your Email" />
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <textarea name="#" class="form-control form-control-custom"
-                                                    placeholder="Your Message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="button">
-                                                <button type="submit" class="btn">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="single-block tags">
+                                <h3>Tags</h3>
+                                <ul>
+                                    <li><a href="javascript:void(0)">이비인후과</a></li>
+                                    <li><a href="javascript:void(0)">내과</a></li>
+                                    <li><a href="javascript:void(0)">피부과</a></li>
+                                </ul>
                             </div>
                             <!-- End Single Block -->
                             <!-- Start Single Block -->

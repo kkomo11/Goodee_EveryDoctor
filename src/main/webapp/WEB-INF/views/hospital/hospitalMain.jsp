@@ -239,7 +239,7 @@
                                                                                 </i>현대제일의원</a></p>
                                                                         <ul class="info">
                                                                             <li class="price">
-                                                                                <img class="star" src="/images/star.png"> 4.9(300+)</li>
+                                                                                <img class="grade-star" src="/images/star.png"> 4.9(300+)</li>
                                                                             <li class="like"><a href="doctor/detail"><i
                                                                                         class="lni lni-heart"></i></a>
                                                                             </li>
