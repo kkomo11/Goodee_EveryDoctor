@@ -10,7 +10,6 @@
          <title>신고하기</title>
          <meta name="description" content="" />
          <meta name="viewport" content="width=device-width, initial-scale=1" />
-         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
          <!-- Place favicon.ico in the root directory -->
 
          <c:import url="../../temp/boot.jsp"></c:import>
@@ -110,9 +109,9 @@
                                              <div class="row">
                                                 <!-- 신고 제목 -->
                                                 <div class="col-12">
-                                                   <div class="form-group">
+                                                   <div class="form-group" id="title">
                                                       <label>제목*</label> 
-                                                      <form:input path="reportTitle" type="text" placeholder="제목을 입력해주세요" id="reportTitle" />
+                                                      <form:input path="reportTitle" placeholder="제목을 입력해주세요" id="reportTitle2" />
                                                       <!-- 신고 제목 검증 메세지 -->
                                                       <div class="reportTitlem m" style="color: #55DDBD;"></div>
                                                       <form:errors path="reportTitle"></form:errors>
