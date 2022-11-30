@@ -34,17 +34,29 @@
 // })
 
 
-// 1.빈창 팝업 생성
-var url = "http://info.sweettracker.co.kr/tracking/5";
-var windowTargetName = "targetName";
-var features = "width = 650px, height=550px, top=300px, left=300px, scrollbox=yes";
-window.open(url, windowTargetName, features);
+// // 1.빈창 팝업 생성
+// let url = "http://info.sweettracker.co.kr/tracking/5";
+// let windowTargetName = "targetName";
+// let features = "width = 650px, height=550px, top=300px, left=300px, scrollbox=yes";
+// window.open(url, windowTargetName, features);
 
-// 2.POST로 데이터 전달
-popuptestbtn.action="url.do"; // 이동
-popuptestbtn.method="post";
-popuptestbtn.target=windowTargetName;
-popuptestbtn.submit();
+// // 2.POST로 데이터 전달
+// popuptestbtn.action="http://info.sweettracker.co.kr/tracking/5"; // 이동
+// popuptestbtn.method="post";
+// popuptestbtn.target=windowTargetName;
+// popuptestbtn.submit();
+
+// popuptestbtn.onclick = function() {
+//   let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbox=yes";
+//   let openUrl = '/test/popup/do'
+//   window.open(openUrl,'pop',popOption);
+// }
+
+
+function openPop() {
+  let popup = window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=700px,height=800px,scrollbars=yes');
+}
+// window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
 
 
 

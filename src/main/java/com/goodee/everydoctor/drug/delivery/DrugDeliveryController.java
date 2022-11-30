@@ -45,11 +45,11 @@ public class DrugDeliveryController {
 		return mv;
 	}
 	
-//	@RequestMapping(value="url.do")
-	@RequestMapping("list")
-	public String urlMethod(HttpServletRequest request , HttpServletResponse response, Model model) throws Exception {		
-		// url.jsp라는 이름을 가진 팝업 생성
-		return "popUp";
-	}
-	
+//	@RequestMapping(value="http://info.sweettracker.co.kr/tracking/5")
+////	@RequestMapping("list")
+//	public String urlMethod(HttpServletRequest request , HttpServletResponse response, Model model) throws Exception {		
+//		// url.jsp라는 이름을 가진 팝업 생성
+//		return "popUp";
+//	}
+
 }
