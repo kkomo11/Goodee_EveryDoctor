@@ -927,6 +927,7 @@ ol {
   padding-bottom: 45px;
   padding-top: 140px;
   background: #081828;
+  /* background: #55DDBD; */
   z-index: 2;
   text-align: left;
 }
@@ -3703,7 +3704,7 @@ blockquote .shape {
 }
 
 .category-page .category-grid-topbar .nav button.active {
-  background-color: #55DDBD;
+  background-color: #55DDBD !important;
   border-color: transparent;
   color: #fff;
 }

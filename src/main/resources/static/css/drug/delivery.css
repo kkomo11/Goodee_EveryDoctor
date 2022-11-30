@@ -96,13 +96,13 @@
  * Created by yyh on 2020. 12. 10..
  */
 
- @font-face {
+@font-face {
   font-family: 'NotoSansCJKkr-R';
   font-style: normal;
   font-weight: 400;
   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
 }
 
 @font-face {
@@ -110,8 +110,8 @@
   font-style: normal;
   font-weight: 500;
   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');
 }
 
 @font-face {
@@ -119,8 +119,8 @@
   font-style: normal;
   font-weight: 700;
   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');
 }
 
 @font-face {
@@ -128,8 +128,8 @@
   font-style: normal;
   font-weight: 300;
   src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),
-  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');
 }
 
 body {
@@ -137,7 +137,7 @@ body {
   font-size: 13px;
 }
 
-/* notice ìŠ¤íƒ€ì¼ */
+/* notice 스타일 */
 
 .no-padding {
   padding: 0px !important;
@@ -156,27 +156,30 @@ body {
 }
 
 .title-content {
-  padding: 30px 0 24px 0;
+  background-color: #55DDBD;
+  padding: 20px 0 24px 15px;
   margin-bottom: 24px;
   font-size: 16px;
-  color: #212121;
-  text-align: center;
+  color: #ffffff;
 }
 
+/*.title-notice {
+  box-shadow: inset 0 -6px 0 rgba(41, 182, 246, 0.5);
+}*/
+
 .title-notice {
-  border: 1px solid #aaaaaa;
+  border: 1px solid #ffffff;
   border-radius: 16px;
   font-size: 12px;
+  width: 80px;
   height: 22px;
   padding: 2px 9px;
-  color: #aaaaaa;
-  margin: 0 39% 8px 39%;
+  margin-bottom: 8px;
 }
 
 .title-invoice {
   font-size: 24px;
   font-family: NotoSansCJKkr-B;
-  margin-bottom: 2px;
 }
 
 .title-company {
@@ -195,7 +198,7 @@ body {
 .info-parcel-text-active {
   font-family: NotoSansCJKkr-M;
   font-size: 10px;
-  color: #212121;
+  color: #55DDBD;
   margin-top: 6px;
 }
 
@@ -216,19 +219,19 @@ body {
   left: 6%;
 }
 
-i {
-  /* border: solid black; */
+/* i {
+  border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
-}
+} */
 
 .parcel-img {
   width: 50px;
   height: 50px;
 }
 
-/* notice ìŠ¤íƒ€ì¼ end */
+/* notice 스타일 end */
 
 .col-xs-15,
 .col-sm-15,
@@ -245,22 +248,22 @@ i {
 
 @media (min-width: 768px) {
   .col-sm-15 {
-      width: 20%;
-      float: left;
+    width: 20%;
+    float: left;
   }
 }
 
 @media (min-width: 992px) {
   .col-md-15 {
-      width: 20%;
-      float: left;
+    width: 20%;
+    float: left;
   }
 }
 
 @media (min-width: 1200px) {
   .col-lg-15 {
-      width: 20%;
-      float: left;
+    width: 20%;
+    float: left;
   }
 }
 
@@ -274,22 +277,22 @@ i {
   color: #212121;
 }
 
-.tracking-status-item-list :first-child > .location-text {
+.tracking-status-item-list :first-child>.location-text {
   font-family: 'NotoSansCJKkr-B';
 }
 
-.tracking-status-item-list :first-child > .status-text {
+.tracking-status-item-list :first-child>.status-text {
   font-family: 'NotoSansCJKkr-B';
-  color: #ff6d00;
+  color: #55DDBD;
 }
 
-.tracking-status-item-list :first-child > .list-circle {
+.tracking-status-item-list :first-child>.list-circle {
   position: relative;
   top: 20px;
   left: -31px;
   width: 10px;
   height: 10px;
-  background: #757575;
+  background: #55DDBD;
   border-radius: 5px;
   z-index: 10;
 }
@@ -300,7 +303,7 @@ i {
 }
 
 .list-circle {
-  border: 2px solid #757575;
+  border: 2px solid #55DDBD;
   position: relative;
   top: 20px;
   left: -30px;
@@ -315,7 +318,7 @@ i {
   position: absolute;
   width: 2px;
   height: 80px;
-  background: #aaaaaa;
+  background: #55DDBD;
   left: 25px;
   top: 40px;
 }
@@ -332,7 +335,7 @@ i {
 }
 
 .banner-area {
-  background-color: #ff801f;
+  background-color: #55DDBD;
 }
 
 /* 택배사목록 */

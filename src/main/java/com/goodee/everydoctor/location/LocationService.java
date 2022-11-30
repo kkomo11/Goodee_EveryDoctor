@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.goodee.everydoctor.agency.AgencyVO;
+import com.goodee.everydoctor.admin.agency.AgencyVO;
 
 @Service
 public class LocationService {

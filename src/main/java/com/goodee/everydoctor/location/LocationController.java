@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.goodee.everydoctor.agency.AgencyVO;
+import com.goodee.everydoctor.admin.agency.AgencyVO;
 
 @Controller
 @RequestMapping("location/*")
@@ -37,6 +37,11 @@ public class LocationController {
 	public List<AgencyVO> findPharmacyList()throws Exception{
 		List<AgencyVO> al = locationService.findPharmacyList();
 		return al;
+	}
+	
+	@GetMapping("categoryLocation")
+	public void categoryLocation()throws Exception{
+		
 	}
 
 }

@@ -9,8 +9,8 @@
             <div class="col-lg-12">
                 <div class="nav-inner">
                     <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="/images/logo/logo.svg" alt="Logo">
+                        <a class="navbar-brand" href="/">
+                            <img src="/images/logo/logo.jpg" alt="Logo">
                         </a>
                         <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -124,9 +124,9 @@
                                 <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
                                     ${member.username},${member.name}, ${member.roles}
- 
+
                                 </sec:authorize>
-                            
+
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-enter"></i> Login</a>
                                 </li>
@@ -137,6 +137,9 @@
                         </div>
                         <div class="button header-button">
                             <a href="post-item.html" class="btn">Post an Ad</a>
+                        </div>
+                        <div class="form-group button mb-0">
+                            <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴 신청</a>
                         </div>
                     </nav> <!-- navbar -->
                 </div>

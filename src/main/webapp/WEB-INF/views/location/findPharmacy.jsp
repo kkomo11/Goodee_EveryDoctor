@@ -90,7 +90,6 @@
         //마커를 표시할 위치와 샤싣 객체 배열
 
         //주소- 좌표 번환객채 생성
-        // let geocoder = new kakao.maps.services.Geocoder();
         let geocoder = new kakao.maps.services.Geocoder();
         //마커를 담을 배열
         let vc = [];
