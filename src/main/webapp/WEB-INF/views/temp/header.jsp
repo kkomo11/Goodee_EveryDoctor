@@ -139,7 +139,7 @@
                             <a href="post-item.html" class="btn">Post an Ad</a>
                         </div>
                         <div class="form-group button mb-0">
-                            <button type="button" class="btn regist" data-bs-toggle="modal" data-bs-target="#requestRegistModal" data-bs-whatever="@getbootstrap" id="requestRegistModalOpenBtn" style="margin-left: 4px !important;">제휴 신청</button>
+                            <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴 신청</a>
                         </div>
                     </nav> <!-- navbar -->
                 </div>
@@ -148,42 +148,3 @@
     </div> <!-- container -->
 </header>
 <!-- End Header Area -->
-
-<div class="modal fade" id="requestRegistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="requestRegistTitle">제휴 신청</h5>
-			</div>
-			<div class="modal-body">
-				<form>
-				<div class="mb-3">
-
-					<label for="reportNickName" class="col-form-label">신고자</label>
-					<input type="text" class="form-control" id="reportNickname" readonly="readonly" value="${sessionScope.member.nickname}">
-					<input type="hidden" id="reportName" value="${sessionScope.member.name}">
-					<input type="hidden" id="reportJoinDate" value="${sessionScope.member.joinDate}">
-				</div>
-				<div class="mb-3">
-					<label for="reportedNickName" class="col-form-label">피신고자</label>
-					<input type="text" class="form-control" id="reportedNickname" readonly="readonly" value="${meetingBoardDetail.memberDTO.nickname}">
-					<input type="hidden" id="reportedName" value="${meetingBoardDetail.memberDTO.name}">
-					<input type="hidden" id="reportedJoinDate" value="${meetingBoardDetail.memberDTO.joinDate}">
-				</div>
-				<div class="mb-3">
-					<label for="reportTitle" class="col-form-label">신고제목</label>
-					<input type="text" class="form-control" id="reportTitle" name="reportTitle">
-
-				</div>
-				<div class="mb-3">
-					<label for="reportContent" class="col-form-label">신고내용</label>
-					<textarea class="form-control" id="reportContent" name="reportContent" data-hostnum="${sessionScope.member.memberNum}" data-guestnum="${meetingBoardDetail.meetingBoardWriter}"></textarea>
-				</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="requestReportModalCloseBtn">닫기</button>
-			</div>
-			</div>
-		</div>
-		</div>

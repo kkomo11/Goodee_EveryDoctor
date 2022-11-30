@@ -13,24 +13,11 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
     <!-- Place favicon.ico in the root directory -->
 
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
     <c:import url="../../temp/boot.jsp"></c:import>
 
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
 
     <!-- Preloader -->
     <div class="preloader">
@@ -70,35 +57,6 @@
     <section class="dashboard section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-12">
-                    <!-- Start Dashboard Sidebar -->
-                    <div class="dashboard-sidebar">
-                        <div class="user-image">
-                            <img src="https://via.placeholder.com/300x300" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
-                            </h3>
-                        </div>
-                        <div class="dashboard-menu">
-                            <ul>
-                                <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
-                                <li><a class="active" href="profile-settings.html"><i class="lni lni-pencil-alt"></i>
-                                        Edit Profile</a></li>
-                                <li><a href="my-items.html"><i class="lni lni-bolt-alt"></i> My Ads</a></li>
-                                <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
-                                <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
-                                <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
-                                <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> Close account</a></li>
-                                <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
-                            </ul>
-                            <div class="button">
-                                <a class="btn" href="javascript:void(0)">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start Dashboard Sidebar -->
-                </div>
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="main-content">
                         <!-- 기관 등록 폼 시작 -->
@@ -108,13 +66,13 @@
                                 <div class="image">
                                     <img src="https://via.placeholder.com/300x300" alt="#">
                                 </div>
-                                <form:form class="profile-setting-form" method="post" modelAttribute="AgencyVO" action="./regist" enctype="multipart/form-data" id="form"></form:form>
+                                <form:form class="profile-setting-form" method="post" modelAttribute="agencyVO" action="./regist" enctype="multipart/form-data" id="form">
                                     <div class="row">
                                         <!-- 상호명 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>상호명*</label>
-                                                <form:input path="agencyName" type="text" placeholder="상호명" id="agencyName"></form:input>
+                                                <form:input path="agencyName" placeholder="상호명" id="agencyName" />
                                                 <form:errors path="agencyName"></form:errors>
                                                 <div class="agencyNamem" style="color: #55DDBD;"></div>
                                             </div>
@@ -159,12 +117,13 @@
                                             </div>
                                         </div>
                                         <!-- 기관 등록 신청 버튼 -->
-                                            <div class="form-group button mb-0">
+                                        <div class="col-12">
+                                            <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
                                                 <button type="button" class="btn regist">기관 등록 신청</button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form:form>
                             </div>
                         </div>
                         <!-- 기관 등록 폼 끝 -->
