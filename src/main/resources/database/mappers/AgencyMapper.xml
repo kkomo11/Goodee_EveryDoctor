@@ -4,7 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.goodee.everydoctor.admin.agency.AgencyMapper">
-	<insert id="inputAgency" parameterType="AgencyVO">
-	
+	<insert id="inputAgency" parameterType="AgencyVO" useGeneratedKeys="true" keyProperty="agencyNum">
+		INSERT INTO AGENCY (AGENCYNUM, AGENCYNAME, AGENCYADDR, AGENCYTEL, AGENCYINFO, AGENCYROLE,
+		AGENCYTYPE) VALUES(NULL, #{agencyName}, #{agencyAddr}, #{agencyTel}, #{agencyInfo},
+		#{agencyRole}, #{agencyType})
 	</insert>
 </mapper>
