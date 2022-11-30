@@ -9,6 +9,7 @@ public class MedicService {
 	@Autowired
 	private MedicMapper medicMapper;
 	
+	//종사자 정보 등록
 	public int inputMedic(MedicVO medicVO)throws Exception{
 		return(medicMapper.inputMedic(medicVO));
 	}

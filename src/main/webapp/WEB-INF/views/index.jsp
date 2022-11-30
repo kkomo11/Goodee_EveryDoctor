@@ -11,7 +11,6 @@
     <title>에브리닥터</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
     <!-- Place favicon.ico in the root directory -->
 
     <c:import url="temp/boot.jsp"></c:import>
