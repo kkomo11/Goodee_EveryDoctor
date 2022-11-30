@@ -22,18 +22,16 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class=" active dd-menu collapsed" href="javascript:void(0)"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    <a class="dd-menu collapsed active" href="/"
                                         aria-label="Toggle navigation">Home</a>
-                                    <ul class="sub-menu collapse" id="submenu-1-1">
+                                    <!-- <ul class="sub-menu collapse" id="submenu-1-1">
                                         <li class="nav-item active"><a href="index.html">Home Default</a></li>
-                                        <!-- <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li> -->
-                                    </ul>
+                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li>
+                                    </ul> -->
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" aria-label="Toggle navigation">Categories</a>
+                                    <a href="/hospital/home" aria-label="Toggle navigation">Hospital</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
@@ -134,9 +132,6 @@
                                     <a href="javascript:void(0)"><i class="lni lni-user"></i> Register</a>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="button header-button">
-                            <a href="post-item.html" class="btn">Post an Ad</a>
                         </div>
                         <div class="form-group button mb-0">
                             <button type="button" class="btn regist" data-bs-toggle="modal" data-bs-target="#requestRegistModal" data-bs-whatever="@getbootstrap" id="requestRegistModalOpenBtn" style="margin-left: 4px !important;">제휴 신청</button>
