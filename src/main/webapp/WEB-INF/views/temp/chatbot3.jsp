@@ -88,10 +88,10 @@
                     </ul>
                 </div>
                 <div class="ChatContainer_Footer__ewY4r">
-                    <div class="UserInput_InputBox__N3KF1 " data-testid="userInput">
+                    <!-- <div class="UserInput_InputBox__N3KF1 " data-testid="userInput">
                         <input type="text" class="UserInput_TextInput__SmLMO" placeholder="메시지 입력" value="">
                         <button type="button" class="UserInput_MessageSend__B-tKP " disabled=""></button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- <div class="ChatTooltip_TooltipBox__CDfSw ChatTooltip_Opened__Jvy3V" data-testid="tooltip">

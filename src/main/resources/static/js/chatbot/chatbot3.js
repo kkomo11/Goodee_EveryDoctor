@@ -41,6 +41,7 @@ function connect() {
 function showBotReply(message){
     let bot = '<li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem">'
             + '<div class="CompleteMessage_CompleteMessage__KWS7v">'
+            + '<div class="CompleteMessage_BotIcon__L-jGa" data-testid="bot-icon"></div>'
             + '<div class="BubbleMessage_BubbleMessage__d2tka" data-testid="bubble-message">'
             + '<div class="BubbleMessage_Body__SLE+g">'
             + '<div class="BubbleMessage_Chunks__y4XFp">'
