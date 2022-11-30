@@ -25,11 +25,13 @@ $("#fileAdd").on("click", ".del", function(){
 
 //입력내용 검증
 //신고제목 검증
-$("#reportTitle").blur(function(){
-    let title = $("#reportTitle").val();
-    let titleResult = nullCheck(title, ".reportTitlem", "제목은");
-    check[0] = titleResult;
+$("#reportTitle2").blur(function(){
+        let title = $("#reportTitle2").val();
+        console.log("Title : ", title);
+        let titleResult = nullCheck(title, ".reportTitlem", "제목은");
+        check[0] = titleResult;
 })
+
 
 //신고내용 검증
 $("#reportContents").blur(function(){
