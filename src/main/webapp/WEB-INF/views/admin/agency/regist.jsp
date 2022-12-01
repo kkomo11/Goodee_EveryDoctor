@@ -354,7 +354,7 @@
     </a>
 
     <!-- JS -->
-    <script src="/js/admin/medic/regist.js"></script>
+    <script src="/js/admin/agency/regist.js"></script>
     <!-- 다음 주소 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <!-- 파일 추가 Script -->
