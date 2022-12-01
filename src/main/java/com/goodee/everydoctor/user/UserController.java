@@ -7,12 +7,15 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.response.AccessToken;
+import com.siot.IamportRestClient.response.IamportResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("user")
 @Slf4j
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
 	
@@ -57,6 +60,12 @@ public class UserController {
 		
 		
 		return mv;
+	}
+	
+	//본인인증 처리
+	@PostMapping("certification")
+	public void certification(String imp_uid)throws Exception{
+
 	}
 
 }

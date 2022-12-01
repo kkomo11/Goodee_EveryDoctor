@@ -51,5 +51,10 @@ Author: GrayGrids
     // WOW active
     new WOW().init();
     
+    //준회원은 본인인증 모달
+    if($("#preModal").length){
+    $("#preModal").trigger('click');		
+	}
+    
 })();
 

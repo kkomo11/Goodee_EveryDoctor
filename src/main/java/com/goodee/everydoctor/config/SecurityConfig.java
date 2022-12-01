@@ -60,7 +60,8 @@ public class SecurityConfig {
 		//소셜로그인
 		httpSecurity.oauth2Login()
 					.userInfoEndpoint()
-					.userService(userDetailsServiceImpl);
+					.userService(userDetailsServiceImpl)
+					;
 					
 		
 		return httpSecurity.build();	
