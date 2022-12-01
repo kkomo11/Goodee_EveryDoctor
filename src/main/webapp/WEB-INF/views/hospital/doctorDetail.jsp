@@ -87,7 +87,7 @@
                             <div class="contact-info">
                                 <ul>
                                     <li>
-                                        <a href="javascript:void(0)" class="call" style="padding-left: 40px;">진료 신청</a>
+                                        <a href="/hospital/diagnosis/application" class="call" style="padding-left: 40px;">진료 신청</a>
                                     </li>
                                 </ul>
                             </div>

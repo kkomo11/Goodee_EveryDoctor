@@ -14,13 +14,13 @@ public class HospitalHomeController {
 	private HospitalHomeService hospitalHomeService;
 	
 	@GetMapping("/hospital/home")
-	public ModelAndView home(ModelAndView mv) throws Exception {
+	public ModelAndView home(ModelAndView modelAndView) throws Exception {
 		
 		List<HospitalSectionVO> sectionList = hospitalHomeService.findHospitalSection();
 		List<HospitalCategoryVO> categoryList = hospitalHomeService.findHospitalCategory();
-		mv.addObject("sectionList", sectionList);
-		mv.addObject("categoryList", categoryList);
-		mv.setViewName("hospital/hospitalMain");
-		return mv;
+		modelAndView.addObject("sectionList", sectionList);
+		modelAndView.addObject("categoryList", categoryList);
+		modelAndView.setViewName("hospital/hospitalMain");
+		return modelAndView;
 	}
 }
