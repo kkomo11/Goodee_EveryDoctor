@@ -4,8 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.user.UserMapper">
 	<insert id="inputUser" parameterType="UserVO">
-		INSERT INTO USERS(USERNAME, PASSWORD , NICKNAME, EMAIL, FILENAME, USERREGDATE) 
-		VALUE (#{username}, #{password}, #{nickname}, #{email} , #{fileName}, NOW())
+		INSERT INTO USERS(USERNAME, PASSWORD , NAME, EMAIL, FILENAME, USERREGDATE) 
+		VALUE (#{username}, #{password}, #{name}, #{email} , #{fileName}, NOW())
 	</insert>
 	
 	<insert id="inputRolePre" parameterType="UserVO">
@@ -25,7 +25,7 @@
 	<resultMap type="UserVO" id="UserVOResult">
 		<id column="USERNAME" property="username"/>
 		<result column="PASSWORD" property="password"/>
-		<result column="NICKNAME" property="nickname"/>
+		<result column="NAME" property="name"/>
 		<result column="BIRTH" property="birth"/>
 		<result column="PHONE" property="phone"/>
 		<result column="EMAIL" property="email"/>

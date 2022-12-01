@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- SPRING_SECURITY_CONTEXT를 쉽게 사용할 수 있도록 도와주는 taglib -->
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- Start Header Area -->
 <header class="header navbar-area">
     <div class="container">
@@ -8,7 +10,7 @@
                 <div class="nav-inner">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="index.html">
-                            <img src="/images/logo/logo.svg" alt="Logo">
+                            <img src="/images/logo/logo.jpg" alt="Logo">
                         </a>
                         <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -20,18 +22,16 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class=" active dd-menu collapsed" href="javascript:void(0)"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    <a class="dd-menu collapsed active" href="/"
                                         aria-label="Toggle navigation">Home</a>
-                                    <ul class="sub-menu collapse" id="submenu-1-1">
+                                    <!-- <ul class="sub-menu collapse" id="submenu-1-1">
                                         <li class="nav-item active"><a href="index.html">Home Default</a></li>
-                                        <!-- <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li> -->
-                                    </ul>
+                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li>
+                                    </ul> -->
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void(0)" aria-label="Toggle navigation">Categories</a>
+                                    <a href="/hospital/home" aria-label="Toggle navigation">Hospital</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
@@ -119,7 +119,12 @@
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
                             <ul>
-                            
+                                <sec:authentication property="Principal" var="member"/>
+                                <sec:authorize access="isAuthenticated()">
+                                    ${member.username},${member.name}, ${member.roles}
+
+                                </sec:authorize>
+
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-enter"></i> Login</a>
                                 </li>
@@ -128,8 +133,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="button header-button">
-                            <a href="post-item.html" class="btn">Post an Ad</a>
+                        <div class="form-group button mb-0">
+                            <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴 신청</a>
                         </div>
                     </nav> <!-- navbar -->
                 </div>

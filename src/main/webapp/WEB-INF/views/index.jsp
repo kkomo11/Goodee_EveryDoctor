@@ -11,34 +11,11 @@
     <title>에브리닥터</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
-    <!-- Place favicon.ico in the root directory -->
 
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-
+    <c:import url="temp/boot.jsp"></c:import>
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
@@ -52,7 +29,7 @@
 
 	<!-- Header -->
     <c:import url="./temp/header.jsp"></c:import>
-    <c:import url="./temp/chatbot.jsp"></c:import>
+    <c:import url="./temp/chatbot3.jsp"></c:import>
 
     <!-- Start Hero Area -->
     <section class="hero-area overlay">
@@ -786,13 +763,9 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
     <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
     <script type="text/javascript">
-        //========= Category Slider 
+        //========= Category Slider
         tns({
             container: '.category-slider',
             items: 3,
