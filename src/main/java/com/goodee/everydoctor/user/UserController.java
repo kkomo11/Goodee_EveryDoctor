@@ -64,8 +64,8 @@ public class UserController {
 	
 	//본인인증 처리
 	@PostMapping("certification")
-	public void certification(String imp_uid)throws Exception{
-
+	public void certification(String imp_uid, String name, String gender)throws Exception{
+		log.info("certification {} Name {} gender {}",imp_uid, name, gender);
 	}
 
 }

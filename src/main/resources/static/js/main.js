@@ -54,7 +54,46 @@ Author: GrayGrids
     //준회원은 본인인증 모달
     if($("#preModal").length){
     $("#preModal").trigger('click');		
+
+	$("#certificationBtn").click(function(){
+		//이름이랑 성별값 잘 왔나 체크
+		let chk = false
+		let nameVal = $("#certiName").val()
+		let genderVal = $("input[name='gender']:checked").val();
+		
+		if(genderVal!=null && nameVal!=""){
+			$("#certiClose").trigger("click")
+			//본인인증 창 띄우기
+			var IMP = window.IMP; // 생략 가능
+			IMP.init("imp18741385"); 
+			
+			// IMP.certification(param, callback) 호출
+			  IMP.certification({ // param
+			    merchant_uid: "SEKJSKLFll2334", // 주문 번호
+			  }, function (rsp) { // callback
+			    if (rsp.success) {
+					console.log(rsp)
+					jQuery.ajax({
+			        url: "/user/certification", 
+			        method: "POST",
+			        headers: { "Content-Type": "application/json" },
+			        data: { "imp_uid":rsp.imp_uid
+			        		,"name":nameVal
+			        		,"gender":genderVal }
+			      });
+			    } else {
+					console.log(rsp)
+			    }
+			  });
+		}else{
+			$("#certiMsg").text("성함과 성별을 입력해주세요")
+		}
+		
+	})
+		
+		
 	}
+	
     
 })();
 
