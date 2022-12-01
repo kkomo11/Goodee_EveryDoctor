@@ -33,7 +33,40 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/public', function (message) {
-            showBotReply( message.body); //서버에 메시지 전달 후 리턴받는 메시지
+            console.log("message == ",message);
+            let jsonString = message.body;
+            console.log('json == ',jsonString)
+            let jsonArray = JSON.parse(jsonString);
+            console.log('bubbles',jsonArray.bubbles); 
+            console.log('type ',jsonArray.bubbles[0].type) 
+
+            console.log('description : ', jsonArray.bubbles[0].data.description);
+            //타입 불러오기
+            let type = jsonArray.bubbles[0].type;
+
+            if(type == "template"){
+                let description =  jsonArray.bubbles[0].data.cover.data.description;
+                
+                showBotReply(description); //서버에 메시지 전달 후 리턴받는 메시지
+                console.log("contentTable", jsonArray.bubbles[0].data.contentTable);
+                let contentTable = jsonArray.bubbles[0].data.contentTable;
+                let content = '';
+                let button = $('<div class="BubbleMessage_BubbleMessage__d2tka"></div>');
+                let buttonMessageGroup = $('<div class="BubbleMessage_Body__SLE+g"></div>')
+                let ul = $('<ul class="ButtonMessageGroup_ButtonMessageGroup__\+wRrg"/>')
+                for(let i=0; i<contentTable.length; i++){
+                    content = contentTable[i][0].data.data.action.data.displayText;
+                    console.log(content);
+                    ul.append(showButtonReply(content));
+                }
+                buttonMessageGroup.append(ul);
+                button.append(buttonMessageGroup);
+                $("#chatList").append(button);
+            }else{
+                    description = jsonArray.bubbles[0].data.description;
+                    showBotReply(description);
+            }
+            $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
         });
     });
 }
@@ -63,6 +96,21 @@ function showBotReply(message){
             +    '</li>'
     $("#chatList").append(bot)
     $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌
+}
+
+function showButtonReply(message){
+    console.log('showButtonReply',message);
+    let button = '<li class="ButtonMessageGroup_Item__K2Y1r">'
+                + '<button onclick="'
+                + 'sendMessage(\''
+                + message
+                + '\')"'
+                + 'class="ButtonMessage_ButtonMessage__z6JjE">'+message+'</button>'
+                + '</li>';
+                
+    // $("#chatList").append(ul);
+    $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌      
+    return button;
 }
 
 function sendMessage(messages){

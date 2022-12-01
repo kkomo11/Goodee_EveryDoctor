@@ -51,28 +51,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section">
+                                            <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section" id="btnList">
                                                 <ul class="ButtonMessageGroup_ButtonMessageGroup__+wRrg">
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("가입 안내")' class="ButtonMessage_ButtonMessage__z6JjE">가입 안내 </button>
+                                                        <button onclick='sendMessage("이용 안내")' class="ButtonMessage_ButtonMessage__z6JjE">이용 안내  </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("이용")' class="ButtonMessage_ButtonMessage__z6JjE">사이트 이용 안내  </button>
+                                                        <button onclick='sendMessage("진료 안내")' class="ButtonMessage_ButtonMessage__z6JjE">진료 안내 </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("상담")' class="ButtonMessage_ButtonMessage__z6JjE">무료 상담 안내 </button>
+                                                        <button onclick='sendMessage("결제 안내")' class="ButtonMessage_ButtonMessage__z6JjE">결제 안내 </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("결제")' class="ButtonMessage_ButtonMessage__z6JjE">결제 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("배달")' class="ButtonMessage_ButtonMessage__z6JjE">배송 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("문의")' class="ButtonMessage_ButtonMessage__z6JjE">문의 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("진료")' class="ButtonMessage_ButtonMessage__z6JjE">진료 안내 </button>
+                                                        <button onclick='sendMessage("배송 안내")' class="ButtonMessage_ButtonMessage__z6JjE">배송 안내 </button>
                                                     </li>
                                                 </ul>
                                                 <div id="communicate"></div>
