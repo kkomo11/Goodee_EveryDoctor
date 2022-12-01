@@ -105,6 +105,8 @@
         let geocoder = new kakao.maps.services.Geocoder();
         //마커를 담을 배열
         let vc = [];
+        //오버레이 담을 배열
+        let ov =[];
 
         $.ajax({
             url : './pharmacy',
@@ -171,8 +173,14 @@
                                 map : map,
                                 position : marker.getPosition()
                             });
+
+                            ov.push(overlay);
                             //마커를 클릭했을 때 커스텀 오버레이를 표시합니다.
                             kakao.maps.event.addListener(marker, 'click' ,function(){
+
+                                for(let i=0; i<ov.length; i++){
+                                    ov[i].setMap(null);
+                                }
                                 overlay.setMap(map);
                             });
 

@@ -32,7 +32,7 @@
         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
             mapOption = {
                 center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표
-                level : 4 //지도 확대레벨 
+                level : 5 //지도 확대레벨 
             };
         
         let map = new kakao.maps.Map(mapContainer,mapOption);   //지도 생성
@@ -101,83 +101,83 @@
         //주소- 좌표 번환객채 생성
         // let geocoder = new kakao.maps.services.Geocoder();
         let geocoder = new kakao.maps.services.Geocoder();
-        //마커를 담을 배열
-        let vc = [];
-
+        // 임시 오버레이
+        let temp='';
+        
         $.ajax({
             url : './ronaco',
             type : 'GET',
             traditional : true,
             success : function(data){
-                // console.log(data)
+                console.log(data)
                
                 $.each(data, function(index,value){
+                    // console.log('value',value)
                     //주소로 좌표를 검색합니다.
+                    console.log("i");
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         //정상적으로 검색이 완료 됐으면
                         if(status === kakao.maps.services.Status.OK){
                             let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
                             // console.log("coords ==", coords);
                             //결과값으로 받은 위치를 마커로 표시합니다.
-                            let marker = new kakao.maps.Marker({
-                                map : map,
-                                position : coords
-                            });
-                            //커스텀 오버레이에 표시할 컨텐츠 입니다.
-                            //커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-                            //별도의 이벤트 메소드를 제공하지않습니다.
-                            // var content = '<div class="wrap">' + 
-                                //             '    <div class="info">' + 
-                                    //             '        <div class="title">' + 
-                                        //                          data[index].agencyName+ 
-                                        //             '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-                                        //             '        </div>' + 
-                                        //             '        <div class="body">' + 
-                                            //             '            <div class="desc">' + 
-                                    //             '                <div class="ellipsis">'+data[index].agencyAddr +'</div>' + 
-                                    //             '                <div class="jibun ellipsis">'+data[index].agencyTel+'</div>' +  
-                                    //             '            </div>' + 
-                                    //             '        </div>' + 
-                                    //             '    </div>' +    
-                                    //             '</div>';
-                                    
-                                    let wrap = $('<div class="wrap" />');
-                                    let info = $('<div class="info" />');
-                                    let title = $('<div class="title" />').text(data[index].agencyName);
-                                    let close = $('<div class="close" title="닫기" />').click(closeOverlay);
-                                    let body = $('<div class="body" />');
-                                    let desc = $('<div class="desc"/>');
-                                    let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
-                                    let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                                    
-                                    wrap.append(info);
-                                    info.append(title).append(body);
-                                    title.append(close);
-                                    body.append(desc);
-                                    desc.append(ellipsis);
-                                    desc.append(tel);
-                                    
-                                    let content = wrap[0];
-                                    
+
+                                let marker = new kakao.maps.Marker({
+                                    map : map,
+                                    position : coords
+                                });
+
+                                //커스텀 오버레이에 표시할 컨텐츠 입니다.
+                                        let wrap = $('<div class="wrap" />');
+                                        let info = $('<div class="info" />');
+                                        let title = $('<div class="title" />').text(data[index].agencyName);
+                                        let close = $('<div class="close" title="닫기" />').click(closeOverlay);
+                                        let body = $('<div class="body" />');
+                                        let desc = $('<div class="desc"/>');
+                                        let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
+                                        let tel = $('<div class="tel"/>').text(data[index].agencyTel);
+                                        
+                                        wrap.append(info);
+                                        info.append(title).append(body);
+                                        title.append(close);
+                                        body.append(desc);
+                                        desc.append(ellipsis);
+                                        desc.append(tel);
+                                        
+                                        let content = wrap[0];
+                                        
+                                        //마커 위에 커스텀오버레이를 표시합니다.
+                                        //마커를 중심으로 커스텀 오버레이를 표시학 위해 css이용해 위치 설정
+                                        let overlay = new kakao.maps.CustomOverlay({
+                                            content : content,
+                                            map : map,
+                                            position : marker.getPosition()
+                                        });
+
+                                        overlays.push(overlay);
+
                                     //마커를 클릭했을 때 커스텀 오버레이를 표시합니다.
                                     kakao.maps.event.addListener(marker, 'click' ,function(){
-                                        overlay.setMap(map);
-                                
-                                    });
-                                    //마커 위에 커스텀오버레이를 표시합니다.
-                                    //마커를 중심으로 커스텀 오버레이를 표시학 위해 css이용해 위치 설정
-                                    let overlay = new kakao.maps.CustomOverlay({
-                                        content : content,
-                                        map : map,
-                                        position : marker.getPosition()
+
+                                        
+                                        if(temp != '') {
+                                            temp.setMap(null);
+                                        }
+                                        temp = overlay;
+
+                                        // for(let j=0; j<overlays.length; j++) {
+                                        //     overlays[j].setMap(null);
+                                        // }
+
+                                        // console.log(data[index]);
+                                        overlay.setMap(map)
                                     });
                                     //커스텀 오버레이를 닫기 위해 호출되는 함수입니다.
                                     function closeOverlay(){
                                         overlay.setMap(null);
                                     }
                                     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-                                        // var latlng = mouseEvent.latLng;
-                                        // console.log('민섭이하이' + latlng.toString());
+
                                         closeOverlay();
                                     });
                             
