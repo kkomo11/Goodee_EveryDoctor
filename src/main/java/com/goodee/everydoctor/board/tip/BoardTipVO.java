@@ -1,6 +1,5 @@
 package com.goodee.everydoctor.board.tip;
 
-import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +16,6 @@ public class BoardTipVO {
 	private String boardContents;
 
 	private MultipartFile [] files;
-	private List<BoardFileVO> boardFileVOs;
+//	private List<BoardFileVO> boardFileVOs;
 
 }

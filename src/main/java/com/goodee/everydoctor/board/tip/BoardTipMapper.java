@@ -11,17 +11,17 @@ public interface BoardTipMapper {
 
 	public int setAdd(BoardTipVO boardTipVO)throws Exception;
 
-	public int setFileAdd(BoardFileVO boardFileVO)throws Exception;
+//	public int setFileAdd(BoardFileVO boardFileVO)throws Exception;
 
 	public BoardTipVO getDetail(BoardTipVO boardTipVO)throws Exception;
 
-	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception;
+//	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception;
 
 	public int setUpdate(BoardTipVO boardTipVO)throws Exception;
 
-	public int setFileUpdate(BoardFileVO boardFileVO)throws Exception;
-
-	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
+//	public int setFileUpdate(BoardFileVO boardFileVO)throws Exception;
+//
+//	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
 
 
 }

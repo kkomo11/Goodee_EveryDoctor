@@ -6,7 +6,7 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>에브리닥터</title>
+      <title>EveryDoctor</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../temp/boot.jsp"></c:import>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>약 상세정보</li>
               </ul>
             </div>
@@ -100,7 +100,7 @@
       </a>
 
       <!-- ========================= JS here ========================= -->
-      <script src="/js/drug.js"></script>
+      <!-- <script src="/js/drug.js"></script> -->
     </body>
 
     </html>

@@ -5269,7 +5269,7 @@ blockquote .shape {
   width: 100%;
   height: 100%;
   border: 2px dashed rgba(124, 134, 154, 0.25);
-  /* text-indent: -9999px; */
+  text-indent: -9999px; 
   z-index: 2;
   border-radius: 6px;
 }
@@ -8570,4 +8570,12 @@ blockquote .shape {
   color: #fff;
   background: #55DDBD;
   border-color: transparent;
+}
+
+.grade-star {
+	width: 23px;
+	height: 23px;
+	margin-right: 2px;
+	margin-bottom: 5px;
+	filter: invert(8%) sepia(90%) saturate(1300%) hue-rotate(800deg) brightness(200%) contrast(120%);
 }

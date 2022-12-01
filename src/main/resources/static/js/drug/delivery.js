@@ -54,9 +54,18 @@
 
 
 function openPop() {
-  let popup = window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=700px,height=800px,scrollbars=yes');
+  let popup = window.open('http://www.naver.com', '배송팝업', 'width=700px,height=800px,scrollbars=yes');
 }
 // window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
 
+function openPop() {
+  $.ajax({
+    url: "http://info.sweettracker.co.kr/tracking/5",
+    type: "POST",
+    async: false,
+
+  })
+  return submit;
+}
 
 

@@ -28,24 +28,24 @@ public class BoardTipService {
 		return boardTipMapper.getDetail(boardTipVO);
 	}
 
-	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception {
-		// TODO Auto-generated method stub
-		return boardTipMapper.getFileDetail(boardFileVO);
-
-	}
+//	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception {
+//		// TODO Auto-generated method stub
+//		return boardTipMapper.getFileDetail(boardFileVO);
+//
+//	}
 
 	public int setUpdate(BoardTipVO boardTipVO)throws Exception {
 		// TODO Auto-generated method stub
 		return boardTipMapper.setUpdate(boardTipVO);
 	}
 
-	public int setFileDelete(BoardFileVO boardFileVO)throws Exception {
-		// TODO Auto-generated method stub
-		boardFileVO = boardTipMapper.getFileDetail(boardFileVO);
-		int result = boardTipMapper.setFileDelete(boardFileVO);
-
-		return result;
-	}
+//	public int setFileDelete(BoardFileVO boardFileVO)throws Exception {
+//		// TODO Auto-generated method stub
+//		boardFileVO = boardTipMapper.getFileDetail(boardFileVO);
+//		int result = boardTipMapper.setFileDelete(boardFileVO);
+//
+//		return result;
+//	}
 
 
 }
