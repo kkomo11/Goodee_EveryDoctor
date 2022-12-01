@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="com.goodee.everydoctor.pet.profile.PetBioVO" alias="PetBioVO"/>
 		<typeAlias type="com.goodee.everydoctor.pet.profile.PetVO" alias="PetVO"/>
+		<typeAlias type="com.goodee.everydoctor.pet.PetdocVO" alias="PetdocVO"/>
+		<typeAlias type="com.goodee.everydoctor.pet.PetHomePager" alias="PetHomePager"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>

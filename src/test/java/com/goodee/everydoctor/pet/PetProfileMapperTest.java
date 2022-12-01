@@ -42,7 +42,7 @@ class PetProfileMapperTest {
 	}
 	
 	
-	void inputPetDocDummy() throws Exception {
+	/*void inputPetDocDummy() throws Exception {
 		for(int i = 1; i <= 10; i++) {
 			UserVO userVO = new UserVO();
 			userVO.setUsername("petdoc" + i);
@@ -50,6 +50,6 @@ class PetProfileMapperTest {
 			userVO.setNickname("petdoc" + i);
 			userVO.setEmail("petdoc" + i + "@petdoc" + i);
 		}
-	}
+	}*/
 
 }
