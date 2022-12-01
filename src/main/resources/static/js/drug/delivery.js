@@ -58,5 +58,14 @@ function openPop() {
 }
 // window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
 
+function openPop() {
+  $.ajax({
+    url: "http://info.sweettracker.co.kr/tracking/5",
+    type: "POST",
+    async: false,
+
+  })
+  return submit;
+}
 
 
