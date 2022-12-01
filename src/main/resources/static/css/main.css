@@ -927,6 +927,7 @@ ol {
   padding-bottom: 45px;
   padding-top: 140px;
   background: #081828;
+  /* background: #55DDBD; */
   z-index: 2;
   text-align: left;
 }
@@ -8569,4 +8570,12 @@ blockquote .shape {
   color: #fff;
   background: #55DDBD;
   border-color: transparent;
+}
+
+.grade-star {
+	width: 23px;
+	height: 23px;
+	margin-right: 2px;
+	margin-bottom: 5px;
+	filter: invert(8%) sepia(90%) saturate(1300%) hue-rotate(800deg) brightness(200%) contrast(120%);
 }
