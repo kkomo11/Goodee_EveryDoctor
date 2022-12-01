@@ -65,7 +65,7 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">약 리스트 (처방 받은 약이 궁금하다면?)
+                  <h3 class="block-title">처방 받은 약이 궁금하다면?
                     <!-- 검색창 -->
                     <div class="row mb-3">
                       <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
