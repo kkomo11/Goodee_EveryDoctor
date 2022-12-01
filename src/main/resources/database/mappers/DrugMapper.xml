@@ -27,7 +27,7 @@
 		resultType="DrugVO">
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>
-	
+
 	<select id="getDrugTotalCount" resultType="Long">
 		SELECT COUNT(DRUGNUM)
 		FROM DRUG

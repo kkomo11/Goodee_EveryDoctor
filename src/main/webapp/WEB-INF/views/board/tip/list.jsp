@@ -6,28 +6,11 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>FAQ - ClassiGrids Classified Ads and Listing Website
-        Template</title>
+      <title>EveryDoctor</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
       <c:import url="../../temp/boot.jsp"></c:import>
-      <!-- Place favicon.ico in the root directory -->
-
-      <!-- Web Font -->
-      <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
       <!-- ========================= CSS here ========================= -->
-      <link rel="stylesheet" href="/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-      <link rel="stylesheet" href="/css/animate.css" />
-      <link rel="stylesheet" href="/css/tiny-slider.css" />
-      <link rel="stylesheet" href="/css/glightbox.min.css" />
-      <link rel="stylesheet" href="/css/main.css" />
-
     </head>
 
     <body>
@@ -60,7 +43,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>건강관리 꿀팁</li>
               </ul>
             </div>
@@ -95,7 +78,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/soju.jpg" alt="#">
 
                             </div>
                           </div>
@@ -141,7 +125,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/tears.jpg" alt="#">
 
                             </div>
                           </div>
@@ -195,7 +180,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/talmo.jpg" alt="#">
 
                             </div>
                           </div>
@@ -243,7 +229,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/zzz.jpg" alt="#">
 
                             </div>
                           </div>
@@ -315,7 +302,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/covid.jpg" alt="#">
 
                             </div>
                           </div>
