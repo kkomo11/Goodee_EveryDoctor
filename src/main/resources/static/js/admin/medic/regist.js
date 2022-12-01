@@ -37,8 +37,3 @@ $("#registButton").click(function(){
     $("#form").submit();
 
 })
-
-$("#agencySelect").chosen({
-    no_results_text: "검색 결과가 없습니다",
-    width: "200px"
-})

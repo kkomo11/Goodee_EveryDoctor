@@ -7,13 +7,17 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Profile Settings - ClassiGrids Classified Ads and Listing Website Template</title>
+    <title>기관 추가 인원 등록</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
 
     <c:import url="../../temp/boot.jsp"></c:import>
 
+	<link rel="stylesheet" href="/css/admin/medic/chosen.css">
+	<!-- <link rel="stylesheet" href="/css/admin/medic/chosen.min.css"> -->
+	<!-- <link rel="stylesheet" href="/css/admin/medic/prism.css">
+	<link rel="stylesheet" href="/css/admin/medic/style.css"> -->
 </head>
 
 <body>
@@ -68,25 +72,22 @@
                                 <form class="profile-setting-form default-form-style" method="post" action="./regist" enctype="multipart/form-data" id="form">
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label>문의유형*</label>
+                                            <label>기관검색*</label>
                                             <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select" name="medicRole" id="agencySelect">
-                                                <option disabled selected>문의 유형을 선택해주세요</option>
-                                                <option value="의사">의사 제휴 문의</option>
-                                                <option value="간호사">간호사 제휴 문의</option>
-                                                <option value="수의사">수의사 제휴 문의</option>
-                                                <option value="약사">약사 제휴 문의</option>
-                                                <option value="보호소관리자">보호소 제휴 문의</option>
+                                                <!-- <span class="arrow"><i class="lni lni-chevron-down"></i></span> -->
+                                                <select class="user-chosen-select chosen-select" name="medicRole" id="agencySelect" onchange="onChangeEvent();">
+                                                <c:forEach items="${list}" var="list">
+                                                	<option value="${list.agencyNum}">${list.agencyName}</option>
+                                                </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
                                         <!-- 상호명 입력 -->
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>상호명*</label>
-                                                <input name="" placeholder="상호명" id="agencyName" />
-                                                <div class="agencyNamem" style="color: #55DDBD;"></div>
+                                                <label>성함*</label>
+                                                <input name="username" placeholder="상호명" id="username" />
+                                                <div class="usernamem" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
                                         <!-- 전화번호 입력 -->
@@ -133,7 +134,9 @@
     <!-- ========================= JS here ========================= -->
     <script src="/js/admin/medic/regist.js"></script>
     <script src="/js/admin/util/nullCheck.js"></script>
-    <script src="chosen.jquery.js" type="text/javascript"></script>
+    <script src="/js/admin/medic/chosen.jquery.js"></script>
+    <script src="/js/admin/medic/prism.js" charset="utf-8"></script>
+    <script src="/js/admin/medic/init.js" charset="utf-8"></script>
 </body>
 
 </html>
