@@ -188,7 +188,7 @@
                 <div class="col-12">
                     <div class="section-title">
                         <h2 class="wow fadeInUp" data-wow-delay=".4s">Veterinarian</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">에브리닥터는 반려동물과 보호자들에게 필요한 서비스를 제공하고자 여러 전문 분야의 인력들을 통해 진료를 진행합니다.</p>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">에브리닥터는 반려동물과 보호자들에게 필요한 서비스를 제공하고자<br>여러 전문 분야의 인력들을 통해 진료를 진행합니다.</p>
                     </div>
                 </div>
             </div>
