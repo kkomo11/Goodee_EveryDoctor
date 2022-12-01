@@ -101,7 +101,11 @@ function petdocListAjax(kind){
             
             let petdocListItemTemplate = $("#petdocListItemTemplate");
             let temp = petdocListItemTemplate.html();
-            temp = temp.replace("{sectionName}", item["hospitalSectionVO"].sectionName).replace("{doctorName}", item["userVO"].name).replace("{agencyName}", item["agencyVO"].agencyName).replace("{doctorId}", item["userVO"].username);
+            temp = temp.replace("{sectionName}", item["hospitalSectionVO"].sectionName)
+                    .replace("{doctorName}", item["userVO"].name)
+                    .replace("{agencyName}", item["agencyVO"].agencyName)
+                    .replace("{doctorId}", item["userVO"].username)
+                    .replace("{doctorId2}", item["userVO"].username);
             list.append(temp);
         });
 
@@ -143,7 +147,11 @@ function petdocPagingAjax(kind, page){
             
             let petdocListItemTemplate = $("#petdocListItemTemplate");
             let temp = petdocListItemTemplate.html();
-            temp = temp.replace("{sectionName}", item["hospitalSectionVO"].sectionName).replace("{doctorName}", item["userVO"].name).replace("{agencyName}", item["agencyVO"].agencyName).replace("{doctorName}", item["userVO"].name).replace("{agencyName}", item["agencyVO"].agencyName).replace("{doctorId}", item["userVO"].username);
+            temp = temp.replace("{sectionName}", item["hospitalSectionVO"].sectionName)
+                    .replace("{doctorName}", item["userVO"].name)
+                    .replace("{agencyName}", item["agencyVO"].agencyName)
+                    .replace("{doctorId}", item["userVO"].username)
+                    .replace("{doctorId2}", item["userVO"].username);
             list.append(temp);
         });
 

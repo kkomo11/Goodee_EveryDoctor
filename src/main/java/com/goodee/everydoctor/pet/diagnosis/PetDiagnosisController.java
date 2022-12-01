@@ -10,7 +10,7 @@ public class PetDiagnosisController {
 
 	@GetMapping("reservation")
 	public String getDiagnosisReservation() throws Exception {
-		return "pet/diagnosis/reservation";
+		return "pet/diagnosis/diagnosisReservation";
 	}
 	
 }

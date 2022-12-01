@@ -36,13 +36,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Doctor Details</h1>
+                        <h1 class="page-title">PetDoctor Details</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="/">Home</a></li>
-                        <li>Doctor Details</li>
+                        <li>PetDoctor Details</li>
                     </ul>
                 </div>
             </div>
@@ -68,9 +68,9 @@
                         <div class="product-info">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h2 class="title">이주은 의사</h2>
+                                    <h2 class="title">${petdocDetail.userVO.name } 의사</h2>
                                     <p class="location"><i class="lni lni-map-marker"></i>
-                                        <a href="javascript:void(0)">현대 제일 의원</a>
+                                        <a href="javascript:void(0)">${petdocDetail.agencyVO.agencyName }</a>
                                     </p>
                                     <i class="lni lni-heart like"></i>
                                 </div>

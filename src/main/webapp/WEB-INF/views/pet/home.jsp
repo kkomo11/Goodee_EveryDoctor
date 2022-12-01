@@ -1135,7 +1135,7 @@
         		<div class="content">
      	   			<a href="javascript:void(0)" class="tag">{sectionName} 전문의</a>
         			<h3 class="title">
-        				<a href="/pet/petdocDetail?username={doctorId}">{doctorName}</a>
+        				<a href="/pet/petdocDetail?username={doctorId2}">{doctorName}</a>
         			</h3>
         			<p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
         				</i>{agencyName}</a></p>
