@@ -28,3 +28,9 @@
 .petBioListItem {
 	cursor: pointer;
 }
+
+#petProfileImage {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 30%;
+}

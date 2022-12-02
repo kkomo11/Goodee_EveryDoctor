@@ -31,7 +31,13 @@
                                     </ul> -->
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/hospital/home" aria-label="Toggle navigation">Hospital</a>
+                                    <a href="/hospital/home" data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                       	 aria-label="Toggle navigation">Hospital</a>
+                                       	 <ul class="sub-menu collapse" id="submenu-1-2">
+                                       	  <li class="nav-item"><a href="/hospital/home">Hospital</a></li>
+                                          <li class="nav-item"><a href="/pet/home">Animal Hospital</a></li>
+                                      </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"

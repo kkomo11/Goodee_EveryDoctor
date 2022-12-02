@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.pet.PetHomeMapper">
+
+	<select id="findPetdocDetail" parameterType="UserVO" resultMap="findPetdocDetailResult">
+		SELECT U.*, M.MEDICINFO, A.*, S.*, R.*
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		INNER JOIN USERSROLES UR 
+		ON(U.USERNAME = UR.USERNAME)
+		INNER JOIN `ROLE` R 
+		ON(UR.ROLENUM = R.ROLENUM)
+		WHERE U.USERNAME = #{username}
+	</select>
+	
+	<resultMap type="PetdocVO" id="findPetdocDetailResult">
+		<association property="userVO" javaType="UserVO">
+			<id column="USERNAME" property="username"/>
+			<result column="NAME" property="name"/>
+			<result column="BIRTH" property="birth"/>
+			<result column="PHONE" property="phone"/>
+			<result column="SEX" property="sex"/>
+			<result column="USERREGDATE" property="userRegdate"/>
+			<result column="FILENAME" property="fileName"/>
+			<collection property="roles" javaType="List" ofType="String">
+				<result column="ROLENAME" property="roleName"/>
+			</collection>
+		</association>
+		<association property="medicVO" javaType="MedicVO">
+			<result column="MEDICINFO" property="medicInfo"/>
+		</association>
+		<association property="agencyVO" javaType="AgencyVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="AGENCYNAME" property="agencyName"/>
+			<result column="AGENCYADDR" property="agencyAddr"/>
+			<result column="AGENCYTEL" property="agencyTel"/>
+			<result column="AGENCYINFO" property="agencyInfo"/>
+		</association>
+		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
+			<id column="SECTIONNUM" property="sectionNum"/>
+			<result column="SECTIONNAME" property="sectionName"/>
+		</association>
+	</resultMap>
+	
+	<select id="findPetdocList" parameterType="PetHomePager" resultMap="findPetdocListResult">
+		SELECT U.USERNAME, U.NAME, U.FILENAME, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME, R.ROLENAME 
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		INNER JOIN USERSROLES UR 
+		ON(U.USERNAME = UR.USERNAME)
+		INNER JOIN `ROLE` R 
+		ON(UR.ROLENUM = R.ROLENUM)
+		WHERE S.SECTIONNUM
+			<choose>
+				<when test="kind == 18">=#{kind}</when>
+				<when test="kind == 19">=#{kind}</when>
+				<otherwise>NOT IN (18, 19)</otherwise>
+			</choose>
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<resultMap type="PetdocVO" id="findPetdocListResult">
+		<association property="userVO" javaType="UserVO">
+			<id column="USERNAME" property="username"/>
+			<result column="NAME" property="name"/>
+			<result column="FILENAME" property="fileName"/>
+			<collection property="roles" javaType="List" ofType="String">
+				<result column="ROLENAME" property="roleName"/>
+			</collection>
+		</association>
+		<association property="agencyVO" javaType="AgencyVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="AGENCYNAME" property="agencyName"/>
+		</association>
+		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
+			<id column="SECTIONNUM" property="sectionNum"/>
+			<result column="SECTIONNAME" property="sectionName"/>
+		</association>
+	</resultMap>
+	
+	<select id="findPetdocTotalCount" parameterType="PetHomePager" resultType="Long">
+		SELECT COUNT(U.USERNAME)
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		WHERE S.SECTIONNUM 
+			<choose>
+				<when test="kind == 18">=#{kind}</when>
+				<when test="kind == 19">=#{kind}</when>
+				<otherwise>NOT IN (18, 19)</otherwise>
+			</choose>
+	</select>
+	
+</mapper>
