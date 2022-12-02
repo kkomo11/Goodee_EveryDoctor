@@ -57,10 +57,19 @@ public class SecurityConfig {
 					.and()
 					.userDetailsService(userDetailsServiceImpl);
 		
+		//로그아웃
+		httpSecurity.logout()
+					.logoutUrl("/logout")
+					.logoutSuccessUrl("/")	
+					.invalidateHttpSession(true)
+					.deleteCookies("JSESSIONID")//로그아웃 성공하면 가는곳
+					.permitAll();
+		
 		//소셜로그인
 		httpSecurity.oauth2Login()
 					.userInfoEndpoint()
-					.userService(userDetailsServiceImpl);
+					.userService(userDetailsServiceImpl)
+					;
 					
 		
 		return httpSecurity.build();	
