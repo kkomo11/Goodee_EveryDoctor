@@ -14,6 +14,9 @@ import com.goodee.everydoctor.util.FileManager;
 @Service
 public class PetProfileService {
 	
+	@Value("${app.file.base}")
+	private String base; //파일 다운로드와 저장, 삭제 시 사용
+	
 	@Autowired
 	private PetProfileMapper petProfileMapper;
 	
@@ -23,7 +26,7 @@ public class PetProfileService {
 	public int deletePetProfile(PetVO petVO) throws Exception {
 		
 		if(petVO.getPetFileName() != null) {
-			this.deleteFile(petVO.getPetFileName(), "PET/");
+			this.deleteFile(petVO.getPetFileName(), base + "PET/");
 		}
 		
 		return petProfileMapper.deletePetProfile(petVO);
@@ -32,7 +35,7 @@ public class PetProfileService {
 	public int modifyPetProfile(PetVO petVO, MultipartFile petFile) throws Exception {
 		
 		if(petVO.getPetFileName() != null && !petFile.isEmpty()) {
-			this.deleteFile(petVO.getPetFileName(), "PET/");
+			this.deleteFile(petVO.getPetFileName(), base + "PET/");
 		} // 기존에 프로필 사진이 등록되어 있고 새로 등록한 프로필 사진이 있으면 기존 파일 삭제
 		
 		if(!petFile.isEmpty()) {
@@ -53,8 +56,10 @@ public class PetProfileService {
 	
 	public int inputPetProfile(PetVO petVO, MultipartFile petFile) throws Exception {
 		// petFile 이름으로 매개변수 MultipartFile을 받고 FileManager써서 FileName을 반환받고 petFileName으로 VO에 넣어야함
-		String petFileName = this.saveFile(petFile);
-		petVO.setPetFileName(petFileName);
+		if(!petFile.isEmpty()) {
+			String petFileName = this.saveFile(petFile);
+			petVO.setPetFileName(petFileName);
+		}
 		return petProfileMapper.inputPetProfile(petVO);
 	}
 	
