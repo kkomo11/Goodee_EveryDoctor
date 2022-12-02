@@ -1,7 +1,5 @@
 package com.goodee.everydoctor.board;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
