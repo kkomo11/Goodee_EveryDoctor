@@ -31,7 +31,7 @@ public class UserVO implements UserDetails, OAuth2User{
 	private Integer birth;
 	private String phone;
 	private Date userRegdate;
-	private String sex;
+	private String gender;
 	private String fileName;
 	private List<String> roles;
 	private String ci;

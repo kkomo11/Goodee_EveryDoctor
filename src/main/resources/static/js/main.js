@@ -60,9 +60,11 @@ Author: GrayGrids
 		let chk = false
 		let nameVal = $("#certiName").val()
 		let genderVal = $("input[name='gender']:checked").val();
+		let usernameVal = $("#certiusername").val()
 		
 		if(genderVal!=null && nameVal!=""){
 			$("#certiClose").trigger("click")
+			
 			//본인인증 창 띄우기
 			var IMP = window.IMP; // 생략 가능
 			IMP.init("imp18741385"); 
@@ -73,14 +75,12 @@ Author: GrayGrids
 			  }, function (rsp) { // callback
 			    if (rsp.success) {
 					console.log(rsp)
-					jQuery.ajax({
-			        url: "/user/certification", 
-			        method: "POST",
-			        headers: { "Content-Type": "application/json" },
-			        data: { "imp_uid":rsp.imp_uid
-			        		,"name":nameVal
-			        		,"gender":genderVal }
-			      });
+					$.post("/user/certification", 
+						{imp_uid:rsp.imp_uid, username:usernameVal, name:nameVal, gender:genderVal}, 
+						function(rt){
+							console.log("rt"+rt)
+						})
+
 			    } else {
 					console.log(rsp)
 			    }

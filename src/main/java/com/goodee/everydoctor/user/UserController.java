@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.siot.IamportRestClient.IamportClient;
-import com.siot.IamportRestClient.response.AccessToken;
-import com.siot.IamportRestClient.response.IamportResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,8 +61,13 @@ public class UserController {
 	
 	//본인인증 처리
 	@PostMapping("certification")
-	public void certification(String imp_uid, String name, String gender)throws Exception{
-		log.info("certification {} Name {} gender {}",imp_uid, name, gender);
+	@ResponseBody
+	public int certification(String imp_uid, UserVO userVO)throws Exception{
+		
+		int result = userService.certification(imp_uid, userVO);
+		
+		//1이돌아오면 등급이 바뀌므로 로그인을 다시거쳐서 리턴
+		return result;
 	}
 
 }

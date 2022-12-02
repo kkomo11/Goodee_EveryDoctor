@@ -3,6 +3,8 @@ package com.goodee.everydoctor.user;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,11 +35,6 @@ class UserImportTest {
 		IamportClient client = new IamportClient(apiKey,apiSecret);
 		log.info("아임포트 key {}   secret {}", apiKey, apiSecret);
 		
-		IamportResponse<AccessToken> auth_response = client.getAuth();
-		String token = auth_response.getResponse().getToken();
-		log.info("아임포트 token {}", token);
-		
-		
 	      String test_imp_uid = "imp_201549968284";
 	
 	        try {
@@ -46,7 +43,13 @@ class UserImportTest {
 	            assertNotNull(certification_response.getResponse());
 	            
 	            assertEquals(test_imp_uid, certification_response.getResponse().getImpUid());
-	            log.info("NAME {}   GENDER {}   PHONE {}     BIRTH {}   UIQUEKEY {}",certification_response.getResponse().getName(), certification_response.getResponse().getGender(), certification_response.getResponse().getPhone(), certification_response.getResponse().getBirth(), certification_response.getResponse().getUniqueKey());
+	            
+	            Calendar birth = Calendar.getInstance();
+	            birth.setTime(certification_response.getResponse().getBirth());
+	            
+	            log.info("YEAR {}      MONTH {}        DATE {}",birth.get(birth.YEAR),birth.get(birth.MONTH)+1, birth.get(birth.DAY_OF_MONTH));
+	            
+	            
 	            assertEquals("http://localhost/", certification_response.getResponse().getOrigin());
 	        } catch (IamportResponseException e) {
 	            System.out.println(e.getMessage());

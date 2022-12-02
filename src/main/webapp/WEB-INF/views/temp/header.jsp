@@ -162,9 +162,10 @@
 	      	<div class="form-head">
 	      		<form action="" class="default-form-style" style="margin-top:0px" id="certiForm">
 			        <p class="text-center" style="color:red" id="certiMsg"></p>
+			        <input name="certiusername" type="text" id="certiusername" value="${member.username}" readonly="readonly" style="display:none;">
 			        <div class="form-group">
 			            <label>성함</label>
-			            <input name="name" type="text" id="certiName">
+			            <input name="certiName" type="text" id="certiName">
 			        </div>
 	                     <label>성별</label>
 			      	<div class="row">
