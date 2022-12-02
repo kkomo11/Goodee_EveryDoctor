@@ -33,6 +33,7 @@
 		FROM DRUG
 		<include refid="search"></include>
 	</select>
-
-
+	
 </mapper>
+
+	
