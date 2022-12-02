@@ -66,6 +66,8 @@ public class UserService {
 		int result = userMapper.modifyUserMember(userVO);
 		result = userMapper.modifyRoleMember(userVO);
 		
+		userVO= userMapper.getUserByUsername(userVO.getUsername());
+		
 		return result;
 	}
 }

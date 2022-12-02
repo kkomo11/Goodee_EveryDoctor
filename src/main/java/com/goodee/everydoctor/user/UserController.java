@@ -1,10 +1,18 @@
 package com.goodee.everydoctor.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,7 +74,30 @@ public class UserController {
 		
 		int result = userService.certification(imp_uid, userVO);
 		
-		//1이돌아오면 등급이 바뀌므로 로그인을 다시거쳐서 리턴
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!=null) {			
+			log.info("obj => {}", ((UserVO)(auth.getPrincipal())).getRoles().get(0));
+		}
+		
+		List<GrantedAuthority> newAuthority = new ArrayList<>();
+
+		
+		newAuthority.add(new GrantedAuthority() {
+			
+			@Override
+			public String getAuthority() {
+				// TODO Auto-generated method stub
+				return "ROLE_MEMBER";
+			}
+		});
+		
+		log.info("authority {}", newAuthority.get(0));
+		
+		//1이돌아오면 등급이 바뀌므로 authentication을 다시줘서 리턴
+		Authentication newAuth = new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials(), newAuthority);
+		
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
+		
 		return result;
 	}
 
