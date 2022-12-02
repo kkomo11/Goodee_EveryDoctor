@@ -43,7 +43,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/hospital/home">Hospital Home</a></li>
                 <li>건강관리 꿀팁</li>
               </ul>
             </div>
