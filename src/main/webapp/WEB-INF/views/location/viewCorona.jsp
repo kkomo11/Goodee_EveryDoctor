@@ -10,15 +10,16 @@
     <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 100px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;}
-    .info .desc {position: relative;margin: 13px 0 90px;height: 75px;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
+    .desc .reservation {background :#55DDBD;}
     .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
@@ -133,16 +134,22 @@
                                         let title = $('<div class="title" />').text(data[index].agencyName);
                                         let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                                         let body = $('<div class="body" />');
+                                        let img = $('<div class="img" />')
+                                        let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
                                         let desc = $('<div class="desc"/>');
                                         let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                                         let tel = $('<div class="tel"/>').text(data[index].agencyTel);
+                                        let reservation = $('<button class="reservation" type="button" />').text('예약하기')
                                         
                                         wrap.append(info);
                                         info.append(title).append(body);
                                         title.append(close);
+                                        body.append(img);
+                                        img.append(imgtag);
                                         body.append(desc);
                                         desc.append(ellipsis);
                                         desc.append(tel);
+                                        desc.append(reservation);
                                         
                                         let content = wrap[0];
                                         
@@ -154,12 +161,11 @@
                                             position : marker.getPosition()
                                         });
 
-                                        overlays.push(overlay);
+                                        // overlays.push(overlay);
 
                                     //마커를 클릭했을 때 커스텀 오버레이를 표시합니다.
                                     kakao.maps.event.addListener(marker, 'click' ,function(){
 
-                                        
                                         if(temp != '') {
                                             temp.setMap(null);
                                         }
