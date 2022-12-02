@@ -1,5 +1,6 @@
 package com.goodee.everydoctor.user;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +18,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import lombok.Data;
 
 @Data
-public class UserVO implements UserDetails, OAuth2User{
+public class UserVO implements UserDetails, OAuth2User, Serializable{
 	
 	@NotBlank
 	private String username;
@@ -31,7 +32,7 @@ public class UserVO implements UserDetails, OAuth2User{
 	private Integer birth;
 	private String phone;
 	private Date userRegdate;
-	private String sex;
+	private String gender;
 	private String fileName;
 	private List<String> roles;
 	private String ci;

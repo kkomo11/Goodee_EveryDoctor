@@ -93,9 +93,9 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label>NickName</label>
-                                <form:input path="nickname" />
-                                <span  class="text-danger"><form:errors path="nickname"></form:errors></span>
+                                <label>Name</label>
+                                <form:input path="name" />
+                                <span  class="text-danger"><form:errors path="name"></form:errors></span>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
