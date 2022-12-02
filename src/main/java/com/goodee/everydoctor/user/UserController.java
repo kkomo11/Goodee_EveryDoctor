@@ -70,9 +70,12 @@ public class UserController {
 	//본인인증 처리
 	@PostMapping("certification")
 	@ResponseBody
-	public int certification(String imp_uid, UserVO userVO)throws Exception{
+	public int certification(String imp_uid, UserVO userVO, HttpSession session)throws Exception{
 		
 		int result = userService.certification(imp_uid, userVO);
+		
+		//1이돌아오면 등급이 바뀌므로 authentication을 다시줘서 리턴
+		SecurityContext context = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if(auth!=null) {			
@@ -80,8 +83,6 @@ public class UserController {
 		}
 		
 		List<GrantedAuthority> newAuthority = new ArrayList<>();
-
-		
 		newAuthority.add(new GrantedAuthority() {
 			
 			@Override
@@ -93,10 +94,12 @@ public class UserController {
 		
 		log.info("authority {}", newAuthority.get(0));
 		
-		//1이돌아오면 등급이 바뀌므로 authentication을 다시줘서 리턴
+
 		Authentication newAuth = new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials(), newAuthority);
 		
 		SecurityContextHolder.getContext().setAuthentication(newAuth);
+		context.setAuthentication(newAuth);
+		session.setAttribute("SPRING_SECURITY_CONTEXT", context);
 		
 		return result;
 	}
