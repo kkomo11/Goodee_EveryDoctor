@@ -61,6 +61,38 @@ $("#fileAdd").on("click", ".del", function(){
     count--;
 })
 
+//신청 버튼 클릭 시
+$("#registButton").click(function(){
+    //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
+    const medicRole = $("#medicRole");
+    const agencyRole = $("#agencyRole");
+    if(medicRole.val()=="의사" || medicRole.val()=="간호사"){
+        agencyRole.val("병원");
+    }else if(medicRole.val()=="수의사"){
+        agencyRole.val("동물병원");
+    }else if(medicRole.val()=="약사"){
+        agencyRole.val("약국");
+    }else{
+        agencyRole.val("보호소");
+    }
+
+    console.log(agencyRole.val());
+
+    // $("#form").submit();
+
+})
+
+//운영시간 반복문
+for(let i = 0; i <= 23; i++){
+    let m = document.createElement('option');
+    let m_value = document.createAttribute('value');
+    m_value.value = i;
+    m.setAttributeNode(m_value);
+    let m_content = document.createTextNode(i);
+    m.appendChild(m_content);
+    birth_month.append(m);
+}
+
 //다음 주소 api
 function checkPost() {
     new daum.Postcode({

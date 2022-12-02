@@ -29,8 +29,14 @@ public class MedicController {
 	@GetMapping("regist")
 	public ModelAndView inputMedic()throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<AgencyVO> list = agencyService.findAgencyList();
-		mv.addObject("list", list);
+		List<AgencyVO> hospitalList = agencyService.findHospitalList();
+		List<AgencyVO> petHospitalList = agencyService.findPetHospitalList();
+		List<AgencyVO> pharmacyList = agencyService.findPharmacyList();
+		List<AgencyVO> petHotelList = agencyService.findPetHotelList();
+		mv.addObject("hospitalList", hospitalList);
+		mv.addObject("petHospitalList", petHospitalList);
+		mv.addObject("pharmacyList", pharmacyList);
+		mv.addObject("petHotelList", petHotelList);
 		mv.setViewName("admin/medic/regist");
 		return mv;
 	}

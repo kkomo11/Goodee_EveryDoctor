@@ -13,4 +13,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAgencyList" resultType="AgencyVO">
 		SELECT * FROM AGENCY
 	</select>
+	
+	<select id="findHospitalList" resultType="AgencyVO">
+		SELECT * FROM AGENCY WHERE AGENCYROLE = '병원'
+	</select>
+	
+	<select id="findPetHospitalList" resultType="AgencyVO">
+		SELECT * FROM AGENCY WHERE AGENCYROLE = '동물병원'
+	</select>
+	
+	<select id="findPharmacyList" resultType="AgencyVO">
+		SELECT * FROM AGENCY WHERE AGENCYROLE = '약국'
+	</select>
+	
+	<select id="findPetHotelList" resultType="AgencyVO">
+		SELECT * FROM AGENCY WHERE AGENCYROLE = '보호소'
+	</select>
 </mapper>
