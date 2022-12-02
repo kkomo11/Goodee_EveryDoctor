@@ -95,13 +95,9 @@
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
                                                                     <select class="user-chosen-select">
-                                                                        <option value="none">Select a Category</option>
-                                                                        <option value="none">Mobile Phones</option>
-                                                                        <option value="none">Electronics</option>
-                                                                        <option value="none">Computers</option>
-                                                                        <option value="none">Headphones</option>
-                                                                        <option value="none">Furnitures</option>
-                                                                        <option value="none">Books</option>
+                                                                        <c:forEach items="${sectionList}" var="sectionVO">
+                                                                            <option value="${sectionVO.sectionNum}">${sectionVO.sectionName}</option>
+                                                                        </c:forEach>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -109,8 +105,8 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label>증상 입력</label>
-                                                                <input name="title" type="text"
-                                                                    placeholder="Enter Title">
+                                                                <textarea class="form-control form-control-custom" name="" style="height: 164px;"
+                                                                    placeholder="예) 감기 기운이 있고 머리가 아파요"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -146,6 +142,9 @@
                                                                 </label>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group mt-3">
+                                                            <label>결제 카드</label>
+                                                        </div>
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
                                                                 <button type="submit"
@@ -163,110 +162,61 @@
                                             <!-- Start Post Ad Step Three Content -->
                                             <div class="step-three-content">
                                                 <form class="default-form-style" method="post" action="#">
-                                                    <div class="row">
+                                                    <div class="row" style="display: block;">
                                                         <div class="col-lg-6 col-12">
                                                             <div class="form-group">
-                                                                <label>Name*</label>
-                                                                <input name="name" type="text"
-                                                                    placeholder="Enter your name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Mobile Numbe*</label>
-                                                                <input name="number" type="text"
-                                                                    placeholder="Enter mobile number">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Country*</label>
+                                                                <label>배송지 선택</label>
                                                                 <div class="selector-head">
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
                                                                     <select class="user-chosen-select">
-                                                                        <option value="none">Select a Country</option>
-                                                                        <option value="none">Afghanistan</option>
-                                                                        <option value="none">America</option>
-                                                                        <option value="none">Albania</option>
-                                                                        <option value="none">Bangladesh</option>
-                                                                        <option value="none">Brazil</option>
-                                                                        <option value="none">India</option>
-                                                                        <option value="none">South Africa</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Select City*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select City</option>
+                                                                        <option value="none">저장한 배송지</option>
                                                                         <option value="none">New York</option>
-                                                                        <option value="none">Los Angeles</option>
-                                                                        <option value="none">Chicago</option>
-                                                                        <option value="none">San Diego</option>
-                                                                        <option value="none">San Jose</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Select State*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select State</option>
-                                                                        <option value="none">New York</option>
-                                                                        <option value="none">Texas</option>
-                                                                        <option value="none">Arizona</option>
-                                                                        <option value="none">Florida</option>
                                                                         <option value="none">Washington</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Address*</label>
-                                                                <input name="address" type="text"
-                                                                    placeholder="Enter a location">
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <label>배송지명</label>
+                                                            <input type="text" id="deliName" name="deliName">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <label>받는 사람</label>
+                                                            <input type="text" id="addressee" name="addressee">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <input type="hidden" name="phone" id="submitPhone">
+                                                            <label for="inputPhone">연락처</label>
+                                                            <div id="phone" class="d-flex justify-content-between">
+                                                                <div class="selector-head" style="min-width: 30%;">
+                                                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select">
+                                                                        <option value="010" selected="selected">010</option>
+                                                                        <option value="011">011</option>
+                                                                        <option value="070">070</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" id="phoneLast" maxlength="9" name="phone1"
+                                                                    placeholder="입력해주세요">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="google-map">
-                                                                <div class="mapouter">
-                                                                    <div class="gmap_canvas"><iframe width="100%"
-                                                                            height="300" id="gmap_canvas"
-                                                                            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                                            frameborder="0" scrolling="no"
-                                                                            marginheight="0" marginwidth="0"></iframe><a
-                                                                            href="https://123movies-to.org"></a><br>
-                                                                        <style>
-                                                                            .mapouter {
-                                                                                position: relative;
-                                                                                text-align: right;
-                                                                                height: 300px;
-                                                                                width: 100%;
-                                                                            }
-                                                                        </style><a
-                                                                            href="https://www.embedgooglemap.net">embed
-                                                                            google maps wordpress</a>
-                                                                        <style>
-                                                                            .gmap_canvas {
-                                                                                overflow: hidden;
-                                                                                background: none !important;
-                                                                                height: 300px;
-                                                                                width: 100%;
-                                                                            }
-                                                                        </style>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <label>주소</label>
+                                                            <div class="d-flex justify-content-between button">
+                                                                <button type="button" class="sample-postcode searchAddress btn" style="width: 30%;">주소 찾기</button>
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="postcode"
+                                                                    style="width: 40%;" id="sample6_postcode" readonly>
+                                                            </div>
+                                                            <div class="d-flex mt-3">
+                                                                <label for="sample6_address"></label>
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="address"
+                                                                    id="sample6_address"readonly>
+                                                            </div>
+                                                            <div class="d-flex mt-3">
+                                                                <label for="sample6_address"></label>
+                                                                <input type="text" name="detailAddress" id="sample6_detailAddress"
+                                                                    placeholder="상세주소">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -274,7 +224,7 @@
                                                                 <input class="form-check-input" type="checkbox" value=""
                                                                     id="flexCheckDefault">
                                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                                    I agree to all Terms of Use & Posting Rules
+                                                                    내 건강정보로 더 정확한 진료받기 NEW
                                                                 </label>
                                                             </div>
                                                             <div class="form-group button mb-0">
@@ -309,5 +259,41 @@
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>
     </a>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        const samplePostcode = document.querySelectorAll('.sample-postcode');
+        const sample6_postcode = document.querySelector('#sample6_postcode');
+        const sample6_address = document.querySelector('#sample6_address');
+        const sample6_detailAddress = document.querySelector('#sample6_detailAddress');
+
+        for (sp of samplePostcode) {
+            sp.onclick = sample6_execDaumPostcode;
+        }
+
+
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('sample6_postcode').value = data.zonecode;
+                    document.getElementById("sample6_address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("sample6_detailAddress").focus();
+                }
+            }).open();
+        }
+    </script>
 </body>
 </html>
