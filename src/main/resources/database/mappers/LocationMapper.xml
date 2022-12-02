@@ -8,6 +8,9 @@
 		SELECT * 
 		FROM AGENCY
 		WHERE AGENCYROLE = '선별진료소'
+			  AND
+			  (AGENCYADDR REGEXP '구로|서울')
+			  
 	</select>
 	<!-- 약국 지도찍기 -->
 	<select id="findPharmacyList" resultType="AgencyVO">

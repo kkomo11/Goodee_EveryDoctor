@@ -56,11 +56,7 @@ public class ChatbotController {
 	    wr.close();
 	    int responseCode = con.getResponseCode();
 	
-	    BufferedReader br;
-	
 	    if(responseCode==200) { // 정상 호출
-	    	System.out.println("ffffffffffffffffffffffffffffffffff");
-	
 	        BufferedReader in = new BufferedReader(
 	                new InputStreamReader(
 	                        con.getInputStream(), "UTF-8"));
@@ -69,22 +65,9 @@ public class ChatbotController {
 	        while ((decodedString = in.readLine()) != null) {
 	            jsonString = decodedString;
 	        }
-	        
-	        //받아온 값을 세팅하는 부분
-	        JSONParser jsonparser = new JSONParser();
-	        try {
-	            JSONObject json = (JSONObject)jsonparser.parse(jsonString);
-	            JSONArray bubblesArray = (JSONArray)json.get("bubbles");
-	            JSONObject bubbles = (JSONObject)bubblesArray.get(0);
-	            JSONObject data = (JSONObject)bubbles.get("data");
-	            String description = "";
-	            description = (String)data.get("description");
-	            chatMessage = description;
-	        } catch (Exception e) {
-	            System.out.println("error");
-	            e.printStackTrace();
-	        }
-	
+	        chatMessage = jsonString;
+	        System.out.println("chatMessage == " + chatMessage);
+
 	        in.close();
 	    } else {  // 에러 발생
 	        chatMessage = con.getResponseMessage();
@@ -128,8 +111,6 @@ public class ChatbotController {
 	        JSONObject obj = new JSONObject();
 	
 	        long timestamp = new Date().getTime();
-	
-	        System.out.println("##"+timestamp);
 	
 	        obj.put("version", "v2");
 	        obj.put("userId", "9EBA0F3ADA070957EC753D6C45941C5F");
