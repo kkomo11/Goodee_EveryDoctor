@@ -6,7 +6,7 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>에브리닥터</title>
+      <title>EveryDoctor</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../temp/boot.jsp"></c:import>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>약 리스트</li>
               </ul>
             </div>
@@ -65,7 +65,7 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">처방 받은 약이 궁금하다면?
+                  <h3 class="block-title">처방 받은 약 검색
                     <!-- 검색창 -->
                     <div class="row mb-3">
                       <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
@@ -147,7 +147,7 @@
       </a>
 
       <!-- ========================= JS here ========================= -->
-      <script src="/js/drug.js"></script>
+      <!-- <script src="/js/drug.js"></script> -->
     </body>
 
     </html>

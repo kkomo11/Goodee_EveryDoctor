@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>에브리닥터</title>
+        <title>EveryDoctor</title>
         <c:import url="../../temp/boot.jsp"></c:import>
         <!-- ========================= CSS here ========================= -->
         <link rel="stylesheet" href="/webjars/github-com-twbs-bootstrap/v3.3.7/dist/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <ul class="breadcrumb-nav">
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="/">Home</a></li>
                   <li>배송조회</li>
                 </ul>
               </div>

@@ -6,8 +6,7 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>FAQ - ClassiGrids Classified Ads and Listing Website
-        Template</title>
+      <title>EveryDoctor</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../../temp/boot.jsp"></c:import>
@@ -44,7 +43,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>건강관리 꿀팁</li>
               </ul>
             </div>
@@ -79,7 +78,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/soju.jpg" alt="#">
 
                             </div>
                           </div>
@@ -125,7 +125,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/tears.jpg" alt="#">
 
                             </div>
                           </div>
@@ -179,7 +180,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/talmo.jpg" alt="#">
 
                             </div>
                           </div>
@@ -227,7 +229,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/zzz.jpg" alt="#">
 
                             </div>
                           </div>
@@ -299,7 +302,8 @@
                         <div class="row align-items-center justify-content-center">
                           <div class="col-lg-6 col-md-12 col-12">
                             <div class="content-left wow fadeInLeft" data-wow-delay=".3s">
-                              <img src="https://via.placeholder.com/540x420" alt="#">
+                              <!-- <img src="https://via.placeholder.com/540x420" alt="#"> -->
+                              <img src="/images/board/home/covid.jpg" alt="#">
 
                             </div>
                           </div>
