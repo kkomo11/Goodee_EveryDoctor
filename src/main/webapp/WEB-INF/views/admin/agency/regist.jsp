@@ -308,11 +308,80 @@
                                             </div>
                                         </div>
                                         <!-- 기관 운영 시간 -->
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-12">
                                             <label>기관 운영 시간*</label>
+                                            <span>월요일</span>
+                                            <div class="d-flex">
+                                                <!-- <div class="d-flex"> -->
+                                                    <label>시작시간</label>
+                                                    <div class="selector-head col-4">
+                                                        <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                        <select class="user-chosen-select">
+                                                        <option disabled selected>시간을 선택해주세요</option>
+                                                        </select>
+                                                    </div>
+                                                <!-- </div> -->
+                                            <label>종료시간</label>
+                                            <div class="selector-head col-4">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            </div>
+                                            <span>화요일</span>
                                             <div class="selector-head">
                                                 <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select" id="">
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>수요일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>목요일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>금요일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>토요일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>일요일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>공휴일</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
+                                                <option disabled selected>시간을 선택해주세요</option>
+                                                </select>
+                                            </div>
+                                            <span>점심시간</span>
+                                            <div class="selector-head">
+                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                <select class="user-chosen-select">
                                                 <option disabled selected>시간을 선택해주세요</option>
                                                 </select>
                                             </div>

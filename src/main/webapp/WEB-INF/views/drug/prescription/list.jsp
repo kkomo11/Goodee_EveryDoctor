@@ -42,13 +42,13 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="breadcrumbs-content">
-                <h1 class="page-title">약 처방받기</h1>
+                <h1 class="page-title">약 처방(약사 페이지)</h1>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
                 <li><a href="/">Home</a></li>
-                <li>약 처방받기</li>
+                <li>약 처방</li>
               </ul>
             </div>
           </div>
@@ -65,7 +65,7 @@
               <button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
                 data-bs-target="#nav-item-info" type="button" role="tab" aria-controls="nav-item-info"
                 aria-selected="true">
-                <span class="serial">01</span> Step <span class="sub-title">환자 처방내역</span>
+                <span class="serial">01</span> Step <span class="sub-title">조제접수</span>
               </button>
 
               <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab" data-bs-target="#nav-item-details"
@@ -75,7 +75,7 @@
 
               <button class="nav-link" id="nav-user-info-tab" data-bs-toggle="tab" data-bs-target="#nav-user-info"
                 type="button" role="tab" aria-controls="nav-user-info" aria-selected="false">
-                <span class="serial">03</span> Step <span class="sub-title">배송or직접수령</span>
+                <span class="serial">03</span> Step <span class="sub-title">배송정보확인</span>
               </button>
             </div>
           </nav>
@@ -87,15 +87,38 @@
               <div class="step-one-content">
                 <form class="default-form-style" method="post" action="#">
                   <div class="row">
+
                     <div class="col-12">
                       <div class="form-group">
-                        <label>전담의사명</label> <input name="title" type="text" placeholder="Enter Title">
+                        <label>전담의사명</label> <input name="title" type="text" placeholder="Enter Title(값 받아오기)">
                       </div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-group">
-                        <label>환자명</label> <input name="title" type="text" placeholder="Enter Title">
+                        <label>처방전번호</label> <input name="title" type="text" placeholder="Enter Title(값 받아오기)">
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>진료번호</label> <input name="title" type="text" placeholder="Enter Title(값 받아오기)">
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>진료과목</label>
+                        <div class="selector-head">
+                          <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
+                            class="user-chosen-select">
+                            <!-- 증상 리스트 가져오기 -->
+                            <c:forEach items="${sectionList}" var="sectionVO">
+                              <option value="${sectionVO.sectionName}" data-sub="sub1">${sectionVO.sectionName}
+                              </option>
+                            </c:forEach>
+                          </select>
+                        </div>
                       </div>
                     </div>
 
@@ -105,13 +128,11 @@
                         <div class="selector-head">
                           <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                             class="user-chosen-select">
-                            <option value="none">Select a Category</option>
-                            <option value="none">Mobile Phones</option>
-                            <option value="none">Electronics</option>
-                            <option value="none">Computers</option>
-                            <option value="none">Headphones</option>
-                            <option value="none">Furnitures</option>
-                            <option value="none">Books</option>
+                            <!-- 증상 리스트 가져오기 -->
+                            <c:forEach items="${categoryList}" var="categoryVO">
+                              <option value="${categoryVO.categoryName}" data-sub="sub1">${categoryVO.categoryName}
+                              </option>
+                            </c:forEach>
                           </select>
                         </div>
                       </div>
@@ -128,38 +149,37 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label>Add Price*</label> <input name="price" type="text" placeholder="Enter Price">
+                        <label>처방 받은 약리스트</label> <input name="price" type="text" placeholder="Enter Price">
                       </div>
                     </div>
-
+                    <!-- 약 상세 리스트로 이동 -->
                     <div class="button">
                       <a href="/drug/list" button type="submit" class="btn">뭔약인데</a>
                     </div>
-
+                    <!-- 약목록 -->
                     <div class="col-12">
                       <div class="form-group">
                         <label>약목록</label>
                         <div class="selector-head">
                           <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                             class="user-chosen-select">
-                            <option value="none">Select an option</option>
-                            <option value="none">Fixed</option>
-                            <option value="none">Price On Call</option>
+                            <c:forEach items="${list}" var="vo">
+                              <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName}</option>
+                            </c:forEach>
                           </select>
                         </div>
                       </div>
                     </div>
-
+                    <!-- 약추가 -->
                     <div class="col-12">
                       <div class="form-group">
                         <label>약추가</label>
                         <div class="selector-head">
                           <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                             class="user-chosen-select">
-                            <option value="none">Select an option</option>
-                            <option value="none">Dollar</option>
-                            <option value="none">Euro</option>
-                            <option value="none">Rupee</option>
+                            <c:forEach items="${list}" var="vo">
+                              <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName}</option>
+                            </c:forEach>
                           </select>
                         </div>
                       </div>
@@ -182,9 +202,10 @@
                     <div class="col-12">
                       <div class="form-group mt-30">
                         <label>진료상담내용</label>
-                        <textarea name="message" placeholder="Input ad description"></textarea>
+                        <textarea name="message" placeholder="Input ad description(값 받아오기)"></textarea>
                       </div>
                     </div>
+
                   </div>
                 </form>
               </div>
@@ -198,17 +219,17 @@
 
                     <div class="col-lg-6 col-12">
                       <div class="form-group">
-                        <label>환자명*</label> <input name="name" type="text" placeholder="Enter your name">
+                        <label>환자명*</label> <input name="name" type="text" placeholder="Enter your name(값 받아오기)">
                       </div>
                     </div>
 
                     <div class="col-lg-6 col-12">
                       <div class="form-group">
-                        <label>환자번호*</label> <input name="number" type="text" placeholder="Enter mobile number">
+                        <label>환자번호*</label> <input name="number" type="text" placeholder="Enter mobile number(값 받아오기)">
                       </div>
                     </div>
 
-                    <label>환자주소*</label>
+                    <label>환자주소*(값 받아오는 걸로)</label>
                     <div class="button">
                       <input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     </div>

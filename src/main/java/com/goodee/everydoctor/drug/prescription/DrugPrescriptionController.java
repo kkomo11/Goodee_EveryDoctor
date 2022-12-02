@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.drug.DrugService;
 import com.goodee.everydoctor.drug.DrugVO;
+import com.goodee.everydoctor.hospital.HospitalCategoryVO;
 import com.goodee.everydoctor.util.Pager;
 
 @Controller
@@ -23,10 +24,22 @@ public class DrugPrescriptionController {
 	@Autowired
 	private DrugService drugService;
 	
+	@Autowired
+	private DrugPrescriptionService drugPrescriptionService;
+	
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		pager.setPerPage(4374L);
 		List<DrugVO> ar = drugService.getList(pager);
+		
+		//진료 과목 가져오기
+		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();
+		mv.addObject("sectionList", sectionList);
+		//환자 증상 가져오기
+		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
+		mv.addObject("categoryList", categoryList);
+	
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/prescription/list");

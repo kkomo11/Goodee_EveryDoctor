@@ -20,20 +20,15 @@ $("#fileAdd").on("click", ".del", function(){
     count--;
 })
 
-$("#registButton").click(function(){
-    //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
-    const medicRole = $("#medicRole");
-    const agencyRole = $("#agencyRole");
-    if(medicRole.val()=="의사" || medicRole.val()=="간호사"){
-        agencyRole.val("병원");
-    }else if(medicRole.val()=="수의사"){
-        agencyRole.val("동물병원");
-    }else if(medicRole.val()=="약사"){
-        agencyRole.val("약국");
-    }else{
-        agencyRole.val("보호소");
-    }
+//신청 버튼
+$(".inputButton").click(function(){
+    // $(this).parent().parent().parent().parent().submit()
+    console.log("click");
+    // console.log($(".neuteredInput").val());
+    // console.log($(".username").val());
+    // console.log($(".agencyInfo").val());
 
-    $("#form").submit();
-
+    //기관 검색 유효성 검사
+    console.log($(this).parent().parent().prev().prev().prev().find(".agencyNum").val());
+    // console.log($(this).parent().parent().prev().prev().prev().children().children().val());
 })
