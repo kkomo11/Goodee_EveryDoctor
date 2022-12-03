@@ -8,6 +8,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface DrugPrescriptionMapper {
 
 	public List<DrugPrescriptionVO> findDrugPrescriptionSection() throws Exception;
-	
+
 	public List<DrugPrescriptionVO> findDrugPrescriptionCategory() throws Exception;
+
+	public DrugPrescriptionVO getDetail() throws Exception;
+
+	public List<DrugPrescriptionVO> getList() throws Exception;
 }

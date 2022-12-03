@@ -114,11 +114,10 @@
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
                                       aria-label="Toggle navigation">Blog</a>
                                   <ul class="sub-menu collapse" id="submenu-1-5">
-                                      <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
                                       </li>
-                                      <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                                      <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
-                                              Sibebar</a></li>
+                                      <li class="nav-item"><a href="/drug/list">보유약리스트</a></li>
+                                      <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                   </ul>
                               </li>
                             </ul>

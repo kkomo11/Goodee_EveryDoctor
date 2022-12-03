@@ -65,7 +65,7 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">처방 받은 약 검색
+                  <h3 class="block-title">처방 해줄 약 검색
                     <!-- 검색창 -->
                     <div class="row mb-3">
                       <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
@@ -123,8 +123,8 @@
                             <li class="page-item"><a class="page-link"
                                 href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
                           </c:forEach>
-                          <li class="page-item ${pager.next?'':'disabled'}"><a class="page-link"
-                              href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
+                          <li class="page-item ${pager.next?'':'disabled'}">
+                            <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}&next=${pager.next}">Next</a>
                           </li>
                         </ul>
                       </nav>
