@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <!-- /End Preloader -->
+    <!-- End Preloader -->
 
     <!-- Start Header Area -->
     <c:import url="../temp/header.jsp"></c:import>

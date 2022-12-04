@@ -12,4 +12,14 @@ public class DoctorController {
 	public String doctorDetail() throws Exception {
 		return "hospital/doctorDetail";
 	}
+	
+	@GetMapping("management")
+	public String doctorManagement() throws Exception {
+		return "hospital/doctorManagement";
+	}
+	
+	@GetMapping("/diagnosis/detail")
+	public String diagnosisDetail() throws Exception {
+		return "hospital/diagnosisDetail";
+	}
 }
