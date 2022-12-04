@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,52 +29,35 @@
             <div class="row">
                 <form class="default-form-style" method="post" action="#">
                     <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <div class="form-group">
-                                <label>Name*</label>
-                                <input name="name" type="text" placeholder="Enter your name">
+                        <div class="dashboard-block">
+                        <h3 class="block-title">환자 정보</h3>
+                        <div class="d-flex justify-content-between">
+                            <div class="col-lg-2 col-12">
+                                <div class="form-group">
+                                    <label>환자 이름</label>
+                                    <input name="name" type="text" placeholder="Enter your name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="form-group">
-                                <label>Mobile Numbe*</label>
-                                <input name="number" type="text" placeholder="Enter mobile number">
+                            <div class="col-lg-4 col-12">
+                                <div class="form-group">
+                                    <label>전화번호</label>
+                                    <input name="number" type="text" placeholder="Enter mobile number">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Country*</label>
-                                <div class="selector-head">
-                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                    <select class="user-chosen-select">
-                                        <option value="none">Select a Country</option>
-                                        <option value="none">Afghanistan</option>
-                                        <option value="none">America</option>
-                                        <option value="none">Albania</option>
-                                        <option value="none">Bangladesh</option>
-                                        <option value="none">Brazil</option>
-                                        <option value="none">India</option>
-                                        <option value="none">South Africa</option>
-                                    </select>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>성별</label>
+                                    <input name="sex" type="text" placeholder="Enter mobile number">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-12">
+                                <div class="form-group">
+                                    <label>개인정보제공 동의 여부</label>
+                                    <input name="sex" type="text" placeholder="X">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="form-group">
-                                <label>Select City*</label>
-                                <div class="selector-head">
-                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                    <select class="user-chosen-select">
-                                        <option value="none">Select City</option>
-                                        <option value="none">New York</option>
-                                        <option value="none">Los Angeles</option>
-                                        <option value="none">Chicago</option>
-                                        <option value="none">San Diego</option>
-                                        <option value="none">San Jose</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-6 col-12">
                             <div class="form-group">
                                 <label>Select State*</label>
@@ -97,34 +81,6 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="google-map">
-                                <div class="mapouter">
-                                    <div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas"
-                                            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                            href="https://123movies-to.org"></a><br>
-                                        <style>
-                                            .mapouter {
-                                                position: relative;
-                                                text-align: right;
-                                                height: 300px;
-                                                width: 100%;
-                                            }
-                                        </style><a href="https://www.embedgooglemap.net">embed
-                                            google maps wordpress</a>
-                                        <style>
-                                            .gmap_canvas {
-                                                overflow: hidden;
-                                                background: none !important;
-                                                height: 300px;
-                                                width: 100%;
-                                            }
-                                        </style>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
@@ -135,6 +91,7 @@
                                 <button type="submit" class="btn alt-btn">Previous</button>
                                 <button type="submit" class="btn ">Submit Ad</button>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </form>
