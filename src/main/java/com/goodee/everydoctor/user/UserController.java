@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -55,7 +54,7 @@ public class UserController {
 				mv.setViewName("user/registration");
 			}else {
 				int result = userService.inputUser(userVO);
-				mv.setViewName("user/login");
+				mv.setViewName("redirect:user/login");
 			}
 		}else {
 			//js처리 필요
@@ -72,34 +71,11 @@ public class UserController {
 	@ResponseBody
 	public int certification(String imp_uid, UserVO userVO, HttpSession session)throws Exception{
 		
+		// 중복 가입 확인 및 본인인증 처리	
 		int result = userService.certification(imp_uid, userVO);
 		
-		//1이돌아오면 등급이 바뀌므로 authentication을 다시줘서 리턴
-		SecurityContext context = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if(auth!=null) {			
-			log.info("obj => {}", ((UserVO)(auth.getPrincipal())).getRoles().get(0));
-		}
-		
-		List<GrantedAuthority> newAuthority = new ArrayList<>();
-		newAuthority.add(new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				// TODO Auto-generated method stub
-				return "ROLE_MEMBER";
-			}
-		});
-		
-		log.info("authority {}", newAuthority.get(0));
-		
-
-		Authentication newAuth = new UsernamePasswordAuthenticationToken(auth.getPrincipal(), auth.getCredentials(), newAuthority);
-		
-		SecurityContextHolder.getContext().setAuthentication(newAuth);
-		context.setAuthentication(newAuth);
-		session.setAttribute("SPRING_SECURITY_CONTEXT", context);
+		//세션 만료
+		session.invalidate();
 		
 		return result;
 	}

@@ -69,6 +69,15 @@ public class SecurityConfig {
 		httpSecurity.oauth2Login()
 					.userInfoEndpoint()
 					.userService(userDetailsServiceImpl)
+					
+					;
+		
+		//RememberMe 설정
+		httpSecurity.rememberMe()
+					.tokenValiditySeconds(360) //로그인 유지시간 (초단위)
+					.key("rememberMe") //key는 인증받은 사용자의 정보로 Token 생성시 필요, 필수
+					.alwaysRemember(true) //사용자가 기능사용을 체크하지 않아도 항상 사용
+					.userDetailsService(userDetailsServiceImpl)  //인증 절차를 실행할 UserDetailservice, 필수
 					;
 					
 		

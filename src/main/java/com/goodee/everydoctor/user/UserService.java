@@ -44,23 +44,24 @@ public class UserService {
 	
 	public int certification(String imp_uid, UserVO userVO) throws Exception{
 		IamportClient client = new IamportClient(apiKey,apiSecret);
-		log.info("아임포트 key {}   secret {}", apiKey, apiSecret);
 
 		IamportResponse<Certification> certification_response = client.certificationByImpUid(imp_uid);
 		Certification res = certification_response.getResponse();
-		log.info("NAME {}   GENDER {}   PHONE {}     BIRTH {}   UIQUEKEY {}",certification_response.getResponse().getName(), certification_response.getResponse().getGender(), certification_response.getResponse().getPhone(), certification_response.getResponse().getBirth(), certification_response.getResponse().getUniqueKey());
-        
+
+		userVO.setCi(res.getUniqueKey());
+		//중복가입 확인
+		int cntCi=userMapper.hasUserByCI(userVO);
+		
+		if(cntCi>0) { //가입자가 0초과면 아래코드를 실행하지 않고 0을 리턴한다.
+			return 0;
+		}
+		
+		
         Calendar birth = Calendar.getInstance();
         birth.setTime(certification_response.getResponse().getBirth());
-        
-        log.info("YEAR {}      MONTH {}        DATE {}",birth.get(birth.YEAR),birth.get(birth.MONTH)+1, birth.get(birth.DAY_OF_MONTH));
-		
-		log.info("{}", birth.get(birth.YEAR)*10000 + (birth.get(birth.MONTH)+1)*100 + birth.get(birth.DAY_OF_MONTH));
-		
-		
+
 		userVO.setPhone(res.getPhone());
 		userVO.setName(res.getName());
-		userVO.setCi(res.getUniqueKey());;
 		userVO.setBirth(birth.get(birth.YEAR)*10000 + (birth.get(birth.MONTH)+1)*100 + birth.get(birth.DAY_OF_MONTH));
 		
 		int result = userMapper.modifyUserMember(userVO);

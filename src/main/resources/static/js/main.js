@@ -78,20 +78,25 @@ Author: GrayGrids
 					$.post("/user/certification", 
 						{imp_uid:rsp.imp_uid, username:usernameVal, name:nameVal, gender:genderVal}, 
 						function(rt){
-							console.log("rt"+rt)
+							if(rt==1){
+								window.location.href="";
+							}else{
+								alert("이미 인증된 계정이 존재합니다. 인증된 계정으로 로그인해주세요")
+							}
+							
 						})
 
 			    } else {
 					console.log(rsp)
+					alert(rsp.error_msg+" 다시 진행해주세요")
 			    }
 			  });
 		}else{
+			
 			$("#certiMsg").text("성함과 성별을 입력해주세요")
 		}
 		
 	})
-		
-		
 	}
 	
     
