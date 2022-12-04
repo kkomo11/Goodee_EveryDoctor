@@ -9,6 +9,7 @@
       <title>EveryDoctor</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <c:import url="../../temp/boot.jsp"></c:import>
       <!-- ========================= CSS here ========================= -->
       <link rel="stylesheet" href="/css/drug/drug.css" type="text/css" />
@@ -268,7 +269,7 @@
                       </div>
 
                       <div class="button">
-                        <a href="/drug/prescription/list" button type="submit" class="btn">처방하기</a>
+                        <a href="/drug/prescription/list" button type="submit" id="drug" class="btn">처방하기</a>
                       </div>
                     </div>
                   </div>
@@ -293,6 +294,7 @@
 
       <!-- ========================= JS here ========================= -->
       <!-- <script src="/js/drug.js"></script> -->
+      <script src="/js/alert.js"></script>
       <script src="/js/drug/address.js"></script>
       <script src="/js/admin/medic/regist.js"></script>
       <script src="/js/admin/medic/chosen.jquery.js"></script>

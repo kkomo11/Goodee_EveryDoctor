@@ -89,21 +89,21 @@
                                         </li>
                                         <li class="single-block">
                                           <ul>
-                                              <li class="mega-menu-title">Dashboard</li>
-                                              <li class="nav-item"><a href="dashboard.html">Account Overview</a>
+                                              <li class="mega-menu-title">마이페이지</li>
+                                              <li class="nav-item"><a href="dashboard.html">스케쥴러</a>
                                               </li>
-                                              <li class="nav-item"><a href="profile-settings.html">My Profile</a>
+                                              <li class="nav-item"><a href="profile-settings.html">프로필</a>
                                               </li>
-                                              <li class="nav-item"><a href="my-items.html">My Ads</a></li>
-                                              <li class="nav-item"><a href="favourite-items.html">Favorite Ads</a>
+                                              <li class="nav-item"><a href="my-items.html">내주소 관리</a></li>
+                                              <li class="nav-item"><a href="favourite-items.html">반려동물 관리</a>
                                               </li>
-                                              <li class="nav-item"><a href="post-item.html">Ad post</a></li>
-                                              <li class="nav-item"><a href="bookmarked-items.html">Bookmarked Ad</a>
+                                              <li class="nav-item"><a href="post-item.html">진료내역 보기</a></li>
+                                              <li class="nav-item"><a href="bookmarked-items.html">채팅내역 보기</a>
                                               </li>
-                                              <li class="nav-item"><a href="messages.html">Messages</a></li>
-                                              <li class="nav-item"><a href="delete-account.html">Close account</a>
+                                              <li class="nav-item"><a href="messages.html">내가 쓴 후기 보기</a></li>
+                                              <li class="nav-item"><a href="delete-account.html">회원탈퇴</a>
                                               </li>
-                                              <li class="nav-item"><a href="invoice.html">Invoice</a></li>
+                                              <li class="nav-item"><a href="invoice.html">배송조회</a></li>
                                           </ul>
                                       </li>
                                     </ul>

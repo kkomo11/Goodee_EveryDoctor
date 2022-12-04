@@ -27,14 +27,6 @@ public class DrugPrescriptionController {
 		ModelAndView mv = new ModelAndView();
 		pager.setPerPage(4374L);
 		List<DrugVO> ar = drugService.getList(pager);
-
-		//진료 과목 가져오기
-		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();
-		mv.addObject("sectionList", sectionList);
-		//환자 증상 가져오기
-		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
-		mv.addObject("categoryList", categoryList);
-
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/prescription/list");

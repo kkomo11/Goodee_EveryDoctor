@@ -93,6 +93,9 @@
             <div class="col-lg-9 col-md-12 col-12">
               <div class="main-content">
                 <div class="dashboard-block mt-0">
+                  <button id="alertStart">성공버튼</button>
+                  <button id="errorStart">실패버튼</button>
+                  <button id="confirmStart">정말 할거야?</button>
                   <h3 class="block-title">진료 내역</h3>
 
                   <!-- Start Items Area -->
