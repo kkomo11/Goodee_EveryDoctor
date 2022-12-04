@@ -1,17 +1,9 @@
 package com.goodee.everydoctor.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,6 +70,11 @@ public class UserController {
 		session.invalidate();
 		
 		return result;
+	}
+	
+	@GetMapping("profile")
+	public String getProfile()throws Exception{
+		return "user/profile";
 	}
 
 }
