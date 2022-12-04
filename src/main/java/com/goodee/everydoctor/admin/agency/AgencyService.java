@@ -3,17 +3,49 @@ package com.goodee.everydoctor.admin.agency;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.goodee.everydoctor.file.FileMapper;
+import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.util.FileManager;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class AgencyService {
 	
 	@Autowired
 	private AgencyMapper agencyMapper;
 	
+	@Autowired
+	private FileManager fileManager;
+	
+	@Autowired
+	private FileMapper fileMapper;
+	
+	private String label = "AGENCY";
+	
 	//기관 등록
 	public int inputAgency(AgencyVO agencyVO)throws Exception{
-		return(agencyMapper.inputAgency(agencyVO));
+		int result = agencyMapper.inputAgency(agencyVO);
+		
+		//받아온 파일들을 반복문 돌려서 HDD 저장 및 DB에 저장
+		for(MultipartFile f : agencyVO.getFiles()) {
+			log.info("fileName : ", f.getOriginalFilename());
+			String fileName = fileManager.saveFile(f, label);
+			FileVO fileVO = new FileVO();
+			fileVO.setFileName(fileName);
+			fileVO.setNum(agencyVO.getAgencyNum());
+			fileVO.setFileOriName(f.getOriginalFilename());
+			fileVO.setLabel(label);
+			
+			//DB 저장
+			fileMapper.inputFile(fileVO);
+		}
+		return result;
 	}
 	
 	//기관 조회
@@ -39,6 +71,10 @@ public class AgencyService {
 	//보호소 조회
 	public List<AgencyVO> findPetHotelList()throws Exception{
 		return(agencyMapper.findPetHotelList());
+	}
+	
+	public int inputAgencyWorkHour (AgencyWorkHourVO agencyWorkHourVO)throws Exception{
+		return (agencyMapper.inputAgencyWorkHour(agencyWorkHourVO));
 	}
 
 }
