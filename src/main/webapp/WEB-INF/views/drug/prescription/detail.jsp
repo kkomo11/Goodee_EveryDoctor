@@ -160,7 +160,7 @@
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
                           <c:forEach items="${list}" var="vo">
-                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName}</option>
+                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
                         </select>
                       </div>
@@ -171,7 +171,7 @@
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
                           <c:forEach items="${list}" var="vo">
-                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName}</option>
+                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
                         </select>
                       </div>
@@ -182,7 +182,7 @@
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
                           <c:forEach items="${list}" var="vo">
-                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName}</option>
+                            <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
                         </select>
                       </div>

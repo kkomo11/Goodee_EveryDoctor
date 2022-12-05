@@ -123,6 +123,22 @@
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
+                            <!-- <c:when test="${not empty check}">
+                                <c:choose>
+                                
+                                <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
+                                    <div class="text-end">
+                                        
+                                            <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
+                                        
+                                            <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
+                                            <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
+                                    </div>
+                                
+                                </c:when>
+                                </c:choose>
+                            </c:when> -->
+
                             <ul>
                                 <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
