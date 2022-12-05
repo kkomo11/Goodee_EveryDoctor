@@ -196,7 +196,7 @@
 						</div>
   
                         <!-- Start Password Change Area -->
-                        <div class="dashboard-block password-change-block">
+                        <div class="dashboard-block password-change-block" id="passwordDiv">
                             <h3 class="block-title">비밀번호 변경</h3>
                             <div class="inner-block">
                                 <form class="default-form-style" id="modifyPwForm" onSubmit="return false;" method="post" action="#">

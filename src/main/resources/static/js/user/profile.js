@@ -8,8 +8,10 @@
  
 let chk = usernameVal.indexOf('@')
  
+ //소셜로그인 계정이면
  if(chk!=-1){
 	 $("#username").val(usernameVal.slice(0,chk) +" 소셜로그인 계정입니다.")
+	 $("#passwordDiv").attr("style","display:none;")
 }
 
 let birthVal = $("#birth").val()
