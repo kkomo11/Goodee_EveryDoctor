@@ -22,14 +22,12 @@ import lombok.RequiredArgsConstructor;
 public class WebSocketConfig implements WebSocketConfigurer, WebSocketMessageBrokerConfigurer{
 
 	@Autowired
-	private ChatHandler chatHandler;
+	private final ChatHandler chatHandler;
 	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(chatHandler, "")	//handler 클래스와 경로를 설정
-				.setAllowedOrigins("*") //ws프로토콜/ws/chat 하위의 모든uri에서 chatHandler를 사용한다는 의미
-				.addInterceptors(new HttpSessionHandshakeInterceptor());
-				//interceptor for adding httpsession into websocket session
+		registry.addHandler(chatHandler, "ws/chat")
+				.setAllowedOrigins("*");
 		
 		registry.addHandler(signalHandler(), "/signal")
         		.setAllowedOrigins("*"); // allow all origins
