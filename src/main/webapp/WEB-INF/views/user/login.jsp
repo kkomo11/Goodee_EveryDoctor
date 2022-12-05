@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Login - ClassiGrids Classified Ads and Listing Website Template</title>
+    <title>Login</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -70,8 +70,7 @@
                         </div>
                         <form action="./login" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	
-                            <div class="form-group">
+							<div class="form-group">
                                 <label>Username</label>
                                 <input name="username" type="text" value="${cookie.rememberUN.value}">
                             </div>
@@ -134,12 +133,6 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
 </body>
 
 </html>

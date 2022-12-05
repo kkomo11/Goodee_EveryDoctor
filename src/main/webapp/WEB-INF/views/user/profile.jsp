@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -9,27 +10,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Profile Settings - ClassiGrids Classified Ads and Listing Website Template</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />	
     <!-- Place favicon.ico in the root directory -->
 
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-
+	<c:import url="../temp/boot.jsp"></c:import>
 </head>
 
 <body>
+<sec:authentication property="Principal" var="user"/>
     <!--[if lte IE 9]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -80,7 +68,7 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="https://via.placeholder.com/300x300" alt="#">
+                            <img src="${user.fileName}" alt="#">
                             <h3>Steve Aldridge
                                 <span><a href="javascript:void(0)">@username</a></span>
                             </h3>
@@ -111,26 +99,32 @@
                         <div class="dashboard-block mt-0 profile-settings-block">
                             <h3 class="block-title">Profile Settings</h3>
                             <div class="inner-block">
-                                <div class="image">
-                                    <img src="https://via.placeholder.com/300x300" alt="#">
-                                </div>
                                 <form class="profile-setting-form" method="post" action="#">
+	                                <div class="col-12">
+	                                    <div class="form-group upload-image">
+	                                        <label>프로필 사진</label>
+	                                        <div class="image">
+	                                    		<img src="${user.fileName}" alt="#">
+	                                		</div>
+	                                        <input name="profile-image" type="file" placeholder="Upload Image">
+	                                    </div>
+	                                </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>First Name*</label>
-                                                <input name="first-name" type="text" placeholder="Steve">
+                                                <label>아이디 ID*</label> 소셜로그인은 구분해서 소셜로그인 뜨도록
+                                                <input name="first-name" class="border-0 disabled" type="text" value="${user.username}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>Last Name*</label>
-                                                <input name="last-name" type="text" placeholder="Aldridge">
+                                                <label>이름 Name*</label> 수정불가
+                                                <input name="name" type="text" placeholder="Aldridge">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <label>Username*</label>
+                                                <label>생일*</label> 수정불가
                                                 <input name="usernames" type="text" placeholder="@username">
                                             </div>
                                         </div>
@@ -140,15 +134,10 @@
                                                 <input name="email" type="email" placeholder="username@gmail.com">
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group upload-image">
-                                                <label>Profile Image*</label>
-                                                <input name="profile-image" type="file" placeholder="Upload Image">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-12">
                                             <div class="form-group message">
-                                                <label>About You*</label>
+                                                <label>phone*</label> 문자인증으로 수정가능
                                                 <textarea name="message" placeholder="Enter about yourself"></textarea>
                                             </div>
                                         </div>
@@ -243,11 +232,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
+
 </body>
 
 </html>
