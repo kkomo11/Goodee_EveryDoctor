@@ -81,6 +81,7 @@
 		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
 		LEFT JOIN CONSULTFILE CF 
 		ON(C.CONSULTNUM = CF.CONSULTNUM)
+		<include refid="categorySearch"></include>
 		ORDER BY C.CONSULTNUM DESC
 		LIMIT #{startRow}, #{perPage}
 	</select>
@@ -109,8 +110,31 @@
 		
 	</resultMap>
 	
-	<select id="findConsultCount" resultType="Long">
-		SELECT COUNT(CONSULTNUM) FROM CONSULT
+	<select id="findConsultCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(C.CONSULTNUM)
+		FROM CONSULT C
+		INNER JOIN CONSULTCATEGORY CC
+		ON (C.CONSULTNUM = CC.CONSULTNUM)
+		INNER JOIN CATEGORY CG
+		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
+		LEFT JOIN CONSULTFILE CF 
+		ON(C.CONSULTNUM = CF.CONSULTNUM)
+		<include refid="categorySearch"></include>
 	</select>
+	
+	<select id="findAllCategories" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY ORDER BY CATEGORYNUM ASC
+	</select>
+	
+	<sql id="categorySearch">
+		<choose>
+			<when test="kind == 'category'">
+				WHERE CC.CATEGORYNUM = #{search}
+			</when>
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+	</sql>
 	
 </mapper>

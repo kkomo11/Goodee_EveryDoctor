@@ -86,7 +86,7 @@
                                     </li>
                                     <li>
                                         <img class="commentIconImg" alt="" src="/images/consult/comment_icon.svg">
-                                        35 Comments
+                                        <span id="answerCountSpan"></span>
                                     </li>
                                     <li>
                                         <c:if test="${consultDetail.hospitalCategoryVO[0].categoryIcon != null }">
@@ -106,84 +106,42 @@
                                 </div>
                             </c:if>
                             
-                            <div class="comment-form">
-                                <h3 class="comment-reply-title"><span>답글달기</span></h3>
-                                <form action="#" method="POST">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-box form-group">
-                                                <textarea name="#" class="form-control form-control-custom"
-                                                    placeholder="Your Comments"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="button">
-                                                <button type="submit" class="btn">Post Comment</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            <sec:authorize access="hasAnyRole('ADMIN', 'DOCTOR', 'PETDOC', 'NURSE', 'PETNURSE')">
+	                            <div class="comment-form">
+	                                <h3 class="comment-reply-title"><span>답글달기</span></h3>
+	                                <form action="/consult/answer/write" method="POST" id="consultAnswerForm">
+	                                	<input type="hidden" name="username" value="${member.username }" id="answerUsernameInput">
+	                                	<input type="hidden" name="consultNum" value="${consultDetail.consultNum }" id="answerConsultNumInput">
+	                                    <div class="row">
+	                                        <div class="col-12">
+	                                            <div class="form-box form-group">
+	                                                <textarea name="answerContent" class="form-control form-control-custom"
+	                                                    placeholder="Your Comments" id="answerContentInput"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-12">
+	                                            <div class="button">
+	                                                <button type="button" class="btn" id="consultAnswerBtn">Post Comment</button>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </form>
+	                            </div>
+                            </sec:authorize>
                             
                             <!-- Comments -->
                             <div class="post-comments">
-                                <h3 class="comment-title"><span>3 comments on this post</span></h3>
-                                <ul class="comments-list">
-                                    <li>
-                                        <div class="comment-img">
-                                            <img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="img">
-                                        </div>
-                                        <div class="comment-desc">
-                                            <div class="desc-top">
-                                                <h6>Arista Williamson</h6>
-                                                <span class="date">19th May 2023</span>
-                                                <a href="javascript:void(0)" class="reply-link"><i class="lni lni-reply"></i>Reply</a>
-                                            </div>
-                                            <p>
-                                                Donec aliquam ex ut odio dictum, ut consequat leo interdum. Aenean nunc
-                                                ipsum, blandit eu enim sed, facilisis convallis orci. Etiam commodo
-                                                lectus
-                                                quis vulputate tincidunt. Mauris tristique velit eu magna maximus
-                                                condimentum.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="children">
-                                        <div class="comment-img">
-                                            <img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="img">
-                                        </div>
-                                        <div class="comment-desc">
-                                            <div class="desc-top">
-                                                <h6>Rosalina Kelian <span class="saved"><i
-                                                            class="lni lni-bookmark"></i></span></h6>
-                                                <span class="date">15th May 2023</span>
-                                                <a href="javascript:void(0)" class="reply-link"><i class="lni lni-reply"></i>Reply</a>
-                                            </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="comment-img">
-                                            <img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="img">
-                                        </div>
-                                        <div class="comment-desc">
-                                            <div class="desc-top">
-                                                <h6>Alex Jemmi</h6>
-                                                <span class="date">12th May 2023</span>
-                                                <a href="javascript:void(0)" class="reply-link"><i class="lni lni-reply"></i>Reply</a>
-                                            </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                veniam.
-                                            </p>
-                                        </div>
-                                    </li>
+                                <h3 class="comment-title"><span><span id="consultAnswerCountSpan"></span>comments on this post</span></h3>
+                                <ul class="comments-list" id="consultAnswerList">
+                                    
                                 </ul>
+                                
                             </div>
+                            <div class="col-12">
+	                        	<div class="button">
+	                            	<button type="button" class="btn" id="consultAnswerMoreBtn">더보기</button>
+	                            </div>
+	                        </div>
                             
                         </div>
                     </div>
@@ -203,6 +161,24 @@
     </a>
     
     <script type="text/javascript" src="/js/consult/detail.js"></script>
+    <script type="text/javascript" src="/js/consult/answer/write.js"></script>
+    
+    <script type="text/template" id="consultAnswerTemplate">
+		<li>
+        	<div class="comment-img">
+            	<img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="img">
+            </div>
+            <div class="comment-desc">
+            	<div class="desc-top">
+                    <h6>{name}</h6>
+                    <span class="date">{consultAnswerRegDate}</span>
+                </div>
+                <p>
+					{consultAnswerContent}
+                </p>
+        	</div>
+        </li>
+	</script>
 
 </body>
 

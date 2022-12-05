@@ -96,11 +96,15 @@ public class ConsultService {
 
 	public List<ConsultVO> findConsultList(Pager pager) throws Exception {
 		
-		Long totalCount = consultMapper.findConsultCount();
+		Long totalCount = consultMapper.findConsultCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();
 		
 		return consultMapper.findConsultList(pager);
+	}
+	
+	public List<HospitalCategoryVO> findAllCategories() throws Exception{
+		return consultMapper.findAllCategories();
 	}
 	
 	private String saveFile(FileVO fileVO)throws Exception{

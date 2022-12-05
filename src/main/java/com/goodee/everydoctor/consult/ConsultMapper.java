@@ -29,6 +29,8 @@ public interface ConsultMapper {
 	
 	public List<ConsultVO> findConsultList(Pager pager) throws Exception;	// list
 	
-	public Long findConsultCount() throws Exception;	// list
+	public Long findConsultCount(Pager pager) throws Exception;	// list
+	
+	public List<HospitalCategoryVO> findAllCategories() throws Exception;
 
 }

@@ -86,6 +86,7 @@ public class ConsultController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("consultList", consultService.findConsultList(pager));
 		mv.addObject("pager", pager);
+		mv.addObject("categories", consultService.findAllCategories());
 		
 		mv.setViewName("consult/list");
 		
