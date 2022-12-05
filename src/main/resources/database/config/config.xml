@@ -11,6 +11,7 @@
 		<typeAlias type="com.goodee.everydoctor.consult.ConsultVO" alias="ConsultVO"/>
 		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerVO" alias="ConsultAnswerVO"/>
 		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerPager" alias="ConsultAnswerPager"/>
+		<typeAlias type="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO" alias="PetDiagnosisVO"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
