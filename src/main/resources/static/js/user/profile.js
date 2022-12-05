@@ -62,33 +62,10 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 	 }
  })
  
- //프로필 수정
- $("#modifyBtn").click(function(){
-	 $("#modifiyMsg").text("정보를 수정중입니다. 잠시만 기다려주세요")
-	 let modifyForm = new FormData($("#modifyForm")[0]);
-	 modifyForm.append("username",usernameVal)
-	 modifyForm.append("email",$("#email").val())
-	 modifyForm.append("phone",$("#phone").val())
-	 $.ajax({
-			type:"POST",
-			url: "modifyProfile",
-			enctype: 'multipart/form-data',
-            data: modifyForm,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (dt) {
-					console.log(dt)
-				if(dt==1){
-					window.location.href="";
-				}else if(dt==-1){
-					$("#modifiyMsg").text("비밀번호가 틀렸습니다.")
-				}else{
-					$("#modifiyMsg").text("다시 시도해주세요.")
-				}
-			}
-			})
+ //문자인증하기
+ $("#chkPhone").click(function(){
+	 console.log("chkPhone")
+	
  })
  
  //비밀번호 변경

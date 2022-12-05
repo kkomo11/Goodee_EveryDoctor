@@ -111,11 +111,11 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping("modifyProfile")
+	@PostMapping("phoneCheck")
 	@ResponseBody
-	public int modifyProfile(UserVO userVO, HttpSession session)throws Exception{
+	public int phoneCheck(UserVO userVO, HttpSession session)throws Exception{
 		
-		int result = userService.modifyProfile(userVO);
+		int result = 0;
 		
 		if(result==1) {
 			session.invalidate();

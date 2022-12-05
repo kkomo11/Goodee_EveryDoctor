@@ -130,10 +130,25 @@ public class UserService {
 		return result2;
 	}
 	
-	public int modifyProfile(UserVO userVO)throws Exception{
-		//비번 동일한지 확인
-
-		return -1;
+	public void certifiedPhoneNumber(String userPhoneNumber, int radomNumber) {
+//		String api_key = "";
+//		String api_secret = "";
+//		Message coolsms = new Message(api_key, api_secret);
+//		
+//		HashMap<String, String> params = new HashMap<String, String>();
+//		params.put("to", userPhoneNumber);
+//		params.put("from", "01054960903");
+//		params.put("type", "SMS");
+//		params.put("text", "[TEXT]인증번호는" + "["+ radomNumber+"]" + "입니다.");
+//		params.put("app_version", "test app 1.2");
+//		
+//		try {
+//			JSONObject obj = (JSONObject) coolsms.send(params);
+//			System.out.println(obj.toString());
+//		}catch (CoolsmsException e) {
+//			System.out.println(e.getMessage());
+//			System.out.println(e.getCode());
+//		}
 	}
 	
 	public int modifyPassword( UserVO userVO, String newPassword, String retypePassword, String currentPassword) throws Exception{
