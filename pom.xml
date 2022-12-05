@@ -28,6 +28,11 @@
 	</repositories>
 	
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 -->
+		<dependency>
+		    <groupId>org.thymeleaf.extras</groupId>
+		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
 		<!-- 아임포트 -->
 		<dependency>
 		    <groupId>com.github.iamport</groupId>
