@@ -23,8 +23,11 @@
 		<typeAlias type="com.goodee.everydoctor.user.UserVO" alias="UserVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.report.ReportVO" alias="ReportVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.agency.AgencyVO" alias="AgencyVO"/>
+		
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalSectionVO" alias="HospitalSectionVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalCategoryVO" alias="HospitalCategoryVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO" alias="HospitalDoctorVO"/>
+		
 		<typeAlias type="com.goodee.everydoctor.admin.medic.MedicVO" alias="MedicVO"/>
 	</typeAliases>
 </configuration>
