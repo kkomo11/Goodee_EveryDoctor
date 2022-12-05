@@ -25,5 +25,8 @@ public interface AgencyMapper {
 	
 	//보호소 조회
 	public List<AgencyVO> findPetHotelList()throws Exception;
+	
+	//기관 운영 시간 등록
+	public int inputAgencyWorkHour (AgencyWorkHourVO agencyWorkHourVO)throws Exception;
 
 }

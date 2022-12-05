@@ -7,10 +7,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>ClassiGrids - Classified Ads and Listing Website Template.</title>
+    <title>제휴 문의</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
     <!-- Place favicon.ico in the root directory -->
 
 	<c:import url="../../temp/boot.jsp"></c:import>
@@ -308,88 +307,77 @@
                                             </div>
                                         </div>
                                         <!-- 기관 운영 시간 -->
-                                        <div class="form-group col-12">
+                                        <div class="form-group">
                                             <label>기관 운영 시간*</label>
-                                            <span>월요일</span>
-                                            <div class="d-flex">
-                                                <!-- <div class="d-flex"> -->
-                                                    <label>시작시간</label>
-                                                    <div class="selector-head col-4">
-                                                        <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                        <select class="user-chosen-select">
-                                                        <option disabled selected>시간을 선택해주세요</option>
-                                                        </select>
-                                                    </div>
-                                                <!-- </div> -->
-                                            <label>종료시간</label>
-                                            <div class="selector-head col-4">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <span>화요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>수요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>목요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>금요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>토요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>일요일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>공휴일</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
-                                            <span>점심시간</span>
-                                            <div class="selector-head">
-                                                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                <select class="user-chosen-select">
-                                                <option disabled selected>시간을 선택해주세요</option>
-                                                </select>
-                                            </div>
+                                            <label>입력 예시(08:00~18:00)</label>
                                         </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>월요일</label>
+                                                    <input name="mon" type="text" id="mon" />
+                                                    <div class="m" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>화요일</label>
+                                                    <input name="tue" type="text" id="tue" />
+                                                    <div class="m" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>수요일</label>
+                                                    <input name="wed" type="text" id="wed" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>목요일</label>
+                                                    <input name="thu" type="text" id="thu" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>금요일</label>
+                                                    <input name="fri" type="text" id="fri" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>토요일</label>
+                                                    <input name="sat" type="text" id="sat" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>일요일</label>
+                                                    <input name="sun" type="text" id="sun" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>공휴일</label>
+                                                    <input name="holiday" type="text" id="holiday" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>점심시간</label>
+                                                    <input name="lunch" type="text" id="lunch" />
+                                                    <div class="agencyTelm" style="color: #55DDBD;"></div>
+                                                </div>
+                                            </div>
                                         <!-- AGENCYTYPE 임의로 값 입력 -->
                                         <input type="hidden" value="24시" name="agencyType" />
                                         <!-- USERNAME 임의로 값 입력 -->
-                                        <input type="hidden" value="TestDoc" name="username" />
+                                        <input type="hidden" value="TestDoc1" name="username" />
                                         <!-- 파일추가 버튼 누르면 파일추가 폼 생성되는 부분 -->
                                         <div id="fileAdd"></div>
                                         <!-- 파일 추가 버튼 -->

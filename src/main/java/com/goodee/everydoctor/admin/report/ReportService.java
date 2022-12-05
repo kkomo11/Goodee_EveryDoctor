@@ -26,9 +26,6 @@ public class ReportService {
 	@Autowired
 	private FileMapper fileMapper;
 	
-	@Value("${app.file.base}")
-	private String path;
-	
 	private String label = "REPORT";
 	
 	//신고 Insert
@@ -43,6 +40,7 @@ public class ReportService {
 			fileVO.setFileName(fileName);
 			fileVO.setNum(reportVO.getReportNum());			
 			fileVO.setFileOriName(f.getOriginalFilename());
+			fileVO.setLabel(label);
 			
 			//DB저장
 			fileMapper.inputFile(fileVO);
