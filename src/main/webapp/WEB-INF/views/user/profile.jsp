@@ -139,14 +139,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="fw-bold">이메일 Email</label>
-                                                <input name="email" type="email" value="${user.email}" placeholder="username@gmail.com">
+                                                <input name="email" type="email" id="email" value="${user.email}" placeholder="username@gmail.com">
                                             	<button>이메일 인증할거야? 버튼</button>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="fw-bold">연락처 Phone</label>
-                                                <input name="phone" type="text" placeholder="010-0000-0000" value="${user.phone }">
+                                                <input name="phone" type="text" id="phone" placeholder="010-0000-0000" value="${user.phone }">
                                                 <button>문자 인증할거야?버튼</button>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="button" class="btn" id="modifyBtn">프로필 수정</button>
+                                                <button type="button" id="chkPwBtn" class="btn" data-bs-toggle="modal" data-bs-target="#chkPassword">프로필 수정</button>
                                             </div>
                                         </div>
                                     </div>
@@ -165,30 +165,60 @@
                             </div>
                         </div>
                         <!-- End Profile Settings Area -->
+                        	<!-- Modal -->
+						<div class="modal fade" id="chkPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="staticBackdropLabel">비밀번호 확인</h5>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+						      	      		<p class="text-center">개인정보 수정을 위해서 비밀번호를 확인해주세요.</p>
+							      <div class="login">
+							      	<div class="form-head">
+							      		<form action="" onSubmit="return false;" class="default-form-style" style="margin-top:0px" id="modifyForm">
+									        <p class="text-center" style="color:red" id="modifiyMsg"></p>
+									        <div class="form-group">
+									            <label>비밀번호</label>
+									            <input name="password" type="password" id="pw">
+									        </div>
+							      		</form>
+									  </div> 
+							      	</div>
+							      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" id="modalCloseBtn" data-bs-dismiss="modal">닫기</button>
+						        <button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+  
                         <!-- Start Password Change Area -->
                         <div class="dashboard-block password-change-block">
                             <h3 class="block-title">비밀번호 변경</h3>
                             <div class="inner-block">
-                                <form class="default-form-style" method="post" action="#">
+                                <form class="default-form-style" id="modifyPwForm" onSubmit="return false;" method="post" action="#">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>현재 비밀번호</label>
-                                                <input name="current-password" type="password"
+                                                <input name="currentPassword" type="password"
                                                     placeholder="Enter old password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>새로운 비밀번호</label>
-                                                <input name="new-password" type="password"
+                                                <input name="newPassword" type="password"
                                                     placeholder="Enter new password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>비밀번호 확인</label>
-                                                <input name="retype-password" type="password"
+                                                <input name="retypePassword" type="password"
                                                     placeholder="Retype password">
                                             </div>
                                         </div>
@@ -208,34 +238,6 @@
         </div>
     </section>
     <!-- End Dashboard Section -->
-
-    <!-- Start Newsletter Area -->
-    <div class="newsletter section">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                            <i class="lni lni-alarm"></i>
-                            <h2>Newsletter</h2>
-                            <p>We don't send spam so don't worry.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Your email address" type="email">
-                                <div class="button">
-                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter Area -->
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>

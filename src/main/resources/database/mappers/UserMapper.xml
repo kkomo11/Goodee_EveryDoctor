@@ -54,7 +54,11 @@
 	</select>
 	
 	<update id="modifyFileName" parameterType="UserVO">
-		UPDATE USERS SET FILENAME=#{fileName} WHERE USERNAME = #{username};
+		UPDATE USERS SET FILENAME=#{fileName} WHERE USERNAME = #{username}
+	</update>
+	
+	<update id="modifyPassword" parameterType="UserVO">
+		UPDATE USERS SET PASSWORD=#{password} WHERE USERNAME = #{username}
 	</update>
 	
 </mapper>

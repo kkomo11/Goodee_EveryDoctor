@@ -1,9 +1,12 @@
 package com.goodee.everydoctor.user;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -23,6 +28,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private LogoutHandlerImpl logoutHandlerImpl;
 	
 	//테스트 메서드
 	@GetMapping("login")
@@ -78,11 +85,11 @@ public class UserController {
 		return "user/profile";
 	}
 	
-	@PostMapping("profileUpload")
+	@PostMapping("profileImgUpload")
 	@ResponseBody
-	public int profileUpload(MultipartFile file, String username, HttpSession session) throws Exception{
+	public int profileImgUpload(MultipartFile file, String username, HttpSession session) throws Exception{
 		log.info("!file {} path {}", file, username);
-		int result = userService.profileUpload(file, username);
+		int result = userService.profileImgUpload(file, username);
 		
 		if(result == 1) {
 			session.invalidate();
@@ -91,17 +98,42 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping("setProfileDefault")
+	@PostMapping("setProfileImgDefault")
 	@ResponseBody
-	public int setProfileDefault(String username, HttpSession session) throws Exception{
-		log.info("!file {} path {}", username);
-//		int result = userService.profileUpload(username);
+	public int setProfileImgDefault(UserVO userVO, HttpSession session) throws Exception{
+		log.info("!username	 {}", userVO.getUsername());
+		int result = userService.setProfileImgDefault(userVO);
 		
-//		if(result == 1) {
-//			session.invalidate();
-//		}
-//		
-		return 1;
+		if(result == 1) {
+			session.invalidate();
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("modifyProfile")
+	@ResponseBody
+	public int modifyProfile(UserVO userVO, HttpSession session)throws Exception{
+		
+		int result = userService.modifyProfile(userVO);
+		
+		if(result==1) {
+			session.invalidate();
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("modifyPassword")
+	@ResponseBody
+	public int modifyPassword(HttpServletRequest request, HttpServletResponse response, Authentication authentication,UserVO userVO, String newPassword, String retypePassword, String currentPassword)throws Exception{
+		log.info("{} modifyPassword {} {} {}",userVO.getUsername(), newPassword, retypePassword, currentPassword);
+		
+		int result = userService.modifyPassword(userVO, newPassword, retypePassword, currentPassword);
+		if(result==1) {
+			logoutHandlerImpl.logout(request, response, authentication);
+		}
+		return result;
 	}
 
 }

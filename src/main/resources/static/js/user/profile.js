@@ -52,7 +52,9 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 				 "username":usernameVal
 			 },
 			 success: function(dt){
-				 console.log(dt)
+				 if(dt==1){
+					window.location.href="";
+				}
 			 }
 		 })
 	 }
@@ -60,10 +62,53 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
  
  //프로필 수정
  $("#modifyBtn").click(function(){
-	 console.log("비번 확인하고 프로필 수정")
+	 $("#modifiyMsg").text("정보를 수정중입니다. 잠시만 기다려주세요")
+	 let modifyForm = new FormData($("#modifyForm")[0]);
+	 modifyForm.append("username",usernameVal)
+	 modifyForm.append("email",$("#email").val())
+	 modifyForm.append("phone",$("#phone").val())
+	 $.ajax({
+			type:"POST",
+			url: "modifyProfile",
+			enctype: 'multipart/form-data',
+            data: modifyForm,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (dt) {
+					console.log(dt)
+				if(dt==1){
+					window.location.href="";
+				}else if(dt==-1){
+					$("#modifiyMsg").text("비밀번호가 틀렸습니다.")
+				}else{
+					$("#modifiyMsg").text("다시 시도해주세요.")
+				}
+			}
+			})
  })
  
  //비밀번호 변경
  $("#modifyPwBtn").click(function(){
-	 console.log("비번 변경")
+	 let modifyPwForm = new FormData($("#modifyPwForm")[0]);
+	 modifyPwForm.append("username",usernameVal)
+	 console.log("비번 변경"+modifyPwForm)
+	 
+	 $.ajax({
+		type:"POST",
+		url:"modifyPassword",
+		enctype: 'multipart/form-data',
+		data: modifyPwForm,
+        processData: false,
+        contentType: false,
+        cache: false,
+		success:function(dt){
+			if(dt==1){
+				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요")
+				window.location.href="/user/login";
+			}
+		}
+	})
+	 
  })

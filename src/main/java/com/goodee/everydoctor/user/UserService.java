@@ -2,14 +2,19 @@ package com.goodee.everydoctor.user;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 import com.goodee.everydoctor.util.FileManager;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.Certification;
@@ -77,7 +82,7 @@ public class UserService {
 		return result;
 	}
 	
-	public int profileUpload(MultipartFile file, String username) throws Exception{
+	public int profileImgUpload(MultipartFile file, String username) throws Exception{
 		
 		//기존 폴더 삭제
 		FileVO fileVO = new FileVO();
@@ -103,5 +108,46 @@ public class UserService {
 		
 		
 		return result2;
+	}
+	
+	public int setProfileImgDefault(UserVO userVO)throws Exception{
+		//기존 폴더 삭제
+		FileVO fileVO = new FileVO();
+		
+		fileVO.setLabel("user");
+		fileVO.setFileName(userVO.getUsername());
+		
+		boolean result = fileManager.deleteFile(fileVO);
+				
+		log.info("result {}", result);
+		
+		//DB에 파일위치 default로 변경
+		userVO.setFileName("/images/defaultProfile.png");
+		
+		int result2 = userMapper.modifyFileName(userVO);
+				
+		
+		return result2;
+	}
+	
+	public int modifyProfile(UserVO userVO)throws Exception{
+		//비번 동일한지 확인
+
+		return -1;
+	}
+	
+	public int modifyPassword( UserVO userVO, String newPassword, String retypePassword, String currentPassword) throws Exception{
+		//비번 동일한지 확인
+		UserVO chkUser = userMapper.getUserByUsername(userVO.getUsername());
+		boolean chkPw = passwordEncoder.matches(currentPassword, chkUser.getPassword());
+		
+		int result=0;
+		//동일하면 비번 변경
+		if(chkPw && newPassword.equals(retypePassword)) {
+			userVO.setPassword(passwordEncoder.encode(newPassword));
+			result = userMapper.modifyPassword(userVO);
+		}
+		
+		return result;
 	}
 }
