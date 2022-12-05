@@ -42,8 +42,27 @@ html {
   scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: 'wedrive';
+    src: url(/fonts/wedrive.ttf) format('truetype');
+         unicode-range: U+AC00-D7A3;
+        }
+        
+@font-face {
+    font-family: 'Jost';
+    src: url(/fonts/wedrive.ttf) format('truetype');
+         unicode-range: U+AC00-D7A3;
+        }
+        
+@font-face {
+    font-family: 'Lato';
+    src: url(/fonts/NotoSansKR-Regular.otf) format('truetype');
+         unicode-range: U+AC00-D7A3;
+        }
+
+
 body {
-  font-family: "Jost", sans-serif;
+  font-family: 'wedrive', "Jost", sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #888;

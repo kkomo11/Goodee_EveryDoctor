@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Profile Settings - ClassiGrids Classified Ads and Listing Website Template</title>
+    <title>Profile</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />	
     <!-- Place favicon.ico in the root directory -->
@@ -69,8 +69,8 @@
                     <div class="dashboard-sidebar">
                         <div class="user-image">
                             <img src="${user.fileName}" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
+                            <h3>${user.name}
+                                <span><a href="javascript:void(0)">${user.username}</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">
@@ -83,11 +83,11 @@
                                 <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
                                 <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
                                 <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> Close account</a></li>
+                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
                                 <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
                             </ul>
                             <div class="button">
-                                <a class="btn" href="javascript:void(0)">Logout</a>
+                                <a class="btn" href="javascript:void(0)">로그아웃</a>
                             </div>
                         </div>
                     </div>
@@ -97,53 +97,68 @@
                     <div class="main-content">
                         <!-- Start Profile Settings Area -->
                         <div class="dashboard-block mt-0 profile-settings-block">
-                            <h3 class="block-title">Profile Settings</h3>
+                            <h3 class="block-title">내 정보</h3>
                             <div class="inner-block">
                                 <form class="profile-setting-form" method="post" action="#">
-	                                <div class="col-12">
-	                                    <div class="form-group upload-image">
-	                                        <label>프로필 사진</label>
-	                                        <div class="image">
-	                                    		<img src="${user.fileName}" alt="#">
+	                                <div class="d-flex align-items-center">
+	                                	<div class="flex-shrink-0">
+		                                    <div class="form-group upload-image">
+		                                        <label class="fw-bold">프로필 사진</label>
+		                                        <div class="image">
+		                                    		<img src="${user.fileName}" alt="#">
+		                                		</div>
+		                                    </div>
+	                                	</div>
+	                                	<div class="flex-grow-1 ms-3">
+	                                		<div class="button">
+	                                			<label class="btn" for="profile-image">프로필 사진 수정</label>
+		                                		<button type="button" class="btn">기본 프로필로 변경</button>
+		                                		
+			                                        <input name="profile-image" id="profile-image" type="file" class="d-none" placeholder="Upload Image">
 	                                		</div>
-	                                        <input name="profile-image" type="file" placeholder="Upload Image">
-	                                    </div>
+	                                	</div>
 	                                </div>
                                     <div class="row">
-                                        <div class="col-lg-6 col-12">
+                                        <div class="col-12">
                                             <div class="form-group">
-                                                <label>아이디 ID*</label> 소셜로그인은 구분해서 소셜로그인 뜨도록
+                                                <label class="fw-bold">아이디 ID</label> 소셜로그인은 구분해서 소셜로그인 뜨도록
                                                 <input name="first-name" class="border-0 disabled" type="text" value="${user.username}">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-12">
-                                            <div class="form-group">
-                                                <label>이름 Name*</label> 수정불가
-                                                <input name="name" type="text" placeholder="Aldridge">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-12">
-                                            <div class="form-group">
-                                                <label>생일*</label> 수정불가
-                                                <input name="usernames" type="text" placeholder="@username">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-12">
-                                            <div class="form-group">
-                                                <label>Email Address*</label>
-                                                <input name="email" type="email" placeholder="username@gmail.com">
-                                            </div>
-                                        </div>
-                                        
                                         <div class="col-12">
-                                            <div class="form-group message">
-                                                <label>phone*</label> 문자인증으로 수정가능
-                                                <textarea name="message" placeholder="Enter about yourself"></textarea>
+                                            <div class="form-group">
+                                                <label class="fw-bold">이름 Name</label>
+                                                <input name="name" type="text"  class="border-0 disabled" placeholder="Aldridge" value="${user.name}">
                                             </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="fw-bold">생일 Birth</label>
+                                                <input name="birth" type="text"  class="border-0 disabled " value="${user.birth}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="fw-bold">이메일 Email</label>
+                                                <input name="email" type="email" value="${user.email}" placeholder="username@gmail.com">
+                                            	<button>이메일 인증할거야? 버튼</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="fw-bold">연락처 Phone</label>
+                                                <input name="phone" type="text" placeholder="010-0000-0000" value="${user.phone }">
+                                                <button>문자 인증할거야?버튼</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                        	<div class="form-group">
+                                        		<button type="button" class="btn"></button>
+                                        	</div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">Update Profile</button>
+                                                <button type="submit" class="btn ">프로필 수정</button>
                                             </div>
                                         </div>
                                     </div>
@@ -153,34 +168,34 @@
                         <!-- End Profile Settings Area -->
                         <!-- Start Password Change Area -->
                         <div class="dashboard-block password-change-block">
-                            <h3 class="block-title">Change Password</h3>
+                            <h3 class="block-title">비밀번호 변경</h3>
                             <div class="inner-block">
                                 <form class="default-form-style" method="post" action="#">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>Current Password*</label>
+                                                <label>현재 비밀번호</label>
                                                 <input name="current-password" type="password"
                                                     placeholder="Enter old password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>New Password*</label>
+                                                <label>새로운 비밀번호</label>
                                                 <input name="new-password" type="password"
                                                     placeholder="Enter new password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>Retype Password*</label>
+                                                <label>비밀번호 확인</label>
                                                 <input name="retype-password" type="password"
                                                     placeholder="Retype password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">Update Password</button>
+                                                <button type="submit" class="btn ">비밀번호 변경</button>
                                             </div>
                                         </div>
                                     </div>
@@ -225,6 +240,7 @@
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
+    <script src="/js/user/profile.js"></script>
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
