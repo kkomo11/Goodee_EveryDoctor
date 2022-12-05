@@ -49,4 +49,8 @@
 		</collection>
 	</resultMap>
 	
+	<select id="hasUserByCI" parameterType="UserVO" resultType="int">
+		select count(USERNAME) from USERS where ci=#{ci}
+	</select>
+	
 </mapper>
