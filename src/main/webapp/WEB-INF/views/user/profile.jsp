@@ -68,7 +68,7 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="${user.fileName}" alt="#">
+                            <img src="${user.fileName}" alt="#" style="object-fit: cover;">
                             <h3>${user.name}
                                 <span><a href="javascript:void(0)">${user.username}</a></span>
                             </h3>
@@ -105,15 +105,14 @@
 		                                    <div class="form-group upload-image">
 		                                        <label class="fw-bold">프로필 사진</label>
 		                                        <div class="image">
-		                                    		<img src="${user.fileName}" alt="#">
+		                                    		<img src="${user.fileName}" alt="#" style="object-fit: cover;">
 		                                		</div>
 		                                    </div>
 	                                	</div>
 	                                	<div class="flex-grow-1 ms-3">
 	                                		<div class="button">
 	                                			<label class="btn" for="profile-image">프로필 사진 수정</label>
-		                                		<button type="button" class="btn">기본 프로필로 변경</button>
-		                                		
+		                                		<button type="button" class="btn" id="default-profile">기본 프로필로 변경</button>
 			                                        <input name="profile-image" id="profile-image" type="file" class="d-none" placeholder="Upload Image">
 	                                		</div>
 	                                	</div>
@@ -121,8 +120,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="fw-bold">아이디 ID</label> 소셜로그인은 구분해서 소셜로그인 뜨도록
-                                                <input name="first-name" class="border-0 disabled" type="text" value="${user.username}">
+                                                <label class="fw-bold">아이디 ID</label>
+                                                <input id="username" class="border-0 disabled" type="text" value="${user.username}">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -134,7 +133,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="fw-bold">생일 Birth</label>
-                                                <input name="birth" type="text"  class="border-0 disabled " value="${user.birth}">
+                                                <input name="birth" type="text" id="birth" class="border-0 disabled " value="${user.birth}">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -158,7 +157,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">프로필 수정</button>
+                                                <button type="button" class="btn" id="modifyBtn">프로필 수정</button>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +194,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">비밀번호 변경</button>
+                                                <button type="button" class="btn" id="modifyPwBtn">비밀번호 변경</button>
                                             </div>
                                         </div>
                                     </div>

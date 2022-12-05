@@ -53,4 +53,8 @@
 		select count(USERNAME) from USERS where ci=#{ci}
 	</select>
 	
+	<update id="modifyFileName" parameterType="UserVO">
+		UPDATE USERS SET FILENAME=#{fileName} WHERE USERNAME = #{username};
+	</update>
+	
 </mapper>

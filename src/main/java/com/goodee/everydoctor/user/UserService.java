@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.util.FileManager;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.Certification;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -26,6 +29,8 @@ public class UserService {
 	private String apiKey;
 	@Value("${import.api.secret}")
 	private String apiSecret;
+	@Autowired
+	private FileManager fileManager;
 	
 	
 	public int inputUser(UserVO userVO)throws Exception{
@@ -70,5 +75,33 @@ public class UserService {
 		userVO= userMapper.getUserByUsername(userVO.getUsername());
 		
 		return result;
+	}
+	
+	public int profileUpload(MultipartFile file, String username) throws Exception{
+		
+		//기존 폴더 삭제
+		FileVO fileVO = new FileVO();
+		
+		fileVO.setLabel("user");
+		fileVO.setFileName(username);
+		
+		boolean result = fileManager.deleteFile(fileVO);
+		
+		log.info("result {}", result);
+		
+		
+		//새로운 폴더 생성해 파일 넣기
+		String filename = fileManager.saveFile(file, "user/"+username);
+		
+		//DB에 파일 저장
+		UserVO userVO = new UserVO();
+		
+		userVO.setUsername(username);
+		userVO.setFileName("/file/user/"+username+"/"+filename);
+		
+		int result2 = userMapper.modifyFileName(userVO);
+		
+		
+		return result2;
 	}
 }

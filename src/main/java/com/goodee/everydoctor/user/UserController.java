@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -75,6 +76,32 @@ public class UserController {
 	@GetMapping("profile")
 	public String getProfile()throws Exception{
 		return "user/profile";
+	}
+	
+	@PostMapping("profileUpload")
+	@ResponseBody
+	public int profileUpload(MultipartFile file, String username, HttpSession session) throws Exception{
+		log.info("!file {} path {}", file, username);
+		int result = userService.profileUpload(file, username);
+		
+		if(result == 1) {
+			session.invalidate();
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("setProfileDefault")
+	@ResponseBody
+	public int setProfileDefault(String username, HttpSession session) throws Exception{
+		log.info("!file {} path {}", username);
+//		int result = userService.profileUpload(username);
+		
+//		if(result == 1) {
+//			session.invalidate();
+//		}
+//		
+		return 1;
 	}
 
 }
