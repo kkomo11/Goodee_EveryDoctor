@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{agencyRole}, #{agencyType})
 	</insert>
 	
+	<!-- 기관별 리스트 불러오기 -->
 	<select id="findAgencyList" resultType="AgencyVO">
 		SELECT * FROM AGENCY
 	</select>
@@ -29,4 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findPetHotelList" resultType="AgencyVO">
 		SELECT * FROM AGENCY WHERE AGENCYROLE = '보호소'
 	</select>
+	
+	<!-- 기관 운영 시간 INSERT -->
+	<insert id="inputAgencyWorkHour">
+		INSERT INTO AGENCYWORKHOUR (AGENCYNUM, SUN, MON, TUE, WED, THU, FRI, SAT, HOLIDAY, LUNCH)
+		VALUES (#{agencyNum}, #{sun}, #{mon}, #{tue}, #{wed}, #{thu}, #{fri}, #{sat}, #{holiday}, #{lunch})
+	</insert>
+	
 </mapper>

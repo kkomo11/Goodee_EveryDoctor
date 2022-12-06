@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.categoryIconImg{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.calendarIconImg{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.commentIconImg {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.detailImages {
+	width: 24%!important;
+	height: 24%!important;
+}

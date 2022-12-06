@@ -125,8 +125,8 @@
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
                             <ul>
-                                <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="Principal" var="member"/>
                                     ${member.username},${member.name}, ${member.roles}
 
                                 </sec:authorize>

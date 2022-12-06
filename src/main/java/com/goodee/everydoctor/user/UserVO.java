@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import lombok.Data;
 
 @Data
-public class UserVO implements UserDetails, OAuth2User, Serializable{
+public class UserVO implements UserDetails, OAuth2User{
 	
 	@NotBlank
 	private String username;

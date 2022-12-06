@@ -34,7 +34,7 @@ public class AgencyController {
 	
 	//기관과 종사자를 한꺼번에 INSERT
 	@PostMapping("regist")
-	public ModelAndView inputAgency(AgencyVO agencyVO, MedicVO medicVO)throws Exception{
+	public ModelAndView inputAgency(AgencyVO agencyVO, MedicVO medicVO, AgencyWorkHourVO agencyWorkHourVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		//기관 정보 INSERT
 		int agencyResult = agencyService.inputAgency(agencyVO);
@@ -44,6 +44,11 @@ public class AgencyController {
 		//종사자 정보 등록
 		int medicResult = medicService.inputMedic(medicVO);
 		log.info("medicResult : {}", medicResult);
+		//기관 운영시간 참조할 agencyNum Set
+		agencyWorkHourVO.setAgencyNum(agencyVO.getAgencyNum());
+		//기관 운영시간 INSERT
+		int agencyWorkHourResult = agencyService.inputAgencyWorkHour(agencyWorkHourVO);
+		log.info("workHourResult : {}", agencyWorkHourResult);
 		
 		mv.setViewName("redirect:regist");
 		return mv;
