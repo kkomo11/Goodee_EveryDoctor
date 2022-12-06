@@ -54,7 +54,7 @@ public class UserController {
 				mv.setViewName("user/registration");
 			}else {
 				int result = userService.inputUser(userVO);
-				mv.setViewName("redirect:user/login");
+				mv.setViewName("redirect:/user/login");
 			}
 		}else {
 			//js처리 필요
