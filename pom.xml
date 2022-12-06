@@ -27,6 +27,7 @@
 		</repository>
 	</repositories>
 	
+	<!-- CoolSMS 누리고 SDK -->
 	<dependencies>
 		<dependency>
 		    <groupId>net.nurigo</groupId>
