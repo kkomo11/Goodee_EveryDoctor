@@ -8,6 +8,9 @@
 		<typeAlias type="com.goodee.everydoctor.pet.profile.PetVO" alias="PetVO"/>
 		<typeAlias type="com.goodee.everydoctor.pet.PetdocVO" alias="PetdocVO"/>
 		<typeAlias type="com.goodee.everydoctor.pet.PetHomePager" alias="PetHomePager"/>
+		<typeAlias type="com.goodee.everydoctor.consult.ConsultVO" alias="ConsultVO"/>
+		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerVO" alias="ConsultAnswerVO"/>
+		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerPager" alias="ConsultAnswerPager"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
