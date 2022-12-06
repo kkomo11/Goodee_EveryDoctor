@@ -53,19 +53,22 @@
 // }
 
 
-function openPop() {
-  let popup = window.open('http://www.naver.com', '배송팝업', 'width=700px,height=800px,scrollbars=yes');
-}
-// window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
+// function openPop() {
+//   let popup = window.open('http://www.naver.com', '배송팝업', 'width=700px,height=800px,scrollbars=yes');
+// }
+//  window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
 
-function openPop() {
-  $.ajax({
-    url: "http://info.sweettracker.co.kr/tracking/5",
-    type: "POST",
-    async: false,
+function popUp(){
+  let option = "width = 500, height = 700, top = 100, left = 200, scrollbars=yes, resizable=no"
+  let pop_title = "Smart" ;
 
-  })
-  return submit;
+  window.open("", pop_title, option) ;
+  
+  let frmData = document.frmData ;
+  frmData.target = pop_title ;
+  
+  frmData.submit() ;
+
 }
 
 

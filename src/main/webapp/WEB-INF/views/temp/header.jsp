@@ -89,21 +89,21 @@
                                         </li>
                                         <li class="single-block">
                                           <ul>
-                                              <li class="mega-menu-title">Dashboard</li>
-                                              <li class="nav-item"><a href="dashboard.html">Account Overview</a>
+                                              <li class="mega-menu-title">마이페이지</li>
+                                              <li class="nav-item"><a href="dashboard.html">스케쥴러</a>
                                               </li>
-                                              <li class="nav-item"><a href="profile-settings.html">My Profile</a>
+                                              <li class="nav-item"><a href="profile-settings.html">프로필</a>
                                               </li>
-                                              <li class="nav-item"><a href="my-items.html">My Ads</a></li>
-                                              <li class="nav-item"><a href="favourite-items.html">Favorite Ads</a>
+                                              <li class="nav-item"><a href="my-items.html">내주소 관리</a></li>
+                                              <li class="nav-item"><a href="favourite-items.html">반려동물 관리</a>
                                               </li>
-                                              <li class="nav-item"><a href="post-item.html">Ad post</a></li>
-                                              <li class="nav-item"><a href="bookmarked-items.html">Bookmarked Ad</a>
+                                              <li class="nav-item"><a href="post-item.html">진료내역 보기</a></li>
+                                              <li class="nav-item"><a href="bookmarked-items.html">채팅내역 보기</a>
                                               </li>
-                                              <li class="nav-item"><a href="messages.html">Messages</a></li>
-                                              <li class="nav-item"><a href="delete-account.html">Close account</a>
+                                              <li class="nav-item"><a href="messages.html">내가 쓴 후기 보기</a></li>
+                                              <li class="nav-item"><a href="delete-account.html">회원탈퇴</a>
                                               </li>
-                                              <li class="nav-item"><a href="invoice.html">Invoice</a></li>
+                                              <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                           </ul>
                                       </li>
                                     </ul>
@@ -112,21 +112,36 @@
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
-                                      aria-label="Toggle navigation">Blog</a>
+                                      aria-label="Toggle navigation">약사</a>
                                   <ul class="sub-menu collapse" id="submenu-1-5">
-                                      <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
                                       </li>
-                                      <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                                      <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
-                                              Sibebar</a></li>
+                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
                                   </ul>
                               </li>
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
+                            <!-- <c:when test="${not empty check}">
+                                <c:choose>
+                                
+                                <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
+                                    <div class="text-end">
+                                        
+                                            <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
+                                        
+                                            <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
+                                            <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
+                                    </div>
+                                
+                                </c:when>
+                                </c:choose>
+                            </c:when> -->
+
                             <ul>
-                                <sec:authentication property="Principal" var="member"/>
                                 <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="Principal" var="member"/>
                                     ${member.username},${member.name}, ${member.roles}
 
                                 </sec:authorize>

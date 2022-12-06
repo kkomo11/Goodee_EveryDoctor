@@ -90,6 +90,11 @@
     display: flex;
     flex-direction: row;
 }
+.BubbleMessage_BubbleMessage__d2tka .BubbleMessage_Body__SLE\+g2 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
 .BubbleMessage_BubbleMessage__d2tka .BubbleMessage_Body__SLE\+g .BubbleMessage_Chunks__y4XFp {
     max-width: 264px;
 }
@@ -130,6 +135,15 @@
     overflow: hidden;
     list-style: none;
     display: list-item;
+}
+.ButtonMessageGroup_ButtonMessageGroup__\+wRrg2 {
+    margin: 0;
+    padding: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    list-style: none;
+    display: list-item;
+    width :264px;
 }
 .ButtonMessageGroup_ButtonMessageGroup__\+wRrg .ButtonMessageGroup_Item__K2Y1r {
     margin-top: 0;

@@ -104,7 +104,24 @@ public class FileManager extends AbstractView {
 		
 		File file = new File(path, fileVO.getFileName());
 		
-		boolean result = file.delete();
+		boolean result = false;
+		
+		if(file.exists()) {
+			if(file.isDirectory()) {
+				File[] delList = file.listFiles();
+				
+				for(int i=0; i<delList.length; i++) {
+					delList[i].delete();
+				}
+				
+				if(delList.length==0) {
+					result = file.delete();
+				}
+			}else {
+				result = file.delete();
+			}
+		}
+		
 		
 		return result;
 	}

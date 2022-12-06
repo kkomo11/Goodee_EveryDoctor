@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <!-- /End Preloader -->
+    <!-- End Preloader -->
 
     <!-- Start Header Area -->
     <c:import url="../temp/header.jsp"></c:import>
@@ -195,7 +195,7 @@
                                 <div class="col-lg-3 col-md-4 col-12">
                                     <div class="category-sidebar">
                                         <!-- Start Single Widget -->
-                                        <div class="single-widget">
+                                        <div class="single-widget" style="padding: 25px;">
                                             <h3>증상</h3>
                                             <ul class="list">
                                                 <c:forEach items="${categoryList}" var="categoryVO">
@@ -219,35 +219,8 @@
                                                 <div class="tab-content" id="nav-tabContent">
                                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                                         aria-labelledby="nav-grid-tab">
-                                                        <div class="row">
-                                                            <div class="col-lg-4 col-md-6 col-12">
-                                                                <!-- Start Single Item -->
-                                                                <div class="single-item-grid">
-                                                                    <div class="image">
-                                                                        <a href="doctor/detail"><img
-                                                                                src="https://via.placeholder.com/600x400"
-                                                                                alt="#"></a>
-                                                                        <span class="flat-badge sale">즉시</span>
-                                                                    </div>
-                                                                    <div class="content">
-                                                                        <a href="javascript:void(0)" class="tag">가정의학과 전문의</a>
-                                                                        <h3 class="title">
-                                                                            <a href="doctor/detail">이정철 의사</a>
-                                                                        </h3>
-                                                                        <p class="location"><a href="javascript:void(0)"><i
-                                                                                    class="lni lni-map-marker">
-                                                                                </i>현대제일의원</a></p>
-                                                                        <ul class="info">
-                                                                            <li class="price">
-                                                                                <img class="grade-star" src="/images/star.png"> 4.9(300+)</li>
-                                                                            <li class="like"><a href="doctor/detail"><i
-                                                                                        class="lni lni-heart"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- End Single Item -->
-                                                            </div>
+                                                        <div class="row" id="doctorList">
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-12">
@@ -304,7 +277,7 @@
                                 <div class="col-lg-3 col-md-4 col-12">
                                     <div class="category-sidebar">
                                         <!-- Start Single Widget -->
-                                        <div class="single-widget">
+                                        <div class="single-widget" style="padding: 25px;">
                                             <h3>진료 과목</h3>
                                             <ul class="list">
                                                 <c:forEach items="${sectionList}" var="sectionVO">

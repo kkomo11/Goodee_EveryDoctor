@@ -11,3 +11,15 @@ $('#nav-popular-tab').click(function() {
 	url = url.replace(/(#.*)/ig,'');
 	history.replaceState(null, null, url);
 })
+
+function loadDoctorList() {
+	$.ajax({
+		type:"GET",
+		url:"/hospital/doctor/list",
+		success: function(data) {
+			$("#doctorList").html(data);
+		}
+	})
+}
+
+window.onload=loadDoctorList();

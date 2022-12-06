@@ -11,4 +11,7 @@ public interface UserMapper {
 	public UserVO getUserByUsername(String username)throws UsernameNotFoundException;
 	public int modifyUserMember(UserVO userVO) throws Exception;
 	public int modifyRoleMember(UserVO userVO) throws Exception;
+	public int hasUserByCI(UserVO userVO)throws Exception;
+	public int modifyFileName(UserVO userVO) throws Exception;
+	public int modifyPassword(UserVO userVO) throws Exception;
 }

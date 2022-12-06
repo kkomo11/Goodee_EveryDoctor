@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import com.goodee.everydoctor.user.security.AuthenticationSuccessImpl;
+import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 import com.goodee.everydoctor.user.security.UserDetailsServiceImpl;
 
 @Configuration
@@ -21,6 +23,8 @@ public class SecurityConfig {
 	private AuthenticationSuccessImpl authenticationSuccessImpl;
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
+	@Autowired
+	private LogoutHandlerImpl logoutHandlerImpl;
 
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
@@ -60,15 +64,25 @@ public class SecurityConfig {
 		//로그아웃
 		httpSecurity.logout()
 					.logoutUrl("/logout")
+					.addLogoutHandler(logoutHandlerImpl)
 					.logoutSuccessUrl("/")	
 					.invalidateHttpSession(true)
-					.deleteCookies("JSESSIONID")//로그아웃 성공하면 가는곳
+					.deleteCookies("JSESSIONID")
 					.permitAll();
 		
 		//소셜로그인
 		httpSecurity.oauth2Login()
 					.userInfoEndpoint()
 					.userService(userDetailsServiceImpl)
+					
+					;
+		
+		//RememberMe 설정
+		httpSecurity.rememberMe()
+					.tokenValiditySeconds(3600) //로그인 유지시간 (초단위)
+					.key("rememberMe") //key는 인증받은 사용자의 정보로 Token 생성시 필요, 필수
+					.alwaysRemember(true) //사용자가 기능사용을 체크하지 않아도 항상 사용
+					.userDetailsService(userDetailsServiceImpl)  //인증 절차를 실행할 UserDetailservice, 필수
 					;
 					
 		

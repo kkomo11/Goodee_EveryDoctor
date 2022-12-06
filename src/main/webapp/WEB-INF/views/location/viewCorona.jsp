@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>코로나 진별검사소</title>
+    <title>코로나 선별검사소</title>
     <c:import url="../temp/boot.jsp"></c:import>
     <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -21,10 +21,14 @@
     .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
-    .desc .reservation {background :#55DDBD;}
     .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
+    #map{
+        width:1200px;
+        height:500px;
+        margin-bottom: 300px;
+    }
     </style>
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 </head>
@@ -45,7 +49,7 @@
     <c:import url="../temp/header.jsp"></c:import>
     <!-- End Header Area -->
 
-    <div id="map" style="width:1500px;height:1000px;"></div>
+    <div id="map"></div>
 
     <!-- Start Footer Area -->
     <c:import url="../temp/footer.jsp"></c:import>
@@ -69,7 +73,7 @@
                 var lat = position.coords.latitude, // 위도
                     lon = position.coords.longitude; // 경도
 
-                let imageSrc="/images/location/geolocation2.png",
+                let imageSrc="/images/location/locate.png",
                 imageSize= new kakao.maps.Size(64, 69),  //마커이미지의 크기
                 imageOption ={offset: new kakao.maps.Point(27, 69)}   //마커이미지의 옵션 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
 
@@ -160,11 +164,19 @@
                             // console.log("coords ==", coords);
                             // if(bounds.contain(coords)){
 
+                                let imageSrc ='/images/location/location.png',
+                                    imageSize = new kakao.maps.Size(40,42),
+                                    imageOption = {offset: new kakao.maps.Point(20,42)}
+
+                                let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
+                                        
+
                                 //결과값으로 받은 위치를 마커로 표시합니다.
     
                                     let marker = new kakao.maps.Marker({
                                         map : map,
-                                        position : coords
+                                        position : coords,
+                                        image : markerImage
                                     });
                                     // console.log(marker.length);
     
@@ -179,8 +191,7 @@
                                             let desc = $('<div class="desc"/>');
                                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                                            let reservation = $('<button class="reservation" type="button" />').text('예약하기')
-                                            
+                  
                                             wrap.append(info);
                                             info.append(title).append(body);
                                             title.append(close);
@@ -189,7 +200,7 @@
                                             body.append(desc);
                                             desc.append(ellipsis);
                                             desc.append(tel);
-                                            desc.append(reservation);
+
                                             
                                             let content = wrap[0];
                                             

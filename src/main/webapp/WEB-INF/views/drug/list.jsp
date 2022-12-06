@@ -61,11 +61,11 @@
       <section class="dashboard section">
         <div class="container">
           <div class="row">
-            <div class="col-lg-9 col-md-8 col-12">
+            <div class="col-12">
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">처방 받은 약 검색
+                  <h3 class="block-title">처방 해줄 약 검색
                     <!-- 검색창 -->
                     <div class="row mb-3">
                       <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
@@ -115,17 +115,19 @@
                       <nav aria-label="Page navigation example">
                         <ul class="pagination-list">
                           <c:if test="${pager.pre}">
-                            <li class="page-item"><a class="page-link"
-                                href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
+                            <li class="page-item">
+                              <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
                             </li>
                           </c:if>
                           <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
                             <li class="page-item"><a class="page-link"
                                 href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
                           </c:forEach>
-                          <li class="page-item ${pager.next?'':'disabled'}"><a class="page-link"
-                              href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
-                          </li>
+                          <c:if test="${pager.next}">
+                            <li class="page-item">
+                              <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
+                            </li>
+                        </c:if>
                         </ul>
                       </nav>
                     </div>

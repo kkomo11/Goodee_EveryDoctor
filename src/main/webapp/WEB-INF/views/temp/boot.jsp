@@ -10,11 +10,13 @@
 
 <!-- Template JS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script defer src="/js/bootstrap.min.js"></script>
 <script defer src="/js/wow.min.js"></script>
 <script defer src="/js/tiny-slider.js"></script>
 <script defer src="/js/glightbox.min.js"></script>
 <script defer src="/js/main.js"></script>
+<script defer src="/js/alert.js"></script>
 <!-- iamport.payment.js -->
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- toss.payment.js -->

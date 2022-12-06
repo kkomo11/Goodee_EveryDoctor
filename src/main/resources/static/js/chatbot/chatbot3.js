@@ -52,8 +52,8 @@ function connect() {
                 let contentTable = jsonArray.bubbles[0].data.contentTable;
                 let content = '';
                 let button = $('<div class="BubbleMessage_BubbleMessage__d2tka"></div>');
-                let buttonMessageGroup = $('<div class="BubbleMessage_Body__SLE+g"></div>')
-                let ul = $('<ul class="ButtonMessageGroup_ButtonMessageGroup__\+wRrg"/>')
+                let buttonMessageGroup = $('<div class="BubbleMessage_Body__SLE+g2"></div>')
+                let ul = $('<ul class="ButtonMessageGroup_ButtonMessageGroup__\+wRrg2"/>')
                 for(let i=0; i<contentTable.length; i++){
                     content = contentTable[i][0].data.data.action.data.displayText;
                     console.log(content);
@@ -111,6 +111,10 @@ function showButtonReply(message){
     // $("#chatList").append(ul);
     $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌      
     return button;
+}
+
+function showButtonFooter(message){
+    console.log('showButtonFooter', message);
 }
 
 function sendMessage(messages){
