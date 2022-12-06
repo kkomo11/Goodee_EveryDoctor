@@ -130,6 +130,48 @@
             map.setCenter(markerPosition);      
         }    
         
+
+        function notifyMe() {
+            if (!("Notification" in window)) {
+               
+                alert("This browser does not support desktop notification");
+            } else if (Notification.permission === "granted") {
+
+                // const notification = new Notification("Hi there!",{body:'약국을 선택하셨습니다.'});
+                // alert("선택 완료~")
+                let msg = '해당약국에 처방전을 보냈습니다.';
+                notify(msg);
+
+            } else if (Notification.permission !== "denied") {
+                alert("알람을 차단하셨습니다.\n브라우저의 사이트 설정에서 변경하실 수 있습니다.")
+                // We need to ask the user for permission
+                Notification.requestPermission().then((permission) => {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    const notification = new Notification("Hi there!");
+
+                    // …
+                }
+                });
+            }
+            // At last, if the user has denied notifications, and you
+            // want to be respectful there is no need to bother them anymore.
+            }
+
+            //알림 띄우기
+            function notify(msg){
+                let options= {
+                    body :msg
+                }
+
+                //데스크톱 알림 요청
+                let notification = new Notification("약국선택 완료!",options);
+
+                //3초뒤 알람 닫기
+                setTimeout(function(){
+                    notification.close();
+                },3000);
+            }
         //마커를 표시할 위치와 샤싣 객체 배열
 
         //주소- 좌표 번환객채 생성
@@ -197,7 +239,7 @@
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                            let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" />').text(' 직접수령 ')
+                            let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
 
                             wrap.append(info);
                             info.append(title).append(body);
