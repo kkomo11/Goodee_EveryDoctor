@@ -13,7 +13,37 @@
 		(USERSROLENUM, USERNAME, ROLENUM)
 		VALUES(0, #{username}, 1)
 	</insert>
-	
+	<insert id="inputRoleMember" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 2)
+	</insert>
+	<insert id="inputRoleAdmin" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 3)
+	</insert>
+	<insert id="inputRoleDoctor" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 4)
+	</insert>
+	<insert id="inputRolePetdoc" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 5)
+	</insert>
+	<insert id="inputRoleNurse" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 6)
+	</insert>
+	<insert id="inputRolePetnurse" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 7)
+	</insert>
+
 	<update id="modifyUserMember" parameterType="UserVO">
 		UPDATE USERS set NAME = #{name}, CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone}, GENDER =#{gender} WHERE USERNAME =#{username};
 	</update>
