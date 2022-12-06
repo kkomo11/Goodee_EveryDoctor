@@ -242,7 +242,7 @@
                       <input type="text" id="sample6_extraAddress" placeholder="참고항목">
                     </div>
 
-                    <div class="col-12">
+                    <!-- <div class="col-12">
                       <div class="google-map">
                         <label>약국위치*</label>
                         <div class="button">
@@ -259,7 +259,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-12">
                       <div class="form-check">

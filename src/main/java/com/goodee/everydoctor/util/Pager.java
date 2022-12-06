@@ -13,9 +13,9 @@ public class Pager {
 	private Long perBlock;
 
 	//이전블럭의 유무 -이전블럭이 있으면 true 없으면 false
-	private boolean pre = false;
+	private boolean pre;
 	//다음블럭의 유무 -다음블럭이 있으면 true 없으면 false
-	private boolean next = false;
+	private boolean next;
 	//검색 컬럼의 종류
 	private String kind;
 	//검색어
@@ -23,7 +23,7 @@ public class Pager {
 
 	public Pager() {
 		this.perPage=10L;
-		this.perBlock=10L;
+		this.perBlock=5L;
 	}
 
 	//1. mapper에서 사용할 값 계산

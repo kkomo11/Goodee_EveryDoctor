@@ -35,5 +35,15 @@ public class DrugController {
 		mv.setViewName("drug/detail");
 		return mv;
 	}
+	
+	@GetMapping("store")
+	public ModelAndView getStore(Pager pager)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<DrugVO> ar = drugService.getList(pager);
+		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
+		mv.setViewName("drug/store");
+		return mv;
+	}
 
 }

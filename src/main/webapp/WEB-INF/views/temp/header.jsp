@@ -103,7 +103,7 @@
                                               <li class="nav-item"><a href="messages.html">내가 쓴 후기 보기</a></li>
                                               <li class="nav-item"><a href="delete-account.html">회원탈퇴</a>
                                               </li>
-                                              <li class="nav-item"><a href="invoice.html">배송조회</a></li>
+                                              <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                           </ul>
                                       </li>
                                     </ul>
@@ -112,12 +112,12 @@
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
-                                      aria-label="Toggle navigation">Blog</a>
+                                      aria-label="Toggle navigation">약사</a>
                                   <ul class="sub-menu collapse" id="submenu-1-5">
                                       <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
                                       </li>
-                                      <li class="nav-item"><a href="/drug/list">보유약리스트</a></li>
-                                      <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
+                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
                                   </ul>
                               </li>
                             </ul>
