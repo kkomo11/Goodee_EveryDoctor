@@ -33,10 +33,10 @@
                         <i class="ChatContainer_Image__Byitv" role="img"></i>
                     </div> -->
                     <ul class="ChatContainer_ConversationList__aR5OV" id="chatList">
-                        <li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem">
+                        <li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem" id="first" >
                             <div class="CompleteMessage_CompleteMessage__KWS7v">
                                 <div class="BubbleMessage_BubbleMessage__d2tka" data-testid="bubble-message">
-                                    <div class="BubbleMessage_Body__SLE+g">
+                                    <div class="BubbleMessage_Body__SLE+g" >
                                         <div class="BubbleMessage_Chunks__y4XFp">
                                             <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section">
                                                 <div class="SpeechBubble_SpeechBubble__dPnRi MessageChunk_MessageChunk__Q3D+1" data-testid="speech-bubble">

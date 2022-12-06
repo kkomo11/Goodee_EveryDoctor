@@ -45,17 +45,8 @@
                                       </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class=" dd-menu collapsed" href="/location/viewCorona"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">선별진료소</a>
-                                    <ul class="sub-menu collapse" id="submenu-1-5">
-                                        <li class="nav-item"><a href="/location/viewCorona">선별진료소보러가기</a>
-                                        </li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single
-                                                Sibebar</a></li>
-                                    </ul>
+                                    <a class="dd-menu collapsed" href="/location/viewCorona"
+                                        aria-label="Toggle navigation">코로나 검사</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
@@ -103,18 +94,9 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="dd-menu collapsed" href="javascript:void(0)"
-                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
-                                      aria-controls="navbarSupportedContent" aria-expanded="false"
-                                      aria-label="Toggle navigation">Blog</a>
-                                  <ul class="sub-menu collapse" id="submenu-1-5">
-                                      <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
-                                      </li>
-                                      <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                                      <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
-                                              Sibebar</a></li>
-                                  </ul>
-                              </li>
+                                    <a class="dd-menu collapsed" href="#"
+                                        aria-label="Toggle navigation">24시</a>
+                                </li>
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
