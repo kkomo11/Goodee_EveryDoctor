@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -12,23 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
     <!-- Place favicon.ico in the root directory -->
-
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
     
     <c:import url="../../temp/boot.jsp"></c:import>
-
+	<link rel="stylesheet" href="/css/pet/diagnosis/reservation.css" />
+	
 </head>
 
 <body>
@@ -74,7 +62,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-
+	<sec:authentication property="Principal" var="member"/>
     <!-- Start Dashboard Section -->
     <section class="dashboard section">
         <div class="container">
@@ -84,8 +72,8 @@
                     <div class="dashboard-sidebar">
                         <div class="user-image">
                             <img src="https://via.placeholder.com/300x300" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
+                            <h3>${member.username }
+                                <span><a href="javascript:void(0)">${member.name }</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">
@@ -148,28 +136,79 @@
                                             <!-- Start Post Ad Step One Content -->
                                             <div class="step-one-content">
                                                 <form class="default-form-style" method="post" action="#">
+                                                	<input type="hidden" id="usernameInput" value="${member.username }">
+                                                	<input type="hidden" id="petdocUsernameInput" value="${petdoc }">
+                                                	<input type="hidden" id="petNumInput">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label>반려동물 선택*</label>
-                                                                <input name="petNum" type="text"
-                                                                    placeholder="반려동물 선택으로 수정">
+                                                                <div id="ownedPetListFrame">
+	                                                                <c:forEach items="${ownedPetList }" var="pet">
+	                                                                	
+	                                                                	<div class="ownedPetFrame" data-petnum="${pet.petNum }">
+	                                                                		<c:if test="${pet.petFileName != null }">
+	                                                                			<img class="ownedPetImage" alt="" src="/file/PET/${pet.petFileName }">
+	                                                                		</c:if>
+	                                                                		<c:if test="${pet.petFileName == null }">
+	                                                                			<img class="ownedPetImage" alt="" src="/images/pet/profile/default_pet_icon.svg">
+	                                                                		</c:if>
+	                                                                		<span class="ownedPetName">${pet.petName }</span>
+	                                                                	</div>
+	                                                                </c:forEach>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 이름*</label>
+                                                                <input id="petNameInput" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 종류*</label>
+                                                                <input id="speciesNameInput" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 생일*</label>
+                                                                <input id="petBirthInput" type="date" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 나이*</label>
+                                                                <input id="petAgeInput" type="number" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 성별*</label>
+                                                                <input id="petSexInput" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 중성화여부*</label>
+                                                                <input id="neuteredInput" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label>유형*</label>
+                                                                <label>반려동물 예방접종여부*</label>
+                                                                <input id="vaccinnationInput" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label>상담유형*</label>
                                                                 <div class="selector-head">
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select" name="pDansCategory">
-                                                                        <option value="none">Select a Category</option>
-                                                                        <option value="none">Mobile Phones</option>
-                                                                        <option value="none">Electronics</option>
-                                                                        <option value="none">Computers</option>
-                                                                        <option value="none">Headphones</option>
-                                                                        <option value="none">Furnitures</option>
-                                                                        <option value="none">Books</option>
+                                                                    <select class="user-chosen-select" name="pDansCategory" id="pDansCategory">
+                                                                        
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -181,7 +220,17 @@
                                                                     placeholder="상담내용"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-12">
+                                                        
+                                                        <div class="col-12">
+                                                            <div class="form-group button mb-0">
+                                                                <button type="button" class="btn " id="addPhotoBtn">진료용 사진 추가</button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-lg-6 col-12" id="photoFileFrame">
+                                                        </div>
+                                                        
+                                                        <!-- <div class="col-lg-6 col-12">
                                                             <div class="upload-input">
                                                                 <input type="file" id="diagonsisFile" name="files">
                                                                 <label for="upload" class="text-center content">
@@ -194,7 +243,7 @@
                                                                     </span>
                                                                 </label>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
                                                                 <button type="submit" class="btn ">Next Step</button>
@@ -509,13 +558,21 @@
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>
     </a>
+    
+    <script type="text/javascript" src="/js/pet/diagnosis/reservation.js"></script>
+    
+    <script type="text/template" id="pDansCategoryOptionTemplate">
+		<option value="{category}">{categoryName}</option>
+	</script>
+	<script type="text/template" id="diagnosisFileInputTemplate">
+		<div class="col-lg-6 col-12 fileFrame">
+			<button type="button" class="btn btn-danger">파일 삭제</button>
+        	<div class="upload-input filesInput">
+        		<input type="file" id="diagonsisFile" name="files">
+        	</div>
+		</div>
+	</script>
 
-    <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
 </body>
 
 </html>

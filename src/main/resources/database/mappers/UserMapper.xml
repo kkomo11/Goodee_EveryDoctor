@@ -14,6 +14,13 @@
 		VALUES(0, #{username}, 1)
 	</insert>
 	
+	<update id="modifyUserMember" parameterType="UserVO">
+		UPDATE USERS set NAME = #{name}, CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone}, GENDER =#{gender} WHERE USERNAME =#{username};
+	</update>
+	<update id="modifyRoleMember" parameterType="UserVO">
+		UPDATE USERSROLES set ROLENUM=2 WHERE USERNAME = #{username}
+	</update>
+	
 	<select id="getUserByUsername" parameterType="String" resultMap="UserVOResult">
 		SELECT u.*, r.ROLENAME 
 		FROM USERS u 
@@ -30,7 +37,7 @@
 		<result column="PHONE" property="phone"/>
 		<result column="EMAIL" property="email"/>
 		<result column="USERREGDATE" property="userRegdate"/>
-		<result column="SEX" property="sex"/>
+		<result column="GENDER" property="gender"/>
 		<result column="CI" property="ci"/>
 		<result column="FILENAME" property="fileName"/>
 		<result column="ENABLED" property="enabled"/>
@@ -41,5 +48,9 @@
 			<result column="ROLENAME" property="roleName"/>
 		</collection>
 	</resultMap>
+	
+	<select id="hasUserByCI" parameterType="UserVO" resultType="int">
+		select count(USERNAME) from USERS where ci=#{ci}
+	</select>
 	
 </mapper>

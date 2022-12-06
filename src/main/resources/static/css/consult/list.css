@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.categoryIconImg{
+	width: 1.3rem;
+	height: 1.3rem;
+}
+
+#consultWriteBtn {
+	width: 100%;
+	margin-bottom: 0.7rem;
+}

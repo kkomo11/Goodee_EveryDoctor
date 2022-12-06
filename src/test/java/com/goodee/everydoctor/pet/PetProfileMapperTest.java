@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.goodee.everydoctor.pet.profile.PetProfileService;
 import com.goodee.everydoctor.pet.profile.PetVO;
+import com.goodee.everydoctor.user.UserVO;
 
 @SpringBootTest
 class PetProfileMapperTest {
@@ -39,5 +40,16 @@ class PetProfileMapperTest {
 		
 		//assertEquals(1, result);
 	}
+	
+	
+	/*void inputPetDocDummy() throws Exception {
+		for(int i = 1; i <= 10; i++) {
+			UserVO userVO = new UserVO();
+			userVO.setUsername("petdoc" + i);
+			userVO.setPassword("petdoc" + i);
+			userVO.setNickname("petdoc" + i);
+			userVO.setEmail("petdoc" + i + "@petdoc" + i);
+		}
+	}*/
 
 }

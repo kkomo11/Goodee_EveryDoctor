@@ -44,7 +44,7 @@ public class PetProfileController {
 		//mv.addObject("petProfile", petVO);
 		
 		mv.addObject("petNum", petVO.getPetNum());
-		mv.addObject("userName", "test");	  // test말고 petVO에서 꺼내서 전달(페이지를 요청한 유저의 PK를 받아야함)
+		//mv.addObject("userName", "test");	  // test말고 petVO에서 꺼내서 전달(페이지를 요청한 유저의 PK를 받아야함)
 		
 		mv.setViewName("pet/profile/update");
 		
@@ -74,7 +74,7 @@ public class PetProfileController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("petNum", petVO.getPetNum());
-		mv.addObject("userName", "test");	  // test말고 petVO에서 꺼내서 전달(페이지를 요청한 유저의 PK를 받아야함)
+		//mv.addObject("userName", "test");	  // test말고 petVO에서 꺼내서 전달(페이지를 요청한 유저의 PK를 받아야함)
 		mv.setViewName("pet/profile/detail"); // 페이지에 반려동물 테이블 PK만 전달
 		
 		return mv;
@@ -86,7 +86,7 @@ public class PetProfileController {
 		// 반려동물 정보 등록
 		petProfileService.inputPetProfile(petVO, petFile);
 		
-		return "redirect:/pet/profile/regist";
+		return "redirect:/pet/home";
 	}
 	
 	@GetMapping("regist")

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.consult.ConsultMapper">
+
+	<delete id="deleteConsult" parameterType="ConsultVO">
+		DELETE FROM CONSULT WHERE CONSULTNUM = #{consultNum}
+	</delete>
+
+	<select id="findConsultFiles" parameterType="ConsultVO" resultType="FileVO">
+		SELECT CF.CONSULTFILENUM AS FILENUM, CF.CONSULTNUM AS NUM, CF.CONSULTFILENAME AS FILENAME, CF.CONSULTFILEORINAME AS ORINAME
+		FROM CONSULT C
+		LEFT JOIN CONSULTFILE CF 
+		ON (C.CONSULTNUM = CF.CONSULTNUM)
+		WHERE C.CONSULTNUM = #{consultNum};
+	</select>
+
+	<delete id="deleteConsultCategory" parameterType="ConsultVO">
+		DELETE FROM CONSULTCATEGORY WHERE CONSULTNUM = #{consultNum}
+	</delete>
+
+	<update id="modifyConsult" parameterType="ConsultVO">
+		UPDATE CONSULT SET CONSULTTITLE = #{consultTitle}, CONSULTCONTENT = #{consultContent}, CONSULTKIND = #{consultKind} 
+		WHERE CONSULTNUM = #{consultNum}
+	</update>
+
+	<select id="findConsultDetail" parameterType="ConsultVO" resultMap="findConsultDetailResult">
+		SELECT *
+		FROM CONSULT C
+		INNER JOIN CONSULTCATEGORY CC
+		ON (C.CONSULTNUM = CC.CONSULTNUM)
+		INNER JOIN CATEGORY CG
+		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
+		LEFT JOIN CONSULTFILE CF 
+		ON(C.CONSULTNUM = CF.CONSULTNUM)
+		WHERE C.CONSULTNUM = #{consultNum}
+	</select>
+	
+	<resultMap type="ConsultVO" id="findConsultDetailResult">
+		<id column="CONSULTNUM" property="consultNum"/>
+		<result column="USERNAME" property="username"/>
+		<result column="CONSULTTITLE" property="consultTitle"/>
+		<result column="CONSULTCONTENT" property="consultContent"/>
+		<result column="CONSULTREQDATE" property="consultReqDate"/>
+		<result column="CONSULTKIND" property="consultKind"/>
+		
+		<collection property="hospitalCategoryVO" javaType="List" ofType="HospitalCategoryVO">
+			<id column="CATEGORYNUM" property="categoryNum"/>
+			<result column="CATEGORYNAME" property="categoryName"/>
+			<result column="CATEGORYKIND" property="categoryKind"/>
+			<result column="CATEGORYNUMREF" property="categoryNumRef"/>
+			<result column="CATEGORYICON" property="categoryIcon"/>
+		</collection>
+		
+		<collection property="consultFiles" javaType="List" ofType="FileVO">
+			<id column="CONSULTFILENUM" property="fileNum"/>
+			<result column="CONSULTFILENAME" property="fileName"/>
+			<result column="CONSULTFILEORINAME" property="fileOriName"/>
+		</collection>
+	</resultMap>
+
+	<insert id="inputConsultCategory" parameterType="ConsultVO">
+		INSERT INTO CONSULTCATEGORY VALUES (NULL, #{consultNum}, #{consultCategory})
+	</insert>
+
+	<insert id="inputConsult" parameterType="ConsultVO" useGeneratedKeys="true" keyProperty="consultNum">
+		INSERT INTO CONSULT VALUES (NULL, #{username}, #{consultTitle}, #{consultContent}, CURRENT_DATE, #{consultKind})
+	</insert>
+
+	<select id="findConsultCategory" parameterType="ConsultVO" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND = #{consultKind}
+	</select>
+
+	<select id="findConsultList" parameterType="Pager" resultMap="findConsultListResult">
+		SELECT *
+		FROM CONSULT C
+		INNER JOIN CONSULTCATEGORY CC
+		ON (C.CONSULTNUM = CC.CONSULTNUM)
+		INNER JOIN CATEGORY CG
+		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
+		LEFT JOIN CONSULTFILE CF 
+		ON(C.CONSULTNUM = CF.CONSULTNUM)
+		<include refid="categorySearch"></include>
+		ORDER BY C.CONSULTNUM DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<resultMap type="ConsultVO" id="findConsultListResult">
+		<id column="CONSULTNUM" property="consultNum"/>
+		<result column="USERNAME" property="username"/>
+		<result column="CONSULTTITLE" property="consultTitle"/>
+		<result column="CONSULTCONTENT" property="consultContent"/>
+		<result column="CONSULTREQDATE" property="consultReqDate"/>
+		<result column="CONSULTKIND" property="consultKind"/>
+		
+		<collection property="hospitalCategoryVO" javaType="List" ofType="HospitalCategoryVO">
+			<id column="CATEGORYNUM" property="categoryNum"/>
+			<result column="CATEGORYNAME" property="categoryName"/>
+			<result column="CATEGORYKIND" property="categoryKind"/>
+			<result column="CATEGORYNUMREF" property="categoryNumRef"/>
+			<result column="CATEGORYICON" property="categoryIcon"/>
+		</collection>
+		
+		<collection property="consultFiles" javaType="List" ofType="FileVO">
+			<id column="CONSULTFILENUM" property="fileNum"/>
+			<result column="CONSULTFILENAME" property="fileName"/>
+			<result column="CONSULTFILEORINAME" property="fileOriName"/>
+		</collection>
+		
+	</resultMap>
+	
+	<select id="findConsultCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(C.CONSULTNUM)
+		FROM CONSULT C
+		INNER JOIN CONSULTCATEGORY CC
+		ON (C.CONSULTNUM = CC.CONSULTNUM)
+		INNER JOIN CATEGORY CG
+		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
+		LEFT JOIN CONSULTFILE CF 
+		ON(C.CONSULTNUM = CF.CONSULTNUM)
+		<include refid="categorySearch"></include>
+	</select>
+	
+	<select id="findAllCategories" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY ORDER BY CATEGORYNUM ASC
+	</select>
+	
+	<sql id="categorySearch">
+		<choose>
+			<when test="kind == 'category'">
+				WHERE CC.CATEGORYNUM = #{search}
+			</when>
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+	</sql>
+	
+</mapper>

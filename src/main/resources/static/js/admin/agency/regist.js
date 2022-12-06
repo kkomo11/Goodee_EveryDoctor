@@ -7,37 +7,37 @@ let check = [false, false, false];
 let address = $("#mainAddress").val();
 
 //상호명 유효성 검사
-$("#agencyName").blur(function(){
-    let agencyName = $("#agencyName").val();
-    let agencyNameResult = nullCheck(agencyName, ".agencyNamem", "상호명은");
-    check[0] = agencyNameResult;
-})
+// $("#agencyName").blur(function(){
+//     let agencyName = $("#agencyName").val();
+//     let agencyNameResult = nullCheck(agencyName, ".agencyNamem", "상호명은");
+//     check[0] = agencyNameResult;
+// })
 
-//주소 유효성 검사
-$("#detailAddress").blur(function(){
-    let detailAddress = $("#detailAddress").val();
-    let addressResult = nullCheck(detailAddress, ".addressm", "주소는");
-    check[1] = addressResult;
-})
+// //주소 유효성 검사
+// $("#detailAddress").blur(function(){
+//     let detailAddress = $("#detailAddress").val();
+//     let addressResult = nullCheck(detailAddress, ".addressm", "주소는");
+//     check[1] = addressResult;
+// })
 
-//전화번호 유효성 검사
-$("#agencyTel").blur(function(){
-    let agencyTel = $('#agencyTel').val();
-    let agencyTelResult = nullCheck(agencyTel, ".agencyTelm", "전화번호는");
-    check[2] = agencyTelResult;
-})
+// //전화번호 유효성 검사
+// $("#agencyTel").blur(function(){
+//     let agencyTel = $('#agencyTel').val();
+//     let agencyTelResult = nullCheck(agencyTel, ".agencyTelm", "전화번호는");
+//     check[2] = agencyTelResult;
+// })
 
 
-$(".regist").click(function(){
-    //주소 하나로 합치기
-    $("#agencyAddr").val($("#mainAddress").val()+$("#detailAddress").val());
+// $(".regist").click(function(){
+//     //주소 하나로 합치기
+//     $("#agencyAddr").val($("#mainAddress").val()+$("#detailAddress").val());
 
-    if(check.includes(false)){
-        alert("입력 조건을 확인해주세요");
-    }else{
-        $("#form").submit();
-    }
-})
+//     if(check.includes(false)){
+//         alert("입력 조건을 확인해주세요");
+//     }else{
+//         $("#form").submit();
+//     }
+// })
 
 let count = 0;
 
@@ -60,6 +60,41 @@ $("#fileAdd").on("click", ".del", function(){
     $(this).parents(".file").remove();
     count--;
 })
+
+//신청 버튼 클릭 시
+$("#registButton").click(function(){
+    //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
+    const medicRole = $("#medicRole");
+    const agencyRole = $("#agencyRole");
+    if(medicRole.val()=="의사" || medicRole.val()=="간호사"){
+        agencyRole.val("병원");
+    }else if(medicRole.val()=="수의사"){
+        agencyRole.val("동물병원");
+    }else if(medicRole.val()=="약사"){
+        agencyRole.val("약국");
+    }else{
+        agencyRole.val("보호소");
+    }
+
+    console.log(agencyRole.val());
+
+    //주소 하나로 합치기
+    $("#agencyAddr").val($("#mainAddress").val()+$("#detailAddress").val());
+
+    $("#form").submit();
+
+})
+
+//운영시간 반복문
+// for(let i = 0; i <= 23; i++){
+//     let m = document.createElement('option');
+//     let m_value = document.createAttribute('value');
+//     m_value.value = i;
+//     m.setAttributeNode(m_value);
+//     let m_content = document.createTextNode(i);
+//     m.appendChild(m_content);
+//     birth_month.append(m);
+// }
 
 //다음 주소 api
 function checkPost() {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -55,7 +56,7 @@
     <!-- Start Header Area -->
     <c:import url="../../temp/header.jsp"></c:import>
     <!-- End Header Area -->
-
+	<sec:authentication property="Principal" var="member"/>
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -85,8 +86,8 @@
                     <div class="dashboard-sidebar">
                         <div class="user-image">
                             <img src="https://via.placeholder.com/300x300" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
+                            <h3>${member.username }
+                                <span><a href="javascript:void(0)">${member.name }</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">
@@ -115,16 +116,16 @@
                         <div class="dashboard-block mt-0 profile-settings-block">
                             <h3 class="block-title">Pet Profile Settings</h3>
                             <div class="inner-block">
-                                <div class="image">
+                                <!-- <div class="image">
                                     <img src="https://via.placeholder.com/300x300" alt="#">
-                                </div>
+                                </div> -->
                                 <form class="profile-setting-form" method="post" action="./regist" id="petProfileRegistForm" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>이름*</label>
                                                 <input name="petName" type="text" placeholder="복실이" id="petNameInput">
-                                                <input name="userName" type="hidden" id="userNameInput" value="test">
+                                                <input name="userName" type="hidden" id="userNameInput" value="${member.username }">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-12">

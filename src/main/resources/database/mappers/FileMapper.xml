@@ -22,4 +22,5 @@
 	<delete id="deleteFileByFileNum" parameterType="fileVO">
 		DELETE FROM ${label}FILE WHERE ${label}FILENUM = #{fileNum};
 	</delete>
+	
 </mapper>

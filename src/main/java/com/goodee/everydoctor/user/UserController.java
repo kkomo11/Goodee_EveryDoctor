@@ -1,17 +1,16 @@
 package com.goodee.everydoctor.user;
 
-import java.util.List;
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("user")
 @Slf4j
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
 	
@@ -47,7 +46,7 @@ public class UserController {
 				mv.setViewName("user/registration");
 			}else {
 				int result = userService.inputUser(userVO);
-				mv.setViewName("user/login");
+				mv.setViewName("redirect:user/login");
 			}
 		}else {
 			//js처리 필요
@@ -57,6 +56,25 @@ public class UserController {
 		
 		
 		return mv;
+	}
+	
+	//본인인증 처리
+	@PostMapping("certification")
+	@ResponseBody
+	public int certification(String imp_uid, UserVO userVO, HttpSession session)throws Exception{
+		
+		// 중복 가입 확인 및 본인인증 처리	
+		int result = userService.certification(imp_uid, userVO);
+		
+		//세션 만료
+		session.invalidate();
+		
+		return result;
+	}
+	
+	@GetMapping("profile")
+	public String getProfile()throws Exception{
+		return "user/profile";
 	}
 
 }

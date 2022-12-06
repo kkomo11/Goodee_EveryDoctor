@@ -70,6 +70,7 @@ petBioRef.on("change", function(){
                         keyword: petBioSearchKeyword.val()
                     },
                     success: function(result){
+                        petBio.empty();
                         $.each(result, function(index, item){
                             let petBioListTemplate = $("#petBioListTemplate").html(); //JSP에 template으로 사용할 코드 미리 넣어놓음
                             petBioListTemplate = petBioListTemplate.replace("{petBioNum}", item["petBioNum"]).replace("{petBioName}", item["petBioName"]);

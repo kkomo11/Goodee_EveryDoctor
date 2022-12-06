@@ -7,25 +7,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Login - ClassiGrids Classified Ads and Listing Website Template</title>
+    <title>Login</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
-    <!-- Place favicon.ico in the root directory -->
 
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+	<c:import url="../temp/boot.jsp"></c:import>
 
 </head>
 
@@ -84,8 +70,7 @@
                         </div>
                         <form action="./login" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	
-                            <div class="form-group">
+							<div class="form-group">
                                 <label>Username</label>
                                 <input name="username" type="text" value="${cookie.rememberUN.value}">
                             </div>
@@ -129,35 +114,15 @@
             </div>
         </div>
     </section>
-    <!-- end login section -->
 
-    <!-- Start Newsletter Area -->
-    <div class="newsletter section">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                            <i class="lni lni-alarm"></i>
-                            <h2>Newsletter</h2>
-                            <p>We don't send spam so don't worry.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Your email address" type="email">
-                                <div class="button">
-                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter Area -->
+
+	<script type="text/javascript">
+
+	$("#preModal").trigger("click")
+	
+
+	</script>
+
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
@@ -168,12 +133,6 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
 </body>
 
 </html>
