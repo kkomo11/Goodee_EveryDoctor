@@ -22,13 +22,11 @@ $("#fileAdd").on("click", ".del", function(){
 
 //신청 버튼
 $(".inputButton").click(function(){
-    // $(this).parent().parent().parent().parent().submit()
     console.log("click");
-    // console.log($(".neuteredInput").val());
-    // console.log($(".username").val());
-    // console.log($(".agencyInfo").val());
-
+    
     //기관 검색 유효성 검사
     console.log($(this).parent().parent().prev().prev().prev().find(".agencyNum").val());
     // console.log($(this).parent().parent().prev().prev().prev().children().children().val());
+    
+    $(this).parent().parent().parent().parent().submit();
 })

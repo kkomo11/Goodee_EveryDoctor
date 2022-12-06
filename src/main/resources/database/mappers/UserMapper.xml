@@ -49,4 +49,16 @@
 		</collection>
 	</resultMap>
 	
+	<select id="hasUserByCI" parameterType="UserVO" resultType="int">
+		select count(USERNAME) from USERS where ci=#{ci}
+	</select>
+	
+	<update id="modifyFileName" parameterType="UserVO">
+		UPDATE USERS SET FILENAME=#{fileName} WHERE USERNAME = #{username}
+	</update>
+	
+	<update id="modifyPassword" parameterType="UserVO">
+		UPDATE USERS SET PASSWORD=#{password} WHERE USERNAME = #{username}
+	</update>
+	
 </mapper>

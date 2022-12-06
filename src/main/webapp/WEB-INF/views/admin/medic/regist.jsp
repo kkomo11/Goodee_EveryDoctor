@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -135,7 +136,9 @@
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <input name="username" placeholder="성함" class="username" />
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -143,7 +146,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>본인 소개글*</label>
-                                                            <textarea name="agencyInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- 기관 등록 신청 버튼 -->
@@ -189,7 +192,9 @@
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <input name="username" placeholder="성함" class="username" />
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -197,7 +202,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>본인 소개글*</label>
-                                                            <textarea name="agencyInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- 기관 등록 신청 버튼 -->
@@ -229,7 +234,9 @@
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <input name="username" placeholder="성함" class="username" />
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -237,7 +244,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>본인 소개글*</label>
-                                                            <textarea name="agencyInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- 기관 등록 신청 버튼 -->
@@ -271,7 +278,9 @@
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <input name="username" placeholder="성함" id="username" />
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -279,7 +288,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>본인 소개글*</label>
-                                                            <textarea name="agencyInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- 기관 등록 신청 버튼 -->
