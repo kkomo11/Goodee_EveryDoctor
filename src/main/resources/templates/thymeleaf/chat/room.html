@@ -28,9 +28,11 @@
         <script th:inline="javascript">
             $(document).ready(function(){
 
-                var roomId = [[${room.roomId}]];
-                var roomName = [[${room.name}]];
-                var username = [[${#authentication.principal.username}]];
+            	/* <![CDATA[ */
+                var roomId = /*[[${room.roomId}]]*/;
+                var roomName = /*[[${room.name}]]*/;
+                var username = /*[[${#authentication.principal.username}]]*/;
+            	/* ]]> */
 
                 console.log(roomName + ", " + roomId + ", " + username);
 
