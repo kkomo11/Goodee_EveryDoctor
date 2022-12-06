@@ -150,12 +150,12 @@
                                         <div class="col-12">
                                             <div class="form-group mb-1">
                                                 <label class="fw-bold">연락처 Phone</label>
-                                                <input name="phone" type="text" id="phone" placeholder="010-0000-0000" value="${user.phone }">
+                                                <input name="phone" type="text" id="phone" placeholder="01012345678형식으로 입력해주세요" value="${user.phone }">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button">
-                                                <button type="button" id="chkPhone" class="btn">연락처 인증</button>
+                                                <button type="button" id="chkPhone" class="btn" data-bs-toggle="modal" data-bs-target="#chkModal">연락처 인증</button>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,35 @@
                             </div>
                         </div>
                         <!-- End Profile Settings Area -->
-  
+  						<!-- Modal -->
+						<div class="modal fade" id="chkModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="chkModalLabel">인증번호 입력창</h5>
+						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body">
+						      	      		<p class="text-center">발송된 인증번호를 입력해주세요</p>
+							      <div class="login">
+							      	<div class="form-head">
+							      		<form action="" onSubmit="return false;" class="default-form-style" style="margin-top:0px" id="modifyForm">
+									        <p class="text-center" style="color:red" id="modifiyMsg"></p>
+									        <div class="form-group">
+									            <label>인증번호</label>
+									            <input name="chkNum" type="text" id="chkNum">
+									        </div>
+							      		</form>
+									  </div> 
+							      	</div>
+							      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" id="modalCloseBtn" data-bs-dismiss="modal">닫기</button>
+						        <button type="button" class="btn btn-primary" id="chkNumBtn">변경</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
                         <!-- Start Password Change Area -->
                         <div class="dashboard-block password-change-block" id="passwordDiv">
                             <h3 class="block-title">비밀번호 변경</h3>

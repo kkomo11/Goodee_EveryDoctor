@@ -64,8 +64,13 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
  
  //문자인증하기
  $("#chkPhone").click(function(){
-	 console.log("chkPhone")
-	
+	 console.log("chkPhone"+$("#phone").val())
+	 //모달의 내용을 바꾼다
+	 //문자를 보내고 인증번호를 받아서 기다린다
+	 let phone = $("#phone").val()	
+	 $.get("/user/phoneCheck?phone="+phone, function(dt){
+		 console.log(dt)
+	 })
  })
  
  //비밀번호 변경
