@@ -26,5 +26,13 @@ public class DrugService {
 		// TODO Auto-generated method stub
 		return drugMapper.getDetail(drugVO);
 	}
+	
+	//약국
+	public List<DrugVO> getStroe(Pager pager)throws Exception {
+		Long drugTotalCount = drugMapper.getDrugTotalCount();
+		pager.getRowNum();
+		pager.getNum(drugTotalCount);
+		return drugMapper.getStore(pager);
+	}
 
 }

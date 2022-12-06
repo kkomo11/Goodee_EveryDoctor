@@ -13,6 +13,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -26,7 +27,7 @@ public class WebSocketConfig implements WebSocketConfigurer, WebSocketMessageBro
 	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(chatHandler, "")	//handler 클래스와 경로를 설정
+		registry.addHandler(chatHandler, "ws/chat")	//handler 클래스와 경로를 설정
 				.setAllowedOrigins("*") //ws프로토콜/ws/chat 하위의 모든uri에서 chatHandler를 사용한다는 의미
 				.addInterceptors(new HttpSessionHandshakeInterceptor());
 				//interceptor for adding httpsession into websocket session

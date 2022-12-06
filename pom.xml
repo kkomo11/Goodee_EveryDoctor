@@ -28,13 +28,17 @@
 	</repositories>
 	
 	<dependencies>
-		<!-- 아임포트 -->
 		<dependency>
 		    <groupId>com.github.iamport</groupId>
 		    <artifactId>iamport-rest-client-java</artifactId>
 		    <version>0.2.22</version>
 		</dependency>
-		
+		<!-- 아임포트 -->
+		<!-- jackson-databind는 웹소켓 채팅의 Json 타입을 Java형태로 바꿔주는 역할 -->
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
