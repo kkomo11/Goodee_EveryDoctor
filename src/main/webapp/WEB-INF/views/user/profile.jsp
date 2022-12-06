@@ -68,7 +68,7 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="${user.fileName}" alt="#">
+                            <img src="${user.fileName}" alt="#" style="object-fit: cover;">
                             <h3>${user.name}
                                 <span><a href="javascript:void(0)">${user.username}</a></span>
                             </h3>
@@ -105,15 +105,14 @@
 		                                    <div class="form-group upload-image">
 		                                        <label class="fw-bold">프로필 사진</label>
 		                                        <div class="image">
-		                                    		<img src="${user.fileName}" alt="#">
+		                                    		<img src="${user.fileName}" alt="#" style="object-fit: cover;">
 		                                		</div>
 		                                    </div>
 	                                	</div>
 	                                	<div class="flex-grow-1 ms-3">
 	                                		<div class="button">
 	                                			<label class="btn" for="profile-image">프로필 사진 수정</label>
-		                                		<button type="button" class="btn">기본 프로필로 변경</button>
-		                                		
+		                                		<button type="button" class="btn" id="default-profile">기본 프로필로 변경</button>
 			                                        <input name="profile-image" id="profile-image" type="file" class="d-none" placeholder="Upload Image">
 	                                		</div>
 	                                	</div>
@@ -121,8 +120,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="fw-bold">아이디 ID</label> 소셜로그인은 구분해서 소셜로그인 뜨도록
-                                                <input name="first-name" class="border-0 disabled" type="text" value="${user.username}">
+                                                <label class="fw-bold">아이디 ID</label>
+                                                <input id="username" class="border-0 disabled" type="text" value="${user.username}">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -134,31 +133,29 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="fw-bold">생일 Birth</label>
-                                                <input name="birth" type="text"  class="border-0 disabled " value="${user.birth}">
+                                                <input name="birth" type="text" id="birth" class="border-0 disabled " value="${user.birth}">
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="form-group">
+                                            <div class="form-group mb-1">
                                                 <label class="fw-bold">이메일 Email</label>
-                                                <input name="email" type="email" value="${user.email}" placeholder="username@gmail.com">
-                                            	<button>이메일 인증할거야? 버튼</button>
+                                                <input name="email" type="email" id="email" value="${user.email}" placeholder="username@gmail.com">
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="form-group">
+                                            <div class="form-group button">
+                                                <button type="button" id="chkEmail" class="btn">이메일 인증</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group mb-1">
                                                 <label class="fw-bold">연락처 Phone</label>
-                                                <input name="phone" type="text" placeholder="010-0000-0000" value="${user.phone }">
-                                                <button>문자 인증할거야?버튼</button>
+                                                <input name="phone" type="text" id="phone" placeholder="010-0000-0000" value="${user.phone }">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-12">
-                                        	<div class="form-group">
-                                        		<button type="button" class="btn"></button>
-                                        	</div>
-                                        </div>
                                         <div class="col-12">
-                                            <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">프로필 수정</button>
+                                            <div class="form-group button">
+                                                <button type="button" id="chkPhone" class="btn">연락처 인증</button>
                                             </div>
                                         </div>
                                     </div>
@@ -166,36 +163,37 @@
                             </div>
                         </div>
                         <!-- End Profile Settings Area -->
+  
                         <!-- Start Password Change Area -->
-                        <div class="dashboard-block password-change-block">
+                        <div class="dashboard-block password-change-block" id="passwordDiv">
                             <h3 class="block-title">비밀번호 변경</h3>
                             <div class="inner-block">
-                                <form class="default-form-style" method="post" action="#">
+                                <form class="default-form-style" id="modifyPwForm" onSubmit="return false;" method="post" action="#">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>현재 비밀번호</label>
-                                                <input name="current-password" type="password"
+                                                <input name="currentPassword" type="password"
                                                     placeholder="Enter old password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>새로운 비밀번호</label>
-                                                <input name="new-password" type="password"
+                                                <input name="newPassword" type="password"
                                                     placeholder="Enter new password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>비밀번호 확인</label>
-                                                <input name="retype-password" type="password"
+                                                <input name="retypePassword" type="password"
                                                     placeholder="Retype password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button mb-0">
-                                                <button type="submit" class="btn ">비밀번호 변경</button>
+                                                <button type="button" class="btn" id="modifyPwBtn">비밀번호 변경</button>
                                             </div>
                                         </div>
                                     </div>
@@ -209,34 +207,6 @@
         </div>
     </section>
     <!-- End Dashboard Section -->
-
-    <!-- Start Newsletter Area -->
-    <div class="newsletter section">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                            <i class="lni lni-alarm"></i>
-                            <h2>Newsletter</h2>
-                            <p>We don't send spam so don't worry.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Your email address" type="email">
-                                <div class="button">
-                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter Area -->
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
