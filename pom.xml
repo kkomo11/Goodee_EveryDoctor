@@ -28,6 +28,11 @@
 	</repositories>
 	
 	<dependencies>
+		<dependency>
+		    <groupId>net.nurigo</groupId>
+		    <artifactId>sdk</artifactId>
+		    <version>4.2.7</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 -->
 		<dependency>
 		    <groupId>org.thymeleaf.extras</groupId>
