@@ -4,8 +4,102 @@
 	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.goodee.everydoctor.admin.report.ReportMapper">
+		<!-- 신고 INSERT -->
 		<insert id="inputReport" parameterType="ReportVO" useGeneratedKeys="true" keyProperty="reportNum">
 			INSERT INTO REPORT (REPORTNUM, REPORTTYPENUM, REPORTERNAME, REPORTEDNAME, CONSULTNUM, REPORTTITLE, REPORTCONTENTS, REPORTCHECKED)
 			VALUES (NULL, #{reportTypeNum}, #{reporterName}, #{reportedName}, #{consultNum}, #{reportTitle}, #{reportContents}, #{reportChecked})
 		</insert>
+		
+		<select id="findCount" parameterType="Pager" resultType="Long">
+			SELECT COUNT(REPORTNUM) FROM REPORT
+			WHERE
+			<choose>
+				<when test="kind == 'reporterName'">REPORTERNAME</when>
+				<when test="kind == 'reportedName'">REPORTEDNAME</when>
+				<when test="kind == 'reportTitle'">REPORTTITLE</when>
+				<otherwise>REPORTCONTENTS</otherwise>
+			</choose>
+			LIKE CONCAT('%',#{search},'%')
+		</select>
+		
+		<!-- 신고 리스트 불러오기 -->
+		<select id="findReportList" parameterType="Pager" resultMap="findReportList">
+			SELECT RT.REPORTTYPENUM, RT.REPORTTYPENAME, R.REPORTNUM, R.REPORTERNAME, R.REPORTEDNAME,
+			R.CONSULTNUM, R.REPORTTITLE, R.REPORTCONTENTS, R.REPORTCHECKED
+			FROM 
+			REPORTTYPE RT
+			INNER JOIN REPORT R
+			ON RT.REPORTTYPENUM = R.REPORTTYPENUM
+			WHERE
+			<choose>
+				<when test="kind == 'reporterName'">REPORTERNAME</when>
+				<when test="kind == 'reportedName'">REPORTEDNAME</when>
+				<when test="kind == 'reportTitle'">REPORTTITLE</when>
+				<otherwise>REPORTCONTENTS</otherwise>
+			</choose>
+			LIKE CONCAT('%',#{search},'%')
+			ORDER BY R.REPORTNUM DESC
+			LIMIT #{startRow}, #{perPage}
+		</select>
+		
+		<resultMap type="ReportVO" id="findReportList">
+			<id column="REPORTNUM" property="reportNum"/>
+			<result column="REPORTERNAME" property="reporterName"/>
+			<result column="REPORTEDNAME" property="reportedName"/>
+			<result column="CONSULTNUM" property="consultNum"/>
+			<result column="REPORTTITLE" property="reportTitle"/>
+			<result column="REPORTCONTENTS" property="reportContents"/>
+			<result column="REPORTCHECKED" property="reportChecked"/>
+			<result column="REPORTCHECKED" property="reportChecked"/>
+			<association property="reportTypeVO" javaType="ReportTypeVO">
+				<id column="REPORTTYPENUM" property="reportTypeNum"/>
+				<result column="REPORTTYPENAME" property="reportTypeName"/>
+			</association>
+		</resultMap>
+		
+		<!-- 신고 답변 달기 -->
+		<insert id="inputReportAnswer" parameterType="ReportAnswerVO">
+			INSERT INTO REPORTANSWER (REPORTANSWERNUM, REPORTNUM, REPORTANSWERCONTENTS)
+			VALUES (0, #{reportNum}, #{reportAnswerContents})
+		</insert>
+		
+		<!-- 신고 디테일 불러오기 -->
+		<select id="findReportDetail" parameterType="ReportVO" resultMap="findReportDetail">
+			SELECT RT.REPORTTYPENUM, RT.REPORTTYPENAME, R.REPORTNUM, R.REPORTERNAME, R.REPORTEDNAME,
+			R.CONSULTNUM, R.REPORTTITLE, R.REPORTCONTENTS, R.REPORTCHECKED, RF.REPORTFILENUM AS FILENUM, 
+			RF.REPORTFILENAME AS FILENAME, RF.REPORTFILEORINAME AS FILEORINAME, RA.REPORTANSWERNUM , RA.REPORTANSWERCONTENTS
+			FROM 
+			REPORTTYPE RT
+			LEFT JOIN REPORT R
+			ON RT.REPORTTYPENUM = R.REPORTTYPENUM
+			LEFT JOIN REPORTFILE RF
+			ON R.REPORTNUM = RF.REPORTNUM
+			LEFT JOIN REPORTANSWER RA
+			ON R.REPORTNUM = RA.REPORTNUM
+			WHERE R.REPORTNUM = #{reportNum}
+		</select>
+		
+		<resultMap type="ReportVO" id="findReportDetail">
+			<id column="REPORTNUM" property="reportNum"/>
+			<result column="REPORTERNAME" property="reporterName"/>
+			<result column="REPORTEDNAME" property="reportedName"/>
+			<result column="CONSULTNUM" property="consultNum"/>
+			<result column="REPORTTITLE" property="reportTitle"/>
+			<result column="REPORTCONTENTS" property="reportContents"/>
+			<result column="REPORTCHECKED" property="reportChecked"/>
+			<result column="REPORTCHECKED" property="reportChecked"/>
+			<association property="reportTypeVO" javaType="ReportTypeVO">
+				<id column="REPORTTYPENUM" property="reportTypeNum"/>
+				<result column="REPORTTYPENAME" property="reportTypeName"/>
+			</association>
+			<association property="reportAnswerVO" javaType="ReportAnswerVO">
+				<id column="REPORTANSWERNUM" property="reportAnswerNum"/>
+				<result column="REPORTANSWERCONTENTS" property="reportAnswerContents"/>
+			</association>
+			<collection property="fileVOs" javaType="List" ofType="FileVO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORINAME" property="fileOriName"/>
+			</collection>
+		</resultMap>
 	</mapper>
