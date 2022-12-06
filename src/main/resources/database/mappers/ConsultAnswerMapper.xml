@@ -4,6 +4,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.consult.answer.ConsultAnswerMapper">
 
+	<delete id="deleteConsultAnswer" parameterType="ConsultAnswerVO">
+		DELETE FROM CONSULTANSWER WHERE ANSWERNUM = #{answerNum}
+	</delete>
+
 	<select id="findConsultAnswerCount" parameterType="ConsultAnswerVO" resultType="Long">
 		SELECT COUNT(ANSWERNUM) FROM CONSULTANSWER WHERE CONSULTNUM = #{consultNum}
 	</select>

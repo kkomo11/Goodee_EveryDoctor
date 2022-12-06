@@ -17,6 +17,8 @@
 <script defer src="/js/main.js"></script>
 <!-- iamport.payment.js -->
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<!-- toss.payment.js -->
+<script src="https://js.tosspayments.com/v1/payment"></script>
 
 <!-- Web Font -->
 <link

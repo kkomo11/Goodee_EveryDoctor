@@ -11,6 +11,10 @@ public class ConsultAnswerService {
 	@Autowired
 	private ConsultAnswerMapper consultAnswerMapper;
 	
+	public int deleteConsultAnswer(ConsultAnswerVO consultAnswerVO) throws Exception {
+		return consultAnswerMapper.deleteConsultAnswer(consultAnswerVO);
+	}
+	
 	public Long findConsultAnswerCount(ConsultAnswerVO consultAnswerVO) throws Exception{
 		return consultAnswerMapper.findConsultAnswerCount(consultAnswerVO);
 	}
