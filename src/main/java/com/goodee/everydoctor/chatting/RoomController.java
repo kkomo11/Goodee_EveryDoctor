@@ -37,7 +37,7 @@ public class RoomController {
     public String create(@RequestParam String name, RedirectAttributes rttr){
 
         log.info("# Create Chat Room , name: " + name);
-        rttr.addFlashAttribute("roomName", repository.createChatRoomVO(name));
+        rttr.addFlashAttribute("roomName", repository.createChatRoomVO(name).getName());
         return "redirect:/chat/rooms";
     }
 
