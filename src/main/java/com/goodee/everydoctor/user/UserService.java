@@ -2,12 +2,20 @@ package com.goodee.everydoctor.user;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
+import com.goodee.everydoctor.util.FileManager;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.Certification;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -26,6 +34,8 @@ public class UserService {
 	private String apiKey;
 	@Value("${import.api.secret}")
 	private String apiSecret;
+	@Autowired
+	private FileManager fileManager;
 	
 	
 	public int inputUser(UserVO userVO)throws Exception{
@@ -68,6 +78,90 @@ public class UserService {
 		result = userMapper.modifyRoleMember(userVO);
 		
 		userVO= userMapper.getUserByUsername(userVO.getUsername());
+		
+		return result;
+	}
+	
+	public int profileImgUpload(MultipartFile file, String username) throws Exception{
+		
+		//기존 폴더 삭제
+		FileVO fileVO = new FileVO();
+		
+		fileVO.setLabel("user");
+		fileVO.setFileName(username);
+		
+		boolean result = fileManager.deleteFile(fileVO);
+		
+		log.info("result {}", result);
+		
+		
+		//새로운 폴더 생성해 파일 넣기
+		String filename = fileManager.saveFile(file, "user/"+username);
+		
+		//DB에 파일 저장
+		UserVO userVO = new UserVO();
+		
+		userVO.setUsername(username);
+		userVO.setFileName("/file/user/"+username+"/"+filename);
+		
+		int result2 = userMapper.modifyFileName(userVO);
+		
+		
+		return result2;
+	}
+	
+	public int setProfileImgDefault(UserVO userVO)throws Exception{
+		//기존 폴더 삭제
+		FileVO fileVO = new FileVO();
+		
+		fileVO.setLabel("user");
+		fileVO.setFileName(userVO.getUsername());
+		
+		boolean result = fileManager.deleteFile(fileVO);
+				
+		log.info("result {}", result);
+		
+		//DB에 파일위치 default로 변경
+		userVO.setFileName("/images/defaultProfile.png");
+		
+		int result2 = userMapper.modifyFileName(userVO);
+				
+		
+		return result2;
+	}
+	
+	public void certifiedPhoneNumber(String userPhoneNumber, int radomNumber) {
+//		String api_key = "";
+//		String api_secret = "";
+//		Message coolsms = new Message(api_key, api_secret);
+//		
+//		HashMap<String, String> params = new HashMap<String, String>();
+//		params.put("to", userPhoneNumber);
+//		params.put("from", "01054960903");
+//		params.put("type", "SMS");
+//		params.put("text", "[TEXT]인증번호는" + "["+ radomNumber+"]" + "입니다.");
+//		params.put("app_version", "test app 1.2");
+//		
+//		try {
+//			JSONObject obj = (JSONObject) coolsms.send(params);
+//			System.out.println(obj.toString());
+//		}catch (CoolsmsException e) {
+//			System.out.println(e.getMessage());
+//			System.out.println(e.getCode());
+//		}
+	}
+	
+	public int modifyPassword( UserVO userVO, String newPassword, String retypePassword, String currentPassword) throws Exception{
+		//비번 동일한지 확인
+		UserVO chkUser = userMapper.getUserByUsername(userVO.getUsername());
+		boolean chkPw = passwordEncoder.matches(currentPassword, chkUser.getPassword());
+		
+		int result=0;
+		//동일하면 비번 변경
+		if(chkPw && newPassword.equals(retypePassword)) {
+			userVO.setPassword(passwordEncoder.encode(newPassword));
+			result = userMapper.modifyPassword(userVO);
+		}
 		
 		return result;
 	}
