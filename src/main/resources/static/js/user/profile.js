@@ -2,9 +2,14 @@
  * 
  */
  
- console.log("profile.js")
+console.log("profile.js")
  
- let usernameVal = $("#username").val()
+let currentPhone = $("#phone").val()
+let currentEmail = $("#email").val()
+let usernameVal = $("#username").val()
+let phone;
+let email;
+let code2;
  
 let chk = usernameVal.indexOf('@')
  
@@ -62,15 +67,113 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 	 }
  })
  
+ //연락처 유효성 검증
+ $("#phone").on("input",function(){
+	 console.log(this.value.length, "change")
+	 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+	
+	 
+	 if(currentEmail==this.value){
+		 $("#emailMessage").text("이메일 형식에 맞게 입력해주세요")
+		 $("#chkPhone").attr("class","btn bg-secondary")
+		$("#chkPhone").attr("data-bs-toggle","")
+		$("#chkPhone").attr("data-bs-target","")	
+	}else if(this.value.length>9 & this.value.length<12){
+		$("#emailMessage").text("")
+		$("#chkPhone").attr("class","btn")
+		$("#chkPhone").attr("data-bs-toggle","modal")
+		$("#chkPhone").attr("data-bs-target","#chkModal")		
+	}
+ })
+ 
  //문자인증하기
  $("#chkPhone").click(function(){
+	
 	 console.log("chkPhone"+$("#phone").val())
-	 //모달의 내용을 바꾼다
+
 	 //문자를 보내고 인증번호를 받아서 기다린다
-	 let phone = $("#phone").val()	
-	 $.get("/user/phoneCheck?phone="+phone, function(dt){
+	 phone = $("#phone").val()	
+	 email = "";
+	 $.get("/user/phoneCheck?phonenum="+phone, function(dt){
 		 console.log(dt)
+		 if(dt==0){
+			$("#modifiyMsg").text("메세지 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
+		 }else{
+			 code2 = dt;
+		 }
 	 })
+	 
+	 
+ })
+
+  //이메일 유효성 검증
+  $("#email").on("input",function(){
+	console.log(this.value.length, "change")
+	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	
+	if(currentPhone==this.value){
+		$("#phoneMessage").text("현재 등록된 휴대전화 정보와 동일합니다")
+		$("#chkPhone").attr("class","btn bg-secondary")
+	   $("#chkPhone").attr("data-bs-toggle","")
+	   $("#chkPhone").attr("data-bs-target","")	
+   }else if(this.value.length>9 & this.value.length<12){
+	   $("#phoneMessage").text("")
+	   $("#chkPhone").attr("class","btn")
+	   $("#chkPhone").attr("data-bs-toggle","modal")
+	   $("#chkPhone").attr("data-bs-target","#chkModal")		
+   }else{
+	   $("#phoneMessage").text("숫자로 10-11자 입력해주세요")
+	   $("#chkPhone").attr("class","btn bg-secondary")
+	   $("#chkPhone").attr("data-bs-toggle","")
+	   $("#chkPhone").attr("data-bs-target","")	
+   }
+})
+
+  //이메일인증하기
+  $("#chkEmail").click(function(){
+	
+	console.log("chkEmail"+$("#email").val())
+
+	//문자를 보내고 인증번호를 받아서 기다린다
+	email = $("#email").val()	
+	phone = "";
+	$.get("/user/emailCheck?emailnum="+email, function(dt){
+		console.log(dt)
+		if(dt==0){
+		   $("#modifiyMsg").text("이메일 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
+		}else{
+			code2 = dt;
+		}
+	})
+	
+	
+})
+
+//인증번호 체크
+ $("#chkCodeBtn").click(function(){
+	if($("#code").val()==code2){
+		console.log($("#code").val(),"일치",code2)
+		let modifyForm = new FormData();
+		modifyForm.append("phoneNum",phone)
+		modifyForm.append("emailNum",email)
+		$("#modifiyMsg").text("인증번호 확인 완료, 정보 수정 중")
+		$.ajax({
+			type:"POST",
+			url:"modifyProfile",
+			enctype: 'multipart/form-data',
+			data: modifyForm,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success:function(dt){
+				
+				console.log("정보수정 완료",dt)
+				window.location.href="/user/profile";
+			}
+		})
+	}else{
+		$("#modifiyMsg").text("인증번호 불일치")
+	}
  })
  
  //비밀번호 변경

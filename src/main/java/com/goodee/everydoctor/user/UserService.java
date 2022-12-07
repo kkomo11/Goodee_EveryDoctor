@@ -16,11 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 import com.goodee.everydoctor.util.FileManager;
+import com.goodee.everydoctor.util.MessageManager;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.Certification;
 import com.siot.IamportRestClient.response.IamportResponse;
 
 import lombok.extern.slf4j.Slf4j;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 
 @Service
 @Slf4j
@@ -36,6 +38,8 @@ public class UserService {
 	private String apiSecret;
 	@Autowired
 	private FileManager fileManager;
+	@Autowired
+	private MessageManager messageManager;
 	
 	
 	public int inputUser(UserVO userVO)throws Exception{
@@ -131,25 +135,32 @@ public class UserService {
 		return result2;
 	}
 	
-	public void certifiedPhoneNumber(String userPhoneNumber, int radomNumber) {
-//		String api_key = "";
-//		String api_secret = "";
-//		Message coolsms = new Message(api_key, api_secret);
-//		
-//		HashMap<String, String> params = new HashMap<String, String>();
-//		params.put("to", userPhoneNumber);
-//		params.put("from", "01054960903");
-//		params.put("type", "SMS");
-//		params.put("text", "[TEXT]인증번호는" + "["+ radomNumber+"]" + "입니다.");
-//		params.put("app_version", "test app 1.2");
-//		
-//		try {
-//			JSONObject obj = (JSONObject) coolsms.send(params);
-//			System.out.println(obj.toString());
-//		}catch (CoolsmsException e) {
-//			System.out.println(e.getMessage());
-//			System.out.println(e.getCode());
-//		}
+	public int phoneCheck(String userPhoneNumber, int radomNumber) {
+		
+		SingleMessageSentResponse res = messageManager.sendOne("01075378627", userPhoneNumber, "[EveryDoctor] 인증번호는" + "["+ radomNumber+"]" + "입니다.");
+
+		log.info("res {}", res);
+		
+		if(res.getStatusCode().equals("2000")||res.getStatusCode().equals("3000")||res.getStatusCode().equals("4000")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int modifyPhone(UserVO userVO, String phone)throws Exception{
+		
+		userVO.setPhone(phone);
+		
+		int result = userMapper.modifyPhone(userVO);
+		return result;
+	}
+	
+	public int modifyEmail(UserVO userVO, String email)throws Exception{
+		
+		userVO.setEmail(email);
+		int result = userMapper.modifyEmail(userVO);
+		
+		return result;
 	}
 	
 	public int modifyPassword( UserVO userVO, String newPassword, String retypePassword, String currentPassword) throws Exception{

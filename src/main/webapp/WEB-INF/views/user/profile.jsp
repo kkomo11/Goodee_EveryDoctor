@@ -144,18 +144,20 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button">
-                                                <button type="button" id="chkEmail" class="btn">이메일 인증</button>
+                                                <button type="button" id="chkEmail" class="btn bg-secondary">이메일 인증</button>
+                                                <span id="emailMessage" class="text-danger ms-1"></span>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group mb-1">
                                                 <label class="fw-bold">연락처 Phone</label>
-                                                <input name="phone" type="text" id="phone" placeholder="01012345678형식으로 입력해주세요" value="${user.phone }">
+                                                <input name="phone" type="text" id="phone" placeholder="01012345678형식으로 입력해주세요" value="${user.phone }" >
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group button">
-                                                <button type="button" id="chkPhone" class="btn" data-bs-toggle="modal" data-bs-target="#chkModal">연락처 인증</button>
+                                                <button type="button" id="chkPhone" class="btn bg-secondary">연락처 인증</button> 
+                                                <span id="phoneMessage" class="text-danger ms-1"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +181,7 @@
 									        <p class="text-center" style="color:red" id="modifiyMsg"></p>
 									        <div class="form-group">
 									            <label>인증번호</label>
-									            <input name="chkNum" type="text" id="chkNum">
+									            <input name="code" type="text" id="code">
 									        </div>
 							      		</form>
 									  </div> 
@@ -187,7 +189,7 @@
 							      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" id="modalCloseBtn" data-bs-dismiss="modal">닫기</button>
-						        <button type="button" class="btn btn-primary" id="chkNumBtn">변경</button>
+						        <button type="button" class="btn btn-primary" id="chkCodeBtn">변경</button>
 						      </div>
 						    </div>
 						  </div>
