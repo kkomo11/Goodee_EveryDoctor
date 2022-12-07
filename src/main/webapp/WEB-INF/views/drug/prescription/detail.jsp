@@ -6,7 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>EveryDoctor</title>
+      <title>약처방</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -159,6 +159,7 @@
                       <label>약목록</label>
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                          <option value="" disabled selected>약을 선택해주세요</option>
                           <c:forEach items="${list}" var="vo">
                             <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
@@ -170,6 +171,7 @@
                       <label>약추가</label>
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                          <option value="" disabled selected>약을 선택해주세요</option>
                           <c:forEach items="${list}" var="vo">
                             <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
@@ -181,6 +183,7 @@
                       <label>약추가</label>
                       <div class="selector-head">
                         <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                          <option value="" disabled selected>약을 선택해주세요</option>
                           <c:forEach items="${list}" var="vo">
                             <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} => ${vo.drugInfo}</option>
                           </c:forEach>
@@ -226,7 +229,7 @@
 
                     <div class="col-lg-6 col-12">
                       <div class="form-group">
-                        <label>환자번호*</label> <input name="number" type="text" placeholder="Enter mobile number(값 받아오기)">
+                        <label>운송장번호*</label> <input name="number" type="text" placeholder="1234567890(임의제공)">
                       </div>
                     </div>
 
@@ -294,7 +297,6 @@
 
       <!-- ========================= JS here ========================= -->
       <!-- <script src="/js/drug.js"></script> -->
-      <script src="/js/alert.js"></script>
       <script src="/js/drug/address.js"></script>
       <script src="/js/admin/medic/regist.js"></script>
       <script src="/js/admin/medic/chosen.jquery.js"></script>

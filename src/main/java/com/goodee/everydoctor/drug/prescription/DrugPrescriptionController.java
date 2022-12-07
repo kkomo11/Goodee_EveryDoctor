@@ -23,10 +23,10 @@ public class DrugPrescriptionController {
 	private DrugPrescriptionService drugPrescriptionService;
 
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager)throws Exception {
+	public ModelAndView findDrugPrescriptionList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		pager.setPerPage(4374L);
-		List<DrugVO> ar = drugService.getList(pager);
+		List<DrugVO> ar = drugService.findDrugList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/prescription/list");
@@ -34,11 +34,11 @@ public class DrugPrescriptionController {
 	}
 
 	@GetMapping("detail")
-	public ModelAndView getDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
+	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugPrescriptionVO=drugPrescriptionService.getDetail();
+		drugPrescriptionVO=drugPrescriptionService.findDrugPrescriptionDetail();
 		//약목록
-		List<DrugPrescriptionVO> ar = drugPrescriptionService.getList();
+		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
 		mv.addObject("list", ar);
 		//진료 과목 가져오기
 		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();

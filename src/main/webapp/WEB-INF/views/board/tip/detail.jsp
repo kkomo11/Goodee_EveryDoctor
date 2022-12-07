@@ -6,7 +6,7 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>EveryDoctor</title>
+      <title>건강관리꿀팁</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../../temp/boot.jsp"></c:import>

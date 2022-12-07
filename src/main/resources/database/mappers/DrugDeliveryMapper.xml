@@ -6,12 +6,12 @@
 <mapper
 	namespace="com.goodee.everydoctor.drug.delivery.DrugDeliveryMapper">
 
-	<select id="getList" resultType="DrugDeliveryVO"
+	<select id="findDrugDeliveryList" resultType="DrugDeliveryVO"
 		parameterType="DrugDeliveryVO">
 		SELECT * FROM DRUGDELIVERY
 	</select>
 
-	<select id="getDetail" parameterType="DrugDeliveryVO"
+	<select id="findDrugDeliveryDetail" parameterType="DrugDeliveryVO"
 		resultType="DrugDeliveryVO">
 		SELECT * FROM DRUGDELIVERY
 		WHERE DRUGDELIVERYNUM =

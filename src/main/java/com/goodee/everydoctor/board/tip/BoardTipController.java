@@ -15,14 +15,14 @@ public class BoardTipController {
 	private BoardTipService boardTipService;
 
 	@GetMapping("list")
-	public void getList(BoardTipVO boardTipVO)throws Exception {
+	public void findBoardTipList(BoardTipVO boardTipVO)throws Exception {
 		
 	}
 
 	@GetMapping("detail")
-	public ModelAndView getDetail(BoardTipVO boardTipVO)throws Exception {
+	public ModelAndView findBoardTipDetail(BoardTipVO boardTipVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		boardTipVO=boardTipService.getDetail(boardTipVO);
+		boardTipVO=boardTipService.findBoardTipDetail(boardTipVO);
 		mv.addObject("boardTip",boardTipVO);
 		mv.setViewName("board/tip/detail");
 		return mv;
