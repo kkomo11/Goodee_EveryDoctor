@@ -15,11 +15,7 @@
 
 <!-- Begin page content -->
 <main role="main" class="container">
-    <h1>Simple WebRTC Signaling Server</h1>
     <div id="container">
-        <p>
-            This part receives a room number (or generates new one), and redirects current user there.
-        </p>
         <form th:method="post" th:action="@{/room}" th:object="${id}" id="form">
             <input type="hidden" id="uuid" name="uuid" th:value="${uuid}"/>
             <div class="row justify-content-md-center">

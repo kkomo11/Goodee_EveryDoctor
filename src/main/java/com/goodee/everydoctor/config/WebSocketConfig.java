@@ -29,7 +29,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 		//interceptor for adding httpsession into websocket session
 		
 		registry.addHandler(signalHandler(), "/signal")
-		.setAllowedOrigins("*"); // allow all origins
+		.setAllowedOrigins("*"); // allow all origins 
 	}
 
     @Bean

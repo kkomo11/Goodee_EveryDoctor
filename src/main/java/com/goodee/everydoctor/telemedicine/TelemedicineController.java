@@ -16,8 +16,8 @@ public class TelemedicineController {
     private final TelemedicineService telemedicineService;
     
     @Autowired
-    public TelemedicineController(final TelemedicineService mainService) {
-        this.telemedicineService = mainService;
+    public TelemedicineController(final TelemedicineService telemedicineService) {
+        this.telemedicineService = telemedicineService;
     }
 
     @GetMapping({"/telemedicine"})
@@ -47,11 +47,11 @@ public class TelemedicineController {
 
     @GetMapping("/offer")
     public ModelAndView displaySampleSdpOffer() {
-        return new ModelAndView("sdp_offer");
+        return new ModelAndView("thymeleaf/sdp_offer");
     }
 
     @GetMapping("/stream")
     public ModelAndView displaySampleStreaming() {
-        return new ModelAndView("streaming");
+        return new ModelAndView("thymeleaf/streaming");
     }
 }

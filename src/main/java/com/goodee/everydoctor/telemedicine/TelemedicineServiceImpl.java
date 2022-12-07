@@ -28,7 +28,7 @@ public class TelemedicineServiceImpl implements TelemedicineService {
 
     @Override
     public ModelAndView displayMainPage(final Long id, final String uuid) {
-        final ModelAndView modelAndView = new ModelAndView("thymeleaf/telemedicine");
+        final ModelAndView modelAndView = new ModelAndView("telemedicine/telemedicine");
         modelAndView.addObject("id", id);
         modelAndView.addObject("rooms", roomService.getRooms());
         modelAndView.addObject("uuid", uuid);
@@ -58,7 +58,7 @@ public class TelemedicineServiceImpl implements TelemedicineService {
             if(room != null && uuid != null && !uuid.isEmpty()) {
                 logger.debug("User {} is going to join Room #{}", uuid, sid);
                 // open the chat room
-                modelAndView = new ModelAndView("thymeleaf/chat_room", "id", sid);
+                modelAndView = new ModelAndView("telemedicine/chat_room", "id", sid);
                 modelAndView.addObject("uuid", uuid);
             }
         }
