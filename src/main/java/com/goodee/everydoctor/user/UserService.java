@@ -41,6 +41,7 @@ public class UserService {
 	public int inputUser(UserVO userVO)throws Exception{
 		//비밀번호 암호화
 		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+		userVO.setFileName("/images/defaultProfile.png");
 		
 		int result = userMapper.inputUser(userVO);
 		if(result==1) {

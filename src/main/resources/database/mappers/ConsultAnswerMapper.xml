@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.consult.answer.ConsultAnswerMapper">
+
+	<delete id="deleteConsultAnswer" parameterType="ConsultAnswerVO">
+		DELETE FROM CONSULTANSWER WHERE ANSWERNUM = #{answerNum}
+	</delete>
+
+	<select id="findConsultAnswerCount" parameterType="ConsultAnswerVO" resultType="Long">
+		SELECT COUNT(ANSWERNUM) FROM CONSULTANSWER WHERE CONSULTNUM = #{consultNum}
+	</select>
+
+	<select id="findConsultAnswer" parameterType="ConsultAnswerPager" resultMap="findConsultAnswerResult">
+		SELECT *
+		FROM CONSULTANSWER CA
+		INNER JOIN USERS U 
+		ON (CA.USERNAME = U.USERNAME)
+		INNER JOIN USERSROLES UR 
+		ON (U.USERNAME = UR.USERNAME)
+		INNER JOIN ROLE R 
+		ON(UR.ROLENUM = R.ROLENUM)
+		WHERE CA.CONSULTNUM = #{consultNum}
+		ORDER BY CA.ANSWERNUM DESC
+		LIMIT ${startRow}, ${perPage}
+	</select>
+	
+	<resultMap type="ConsultAnswerVO" id="findConsultAnswerResult">
+		<id column="ANSWERNUM" property="answerNum"/>
+		<result column="CONSULTNUM" property="consultNum"/>
+		<result column="USERNAME" property="username"/>
+		<result column="ANSWERCONTENT" property="answerContent"/>
+		<result column="ANSWERREGDATE" property="answerRegDate"/>
+		
+		<association property="userVO" javaType="UserVO">
+			<result column="NAME" property="name"/>
+			<result column="FILENAME" property="fileName"/>
+			<collection property="roles" javaType="List" ofType="String">
+				<result column="ROLENAME" property="roleName"/>
+			</collection>
+		</association>
+		
+	</resultMap>
+
+	<insert id="inputConsultAnswer" parameterType="ConsultAnswerVO">
+		INSERT INTO CONSULTANSWER VALUES (NULL, #{consultNum}, #{username}, #{answerContent}, current_date)
+	</insert>
+	
+</mapper>

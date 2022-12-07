@@ -2,8 +2,6 @@ package com.goodee.everydoctor.drug.prescription;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,29 +15,41 @@ import com.goodee.everydoctor.util.Pager;
 @Controller
 @RequestMapping("/drug/prescription*")
 public class DrugPrescriptionController {
-	
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private DrugService drugService;
-	
+
+	@Autowired
+	private DrugPrescriptionService drugPrescriptionService;
+
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		pager.setPerPage(4374L);
 		List<DrugVO> ar = drugService.getList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/prescription/list");
 		return mv;
 	}
-	
-//	@GetMapping("detail")
-//	public ModelAndView getDetail(DrugVO drugVO)throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		drugVO=drugService.getDetail(drugVO);
-//		mv.addObject("detail",drugVO);
-//		mv.setViewName("drug/detail");
-//		return mv;
-//	}
+
+	@GetMapping("detail")
+	public ModelAndView getDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		drugPrescriptionVO=drugPrescriptionService.getDetail();
+		//약목록
+		List<DrugPrescriptionVO> ar = drugPrescriptionService.getList();
+		mv.addObject("list", ar);
+		//진료 과목 가져오기
+		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();
+		mv.addObject("sectionList", sectionList);
+		//환자 증상 가져오기
+		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
+		mv.addObject("categoryList", categoryList);
+
+		mv.addObject("detail",drugPrescriptionVO);
+		mv.setViewName("drug/prescription/detail");
+		return mv;
+	}
 
 }

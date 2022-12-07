@@ -10,7 +10,7 @@
 //     });
 // }
 
-
+//우 편 번 호 (주 소) 찾 기
 
 function sample6_execDaumPostcode() {
   new daum.Postcode({

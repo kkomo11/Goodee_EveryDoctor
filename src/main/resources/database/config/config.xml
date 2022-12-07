@@ -6,6 +6,12 @@
 	<typeAliases>
 		<typeAlias type="com.goodee.everydoctor.pet.profile.PetBioVO" alias="PetBioVO"/>
 		<typeAlias type="com.goodee.everydoctor.pet.profile.PetVO" alias="PetVO"/>
+		<typeAlias type="com.goodee.everydoctor.pet.PetdocVO" alias="PetdocVO"/>
+		<typeAlias type="com.goodee.everydoctor.pet.PetHomePager" alias="PetHomePager"/>
+		<typeAlias type="com.goodee.everydoctor.consult.ConsultVO" alias="ConsultVO"/>
+		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerVO" alias="ConsultAnswerVO"/>
+		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerPager" alias="ConsultAnswerPager"/>
+		<typeAlias type="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO" alias="PetDiagnosisVO"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
@@ -14,14 +20,20 @@
 		
 		<typeAlias type="com.goodee.everydoctor.drug.DrugVO" alias="DrugVO"/>
 		<typeAlias type="com.goodee.everydoctor.drug.delivery.DrugDeliveryVO" alias="DrugDeliveryVO"/>
+		<typeAlias type="com.goodee.everydoctor.drug.prescription.DrugPrescriptionVO" alias="DrugPrescriptionVO"/>
 		<typeAlias type="com.goodee.everydoctor.board.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.goodee.everydoctor.board.tip.BoardTipVO" alias="BoardTipVO"/>
 		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
 		<typeAlias type="com.goodee.everydoctor.user.UserVO" alias="UserVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.report.ReportVO" alias="ReportVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.agency.AgencyVO" alias="AgencyVO"/>
+		
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalSectionVO" alias="HospitalSectionVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalCategoryVO" alias="HospitalCategoryVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO" alias="HospitalDoctorVO"/>
+		
 		<typeAlias type="com.goodee.everydoctor.admin.medic.MedicVO" alias="MedicVO"/>
+		<typeAlias type="com.goodee.everydoctor.admin.report.ReportAnswerVO" alias="ReportAnswerVO"/>
+		<typeAlias type="com.goodee.everydoctor.admin.report.ReportTypeVO" alias="ReportTypeVO"/>
 	</typeAliases>
 </configuration>

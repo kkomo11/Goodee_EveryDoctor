@@ -17,6 +17,7 @@ Author: GrayGrids
     function fadeout() {
         document.querySelector('.preloader').style.opacity = '0';
         document.querySelector('.preloader').style.display = 'none';
+        document.querySelector('.preloader').style.as = 'script';
     }
 
 

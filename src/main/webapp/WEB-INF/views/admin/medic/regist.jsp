@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -15,6 +16,7 @@
     <c:import url="../../temp/boot.jsp"></c:import>
 
 	<link rel="stylesheet" href="/css/admin/medic/chosen.css">
+	<link rel="stylesheet" href="/css/admin/medic/regist.css">
 	<!-- <link rel="stylesheet" href="/css/admin/medic/chosen.min.css"> -->
 	<!-- <link rel="stylesheet" href="/css/admin/medic/prism.css">
 	<link rel="stylesheet" href="/css/admin/medic/style.css"> -->
@@ -59,63 +61,252 @@
     <!-- Start Dashboard Section -->
     <section class="dashboard section">
         <div class="container">
-            <div class="row">
+            <div class="row" style="justify-content: center;">
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="main-content">
                         <!-- 기관 등록 폼 시작 -->
                         <div class="dashboard-block mt-0 profile-settings-block">
                             <h3 class="block-title">종사자 추가 등록</h3>
                             <div class="inner-block">
-                                <div class="image">
-                                    <img src="https://via.placeholder.com/300x300" alt="#">
-                                </div>
-                                <form class="profile-setting-form default-form-style" method="post" action="./regist" enctype="multipart/form-data" id="form">
-                                    <div class="row">
-                                        <div class="form-group col-6">
-                                            <label>기관검색*</label>
-                                            <div class="selector-head">
-                                                <!-- <span class="arrow"><i class="lni lni-chevron-down"></i></span> -->
-                                                <select class="user-chosen-select chosen-select" name="medicRole" id="agencySelect" onchange="onChangeEvent();">
-                                                <c:forEach items="${list}" var="list">
-                                                	<option value="${list.agencyNum}">${list.agencyName}</option>
-                                                </c:forEach>
-                                                </select>
-                                            </div>
+                                <!-- Nav Tab 시작 -->
+                                <div class="post-ad-tab">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist" style="flex-wrap: nowrap;">
+                                            <button class="nav-link active" id="hospital-tab" data-bs-toggle="tab"
+                                                data-bs-target="#hospital" type="button" role="tab"
+                                                aria-controls="hospital" aria-selected="true">
+                                                <span class="serial">01</span>
+                                                병원
+                                                <span class="sub-title">의사, 간호사 추가 등록</span>
+                                            </button>
+                                            <button class="nav-link" id="pet-tab" data-bs-toggle="tab"
+                                                data-bs-target="#pet" type="button" role="tab"
+                                                aria-controls="pet" aria-selected="false">
+                                                <span class="serial">02</span>
+                                                동물병원
+                                                <span class="sub-title">수의사, 수간호가 추가 등록</span>
+                                            </button>
+                                            <button class="nav-link" id="pharmacy-tab" data-bs-toggle="tab"
+                                                data-bs-target="#pharmacy" type="button" role="tab"
+                                                aria-controls="pharmacy" aria-selected="false">
+                                                <span class="serial">03</span>
+                                                약국
+                                                <span class="sub-title">약사 추가 등록</span>
+                                            </button>
+                                            <button class="nav-link" id="pethotel-tab" data-bs-toggle="tab"
+                                                data-bs-target="#pethotel" type="button" role="tab"
+                                                aria-controls="pethotel" aria-selected="false">
+                                                <span class="serial">04</span>
+                                                보호소
+                                                <span class="sub-title">보호소 관리자 추가 등록</span>
+                                            </button>
                                         </div>
-                                        <!-- 상호명 입력 -->
-                                        <div class="col-lg-6 col-12">
-                                            <div class="form-group">
-                                                <label>성함*</label>
-                                                <input name="username" placeholder="상호명" id="username" />
-                                                <div class="usernamem" style="color: #55DDBD;"></div>
-                                            </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <!-- 병원 인원 등록 시작 -->
+                                        <div class="tab-pane fade show active" id="hospital" role="tabpanel"
+                                            aria-labelledby="hospital-tab">
+                                            <form class="profile-setting-form default-form-style" method="post" action="./regist" id="hospitalForm">
+                                                <div class="row" style="flex-direction: column;">
+                                                    <!-- Role 선택 -->
+                                                    <div class="col-lg-6 col-12">
+                                                        <div class="form-group">
+                                                            <div class="radioFrame">
+                                                                <p class="radioDetailFrameFirst">
+                                                                    <input class="radioDetail neuteredInput" name="medicRole" type="radio" value="의사"><span style="font-size: 1rem;">의사</span>
+                                                                </p>
+                                                                <p class="radioDetailFrameOther">
+                                                                    <input class="radioDetail neuteredInput" name="medicRole" type="radio" value="간호사"><span style="font-size: 1rem;">간호사</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 병원 검색 -->
+                                                    <div class="form-group col-11">
+                                                        <label>병원검색(상호명/주소)*</label>
+                                                        <div class="selector-head">
+                                                            <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                                            <c:forEach items="${hospitalList}" var="hospitalList">
+                                                                <option value="${hospitalList.agencyNum}">${hospitalList.agencyName}/${hospitalList.agencyAddr}</option>
+                                                            </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 상호명 입력 -->
+                                                    <div class="col-lg-6 col-6">
+                                                        <div class="form-group">
+                                                            <label>성함*</label>
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <div class="usernamem" style="color: #55DDBD;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 소개글 입력 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>본인 소개글*</label>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 등록 신청 버튼 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
+                                                            <button type="button" class="btn inputButton" id="inputButton">기관 등록 신청</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <!-- 전화번호 입력 -->
-                                        <div class="col-lg-6 col-12">
-                                            <div class="form-group">
-                                                <label>전화번호*</label>
-                                                <input name="" type="text" placeholder="02-111-1111" id="agencyTel" />
-                                                <div class="agencyTelm" style="color: #55DDBD;"></div>
-                                            </div>
+                                        <!-- 병원 인원 등록 끝 -->
+                                        <!-- 동물 병원 인원 등록 시작 -->
+                                        <div class="tab-pane fade" id="pet" role="tabpanel"
+                                            aria-labelledby="pet-tab">
+                                            <form class="profile-setting-form default-form-style" method="post" action="./regist" id="petForm">
+                                                <div class="row" style="flex-direction: column;">
+                                                    <!-- 역할 선택 -->
+                                                    <div class="col-lg-6 col-12">
+                                                        <div class="form-group">
+                                                            <div class="radioFrame">
+                                                                <p class="radioDetailFrameFirst">
+                                                                    <input class="radioDetail neuteredInput" name="medicRole" type="radio" value="수의사"><span style="font-size: 1rem;">수의사</span>
+                                                                </p>
+                                                                <p class="radioDetailFrameOther">
+                                                                    <input class="radioDetail neuteredInput" name="medicRole" type="radio" value="수간호사"><span style="font-size: 1rem;">수간호사</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 병원 검색 -->
+                                                    <div class="form-group col-11">
+                                                        <label>동물병원검색(상호명/주소)*</label>
+                                                        <div class="selector-head">
+                                                            <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                                            <c:forEach items="${petHospitalList}" var="petHospitalList">
+                                                                <option value="${petHospitalList.agencyNum}">${petHospitalList.agencyName}/${petHospitalList.agencyAddr}</option>
+                                                            </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 상호명 입력 -->
+                                                    <div class="col-lg-6 col-6">
+                                                        <div class="form-group">
+                                                            <label>성함*</label>
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <div class="usernamem" style="color: #55DDBD;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 소개글 입력 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>본인 소개글*</label>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 등록 신청 버튼 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
+                                                            <button type="button" class="btn inputButton">기관 등록 신청</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <!-- 기관 소개글 입력 -->
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label>소개글*</label>
-                                                <textarea name="agencyInfo" placeholder="기관에 대한 정보를 입력해주세요"></textarea>
-                                            </div>
+                                        <!-- 동물 병원 인원 등록 끝 -->
+                                        <!-- 약국 인원 등록 시작 -->
+                                        <div class="tab-pane fade" id="pharmacy" role="tabpanel"
+                                            aria-labelledby="pharmacy-tab">
+                                            <form class="profile-setting-form default-form-style" method="post" action="./regist" id="pharmacyForm">
+                                                <div class="row" style="flex-direction: column;">
+                                                    <div class="form-group col-11">
+                                                        <label>약국검색(상호명/주소)*</label>
+                                                        <div class="selector-head">
+                                                            <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                                            <c:forEach items="${pharmacyList}" var="pharmacyList">
+                                                                <option value="${pharmacyList.agencyNum}">${pharmacyList.agencyName}/${pharmacyList.agencyAddr}</option>
+                                                            </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 성함 입력 -->
+                                                    <div class="col-lg-6 col-6">
+                                                        <div class="form-group">
+                                                            <label>성함*</label>
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <div class="usernamem" style="color: #55DDBD;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 소개글 입력 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>본인 소개글*</label>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 등록 신청 버튼 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
+                                                            <button type="button" class="btn inputButton">기관 등록 신청</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 역할 입력 -->
+                                                    <input type="hidden" name="medicRole" value="약사">
+                                                </div>
+                                            </form>
                                         </div>
-                                        <!-- 기관 등록 신청 버튼 -->
-                                        <div class="col-12">
-                                            <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
-                                                <button type="button" class="btn regist">기관 등록 신청</button>
-                                            </div>
+                                        <!-- 약국 인원 등록 끝 -->
+                                        <!-- 보호소 인원 등록 시작 -->
+                                        <div class="tab-pane fade" id="pethotel" role="tabpanel"
+                                            aria-labelledby="pethotel-tab">
+                                            <form class="profile-setting-form default-form-style" method="post" action="./regist" id="petHospitalForm">
+                                                <div class="row" style="flex-direction: column;">
+                                                    <div class="form-group col-11">
+                                                        <label>보호소검색(상호명/주소)*</label>
+                                                        <div class="selector-head">
+                                                            <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                                            <c:forEach items="${petHotelList}" var="petHotelList">
+                                                                <option value="${petHotelList.agencyNum}">${petHotelList.agencyName}/${petHotelList.agencyAddr}</option>
+                                                            </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 상호명 입력 -->
+                                                    <div class="col-lg-6 col-6">
+                                                        <div class="form-group">
+                                                            <label>성함*</label>
+                                                            <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <div class="usernamem" style="color: #55DDBD;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 소개글 입력 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>본인 소개글*</label>
+                                                            <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" class="agencyInfo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 기관 등록 신청 버튼 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
+                                                            <button type="button" class="btn inputButton">기관 등록 신청</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 역할 입력 -->
+                                                    <input type="hidden" name="medicRole" value="보호소관리자">
+                                                </div>
+                                            </form>
                                         </div>
+                                        <!-- 보호소 인원 등록 끝 -->
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
-                        <!-- 기관 등록 폼 끝 -->
+                        </div>        
                     </div>
                 </div>
             </div>

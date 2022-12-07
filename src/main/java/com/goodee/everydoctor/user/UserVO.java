@@ -15,6 +15,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
@@ -47,12 +50,15 @@ public class UserVO implements UserDetails, OAuth2User{
 	private Map<String, Object> attributes;
 	
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
-		for(String role: roles) {
-			//꺼낸 rolename을 authorities에 담으려고 한다.
-			authorities.add(new SimpleGrantedAuthority(role));
+		if(roles!=null) {
+			for(String role: roles) {
+				//꺼낸 rolename을 authorities에 담으려고 한다.
+				authorities.add(new SimpleGrantedAuthority(role));
+			}			
 		}
 		
 		return authorities;

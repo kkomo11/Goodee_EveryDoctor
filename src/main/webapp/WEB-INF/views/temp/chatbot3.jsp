@@ -33,10 +33,10 @@
                         <i class="ChatContainer_Image__Byitv" role="img"></i>
                     </div> -->
                     <ul class="ChatContainer_ConversationList__aR5OV" id="chatList">
-                        <li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem">
+                        <li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem" id="first" >
                             <div class="CompleteMessage_CompleteMessage__KWS7v">
                                 <div class="BubbleMessage_BubbleMessage__d2tka" data-testid="bubble-message">
-                                    <div class="BubbleMessage_Body__SLE+g">
+                                    <div class="BubbleMessage_Body__SLE+g" >
                                         <div class="BubbleMessage_Chunks__y4XFp">
                                             <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section">
                                                 <div class="SpeechBubble_SpeechBubble__dPnRi MessageChunk_MessageChunk__Q3D+1" data-testid="speech-bubble">
@@ -51,28 +51,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section">
+                                            <div class="BubbleMessage_Section__5ZxvS" data-testid="body-section" id="btnList">
                                                 <ul class="ButtonMessageGroup_ButtonMessageGroup__+wRrg">
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("가입 안내")' class="ButtonMessage_ButtonMessage__z6JjE">가입 안내 </button>
+                                                        <button onclick='sendMessage("이용 안내")' class="ButtonMessage_ButtonMessage__z6JjE">이용 안내  </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("이용")' class="ButtonMessage_ButtonMessage__z6JjE">사이트 이용 안내  </button>
+                                                        <button onclick='sendMessage("진료 안내")' class="ButtonMessage_ButtonMessage__z6JjE">진료 안내 </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("상담")' class="ButtonMessage_ButtonMessage__z6JjE">무료 상담 안내 </button>
+                                                        <button onclick='sendMessage("결제 안내")' class="ButtonMessage_ButtonMessage__z6JjE">결제 안내 </button>
                                                     </li>
                                                     <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("결제")' class="ButtonMessage_ButtonMessage__z6JjE">결제 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("배달")' class="ButtonMessage_ButtonMessage__z6JjE">배송 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("문의")' class="ButtonMessage_ButtonMessage__z6JjE">문의 안내 </button>
-                                                    </li>
-                                                    <li class="ButtonMessageGroup_Item__K2Y1r">
-                                                        <button onclick='sendMessage("진료")' class="ButtonMessage_ButtonMessage__z6JjE">진료 안내 </button>
+                                                        <button onclick='sendMessage("배송 안내")' class="ButtonMessage_ButtonMessage__z6JjE">배송 안내 </button>
                                                     </li>
                                                 </ul>
                                                 <div id="communicate"></div>
@@ -88,10 +79,10 @@
                     </ul>
                 </div>
                 <div class="ChatContainer_Footer__ewY4r">
-                    <div class="UserInput_InputBox__N3KF1 " data-testid="userInput">
+                    <!-- <div class="UserInput_InputBox__N3KF1 " data-testid="userInput">
                         <input type="text" class="UserInput_TextInput__SmLMO" placeholder="메시지 입력" value="">
                         <button type="button" class="UserInput_MessageSend__B-tKP " disabled=""></button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- <div class="ChatTooltip_TooltipBox__CDfSw ChatTooltip_Opened__Jvy3V" data-testid="tooltip">

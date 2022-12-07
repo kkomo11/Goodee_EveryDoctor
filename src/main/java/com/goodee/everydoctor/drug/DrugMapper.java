@@ -15,4 +15,6 @@ public interface DrugMapper {
 	public DrugVO getDetail(DrugVO drugVO)throws Exception;
 
 	public Long	getDrugTotalCount() throws Exception;
+	
+	public List<DrugVO> getStore(Pager pager) throws Exception;
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper">
+
+	<insert id="inputPetDiagnosis" parameterType="PetDiagnosisVO" useGeneratedKeys="true" keyProperty="pDansNum">
+		INSERT INTO PETDIAGNOSIS(PDANSNUM, PUSERNAME, PETNUM, PDOCTORNAME, PDANSCATEGORY, PDANSCONTENT, PDANSREQTIME, PDANSSTATUS)
+			VALUES (NULL, #{pUsername}, #{petNum}, #{pDoctorname}, #{pDansCategory}, #{pDansContent}, NOW(), 0)
+	</insert>
+
+	<select id="findPetCategories" resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND = 1
+	</select>
+
+	<select id="findOwnPetList" parameterType="UserVO" resultType="PetVO">
+		SELECT * FROM PET WHERE USERNAME = #{username}
+	</select>
+
+	<select id="findOwnPetCount" parameterType="UserVO" resultType="Integer">
+		SELECT COUNT(PETNUM) FROM PET WHERE USERNAME = #{username}
+	</select>
+	
+</mapper>

@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.goodee.everydoctor.drug.DrugMapper">
-
+	<!-- 검색 -->
 	<sql id="search">
 		WHERE
 		<choose>
@@ -14,7 +14,7 @@
 		</choose>
 		LIKE CONCAT('%', #{search}, '%')
 	</sql>
-
+	<!-- 약목록 -->
 	<select id="getList" resultType="DrugVO" parameterType="Pager">
 		SELECT * FROM DRUG
 		<include refid="search"></include>
@@ -22,7 +22,7 @@
 		LIMIT #{startRow} , #{perPage}
 
 	</select>
-
+	<!-- 약 상세정보 -->
 	<select id="getDetail" parameterType="DrugVO"
 		resultType="DrugVO">
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
@@ -33,6 +33,7 @@
 		FROM DRUG
 		<include refid="search"></include>
 	</select>
-
-
+		
 </mapper>
+
+	

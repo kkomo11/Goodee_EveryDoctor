@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.hospital.doctor.HospitalDoctorMapper">
+
+	<select id="findDoctorList" resultMap="DoctorListResult">
+		SELECT U.USERNAME, U.NAME, U.FILENAME, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME, R.ROLENAME 
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		INNER JOIN USERSROLES UR 
+		ON(U.USERNAME = UR.USERNAME)
+		INNER JOIN `ROLE` R 
+		ON(UR.ROLENUM = R.ROLENUM)
+		WHERE R.ROLENAME='ROLE_DOCTOR'
+	</select>
+	
+	<resultMap type="HospitalDoctorVO" id="DoctorListResult">
+		<association property="userVO" javaType="UserVO">
+			<id column="USERNAME" property="username"/>
+			<result column="NAME" property="name"/>
+			<result column="FILENAME" property="fileName"/>
+			<collection property="roles" javaType="List" ofType="String">
+				<result column="ROLENAME" property="roleName"/>
+			</collection>
+		</association>
+		<association property="agencyVO" javaType="AgencyVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="AGENCYNAME" property="agencyName"/>
+		</association>
+		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
+			<id column="SECTIONNUM" property="sectionNum"/>
+			<result column="SECTIONNAME" property="sectionName"/>
+		</association>
+	</resultMap>
+</mapper>

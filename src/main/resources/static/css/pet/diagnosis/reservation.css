@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#ownedPetListFrame {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ownedPetFrame {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 0.5rem;
+	cursor: pointer;
+}
+
+.ownedPetImage {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 30%;
+}
+
+.ownedPetName {
+	font-size: 1.5rem;
+	color: #55DDBD;
+}
+
+.filesInput {
+	margin: 0.5rem;
+}
+
+#addPhotoBtn {
+	margin: 0.5rem;
+}
