@@ -73,78 +73,81 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 	 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 	
 	 
-	 if(currentEmail==this.value){
-		 $("#emailMessage").text("이메일 형식에 맞게 입력해주세요")
+	 if(currentPhone==this.value){
+		 $("#phoneMessage").text("현재 등록된 휴대전화 정보와 동일합니다")
 		 $("#chkPhone").attr("class","btn bg-secondary")
 		$("#chkPhone").attr("data-bs-toggle","")
 		$("#chkPhone").attr("data-bs-target","")	
 	}else if(this.value.length>9 & this.value.length<12){
-		$("#emailMessage").text("")
+		$("#phoneMessage").text("")
 		$("#chkPhone").attr("class","btn")
 		$("#chkPhone").attr("data-bs-toggle","modal")
 		$("#chkPhone").attr("data-bs-target","#chkModal")		
+	}else{
+		$("#phoneMessage").text("숫자로 10-11자 입력해주세요")
+		$("#chkPhone").attr("class","btn bg-secondary")
+		$("#chkPhone").attr("data-bs-toggle","")
+		$("#chkPhone").attr("data-bs-target","")	
 	}
  })
  
  //문자인증하기
  $("#chkPhone").click(function(){
 	
-	 console.log("chkPhone"+$("#phone").val())
-
-	 //문자를 보내고 인증번호를 받아서 기다린다
-	 phone = $("#phone").val()	
-	 email = "";
-	 $.get("/user/phoneCheck?phonenum="+phone, function(dt){
-		 console.log(dt)
-		 if(dt==0){
-			$("#modifiyMsg").text("메세지 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
-		 }else{
-			 code2 = dt;
-		 }
-	 })
-	 
+	if($("#chkPhone").attr("data-bs-toggle")=="modal"){
+		//문자를 보내고 인증번호를 받아서 기다린다
+		phone = $("#phone").val()	
+		email = "";
+		 $.get("/user/phoneCheck?phonenum="+phone, function(dt){
+			 console.log(dt)
+			 if(dt==0){
+				$("#modifiyMsg").text("메세지 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
+			 }else{
+				 code2 = dt;
+			 }
+		 })
+	} 
 	 
  })
 
   //이메일 유효성 검증
   $("#email").on("input",function(){
 	console.log(this.value.length, "change")
-	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	let regex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	
-	if(currentPhone==this.value){
-		$("#phoneMessage").text("현재 등록된 휴대전화 정보와 동일합니다")
-		$("#chkPhone").attr("class","btn bg-secondary")
-	   $("#chkPhone").attr("data-bs-toggle","")
-	   $("#chkPhone").attr("data-bs-target","")	
-   }else if(this.value.length>9 & this.value.length<12){
-	   $("#phoneMessage").text("")
-	   $("#chkPhone").attr("class","btn")
-	   $("#chkPhone").attr("data-bs-toggle","modal")
-	   $("#chkPhone").attr("data-bs-target","#chkModal")		
+	console.log(this.value, regex.test(this.value))
+	if(regex.test(this.value)){
+		$("#emailMessage").text("")
+		$("#chkEmail").attr("class","btn")
+		$("#chkEmail").attr("data-bs-toggle","modal")
+		$("#chkEmail").attr("data-bs-target","#chkModal")
+
    }else{
-	   $("#phoneMessage").text("숫자로 10-11자 입력해주세요")
-	   $("#chkPhone").attr("class","btn bg-secondary")
-	   $("#chkPhone").attr("data-bs-toggle","")
-	   $("#chkPhone").attr("data-bs-target","")	
+	   $("#emailMessage").text("이메일 형식에 맞게 입력해주세요")
+	   $("#chkEmail").attr("class","btn bg-secondary")
+	  $("#chkEmail").attr("data-bs-toggle","")
+	  $("#chkEmail").attr("data-bs-target","")			
    }
 })
 
   //이메일인증하기
-  $("#chkEmail").click(function(){
-	
-	console.log("chkEmail"+$("#email").val())
+  $("#chkEmail").click(function(e){
 
-	//문자를 보내고 인증번호를 받아서 기다린다
-	email = $("#email").val()	
-	phone = "";
-	$.get("/user/emailCheck?emailnum="+email, function(dt){
-		console.log(dt)
-		if(dt==0){
-		   $("#modifiyMsg").text("이메일 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
-		}else{
-			code2 = dt;
-		}
-	})
+	if($("#chkEmail").attr("data-bs-toggle")=="modal"){
+		//문자를 보내고 인증번호를 받아서 기다린다
+		email = $("#email").val()	
+		phone = "";
+		$.get("/user/emailCheck?emailnum="+email, function(dt){
+			console.log(dt)
+			if(dt==0){
+			   $("#modifiyMsg").text("이메일 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
+			}else{
+				$("#modifiyMsg").text("")
+				code2 = dt;
+			}
+		})
+	}
+
 	
 	
 })

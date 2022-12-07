@@ -131,7 +131,7 @@ public class UserController {
 	public int emailCheck(String emailnum)throws Exception{
 		int randomNumber = (int)(Math.random()*1000000);
 		
-		int result = 0;
+		int result = userService.emailCheck(emailnum, randomNumber);
 		
 		if(result==1) {
 			result = randomNumber;			

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
+import com.goodee.everydoctor.util.EmailManager;
 import com.goodee.everydoctor.util.FileManager;
 import com.goodee.everydoctor.util.MessageManager;
 import com.siot.IamportRestClient.IamportClient;
@@ -40,6 +41,8 @@ public class UserService {
 	private FileManager fileManager;
 	@Autowired
 	private MessageManager messageManager;
+	@Autowired
+	private EmailManager emailManager;
 	
 	
 	public int inputUser(UserVO userVO)throws Exception{
@@ -145,6 +148,13 @@ public class UserService {
 			return 1;
 		}
 		return 0;
+	}
+	
+	public int emailCheck(String userEmail, int radomNumber) {
+		
+		emailManager.sendHTML(userEmail, "[EVERYDOCTOR] 이메일 변경 인증 코드", "에브리닥터의 인증코드는 ["+radomNumber+"] 입니다.");
+		
+		return 1;
 	}
 	
 	public int modifyPhone(UserVO userVO, String phone)throws Exception{
