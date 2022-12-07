@@ -6,7 +6,7 @@
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
-      <title>EveryDoctor</title>
+      <title>약상세정보</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../temp/boot.jsp"></c:import>
@@ -40,12 +40,12 @@
       <div class="breadcrumbs">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-md-6 col-12">
               <div class="breadcrumbs-content">
                 <h1 class="page-title">약 상세정보</h1>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-md-6 col-12">
               <ul class="breadcrumb-nav">
                 <li><a href="/">Home</a></li>
                 <li>약 상세정보</li>
@@ -60,7 +60,7 @@
       <section class="dashboard section">
         <div class="container">
           <div class="row">
-            <div class="col-lg-9 col-md-8 col-12">
+            <div class="col-md-12 col-12">
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
@@ -69,13 +69,13 @@
                     <!-- 약목록 -->
                     <table class="table table-striped">
 
-                      <tr class="table-danger">
+                      <tr class="table-dark">
                         <th>약정보</th>
                         <th>약사용법</th>
                         <th>약주의사항</th>
                       </tr>
                     
-                        <tr class="table-info">
+                        <tr class="table-success">
                           <td>${detail.drugInfo}</td>
                           <td>${detail.drugUse}</td>
                           <td>${detail.drugCare}</td>

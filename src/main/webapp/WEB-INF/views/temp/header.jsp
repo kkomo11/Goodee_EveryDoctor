@@ -35,8 +35,8 @@
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                        	 aria-label="Toggle navigation">Hospital</a>
                                        	 <ul class="sub-menu collapse" id="submenu-1-2">
-                                       	  <li class="nav-item"><a href="/hospital/home">Hospital</a></li>
-                                          <li class="nav-item"><a href="/pet/home">Animal Hospital</a></li>
+                                       	  <li class="nav-item"><a href="/hospital/home">병원</a></li>
+                                          <li class="nav-item"><a href="/pet/home">동물병원</a></li>
                                       </ul>
                                 </li>
                                 <li class="nav-item">
@@ -56,7 +56,7 @@
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">선별진료소</a>
                                     <ul class="sub-menu collapse" id="submenu-1-5">
-                                        <li class="nav-item"><a href="/location/viewCorona">선별진료소보러가기</a>
+                                        <li class="nav-item"><a href="/location/viewCorona">코로나선별진료소보러가기</a>
                                         </li>
                                         <li class="nav-item"><a href="javascript:void(0)">Blog Single</a></li>
                                         <li class="nav-item"><a href="javascript:void(0)">Blog Single
@@ -147,10 +147,10 @@
                                 </sec:authorize>
 
                                 <li>
-                                    <a href="/user/login"><i class="lni lni-enter"></i> Login</a>
+                                    <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
                                 </li>
                                 <li>
-                                    <a href="/user/registration"><i class="lni lni-user"></i> Register</a>
+                                    <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
                             </ul>
                         </div>
