@@ -69,7 +69,6 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
  
  //연락처 유효성 검증
  $("#phone").on("input",function(){
-	 console.log(this.value.length, "change")
 	 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
 	
 	 
@@ -99,7 +98,6 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		phone = $("#phone").val()	
 		email = "";
 		 $.get("/user/phoneCheck?phonenum="+phone, function(dt){
-			 console.log(dt)
 			 if(dt==0){
 				$("#modifiyMsg").text("메세지 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
 			 }else{
@@ -112,10 +110,8 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 
   //이메일 유효성 검증
   $("#email").on("input",function(){
-	console.log(this.value.length, "change")
 	let regex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 	
-	console.log(this.value, regex.test(this.value))
 	if(regex.test(this.value)){
 		$("#emailMessage").text("")
 		$("#chkEmail").attr("class","btn")
@@ -138,7 +134,6 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		email = $("#email").val()	
 		phone = "";
 		$.get("/user/emailCheck?emailnum="+email, function(dt){
-			console.log(dt)
 			if(dt==0){
 			   $("#modifiyMsg").text("이메일 발송에 문제가 발생했습니다. 잠시후 다시 시도해주세요")
 			}else{
@@ -169,8 +164,6 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 			contentType: false,
 			cache: false,
 			success:function(dt){
-				
-				console.log("정보수정 완료",dt)
 				window.location.href="/user/profile";
 			}
 		})

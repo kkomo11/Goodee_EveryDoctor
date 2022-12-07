@@ -39,7 +39,7 @@ public class EmailManager {
 
 
         // 3. SMTP 서버정보와 사용자 정보를 기반으로 Session 클래스의 인스턴스 생성
-        mailSession = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+        mailSession = Session.getInstance(prop, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(user, password);
             }
