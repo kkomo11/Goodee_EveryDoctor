@@ -22,52 +22,28 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="dd-menu collapsed active" href="/"
-                                        aria-label="Toggle navigation">Home</a>
-                                    <!-- <ul class="sub-menu collapse" id="submenu-1-1">
-                                        <li class="nav-item active"><a href="index.html">Home Default</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li>
-                                    </ul> -->
+                                    <a class="dd-menu collapsed active" href="/hospital/home"
+                                        aria-label="Toggle navigation">병원</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/hospital/home" data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
-                                       	 aria-label="Toggle navigation">Hospital</a>
-                                       	 <ul class="sub-menu collapse" id="submenu-1-2">
-                                       	  <li class="nav-item"><a href="/hospital/home">Hospital</a></li>
-                                          <li class="nav-item"><a href="/pet/home">Animal Hospital</a></li>
-                                      </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class=" dd-menu collapsed" href="javascript:void(0)"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">Listings</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-3">
-                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
-                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
-                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
-                                      </ul>
+                                    <a class="dd-menu collapsed" href="/pet/home"
+                                        aria-label="Toggle navigation">동물병원</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="/location/viewCorona"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">선별진료소</a>
-                                    <ul class="sub-menu collapse" id="submenu-1-5">
-                                        <li class="nav-item"><a href="/location/viewCorona">선별진료소보러가기</a>
-                                        </li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Blog Single
-                                                Sibebar</a></li>
-                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class=" dd-menu collapsed" href="/location/viewCorona"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">24시</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">Pages</a>
+                                        aria-label="Toggle navigation">마이페이지</a>
                                     <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
                                         <li class="single-block">
                                             <ul>
@@ -90,29 +66,47 @@
                                         <li class="single-block">
                                           <ul>
                                               <li class="mega-menu-title">마이페이지</li>
-                                              <li class="nav-item"><a href="dashboard.html">스케쥴러</a>
+                                              <li class="nav-item"><a href="/user/profile">내 프로필</a>
                                               </li>
-                                              <li class="nav-item"><a href="profile-settings.html">프로필</a>
+                                              <li class="nav-item"><a href="/user/mydiaglist">내 진료내역</a>
                                               </li>
-                                              <li class="nav-item"><a href="my-items.html">내주소 관리</a></li>
-                                              <li class="nav-item"><a href="favourite-items.html">반려동물 관리</a>
-                                              </li>
-                                              <li class="nav-item"><a href="post-item.html">진료내역 보기</a></li>
-                                              <li class="nav-item"><a href="bookmarked-items.html">채팅내역 보기</a>
-                                              </li>
-                                              <li class="nav-item"><a href="messages.html">내가 쓴 후기 보기</a></li>
-                                              <li class="nav-item"><a href="delete-account.html">회원탈퇴</a>
-                                              </li>
+                                              <li class="nav-item"><a href="#">내 주소 관리</a></li>
+                                              <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
+                                              <li class="nav-item"><a href="#">내 상담내역</a></li>
+                                              <li class="nav-item"><a href="#">반려동물 관리</a></li>
                                               <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                           </ul>
                                       </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
+                                    <a class=" dd-menu collapsed" href="javascript:void(0)"
+                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">의사</a>
+                                        <ul class="sub-menu collapse" id="submenu-1-3">
+                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
+                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
+                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
+                                      </ul>
+                                </li>
+                                <li class="nav-item">
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
-                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
                                       aria-label="Toggle navigation">약사</a>
+                                  <ul class="sub-menu collapse" id="submenu-1-4">
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
+                                      </li>
+                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
+                                  </ul>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="dd-menu collapsed" href="/admin/admin/reportList"
+                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                      aria-controls="navbarSupportedContent" aria-expanded="false"
+                                      aria-label="Toggle navigation">관리자</a>
                                   <ul class="sub-menu collapse" id="submenu-1-5">
                                       <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
                                       </li>
@@ -142,16 +136,21 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
-                                    ${member.username},${member.name}, ${member.roles}
+                                    ${member.name}님 환영합니다.
 
+                                <li>
+                                    <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
+                                </li>
                                 </sec:authorize>
-
+								
+								<sec:authorize access="isAnonymous()">
                                 <li>
-                                    <a href="/user/login"><i class="lni lni-enter"></i> Login</a>
+                                    <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
                                 </li>
                                 <li>
-                                    <a href="/user/registration"><i class="lni lni-user"></i> Register</a>
+                                    <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
+								</sec:authorize>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">

@@ -23,9 +23,9 @@ public class DrugDeliveryController {
 	private DrugDeliveryService drugDeliveryService;
 	
 	@GetMapping("list")
-	public ModelAndView getList(DrugDeliveryVO drugDeliveryVO)throws Exception {
+	public ModelAndView findDrugDeliveryList(DrugDeliveryVO drugDeliveryVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<DrugDeliveryVO> ar = drugDeliveryService.getList(drugDeliveryVO);
+		List<DrugDeliveryVO> ar = drugDeliveryService.findDrugDeliveryList(drugDeliveryVO);
 		mv.addObject("list",ar);
 		mv.setViewName("drug/delivery/list");
 		return mv;
@@ -33,9 +33,9 @@ public class DrugDeliveryController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(DrugDeliveryVO drugDeliveryVO)throws Exception {
+	public ModelAndView findDrugDeliveryDetail(DrugDeliveryVO drugDeliveryVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugDeliveryVO=drugDeliveryService.getDetail(drugDeliveryVO);
+		drugDeliveryVO=drugDeliveryService.findDrugDeliveryDetail(drugDeliveryVO);
 		mv.addObject("detail",drugDeliveryVO);
 		mv.setViewName("drug/delivery/detail");
 		return mv;

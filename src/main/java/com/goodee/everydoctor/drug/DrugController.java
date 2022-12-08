@@ -18,9 +18,9 @@ public class DrugController {
 	private DrugService drugService;
 	
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager)throws Exception {
+	public ModelAndView findDrugList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<DrugVO> ar = drugService.getList(pager);
+		List<DrugVO> ar = drugService.findDrugList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/list");
@@ -28,18 +28,18 @@ public class DrugController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(DrugVO drugVO)throws Exception {
+	public ModelAndView findDrugDetail(DrugVO drugVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugVO=drugService.getDetail(drugVO);
+		drugVO=drugService.findDrugDetail(drugVO);
 		mv.addObject("detail",drugVO);
 		mv.setViewName("drug/detail");
 		return mv;
 	}
 	
 	@GetMapping("store")
-	public ModelAndView getStore(Pager pager)throws Exception {
+	public ModelAndView getDrugStore(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<DrugVO> ar = drugService.getList(pager);
+		List<DrugVO> ar = drugService.findDrugList(pager);
 		mv.addObject("list",ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/store");

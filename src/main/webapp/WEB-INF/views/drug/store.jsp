@@ -6,7 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>EveryDoctor</title>
+      <title>약국찾기</title>
       <meta name="description" content="" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -84,7 +84,7 @@
                         </div>
                       </div>
                     </div>
-                    <label>환자주소*(값 받아오는 걸로)</label>
+                    <!-- <label>환자주소*(값 받아오는 걸로)</label>
                     <div class="button">
                       <input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     </div>
@@ -94,7 +94,7 @@
                       <input type="text" id="sample6_address" placeholder="주소"><br>
                       <input type="text" id="sample6_detailAddress" placeholder="상세주소">
                       <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-                    </div>
+                    </div> -->
                   </div>
                 </form>
               </div>
@@ -106,7 +106,7 @@
                       <div class="main-content">
                         <!-- Start Post Ad Block Area -->
                         <div class="dashboard-block mt-0">
-                          <h3 class="block-title">처방 해줄 약 검색
+                          <h3 class="block-title">처방 받은 약이 궁금하다면?
                             <!-- 검색창 -->
                             <div class="row mb-3">
                               <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
@@ -127,7 +127,7 @@
                                   </div>
                                 </div>
                                 <div class="navbar bg-light">
-                                  <button class="btn btn-outline-success" type="submit">Search</button>
+                                  <button class="btn btn-outline-success" type="submit"><i class="lni lni-search-alt"></i> Search</button>
                                 </div>
                               </form>
                             </div>
@@ -135,17 +135,15 @@
                           <div class="inner-block">
         
                             <!-- 약목록 -->
-                            <table class="table table-success table-striped">
+                            <table class="table table-hover">
                               <thead>
                                 <tr>
-                                  <th>약번호</th>
                                   <th>약이름</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <c:forEach items="${list}" var="vo">
                                   <tr>
-                                    <td>${vo.drugNum}</td>
                                     <td><a href="detail?drugName=${vo.drugName}">${vo.drugName}</a></td>
                                   </tr>
                                 </c:forEach>
@@ -156,17 +154,21 @@
                               <nav aria-label="Page navigation example">
                                 <ul class="pagination-list">
                                   <c:if test="${pager.pre}">
-                                    <li class="page-item"><a class="page-link"
-                                        href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
+                                    <li class="page-item">
+                                      <a class="page-link"
+                                        href="./store?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">&laquo;</a>
                                     </li>
                                   </c:if>
                                   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
                                     <li class="page-item"><a class="page-link"
-                                        href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+                                        href="./store?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
                                   </c:forEach>
-                                  <li class="page-item ${pager.next?'':'disabled'}">
-                                    <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}&next=${pager.next}">Next</a>
-                                  </li>
+                                  <c:if test="${pager.next}">
+                                    <li class="page-item">
+                                      <a class="page-link"
+                                        href="./store?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">&raquo;</a>
+                                    </li>
+                                  </c:if>
                                 </ul>
                               </nav>
                             </div>
