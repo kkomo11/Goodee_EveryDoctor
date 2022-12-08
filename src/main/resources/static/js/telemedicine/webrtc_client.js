@@ -32,6 +32,8 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
+const username = 'test';
+
 // on page load runner
 $(function(){
     start();
@@ -41,6 +43,8 @@ function start() {
     // add an event listener for a message being received
     socket.onmessage = function(msg) {
         let message = JSON.parse(msg.data);
+        // 채팅파트 시작
+        console.log('jsonMessage : '+message);
         switch (message.type) {
             case "text":
                 log('Text message from ' + message.from + ' received: ' + message.data);
@@ -91,6 +95,17 @@ function start() {
     socket.onerror = function(message) {
         handleErrorMessage("Error: " + message);
     };
+
+    $("#button-send").on("click", (e) => {
+        send();
+    })
+
+    function send() {
+        let msg = document.getElementById("msg");
+        console.log(username + ':' + msg.value);
+        socket.send(username + ':' + msg.value);
+        msg.value='';
+    }
 }
 
 function stop() {

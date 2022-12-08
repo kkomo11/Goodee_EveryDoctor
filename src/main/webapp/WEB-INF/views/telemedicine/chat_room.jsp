@@ -91,7 +91,20 @@
                     <video id="remote_video" autoplay playsinline></video>
                 </div>
             </div>
-            <div class="col-lg-4" style="border: 1px solid red;">채팅자리</div>
+            <div class="col-lg-4" id="page-content-wrap">
+                <div class="container-fluid">
+                    <div class="col-6">
+                        <h1>roomName</h1>
+                    </div>
+                    <div id="msgArea"></div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
