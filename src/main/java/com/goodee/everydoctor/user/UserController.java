@@ -170,5 +170,15 @@ public class UserController {
 		}
 		return result;
 	}
+	
+	@GetMapping("mylist")
+	public ModelAndView myList(ModelAndView mv)throws Exception{
+		log.info("mylist {}");
+		
+		
+		
+		mv.setViewName("user/mylist");
+		return mv;
+	}
 
 }
