@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>신고리스트</title>
+    <title>제휴 신청 리스트</title>
 
     <!-- Custom fonts for this template -->
     <link href="/knj/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,6 @@
 
     <!-- Custom styles for this page -->
     <link href="/knj/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="/css/admin/admin/reportList.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css?after" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
@@ -370,97 +369,202 @@
 
                     <!-- 여기부터가 메인 -->
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">신고리스트</h1>
+                    <h1 class="h3 mb-2 text-gray-800">제휴리스트</h1>
 
-                    <!-- 신고리스트 테이블 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">신고리스트</h6>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">답변 미완료된 글만 보기</label>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <section class="container col-lg-6" id="listSearchFrame">
-                                    <form method="get" action="./reportList" class="d-flex justify-contents-center align-items-center">
-                                        <select name="kind" class="form-select" id="kind">
-                                        <option value="reporterName">신고자</option>
-                                        <option value="reportedName">피신고자</option>
-                                        <option value="reportContents">신고내용</option>
-                                        <option value="reportTitle">신고제목</option>
-                                    </select>
-                                        
-                                        <!-- 라벨의 for와 input의 id를 같게하면 같은 영역으로 인식되서 편리하다. -->
-                                        <div class="input-group" id="searchFrame">
-                                        <input type="text" class="form-control" id="search" name="search">
-                                        </div>
-                                        
-                                        <div>
-                                            <button type="submit" class="btn btn-primary">Search</button>
-                                        </div>
-                                    </form>
-                            </section>
-                            <div>
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>신고글번호</th>
-                                            <th>신고자</th>
-                                            <th>피신고자</th>
-                                            <th>신고유형</th>
-                                            <th>상담번호</th>
-                                            <th>신고제목</th>
-                                            <th>답변여부</th>
-                                            <th>상세보기</th>
-                                            <th>답변등록</th>
-                                        </tr>
-                                    </thead>
-                                    <c:forEach items="${list}" var="list">
-	                                    <tbody>
-	                                        <tr>
-	                                            <td class="ajaxNum">${list.reportNum}</td>
-	                                            <td>${list.reporterName}</td>
-	                                            <td>${list.reportedName}</td>
-	                                            <td>${list.reportTypeVO.reportTypeName}</td>
-	                                            <td>${list.consultNum}</td>
-	                                            <td>${list.reportTitle}</td>
-	                                            <td>${list.reportChecked}</td>
-	                                            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#reportDetail">상세보기</button></td>
-	                                            <td><button type="button" class="btn btn-primary answerModalBtn" data-toggle="modal" data-target="#reportAnswer2" data-num=${list.reportNum}>답변등록</button></td>
-	                                        </tr>
-	                                    </tbody>
-                                    </c:forEach>
-                                </table>
+                    <div class="row">
+                        <div class="col-12">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-doctor-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-latest" type="button" role="tab" aria-controls="nav-latest"
+                                        aria-selected="true">의사 제휴</button>
+                                    <button class="nav-link" id="nav-nurse-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-nurse" type="button" role="tab" aria-controls="nav-nurse"
+                                        aria-selected="false">간호사 제휴</button>
+                                    <button class="nav-link" id="nav-petDoc-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-petDoc" type="button" role="tab" aria-controls="nav-petDoc"
+                                        aria-selected="false">수의사 제휴</button>
+                                    <button class="nav-link" id="nav-petNurse-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-petNurse" type="button" role="tab" aria-controls="nav-petNurse"
+                                        aria-selected="false">수간호사 제휴</button>
+                                    <button class="nav-link" id="nav-pharmacy-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-pharmacy" type="button" role="tab" aria-controls="nav-pharmacy"
+                                        aria-selected="false">약사 제휴</button>
+                                    <button class="nav-link" id="nav-petHotel-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-petHotel" type="button" role="tab" aria-controls="nav-petHotel"
+                                        aria-selected="false">보호소관리자 제휴</button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <!-- 의사 제휴 리스트 -->
+                                <div class="tab-pane fade active show" id="nav-latest" role="tabpanel"
+                                    aria-labelledby="nav-latest-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="doctorList">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="doctorPagination">
+                                                    
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                                <!-- 간호사 제휴 리스트 -->
+                                <div class="tab-pane fade" id="nav-nurse" role="tabpanel" aria-labelledby="nav-nurse-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="nurseList">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="pagination center">
+                                        <ul class="pagination-list" id="nursePagination">
+                                            
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                                <!-- 수의사 제휴 리스트 -->
+                                <div class="tab-pane fade" id="nav-petDoc" role="tabpanel" aria-labelledby="nav-petDoc-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="petDocList">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="pagination center">
+                                        <ul class="pagination-list" id="petDocPagination">
+                                            
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                                <!-- 수간호사 제휴 리스트 -->
+                                <div class="tab-pane fade" id="nav-petNurse" role="tabpanel" aria-labelledby="nav-petNurse-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="petNurseList">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="pagination center">
+                                        <ul class="pagination-list" id="petNursePagination">
+                                            
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                                <!-- 약사 제휴 리스트 -->
+                                <div class="tab-pane fade" id="nav-pharmacy" role="tabpanel" aria-labelledby="nav-pharmacy-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="pharmacyList">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="pagination center">
+                                        <ul class="pagination-list" id="pharmacyPagination">
+                                            
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                                <!-- 보호소 제휴 리스트 -->
+                                <div class="tab-pane fade" id="nav-petHotel" role="tabpanel" aria-labelledby="nav-petHotel-tab">
+                                    <div class="row">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>이름</th>
+                                                    <th>전문의</th>
+                                                    <th>기관 구분</th>
+                                                    <th>상호명</th>
+                                                    <th>기관 전화번호</th>
+                                                    <th>기관 타입</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="petHotelList">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <div class="pagination center">
+                                        <ul class="pagination-list" id="petHotelPagination">
+                                            
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 페이징 -->
-                    <div class="container">
-                        <nav aria-label="Page navigation example" id="nav">
-                            <ul class="pagination" style="justify-content: center;">
-                                <c:if test="${pager.pre}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="./reportList?page=${pager.startNum - 1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
-                                    </li>
-                                </c:if>
-            
-                                <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                                    <li class="page-item">
-                                        <a class="page-link" href="./reportList?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a>
-                                    </li>
-                                </c:forEach>
-            
-                                <c:if test="${pager.next}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="./reportList?page=${pager.lastNum + 1}&kind=${pager.kind}&search=${pager.search}">Next</a>
-                                    </li>
-                                </c:if>
-                            </ul>
-                        </nav>
-                    </div>
-                    
                     <!-- 신고 상세보기 모달창 -->
                     <div class="modal fade reportModal" id="reportDetail" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -608,9 +712,20 @@
 
     <!-- Page level custom scripts -->
     <script src="/knj/js/demo/datatables-demo.js"></script>
-    <script src="/js/admin/admin/reportList.js"></script>
+    <script src="/js/admin/admin/cooperationList.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+    <!-- Template -->
+    <script type="text/template" id="cooperationListTemplate">
+        <tr>
+            <td>{name}</td>
+            <td>{medicSpecialty}</td>
+            <td>{agencyRole}</td>
+            <td>{agencyName}</td>
+            <td>{agencyTel}</td>
+            <td>{agencyType}</td>
+        </tr>
+    </script>
 </body>
 
 </html>

@@ -110,6 +110,7 @@ medicRole.change(function(){
         //확인
         console.log(medicSpecialty);
     }else if(medicRole.val() == '수의사'){
+        specialty.empty();
         let specialtyAddForm = $("#specialtyAddForm").html();
         specialty.append(specialtyAddForm);
         const medicSpecialty = $("#medicSpecialty");

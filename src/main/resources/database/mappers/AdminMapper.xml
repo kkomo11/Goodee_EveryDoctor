@@ -4,5 +4,59 @@
 	"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.goodee.everydoctor.admin.AdminMapper">
-		<insert id=""></insert>
+		<select id="findCooperationList" parameterType="Pager" resultMap="findCooperationList">
+			SELECT M.USERNAME, M.AGENCYNUM, M.MEDICINFO, M.MEDICENABLED, M.MEDICROLE, M.MEDICSPECIALTY,
+			A.AGENCYNAME, A.AGENCYADDR, A.AGENCYTEL, A.AGENCYINFO, A.AGENCYROLE, A.AGENCYTYPE, U.NAME
+			FROM MEDIC M
+			INNER JOIN AGENCY A
+			ON (A.AGENCYNUM = M. AGENCYNUM)
+			INNER JOIN USERS U 
+			ON M.USERNAME = U.USERNAME
+			WHERE M.MEDICENABLED = 0 AND M.MEDICROLE 
+			<choose>
+				<when test="kind == '의사'">=#{kind}</when>
+				<when test="kind == '간호사'">=#{kind}</when>
+				<when test="kind == '수의사'">=#{kind}</when>
+				<when test="kind == '수간호사'">=#{kind}</when>
+				<when test="kind == '약사'">=#{kind}</when>
+				<otherwise>='보호소관리자'</otherwise>
+			</choose>
+			LIMIT #{startRow}, #{perPage}
+		</select>
+		
+		<resultMap type="MedicVO" id="findCooperationList">
+			<id column="USERNAME" property="username"/>
+			<result column="AGENCYNUM" property="agencyNum"/>
+			<result column="MEDICINFO" property="medicInfo"/>
+			<result column="MEDICENABLED" property="medicEnabled"/>
+			<result column="MEDICROLE" property="medicRole"/>
+			<result column="MEDICSPECIALTY" property="medicSpecialty"/>
+			<association property="agencyVO" javaType="AgencyVO">
+				<result column="AGENCYNAME" property="agencyName"/>
+				<result column="AGENCYADDR" property="agencyAddr"/>
+				<result column="AGENCYTEL" property="agencyTel"/>
+				<result column="AGENCYINFO" property="agencyInfo"/>
+				<result column="AGENCYROLE" property="agencyRole"/>
+				<result column="AGENCYTYPE" property="agencyType"/>
+			</association>
+			<association property="userVO" javaType="UserVO">
+				<result column="NAME" property="name"/>
+			</association>
+		</resultMap>
+		
+		<select id="findCooperationCount" parameterType="Pager" resultType="Long">
+			SELECT COUNT(M.USERNAME)
+			FROM MEDIC M
+			INNER JOIN AGENCY A
+			ON (A.AGENCYNUM = M. AGENCYNUM)
+			WHERE M.MEDICENABLED = 0 AND M.MEDICROLE
+			<choose>
+				<when test="kind == '의사'">=#{kind}</when>
+				<when test="kind == '간호사'">=#{kind}</when>
+				<when test="kind == '수의사'">=#{kind}</when>
+				<when test="kind == '수간호사'">=#{kind}</when>
+				<when test="kind == '약사'">=#{kind}</when>
+				<otherwise>='보호소관리자'</otherwise>
+			</choose>
+		</select>
 	</mapper>
