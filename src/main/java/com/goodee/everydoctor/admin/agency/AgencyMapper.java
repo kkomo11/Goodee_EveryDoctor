@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goodee.everydoctor.hospital.HospitalSectionVO;
+
 @Mapper
 public interface AgencyMapper {
 	
@@ -28,5 +30,8 @@ public interface AgencyMapper {
 	
 	//기관 운영 시간 등록
 	public int inputAgencyWorkHour (AgencyWorkHourVO agencyWorkHourVO)throws Exception;
+	
+	//동물병원 진료과목 불러오기
+	public List<HospitalSectionVO> findPetHospitalSection()throws Exception;
 
 }

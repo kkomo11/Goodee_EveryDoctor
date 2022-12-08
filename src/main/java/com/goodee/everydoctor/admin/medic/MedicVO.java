@@ -10,6 +10,7 @@ public class MedicVO {
 	private String medicInfo;
 	private int medicEnabled;
 	private String medicRole;
+	private String medicSpecialty;
 	
 
 }

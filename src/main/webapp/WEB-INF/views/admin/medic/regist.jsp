@@ -66,6 +66,9 @@
                     <div class="main-content">
                         <!-- 기관 등록 폼 시작 -->
                         <div class="dashboard-block mt-0 profile-settings-block">
+                            <sec:authorize access="!isAuthenticated()">
+                                <h2 style="color: #55DDBD;">기관 추가 인원 등록은 회원가입 후에 가능합니다!!</h2>
+                            </sec:authorize>
                             <h3 class="block-title">종사자 추가 등록</h3>
                             <div class="inner-block">
                                 <!-- Nav Tab 시작 -->
@@ -84,7 +87,7 @@
                                                 aria-controls="pet" aria-selected="false">
                                                 <span class="serial">02</span>
                                                 동물병원
-                                                <span class="sub-title">수의사, 수간호가 추가 등록</span>
+                                                <span class="sub-title">수의사, 수간호사 추가 등록</span>
                                             </button>
                                             <button class="nav-link" id="pharmacy-tab" data-bs-toggle="tab"
                                                 data-bs-target="#pharmacy" type="button" role="tab"
@@ -132,13 +135,18 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <!-- 상호명 입력 -->
+                                                    <!-- 성함 입력 -->
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <sec:authentication property="Principal" var="member"/>
-                                                            <input class="username" value="${member.name}" readonly="readonly" />
-                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <sec:authorize access="isAuthenticated()">
+                                                                <sec:authentication property="Principal" var="member"/>
+                                                                    <input class="username" value="${member.name}" readonly="readonly" />
+                                                                    <input name="username" type="hidden" value="${member.username}" />
+                                                            </sec:authorize>
+                                                            <sec:authorize access="!isAuthenticated()">
+                                                                <input type="text" value="기관 추가인원 등록은 회원가입 후에 가능합니다!!" disabled style="color: #55DDBD;">
+                                                            </sec:authorize>
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -188,13 +196,18 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <!-- 상호명 입력 -->
+                                                    <!-- 성함 입력 -->
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <sec:authentication property="Principal" var="member"/>
-                                                            <input class="username" value="${member.name}" readonly="readonly" />
-                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <sec:authorize access="isAuthenticated()">
+                                                                <sec:authentication property="Principal" var="member"/>
+                                                                    <input class="username" value="${member.name}" readonly="readonly" />
+                                                                    <input name="username" type="hidden" value="${member.username}" />
+                                                            </sec:authorize>
+                                                            <sec:authorize access="!isAuthenticated()">
+                                                                <input type="text" value="기관 추가인원 등록은 회원가입 후에 가능합니다!!" disabled style="color: #55DDBD;">
+                                                            </sec:authorize>
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -234,9 +247,14 @@
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <sec:authentication property="Principal" var="member"/>
-                                                            <input class="username" value="${member.name}" readonly="readonly" />
-                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <sec:authorize access="isAuthenticated()">
+                                                                <sec:authentication property="Principal" var="member"/>
+                                                                    <input class="username" value="${member.name}" readonly="readonly" />
+                                                                    <input name="username" type="hidden" value="${member.username}" />
+                                                            </sec:authorize>
+                                                            <sec:authorize access="!isAuthenticated()">
+                                                                <input type="text" value="기관 추가인원 등록은 회원가입 후에 가능합니다!!" disabled style="color: #55DDBD;">
+                                                            </sec:authorize>
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>
@@ -274,13 +292,18 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <!-- 상호명 입력 -->
+                                                    <!-- 성함 입력 -->
                                                     <div class="col-lg-6 col-6">
                                                         <div class="form-group">
                                                             <label>성함*</label>
-                                                            <sec:authentication property="Principal" var="member"/>
-                                                            <input class="username" value="${member.name}" readonly="readonly" />
-                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                            <sec:authorize access="isAuthenticated()">
+                                                                <sec:authentication property="Principal" var="member"/>
+                                                                    <input class="username" value="${member.name}" readonly="readonly" />
+                                                                    <input name="username" type="hidden" value="${member.username}" />
+                                                            </sec:authorize>
+                                                            <sec:authorize access="!isAuthenticated()">
+                                                                <input type="text" value="기관 추가인원 등록은 회원가입 후에 가능합니다!!" disabled style="color: #55DDBD;">
+                                                            </sec:authorize>
                                                             <div class="usernamem" style="color: #55DDBD;"></div>
                                                         </div>
                                                     </div>

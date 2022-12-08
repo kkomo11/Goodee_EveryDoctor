@@ -61,11 +61,12 @@ $("#fileAdd").on("click", ".del", function(){
     count--;
 })
 
+const agencyRole = $("#agencyRole");
+const medicRole = $("#medicRole");
+const specialty = $("#specialty");
 //신청 버튼 클릭 시
 $("#registButton").click(function(){
     //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
-    const medicRole = $("#medicRole");
-    const agencyRole = $("#agencyRole");
     if(medicRole.val()=="의사" || medicRole.val()=="간호사"){
         agencyRole.val("병원");
     }else if(medicRole.val()=="수의사"){
@@ -84,6 +85,56 @@ $("#registButton").click(function(){
     $("#form").submit();
 
 })
+
+//문의유형에 따라 전문의 선택 select폼 추가
+medicRole.change(function(){
+    if(medicRole.val() == '의사'){
+        specialty.empty();
+        let specialtyAddForm = $("#specialtyAddForm").html();
+        specialty.append(specialtyAddForm);
+        const medicSpecialty = $("#medicSpecialty");
+        //병원 진료 카테고리 가져오기
+        $.ajax({
+            type: "GET",
+            url: "/hospital/home/section",
+
+            success: function(result){
+                    $.each(result, function(index, item){
+                        medicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");
+                })
+            },
+            error: function(result){
+                console.log(result);
+            }
+        });
+        //확인
+        console.log(medicSpecialty);
+    }else if(medicRole.val() == '수의사'){
+        let specialtyAddForm = $("#specialtyAddForm").html();
+        specialty.append(specialtyAddForm);
+        const medicSpecialty = $("#medicSpecialty");
+        //동물병원 진료 카테고리 가져오기
+        $.ajax({
+            type: "GET",
+            url: "/admin/agency/petHospitalSection",
+
+            success: function(result){
+                    $.each(result, function(index, item){
+                        medicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");
+                })
+            },
+            error: function(result){
+                console.log(result);
+            }
+        });
+    }else{
+        specialty.empty();
+    }
+})
+
+function secure(){
+    console.log($("#secure"));
+}
 
 //운영시간 반복문
 // for(let i = 0; i <= 23; i++){
