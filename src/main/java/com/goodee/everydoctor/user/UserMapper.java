@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Mapper
 public interface UserMapper {
 
+	public int chkId(String username)throws Exception;
 	public int inputUser(UserVO userVO) throws Exception;
 	public int inputRolePre(UserVO userVO)throws Exception;
 	public int inputRoleMember(UserVO userVO)throws Exception;

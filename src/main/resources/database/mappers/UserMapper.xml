@@ -3,6 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.user.UserMapper">
+
+	<select id="chkId" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM USERS WHERE USERNAME=#{username}
+	</select>
 	<insert id="inputUser" parameterType="UserVO">
 		INSERT INTO USERS(USERNAME, PASSWORD , NAME, EMAIL, FILENAME, USERREGDATE) 
 		VALUE (#{username}, #{password}, #{name}, #{email} , #{fileName}, NOW())

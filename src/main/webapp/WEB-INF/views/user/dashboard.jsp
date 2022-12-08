@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Profile</title>
+    <title>마이페이지</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />	
     <!-- Place favicon.ico in the root directory -->
@@ -205,7 +205,6 @@
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
-    <script src="/js/user/profile.js"></script>
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
@@ -213,5 +212,6 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
+    <script src="/js/user/profile.js"></script>
 </body>
 </html>
