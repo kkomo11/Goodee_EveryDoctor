@@ -20,7 +20,6 @@ let chk = usernameVal.indexOf('@')
 }
 
 let birthVal = $("#birth").val()
-console.log(birthVal.slice(0,4)+"년"+birthVal.slice(4,6)+"월"+birthVal.slice(6,8)+"일")
 
 $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.slice(6,8)+"일")
  

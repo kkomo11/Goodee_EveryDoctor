@@ -65,33 +65,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-12">
-                    <!-- Start Dashboard Sidebar -->
-                    <div class="dashboard-sidebar">
-                        <div class="user-image">
-                            <img src="${user.fileName}" alt="#" style="object-fit: cover;">
-                            <h3>${user.name}
-                                <span><a href="javascript:void(0)">${user.username}</a></span>
-                            </h3>
-                        </div>
-                        <div class="dashboard-menu">
-                            <ul>
-                                <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
-                                <li><a class="active" href="profile-settings.html"><i class="lni lni-pencil-alt"></i>
-                                        Edit Profile</a></li>
-                                <li><a href="my-items.html"><i class="lni lni-bolt-alt"></i> My Ads</a></li>
-                                <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
-                                <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
-                                <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
-                                <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
-                                <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
-                            </ul>
-                            <div class="button">
-                                <a class="btn" href="javascript:void(0)">로그아웃</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start Dashboard Sidebar -->
+					<c:import url="sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="main-content">

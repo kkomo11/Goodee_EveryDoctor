@@ -171,13 +171,28 @@ public class UserController {
 		return result;
 	}
 	
-	@GetMapping("mylist")
+	@GetMapping("dashboard")
+	public String getDashboard() throws Exception{
+		return "user/dashboard";
+	}
+	
+	@GetMapping("mydiaglist")
 	public ModelAndView myList(ModelAndView mv)throws Exception{
 		log.info("mylist {}");
 		
 		
 		
-		mv.setViewName("user/mylist");
+		mv.setViewName("user/mydiaglist");
+		return mv;
+	}
+	
+	@GetMapping("petdiaglist")
+	public ModelAndView petList(ModelAndView mv)throws Exception{
+		log.info("mylist {}");
+		
+		
+		
+		mv.setViewName("user/petdiaglist");
 		return mv;
 	}
 
