@@ -24,10 +24,13 @@ public class WebSocketConfig implements WebSocketConfigurer, WebSocketMessageBro
 
 	@Autowired
 	private ChatHandler chatHandler;
+	@Autowired
+	private AlarmHandler alramHandler;
 	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		registry.addHandler(chatHandler, "ws/chat")	//handler 클래스와 경로를 설정
+				.addHandler(alramHandler, "/alram")
 				.setAllowedOrigins("*") //ws프로토콜/ws/chat 하위의 모든uri에서 chatHandler를 사용한다는 의미
 				.addInterceptors(new HttpSessionHandshakeInterceptor());
 				//interceptor for adding httpsession into websocket session
@@ -38,7 +41,10 @@ public class WebSocketConfig implements WebSocketConfigurer, WebSocketMessageBro
 	
 	@Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").withSockJS(); //웹 소캣을 사용하기 위해 설정하는 부분
+        registry.addEndpoint("/ws")
+        		.withSockJS(); //웹 소캣을 사용하기 위해 설정하는 부분
+        registry.addEndpoint("/alram")
+        		.withSockJS();
     }
 
     @Override
