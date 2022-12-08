@@ -70,7 +70,7 @@ public class SignalHandler extends TextWebSocketHandler {
         // a message has been received
         try {
             WebSocketMessage message = objectMapper.readValue(textMessage.getPayload(), WebSocketMessage.class);
-            logger.debug("[ws] Message of {} type from {} received", message.getType(), message.getFrom());
+            logger.info("[ws] Message of {} type from {} received", message.getType(), message.getFrom());
             String userName = message.getFrom(); // origin of the message
             String data = message.getData(); // payload
 
@@ -78,9 +78,20 @@ public class SignalHandler extends TextWebSocketHandler {
             switch (message.getType()) {
                 // text message from client has been received
                 case MSG_TYPE_TEXT:
-                    logger.debug("[ws] Text message: {}", message.getData());
+                    logger.info("[ws] Text message: {}", message.getData());
                     // message.data is the text sent by client
                     // process text message if needed
+                    Room rm2 = sessionIdToRoomMap.get(session.getId());
+                    if (rm2 != null) {
+                        Map<String, WebSocketSession> clients = roomService.getClients(rm2);
+                        for(Map.Entry<String, WebSocketSession> client : clients.entrySet())  {
+                            // send messages to all clients except current user
+                            if (!client.getKey().equals(userName)) {
+                                // select the same type to resend signal
+                                sendMessage(client.getValue(), message);
+                            }
+                        }
+                    }
                     break;
 
                 // process signal received from client
@@ -142,20 +153,16 @@ public class SignalHandler extends TextWebSocketHandler {
                     logger.debug("[ws] Type of the received message {} is undefined!", message.getType());
                     // handle this if needed
             }
-            
-            // 채팅
-//            for(WebSocketSession sess: list) {
-//            	sess.sendMessage(textMessage);
-//            }
 
         } catch (IOException e) {
-            logger.debug("An error occured: {}", e.getMessage());
+            logger.info("An error occured: {}", e.getMessage());
         }
     }
 
     private void sendMessage(WebSocketSession session, WebSocketMessage message) {
         try {
             String json = objectMapper.writeValueAsString(message);
+            logger.info("Json : {}", json);
             session.sendMessage(new TextMessage(json));
         } catch (IOException e) {
             logger.debug("An error occured: {}", e.getMessage());

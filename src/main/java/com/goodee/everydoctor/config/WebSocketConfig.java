@@ -17,15 +17,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketConfigurer {
 	
-	@Autowired
-	private ChatHandler chatHandler;
+//	@Autowired
+//	private final ChatHandler chatHandler;
 	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		
 		// 챗봇용
-		registry.addHandler(chatHandler, "ws/chat")	//handler 클래스와 경로를 설정
-		.setAllowedOrigins("*"); //ws프로토콜/ws/chat 하위의 모든uri에서 chatHandler를 사용한다는 의미
+//		registry.addHandler(chatHandler, "ws/chat")	//handler 클래스와 경로를 설정
+//		.setAllowedOrigins("*"); //ws프로토콜/ws/chat 하위의 모든uri에서 chatHandler를 사용한다는 의미
 //		.addInterceptors(new HttpSessionHandshakeInterceptor());
 		//interceptor for adding httpsession into websocket session
 		
