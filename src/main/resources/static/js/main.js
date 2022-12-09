@@ -106,17 +106,17 @@ Author: GrayGrids
 	const toastTrigger = document.getElementById('liveToastBtn')
 	const toastLiveExample = document.getElementById('liveToast')
 	const toast = new bootstrap.Toast(toastLiveExample)
-    console.log($("#name").val())
     let userID = $("#name").val()
-
+	
+    console.log($("#name").val())
 
     
 
     let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
 
+	console.log(eventSource.readyState)
     eventSource.addEventListener("latestNews",function(event){
-        // console.log(event.data)
         let articleData =JSON.parse(event.data);
         // console.log(articleData)
         
@@ -139,7 +139,7 @@ $(toastTrigger).click(function(){
         data:{
             title: "타이틀",
             text: "텍스트",
-            userID:userID
+            userID:"Doctor"
         },
         success:function(result){
             console.log("result: ", result);
