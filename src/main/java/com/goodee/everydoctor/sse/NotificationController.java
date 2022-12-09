@@ -68,9 +68,13 @@ public class NotificationController {
 		
 		log.info("유저아이디 {}", userID);
 		
+		int num = (int)(Math.random()*1000);
+		
 		String eventFormatted = new JSONObject()
+				.put("toastId", "toast"+num)
 				.put("title",title)
-				.put("text",text).toString();
+				.put("loca", "/user/profile")
+				.put("text","뿅뿅 한별이 화이탱").toString();
 		
 		SseEmitter sseEmitter = emitters.get(userID);
 		if(sseEmitter != null) {
