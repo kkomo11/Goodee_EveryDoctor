@@ -409,6 +409,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="doctorList">
@@ -438,6 +439,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="nurseList">
@@ -446,10 +448,12 @@
                                         </table>
                                     </div>
                                     <!-- Pagination -->
-                                    <div class="pagination center">
-                                        <ul class="pagination-list" id="nursePagination">
-                                            
-                                        </ul>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="nursePagination">
+                                                    
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
@@ -465,6 +469,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="petDocList">
@@ -473,10 +478,12 @@
                                         </table>
                                     </div>
                                     <!-- Pagination -->
-                                    <div class="pagination center">
-                                        <ul class="pagination-list" id="petDocPagination">
-                                            
-                                        </ul>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="petDocPagination">
+                                                    
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
@@ -492,6 +499,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="petNurseList">
@@ -500,10 +508,12 @@
                                         </table>
                                     </div>
                                     <!-- Pagination -->
-                                    <div class="pagination center">
-                                        <ul class="pagination-list" id="petNursePagination">
-                                            
-                                        </ul>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="petNursePagination">
+                                                    
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
@@ -519,6 +529,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="pharmacyList">
@@ -527,10 +538,12 @@
                                         </table>
                                     </div>
                                     <!-- Pagination -->
-                                    <div class="pagination center">
-                                        <ul class="pagination-list" id="pharmacyPagination">
-                                            
-                                        </ul>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="pharmacyPagination">
+                                                    
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
@@ -546,6 +559,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>상세보기</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="petHotelList">
@@ -554,10 +568,12 @@
                                         </table>
                                     </div>
                                     <!-- Pagination -->
-                                    <div class="pagination center">
-                                        <ul class="pagination-list" id="petHotelPagination">
-                                            
-                                        </ul>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination" style="justify-content: center;" id="petHotelPagination">
+                                                    
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
@@ -565,90 +581,60 @@
                         </div>
                     </div>
 
-                    <!-- 신고 상세보기 모달창 -->
-                    <div class="modal fade reportModal" id="reportDetail" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+                    <!-- 제휴 상세보기 모달창 -->
+                    <div class="modal fade cooperationModal" id="cooperationDetail" tabindex="-1" role="dialog" aria-labelledby="cooperationModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h1 class="modal-title" id="reportModalLabel">신고 상세내용</h1>
+                            <h1 class="modal-title" id="cooperationModalLabel">상세내용</h1>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
                             <div class="mb-3">
-                                <h3>신고자</h3>
-                                <div id="reporterName">
+                                <h3>이름</h3>
+                                <div id="medicName">
                                     
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h3>피신고자</h3>
-                                <div id="reportedName">
+                                <h3>전문의 여부</h3>
+                                <div id="medicSpecialty">
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h3>신고 유형</h3>
-                                <div id="reportType">
+                                <h3>소개글</h3>
+                                <div id="medicInfo">
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h3>신고 제목</h3>
-                                <div id="reportTitle">
+                                <h3>기관명</h3>
+                                <div id="agencyName">
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h3>신고 내용</h3>
-                                <div id="reportContents">
-
+                                <h3>기관 주소</h3>
+                                <div id="agencyAddr">
+                                    
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h3>첨부 사진</h3>
-                                <div id="reportFile">
+                                <h3>기관소개글</h3>
+                                <div id="agencyInfo">
 
                                 </div>
                             </div>
-                                <div class="mb-3">
-                                    <input type="hidden" name="reportNum" id="reportNum">
-                                    <h3>관리자 답변</h3>
-                                    <div id="reportAnswer">
-
-                                    </div>
-                                </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" id="approvalBtn">승인</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <!-- 관리자 답변등록 모달창 -->
-                    <div class="modal fade reportAnswerModal" id="reportAnswer2" tabindex="-1" aria-labelledby="reportAnswerModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h1 class="modal-title" id="reportAnswerModalLabel">신고 답변등록</h1>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <form action="/admin/report/answer" method="post" id="answerForm">
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <input type="hidden" name="reportNum" id="numForAnswer">
-                                            <h3>관리자 답변</h3>
-                                            <textarea name="reportAnswerContents" id="" cols="50" rows="10"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" id="registAnswerBtn">답변 등록</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -724,6 +710,7 @@
             <td>{agencyName}</td>
             <td>{agencyTel}</td>
             <td>{agencyType}</td>
+            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#cooperationDetail" data-name="{username}">상세보기</button></td>
         </tr>
     </script>
 </body>

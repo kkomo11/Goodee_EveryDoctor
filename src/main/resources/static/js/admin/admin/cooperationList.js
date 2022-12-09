@@ -18,13 +18,79 @@ const pharmacyPagination = $("#pharmacyPagination"); // 약사 제휴 리스트 
 const petHotelList = $("#pethotelList"); // 보호소 제휴 리스트 들어갈 부모 선택자
 const petHotelPagination = $("#petHotelPagination"); // 보호소 제휴 리스트 페이징
 
+//의사 제휴 리스트 불러오기
+// $("부모선택자").on("이벤트명", "자식선택자", callback function)
+doctorList.on("click", ".modalBtn", function(){
+    console.log("CLICK CLICK");
+})
 nav_doctor_tab.click(function(){
     cooperationListAjax('의사');
+
+    console.log("this : ", $(this).parent().parent().next().children().children().children().children().find(".modalBtn"));
+    console.log("nav_doctor_tab.click");
+    let modalBtn = $(".modalBtn");
+    console.log("modalBtn : ", modalBtn);
+    modalBtn.click(function(){
+
+    console.log("modalBtn Click");
+    let username = modalBtn.attr("data-name");
+    console.log(username);
+    })
 })
 
 doctorPagination.click(function(event){
-    console.log(event);
+    // console.log(event);
     cooperationPagingAjax('의사', event.target.innerText);
+})
+
+//간호사 제휴 리스트 불러오기
+nav_nurse_tab.click(function(){
+    cooperationListAjax('간호사');
+})
+
+nursePagination.click(function(event){
+    // console.log(event);
+    cooperationPagingAjax('간호사', event.target.innerText);
+})
+
+//수의사 제휴 리스트 불러오기
+nav_petDoc_tab.click(function(){
+    cooperationListAjax('수의사');
+})
+
+petDocPagination.click(function(event){
+    // console.log(event);
+    cooperationPagingAjax('수의사', event.target.innerText);
+})
+
+//수간호사 제휴 리스트 불러오기
+nav_petNurse_tab.click(function(){
+    cooperationListAjax('수간호사');
+})
+
+petNursePagination.click(function(event){
+    // console.log(event);
+    cooperationPagingAjax('수간호사', event.target.innerText);
+})
+
+//약사 제휴 리스트 불러오기
+nav_pharmacy_tab.click(function(){
+    cooperationListAjax('약사');
+})
+
+pharmacyPagination.click(function(event){
+    // console.log(event);
+    cooperationPagingAjax('약사', event.target.innerText);
+})
+
+//보호소 제휴 리스트 불러오기
+nav_petHotel_tab.click(function(){
+    cooperationListAjax('보호소관리자');
+})
+
+petHotelPagination.click(function(event){
+    // console.log(event);
+    cooperationPagingAjax('보호소관리자', event.target.innerText);
 })
 
 function cooperationListAjax(kind){
@@ -63,7 +129,8 @@ function cooperationListAjax(kind){
                        .replace("{agencyRole}", item.agencyVO.agencyRole)
                        .replace("{agencyName}", item.agencyVO.agencyName)
                        .replace("{agencyTel}", item.agencyVO.agencyTel)
-                       .replace("{agencyType}", item.agencyVO.agencyType);
+                       .replace("{agencyType}", item.agencyVO.agencyType)
+                       .replace("{username}", item.username);
             list.append(temp); 
         })
 
@@ -82,6 +149,7 @@ function cooperationListAjax(kind){
     })
 }
 
+//각 제휴리스트에 맞게 페이징 AJAX
 function cooperationPagingAjax(kind, page){
     $.get("/admin/admin/findCooperationList?kind=" + kind + "&page=" + page, function(result){
         let list = "";
@@ -136,8 +204,48 @@ function cooperationPagingAjax(kind, page){
         }
     })
 }
-
+//페이지 로딩 후에 의사 제휴리스트 강제 클릭
 nav_doctor_tab.click();
+
+// const modalBtn = $(".modalBtn");
+// modalBtn.click(function(){
+    // let title = $(this).parent().prev().prev().text();
+    // $(this).attr("data-target",title);
+    // $(".reportModal").attr("id",title);
+    // console.log($(".reportModal"));
+    // modalBtn.attr("data-target","")
+
+    // console.log("modalBtn Click");
+    // let username = modalBtn.attr("data-name");
+    // console.log(username);
+    
+    // $("#medicName").empty();
+    // $("#medicSpecialty").empty();
+    // $("#medicInfo").empty();
+    // $("#agencyName").empty();
+    // $("#agencyAddr").empty();
+    // $("#agencyInfo").empty();
+    // 신고 상세내용을 모달창에 ajax로 호출
+    // $.ajax({
+    //     type: "GET",
+    //     url: "/admin/report/detail",
+    //     data: {
+    //         reportNum: ajaxNum
+    //     },
+    //     success: function(result){
+    //         $("#medicName").append("<strong>" + result + "</strong>");
+    //         $("#medicSpecialty").append("<strong>" + result + "</strong>");
+    //         $("#medicInfo").append("<strong>" + result + "</strong>");
+    //         $("#agencyName").append("<strong>" + result + "</strong>");
+    //         $("#agencyAddr").append("<strong>" + result + "</strong>");
+    //         $("#agencyInfo").append("<strong>" + result + "</strong>");
+    //     },
+    //     error: function(result){
+    //         console.log(result);
+    //     }
+    // });
+// })
+
 
 /* <tr>
     <td>{name}</td>
