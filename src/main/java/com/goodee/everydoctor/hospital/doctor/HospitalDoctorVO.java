@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.hospital.doctor;
 
+import java.util.List;
+
 import com.goodee.everydoctor.admin.agency.AgencyVO;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.user.UserVO;
@@ -7,9 +9,8 @@ import com.goodee.everydoctor.user.UserVO;
 import lombok.Data;
 
 @Data
-public class HospitalDoctorVO {
+public class HospitalDoctorVO extends UserVO {
 
-	private UserVO userVO;
 	private AgencyVO agencyVO;
-	private HospitalSectionVO hospitalSectionVO;
+	private List<HospitalSectionVO> hospitalSectionVOs;
 }
