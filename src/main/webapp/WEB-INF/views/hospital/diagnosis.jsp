@@ -9,7 +9,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
-<!-- Preloader -->
+	<!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">

@@ -17,7 +17,8 @@ public class HospitalDoctorController {
 	private HospitalDoctorService hospitalDoctorService;
 	
 	@GetMapping("detail")
-	public String doctorDetail() throws Exception {
+	public String doctorDetail(HospitalDoctorVO doctorVO) throws Exception {
+		
 		return "hospital/doctorDetail";
 	}
 	

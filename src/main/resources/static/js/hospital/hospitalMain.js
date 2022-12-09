@@ -17,7 +17,8 @@ function loadDoctorList() {
 		type:"GET",
 		url:"/hospital/doctor/list",
 		success: function(data) {
-			$("#doctorList").html(data);
+			$("#doctorSignList").html(data);
+			$("#doctorSubjectList").html(data);
 		}
 	})
 }

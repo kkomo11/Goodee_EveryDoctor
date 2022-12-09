@@ -23,21 +23,21 @@
 	</select>
 	
 	<resultMap type="HospitalDoctorVO" id="DoctorListResult">
-		<association property="userVO" javaType="UserVO">
-			<id column="USERNAME" property="username"/>
-			<result column="NAME" property="name"/>
-			<result column="FILENAME" property="fileName"/>
-			<collection property="roles" javaType="List" ofType="String">
-				<result column="ROLENAME" property="roleName"/>
-			</collection>
-		</association>
+		<id column="USERNAME" property="username"/>
+		<result column="NAME" property="name"/>
+		<result column="FILENAME" property="fileName"/>
 		<association property="agencyVO" javaType="AgencyVO">
 			<id column="AGENCYNUM" property="agencyNum"/>
 			<result column="AGENCYNAME" property="agencyName"/>
 		</association>
-		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
+		<collection property="roles" javaType="List" ofType="String">
+			<result column="ROLENAME" property="roleName"/>
+		</collection>
+		<collection property="hospitalSectionVOs" javaType="List" ofType="HospitalSectionVO">
 			<id column="SECTIONNUM" property="sectionNum"/>
 			<result column="SECTIONNAME" property="sectionName"/>
-		</association>
+		</collection>
 	</resultMap>
+	
+	
 </mapper>

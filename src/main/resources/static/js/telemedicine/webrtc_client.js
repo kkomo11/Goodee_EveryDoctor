@@ -32,6 +32,8 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
+const username = 'test';
+
 // on page load runner
 $(function(){
     start();
@@ -41,9 +43,31 @@ function start() {
     // add an event listener for a message being received
     socket.onmessage = function(msg) {
         let message = JSON.parse(msg.data);
+        console.log('jsonMessage : '+message);
+        console.log('msg : ' + msg);
+        console.log('msg.data : ' + msg.data);
         switch (message.type) {
             case "text":
                 log('Text message from ' + message.from + ' received: ' + message.data);
+
+                let sessionId = message.from;
+                let messageData = message.data;
+                let cur_session = username;
+                //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
+                if(sessionId == cur_session){
+                    let str = "<div class='col-6'>";
+                    str += "<div class='alert alert-secondary'>";
+                    str += "<b>" + sessionId + " : " + messageData + "</b>";
+                    str += "</div></div>";
+                    $("#msgArea").append(str);
+                }
+                else{
+                    let str = "<div class='col-6'>";
+                    str += "<div class='alert alert-warning'>";
+                    str += "<b>" + sessionId + " : " + messageData + "</b>";
+                    str += "</div></div>";
+                    $("#msgArea").append(str);
+                }
                 break;
 
             case "offer":
@@ -91,6 +115,21 @@ function start() {
     socket.onerror = function(message) {
         handleErrorMessage("Error: " + message);
     };
+
+    $("#button-send").on("click", (e) => {
+        send();
+    })
+
+    function send() {
+        let msg = document.getElementById("msg");
+        console.log(username + ':' + msg.value);
+        sendToServer({
+        from: username,
+        type: 'text',
+        data: msg.value
+        });
+        msg.value='';
+    }
 }
 
 function stop() {

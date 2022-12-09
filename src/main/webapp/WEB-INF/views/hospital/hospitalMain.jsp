@@ -17,14 +17,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-inner">
@@ -219,7 +211,7 @@
                                                 <div class="tab-content" id="nav-tabContent">
                                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                                         aria-labelledby="nav-grid-tab">
-                                                        <div class="row" id="doctorList">
+                                                        <div class="row" id="doctorSignList">
 
                                                         </div>
                                                         <div class="row">
@@ -299,33 +291,8 @@
                                                 <div class="tab-content" id="nav-tabContent">
                                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                                         aria-labelledby="nav-grid-tab">
-                                                        <div class="row">
-                                                            <div class="col-lg-4 col-md-6 col-12">
-                                                                <!-- Start Single Item -->
-                                                                <div class="single-item-grid">
-                                                                    <div class="image">
-                                                                        <a href="item-details.html"><img
-                                                                                src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                        <span class="flat-badge sale">Sale</span>
-                                                                    </div>
-                                                                    <div class="content">
-                                                                        <a href="javascript:void(0)" class="tag">Mobile</a>
-                                                                        <h3 class="title">
-                                                                            <a href="item-details.html">Apple Iphone X</a>
-                                                                        </h3>
-                                                                        <p class="location"><a href="javascript:void(0)"><i
-                                                                                    class="lni lni-map-marker">
-                                                                                </i>Boston</a></p>
-                                                                        <ul class="info">
-                                                                            <li class="price">$890.00</li>
-                                                                            <li class="like"><a href="javascript:void(0)"><i
-                                                                                        class="lni lni-heart"></i></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- End Single Item -->
-                                                            </div>
+                                                        <div class="row" id="doctorSubjectList">
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-12">

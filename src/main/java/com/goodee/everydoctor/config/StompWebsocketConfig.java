@@ -24,8 +24,8 @@ public class StompWebsocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-    	registry.setApplicationDestinationPrefixes("/pub");
-    	registry.enableSimpleBroker("/sub");
+//    	registry.setApplicationDestinationPrefixes("/pub");
+//    	registry.enableSimpleBroker("/sub");
     	
     	registry.setApplicationDestinationPrefixes("/app"); //prefix 설정
         registry.enableSimpleBroker("/topic"); //topic 이라는 주제에 브로커를 설정
