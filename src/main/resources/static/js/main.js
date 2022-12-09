@@ -108,7 +108,6 @@ Author: GrayGrids
 	
     console.log($("#toastAlert").children)
 	
-	let i = 1;
     
 	
     let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
@@ -116,20 +115,25 @@ Author: GrayGrids
 
 	console.log(eventSource.readyState)
     eventSource.addEventListener("latestNews",function(event){
-		$("#toastAlert").append('  <div id="liveToast'+i+'" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
+		let articleData =JSON.parse(event.data);
+		console.log(articleData)
+		
+		
+		$("#toastAlert").append('  <div id='+articleData.toastId+' class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
 		'<div class="toast-header">'+
-		  '<img src="..." class="rounded me-2" alt="...">'+
-		  '<strong class="me-auto">Bootstrap</strong>'+
+		  '<strong class="me-auto">'+articleData.title+'</strong>'+
 		  '<small>11 mins ago</small>'+
 		  '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
 		'</div>'+
 		'<div class="toast-body">'+
-		  'Hello, world! This is a toast message.'+
+		  articleData.text+
+    '<div class="mt-2 pt-2 border-top">'+
+      '<button type="button" class="btn btn-primary btn-sm"><a href="/user/profile" style="color:white;">Take action</a></button>'+
+      '</div>'+
 		'</div>'+
 	  '</div>')
 
-		let articleData =JSON.parse(event.data);
-		let toastname = 'liveToast'+i
+		let toastname = articleData.toastId
         console.log(toastname)
 
 		const toastLiveExample = document.getElementById(toastname)
