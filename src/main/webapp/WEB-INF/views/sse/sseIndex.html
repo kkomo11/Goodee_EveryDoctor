@@ -40,37 +40,115 @@
             eventSource.addEventListener("latestNews",function(event){
                 // console.log(event.data)
                 let articleData =JSON.parse(event.data);
+                // console.log(articleData)
 
-                // (async () => {
-                //     //브라우저 알림
-                //     const showNotification =() => {
+                (async () => {
+                    //브라우저 알림
+                    const showNotification = () => {
 
-                //         const notification = new Notification('응애',{
-                //             body: data.content
-                //         });
-                //     }
-                // });
+                        const notification = new Notification('응애',{
+                            body: data.content
+                        });
 
+                        setTimeout(()=> {
+                            notification.close();
+                        },10*1000);
 
+                        notification.addEventListener('click', () => {
+                            window.open(data.url,'blank')
+                        })
+                    }
+
+                    let granted = false;
+
+                    if(Notification.permission === 'granted'){
+                        granted =true;
+                    }else if(Notification.permission !== 'denied'){
+                        let permission = await Notification.requestPermission();
+                        granted =permission === 'granted';
+                    }
+
+                    //알림 보여주기
+                    if(granted){
+                        showNotification();
+                    }
+
+                })();
 
                 addBlock(articleData.title, articleData.text);
 
+                
+                // notifyMe();
+
             })
         });
-            evtSource.addEventListener("error",function(event){
-                console.log("Error : ", event.currentTarget.readyState)
-            
-            if(event.currentTarget.readyState == EventSource.CLOSED){
 
-            }else{
-                evtSource.close();
-            }
         
-        })
+        //     evtSource.addEventListener("error",function(event){
+        //         console.log("Error : ", event.currentTarget.readyState)
+            
+        //     if(event.currentTarget.readyState == EventSource.CLOSED){
 
-        window.onbeforeunload = function(){ 
-            evtSource.close();
-        }
+        //     }else{
+        //         evtSource.close();
+        //     }
+        
+        // })
+
+        // window.onbeforeunload = function(){ 
+        //     evtSource.close();
+        // }
+
+        // function notifyMe() {
+        //     console.log("시발")
+        //     // Let's check if the browser supports notifications
+        //     if (!("Notification" in window)) {
+        //         alert("This browser does not support desktop notification");
+        //     }
+            
+        //     // Let's check whether notification permissions have already been granted
+        //     else if (Notification.permission === "granted") {
+        //         console.log("시발 오케이했잖아")
+        //         // If it's okay let's create a notification
+        //         // var notification = new Notification("Hi there!",{body :'알림이 도착했습니다'});
+        //         let msg = '알림이 도착하였습니다.';
+        //         notify(msg);
+        //     }
+
+        //     // Otherwise, we need to ask the user for permission
+        //     else if (Notification.permission !== 'denied') {
+        //         Notification.requestPermission(function (permission) {
+        //             // If the user accepts, let's create a notification
+        //             if (permission === "granted") {
+        //                 var notification = new Notification("Hi there!");
+        //             }
+        //         });
+        //     } else {
+        //         console.log("응가 ",Notification.permission)
+        //     }
+        //     console.log("시발2")
+            
+        //     // At last, if the user has denied notifications, and you
+        //     // want to be respectful there is no need to bother them any more.
+        // }
+
+
+        //     // 알림 띄우기
+        // function notify(msg) {
+        //     console.log('실행되니 notify')
+        //     var options = {
+        //         body: msg
+        //     }
+            
+        //     // 데스크탑 알림 요청
+        //     var notification = new Notification("진료신청", options);
+            
+        //     // 3초뒤 알람 닫기
+        //     setTimeout(function(){
+        //         notification.close();
+        //     }, 10000);
+        // }
+
 
         function addBlock(title,text){
             let a = document.createElement("article");

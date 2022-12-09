@@ -2,11 +2,10 @@ package com.goodee.everydoctor.notification;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,10 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @RestController
 public class NotificationController {
 	
+	
+	//전체
 //	public List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
+	//1:1
 	public Map<String, SseEmitter> emitters = new HashMap<>();
 
 	
@@ -37,8 +39,7 @@ public class NotificationController {
 		
 		return sseEmitter;
 	}
-	
-	
+
 	
 	
 	//method for dispatching events to all clients
