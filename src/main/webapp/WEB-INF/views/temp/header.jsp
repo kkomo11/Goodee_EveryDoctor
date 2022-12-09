@@ -136,6 +136,7 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
+                                <input id="name" value="${member.name}" style="display:none;">
                                     ${member.name}님 환영합니다.
 
                                 <li>
@@ -151,6 +152,7 @@
                                     <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
 								</sec:authorize>
+								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">
@@ -163,6 +165,7 @@
     </div> <!-- container -->
 </header>
     <!-- end login section -->
+
 <sec:authorize access="hasRole('PRE')">
 
 <button type="button" id="preModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#certificationModal">
@@ -210,4 +213,26 @@
   </div>
 </div>
 </sec:authorize>
+    
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:555;">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
 <!-- End Header Area -->
+
+<script type="text/javascript">
+
+
+
+
+
+</script>
