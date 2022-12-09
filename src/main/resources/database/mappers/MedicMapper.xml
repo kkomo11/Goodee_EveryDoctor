@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.goodee.everydoctor.admin.medic.MedicMapper">
 	<insert id="inputMedic" parameterType="MedicVO">
-	 	INSERT INTO MEDIC (USERNAME, AGENCYNUM, MEDICINFO, MEDICENABLED, MEDICROLE)
-	 	VALUES(#{username}, #{agencyNum}, #{medicInfo}, 0, #{medicRole})
+	 	INSERT INTO MEDIC (USERNAME, AGENCYNUM, MEDICINFO, MEDICENABLED, MEDICROLE, MEDICSPECIALTY)
+	 	VALUES(#{username}, #{agencyNum}, #{medicInfo}, 0, #{medicRole}, #{medicSpecialty})
 	</insert>
 </mapper>

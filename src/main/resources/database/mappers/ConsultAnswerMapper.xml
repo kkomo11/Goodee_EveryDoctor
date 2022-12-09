@@ -19,6 +19,8 @@
 		ON (CA.USERNAME = U.USERNAME)
 		INNER JOIN USERSROLES UR 
 		ON (U.USERNAME = UR.USERNAME)
+		INNER JOIN ROLE R 
+		ON(UR.ROLENUM = R.ROLENUM)
 		WHERE CA.CONSULTNUM = #{consultNum}
 		ORDER BY CA.ANSWERNUM DESC
 		LIMIT ${startRow}, ${perPage}
@@ -34,7 +36,9 @@
 		<association property="userVO" javaType="UserVO">
 			<result column="NAME" property="name"/>
 			<result column="FILENAME" property="fileName"/>
-
+			<collection property="roles" javaType="List" ofType="String">
+				<result column="ROLENAME" property="roleName"/>
+			</collection>
 		</association>
 		
 	</resultMap>

@@ -67,11 +67,15 @@ public class Pager {
 
 		//7. 이전 다음 블럭의 유무
 		if(curBlock>1) {
-			pre=true;
+			this.pre=true;
+		} else {
+			this.pre=false;
 		}
 
 		if(curBlock<totalBlock) {
-			next=true;
+			this.next=true;
+		} else {
+			this.next=false;
 		}
 	}
 

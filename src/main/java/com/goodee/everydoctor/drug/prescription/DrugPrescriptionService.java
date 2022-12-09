@@ -22,14 +22,14 @@ public class DrugPrescriptionService {
 		return drugPrescriptionMapper.findDrugPrescriptionCategory();
 	}
 
-	public DrugPrescriptionVO getDetail()throws Exception {
+	public DrugPrescriptionVO findDrugPrescriptionDetail()throws Exception {
 		// TODO Auto-generated method stub
-		return  drugPrescriptionMapper.getDetail();
+		return  drugPrescriptionMapper.findDrugPrescriptionDetail();
 	}
 
-	public List<DrugPrescriptionVO> getList()throws Exception {
+	public List<DrugPrescriptionVO> findDrugPrescriptionList()throws Exception {
 		// TODO Auto-generated method stub
-		return drugPrescriptionMapper.getList();
+		return drugPrescriptionMapper.findDrugPrescriptionList();
 	}
 
 
