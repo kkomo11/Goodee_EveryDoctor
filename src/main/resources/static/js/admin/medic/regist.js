@@ -20,6 +20,61 @@ $("#fileAdd").on("click", ".del", function(){
     count--;
 })
 
+const doctorSpecialty = $("#doctorSpecialty");
+const petdoctorSpecialty = $("#petdoctorSpecialty");
+const neuteredInput = $(".neuteredInput");
+//전문의 여부 추가
+neuteredInput.change(function(){
+    if(neuteredInput[0].checked){
+        doctorSpecialty.empty();
+        let doctorSpecialtyAddForm = $("#doctorSpecialtyAddForm").html();
+        doctorSpecialty.append(doctorSpecialtyAddForm);
+        const doctorMedicSpecialty = $("#doctorMedicSpecialty");
+        doctorMedicSpecialty.empty();
+        //병원 진료 카테고리 가져오기
+        $.ajax({
+            type: "GET",
+            url: "/hospital/home/section",
+
+            success: function(result){
+                    $.each(result, function(index, item){
+                        doctorMedicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");
+                })
+            },
+            error: function(result){
+                console.log(result);
+            }
+        });
+    }else{
+        doctorSpecialty.empty();
+    }
+    
+    if(neuteredInput[2].checked){
+        // console.log(petHospitalInput.val());
+        petdoctorSpecialty.empty();
+        let petDoctorSpecialtyAddForm = $("#petDoctorSpecialtyAddForm").html();
+        petdoctorSpecialty.append(petDoctorSpecialtyAddForm);
+        const petDoctorMedicSpecialty = $("#petDoctorMedicSpecialty");
+        petDoctorMedicSpecialty.empty();
+        //동물병원 진료 카테고리 가져오기
+        $.ajax({
+            type: "GET",
+            url: "/admin/agency/petHospitalSection",
+
+            success: function(result){
+                    $.each(result, function(index, item){
+                        petDoctorMedicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");
+                })
+            },
+            error: function(result){
+                console.log(result);
+            }
+        });
+    }else{
+        petdoctorSpecialty.empty();
+    }
+})
+
 //신청 버튼
 $(".inputButton").click(function(){
     console.log("click");

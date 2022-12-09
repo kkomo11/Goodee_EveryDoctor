@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.util.FileManager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -73,8 +75,14 @@ public class AgencyService {
 		return(agencyMapper.findPetHotelList());
 	}
 	
+	//기관운영시간 입력
 	public int inputAgencyWorkHour (AgencyWorkHourVO agencyWorkHourVO)throws Exception{
 		return (agencyMapper.inputAgencyWorkHour(agencyWorkHourVO));
 	}
-
+	
+	//동물병원 진료과목 불러오기
+	public List<HospitalSectionVO> findPetHospitalSection()throws Exception{
+		return agencyMapper.findPetHospitalSection();
+	}
+	
 }

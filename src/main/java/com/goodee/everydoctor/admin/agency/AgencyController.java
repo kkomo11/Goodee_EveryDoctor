@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.admin.medic.MedicService;
 import com.goodee.everydoctor.admin.medic.MedicVO;
+import com.goodee.everydoctor.hospital.HospitalSectionVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +53,12 @@ public class AgencyController {
 		
 		mv.setViewName("redirect:regist");
 		return mv;
+	}
+	
+	@GetMapping("petHospitalSection")
+	@ResponseBody
+	public List<HospitalSectionVO> findPetHospitalSection()throws Exception{
+		return agencyService.findPetHospitalSection();
 	}
 
 }
