@@ -124,6 +124,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <!-- 전문의 여부 -->
+                                                    <div class="form-group col-6" id="doctorSpecialty">
+
+                                                    </div>
+
                                                     <!-- 병원 검색 -->
                                                     <div class="form-group col-11">
                                                         <label>병원검색(상호명/주소)*</label>
@@ -185,6 +191,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <!-- 전문의 여부 -->
+                                                    <div class="form-group col-6" id="petdoctorSpecialty">
+
+                                                    </div>
+
                                                     <!-- 병원 검색 -->
                                                     <div class="form-group col-11">
                                                         <label>동물병원검색(상호명/주소)*</label>
@@ -351,6 +363,30 @@
     <script src="/js/admin/medic/chosen.jquery.js"></script>
     <script src="/js/admin/medic/prism.js" charset="utf-8"></script>
     <script src="/js/admin/medic/init.js" charset="utf-8"></script>
+
+    <script type="java/template" id="doctorSpecialtyAddForm">
+        <label>전문의 여부*</label>
+        <div class="selector-head">
+            <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+            <select class="user-chosen-select" name="medicSpecialty" id="doctorMedicSpecialty">
+                <option disabled selected>문의 유형을 선택해주세요</option>
+                <option value="null">해당없음</option>
+                                                    
+            </select>
+        </div>
+     </script>
+
+     <script type="java/template" id="petDoctorSpecialtyAddForm">
+        <label>전문의 여부*</label>
+        <div class="selector-head">
+            <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+            <select class="user-chosen-select" name="medicSpecialty" id="petDoctorMedicSpecialty">
+                <option disabled selected>문의 유형을 선택해주세요</option>
+                <option value="null">해당없음</option>
+                                                    
+            </select>
+        </div>
+     </script>
 </body>
 
 </html>
