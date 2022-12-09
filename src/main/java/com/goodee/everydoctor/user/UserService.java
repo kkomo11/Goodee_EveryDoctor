@@ -44,6 +44,10 @@ public class UserService {
 	@Autowired
 	private EmailManager emailManager;
 	
+	public int chkId(String username)throws Exception{
+		return userMapper.chkId(username);
+	}
+	
 	
 	public int inputUser(UserVO userVO)throws Exception{
 		//비밀번호 암호화

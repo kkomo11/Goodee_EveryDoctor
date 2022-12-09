@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class NotificationController {
 	
 	//전체
@@ -30,6 +33,7 @@ public class NotificationController {
 		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		sendInitEvent(sseEmitter);
 		emitters.put(userID, sseEmitter);
+		log.info("서브스크립 : {}", userID);
 		
 		//만료되면 삭제
 		sseEmitter.onCompletion(() -> emitters.remove(sseEmitter));
@@ -61,6 +65,8 @@ public class NotificationController {
 	@PostMapping(value = "/dispatchEventToSpecificUser")
 	public void dispatchEventToClients(@RequestParam String title, @RequestParam String text,
 			@RequestParam String userID) {
+		
+		log.info("유저아이디 {}", userID);
 		
 		String eventFormatted = new JSONObject()
 				.put("title",title)

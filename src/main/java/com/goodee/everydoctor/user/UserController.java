@@ -38,6 +38,13 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("chkId")
+	@ResponseBody
+	public int chkId(String username)throws Exception{
+		log.info("유저네임 {}", username);
+		return userService.chkId(username);
+	}
+	
 	//회원가입 GET
 	@GetMapping("registration")
 	public void registration(@ModelAttribute UserVO userVO) {
