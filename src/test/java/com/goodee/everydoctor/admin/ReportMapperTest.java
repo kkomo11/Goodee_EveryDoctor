@@ -19,10 +19,10 @@ class ReportMapperTest {
 
 	@Test
 	void inputUsertest()throws Exception {
-		for(int i = 0; i <=10; i++) {
+		for(int i = 10; i <=10; i++) {
 			
 			UserVO userVO = new UserVO();
-			userVO.setUsername("pharmacist" + i);
+			userVO.setUsername("ddoctor" + i);
 			userVO.setPassword("pharmacist" + i);
 			userVO.setName("pharmacist" + i);
 			int result = userService.inputUser(userVO);

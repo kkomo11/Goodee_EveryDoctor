@@ -20,7 +20,6 @@ public class AdminService {
 	//특정 제휴신청 리스트 불러오기
 		public List<MedicVO> findCooperationList(Pager pager)throws Exception{
 			Long totalCount = adminMapper.findCooperationCount(pager);
-			log.info("totalCount : {}", totalCount);
 			pager.getNum(totalCount);
 			pager.getRowNum();
 			return adminMapper.findCooperationList(pager);
