@@ -15,7 +15,7 @@
 		LIKE CONCAT('%', #{search}, '%')
 	</sql>
 	<!-- 약목록 -->
-	<select id="getList" resultType="DrugVO" parameterType="Pager">
+	<select id="findDrugList" resultType="DrugVO" parameterType="Pager">
 		SELECT * FROM DRUG
 		<include refid="search"></include>
 		ORDER BY DRUGNUM
@@ -23,12 +23,12 @@
 
 	</select>
 	<!-- 약 상세정보 -->
-	<select id="getDetail" parameterType="DrugVO"
+	<select id="findDrugDetail" parameterType="DrugVO"
 		resultType="DrugVO">
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>
 
-	<select id="getDrugTotalCount" resultType="Long">
+	<select id="findDrugTotalCount" resultType="Long" parameterType="Pager">
 		SELECT COUNT(DRUGNUM)
 		FROM DRUG
 		<include refid="search"></include>

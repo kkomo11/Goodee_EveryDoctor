@@ -8,7 +8,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() throws Exception {
-		return "index";
+		return "redirect:/hospital/home";
 	}
 	@GetMapping("/temp/chatbot3")
 	public void chatbot3()throws Exception{

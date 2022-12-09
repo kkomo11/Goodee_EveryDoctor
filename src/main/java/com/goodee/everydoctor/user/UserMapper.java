@@ -19,5 +19,7 @@ public interface UserMapper {
 	public int modifyRoleMember(UserVO userVO) throws Exception;
 	public int hasUserByCI(UserVO userVO)throws Exception;
 	public int modifyFileName(UserVO userVO) throws Exception;
+	public int modifyPhone(UserVO userVO) throws Exception;
+	public int modifyEmail(UserVO userVO) throws Exception;
 	public int modifyPassword(UserVO userVO) throws Exception;
 }

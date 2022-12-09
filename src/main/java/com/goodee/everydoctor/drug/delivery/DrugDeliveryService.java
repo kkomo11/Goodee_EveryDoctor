@@ -32,13 +32,14 @@ public class DrugDeliveryService {
 	
 	private String label = "drugDelivery";
 	
-	public List<DrugDeliveryVO> getList(DrugDeliveryVO drugDeliveryVO)throws Exception {
-		return drugDeliveryMapper.getList(drugDeliveryVO);
+	public List<DrugDeliveryVO> findDrugDeliveryList(DrugDeliveryVO drugDeliveryVO) throws Exception {
+		// TODO Auto-generated method stub
+		return drugDeliveryMapper.findDrugDeliveryList(drugDeliveryVO);
 	}
 
-	public DrugDeliveryVO getDetail(DrugDeliveryVO drugDeliveryVO) throws Exception {
+	public DrugDeliveryVO findDrugDeliveryDetail(DrugDeliveryVO drugDeliveryVO) throws Exception {
 		// TODO Auto-generated method stub
-		return drugDeliveryMapper.getDetail(drugDeliveryVO);
+		return drugDeliveryMapper.findDrugDeliveryDetail(drugDeliveryVO);
 	}
 	
 	public int setDrugDeliveryIcon(DrugDeliveryVO drugDeliveryVO)throws Exception{

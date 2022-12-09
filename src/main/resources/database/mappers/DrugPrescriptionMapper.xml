@@ -7,14 +7,14 @@
 	namespace="com.goodee.everydoctor.drug.prescription.DrugPrescriptionMapper">
 
 	<!-- 약목록 -->
-	<select id="getList" resultType="DrugPrescriptionVO">
+	<select id="findDrugPrescriptionList" resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG
 		ORDER BY
 		DRUGNUM
 	</select>
 
 	<!-- 약 상세정보 -->
-	<select id="getDetail" parameterType="DrugPrescriptionVO"
+	<select id="findDrugPrescriptionDetail" parameterType="DrugPrescriptionVO"
 		resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>

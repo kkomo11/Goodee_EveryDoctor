@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -111,16 +112,50 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping("phoneCheck")
+	@GetMapping("phoneCheck")
 	@ResponseBody
-	public int phoneCheck(UserVO userVO, HttpSession session)throws Exception{
+	public int phoneCheck(String phonenum)throws Exception{
+		int randomNumber = (int)(Math.random()*1000000);
 		
+		int result = userService.phoneCheck(phonenum, randomNumber);
+		
+		if(result==1) {
+			result = randomNumber;			
+		}
+		
+		return result;
+	}
+	
+	@GetMapping("emailCheck")
+	@ResponseBody
+	public int emailCheck(String emailnum)throws Exception{
+		int randomNumber = (int)(Math.random()*1000000);
+		
+		int result = userService.emailCheck(emailnum, randomNumber);
+		
+		if(result==1) {
+			result = randomNumber;			
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("modifyProfile")
+	@ResponseBody
+	public int modifyProfile(@AuthenticationPrincipal UserVO userVO, String phoneNum, String emailNum, HttpSession session) throws Exception{
 		int result = 0;
+		
+		if(emailNum.equals("")) {
+			log.info("폰변경");
+			result = userService.modifyPhone(userVO, phoneNum);
+		}else if(phoneNum.equals("")) {
+			log.info("이메일 변경");
+			result = userService.modifyEmail(userVO, emailNum);
+		}
 		
 		if(result==1) {
 			session.invalidate();
 		}
-		
 		return result;
 	}
 	
@@ -134,6 +169,31 @@ public class UserController {
 			logoutHandlerImpl.logout(request, response, authentication);
 		}
 		return result;
+	}
+	
+	@GetMapping("dashboard")
+	public String getDashboard() throws Exception{
+		return "user/dashboard";
+	}
+	
+	@GetMapping("mydiaglist")
+	public ModelAndView myList(ModelAndView mv)throws Exception{
+		log.info("mylist {}");
+		
+		
+		
+		mv.setViewName("user/mydiaglist");
+		return mv;
+	}
+	
+	@GetMapping("petdiaglist")
+	public ModelAndView petList(ModelAndView mv)throws Exception{
+		log.info("mylist {}");
+		
+		
+		
+		mv.setViewName("user/petdiaglist");
+		return mv;
 	}
 
 }

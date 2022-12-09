@@ -81,7 +81,7 @@
                         value="대한통운">
                     </div>
                     <div class="form-group">
-                      <label for="t_invoice">운송장 번호 (652861487823)</label>
+                      <label for="t_invoice">운송장 번호 (1234567890)</label>
                       <input type="text" class="form-control" name="t_invoice" id="t_invoice"
                         placeholder="운송장 번호 - 없이 입력하세요">
                     </div>

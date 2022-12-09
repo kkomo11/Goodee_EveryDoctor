@@ -91,4 +91,11 @@
 		UPDATE USERS SET PASSWORD=#{password} WHERE USERNAME = #{username}
 	</update>
 	
+	<update id="modifyPhone" parameterType="UserVO">
+		UPDATE USERS SET PHONE=#{phone} WHERE USERNAME = #{username}
+	</update>
+	<update id="modifyEmail" parameterType="UserVO">
+		UPDATE USERS SET EMAIL=#{email} WHERE USERNAME = #{username}
+	</update>
+	
 </mapper>

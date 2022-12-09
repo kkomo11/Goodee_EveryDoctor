@@ -30,8 +30,8 @@ $().ready(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '승인',
-            cancelButtonText: '취소'
+            confirmButtonText: '예',
+            cancelButtonText: '아니오'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(

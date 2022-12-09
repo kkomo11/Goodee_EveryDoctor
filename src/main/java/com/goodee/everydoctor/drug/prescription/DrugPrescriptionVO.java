@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.drug.prescription;
 
+import com.goodee.everydoctor.user.UserVO;
+
 import lombok.Data;
 
 @Data
@@ -21,5 +23,7 @@ public class DrugPrescriptionVO {
 	private String categoryName;
 	//진료 과목명
 	private String sectionName;
+	
+	private UserVO userVO;
 
 }
