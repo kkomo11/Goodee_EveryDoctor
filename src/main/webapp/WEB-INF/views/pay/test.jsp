@@ -46,13 +46,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Pricing Table</h1>
+                        <h1 class="page-title">Pay</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li>Pricing</li>
+                        <li>결제</li>
                     </ul>
                 </div>
             </div>
@@ -66,20 +66,19 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Pricing Plan</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">결제</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">결제를 완료해주세요</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="justify-content: center;">
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Single Table -->
                     <div class="single-table wow fadeInUp" data-wow-delay=".2s">
                         <!-- Table Head -->
                         <div class="table-head">
                             <div class="price">
-                                <h2 class="amount">$00<span class="duration">/ Month</span></h2>
+                                <h2 class="amount">$00<span class="duration">원</span></h2>
                             </div>
                             <h4 class="title">Free</h4>
                         </div>
@@ -102,18 +101,18 @@
                     </div>
                     <!-- End Single Table-->
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Single Table -->
+                <!-- <div class="col-lg-4 col-md-6 col-12">
+                    Single Table
                     <div class="single-table wow fadeInUp" data-wow-delay=".4s">
-                        <!-- Table Head -->
+                        Table Head
                         <div class="table-head">
                             <div class="price">
                                 <h2 class="amount">$59<span class="duration">/ Month</span></h2>
                             </div>
                             <h4 class="title">Standard</h4>
                         </div>
-                        <!-- End Table Head -->
-                        <!-- Table List -->
+                        End Table Head
+                        Table List
                         <ul class="table-list">
                             <li>One Listing</li>
                             <li>Contact Display</li>
@@ -122,27 +121,27 @@
                             <li>Non-Featured</li>
                             <li>Business Tagline</li>
                         </ul>
-                        <!-- End Table List -->
-                        <!-- Table Bottom -->
+                        End Table List
+                        Table Bottom
                         <div class="button">
                             <a class="btn" href="javascript:void(0)">Select Plan</a>
                         </div>
-                        <!-- End Table Bottom -->
+                        End Table Bottom
                     </div>
-                    <!-- End Single Table-->
+                    End Single Table
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Single Table -->
+                    Single Table
                     <div class="single-table wow fadeInUp" data-wow-delay=".6s">
-                        <!-- Table Head -->
+                        Table Head
                         <div class="table-head">
                             <div class="price">
                                 <h2 class="amount">$99<span class="duration">/ Month</span></h2>
                             </div>
                             <h4 class="title">Premium</h4>
                         </div>
-                        <!-- End Table Head -->
-                        <!-- Table List -->
+                        End Table Head
+                        Table List
                         <ul class="table-list">
                             <li>One Listing</li>
                             <li>Contact Display</li>
@@ -151,15 +150,15 @@
                             <li>Non-Featured</li>
                             <li>Business Tagline</li>
                         </ul>
-                        <!-- End Table List -->
-                        <!-- Table Bottom -->
+                        End Table List
+                        Table Bottom
                         <div class="button">
                             <a class="btn" href="javascript:void(0)">Select Plan</a>
                         </div>
-                        <!-- End Table Bottom -->
+                        End Table Bottom
                     </div>
-                    <!-- End Single Table-->
-                </div>
+                    End Single Table
+                </div> -->
             </div>
         </div>
     </section>
@@ -175,7 +174,7 @@
     </a>
     
 	<script>
-    	let clientKey = $("#cliKeyInput").val();
+    	/*let clientKey = $("#cliKeyInput").val();
     	let tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
     	
     	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
@@ -194,8 +193,10 @@
     		  } else if (error.code === 'INVALID_CARD_COMPANY') {
     		    // 유효하지 않은 카드 코드에 대한 에러 처리
     		  }
-    		})
+    		})*/
   	</script>
+  	
+  	<script type="text/javascript" src="/js/pay/test.js"></script>
     
 </body>
 

@@ -70,7 +70,7 @@
 			<choose>
 				<when test="kind == 18">=#{kind}</when>
 				<when test="kind == 19">=#{kind}</when>
-				<otherwise>NOT IN (18, 19)</otherwise>
+				<otherwise>BETWEEN 20 AND 26</otherwise>
 			</choose>
 		LIMIT #{startRow}, #{perPage}
 	</select>
@@ -109,7 +109,7 @@
 			<choose>
 				<when test="kind == 18">=#{kind}</when>
 				<when test="kind == 19">=#{kind}</when>
-				<otherwise>NOT IN (18, 19)</otherwise>
+				<otherwise>BETWEEN 20 AND 26</otherwise>
 			</choose>
 	</select>
 	
