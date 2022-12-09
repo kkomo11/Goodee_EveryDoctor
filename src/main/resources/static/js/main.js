@@ -99,6 +99,54 @@ Author: GrayGrids
 		
 	})
 	}
+
+	
+	console.log("로그")
+
+	const toastTrigger = document.getElementById('liveToastBtn')
+	const toastLiveExample = document.getElementById('liveToast')
+	const toast = new bootstrap.Toast(toastLiveExample)
+    console.log($("#name").val())
+    let userID = $("#name").val()
+
+
+    
+
+    let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
+    let eventSource = new EventSource(urlEndPoint);
+
+    eventSource.addEventListener("latestNews",function(event){
+        // console.log(event.data)
+        let articleData =JSON.parse(event.data);
+        // console.log(articleData)
+        
+        toast.show()
+
+        
+        // notifyMe();
+
+    })
+    
+    
+    
+	console.log($(toastTrigger))
+$(toastTrigger).click(function(){
+	
+    $.ajax({
+        type:"POST",
+        url:"/dispatchEventToSpecificUser",
+        traditional:true, //배열을 전송할 때 사용(파라미터 이름 하나로 여러개를 보내야 할때)
+        data:{
+            title: "타이틀",
+            text: "텍스트",
+            userID:userID
+        },
+        success:function(result){
+            console.log("result: ", result);
+        }
+    })
+	
+})
 	
     
 })();

@@ -2,8 +2,6 @@ package com.goodee.everydoctor.drug;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +13,14 @@ import com.goodee.everydoctor.util.Pager;
 @Controller
 @RequestMapping("/drug/*")
 public class DrugController {
-	
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-	
+		
 	@Autowired
 	private DrugService drugService;
 	
 	@GetMapping("list")
-	public ModelAndView getList(Pager pager)throws Exception {
+	public ModelAndView findDrugList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<DrugVO> ar = drugService.getList(pager);
+		List<DrugVO> ar = drugService.findDrugList(pager);
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/list");
@@ -32,11 +28,21 @@ public class DrugController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(DrugVO drugVO)throws Exception {
+	public ModelAndView findDrugDetail(DrugVO drugVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugVO=drugService.getDetail(drugVO);
+		drugVO=drugService.findDrugDetail(drugVO);
 		mv.addObject("detail",drugVO);
 		mv.setViewName("drug/detail");
+		return mv;
+	}
+	
+	@GetMapping("store")
+	public ModelAndView getDrugStore(Pager pager)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<DrugVO> ar = drugService.findDrugList(pager);
+		mv.addObject("list",ar);
+		mv.addObject("pager",pager);
+		mv.setViewName("drug/store");
 		return mv;
 	}
 

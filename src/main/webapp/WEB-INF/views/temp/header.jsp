@@ -22,43 +22,28 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="dd-menu collapsed active" href="/"
-                                        aria-label="Toggle navigation">Home</a>
-                                    <!-- <ul class="sub-menu collapse" id="submenu-1-1">
-                                        <li class="nav-item active"><a href="index.html">Home Default</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 2</a></li>
-                                        <li class="nav-item"><a href="javascript:void(0)">Home Version 3</a></li>
-                                    </ul> -->
+                                    <a class="dd-menu collapsed active" href="/hospital/home"
+                                        aria-label="Toggle navigation">병원</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/hospital/home" data-bs-toggle="collapse" data-bs-target="#submenu-1-2"
+                                    <a class="dd-menu collapsed" href="/pet/home"
+                                        aria-label="Toggle navigation">동물병원</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class=" dd-menu collapsed" href="/location/viewCorona"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                       	 aria-label="Toggle navigation">Hospital</a>
-                                       	 <ul class="sub-menu collapse" id="submenu-1-2">
-                                       	  <li class="nav-item"><a href="/hospital/home">Hospital</a></li>
-                                          <li class="nav-item"><a href="/pet/home">Animal Hospital</a></li>
-                                      </ul>
+                                        aria-label="Toggle navigation">선별진료소</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class=" dd-menu collapsed" href="javascript:void(0)"
-                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
+                                    <a class=" dd-menu collapsed" href="/location/viewCorona"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">Listings</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-3">
-                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
-                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
-                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
-                                      </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dd-menu collapsed" href="/location/viewCorona"
-                                        aria-label="Toggle navigation">코로나 검사</a>
+                                        aria-label="Toggle navigation">24시</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">Pages</a>
+                                        aria-label="Toggle navigation">마이페이지</a>
                                     <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
                                         <li class="single-block">
                                             <ul>
@@ -80,45 +65,94 @@
                                         </li>
                                         <li class="single-block">
                                           <ul>
-                                              <li class="mega-menu-title">Dashboard</li>
-                                              <li class="nav-item"><a href="dashboard.html">Account Overview</a>
+                                              <li class="mega-menu-title">마이페이지</li>
+                                              <li class="nav-item"><a href="/user/profile">내 프로필</a>
                                               </li>
-                                              <li class="nav-item"><a href="profile-settings.html">My Profile</a>
+                                              <li class="nav-item"><a href="/user/mydiaglist">내 진료내역</a>
                                               </li>
-                                              <li class="nav-item"><a href="my-items.html">My Ads</a></li>
-                                              <li class="nav-item"><a href="favourite-items.html">Favorite Ads</a>
-                                              </li>
-                                              <li class="nav-item"><a href="post-item.html">Ad post</a></li>
-                                              <li class="nav-item"><a href="bookmarked-items.html">Bookmarked Ad</a>
-                                              </li>
-                                              <li class="nav-item"><a href="messages.html">Messages</a></li>
-                                              <li class="nav-item"><a href="delete-account.html">Close account</a>
-                                              </li>
-                                              <li class="nav-item"><a href="invoice.html">Invoice</a></li>
+                                              <li class="nav-item"><a href="#">내 주소 관리</a></li>
+                                              <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
+                                              <li class="nav-item"><a href="#">내 상담내역</a></li>
+                                              <li class="nav-item"><a href="#">반려동물 관리</a></li>
+                                              <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                           </ul>
                                       </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="dd-menu collapsed" href="#"
-                                        aria-label="Toggle navigation">24시</a>
+                                    <a class=" dd-menu collapsed" href="javascript:void(0)"
+                                        data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">의사</a>
+                                        <ul class="sub-menu collapse" id="submenu-1-3">
+                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
+                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
+                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
+                                      </ul>
                                 </li>
+                                <li class="nav-item">
+                                  <a class="dd-menu collapsed" href="javascript:void(0)"
+                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+                                      aria-controls="navbarSupportedContent" aria-expanded="false"
+                                      aria-label="Toggle navigation">약사</a>
+                                  <ul class="sub-menu collapse" id="submenu-1-4">
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
+                                      </li>
+                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
+                                  </ul>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="dd-menu collapsed" href="/admin/admin/reportList"
+                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                      aria-controls="navbarSupportedContent" aria-expanded="false"
+                                      aria-label="Toggle navigation">관리자</a>
+                                  <ul class="sub-menu collapse" id="submenu-1-5">
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
+                                      </li>
+                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
+                                  </ul>
+                              </li>
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
+                            <!-- <c:when test="${not empty check}">
+                                <c:choose>
+                                
+                                <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
+                                    <div class="text-end">
+                                        
+                                            <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
+                                        
+                                            <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
+                                            <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
+                                    </div>
+                                
+                                </c:when>
+                                </c:choose>
+                            </c:when> -->
+
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
-                                    ${member.username},${member.name}, ${member.roles}
+                                <input id="name" value="${member.name}" style="display:none;">
+                                    ${member.name}님 환영합니다.
 
+                                <li>
+                                    <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
+                                </li>
                                 </sec:authorize>
-
+								
+								<sec:authorize access="isAnonymous()">
                                 <li>
-                                    <a href="/user/login"><i class="lni lni-enter"></i> Login</a>
+                                    <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
                                 </li>
                                 <li>
-                                    <a href="/user/registration"><i class="lni lni-user"></i> Register</a>
+                                    <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
+								</sec:authorize>
+								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">
@@ -131,6 +165,7 @@
     </div> <!-- container -->
 </header>
     <!-- end login section -->
+
 <sec:authorize access="hasRole('PRE')">
 
 <button type="button" id="preModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#certificationModal">
@@ -178,72 +213,26 @@
   </div>
 </div>
 </sec:authorize>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-
+    
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:555;">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+<!-- End Header Area -->
 
 <script type="text/javascript">
-var socket = null;
-$(document).ready(function(){
-if(${login != null}){
-connectWs();
-}
-})
 
 
-//소켓
 
 
-function connectWs(){
-console.log("tttttt")
-var ws = new SockJS("/alram");
-socket = ws;
-
-	ws.onopen = function() {
- console.log('open');
- 
- };
-
-	ws.onmessage = function(event) {
-		console.log("onmessage"+event.data);
-		let $socketAlert = $('div#socketAlert');
-		$socketAlert.html(event.data)
-		$socketAlert.css('display', 'block');
-		
-		setTimeout(function(){
-			$socketAlert.css('display','none');
-			
-		}, 5000);
-};
-
-	ws.onclose = function() {
-	    console.log('close');
- };
- 
- 
- 
-
-};
-
-//소켓끝
-
-function commentInsert(insertData){
-	console.log('reply.socket',socket);
-	
-	$.ajax({
-		url:'',
-		type:'post',
-		data:insertData,
-		processData :false, contentType:false,
-		
-		enctype: 'multipart/form-data',
-		success: function(data){
-			
-		}
-	})
-}
 
 </script>
-
-<!-- End Header Area -->

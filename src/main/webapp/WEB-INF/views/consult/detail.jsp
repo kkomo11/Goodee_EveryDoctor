@@ -95,7 +95,7 @@
 	                                    ${consultDetail.hospitalCategoryVO[0].categoryName }
                                     </li>
                                 </ul>
-                                <p>${consultDetail.consultContent }</p>
+                                <p data-content-consultnum="${consultDetail.consultNum }" id="consultContentParagraph">${consultDetail.consultContent }</p>
                                 
                             </div>
                             

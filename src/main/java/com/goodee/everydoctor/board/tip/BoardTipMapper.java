@@ -7,17 +7,17 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BoardTipMapper {
 
-	public List<BoardTipVO> getList(BoardTipVO boardTipVO)throws Exception;
+	public List<BoardTipVO> findBoardTipList(BoardTipVO boardTipVO)throws Exception;
 
-	public int setAdd(BoardTipVO boardTipVO)throws Exception;
+	public int inputBoardTipAdd(BoardTipVO boardTipVO)throws Exception;
 
 //	public int setFileAdd(BoardFileVO boardFileVO)throws Exception;
 
-	public BoardTipVO getDetail(BoardTipVO boardTipVO)throws Exception;
+	public BoardTipVO findBoardTipDetail(BoardTipVO boardTipVO)throws Exception;
 
 //	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception;
 
-	public int setUpdate(BoardTipVO boardTipVO)throws Exception;
+	public int inputBoardTipUpdate(BoardTipVO boardTipVO)throws Exception;
 
 //	public int setFileUpdate(BoardFileVO boardFileVO)throws Exception;
 //

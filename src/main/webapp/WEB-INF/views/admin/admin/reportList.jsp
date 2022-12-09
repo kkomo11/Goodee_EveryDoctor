@@ -117,7 +117,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="/admin/admin/reportList">신고리스트</a>
                         <a class="collapse-item" href="register.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -383,23 +383,23 @@
                         </div>
                         <div class="card-body">
                             <section class="container col-lg-6" id="listSearchFrame">
-                                    <form method="get" action="./reportList" class="d-flex justify-contents-center align-items-center">
-                                        <select name="kind" class="form-select" id="kind">
+                                <form method="get" action="./reportList" class="d-flex justify-contents-center align-items-center">
+                                    <select name="kind" class="form-select" id="kind">
                                         <option value="reporterName">신고자</option>
                                         <option value="reportedName">피신고자</option>
                                         <option value="reportContents">신고내용</option>
                                         <option value="reportTitle">신고제목</option>
                                     </select>
                                         
-                                        <!-- 라벨의 for와 input의 id를 같게하면 같은 영역으로 인식되서 편리하다. -->
-                                        <div class="input-group" id="searchFrame">
+                                    <!-- 라벨의 for와 input의 id를 같게하면 같은 영역으로 인식되서 편리하다. -->
+                                    <div class="input-group" id="searchFrame">
                                         <input type="text" class="form-control" id="search" name="search">
-                                        </div>
+                                    </div>
                                         
-                                        <div>
-                                            <button type="submit" class="btn btn-primary">Search</button>
-                                        </div>
-                                    </form>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </div>
+                                </form>
                             </section>
                             <div>
                                 <table class="table table-bordered" width="100%" cellspacing="0">
@@ -416,8 +416,8 @@
                                             <th>답변등록</th>
                                         </tr>
                                     </thead>
-                                    <c:forEach items="${list}" var="list">
-	                                    <tbody>
+                                    <tbody>
+                                            <c:forEach items="${list}" var="list">
 	                                        <tr>
 	                                            <td class="ajaxNum">${list.reportNum}</td>
 	                                            <td>${list.reporterName}</td>
@@ -429,8 +429,8 @@
 	                                            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#reportDetail">상세보기</button></td>
 	                                            <td><button type="button" class="btn btn-primary answerModalBtn" data-toggle="modal" data-target="#reportAnswer2" data-num=${list.reportNum}>답변등록</button></td>
 	                                        </tr>
+                                        </c:forEach>
 	                                    </tbody>
-                                    </c:forEach>
                                 </table>
                             </div>
                         </div>

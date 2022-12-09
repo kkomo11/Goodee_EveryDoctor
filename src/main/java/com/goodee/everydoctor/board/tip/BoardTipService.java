@@ -13,19 +13,19 @@ public class BoardTipService {
 	@Autowired
 	private BoardTipMapper boardTipMapper;
 
-	public List<BoardTipVO> getList(BoardTipVO boardTipVO)throws Exception {
+	public List<BoardTipVO> findBoardTipList(BoardTipVO boardTipVO)throws Exception {
 		// TODO Auto-generated method stub
-		return boardTipMapper.getList(boardTipVO);
+		return boardTipMapper.findBoardTipList(boardTipVO);
 	}
 
-	public void setAdd(BoardTipVO boardTipVO)throws Exception {
+	public void inputBoardTipAdd(BoardTipVO boardTipVO)throws Exception {
 		// TODO Auto-generated method stub
-		int result = boardTipMapper.setAdd(boardTipVO);
+		int result = boardTipMapper.inputBoardTipAdd(boardTipVO);
 	}
 
-	public BoardTipVO getDetail(BoardTipVO boardTipVO)throws Exception {
+	public BoardTipVO findBoardTipDetail(BoardTipVO boardTipVO)throws Exception {
 		// TODO Auto-generated method stub
-		return boardTipMapper.getDetail(boardTipVO);
+		return boardTipMapper.findBoardTipDetail(boardTipVO);
 	}
 
 //	public BoardFileVO getFileDetail(BoardFileVO boardFileVO)throws Exception {
@@ -34,9 +34,9 @@ public class BoardTipService {
 //
 //	}
 
-	public int setUpdate(BoardTipVO boardTipVO)throws Exception {
+	public int inputBoardTipUpdate(BoardTipVO boardTipVO)throws Exception {
 		// TODO Auto-generated method stub
-		return boardTipMapper.setUpdate(boardTipVO);
+		return boardTipMapper.inputBoardTipUpdate(boardTipVO);
 	}
 
 //	public int setFileDelete(BoardFileVO boardFileVO)throws Exception {

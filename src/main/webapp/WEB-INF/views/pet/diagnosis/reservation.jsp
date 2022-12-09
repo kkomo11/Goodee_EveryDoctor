@@ -112,14 +112,14 @@
                                                 aria-controls="nav-item-info" aria-selected="true">
                                                 <span class="serial">01</span>
                                                 Step
-                                                <span class="sub-title">기본정보</span>
+                                                <span class="sub-title">반려동물</span>
                                             </button>
                                             <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-details" type="button" role="tab"
                                                 aria-controls="nav-item-details" aria-selected="false">
                                                 <span class="serial">02</span>
                                                 Step
-                                                <span class="sub-title">의사선택</span>
+                                                <span class="sub-title">기본정보</span>
                                             </button>
                                             <button class="nav-link" id="nav-user-info-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-user-info" type="button" role="tab"
@@ -136,9 +136,6 @@
                                             <!-- Start Post Ad Step One Content -->
                                             <div class="step-one-content">
                                                 <form class="default-form-style" method="post" action="#">
-                                                	<input type="hidden" id="usernameInput" value="${member.username }">
-                                                	<input type="hidden" id="petdocUsernameInput" value="${petdoc }">
-                                                	<input type="hidden" id="petNumInput">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
@@ -201,52 +198,10 @@
                                                                 <input id="vaccinnationInput" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>상담유형*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select" name="pDansCategory" id="pDansCategory">
-                                                                        
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group mt-30">
-                                                                <label>상담내용*</label>
-                                                                <textarea name="pDansContent"
-                                                                    placeholder="상담내용"></textarea>
-                                                            </div>
-                                                        </div>
                                                         
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
-                                                                <button type="button" class="btn " id="addPhotoBtn">진료용 사진 추가</button>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-lg-6 col-12" id="photoFileFrame">
-                                                        </div>
-                                                        
-                                                        <!-- <div class="col-lg-6 col-12">
-                                                            <div class="upload-input">
-                                                                <input type="file" id="diagonsisFile" name="files">
-                                                                <label for="upload" class="text-center content">
-                                                                    <span class="text">
-                                                                        <span class=" mb-15 plus-icon"><i
-                                                                                class="lni lni-plus"></i></span>
-                                                                        <span class="main-btn d-block btn-hover">파일선택</span>
-                                                                        <span class="d-block">파일 최대 용량
-                                                                            10Mb</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-                                                        </div> -->
-                                                        <div class="col-12">
-                                                            <div class="form-group button mb-0">
-                                                                <button type="submit" class="btn ">Next Step</button>
+                                                                <button type="button" class="btn " id="firstNextBtn">Next Step</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -260,118 +215,31 @@
                                             <div class="step-two-content">
                                                 <form class="default-form-style" method="post" action="#">
                                                     <div class="row">
-                                                        <div class="col-12">
+                                                    	<div class="col-12">
                                                             <div class="form-group">
-                                                                <label>Add Price*</label>
-                                                                <input name="price" type="text"
-                                                                    placeholder="Enter Price">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Price Type*</label>
+                                                                <label>상담유형*</label>
                                                                 <div class="selector-head">
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select an option</option>
-                                                                        <option value="none">Fixed</option>
-                                                                        <option value="none">Price On Call</option>
+                                                                    <select class="user-chosen-select" id="pDansCategory">
+                                                                        
                                                                     </select>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Select Currency*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select an option</option>
-                                                                        <option value="none">Dollar</option>
-                                                                        <option value="none">Euro</option>
-                                                                        <option value="none">Rupee</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="upload-input">
-                                                                <input type="file" id="upload" name="upload">
-                                                                <label for="upload" class="text-center content">
-                                                                    <span class="text">
-                                                                        <span class="d-block mb-15">Drop files anywhere
-                                                                            to Upload</span>
-                                                                        <span class=" mb-15 plus-icon"><i
-                                                                                class="lni lni-plus"></i></span>
-                                                                        <span class="main-btn d-block btn-hover">Select
-                                                                            File</span>
-                                                                        <span class="d-block">Maximum upload file size
-                                                                            10Mb</span>
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label class="video-label">Video Link* <span>Input only
-                                                                        YouTube & Vimeo</span></label>
-                                                                <input name="video" type="text"
-                                                                    placeholder="Input link">
-                                                                <a href="javascript:void(0)" class="add-video"><i
-                                                                        class="lni lni-plus"></i> Add Video</a>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group mt-30">
-                                                                <label>Ad Description*</label>
-                                                                <textarea name="message"
-                                                                    placeholder="Input ad description"></textarea>
+                                                                <label>상담내용*</label>
+                                                                <textarea
+                                                                    placeholder="상담내용" id="pDansContentInput"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Type of Ad*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select an option</option>
-                                                                        <option value="none">Option 1</option>
-                                                                        <option value="none">Option 2</option>
-                                                                        <option value="none">Option 3</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Item Condition*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select an option</option>
-                                                                        <option value="none">Used</option>
-                                                                        <option value="none">Brand New</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label class="tag-label">Tags* <span>Comma(,)
-                                                                        separated</span></label>
-                                                                <input name="tag" type="text"
-                                                                    placeholder="Type Product tag">
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
-                                                                <button type="submit"
-                                                                    class="btn alt-btn">Previous</button>
-                                                                <button type="submit" class="btn ">Next Step</button>
+                                                                <button type="button"
+                                                                    class="btn alt-btn" id="secondPreBtn">Previous</button>
+                                                                <button type="button" class="btn " id="secondNextBtn">Next Step</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -383,127 +251,89 @@
                                             aria-labelledby="nav-user-info-tab">
                                             <!-- Start Post Ad Step Three Content -->
                                             <div class="step-three-content">
-                                                <form class="default-form-style" method="post" action="#">
+                                                <form class="default-form-style" method="post" action="./reservation" enctype="multipart/form-data" id="reservationForm">
                                                     <div class="row">
-                                                        <div class="col-lg-6 col-12">
+                                                    	<input type="hidden" name="pUsername" id="usernameInput" value="${member.username }">
+                                                		<input type="hidden" name="pDoctorname" id="petdocUsernameInput" value="${petdoc }">
+                                                		<input type="hidden" name="petNum" id="petNumInput">
+                                                        <div class="col-6">
                                                             <div class="form-group">
-                                                                <label>Name*</label>
-                                                                <input name="name" type="text"
-                                                                    placeholder="Enter your name">
+                                                                <label>반려동물 이름*</label>
+                                                                <input id="petNameInput2" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-12">
+                                                        <div class="col-6">
                                                             <div class="form-group">
-                                                                <label>Mobile Numbe*</label>
-                                                                <input name="number" type="text"
-                                                                    placeholder="Enter mobile number">
+                                                                <label>반려동물 종류*</label>
+                                                                <input id="speciesNameInput2" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 생일*</label>
+                                                                <input id="petBirthInput2" type="date" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 나이*</label>
+                                                                <input id="petAgeInput2" type="number" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 성별*</label>
+                                                                <input id="petSexInput2" type="text" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>반려동물 중성화여부*</label>
+                                                                <input id="neuteredInput2" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label>Country*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select a Country</option>
-                                                                        <option value="none">Afghanistan</option>
-                                                                        <option value="none">America</option>
-                                                                        <option value="none">Albania</option>
-                                                                        <option value="none">Bangladesh</option>
-                                                                        <option value="none">Brazil</option>
-                                                                        <option value="none">India</option>
-                                                                        <option value="none">South Africa</option>
-                                                                    </select>
-                                                                </div>
+                                                                <label>반려동물 예방접종여부*</label>
+                                                                <input id="vaccinnationInput2" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-12">
+                                                        
+                                                        <div class="col-12">
                                                             <div class="form-group">
-                                                                <label>Select City*</label>
+                                                                <label>상담유형*</label>
                                                                 <div class="selector-head">
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select City</option>
-                                                                        <option value="none">New York</option>
-                                                                        <option value="none">Los Angeles</option>
-                                                                        <option value="none">Chicago</option>
-                                                                        <option value="none">San Diego</option>
-                                                                        <option value="none">San Jose</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-12">
-                                                            <div class="form-group">
-                                                                <label>Select State*</label>
-                                                                <div class="selector-head">
-                                                                    <span class="arrow"><i
-                                                                            class="lni lni-chevron-down"></i></span>
-                                                                    <select class="user-chosen-select">
-                                                                        <option value="none">Select State</option>
-                                                                        <option value="none">New York</option>
-                                                                        <option value="none">Texas</option>
-                                                                        <option value="none">Arizona</option>
-                                                                        <option value="none">Florida</option>
-                                                                        <option value="none">Washington</option>
+                                                                    <select class="user-chosen-select" name="pDansCategory" id="pDansCategory2">
+                                                                        
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label>Address*</label>
-                                                                <input name="address" type="text"
-                                                                    placeholder="Enter a location">
+                                                            <div class="form-group mt-30">
+                                                                <label>상담내용*</label>
+                                                                <textarea name="pDansContent"
+                                                                    placeholder="상담내용" id="pDansContentInput2" readonly="readonly"></textarea>
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-12">
-                                                            <div class="google-map">
-                                                                <div class="mapouter">
-                                                                    <div class="gmap_canvas"><iframe width="100%"
-                                                                            height="300" id="gmap_canvas"
-                                                                            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                                            frameborder="0" scrolling="no"
-                                                                            marginheight="0" marginwidth="0"></iframe><a
-                                                                            href="https://123movies-to.org"></a><br>
-                                                                        <style>
-                                                                            .mapouter {
-                                                                                position: relative;
-                                                                                text-align: right;
-                                                                                height: 300px;
-                                                                                width: 100%;
-                                                                            }
-                                                                        </style><a
-                                                                            href="https://www.embedgooglemap.net">embed
-                                                                            google maps wordpress</a>
-                                                                        <style>
-                                                                            .gmap_canvas {
-                                                                                overflow: hidden;
-                                                                                background: none !important;
-                                                                                height: 300px;
-                                                                                width: 100%;
-                                                                            }
-                                                                        </style>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value=""
-                                                                    id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                    I agree to all Terms of Use & Posting Rules
-                                                                </label>
-                                                            </div>
                                                             <div class="form-group button mb-0">
-                                                                <button type="submit"
-                                                                    class="btn alt-btn">Previous</button>
-                                                                <button type="submit" class="btn ">Submit Ad</button>
+                                                                <button type="button" class="btn " id="addPhotoBtn">진료용 사진 추가</button>
                                                             </div>
                                                         </div>
+                                                        
+                                                        <div class="col-12" id="photoFileFrame">
+                                                        </div>
+                                                        
+                                                            <div class="form-group button mb-0">
+                                                                <button type="button"
+                                                                    class="btn alt-btn" id="thirdPreBtn">Previous</button>
+                                                                <button type="button" class="btn " id="submitBtn">진료신청</button>
+                                                            </div>
+                                                        
                                                     </div>
                                                 </form>
                                             </div>
@@ -522,34 +352,6 @@
     </section>
     <!-- End Dashboard Section -->
 
-    <!-- Start Newsletter Area -->
-    <div class="newsletter section">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                            <i class="lni lni-alarm"></i>
-                            <h2>Newsletter</h2>
-                            <p>We don't send spam so don't worry.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Your email address" type="email">
-                                <div class="button">
-                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter Area -->
-
     <!-- Start Footer Area -->
     <c:import url="../../temp/footer.jsp"></c:import>
     <!--/ End Footer Area -->
@@ -565,10 +367,11 @@
 		<option value="{category}">{categoryName}</option>
 	</script>
 	<script type="text/template" id="diagnosisFileInputTemplate">
-		<div class="col-lg-6 col-12 fileFrame">
-			<button type="button" class="btn btn-danger">파일 삭제</button>
-        	<div class="upload-input filesInput">
-        		<input type="file" id="diagonsisFile" name="files">
+		<div class="col-12 fileFrame">
+        	<div class="filesInput">
+				<div></div>
+        		<input type="file" id="diagonsisFile" name="files" class="form-control">
+				<button type="button" class="btn btn-danger fileDeleteBtn">파일 삭제</button>
         	</div>
 		</div>
 	</script>

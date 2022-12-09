@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -230,6 +231,9 @@
                     <div class="main-content step-one-content">
                         <!-- 기관 등록 폼 시작 -->
                         <div class="dashboard-block mt-0 profile-settings-block">
+                            <sec:authorize access="!isAuthenticated()">
+                                <h2 style="color: #55DDBD;">제휴 신청은 회원가입 후에 가능합니다!!</h2>
+                            </sec:authorize>
                             <h3 class="block-title">기관 등록</h3>
                             <div class="inner-block">
                                 <form class="profile-setting-form default-form-style" method="post" action="./regist" enctype="multipart/form-data" id="form">
@@ -241,18 +245,38 @@
                                                 <div class="selector-head">
                                                     <span class="arrow"><i class="lni lni-chevron-down"></i></span>
                                                     <select class="user-chosen-select" name="medicRole" id="medicRole">
-                                                    <option disabled selected>문의 유형을 선택해주세요</option>
-                                                    <option value="의사">의사 제휴 문의</option>
-                                                    <option value="간호사">간호사 제휴 문의</option>
-                                                    <option value="수의사">수의사 제휴 문의</option>
-                                                    <option value="약사">약사 제휴 문의</option>
-                                                    <option value="보호소관리자">보호소 제휴 문의</option>
+                                                        <option disabled selected>문의 유형을 선택해주세요</option>
+                                                        <option value="의사">의사 제휴 문의</option>
+                                                        <option value="간호사">간호사 제휴 문의</option>
+                                                        <option value="수의사">수의사 제휴 문의</option>
+                                                        <option value="약사">약사 제휴 문의</option>
+                                                        <option value="보호소관리자">보호소 제휴 문의</option>
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <!-- 기관 문의 구분자 -->
                                             <!-- 위에 종사자 문의 구분에 따라 자동으로 기관 구분자가 결정되게 -->
                                             <input type="hidden" name="agencyRole" id="agencyRole" />
+
+                                            <!-- 전문의 구분 -->
+                                            <div class="form-group col-6" id="specialty">
+
+                                            </div>
+                                            <!-- 성함 -->
+                                            <div class="col-lg-6 col-12">
+                                                <div class="form-group">
+                                                    <label>성함*</label>
+                                                    <sec:authorize access="isAuthenticated()">
+                                                        <sec:authentication property="Principal" var="member"/>
+                                                            <input class="username" value="${member.name}" readonly="readonly" />
+                                                            <input name="username" type="hidden" value="${member.username}" />
+                                                    </sec:authorize>
+                                                    <sec:authorize access="!isAuthenticated()">
+                                                        <input type="text" value="제휴신청은 회원가입 후에 가능합니다!!" disabled style="color: #55DDBD;">
+                                                    </sec:authorize>
+                                                </div>
+                                            </div>
                                             <!-- 상호명 입력 -->
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
@@ -375,9 +399,9 @@
                                                 </div>
                                             </div>
                                         <!-- AGENCYTYPE 임의로 값 입력 -->
-                                        <input type="hidden" value="24시" name="agencyType" />
+                                        <input type="hidden" value="" name="agencyType" />
                                         <!-- USERNAME 임의로 값 입력 -->
-                                        <input type="hidden" value="TestDoc1" name="username" />
+                                        <!-- <input type="hidden" value="TestDoc1" name="username" /> -->
                                         <!-- 파일추가 버튼 누르면 파일추가 폼 생성되는 부분 -->
                                         <div id="fileAdd"></div>
                                         <!-- 파일 추가 버튼 -->
@@ -423,7 +447,20 @@
            <div class="form-group button mb-0">
               <button type="button" class="btn del">취소</button>
            </div>
-       </div>
+        </div>
+    </script>
+    
+
+     <script type="java/template" id="specialtyAddForm">
+        <label>전문의 여부*</label>
+        <div class="selector-head">
+            <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+            <select class="user-chosen-select" name="medicSpecialty" id="medicSpecialty">
+                <option disabled selected>문의 유형을 선택해주세요</option>
+                <option value="null">해당없음</option>
+                                                    
+            </select>
+        </div>
      </script>
 
 </body>

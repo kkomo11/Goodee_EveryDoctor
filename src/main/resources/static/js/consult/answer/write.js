@@ -13,6 +13,9 @@ const consultAnswerMoreBtn = $("#consultAnswerMoreBtn");
 let curPage = 0;
 let totalPage = 0;
 
+// 비 의료인 회원도 답변을 볼 수 있게 consultNum을 담은 p 태그
+const consultContentParagraph = $("#consultContentParagraph");
+
 init();
 
 consultAnswerBtn.on("click", function(){
@@ -47,7 +50,7 @@ function init(){
     // 작성된 댓글 요청
     $.ajax({
         type: "GET",
-        url: "/consult/answer/list?consultNum=" + answerConsultNumInput.val(),
+        url: "/consult/answer/list?consultNum=" + consultContentParagraph.attr("data-content-consultnum"),
         success: result => {
             //console.log(result);
             $.each(result["list"], function(index, item){
@@ -57,6 +60,14 @@ function init(){
                                         .replace("{consultAnswerContent}", item["answerContent"]);
 
                 consultAnswerList.append(consultAnswerTemplate);
+                
+                if(item["username"] == answerUsernameInput.val()){
+                    // 현재 로그인한 사용자가 답변 작성자이면 해당 답글의 삭제 버튼 생성
+                    let delBtnTemp = '<div class="button"><button type="button" class="btn consultAnswerDeleteBtn" data-answernum="{consultAnswerNum}">삭제</button></div>';
+                    delBtnTemp = delBtnTemp.replace("{consultAnswerNum}", item["answerNum"]);
+                    consultAnswerList.append(delBtnTemp);
+                }
+
             });
             curPage = result["pager"].page; // 현재 페이지
             totalPage = result["pager"].totalPage; // 마지막 페이지
@@ -75,7 +86,7 @@ function init(){
     // 답변 개수 불러옴
     $.ajax({
         type: "GET",
-        url: "/consult/answer/count?consultNum=" + answerConsultNumInput.val(),
+        url: "/consult/answer/count?consultNum=" + consultContentParagraph.attr("data-content-consultnum"),
         success: result => {
             //console.log(result);
             answerCountSpan.html(result + "개의 답변");
@@ -95,7 +106,7 @@ consultAnswerMoreBtn.on("click", function(){
 
         $.ajax({
             type: "GET",
-            url: "/consult/answer/list?consultNum=" + answerConsultNumInput.val() + "&page=" + curPage,
+            url: "/consult/answer/list?consultNum=" + consultContentParagraph.attr("data-content-consultnum") + "&page=" + curPage,
             success: result => {
                 //console.log(result);
                 $.each(result["list"], function(index, item){
@@ -105,6 +116,13 @@ consultAnswerMoreBtn.on("click", function(){
                                             .replace("{consultAnswerContent}", item["answerContent"]);
     
                     consultAnswerList.append(consultAnswerTemplate);
+
+                    if(item["username"] == answerUsernameInput.val()){
+                        // 현재 로그인한 사용자가 답변 작성자이면 해당 답글의 삭제 버튼 생성
+                        let delBtnTemp = '<div class="button"><button type="button" class="btn consultAnswerDeleteBtn" data-answernum="{consultAnswerNum}">삭제</button></div>';
+                        delBtnTemp = delBtnTemp.replace("{consultAnswerNum}", item["answerNum"]);
+                        consultAnswerList.append(delBtnTemp);
+                    }
                 });
                 curPage = result["pager"].page; // 현재 페이지
     
@@ -121,3 +139,35 @@ consultAnswerMoreBtn.on("click", function(){
 
     }
 })
+
+consultAnswerList.on("click", event => {
+    
+    // 답글의 삭제 버튼을 클릭하면 삭제 AJAX 요청
+    if(event.target.classList[1] == "consultAnswerDeleteBtn"){
+
+        let answerDeleteFlag = confirm("정말 삭제합니까?");
+        if(answerDeleteFlag){
+            let answerNumData = event.target.getAttribute("data-answernum");
+
+            $.ajax({
+                type: "POST",
+                url: "/consult/answer/delete",
+                data: {
+                    answerNum: answerNumData
+                },
+                success: result => {
+                    if(result == 1){
+                        alert("답글 삭제 성공");
+                        location.reload();
+                    } else {
+                        console.log(result);
+                    }
+                },
+                error: result => {
+                    console.log(result);
+                }
+            });
+        }
+
+    }
+});

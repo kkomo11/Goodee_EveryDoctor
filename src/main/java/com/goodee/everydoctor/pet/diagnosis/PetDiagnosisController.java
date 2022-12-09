@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalCategoryVO;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -18,6 +20,14 @@ public class PetDiagnosisController {
 
 	@Autowired
 	private PetDiagnosisService petDiagnosisService;
+	
+	@PostMapping("reservation")
+	public String inputPetDiagnosis(PetDiagnosisVO petDiagnosisVO, FileVO fileVO) throws Exception {
+		
+		int result = petDiagnosisService.inputPetDiagnosis(petDiagnosisVO, fileVO);
+		
+		return "redirect:/pet/home";
+	}
 	
 	@GetMapping("reservation")
 	public ModelAndView getDiagnosisReservation(UserVO userVO, String petdoc) throws Exception {

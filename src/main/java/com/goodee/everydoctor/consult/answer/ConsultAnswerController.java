@@ -18,6 +18,12 @@ public class ConsultAnswerController {
 	@Autowired
 	private ConsultAnswerService consultAnswerService;
 	
+	@PostMapping("delete")
+	@ResponseBody
+	public int deleteConsultAnswer(ConsultAnswerVO consultAnswerVO) throws Exception {
+		return consultAnswerService.deleteConsultAnswer(consultAnswerVO);
+	}
+	
 	@GetMapping("count")
 	@ResponseBody
 	public Long findConsultAnswerCount(ConsultAnswerVO consultAnswerVO) throws Exception {

@@ -2,13 +2,9 @@ package com.goodee.everydoctor.drug.delivery;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,9 +23,9 @@ public class DrugDeliveryController {
 	private DrugDeliveryService drugDeliveryService;
 	
 	@GetMapping("list")
-	public ModelAndView getList(DrugDeliveryVO drugDeliveryVO)throws Exception {
+	public ModelAndView findDrugDeliveryList(DrugDeliveryVO drugDeliveryVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<DrugDeliveryVO> ar = drugDeliveryService.getList(drugDeliveryVO);
+		List<DrugDeliveryVO> ar = drugDeliveryService.findDrugDeliveryList(drugDeliveryVO);
 		mv.addObject("list",ar);
 		mv.setViewName("drug/delivery/list");
 		return mv;
@@ -37,9 +33,9 @@ public class DrugDeliveryController {
 	}
 	
 	@GetMapping("detail")
-	public ModelAndView getDetail(DrugDeliveryVO drugDeliveryVO)throws Exception {
+	public ModelAndView findDrugDeliveryDetail(DrugDeliveryVO drugDeliveryVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugDeliveryVO=drugDeliveryService.getDetail(drugDeliveryVO);
+		drugDeliveryVO=drugDeliveryService.findDrugDeliveryDetail(drugDeliveryVO);
 		mv.addObject("detail",drugDeliveryVO);
 		mv.setViewName("drug/delivery/detail");
 		return mv;

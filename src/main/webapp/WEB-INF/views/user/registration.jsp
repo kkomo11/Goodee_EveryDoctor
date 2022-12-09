@@ -8,26 +8,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Registration - ClassiGrids Classified Ads and Listing Website Template</title>
+    <title>에브리닥터 회원가입</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />	
     <!-- Place favicon.ico in the root directory -->
-
-    <!-- Web Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/glightbox.min.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-
+	<c:import url="../temp/boot.jsp"></c:import>
 </head>
 
 <body>
@@ -59,13 +44,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Registration</h1>
+                        <h1 class="page-title">회원가입</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li>Registration</li>
+                        <li>회원가입</li>
                     </ul>
                 </div>
             </div>
@@ -79,36 +64,36 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                     <div class="form-head">
-                        <h4 class="title">Registration</h4>
+                        <h4 class="title">회원가입</h4>
                         <form:form action="./registration" modelAttribute="userVO" method="post">
                             
                             <div class="form-group">
-                                <label>ID 아이디</label>
+                                <label>아이디 ID</label>
                                 <div class="d-flex">
                                     <form:input path="username" id="username"/>
-                                    <button class="btn btn-primary"  style="width:150px;">중복확인</button>
+                                    <button class="btn btn-primary" type="button" style="width:150px;" id="chkId">중복확인</button>
                                 </div>
-                                <span class="text-danger">
+                                <span class="text-danger" id="errorUsername">
                                     <form:errors path="username"></form:errors>
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>성함 Name</label>
                                 <form:input path="name" />
                                 <span  class="text-danger"><form:errors path="name"></form:errors></span>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>이메일 Email</label>
                                 <form:input path="email" type="email"/>
                                 <span  class="text-danger"><form:errors path="email"></form:errors></span>
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>비밀번호 Password</label>
                                 <form:password path="password"/>
                                 <span  class="text-danger"><form:errors path="password"></form:errors></span>
                             </div>
                             <div class="form-group">
-                                <label>Confirm Password</label>
+                                <label>비밀번호 확인 Confirm Password</label>
                                 <input name="password2" type="password">
                             </div>
                             <div class="alt-option">
@@ -191,9 +176,9 @@
                                 </div>
                             </div>
                             <div class="button">
-                                <button type="submit" class="btn">Registration</button>
+                                <button type="submit" class="btn">회원가입</button>
                             </div>
-                            <p class="outer-link">Already have an account? <a href="login"> Login Now</a>
+                            <p class="outer-link">계정이 있으신가요? <a href="login"> 로그인 하기</a>
                             </p>
                         </form:form>
                     </div>
@@ -212,11 +197,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/glightbox.min.js"></script>
-    <script src="/js/main.js"></script>
+<script src="/js/user/registration.js"></script>
 </body>
 
 </html>

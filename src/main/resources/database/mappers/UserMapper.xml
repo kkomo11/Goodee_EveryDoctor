@@ -3,6 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.user.UserMapper">
+
+	<select id="chkId" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM USERS WHERE USERNAME=#{username}
+	</select>
 	<insert id="inputUser" parameterType="UserVO">
 		INSERT INTO USERS(USERNAME, PASSWORD , NAME, EMAIL, FILENAME, USERREGDATE) 
 		VALUE (#{username}, #{password}, #{name}, #{email} , #{fileName}, NOW())
@@ -13,7 +17,37 @@
 		(USERSROLENUM, USERNAME, ROLENUM)
 		VALUES(0, #{username}, 1)
 	</insert>
-	
+	<insert id="inputRoleMember" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 2)
+	</insert>
+	<insert id="inputRoleAdmin" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 3)
+	</insert>
+	<insert id="inputRoleDoctor" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 4)
+	</insert>
+	<insert id="inputRolePetdoc" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 5)
+	</insert>
+	<insert id="inputRoleNurse" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 6)
+	</insert>
+	<insert id="inputRolePetnurse" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 7)
+	</insert>
+
 	<update id="modifyUserMember" parameterType="UserVO">
 		UPDATE USERS set NAME = #{name}, CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone}, GENDER =#{gender} WHERE USERNAME =#{username};
 	</update>
@@ -59,6 +93,13 @@
 	
 	<update id="modifyPassword" parameterType="UserVO">
 		UPDATE USERS SET PASSWORD=#{password} WHERE USERNAME = #{username}
+	</update>
+	
+	<update id="modifyPhone" parameterType="UserVO">
+		UPDATE USERS SET PHONE=#{phone} WHERE USERNAME = #{username}
+	</update>
+	<update id="modifyEmail" parameterType="UserVO">
+		UPDATE USERS SET EMAIL=#{email} WHERE USERNAME = #{username}
 	</update>
 	
 </mapper>

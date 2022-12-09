@@ -1,7 +1,7 @@
 const modalBtn = $(".modalBtn");
 
 $("#flexSwitchCheckDefault").change(function(){
-    console.log($("#flexSwitchCheckDefault").val());
+    console.log($("#flexSwitchCheckDefault").prop("checked"));
 })
 
 //상세보기 버튼 클릭

@@ -8,11 +8,12 @@ import com.goodee.everydoctor.util.Pager;
 
 @Mapper
 public interface DrugMapper {
-	
-	
-	public List<DrugVO> getList(Pager pager)throws Exception;
-	
-	public DrugVO getDetail(DrugVO drugVO)throws Exception;
 
-	public Long	getDrugTotalCount() throws Exception;
+	public List<DrugVO> findDrugList(Pager pager)throws Exception;
+
+	public DrugVO findDrugDetail(DrugVO drugVO)throws Exception;
+
+	public Long	findDrugTotalCount(Pager pager) throws Exception;
+
+	public List<DrugVO> findDrugStore(Pager pager) throws Exception;
 }
