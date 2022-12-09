@@ -214,8 +214,8 @@
 </div>
 </sec:authorize>
     
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:555;">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>

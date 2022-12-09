@@ -33,6 +33,7 @@ public class NotificationController {
 		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		sendInitEvent(sseEmitter);
 		emitters.put(userID, sseEmitter);
+		log.info("서브스크립 : {}", userID);
 		
 		//만료되면 삭제
 		sseEmitter.onCompletion(() -> emitters.remove(sseEmitter));
