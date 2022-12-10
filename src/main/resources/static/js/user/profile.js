@@ -33,7 +33,7 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
         $.ajax({
             type: "POST",
             enctype: 'multipart/form-data',
-            url: "profileUpload",
+            url: "profileImgUpload",
             data: filedata,
             processData: false,
             contentType: false,
@@ -53,7 +53,7 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		 console.log("기본으로 변경")
 		 $.ajax({
 			 type:"POST",
-			 url: "setProfileDefault",
+			 url: "setProfileImgDefault",
 			 data: {
 				 "username":usernameVal
 			 },
