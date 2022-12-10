@@ -17,9 +17,13 @@ public class HospitalDoctorController {
 	private HospitalDoctorService hospitalDoctorService;
 	
 	@GetMapping("detail")
-	public String doctorDetail(HospitalDoctorVO doctorVO) throws Exception {
+	public ModelAndView doctorDetail(HospitalDoctorVO doctorVO, ModelAndView modelAndView) throws Exception {
 		
-		return "hospital/doctorDetail";
+		doctorVO = hospitalDoctorService.findDoctorDetail(doctorVO);
+		modelAndView.addObject("doctorVO", doctorVO);
+		modelAndView.setViewName("hospital/doctorDetail");
+		
+		return modelAndView;
 	}
 	
 	@GetMapping("management")
