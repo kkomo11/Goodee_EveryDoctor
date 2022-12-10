@@ -59,7 +59,7 @@
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
                         <div class="dashboard-block mt-0">
-                            <h3 class="block-title">내 진료내역</h3>
+                            <h3 class="block-title mb-0">반려동물 진료내역</h3>
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
                                 
@@ -68,17 +68,8 @@
                                 <!-- Start Item List Title -->
                                 <div class="item-list-title">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <p>Job Title</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Category</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Condition</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <p>Action</p>
+                                        <div class=" col-12">
+                                            <p style="font-family : Wedrive;">아롱이</p>
                                         </div>
                                     </div>
                                 </div>

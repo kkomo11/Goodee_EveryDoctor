@@ -127,8 +127,25 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-12">
                                                             <div class="upload-input">
-                                                                <input type="file" id="upload" name="upload">
-                                                                <label for="upload" class="text-center content">
+                                                                <input type="file" id="upload0" name="upload">
+                                                                <label for="upload0" class="text-center content">
+                                                                    <span class="text">
+                                                                        <span class="d-block mb-15">Drop files anywhere
+                                                                            to Upload</span>
+                                                                        <span class=" mb-15 plus-icon"><i
+                                                                                class="lni lni-plus"></i></span>
+                                                                        <span class="main-btn d-block btn-hover">Select
+                                                                            File</span>
+                                                                        <span class="d-block">Maximum upload file size
+                                                                            10Mb</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-12">
+                                                            <div class="upload-input">
+                                                                <input type="file" id="upload1" name="upload">
+                                                                <label for="upload1" class="text-center content">
                                                                     <span class="text">
                                                                         <span class="d-block mb-15">Drop files anywhere
                                                                             to Upload</span>
