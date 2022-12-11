@@ -120,6 +120,15 @@ function start() {
         send();
     })
 
+    // 엔터키가 눌렸을 때 && 입력창이 비어있지않을 때 메세지 전송
+    window.addEventListener("keydown", (event) => {
+        if (window.event.keyCode === 13) {
+            if($('#msg').val() != '') {
+                send();
+            }
+        }
+    });
+
     function send() {
         let msg = document.getElementById("msg");
         console.log(username + ':' + msg.value);

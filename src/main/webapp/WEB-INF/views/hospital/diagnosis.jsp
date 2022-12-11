@@ -63,21 +63,21 @@
                                                 aria-controls="nav-item-info" aria-selected="true">
                                                 <span class="serial">01</span>
                                                 Step
-                                                <span class="sub-title">증상 등록</span>
+                                                <span class="sub-title">증상등록</span>
                                             </button>
                                             <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-details" type="button" role="tab"
                                                 aria-controls="nav-item-details" aria-selected="false">
                                                 <span class="serial">02</span>
                                                 Step
-                                                <span class="sub-title">사진 첨부</span>
+                                                <span class="sub-title">사진첨부</span>
                                             </button>
                                             <button class="nav-link" id="nav-user-info-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-user-info" type="button" role="tab"
                                                 aria-controls="nav-user-info" aria-selected="false">
                                                 <span class="serial">03</span>
                                                 Step
-                                                <span class="sub-title">배송지 등록</span>
+                                                <span class="sub-title">최종확인</span>
                                             </button>
                                         </div>
                                     </nav>
@@ -141,9 +141,6 @@
                                                                     </span>
                                                                 </label>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group mt-3">
-                                                            <label>결제 카드</label>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
