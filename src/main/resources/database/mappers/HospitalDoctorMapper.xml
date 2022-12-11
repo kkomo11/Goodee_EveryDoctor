@@ -39,5 +39,41 @@
 		</collection>
 	</resultMap>
 	
+	<select id="findDoctorDetail" parameterType="HospitalDoctorVO" resultMap="DoctorDetailResult">
+		SELECT U.*, M.MEDICINFO, A.*, S.SECTIONNUM, S.SECTIONNAME
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		INNER JOIN USERSROLES UR 
+		ON(U.USERNAME = UR.USERNAME)
+		INNER JOIN `ROLE` R 
+		ON(UR.ROLENUM = R.ROLENUM)
+		WHERE U.USERNAME = #{username}
+	</select>
 	
+	<resultMap type="HospitalDoctorVO" id="DoctorDetailResult">
+		<id column="USERNAME" property="username"/>
+		<result column="NAME" property="name"/>
+		<result column="FILENAME" property="fileName"/>
+		<association property="agencyVO" javaType="AgencyVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="AGENCYNAME" property="agencyName"/>
+			<result column="AGENCYADDR" property="agencyAddr"/>
+			<result column="AGENCYINFO" property="agencyInfo"/>
+		</association>
+		<association property="medicVO" javaType="MedicVO">
+			<id column="USERNAME" property="username"/>
+			<result column="MEDICINFO" property="medicInfo"/>
+		</association>
+		<collection property="hospitalSectionVOs" javaType="List" ofType="HospitalSectionVO">
+			<id column="SECTIONNUM" property="sectionNum"/>
+			<result column="SECTIONNAME" property="sectionName"/>
+		</collection>
+	</resultMap>
 </mapper>

@@ -181,29 +181,6 @@
       </div>
       <div class="modal-body">
       	      		<p class="text-center">서비스의 원활한 이용을 위해서는 본인인증이 필요합니다.</p>
-	      <div class="login">
-	      	<div class="form-head">
-	      		<form action="" class="default-form-style" style="margin-top:0px" id="certiForm">
-			        <p class="text-center" style="color:red" id="certiMsg"></p>
-			        <input name="certiusername" type="text" id="certiusername" value="${member.username}" readonly="readonly" style="display:none;">
-			        <div class="form-group">
-			            <label>성함</label>
-			            <input name="certiName" type="text" id="certiName">
-			        </div>
-	                     <label>성별</label>
-			      	<div class="row">
-			      		<div class="col-6 text-center">
-			      			<label for="genderM">남성</label>
-	                     	<input type="radio" id="genderM" name="gender" value="M"> 
-			      		</div>
-			      		<div class="col-6 text-center">
-			      			<label for="genderF">여성</label>
-	                     	<input type="radio" id="genderF" name="gender" value="F"> 
-			      		</div>	                     
-                 	</div>			
-	      		</form>
-			  </div> 
-	      	</div>
 	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="certiClose" data-bs-dismiss="modal">닫기</button>

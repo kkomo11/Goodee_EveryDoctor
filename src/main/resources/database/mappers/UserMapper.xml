@@ -8,8 +8,8 @@
 		SELECT COUNT(*) FROM USERS WHERE USERNAME=#{username}
 	</select>
 	<insert id="inputUser" parameterType="UserVO">
-		INSERT INTO USERS(USERNAME, PASSWORD , NAME, EMAIL, FILENAME, USERREGDATE) 
-		VALUE (#{username}, #{password}, #{name}, #{email} , #{fileName}, NOW())
+		INSERT INTO USERS(USERNAME, PASSWORD , NAME, EMAIL, FILENAME, GENDER, USERREGDATE) 
+		VALUE (#{username}, #{password}, #{name}, #{email} , #{fileName}, #{gender}, NOW())
 	</insert>
 	
 	<insert id="inputRolePre" parameterType="UserVO">
@@ -49,7 +49,7 @@
 	</insert>
 
 	<update id="modifyUserMember" parameterType="UserVO">
-		UPDATE USERS set NAME = #{name}, CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone}, GENDER =#{gender} WHERE USERNAME =#{username};
+		UPDATE USERS set CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone} WHERE USERNAME =#{username};
 	</update>
 	<update id="modifyRoleMember" parameterType="UserVO">
 		UPDATE USERSROLES set ROLENUM=2 WHERE USERNAME = #{username}

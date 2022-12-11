@@ -59,22 +59,19 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/images/star.png" alt="#">
+                                    <img src="/file/profile/${doctorVO.fileName}">
                                 </div>
                             </main>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h2 class="title">이주은 의사</h2>
-                                    <p class="location"><i class="lni lni-map-marker"></i>
-                                        <a href="javascript:void(0)">현대 제일 의원</a>
-                                    </p>
-                                    <i class="lni lni-heart like"></i>
-                                </div>
-                                <img src="/images/hospital/manager.jpg" style="width: 50%; height: 50%;">
+                            <div>
+                                <h2 class="title">${doctorVO.name} 의사</h2>
+                                <p class="location"><i class="lni lni-map-marker"></i>
+                                    <a href="javascript:void(0)">${doctorVO.agencyVO.agencyName}</a>
+                                </p>
+                                <i class="lni lni-heart like"></i>
                             </div>
                             <div class="list-info">
                                 <h3 class="price mb-3"><img class="grade-star" src="/images/star.png"> 4.9</h3> 후기 2059개
@@ -125,9 +122,9 @@
                             <div class="single-block tags">
                                 <h3>Tags</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">이비인후과</a></li>
-                                    <li><a href="javascript:void(0)">내과</a></li>
-                                    <li><a href="javascript:void(0)">피부과</a></li>
+									<c:forEach items="${doctorVO.hospitalSectionVOs}" var="sectionVO">
+	                                    <li><a href="javascript:void(0)">${sectionVO.sectionName}</a></li>
+									</c:forEach>
                                 </ul>
                             </div>
                             <!-- End Single Block -->

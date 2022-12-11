@@ -82,6 +82,22 @@
                                 <form:input path="name" />
                                 <span  class="text-danger"><form:errors path="name"></form:errors></span>
                             </div>
+                            <div class="" style="margin-bottom: 25px;">
+                            
+					      	<div class="row">
+					      		<div class="col-3">
+			                     <label>성별 Gender</label>
+					      		</div>
+					      		<div class="col-3 text-center">
+					      			<label for="genderM">남성</label>
+			                     	<input type="radio" id="genderM" name="gender" value="M"> 
+					      		</div>
+					      		<div class="col-6 text-center">
+					      			<label for="genderF">여성</label>
+			                     	<input type="radio" id="genderF" name="gender" value="F"> 
+					      		</div>	                     
+		                 	</div>			
+                            </div>
                             <div class="form-group">
                                 <label>이메일 Email</label>
                                 <form:input path="email" type="email"/>
@@ -197,7 +213,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-<script src="/js/user/registration.js"></script>
+<!-- <script src="/js/user/registration.js"></script> -->
 </body>
 
 </html>
