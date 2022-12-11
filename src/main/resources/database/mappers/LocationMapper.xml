@@ -4,14 +4,35 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.location.LocationMapper">
 	<!-- 선별검사소 지도찍기 -->
-	<select id="findCoronaList" resultType="AgencyVO">
-		SELECT * 
-		FROM AGENCY
-		WHERE AGENCYROLE = '선별진료소'
+	<select id="findCoronaList" resultMap="CoronaResult">
+	SELECT A.AGENCYNAME,A.AGENCYADDR,A.AGENCYTEL,AW.*
+		FROM AGENCY A
+			 JOIN
+			 AGENCYWORKHOUR AW
+			 ON A.AGENCYNUM = AW.AGENCYNUM 
+		WHERE A.AGENCYROLE = '선별진료소'
 			  AND
-			  (AGENCYADDR REGEXP '구로|서울|중랑구|은평구|동작구')
+			  (A.AGENCYADDR REGEXP '구로|서울|올림픽|중랑구|은평구|동작구')
 			  
 	</select>
+	<resultMap type="AgencyVO" id="CoronaResult">
+		<id column="AGENCYNUM" property="agencyNum"/>
+		<result column="AGENCYNAME" property="agencyName"/>
+		<result column="AGENCYADDR" property="agencyAddr"/>
+		<result column="AGENCYTEL" property="agencyTel"/>
+		<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="SUN" property="sun"/>
+			<result column="MON" property="mon"/>
+			<result column="TUE" property="tue"/>
+			<result column="WED" property="wed"/>
+			<result column="THU" property="thu"/>
+			<result column="FRI" property="fri"/>
+			<result column="SAT" property="sat"/>
+			<result column="HOLIDAY" property="holiday"/>
+			<result column="LUNCH" property="lunch"/>
+		</association>
+	</resultMap>
 	<!-- 약국 지도찍기 -->
 	<select id="findPharmacyList" resultType="AgencyVO">
 		SELECT * 
