@@ -197,7 +197,7 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
-<script src="/js/user/registration.js"></script>
+<!-- <script src="/js/user/registration.js"></script> -->
 </body>
 
 </html>
