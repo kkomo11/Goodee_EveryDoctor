@@ -77,7 +77,7 @@ public class UserController {
 	//본인인증 처리
 	@PostMapping("certification")
 	@ResponseBody
-	public int certification(String imp_uid, UserVO userVO, HttpSession session)throws Exception{
+	public int certification(String imp_uid,@AuthenticationPrincipal UserVO userVO, HttpSession session)throws Exception{
 		
 		// 중복 가입 확인 및 본인인증 처리	
 		int result = userService.certification(imp_uid, userVO);
