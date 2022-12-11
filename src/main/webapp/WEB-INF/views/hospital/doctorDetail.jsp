@@ -84,7 +84,7 @@
                             <div class="contact-info">
                                 <ul>
                                     <li>
-                                        <a href="/hospital/diagnosis/application" class="call" style="padding-left: 40px;">진료 신청</a>
+                                        <a href="/hospital/diagnosis/reservation?doctorName=${doctorVO.username}" class="call" style="padding-left: 40px;">진료 신청</a>
                                     </li>
                                 </ul>
                             </div>
