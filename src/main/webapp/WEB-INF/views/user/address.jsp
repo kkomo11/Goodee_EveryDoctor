@@ -77,13 +77,27 @@
                                 <div class="post-ad-tab">
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
+                                        	<c:if test="${empty listAddress}">
+                                        	<button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-info" type="button" role="tab"
                                                 aria-controls="nav-item-info" aria-selected="true">
                                                 <span class="serial">01</span>
                                                 Address
-                                                <span class="sub-title">기본 주소</span>
+                                                <span class="sub-title">주소 추가</span>
                                             </button>
+                                        	</c:if>
+                                        	<c:if test="${!empty listAddress}">
+	                                        	<c:forEach items="${listAddress}" var="address" varStatus="statu" >
+	                                                
+	                                            <button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
+	                                                data-bs-target="#nav-item-info<c:out value="${statu.count }"></c:out>" type="button" role="tab"
+	                                                aria-controls="nav-item-info" aria-selected="true">
+	                                                <span class="serial">0<c:out value="${statu.count }"></c:out></span>
+	                                                Address
+	                                                <span class="sub-title">${address.addressNick }</span>
+	                                            </button>
+	                                            </c:forEach>
+                                        	</c:if>
                                             <!-- <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-details" type="button" role="tab"
                                                 aria-controls="nav-item-details" aria-selected="false">
