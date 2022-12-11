@@ -136,7 +136,7 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
-                                <input id="name" value="${member.name}" style="display:none;">
+                                <input id="name" value="${member.username}" style="display:none;">
                                     ${member.name}님 환영합니다.
 
                                 <li>
