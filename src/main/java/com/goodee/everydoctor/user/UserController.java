@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.user.address.UserAddressVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 
 import lombok.extern.slf4j.Slf4j;
@@ -204,14 +207,26 @@ public class UserController {
 	}
 	
 	@GetMapping("address")
-	public void address() throws Exception{
+	public ModelAndView address(ModelAndView mv, @AuthenticationPrincipal UserVO userVO) throws Exception{
 		//기존 주소 가져와서 돌려주기
+		List<UserAddressVO>	userAddressVOs = userService.getAddress(userVO);
 		
+		mv.addObject("listAddress", userAddressVOs);
+		mv.setViewName("/user/address");
+		
+		return mv;
 	}
 	
 	@PostMapping("address")
-	public void address(@AuthenticationPrincipal UserVO userVO) throws Exception{
+	public String address(@AuthenticationPrincipal UserVO userVO, UserAddressVO addressVO) throws Exception{
 		//주소 저장하기
+		addressVO.setUsername(userVO.getUsername());
+		int result = userService.insertAddress(addressVO);
+		
+		log.info("어드레스{}", addressVO);	
+		
+		return "redirect:/user/address";
+		
 	}
 
 }

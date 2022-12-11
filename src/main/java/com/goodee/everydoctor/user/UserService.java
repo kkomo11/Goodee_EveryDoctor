@@ -1,6 +1,7 @@
 package com.goodee.everydoctor.user;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.user.address.UserAddressMapper;
+import com.goodee.everydoctor.user.address.UserAddressVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 import com.goodee.everydoctor.util.EmailManager;
 import com.goodee.everydoctor.util.FileManager;
@@ -43,6 +46,8 @@ public class UserService {
 	private MessageManager messageManager;
 	@Autowired
 	private EmailManager emailManager;
+	@Autowired
+	private UserAddressMapper addressMapper;
 	
 	public int chkId(String username)throws Exception{
 		return userMapper.chkId(username);
@@ -190,5 +195,16 @@ public class UserService {
 		}
 		
 		return result;
+	}
+	
+	public int insertAddress(UserAddressVO userAddressVO)throws Exception{
+		
+		int result = addressMapper.insertUserAddress(userAddressVO);
+		
+		return result;
+	}
+	
+	public List<UserAddressVO> getAddress(UserVO userVO)throws Exception{
+		return addressMapper.getUserAddressbyUsername(userVO);
 	}
 }

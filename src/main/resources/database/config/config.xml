@@ -25,6 +25,7 @@
 		<typeAlias type="com.goodee.everydoctor.board.tip.BoardTipVO" alias="BoardTipVO"/>
 		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
 		<typeAlias type="com.goodee.everydoctor.user.UserVO" alias="UserVO"/>
+		<typeAlias type="com.goodee.everydoctor.user.address.UserAddressVO" alias="UserAddressVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.report.ReportVO" alias="ReportVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.agency.AgencyVO" alias="AgencyVO"/>
 		

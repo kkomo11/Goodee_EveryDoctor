@@ -84,7 +84,7 @@
                                                 Address
                                                 <span class="sub-title">기본 주소</span>
                                             </button>
-                                            <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
+                                            <!-- <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-details" type="button" role="tab"
                                                 aria-controls="nav-item-details" aria-selected="false">
                                                 <span class="serial">02</span>
@@ -97,7 +97,7 @@
                                                 <span class="serial">03</span>
                                                 Step
                                                 <span class="sub-title">User Information</span>
-                                            </button>
+                                            </button> -->
                                         </div>
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
@@ -105,18 +105,18 @@
                                             aria-labelledby="nav-item-info-tab">
                                             <!-- Start Post Ad Step One Content -->
                                             <div class="step-one-content">
-                                                <form class="default-form-style" method="post" action="#">
+                                                <form class="default-form-style" method="post" action="address">
                                                     <div class="row" style="display: block;">
                                                         <div class="form-group col-lg-6 col-12">
                                                             <label>배송지명</label>
-                                                            <input type="text" id="addressNick" name="addressNick" placeholder="기본 주소">
+                                                            <input type="text" id="addressNick" name="addressNick" value="기본 주소">
                                                         </div>
                                                         <div class="form-group col-lg-6 col-12">
                                                             <label>받는 사람</label>
                                                             <input type="text" id="addressReceiver" name="addressReceiver">
                                                         </div>
                                                         <div class="form-group col-lg-6 col-12">
-                                                            <input type="hidden" name="phone" id="submitPhone">
+                                                            <input type="hidden" name="addressPhone" id="submitPhone">
                                                             <label for="inputPhone">연락처</label>
                                                             <div id="phone" class="d-flex justify-content-between">
                                                                 <div class="selector-head" style="min-width: 30%;">
@@ -135,17 +135,17 @@
                                                             <label>주소</label>
                                                             <div class="d-flex justify-content-between button">
                                                                 <button type="button" class="sample-postcode searchAddress btn" style="width: 30%;">주소 찾기</button>
-                                                                <input type="text" class="sample-postcode sample-postcode-input" name="postcode"
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="userPost"
                                                                     style="width: 60%;" id="sample6_postcode" readonly>
                                                             </div>
                                                             <div class="d-flex mt-3">
                                                                 <label for="sample6_address"></label>
-                                                                <input type="text" class="sample-postcode sample-postcode-input" name="address"
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="userMainAddr"
                                                                     id="sample6_address" readonly>
                                                             </div>
                                                             <div class="d-flex mt-3">
                                                                 <label for="sample6_address"></label>
-                                                                <input type="text" name="detailAddress" id="sample6_detailAddress"
+                                                                <input type="text" name="userSubAddr" id="sample6_detailAddress"
                                                                     placeholder="상세주소">
                                                             </div>
                                                         </div>
@@ -236,6 +236,11 @@
                 }
             }).open();
         }
+
+        $("#phoneLast").on("blur", function(){
+            $("#submitPhone").val($("#phoneFirst").val()+$("#phoneLast").val())
+            console.log("블러", $("#submitPhone").val())
+        })
     </script>
 
 </body>
