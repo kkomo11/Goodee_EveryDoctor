@@ -104,24 +104,40 @@ Author: GrayGrids
 	console.log("로그")
 
 	const toastTrigger = document.getElementById('liveToastBtn')
-	const toastLiveExample = document.getElementById('liveToast')
-	const toast = new bootstrap.Toast(toastLiveExample)
     let userID = $("#name").val()
 	
-    console.log($("#name").val())
-
+    console.log($("#toastAlert").children)
+	
+	let i = 1;
     
-
+	
     let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
 
 	console.log(eventSource.readyState)
     eventSource.addEventListener("latestNews",function(event){
-        let articleData =JSON.parse(event.data);
-        // console.log(articleData)
+		$("#toastAlert").append('  <div id="liveToast'+i+'" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
+		'<div class="toast-header">'+
+		  '<img src="..." class="rounded me-2" alt="...">'+
+		  '<strong class="me-auto">Bootstrap</strong>'+
+		  '<small>11 mins ago</small>'+
+		  '<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
+		'</div>'+
+		'<div class="toast-body">'+
+		  'Hello, world! This is a toast message.'+
+		'</div>'+
+	  '</div>')
+
+		let articleData =JSON.parse(event.data);
+		let toastname = 'liveToast'+i
+        console.log(toastname)
+
+		const toastLiveExample = document.getElementById(toastname)
+		const toast = new bootstrap.Toast(toastLiveExample)
         
         toast.show()
 
+		i++
         
         // notifyMe();
 
@@ -139,7 +155,7 @@ $(toastTrigger).click(function(){
         data:{
             title: "타이틀",
             text: "텍스트",
-            userID:"Doctor"
+            userID:userID
         },
         success:function(result){
             console.log("result: ", result);

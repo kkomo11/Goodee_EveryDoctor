@@ -214,18 +214,8 @@
 </div>
 </sec:authorize>
     
-<div class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
+<div id="toastAlert" class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
+
 </div>
 <!-- End Header Area -->
 
