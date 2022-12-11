@@ -202,5 +202,16 @@ public class UserController {
 		mv.setViewName("user/petdiaglist");
 		return mv;
 	}
+	
+	@GetMapping("address")
+	public void address() throws Exception{
+		//기존 주소 가져와서 돌려주기
+		
+	}
+	
+	@PostMapping("address")
+	public void address(@AuthenticationPrincipal UserVO userVO) throws Exception{
+		//주소 저장하기
+	}
 
 }

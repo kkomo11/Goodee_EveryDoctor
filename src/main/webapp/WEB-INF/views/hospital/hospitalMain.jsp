@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="/css/hospital/hospitalMain.css">
 	<c:import url="../temp/boot.jsp"></c:import>
+	<!-- chatbot -->
+	<c:import url="../temp/chatbot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->
     <style>
         #mainSection {

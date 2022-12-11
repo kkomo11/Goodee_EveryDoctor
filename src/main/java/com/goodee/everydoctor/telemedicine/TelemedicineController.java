@@ -29,7 +29,7 @@ public class TelemedicineController {
     public ModelAndView processRoomSelection(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding) {
         return this.telemedicineService.processRoomSelection(sid, uuid, binding);
     }
-
+    //sid -방번호, uuid -사용자
     @GetMapping("/room/{sid}/user/{uuid}")
     public ModelAndView displaySelectedRoom(@PathVariable("sid") final String sid, @PathVariable("uuid") final String uuid) {
         return this.telemedicineService.displaySelectedRoom(sid, uuid);

@@ -72,11 +72,11 @@ public class UserService {
 
 		userVO.setCi(res.getUniqueKey());
 		//중복가입 확인
-		int cntCi=userMapper.hasUserByCI(userVO);
-		
-		if(cntCi>0) { //가입자가 0초과면 아래코드를 실행하지 않고 0을 리턴한다.
-			return 0;
-		}
+//		int cntCi=userMapper.hasUserByCI(userVO);
+//		
+//		if(cntCi>0) { //가입자가 0초과면 아래코드를 실행하지 않고 0을 리턴한다.
+//			return 0;
+//		}
 		
 		
         Calendar birth = Calendar.getInstance();
