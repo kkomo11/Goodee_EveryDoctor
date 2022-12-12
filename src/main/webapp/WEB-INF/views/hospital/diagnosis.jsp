@@ -53,7 +53,8 @@
                 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                     <div class="form-head post-ad-tab">
                         <h4 class="title">진료 신청서</h4>
-                        <form class="default-form-style" action="./reservation" method="post">
+                        <form class="default-form-style" action="./reservation" method="post" enctype="multipart/form-data">
+                        	<input type="hidden" value="${diagnosisVO.doctorName}" name="doctorName">
                             <div class="form-group">
                                 <label>과목 선택</label>
                                 <div class="selector-head">
