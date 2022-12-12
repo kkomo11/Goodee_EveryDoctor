@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.admin.report.ReportService;
 import com.goodee.everydoctor.admin.report.ReportVO;
+import com.goodee.everydoctor.user.UserVO;
 import com.goodee.everydoctor.util.Pager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,5 +56,48 @@ public class AdminController {
 		map.put("list", adminService.findCooperationList(pager));
 		return map;
 	}
+	
+	//제휴신청 리스트 모달창에 가져올 Detail 내용
+	@GetMapping("findCooperationDetail")
+	@ResponseBody
+	public MedicVO findCooperationDetail(String username)throws Exception{
+		return adminService.findCooperationDetail(username);
+	}
+	
+	//관리자 승인 시 종사자 role 의사로 바꾸기
+	@PostMapping("modifyRoleDoctor")
+	@ResponseBody
+	public int inputRoleDoctor(UserVO userVO)throws Exception{
+		return adminService.inputRoleDoctor(userVO);
+	}
+	
+	//관리자 승인 시 종사자 role 간호사로 바꾸기
+	@PostMapping("modifyRoleNurse")
+	@ResponseBody
+	public int inputRoleNurse(UserVO userVO)throws Exception{
+		return adminService.inputRoleNurse(userVO);
+	}
+	
+	//관리자 승인 시 종사자 role 수의사로 바꾸기
+	@PostMapping("modifyRolePetDoc")
+	@ResponseBody
+	public int inputRolePetDoc(UserVO userVO)throws Exception{
+		return adminService.inputRolePetDoc(userVO);
+	}
+			
+	//관리자 승인 시 종사자 role 수간호사로 바꾸기
+	@PostMapping("modifyRolePetNurse")
+	@ResponseBody
+	public int inputRolePetnurse(UserVO userVO)throws Exception{
+		return adminService.inputRolePetnurse(userVO);
+	}
+	
+	//MedicEnabled 1로 수정
+	@PostMapping("modifyMedicEnabled")
+	@ResponseBody
+	public int modifyMedicEnabled(String username)throws Exception{
+		return adminService.modifyMedicEnabled(username);
+	}
+	
 
 }

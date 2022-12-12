@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface HospitalDoctorMapper {
 
 	public List<HospitalDoctorVO> findDoctorList() throws Exception;
+	public HospitalDoctorVO findDoctorDetail(HospitalDoctorVO hospitalDoctorVO) throws Exception;
 }

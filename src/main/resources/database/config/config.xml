@@ -32,6 +32,7 @@
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalSectionVO" alias="HospitalSectionVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.HospitalCategoryVO" alias="HospitalCategoryVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO" alias="HospitalDoctorVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO" alias="HospitalDiagnosisVO"/>
 		
 		<typeAlias type="com.goodee.everydoctor.admin.medic.MedicVO" alias="MedicVO"/>
 		<typeAlias type="com.goodee.everydoctor.admin.report.ReportAnswerVO" alias="ReportAnswerVO"/>

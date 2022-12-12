@@ -119,16 +119,16 @@
                         <div class="login-button">
                             <!-- <c:when test="${not empty check}">
                                 <c:choose>
-                                
+
                                 <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
                                     <div class="text-end">
-                                        
+
                                             <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
-                                        
+
                                             <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
                                             <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
                                     </div>
-                                
+
                                 </c:when>
                                 </c:choose>
                             </c:when> -->
@@ -143,7 +143,7 @@
                                     <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
                                 </li>
                                 </sec:authorize>
-								
+
 								<sec:authorize access="isAnonymous()">
                                 <li>
                                     <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
@@ -153,6 +153,7 @@
                                 </li>
 								</sec:authorize>
 								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">
@@ -190,11 +191,11 @@
   </div>
 </div>
 </sec:authorize>
-    
+
 <div class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
     <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
+      <img src="#" class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

@@ -409,6 +409,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -439,6 +440,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -469,6 +471,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -499,6 +502,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -529,6 +533,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -559,6 +564,7 @@
                                                     <th>상호명</th>
                                                     <th>기관 전화번호</th>
                                                     <th>기관 타입</th>
+                                                    <th>승인 여부</th>
                                                     <th>상세보기</th>
                                                 </tr>
                                             </thead>
@@ -625,6 +631,9 @@
                                 <div id="agencyInfo">
 
                                 </div>
+                            </div>
+                            <div>
+                                <input type="hidden" data-username="" data-medicRole="" id="hiddenData">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -700,6 +709,7 @@
     <script src="/knj/js/demo/datatables-demo.js"></script>
     <script src="/js/admin/admin/cooperationList.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
 
     <!-- Template -->
     <script type="text/template" id="cooperationListTemplate">
@@ -710,7 +720,8 @@
             <td>{agencyName}</td>
             <td>{agencyTel}</td>
             <td>{agencyType}</td>
-            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#cooperationDetail" data-name="{username}">상세보기</button></td>
+            <td>{medicEnabled}</td>
+            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#cooperationDetail" data-username="{username}" data-medicRole="{medicRole}">상세보기</button></td>
         </tr>
     </script>
 </body>
