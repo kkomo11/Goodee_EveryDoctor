@@ -43,5 +43,15 @@ public class LocationController {
 	public void categoryLocation()throws Exception{
 		
 	}
+	@GetMapping("animal24")
+	public void animal24()throws Exception{
+		
+	}
+	@GetMapping("nonstopAnimal")
+	@ResponseBody
+	public List<AgencyVO> findNightPharmacy()throws Exception{
+		List<AgencyVO> al = locationService.findNightPharmacy();
+		return al;
+	}
 
 }

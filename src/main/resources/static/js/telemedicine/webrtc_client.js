@@ -78,7 +78,7 @@ function start() {
                     let str = '<li class="left">';
                     str += '<img src="https://via.placeholder.com/300x300" alt="#">';
                     str += '<p class="text"  style="padding=20px">'+ messageData
-                    str += '<span class="time">현재시간</span>'
+                    str += '<span class="time">'+ hours+':'+minutes+'</span>'
                     str += '</p></li>'
                     $("#msgArea").append(str);
                     $("#msgArea").scrollTop($("#msgArea")[0].scrollHeight);

@@ -39,4 +39,35 @@
 		FROM AGENCY 
 		WHERE AGENCYROLE='약국'
 	</select>
+	
+
+	<!-- 야간 약국 -->
+	<select id="findNightPharmacy" resultMap="nightPharmacyResult">
+		SELECT A.*,AW.*
+		FROM AGENCY A
+			JOIN
+			 AGENCYWORKHOUR AW 
+			 ON A.AGENCYNUM = AW.AGENCYNUM
+		WHERE AGENCYTYPE='24시'
+	</select>
+	<resultMap type="AgencyVO" id="nightPharmacyResult">
+		<id column="AGENCYNUM" property="agencyNum"/>
+		<result column="AGENCYNAME" property="agencyName"/>
+		<result column="AGENCYADDR" property="agencyAddr"/>
+		<result column="AGENCYTEL" property="agencyTel"/>
+		<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="SUN" property="sun"/>
+			<result column="MON" property="mon"/>
+			<result column="TUE" property="tue"/>
+			<result column="WED" property="wed"/>
+			<result column="THU" property="thu"/>
+			<result column="FRI" property="fri"/>
+			<result column="SAT" property="sat"/>
+			<result column="HOLIDAY" property="holiday"/>
+			<result column="LUNCH" property="lunch"/>
+		</association>
+	
+	</resultMap>
+	
 </mapper>

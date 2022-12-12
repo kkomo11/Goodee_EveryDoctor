@@ -132,7 +132,7 @@ Author: GrayGrids
 				'<div class="toast-body">'+
 		  			articleData.text+
     				'<div class="mt-2 pt-2 border-top">'+
-      					'<button type="button" class="btn btn-primary btn-sm"><a href=' +articleData.url+ ' style="color:white;">신청 바로가기</a></button>'+
+      					'<button type="button" class="btn btn-primary btn-sm"><a href=' +articleData.link+ ' style="color:white;">신청 바로가기</a></button>'+
       				'</div>'+
 				'</div>'+
 	  		'</div>')
