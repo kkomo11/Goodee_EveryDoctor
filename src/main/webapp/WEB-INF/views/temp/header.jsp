@@ -119,16 +119,16 @@
                         <div class="login-button">
                             <!-- <c:when test="${not empty check}">
                                 <c:choose>
-                                
+
                                 <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
                                     <div class="text-end">
-                                        
+
                                             <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
-                                        
+
                                             <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
                                             <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
                                     </div>
-                                
+
                                 </c:when>
                                 </c:choose>
                             </c:when> -->
@@ -143,7 +143,7 @@
                                     <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
                                 </li>
                                 </sec:authorize>
-								
+
 								<sec:authorize access="isAnonymous()">
                                 <li>
                                     <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
@@ -153,6 +153,7 @@
                                 </li>
 								</sec:authorize>
 								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">
@@ -181,29 +182,6 @@
       </div>
       <div class="modal-body">
       	      		<p class="text-center">서비스의 원활한 이용을 위해서는 본인인증이 필요합니다.</p>
-	      <div class="login">
-	      	<div class="form-head">
-	      		<form action="" class="default-form-style" style="margin-top:0px" id="certiForm">
-			        <p class="text-center" style="color:red" id="certiMsg"></p>
-			        <input name="certiusername" type="text" id="certiusername" value="${member.username}" readonly="readonly" style="display:none;">
-			        <div class="form-group">
-			            <label>성함</label>
-			            <input name="certiName" type="text" id="certiName">
-			        </div>
-	                     <label>성별</label>
-			      	<div class="row">
-			      		<div class="col-6 text-center">
-			      			<label for="genderM">남성</label>
-	                     	<input type="radio" id="genderM" name="gender" value="M"> 
-			      		</div>
-			      		<div class="col-6 text-center">
-			      			<label for="genderF">여성</label>
-	                     	<input type="radio" id="genderF" name="gender" value="F"> 
-			      		</div>	                     
-                 	</div>			
-	      		</form>
-			  </div> 
-	      	</div>
 	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="certiClose" data-bs-dismiss="modal">닫기</button>

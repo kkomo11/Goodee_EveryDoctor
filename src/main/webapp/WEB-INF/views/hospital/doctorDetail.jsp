@@ -59,22 +59,23 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/images/star.png" alt="#">
+                                    <img src="/file/profile/${doctorVO.fileName}">
                                 </div>
                             </main>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h2 class="title">이주은 의사</h2>
-                                    <p class="location"><i class="lni lni-map-marker"></i>
-                                        <a href="javascript:void(0)">현대 제일 의원</a>
-                                    </p>
-                                    <i class="lni lni-heart like"></i>
-                                </div>
-                                <img src="/images/hospital/manager.jpg" style="width: 50%; height: 50%;">
+                            <div>
+                                <h2 class="title">${doctorVO.name} 의사
+                                	<c:if test="${not empty doctorVO.medicVO.medicSpecialty}">
+                                		<span style="font-size: 16px; color: skyblue; margin-left: 10px;">${doctorVO.medicVO.medicSpecialty} 전문의</span>
+                                	</c:if>
+                                </h2>
+                                <p class="location"><i class="lni lni-map-marker"></i>
+                                    <a href="javascript:void(0)">${doctorVO.agencyVO.agencyName}</a>
+                                </p>
+                                <i class="lni lni-heart like"></i>
                             </div>
                             <div class="list-info">
                                 <h3 class="price mb-3"><img class="grade-star" src="/images/star.png"> 4.9</h3> 후기 2059개
@@ -87,7 +88,7 @@
                             <div class="contact-info">
                                 <ul>
                                     <li>
-                                        <a href="/hospital/diagnosis/application" class="call" style="padding-left: 40px;">진료 신청</a>
+                                        <a href="/hospital/diagnosis/reservation?doctorName=${doctorVO.username}" class="call" style="padding-left: 40px;">진료 신청</a>
                                     </li>
                                 </ul>
                             </div>
@@ -102,22 +103,26 @@
                         <div class="single-block description">
                             <h3>의사상세</h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable.
+                                ${doctorVO.medicVO.medicInfo}
                             </p>
-                            <ul>
-                                <li>Model: Apple MacBook Pro 13.3-Inch MYDA2</li>
-                                <li>Apple M1 chip with 8-core CPU and 8-core GPU</li>
-                                <li>8GB RAM</li>
-                                <li>256GB SSD</li>
-                                <li>13.3-inch 2560x1600 LED-backlit Retina Display</li>
-                            </ul>
-                            <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
-                                non-characteristic words etc.</p>
                         </div>
                         <!-- End Single Block -->
-
+                        <!-- Start Single Block -->
+                        <div class="single-block description">
+                            <h3>비급여 진료비</h3>
+                            <p>
+                                ${doctorVO.medicVO.medicInfo}
+                            </p>
+                        </div>
+                        <!-- End Single Block -->
+                        <!-- Start Single Block -->
+                        <div class="single-block description">
+                            <h3>진료 시간</h3>
+                            <p>
+                                ${doctorVO.medicVO.medicInfo}
+                            </p>
+                        </div>
+                        <!-- End Single Block -->
                     </div>
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="item-details-sidebar">
@@ -125,9 +130,9 @@
                             <div class="single-block tags">
                                 <h3>Tags</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">이비인후과</a></li>
-                                    <li><a href="javascript:void(0)">내과</a></li>
-                                    <li><a href="javascript:void(0)">피부과</a></li>
+									<c:forEach items="${doctorVO.hospitalSectionVOs}" var="sectionVO">
+	                                    <li><a href="javascript:void(0)">${sectionVO.sectionName}</a></li>
+									</c:forEach>
                                 </ul>
                             </div>
                             <!-- End Single Block -->

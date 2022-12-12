@@ -14,4 +14,8 @@ public class HospitalDoctorService {
 	public List<HospitalDoctorVO> findDoctorList() throws Exception {
 		return hospitalDoctorMapper.findDoctorList();
 	}
+	
+	public HospitalDoctorVO findDoctorDetail(HospitalDoctorVO hospitalDoctorVO) throws Exception {
+		return hospitalDoctorMapper.findDoctorDetail(hospitalDoctorVO);
+	}
 }

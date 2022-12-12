@@ -64,6 +64,7 @@ $("#fileAdd").on("click", ".del", function(){
 const agencyRole = $("#agencyRole");
 const medicRole = $("#medicRole");
 const specialty = $("#specialty");
+const medicSectionBtn = $("#medicSectionBtn");
 //신청 버튼 클릭 시
 $("#registButton").click(function(){
     //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
@@ -90,6 +91,7 @@ $("#registButton").click(function(){
 medicRole.change(function(){
     if(medicRole.val() == '의사'){
         specialty.empty();
+        medicSectionBtn.empty();
         let specialtyAddForm = $("#specialtyAddForm").html();
         specialty.append(specialtyAddForm);
         const medicSpecialty = $("#medicSpecialty");
@@ -107,10 +109,13 @@ medicRole.change(function(){
                 console.log(result);
             }
         });
+        medicSectionBtn.append($("#medicSectionBtnForm").html());
+
         //확인
         console.log(medicSpecialty);
     }else if(medicRole.val() == '수의사'){
         specialty.empty();
+        medicSectionBtn.empty();
         let specialtyAddForm = $("#specialtyAddForm").html();
         specialty.append(specialtyAddForm);
         const medicSpecialty = $("#medicSpecialty");
@@ -128,9 +133,16 @@ medicRole.change(function(){
                 console.log(result);
             }
         });
+        medicSectionBtn.append($("#medicSectionBtnForm").html());
     }else{
         specialty.empty();
+        medicSectionBtn.empty();
     }
+})
+
+// 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
+medicSectionBtn.on("click", ".sectionAddBtn", function(){
+    console.log("진료과목 추가 버튼");
 })
 
 function secure(){

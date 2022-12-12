@@ -38,6 +38,8 @@ public class UserVO implements UserDetails, OAuth2User{
 	private String ci;
 	private String social;
 	
+	private List<UserAddressVO> addressVOs;
+	
 	private boolean enabled;
 	private boolean accountNonExpired;
 	private boolean accountNonLocked;

@@ -12,7 +12,7 @@
 			ON (A.AGENCYNUM = M. AGENCYNUM)
 			INNER JOIN USERS U 
 			ON M.USERNAME = U.USERNAME
-			WHERE M.MEDICENABLED = 0 AND M.MEDICROLE 
+			WHERE M.MEDICROLE 
 			<choose>
 				<when test="kind == '의사'">=#{kind}</when>
 				<when test="kind == '간호사'">=#{kind}</when>
@@ -49,7 +49,7 @@
 			FROM MEDIC M
 			INNER JOIN AGENCY A
 			ON (A.AGENCYNUM = M. AGENCYNUM)
-			WHERE M.MEDICENABLED = 0 AND M.MEDICROLE
+			WHERE M.MEDICROLE
 			<choose>
 				<when test="kind == '의사'">=#{kind}</when>
 				<when test="kind == '간호사'">=#{kind}</when>
@@ -59,4 +59,32 @@
 				<otherwise>='보호소관리자'</otherwise>
 			</choose>
 		</select>
+		
+		<select id="findCooperationDetail" parameterType="String" resultMap="findCooperationDetail">
+			SELECT M.USERNAME, M.MEDICINFO, M.MEDICSPECIALTY,
+			A.AGENCYNAME, A.AGENCYADDR, A.AGENCYINFO, U.NAME
+			FROM MEDIC M
+			INNER JOIN AGENCY A
+			ON (A.AGENCYNUM = M. AGENCYNUM)
+			INNER JOIN USERS U 
+			ON M.USERNAME = U.USERNAME
+			WHERE M.USERNAME = #{username}
+		</select>
+		<resultMap type="MedicVO" id="findCooperationDetail">
+			<id column="USERNAME" property="username"/>
+			<result column="MEDICINFO" property="medicInfo"/>
+			<result column="MEDICSPECIALTY" property="medicSpecialty"/>
+			<association property="agencyVO" javaType="AgencyVO">
+				<result column="AGENCYNAME" property="agencyName"/>
+				<result column="AGENCYADDR" property="agencyAddr"/>
+				<result column="AGENCYINFO" property="agencyInfo"/>
+			</association>
+			<association property="userVO" javaType="UserVO">
+				<result column="NAME" property="name"/>
+			</association>
+		</resultMap>
+		
+		<update id="modifyMedicEnabled" parameterType="String">
+			UPDATE MEDIC SET MEDICENABLED = 1 WHERE USERNAME = #{username}
+		</update>
 	</mapper>
