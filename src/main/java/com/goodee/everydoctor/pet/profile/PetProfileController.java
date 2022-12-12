@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisService;
+import com.goodee.everydoctor.user.UserVO;
+
 @Controller
 @RequestMapping("/pet/profile/*")
 public class PetProfileController {
 
 	@Autowired
 	private PetProfileService petProfileService;
+	
+	@Autowired
+	private PetDiagnosisService petDiagnosisService;
+	
+	@GetMapping("myPetList")
+	public ModelAndView findMyPetList(UserVO userVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("myOwnedPet", petDiagnosisService.findOwnPetList(userVO));
+		
+		mv.setViewName("pet/profile/myPetList");
+		
+		return mv;
+	}
 	
 	@PostMapping("delete")
 	@ResponseBody
@@ -81,17 +100,27 @@ public class PetProfileController {
 	}
 	
 	@PostMapping("regist")
-	public String inputPetProfile(PetVO petVO, MultipartFile petFile) throws Exception {
+	public String inputPetProfile(PetVO petVO, MultipartFile petFile, String redirectUrl) throws Exception {
 		
 		// 반려동물 정보 등록
 		petProfileService.inputPetProfile(petVO, petFile);
 		
-		return "redirect:/pet/home";
+		return "redirect:/" + redirectUrl;
 	}
 	
 	@GetMapping("regist")
-	public String getProfileRegist() throws Exception{
-		return "pet/profile/regist";
+	public ModelAndView getProfileRegist(HttpServletRequest req) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		String referer = (String)req.getHeader("REFERER");
+		String[] test = referer.split("/", 4);
+		
+		String redirectUrl = test[3];
+		
+		mv.addObject("redirectUrl", redirectUrl);
+		mv.setViewName("pet/profile/regist");
+		
+		return mv;
 	}
 	
 	@GetMapping("findPetBioList")

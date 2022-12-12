@@ -126,6 +126,7 @@
                                                 <label>이름*</label>
                                                 <input name="petName" type="text" placeholder="복실이" id="petNameInput">
                                                 <input name="userName" type="hidden" id="userNameInput" value="${member.username }">
+                                                <input type="hidden" id="redirectUrlInput" value="${redirectUrl }" name="redirectUrl">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-12">

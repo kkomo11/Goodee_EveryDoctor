@@ -26,6 +26,13 @@ public class PetDiagnosisService {
 	@Autowired
 	private FileManager fileManager;
 	
+	public List<PetDiagnosisVO> findReservatedList(String d) throws Exception {
+		UserVO userVO = new UserVO();
+		userVO.setUsername(d);
+		
+		return petDiagnosisMapper.findReservatedList(userVO);
+	}
+	
 	@Transactional(rollbackFor = Exception.class)
 	public int inputPetDiagnosis(PetDiagnosisVO petDiagnosisVO, FileVO fileVO) throws Exception{
 		

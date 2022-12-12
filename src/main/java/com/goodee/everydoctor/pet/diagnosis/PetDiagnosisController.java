@@ -21,6 +21,16 @@ public class PetDiagnosisController {
 	@Autowired
 	private PetDiagnosisService petDiagnosisService;
 	
+	// 의사에게 신청된 진료 리스트 요청
+	@GetMapping("reservatedList")
+	public ModelAndView findReservatedList(String d) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("reservatedList", petDiagnosisService.findReservatedList(d));
+		mv.setViewName("pet/diagnosis/reservatedList");
+		
+		return mv;
+	}
+	
 	@PostMapping("reservation")
 	public String inputPetDiagnosis(PetDiagnosisVO petDiagnosisVO, FileVO fileVO) throws Exception {
 		
