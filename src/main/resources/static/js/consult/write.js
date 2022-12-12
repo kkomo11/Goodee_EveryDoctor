@@ -68,7 +68,7 @@ function setThumnail(event, input){
 
     reader.onload = function(event){
         let thum = input.previousSibling.previousSibling;   // 미리보기 img 태그를 넣을 태그
-        thum.innerHtml = "";
+        thum.replaceChildren(); // 기존 내용물 지우기
         let img = document.createElement('img');
         img.setAttribute("src", event.target.result);
         img.setAttribute("style", "width:50%; height:50%;");
