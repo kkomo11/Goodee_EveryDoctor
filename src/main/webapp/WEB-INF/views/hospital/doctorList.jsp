@@ -18,7 +18,11 @@
                         <span class="flat-badge sale">즉시</span>
                     </div>
                     <div class="content">
-                        <div class="tag">가정의학과 전문의</div>
+                        <div class="tag">
+                            <c:if test="${not empty doctorVO.medicVO.medicSpecialty}">
+                            	<span>${doctorVO.medicVO.medicSpecialty} 전문의</span>
+                            </c:if>
+                        </div>
                         <h5 class="title">
                             ${doctorVO.name}
                         </h5>

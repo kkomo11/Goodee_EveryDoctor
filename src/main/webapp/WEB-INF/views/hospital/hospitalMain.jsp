@@ -16,6 +16,15 @@
 	<!-- chatbot -->
 	<c:import url="../temp/chatbot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->
+    <style>
+        #mainSection {
+            background-image: url('/images/hospital/home/hospitalMain.jpg');
+        }
+
+        .hero-area.overlay::before {
+            opacity: 0.3;
+        }
+    </style>
 </head>
 
 <body>
@@ -94,7 +103,7 @@
                                                 <div class="icon">
                                                     <img src="/images/pet/home/stamp_icon.svg" alt="#">
                                                 </div>
-                                                <h3>건강 팁</h3>
+                                                <h3>야간 운영 약국</h3>
                                                 <!-- <h5 class="total">55</h5> -->
                                             </a>
                                             <!-- End Single Category -->
@@ -107,49 +116,6 @@
                         <!-- Start Search Form -->
                         <div class="search-form">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="keyword"><i class="lni lni-search-alt theme-color"></i></label>
-                                        <input type="text" name="keyword" id="keyword" placeholder="Product keyword">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="category"><i class="lni lni-grid-alt theme-color"></i></label>
-                                        <select name="category" id="category">
-                                            <option value="none" selected disabled>Categories</option>
-                                            <option value="none">Vehicle</option>
-                                            <option value="none">Electronics</option>
-                                            <option value="none">Mobiles</option>
-                                            <option value="none">Furniture</option>
-                                            <option value="none">Fashion</option>
-                                            <option value="none">Jobs</option>
-                                            <option value="none">Real Estate</option>
-                                            <option value="none">Animals</option>
-                                            <option value="none">Education</option>
-                                            <option value="none">Matrimony</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="location"><i class="lni lni-map-marker theme-color"></i></label>
-                                        <select name="location" id="location">
-                                            <option value="none" selected disabled>Locations</option>
-                                            <option value="none">New York</option>
-                                            <option value="none">California</option>
-                                            <option value="none">Washington</option>
-                                            <option value="none">Birmingham</option>
-                                            <option value="none">Chicago</option>
-                                            <option value="none">Phoenix</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-12 p-0">
-                                    <div class="search-btn button">
-                                        <button class="btn"><i class="lni lni-search-alt"></i> Search</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!-- End Search Form -->

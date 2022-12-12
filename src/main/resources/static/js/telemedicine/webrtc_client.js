@@ -33,7 +33,8 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
-const username = 'test';
+const username = $("#authUsername").val();
+
 
 // on page load runner
 //document.ready와 같은 함수
