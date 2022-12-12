@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
@@ -25,7 +24,7 @@
         </div>
     </div>
     <!-- /End Preloader -->
-    
+    <sec:authentication property="Principal" var="user"/>
     <!-- Header -->
     <c:import url="../../temp/header.jsp"></c:import>
     
@@ -68,13 +67,13 @@
                                 <!-- Start Item List Title -->
                                 <div class="item-list-title">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
+                                        <div class="col-lg-7 col-md-7 col-12">
                                             <p>진료</p>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
+                                        <div class="col-lg-1 col-md-1 col-12">
                                             <p>분류</p>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
+                                        <div class="col-lg-1 col-md-1 col-12">
                                             <p>상태</p>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-12 align-right">
@@ -83,246 +82,67 @@
                                     </div>
                                 </div>
                                 <!-- End List Title -->
-                                <c:forEach items="${reservatedList}" var="reservated">
-                                	<!-- Start Single List -->
-	                                <%-- <div class="single-item-list">
-	                                    <div class="row align-items-center">
-	                                        <div class="col-lg-5 col-md-5 col-12">
-	                                            <div class="item-image">
-	                                                <img src="https://via.placeholder.com/100x100" alt="#">
-	                                                <div class="content">
-	                                                    <h3 class="title"><a href="javascript:void(0)">${reservated.pUsername}</a></h3>
-	                                                    <span class="price">${reservated.pDansReqTime}</span>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-lg-2 col-md-2 col-12">
-	                                            <p>${reservated.pDansCategory}</p>
-	                                        </div>
-	                                        <div class="col-lg-2 col-md-2 col-12">
-	                                            <p>대기</p>
-	                                        </div>
-	                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-	                                            <ul class="action-btn">
-	                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-	                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-	                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-	                                            </ul>
-	                                        </div>
-	                                    </div>
-	                                </div> --%>
-	                                <!-- End Single List -->
-                                </c:forEach>
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">Brand New Iphone 11 Pro Max</a></h3>
-                                                    <span class="price">$800</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Electronic</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>New</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">New Ferrari F80 Car</a></h3>
-                                                    <span class="price">$13000</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Car</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Vehicle</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">Rick Morton- Magicius Chase</a></h3>
-                                                    <span class="price">$500</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Electronic</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>New</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">HP Laptop 6560b core i7</a></h3>
-                                                    <span class="price">$750</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Electronic</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>New</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <p>Premium Package
-                                                <span>$79.00</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Apr 11,2023</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>May 23,2022</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p class="unpaid">Unpaid</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-list my-items">
-                                    <div class="row align-items-center">
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">Brand New Iphone 11 Pro Max</a></h3>
-                                                    <span class="price">$800</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Electronic</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>New</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
-                                <!-- Start Single List -->
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="https://via.placeholder.com/100x100" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">New Ferrari F80 Car</a></h3>
-                                                    <span class="price">$13000</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Car</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>Vehicle</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single List -->
+                            <c:forEach items="${reservatedList}" var="reservated">
+                             	<!-- Start Single List -->
+	                            <div class="single-item-list">
+		                            <div class="row align-items-center">
+		                                <div class="col-lg-7 col-md-7 col-12">
+		                                    <div class="item-image">
+		                                        <c:if test="${reservated.PDansFiles.size() > 0 }">
+		                                        	<img src="/file/PETDANS/${reservated.PDansFiles[0].fileName }" alt="#">
+		                                        </c:if>
+		                                        <c:if test="${reservated.PDansFiles.size() <= 0 }">
+		                                        	<img src="https://via.placeholder.com/100x100" alt="#">
+		                                        </c:if>
+		                                            
+		                                        <div class="content">
+		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
+		                                            <h3 class="title"><a href="/pet/diagnosis/reservatedDetail?n=${reservated.PDansNum }">${reservated.PUsername}</a></h3>
+		                                            <span class="price">${reservated.PDansReqTime}</span>
+		                                            <a class="badge bg-info" data-bs-toggle="collapse" href="#collapseExample${reservated.PDansNum }" role="button" aria-expanded="false" aria-controls="collapseExample${reservated.PDansNum }">
+		                                            	상담 내용 보기
+		                                            </a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-lg-1 col-md-1 col-12">
+		                                    <p>${reservated.PDansCategory}</p>
+		                                </div>
+		                                <div class="col-lg-1 col-md-1 col-12">
+		                                    <p>대기</p>
+		                                </div>
+		                                <div class="col-lg-3 col-md-2 col-12 align-right">
+		                                    <ul class="action-btn">
+		                                        <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
+		                                        <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
+		                                        <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
+		                                    </ul>
+		                                </div>
+		                            </div>
+		                            <div class="collapse" id="collapseExample${reservated.PDansNum }">
+										<div class="card card-body">
+											${reservated.PDansContent }
+										</div>
+									</div>
+	                            </div>
+	                            <!-- End Single List -->
+                            </c:forEach>
+                                
                                     </div>
                                 </div>
                                 <!-- End Single List -->
                                 <!-- Pagination -->
-                                <div class="pagination left">
+                                <div class="pagination left" style="margin-left: 1rem;">
                                     <ul class="pagination-list">
-                                        <li><a href="javascript:void(0)">1</a></li>
-                                        <li class="active"><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">4</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
+                                        <c:if test="${pager.pre }">
+                                        	<li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
+                                        </c:if>
+                                        <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
+                                        	<li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${i }">${i }</a></li>
+                                        </c:forEach>
+                                        <c:if test="${pager.next }">
+                                        	<li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
+                                        </c:if>
                                     </ul>
                                 </div>
                                 <!--/ End Pagination -->
@@ -338,7 +158,7 @@
 
 	<!-- Footer -->
     <c:import url="../../temp/footer.jsp"></c:import>
-    <script src="/js/user/profile.js"></script>
+    <!-- <script src="/js/user/profile.js"></script> -->
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">

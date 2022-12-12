@@ -4,7 +4,35 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper">
 
-	<select id="findReservatedList" parameterType="UserVO" resultMap="findReservatedListResult">
+	<select id="findReservatedDetail" parameterType="PetDiagnosisVO" resultMap="findReservatedDetailResult">
+		SELECT *
+		FROM PETDIAGNOSIS PD
+		LEFT JOIN PETDANSFILE PF 
+		ON(PD.PDANSNUM = PF.PETDANSNUM)
+		WHERE PD.PDANSNUM = #{pDansNum}
+	</select>
+	
+	<resultMap type="PetDiagnosisVO" id="findReservatedDetailResult">
+		<id column="PDANSNUM" property="pDansNum"/>
+		<result column="PUSERNAME" property="pUsername"/>
+		<result column="PETNUM" property="petNum"/>
+		<result column="PDOCTORNAME" property="pDoctorname"/>
+		<result column="PDANSCATEGORY" property="pDansCategory"/>
+		<result column="PDANSCONTENT" property="pDansContent"/>
+		<result column="PDANSREQTIME" property="pDansReqTime"/>
+		<result column="PDANSSTATUS" property="pDansStatus"/>
+		<collection property="pDansFiles" javaType="List" ofType="FileVO">
+			<id column="PETDANSFILENUM" property="fileNum"/>
+			<result column="PETDANSFILENAME" property="fileName"/>
+			<result column="PETDANSFILEORINAME" property="fileOriName"/>
+		</collection>
+	</resultMap>
+
+	<select id="findReservatedListCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PDANSNUM) FROM PETDIAGNOSIS WHERE PDOCTORNAME = #{username}
+	</select>
+
+	<select id="findReservatedList" parameterType="PetDiagnosisPager" resultMap="findReservatedListResult">
 		SELECT *
 		FROM PETDIAGNOSIS PD
 		LEFT JOIN PETDANSFILE PF 

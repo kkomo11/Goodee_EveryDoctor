@@ -26,11 +26,21 @@ public class PetDiagnosisService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public List<PetDiagnosisVO> findReservatedList(String d) throws Exception {
-		UserVO userVO = new UserVO();
-		userVO.setUsername(d);
+	public PetDiagnosisVO findReservatedDetail(Long n) throws Exception {
+		PetDiagnosisVO petDiagnosisVO = new PetDiagnosisVO();
+		petDiagnosisVO.setPDansNum(n);
+		petDiagnosisVO = petDiagnosisMapper.findReservatedDetail(petDiagnosisVO);
 		
-		return petDiagnosisMapper.findReservatedList(userVO);
+		return petDiagnosisVO;
+	}
+	
+	public List<PetDiagnosisVO> findReservatedList(PetDiagnosisPager petDiagnosisPager, String d) throws Exception {
+		petDiagnosisPager.setUsername(d);
+		Long totalCount = petDiagnosisMapper.findReservatedListCount(petDiagnosisPager);
+		petDiagnosisPager.getRowNum();
+		petDiagnosisPager.getNum(totalCount);
+		
+		return petDiagnosisMapper.findReservatedList(petDiagnosisPager);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)

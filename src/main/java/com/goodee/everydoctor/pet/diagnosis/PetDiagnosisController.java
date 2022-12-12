@@ -21,11 +21,25 @@ public class PetDiagnosisController {
 	@Autowired
 	private PetDiagnosisService petDiagnosisService;
 	
+	// 의사에게 신청된 진료 디테일 요청
+	@GetMapping("reservatedDetail")
+	public ModelAndView findReservatedDetail(Long n) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("reservatedDetail", petDiagnosisService.findReservatedDetail(n));
+		mv.setViewName("pet/diagnosis/reservatedDetail");
+		
+		return mv;
+	}
+	
 	// 의사에게 신청된 진료 리스트 요청
 	@GetMapping("reservatedList")
-	public ModelAndView findReservatedList(String d) throws Exception {
+	public ModelAndView findReservatedList(PetDiagnosisPager petDiagnosisPager, String d) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("reservatedList", petDiagnosisService.findReservatedList(d));
+		List<PetDiagnosisVO> list = petDiagnosisService.findReservatedList(petDiagnosisPager, d);
+		
+		mv.addObject("reservatedList", list);
+		mv.addObject("pager", petDiagnosisPager);
 		mv.setViewName("pet/diagnosis/reservatedList");
 		
 		return mv;
