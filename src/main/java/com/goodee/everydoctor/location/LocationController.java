@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.goodee.everydoctor.admin.agency.AgencyVO;
 
 @Controller
-@RequestMapping("location/*")
+//@RequestMapping("location/*")
 public class LocationController {
 	
 	@Autowired
 	private LocationService locationService;
 	
-	@GetMapping("viewCorona")
+	@GetMapping("location/viewCorona")
 	public void viewCorona()throws Exception{
 		
 	}
 	
-	@GetMapping("ronaco")
+	@GetMapping("location/ronaco")
 	@ResponseBody
 	public List<AgencyVO> findCoronaList()throws Exception{
 		List<AgencyVO> al = locationService.findCoronaList();
@@ -43,11 +43,11 @@ public class LocationController {
 	public void categoryLocation()throws Exception{
 		
 	}
-	@GetMapping("animal24")
+	@GetMapping("location/animal24")
 	public void animal24()throws Exception{
 		
 	}
-	@GetMapping("nonstopAnimal")
+	@GetMapping("location/nonstopAnimal")
 	@ResponseBody
 	public List<AgencyVO> findNightPharmacy()throws Exception{
 		List<AgencyVO> al = locationService.findNightPharmacy();

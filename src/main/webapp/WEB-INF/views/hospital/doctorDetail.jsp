@@ -198,7 +198,7 @@
             });
         });
         
-/*         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
+        let mapContainer = document.getElementById("map"),  //지도에 표시할 div
         mapOption = {
             center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표
             level : 4 //지도 확대레벨 
@@ -206,15 +206,32 @@
     	
    		 let map = new kakao.maps.Map(mapContainer,mapOption);   //지도 생성
    		 
+   		 //병원주소 가져오기
    		 let addr = $("#map").attr("data-addr");
-   		 console.log("addr",addr);
+   		 console.log("addr==",addr);
    		 
-   		 //마커생성
-   		 let marker = new kakao.maps.Marker({
-   			 position:markerPosition
-   		 });
-   		  */
+   		 //주소-좌표 변환 객체 생성
+   		 let geocoder = new kakao.maps.services.Geocoder();
+   		 
+   		 //주소로 좌표를 검색
+   		 geocoder.addressSearch(addr,function(result,status){
+   			 console.log('status==',status)
+   			 console.log('result ==', result)
+   			//정상 검색완료
+   			if(status === kakao.maps.services.Status.OK){
+   				
+   				var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
+   				
+   				//결과값으로 받은 위치를 마커로 표시
+   				let marker = new kakao.maps.Marker({
+   					map:map,
+   					position :coords
+   				});
    		 //마커가 지도위에 표시되도록 설정
+   		 map.setCenter(coords);
+   			}//if end
+   		 });
+   		 
     </script>
 </body>
 </html>
