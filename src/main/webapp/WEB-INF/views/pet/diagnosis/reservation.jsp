@@ -13,10 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
     <!-- Place favicon.ico in the root directory -->
-    
+
     <c:import url="../../temp/boot.jsp"></c:import>
 	<link rel="stylesheet" href="/css/pet/diagnosis/reservation.css" />
-	
+
 </head>
 
 <body>
@@ -142,7 +142,7 @@
                                                                 <label>반려동물 선택*</label>
                                                                 <div id="ownedPetListFrame">
 	                                                                <c:forEach items="${ownedPetList }" var="pet">
-	                                                                	
+
 	                                                                	<div class="ownedPetFrame" data-petnum="${pet.petNum }">
 	                                                                		<c:if test="${pet.petFileName != null }">
 	                                                                			<img class="ownedPetImage" alt="" src="/file/PET/${pet.petFileName }">
@@ -198,7 +198,7 @@
                                                                 <input id="vaccinnationInput" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
                                                                 <button type="button" class="btn " id="firstNextBtn">Next Step</button>
@@ -222,7 +222,7 @@
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
                                                                     <select class="user-chosen-select" id="pDansCategory">
-                                                                        
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -234,7 +234,7 @@
                                                                     placeholder="상담내용" id="pDansContentInput"></textarea>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
                                                                 <button type="button"
@@ -298,7 +298,7 @@
                                                                 <input id="vaccinnationInput2" type="text" readonly="readonly">
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label>상담유형*</label>
@@ -306,7 +306,7 @@
                                                                     <span class="arrow"><i
                                                                             class="lni lni-chevron-down"></i></span>
                                                                     <select class="user-chosen-select" name="pDansCategory" id="pDansCategory2">
-                                                                        
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -318,22 +318,22 @@
                                                                     placeholder="상담내용" id="pDansContentInput2" readonly="readonly"></textarea>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0">
                                                                 <button type="button" class="btn " id="addPhotoBtn">진료용 사진 추가</button>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-12" id="photoFileFrame">
                                                         </div>
-                                                        
+
                                                             <div class="form-group button mb-0">
                                                                 <button type="button"
                                                                     class="btn alt-btn" id="thirdPreBtn">Previous</button>
                                                                 <button type="button" class="btn " id="submitBtn">진료신청</button>
                                                             </div>
-                                                        
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -360,9 +360,9 @@
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>
     </a>
-    
+
     <script type="text/javascript" src="/js/pet/diagnosis/reservation.js"></script>
-    
+
     <script type="text/template" id="pDansCategoryOptionTemplate">
 		<option value="{category}">{categoryName}</option>
 	</script>
