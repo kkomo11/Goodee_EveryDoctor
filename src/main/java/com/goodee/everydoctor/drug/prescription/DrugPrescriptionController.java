@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.drug.DrugService;
 import com.goodee.everydoctor.drug.DrugVO;
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryService;
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
 import com.goodee.everydoctor.util.Pager;
 
 @Controller
@@ -46,6 +48,12 @@ public class DrugPrescriptionController {
 		//환자 증상 가져오기
 		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
 		mv.addObject("categoryList", categoryList);
+
+		//운송장번호 랜덤출력
+		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
+		int randomNum = (int)(Math.random() * 3);
+		DrugPrescriptionVO deliveryNumObject = deliveryNumList.get(randomNum);
+		mv.addObject("deliveryNum", deliveryNumObject.getDrugDeliveryNum());
 
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
