@@ -97,9 +97,9 @@ Author: GrayGrids
 	const toastTrigger = document.getElementById('liveToastBtn')
 	const toastLiveExample = document.getElementById('liveToast')
 	const toast = new bootstrap.Toast(toastLiveExample)
-    let userID = $("#name").val()
+    let userID = $("#authUsername").val()
 	
-    console.log($("#name").val())
+    console.log($("#authUsername").val())
 
     
 

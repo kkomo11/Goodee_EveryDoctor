@@ -32,7 +32,8 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
-const username = 'test';
+const username = $("#authUsername").val();
+
 
 // on page load runner
 $(function(){
