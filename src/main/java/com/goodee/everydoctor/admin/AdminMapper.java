@@ -14,4 +14,10 @@ public interface AdminMapper {
 	
 	//제휴신청 리스트 페이징에 필요한 count
 	public Long findCooperationCount(Pager pager)throws Exception;
+	
+	//제휴신청 리스트 모달창에 가져올 Detail 내용
+	public MedicVO findCooperationDetail(String username)throws Exception;
+	
+	//medicEnabled 1로 수정
+	public int modifyMedicEnabled(String username)throws Exception;
 }

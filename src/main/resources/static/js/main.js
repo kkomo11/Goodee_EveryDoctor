@@ -57,45 +57,36 @@ Author: GrayGrids
     $("#preModal").trigger('click');		
 
 	$("#certificationBtn").click(function(){
-		//이름이랑 성별값 잘 왔나 체크
-		let chk = false
-		let nameVal = $("#certiName").val()
-		let genderVal = $("input[name='gender']:checked").val();
-		let usernameVal = $("#certiusername").val()
 		
-		if(genderVal!=null && nameVal!=""){
-			$("#certiClose").trigger("click")
-			
-			//본인인증 창 띄우기
-			var IMP = window.IMP; // 생략 가능
-			IMP.init("imp18741385"); 
-			
-			// IMP.certification(param, callback) 호출
-			  IMP.certification({ // param
-			    merchant_uid: "SEKJSKLFll2334", // 주문 번호
-			  }, function (rsp) { // callback
-			    if (rsp.success) {
-					console.log(rsp)
-					$.post("/user/certification", 
-						{imp_uid:rsp.imp_uid, username:usernameVal, name:nameVal, gender:genderVal}, 
-						function(rt){
-							if(rt==1){
-								window.location.href="";
-							}else{
-								alert("이미 인증된 계정이 존재합니다. 인증된 계정으로 로그인해주세요")
-							}
-							
-						})
+		
+		$("#certiClose").trigger("click")
+		
+		//본인인증 창 띄우기
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp18741385"); 
+		
+		// IMP.certification(param, callback) 호출
+		  IMP.certification({ // param
+		    merchant_uid: "SEKJSKLFll2334", // 주문 번호
+		  }, function (rsp) { // callback
+		    if (rsp.success) {
+				console.log(rsp)
+				$.post("/user/certification", 
+					{imp_uid:rsp.imp_uid}, 
+					function(rt){
+						if(rt==1){
+							window.location.href="";
+						}else{
+							alert("이미 인증된 계정이 존재합니다. 인증된 계정으로 로그인해주세요")
+						}
+						
+					})
 
-			    } else {
-					console.log(rsp)
-					alert(rsp.error_msg+" 다시 진행해주세요")
-			    }
-			  });
-		}else{
-			
-			$("#certiMsg").text("성함과 성별을 입력해주세요")
-		}
+		    } else {
+				console.log(rsp)
+				alert(rsp.error_msg+" 다시 진행해주세요")
+		    }
+		  });
 		
 	})
 	}
@@ -106,9 +97,9 @@ Author: GrayGrids
 	const toastTrigger = document.getElementById('liveToastBtn')
 	const toastLiveExample = document.getElementById('liveToast')
 	const toast = new bootstrap.Toast(toastLiveExample)
-    let userID = $("#name").val()
+    let userID = $("#authUsername").val()
 	
-    console.log($("#name").val())
+    console.log($("#authUsername").val())
 
     
 

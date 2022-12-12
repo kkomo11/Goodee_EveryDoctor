@@ -9,7 +9,7 @@
 		FROM AGENCY
 		WHERE AGENCYROLE = '선별진료소'
 			  AND
-			  (AGENCYADDR REGEXP '구로|서울')
+			  (AGENCYADDR REGEXP '구로|서울|중랑구|은평구|동작구')
 			  
 	</select>
 	<!-- 약국 지도찍기 -->

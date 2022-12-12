@@ -1,5 +1,6 @@
 'use strict';
 // create and run Web Socket connection
+//handler에 '/signal'로 처리해줌 
 const socket = new WebSocket("ws://" + window.location.host + "/signal");
 
 // UI elements
@@ -32,41 +33,56 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
-const username = 'test';
+const username = $("#authUsername").val();
+
 
 // on page load runner
+//document.ready와 같은 함수
 $(function(){
     start();
 });
 
 function start() {
     // add an event listener for a message being received
+    //Handler에서 handleTextMessage()에서 sendMessage하면 여기서 받아줌
     socket.onmessage = function(msg) {
         let message = JSON.parse(msg.data);
         console.log('jsonMessage : '+message);
         console.log('msg : ' + msg);
         console.log('msg.data : ' + msg.data);
+        //현재시간구하기
+        let now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
         switch (message.type) {
             case "text":
                 log('Text message from ' + message.from + ' received: ' + message.data);
 
-                let sessionId = message.from;
-                let messageData = message.data;
-                let cur_session = username;
+                let sessionId = message.from; //작성자
+                let messageData = message.data; //메세지 내용
+                let cur_session = username; //현재 로그인한 사람
                 //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
                 if(sessionId == cur_session){
-                    let str = "<div class='col-6'>";
-                    str += "<div class='alert alert-secondary'>";
-                    str += "<b>" + sessionId + " : " + messageData + "</b>";
-                    str += "</div></div>";
+                    // let str = "<div class='col-6'>";
+                    // str += "<div class='alert alert-secondary'>";
+                    // str += "<b>" + sessionId + " : " + messageData + "</b>";
+                    // str += "</div></div>";
+                    let str = '<li class="right">'
+                    str += '<img src="https://via.placeholder.com/300x300" alt="#">'
+                    str += '<p class="text" style="padding=20px">'+ messageData
+                    str += '<span class="time">'+ hours+':'+minutes+'</span>'
+                    str += '</p></li>'
                     $("#msgArea").append(str);
+                    $("#msgArea").scrollTop($("#msgArea")[0].scrollHeight);
                 }
-                else{
-                    let str = "<div class='col-6'>";
-                    str += "<div class='alert alert-warning'>";
-                    str += "<b>" + sessionId + " : " + messageData + "</b>";
-                    str += "</div></div>";
+                else{ //내가 보낸 메세지가 아닐 시
+                    let str = '<li class="left">';
+                    str += '<img src="https://via.placeholder.com/300x300" alt="#">';
+                    str += '<p class="text"  style="padding=20px">'+ messageData
+                    str += '<span class="time">현재시간</span>'
+                    str += '</p></li>'
                     $("#msgArea").append(str);
+                    $("#msgArea").scrollTop($("#msgArea")[0].scrollHeight);
                 }
                 break;
 
@@ -80,12 +96,12 @@ function start() {
                 handleAnswerMessage(message);
                 break;
 
-            case "ice":
+            case "ice": //rtc에서 사용하는것
                 log('Signal ICE Candidate received');
                 handleNewICECandidateMessage(message);
                 break;
 
-            case "join":
+            case "join": //사용자가 들어 올 때
                 log('Client is starting to ' + (message.data === "true)" ? 'negotiate' : 'wait for a peer'));
                 handlePeerConnection(message);
                 break;
@@ -120,6 +136,13 @@ function start() {
         send();
     })
 
+    // 엔터키가 눌렸을 때 && 입력창이 비어있지않을 때 메세지 전송
+    window.addEventListener("keydown", (event) => {
+        if (window.event.keyCode === 13 && $('#msg').val() != '') {
+            send();
+        }
+    });
+
     function send() {
         let msg = document.getElementById("msg");
         console.log(username + ':' + msg.value);
@@ -130,7 +153,10 @@ function start() {
         });
         msg.value='';
     }
+
+
 }
+
 
 function stop() {
     // send a message to the server to remove this client from the room clients list
@@ -217,8 +243,8 @@ function handleErrorMessage(message) {
 
 // use JSON format to send WebSocket message
 function sendToServer(msg) {
-    let msgJSON = JSON.stringify(msg);
-    socket.send(msgJSON);
+    let msgJSON = JSON.stringify(msg); //jsonObject를 json형식의 String으로 변환
+    socket.send(msgJSON);   //handler handleTextMessage()로 보내줌
 }
 
 // initialize media stream

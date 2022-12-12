@@ -29,6 +29,8 @@ public class SignalHandler extends TextWebSocketHandler {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    // 웹RTC
+    
     // session id to room mapping
     private Map<String, Room> sessionIdToRoomMap = new HashMap<>();
 
@@ -68,7 +70,7 @@ public class SignalHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(final WebSocketSession session, final TextMessage textMessage) {
         // a message has been received
-        try {
+        try {					//readValue같은 경우는 json형식 String을 다시 class객체로 
             WebSocketMessage message = objectMapper.readValue(textMessage.getPayload(), WebSocketMessage.class);
             logger.info("[ws] Message of {} type from {} received", message.getType(), message.getFrom());
             String userName = message.getFrom(); // origin of the message
@@ -161,7 +163,7 @@ public class SignalHandler extends TextWebSocketHandler {
 
     private void sendMessage(WebSocketSession session, WebSocketMessage message) {
         try {
-            String json = objectMapper.writeValueAsString(message);
+            String json = objectMapper.writeValueAsString(message);//writeValueAsString -json형식String으로 변화시켜줌
             logger.info("Json : {}", json);
             session.sendMessage(new TextMessage(json));
         } catch (IOException e) {

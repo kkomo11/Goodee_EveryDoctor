@@ -101,8 +101,7 @@
                             <div class="socila-login">
                                 <ul>
                                     <li><a href="/oauth2/authorization/kakao">카카오로그인</a></li>
-                                    <li><a href="javascript:void(0)" class="google"><i class="lni lni-google"></i>Login With Google
-                                            Plus</a>
+                                    <li><a href="/oauth2/authorization/naver" class="google" id="naver_id_login">네이버로그인</a>
                                     </li>
                                 </ul>
                             </div>

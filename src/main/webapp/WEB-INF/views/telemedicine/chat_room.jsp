@@ -85,18 +85,43 @@
         <div class="row justify-content-around mb-3">
             <div class="col-lg-8">
                 <div class="col-lg-12 mb-3">
+                    <!-- 내 화면 -->
                     <video id="local_video" autoplay playsinline></video>
                 </div>
+                <!-- 상대 화면 -->
                 <div class="col-lg-12 mb-3">
                     <video id="remote_video" autoplay playsinline></video>
                 </div>
             </div>
-            <div class="col-lg-4" id="page-content-wrap">
+            <!-- 채팅 자리 -->
+            <div class="messages-body col-lg-4" style="height:900px">
+                <div class="row" style="height:90%">
+                    <div style="height:80%">
+                        <!-- Start Chat List -->
+                        <div class="chat-list" style="height:90%">
+                            <ul class="single-chat-head" id="msgArea" style="height:80%">
+                            </ul>
+                            <div class="reply-block">
+                                <input name="reply" type="text" id="msg" placeholder="Type your message here...">
+                                <button class="reply-btn" type="button" id="button-send">
+                                    <img src="/images/messages/send.svg" alt="#">
+                                </button>
+                            </div>
+                        </div>
+                        <!-- End Chat List -->
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4" id="page-content-wrap">
                 <div class="container-fluid">
                     <div class="col-6">
                         <h1>roomName</h1>
                     </div>
-                    <div id="msgArea"></div>
+                     메시지 들어가는 부분
+                    <div id="" class="chat-list">
+                        <ul id="msgArea" class="single-chat-head"></ul>
+                    </div>
+                     입력 창 
                     <div class="input-group mb-3">
                         <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="input-group-append">
@@ -104,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </main>

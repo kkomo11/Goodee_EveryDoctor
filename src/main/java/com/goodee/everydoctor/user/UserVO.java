@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.goodee.everydoctor.user.address.UserAddressVO;
 
 import lombok.Data;
 
@@ -40,6 +41,8 @@ public class UserVO implements UserDetails, OAuth2User{
 	private List<String> roles;
 	private String ci;
 	private String social;
+	
+	private List<UserAddressVO> addressVOs;
 	
 	private boolean enabled;
 	private boolean accountNonExpired;

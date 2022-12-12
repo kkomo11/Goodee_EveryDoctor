@@ -29,6 +29,8 @@
     
     <link rel="stylesheet" href="/css/pet/home.css"/>
     <c:import url="../temp/boot.jsp"></c:import>
+    <!-- chatbot -->
+    <c:import url="../temp/chatbot.jsp"></c:import>
 
 </head>
 
@@ -116,7 +118,7 @@
                                                 <div class="icon">
                                                     <img src="/images/pet/home/stamp_icon.svg" alt="#">
                                                 </div> 
-                                                <h3>반려동물 팁</h3>
+                                                <h3>24시 병원</h3>
                                                 <!-- <h5 class="total">55</h5> -->
                                             </a>
                                             <!-- End Single Category -->

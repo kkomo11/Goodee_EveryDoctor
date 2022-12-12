@@ -1,16 +1,12 @@
 package com.goodee.everydoctor.user.security;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -18,7 +14,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.goodee.everydoctor.user.UserMapper;
-import com.goodee.everydoctor.user.UserService;
 import com.goodee.everydoctor.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +50,8 @@ public class UserDetailsServiceImpl extends DefaultOAuth2UserService implements 
 		//회원가입 유무를 판별하고 로그인 처리
 		if(social.equals("kakao")) {
 			auth2User = this.kakaoJoinCheck(auth2User);
+		}else if(social.equals("naver")) {
+			auth2User = this.naverJoinCheck(auth2User);
 		}
 		
 		return auth2User;
@@ -67,7 +64,7 @@ public class UserDetailsServiceImpl extends DefaultOAuth2UserService implements 
 		String userName = "kakao@"+auth2User.getName(); //사용자의 고유id
 
 		//properties를 꺼내쓰려고 하는데 무슨 타입일까?
-		log.info("ClassName : {}", auth2User.getAttribute("kakao_account").getClass().toString());
+		log.info("ClassName : {}", auth2User);
 		
 		UserVO userVO;
 		userVO = userMapper.getUserByUsername(userName);
@@ -83,7 +80,55 @@ public class UserDetailsServiceImpl extends DefaultOAuth2UserService implements 
 			userVO.setName(properties.get("nickname"));
 			userVO.setFileName(properties.get("profile_image"));
 			userVO.setEmail(ka.get("email").toString());
+			if(ka.get("gender").toString().equals("female")) {
+				userVO.setGender("F");
+			}else {
+				userVO.setGender("M");
+			}
 			
+			int result;
+			try {
+				result = userMapper.inputUser(userVO);
+				if(result == 1) {
+					result = userMapper.inputRolePre(userVO);
+				}else {
+					log.info("userVO DB저장 실패");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}//카카오 회원가입 완료
+		
+		//로그인
+		auth2User = userMapper.getUserByUsername(userName);
+		
+		return auth2User;
+	}
+	//회원가입 유무 판별하기
+	//회원가입 유무를 판별한다.
+	private OAuth2User naverJoinCheck(OAuth2User auth2User)throws OAuth2AuthenticationException{
+		log.info("-------------------사용자 정보-----------------");
+		LinkedHashMap<String, String> properties = (LinkedHashMap)auth2User.getAttributes().get("response");
+		
+		String userName = "naver@"+properties.get("id"); //사용자의 고유id
+		
+		UserVO userVO;
+		userVO = userMapper.getUserByUsername(userName);
+		
+		if(userVO==null) {
+			//새로운 userVO 세팅해서 회원가입
+			userVO = new UserVO();
+			
+			userVO.setUsername(userName);
+			userVO.setPassword(userName);
+			userVO.setName(properties.get("name"));
+			userVO.setFileName(properties.get("profile_image"));
+			userVO.setEmail(properties.get("email"));
+			userVO.setGender(properties.get("gender"));
+			userVO.setPhone(properties.get("mobile"));
+			
+			log.info("네이버로그인 userVO {}", userVO);
 			int result;
 			try {
 				result = userMapper.inputUser(userVO);

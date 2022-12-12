@@ -25,8 +25,8 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1200px;
-        height:500px;
+        width:1400px;
+        height:1000px;
         margin-bottom: 300px;
     }
     </style>
@@ -165,7 +165,7 @@
                             // if(bounds.contain(coords)){
 
                                 let imageSrc ='/images/location/location.png',
-                                    imageSize = new kakao.maps.Size(40,42),
+                                    imageSize = new kakao.maps.Size(43,42),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
 
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);

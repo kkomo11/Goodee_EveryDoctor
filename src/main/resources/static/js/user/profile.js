@@ -1,18 +1,18 @@
 /**
- * 
+ *
  */
- 
+
 console.log("profile.js")
- 
+
 let currentPhone = $("#phone").val()
 let currentEmail = $("#email").val()
 let usernameVal = $("#username").val()
 let phone;
 let email;
 let code2;
- 
+
 let chk = usernameVal.indexOf('@')
- 
+
  //소셜로그인 계정이면
  if(chk!=-1){
 	 $("#username").val(usernameVal.slice(0,chk) +" 소셜로그인 계정입니다.")
@@ -22,18 +22,19 @@ let chk = usernameVal.indexOf('@')
 let birthVal = $("#birth").val()
 
 $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.slice(6,8)+"일")
- 
+
  //프로필 사진 수정
  $("#profile-image").change(function(){
+		console.log('files[0] : ',$("#profile-image")[0].files[0]);
 	    let filedata = new FormData();
         filedata.append("file",$("#profile-image")[0].files[0])
         //path 에 저장할 폴더 경로를 담아준다.
         filedata.append("username",usernameVal)
-    
+
         $.ajax({
             type: "POST",
             enctype: 'multipart/form-data',
-            url: "profileUpload",
+            url: "profileImgUpload",
             data: filedata,
             processData: false,
             contentType: false,
@@ -41,19 +42,19 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
             timeout: 600000,
             success: function (dt) {
 				if(dt==1){
-					window.location.href="";
+					window.location.reload();
 				}
 			}
 			})
  })
- 
+
  //기본 프로필로 변경
  $("#default-profile").click(function(){
 	 if(window.confirm("기존 프로필 사진이 삭제됩니다. 계속 진행하시겠습니까?")){
 		 console.log("기본으로 변경")
 		 $.ajax({
 			 type:"POST",
-			 url: "setProfileDefault",
+			 url: "setProfileImgDefault",
 			 data: {
 				 "username":usernameVal
 			 },
@@ -65,36 +66,36 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		 })
 	 }
  })
- 
+
  //연락처 유효성 검증
  $("#phone").on("input",function(){
 	 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-	
-	 
+
+
 	 if(currentPhone==this.value){
 		 $("#phoneMessage").text("현재 등록된 휴대전화 정보와 동일합니다")
 		 $("#chkPhone").attr("class","btn bg-secondary")
 		$("#chkPhone").attr("data-bs-toggle","")
-		$("#chkPhone").attr("data-bs-target","")	
+		$("#chkPhone").attr("data-bs-target","")
 	}else if(this.value.length>9 & this.value.length<12){
 		$("#phoneMessage").text("")
 		$("#chkPhone").attr("class","btn")
 		$("#chkPhone").attr("data-bs-toggle","modal")
-		$("#chkPhone").attr("data-bs-target","#chkModal")		
+		$("#chkPhone").attr("data-bs-target","#chkModal")
 	}else{
 		$("#phoneMessage").text("숫자로 10-11자 입력해주세요")
 		$("#chkPhone").attr("class","btn bg-secondary")
 		$("#chkPhone").attr("data-bs-toggle","")
-		$("#chkPhone").attr("data-bs-target","")	
+		$("#chkPhone").attr("data-bs-target","")
 	}
  })
- 
+
  //문자인증하기
  $("#chkPhone").click(function(){
-	
+
 	if($("#chkPhone").attr("data-bs-toggle")=="modal"){
 		//문자를 보내고 인증번호를 받아서 기다린다
-		phone = $("#phone").val()	
+		phone = $("#phone").val()
 		email = "";
 		 $.get("/user/phoneCheck?phonenum="+phone, function(dt){
 			 if(dt==0){
@@ -103,14 +104,14 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 				 code2 = dt;
 			 }
 		 })
-	} 
-	 
+	}
+
  })
 
   //이메일 유효성 검증
   $("#email").on("input",function(){
 	let regex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	
+
 	if(regex.test(this.value)){
 		$("#emailMessage").text("")
 		$("#chkEmail").attr("class","btn")
@@ -121,7 +122,7 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 	   $("#emailMessage").text("이메일 형식에 맞게 입력해주세요")
 	   $("#chkEmail").attr("class","btn bg-secondary")
 	  $("#chkEmail").attr("data-bs-toggle","")
-	  $("#chkEmail").attr("data-bs-target","")			
+	  $("#chkEmail").attr("data-bs-target","")
    }
 })
 
@@ -130,7 +131,7 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 
 	if($("#chkEmail").attr("data-bs-toggle")=="modal"){
 		//문자를 보내고 인증번호를 받아서 기다린다
-		email = $("#email").val()	
+		email = $("#email").val()
 		phone = "";
 		$.get("/user/emailCheck?emailnum="+email, function(dt){
 			if(dt==0){
@@ -142,8 +143,8 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		})
 	}
 
-	
-	
+
+
 })
 
 //인증번호 체크
@@ -170,13 +171,13 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 		$("#modifiyMsg").text("인증번호 불일치")
 	}
  })
- 
+
  //비밀번호 변경
  $("#modifyPwBtn").click(function(){
 	 let modifyPwForm = new FormData($("#modifyPwForm")[0]);
 	 modifyPwForm.append("username",usernameVal)
 	 console.log("비번 변경"+modifyPwForm)
-	 
+
 	 $.ajax({
 		type:"POST",
 		url:"modifyPassword",
@@ -192,5 +193,5 @@ $("#birth").val(birthVal.slice(0,4)+"년 "+birthVal.slice(4,6)+"월 "+birthVal.s
 			}
 		}
 	})
-	 
+
  })

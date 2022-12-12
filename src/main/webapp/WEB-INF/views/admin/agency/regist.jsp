@@ -14,6 +14,8 @@
     <!-- Place favicon.ico in the root directory -->
 
 	<c:import url="../../temp/boot.jsp"></c:import>
+    <link rel="stylesheet" href="/css/admin/medic/chosen.css">
+	<link rel="stylesheet" href="/css/admin/medic/regist.css">
 </head>
 
 <body>
@@ -240,19 +242,30 @@
                                     <div class="row">
                                         <div style="flex-direction: column;">
                                             <!-- 종사자 문의 구분자 -->
-                                            <div class="form-group col-6">
-                                                <label>문의유형*</label>
-                                                <div class="selector-head">
-                                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                    <select class="user-chosen-select" name="medicRole" id="medicRole">
-                                                        <option disabled selected>문의 유형을 선택해주세요</option>
-                                                        <option value="의사">의사 제휴 문의</option>
-                                                        <option value="간호사">간호사 제휴 문의</option>
-                                                        <option value="수의사">수의사 제휴 문의</option>
-                                                        <option value="약사">약사 제휴 문의</option>
-                                                        <option value="보호소관리자">보호소 제휴 문의</option>
-                                                    </select>
+                                            <div class="d-flex" style="align-items: center;">
+                                                <div class="form-group col-6">
+                                                    <label>문의유형*</label>
+                                                    <div class="selector-head">
+                                                        <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                        <select class="user-chosen-select" name="medicRole" id="medicRole">
+                                                            <option disabled selected>문의 유형을 선택해주세요</option>
+                                                            <option value="의사">의사 제휴 문의</option>
+                                                            <option value="간호사">간호사 제휴 문의</option>
+                                                            <option value="수의사">수의사 제휴 문의</option>
+                                                            <option value="약사">약사 제휴 문의</option>
+                                                            <option value="보호소관리자">보호소 제휴 문의</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
+
+                                                <!-- 진료과목 추가 버튼 -->
+                                                <div id="medicSectionBtn">
+
+                                                </div>
+                                            </div>
+                                            <!-- 진료 과목 -->
+                                            <div id="medicSection">
+
                                             </div>
 
                                             <!-- 기관 문의 구분자 -->
@@ -436,6 +449,7 @@
 
     <!-- JS -->
     <script src="/js/admin/agency/regist.js"></script>
+    <script src="/js/admin/medic/chosen.jquery.js"></script>
     <!-- 다음 주소 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <!-- 파일 추가 Script -->
@@ -449,7 +463,27 @@
            </div>
         </div>
     </script>
-    
+
+    <!-- 진료과목 추가 버튼 -->
+    <script type="java/template" id="medicSectionBtnForm">
+        <div class="form-group button mb-0">
+            <button type="button" class="btn sectionAddBtn">진료과목 추가</button>
+        </div>
+    </script>
+
+    <!-- 진료과목 select 폼 -->
+    <script type="text/template" id="medicSectionForm">
+        <div class="form-group col-6">
+            <label>진료과목*</label>
+            <div class="selector-head">
+                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                <select class="user-chosen-select" name="medicRole" id="medicSection">
+                    <option disabled selected>진료 과목을 선택해주세요</option>
+                    
+                </select>
+            </div>
+        </div>
+    </script>
 
      <script type="java/template" id="specialtyAddForm">
         <label>전문의 여부*</label>
