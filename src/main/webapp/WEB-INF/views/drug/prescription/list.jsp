@@ -42,13 +42,13 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="breadcrumbs-content">
-                <h1 class="page-title">진료 접수</h1>
+                <h1 class="page-title">요청된 조제내역</h1>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
                 <li><a href="/">Home</a></li>
-                <li>진료 접수</li>
+                <li>요청된 조제내역</li>
               </ul>
             </div>
           </div>
@@ -60,14 +60,17 @@
       <section class="dashboard section">
         <div class="container">
           <div class="row">
+            <div class="col-lg-3 col-md-12 col-12">
+              <c:import url="../../user/sidebar.jsp"></c:import>
+                    </div>
               <!-- Start Dashboard Sidebar -->
-            <div class="col-md-12 col-12">
+            <div class="col-lg-9 col-md-12 col-12">
               <div class="main-content">
                 <div class="dashboard-block mt-0">
-                  <button id="alertStart">성공버튼</button>
+                  <!-- <button id="alertStart">성공버튼</button>
                   <button id="errorStart">실패버튼</button>
-                  <button id="confirmStart">정말 할거야?</button>
-                  <h3 class="block-title">진료 내역</h3>
+                  <button id="confirmStart">정말 할거야?</button> -->
+                  <h3 class="block-title">요청된 조제 내역</h3>
 
                   <!-- Start Items Area -->
                   <div class="my-items">
@@ -89,27 +92,28 @@
                       </div>
                     </div>
                     <!-- End List Title -->
+                    
                     <!-- Start Single List -->
                     <div class="single-item-list">
                       <div class="row align-items-center">
                         <div class="col-lg-5 col-md-5 col-12">
                           <div class="item-image">
                             <img src="/images/hospital/manager.jpg" alt="#">
+                            <img src="https://via.placeholder.com/100x100" alt="#">
                             <div class="content">
                               <h7 class="title"><a href="/drug/prescription/detail">이주은매니저${drugPrescriptionVO.userVO.username}</a></h7>
-                              <!-- <span class="price">수령방식</span> -->
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                          <p>Electronic</p>
+                          <p>Car</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                          <p>New</p>
+                          <p>Vehicle</p>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
+                        <div class="col-lg-3 col-md-2 col-12 align-right">
                           <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>  
                           </ul>
                         </div>
                       </div>

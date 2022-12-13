@@ -16,34 +16,12 @@
 
 	<!-- 약 상세정보 -->
 	<select id="findDrugPrescriptionDetail"
-		parameterType="DrugPrescriptionVO" resultMap="findDrugPrescriptionDetailResult">
+		parameterType="DrugPrescriptionVO" resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG WHERE
 		DRUGNAME = #{drugName}
 	</select>
 	
-	<resultMap type="DrugPrescriptionVO" id="findDrugPrescriptionDetailResult">
-		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
-		<id column="SECTIONNUM" property="sectionNum"/>
-		<result column="SECTIONNAME" property="sectionName"/>
-		</association>
-		<association property="hospitalCategoryVO" javaType="HospitalCategoryVO">
-		<id column="CATEGORYNUM" property="categoryNum"/>
-		<result column="CATEGORYNAME" property="categoryName"/>
-		</association>
-	</resultMap>
-
-	<!-- 증상과목 -->
- 	<select id="findHospitalSection"
-		resultType="HospitalSectionVO">
-		SELECT * FROM SECTION WHERE SECTIONKIND=0
-	</select> 
-	<!-- 진료과목 -->
- 	<select id="findHospitalCategory"
-		resultType="HospitalCategoryVO">
-		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
-	</select> 
-
-<!--운송장번호  -->
+	<!--운송장번호  -->
 	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">
 		SELECT * FROM
 		DRUGDELIVERY
@@ -51,4 +29,15 @@
 		ORDER BY RAND()
 		LIMIT 4;
 	</select>
+	
+	<!-- 증상과목 -->
+<!--  	<select id="findHospitalSection"
+		resultType="HospitalSectionVO">
+		SELECT * FROM SECTION WHERE SECTIONKIND=0
+	</select>  -->
+	<!-- 진료과목 -->
+<!--  	<select id="findHospitalCategory"
+		resultType="HospitalCategoryVO">
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
+	</select>  -->
 </mapper>

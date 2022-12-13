@@ -102,13 +102,14 @@
                                   </div>
                                 </div>
 
-                                <div class="col-12">
+                                <!-- 진료 과목 증상 리스트 가져오기 -->
+                                <!-- <div class="col-12">
                                   <div class="form-group">
                                     <label>진료과목</label>
                                     <div class="selector-head">
                                       <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                                         class="user-chosen-select">
-                                        <!-- 증상 리스트 가져오기 -->
+                                        
                                         <c:forEach items="${sectionList}" var="sectionVO">
                                           <option value="${sectionVO.sectionName}" data-sub="sub1">
                                             ${drugPrescriptionVO.sectionVO.sectionName}
@@ -125,7 +126,7 @@
                                     <div class="selector-head">
                                       <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                                         class="user-chosen-select">
-                                        <!-- 증상 리스트 가져오기 -->
+                                        
                                         <c:forEach items="${categoryList}" var="categoryVO">
                                           <option value="${categoryVO.categoryName}" data-sub="sub1">
                                             ${drugPrescriptionVO.categoryVO.categoryName}
@@ -134,7 +135,7 @@
                                       </select>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
 
 
                                 <!-- 약목록 -->
@@ -261,7 +262,7 @@
                                 <div class="col-12">
                                   <div class="form-group button mb-0">
                                     <!-- <button type="submit" class="btn alt-btn" id="thirdPreBtn">Previous</button> -->
-                                    <a href="/drug/delivery/list" button type="submit" id="drug" class="btn">처방하기</a>
+                                    <a href="/drug/prescription/list" button type="submit" id="drug" class="btn">처방하기</a>
                                   </div>
                                 </div>
 

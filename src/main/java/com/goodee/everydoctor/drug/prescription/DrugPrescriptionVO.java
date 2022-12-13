@@ -1,7 +1,5 @@
 package com.goodee.everydoctor.drug.prescription;
 
-import com.goodee.everydoctor.hospital.HospitalCategoryVO;
-import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.user.UserVO;
 
 import lombok.Data;
@@ -24,12 +22,7 @@ public class DrugPrescriptionVO {
 	private String drugUse;
 	//약주의사항
 	private String drugCare;
-	
+		
 	private UserVO userVO;
-	
-	private HospitalSectionVO hospitalSectionVO;
-	
-	private HospitalCategoryVO hospitalCategoryVO;
-	
 
 }
