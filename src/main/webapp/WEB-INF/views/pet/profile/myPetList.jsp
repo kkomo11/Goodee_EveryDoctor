@@ -76,7 +76,9 @@
                             </form>
                         </div>
                         <!-- End Single Widget -->
-                        
+                        <!-- Start Dashboard Sidebar -->
+	                    <c:import url="../../user/sidebar.jsp"></c:import>
+	                    <!-- Start Dashboard Sidebar -->
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
@@ -110,10 +112,10 @@
 	                                                <!-- Start Single Item -->
 	                                                <div class="single-item-grid">
 	                                                    <div class="image">
-	                                                    	<c:if test="${myPet.petFileName != null }">
+	                                                    	<c:if test="${myPet.petFileName != null && myPet.petFileName != '' }">
 	                                                    		<a href="/pet/profile/detail?petNum=${myPet.petNum }"><img class="ownedPetImage" src="/file/PET/${myPet.petFileName }"></a>
 	                                                    	</c:if>
-	                                                    	<c:if test="${myPet.petFileName == null }">
+	                                                    	<c:if test="${myPet.petFileName == null || myPet.petFileName == '' }">
 	                                                    		<a href="/pet/profile/detail?petNum=${myPet.petNum }"><img class="ownedPetImage" src="/images/pet/profile/default_pet_icon.svg" style="height: 12.5rem;"></a>
 	                                                    	</c:if>
 	                                                        
