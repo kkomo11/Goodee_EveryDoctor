@@ -121,7 +121,7 @@
                     <div id="" class="chat-list">
                         <ul id="msgArea" class="single-chat-head"></ul>
                     </div>
-                     입력 창 
+                     입력 창
                     <div class="input-group mb-3">
                         <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="input-group-append">
