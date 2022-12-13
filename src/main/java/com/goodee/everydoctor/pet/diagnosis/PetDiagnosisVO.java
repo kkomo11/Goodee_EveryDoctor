@@ -1,6 +1,9 @@
 package com.goodee.everydoctor.pet.diagnosis;
 
 import java.sql.Time;
+import java.util.List;
+
+import com.goodee.everydoctor.file.FileVO;
 
 import lombok.Data;
 
@@ -19,5 +22,6 @@ public class PetDiagnosisVO {
 	private Time pDansEndTime;
 	private Integer pDansCost;
 	private Integer pDansStatus;
+	private List<FileVO> pDansFiles;	// 진료 신청 시 첨부된 파일
 
 }
