@@ -62,14 +62,18 @@ public class NotificationController {
 //		}
 //	}
 	//method for dispatching events to a Specific User
-	@PostMapping(value = "/dispatchEventToSpecificUser")
+//	@PostMapping(value = "/dispatchEventToSpecificUser")
 	public void dispatchEventToClients(@RequestParam String title, @RequestParam String text,
-			@RequestParam String userID) {
+			@RequestParam String url, @RequestParam String userID) {
 		
 		log.info("유저아이디 {}", userID);
 		
+		int num = (int)(Math.random()*1000);
+		
 		String eventFormatted = new JSONObject()
+				.put("toastId", "toast"+num)//알림받을떄 구분해줄수 잇는 구분값
 				.put("title",title)
+				.put("link", url)//링크
 				.put("text",text).toString();
 		
 		SseEmitter sseEmitter = emitters.get(userID);
