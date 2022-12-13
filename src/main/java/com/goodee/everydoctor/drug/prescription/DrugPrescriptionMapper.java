@@ -9,9 +9,9 @@ import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
 @Mapper
 public interface DrugPrescriptionMapper {
 
-	public List<DrugPrescriptionVO> findDrugPrescriptionSection() throws Exception;
-
-	public List<DrugPrescriptionVO> findDrugPrescriptionCategory() throws Exception;
+//	public List<DrugPrescriptionVO> findDrugPrescriptionSection() throws Exception;
+//
+//	public List<DrugPrescriptionVO> findDrugPrescriptionCategory() throws Exception;
 
 	public DrugPrescriptionVO findDrugPrescriptionDetail() throws Exception;
 

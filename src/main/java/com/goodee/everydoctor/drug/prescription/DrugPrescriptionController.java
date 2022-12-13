@@ -42,12 +42,12 @@ public class DrugPrescriptionController {
 		//약목록
 		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
 		mv.addObject("list", ar);
-		//진료 과목 가져오기
-		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();
-		mv.addObject("sectionList", sectionList);
-		//환자 증상 가져오기
-		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
-		mv.addObject("categoryList", categoryList);
+//		//진료 과목 가져오기
+//		List<DrugPrescriptionVO> sectionList = drugPrescriptionService.findDrugPrecriptionSection();
+//		mv.addObject("sectionList", sectionList);
+//		//환자 증상 가져오기
+//		List<DrugPrescriptionVO> categoryList = drugPrescriptionService.findDrugPrescriptionCategory();
+//		mv.addObject("categoryList", categoryList);
 
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();

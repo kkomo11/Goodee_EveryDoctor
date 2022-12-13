@@ -14,15 +14,15 @@ public class DrugPrescriptionService {
 	@Autowired
 	private DrugPrescriptionMapper drugPrescriptionMapper;
 
-	public List<DrugPrescriptionVO> findDrugPrecriptionSection()throws Exception {
-		// TODO Auto-generated method stub
-		return drugPrescriptionMapper.findDrugPrescriptionSection();
-	}
-
-	public List<DrugPrescriptionVO> findDrugPrescriptionCategory()throws Exception {
-		// TODO Auto-generated method stub
-		return drugPrescriptionMapper.findDrugPrescriptionCategory();
-	}
+//	public List<DrugPrescriptionVO> findDrugPrecriptionSection()throws Exception {
+//		// TODO Auto-generated method stub
+//		return drugPrescriptionMapper.findDrugPrescriptionSection();
+//	}
+//
+//	public List<DrugPrescriptionVO> findDrugPrescriptionCategory()throws Exception {
+//		// TODO Auto-generated method stub
+//		return drugPrescriptionMapper.findDrugPrescriptionCategory();
+//	}
 
 	public DrugPrescriptionVO findDrugPrescriptionDetail()throws Exception {
 		// TODO Auto-generated method stub

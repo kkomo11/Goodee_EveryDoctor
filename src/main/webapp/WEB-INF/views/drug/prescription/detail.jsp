@@ -111,7 +111,7 @@
                                         <!-- 증상 리스트 가져오기 -->
                                         <c:forEach items="${sectionList}" var="sectionVO">
                                           <option value="${sectionVO.sectionName}" data-sub="sub1">
-                                            ${sectionVO.sectionName}
+                                            ${drugPrescriptionVO.sectionVO.sectionName}
                                           </option>
                                         </c:forEach>
                                       </select>
@@ -128,7 +128,7 @@
                                         <!-- 증상 리스트 가져오기 -->
                                         <c:forEach items="${categoryList}" var="categoryVO">
                                           <option value="${categoryVO.categoryName}" data-sub="sub1">
-                                            ${categoryVO.categoryName}
+                                            ${drugPrescriptionVO.categoryVO.categoryName}
                                           </option>
                                         </c:forEach>
                                       </select>
