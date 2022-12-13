@@ -102,16 +102,44 @@ Author: GrayGrids
     console.log($("#authUsername").val())
 
     
-
+	//SSE를 페이지를 열면 연결요청을 한다.
     let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
 
+
+	//이벤트 요청을 받는다.
+	// 알림을 받는 측의 디자인과 받은 파라미터를 처리할때 변경
 	console.log(eventSource.readyState)
     eventSource.addEventListener("latestNews",function(event){
-        let articleData =JSON.parse(event.data);
-        // console.log(articleData)
+		let articleData =JSON.parse(event.data);
+		console.log(articleData)
+		
+		
+		$("#toastAlert").append(
+			'<div id='+articleData.toastId+' class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
+				'<div class="toast-header">'+
+					'<strong class="me-auto">'+articleData.title+'</strong>'+
+					'<small class="text-muted">11 mins ago</small>'+
+					'<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
+				'</div>'+
+				'<div class="toast-body">'+
+		  			articleData.text+
+    				'<div class="mt-2 pt-2 border-top">'+
+      					'<button type="button" class="btn btn-primary btn-sm"><a href=' +articleData.link+ ' style="color:white;">신청 바로가기</a></button>'+
+      				'</div>'+
+				'</div>'+
+	  		'</div>')
+
+		let toastname = articleData.toastId
+        console.log(toastname)
+
+		const toastLiveExample = document.getElementById(toastname)
+		const toast = new bootstrap.Toast(toastLiveExample)
+
         
         toast.show()
+
+		// i++
 
         
         // notifyMe();
@@ -119,25 +147,25 @@ Author: GrayGrids
     })
     
     
-    
-	console.log($(toastTrigger))
-$(toastTrigger).click(function(){
+// 테스트용 알림요청
+// 	console.log($(toastTrigger))
+// $(toastTrigger).click(function(){
 	
-    $.ajax({
-        type:"POST",
-        url:"/dispatchEventToSpecificUser",
-        traditional:true, //배열을 전송할 때 사용(파라미터 이름 하나로 여러개를 보내야 할때)
-        data:{
-            title: "타이틀",
-            text: "텍스트",
-            userID:"Doctor"
-        },
-        success:function(result){
-            console.log("result: ", result);
-        }
-    })
+//     $.ajax({
+//         type:"POST",
+//         url:"/dispatchEventToSpecificUser",
+//         traditional:true, //배열을 전송할 때 사용(파라미터 이름 하나로 여러개를 보내야 할때)
+//         data:{
+//             title: "타이틀",
+//             text: "텍스트",
+//             userID:''//의사아이디
+//         },
+//         success:function(result){
+//             console.log("result: ", result);
+//         }
+//     })
 	
-})
+// })
 	
     
 })();

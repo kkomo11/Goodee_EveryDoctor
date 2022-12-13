@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
+
 
 @Service
 public class DrugPrescriptionService {
@@ -31,6 +33,10 @@ public class DrugPrescriptionService {
 		// TODO Auto-generated method stub
 		return drugPrescriptionMapper.findDrugPrescriptionList();
 	}
-
+	
+	public  List<DrugPrescriptionVO> findDrugDeliveryNum()throws Exception {
+		// TODO Auto-generated method stub
+		return drugPrescriptionMapper.findDrugDeliveryNum();
+	}
 
 }

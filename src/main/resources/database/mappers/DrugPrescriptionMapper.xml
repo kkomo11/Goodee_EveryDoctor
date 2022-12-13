@@ -7,16 +7,18 @@
 	namespace="com.goodee.everydoctor.drug.prescription.DrugPrescriptionMapper">
 
 	<!-- 약목록 -->
-	<select id="findDrugPrescriptionList" resultType="DrugPrescriptionVO">
+	<select id="findDrugPrescriptionList"
+		resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG
 		ORDER BY
 		DRUGNUM
 	</select>
 
 	<!-- 약 상세정보 -->
-	<select id="findDrugPrescriptionDetail" parameterType="DrugPrescriptionVO"
-		resultType="DrugPrescriptionVO">
-		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
+	<select id="findDrugPrescriptionDetail"
+		parameterType="DrugPrescriptionVO" resultType="DrugPrescriptionVO">
+		SELECT * FROM DRUG WHERE
+		DRUGNAME = #{drugName}
 	</select>
 
 	<!-- 증상과목 -->
@@ -28,5 +30,13 @@
 	<select id="findDrugPrescriptionCategory"
 		resultType="DrugPrescriptionVO">
 		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
+	</select>
+
+	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">
+		SELECT * FROM
+		DRUGDELIVERY
+		WHERE DRUGDELIVERYNUM
+		ORDER BY RAND()
+		LIMIT 4;
 	</select>
 </mapper>

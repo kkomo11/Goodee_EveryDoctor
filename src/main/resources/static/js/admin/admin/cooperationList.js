@@ -288,7 +288,7 @@ function cooperationDetailAjax(username, medicRole){
             $("#agencyInfo").append("<strong>" + result.agencyVO.agencyInfo + "</strong>");
             $("#hiddenData").attr("data-username", username);
             $("#hiddenData").attr("data-medicRole", medicRole);
-
+            console.log(result.medicInfo);
         },
         error: function(result){
             console.log(result);

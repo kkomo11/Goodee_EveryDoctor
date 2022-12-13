@@ -11,9 +11,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
       <c:import url="../temp/boot.jsp"></c:import>
+      <!-- 지도 -->
+      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f74af817be66222985c3a1eadae6b460&libraries=services"></script>
       <!-- ========================= CSS here ========================= -->
       <link rel="stylesheet" href="/css/drug/drug.css" type="text/css" />
       <link rel="stylesheet" href="/css/admin/medic/chosen.css">
+      <link rel="stylesheet" href="/css/location/findPharmacy.css">
     </head>
 
     <body>
@@ -72,12 +75,11 @@
                     <div class="col-12">
                       <div class="google-map">
                         <label>약국위치*</label>
-                        <div class="mapouter">
-                          <div class="gmap_canvas">
+                        <div class="mapouter" style=" height:360px ">
+                          <div class="gmap_canvas" id="map" style="height:360px">
                             <iframe width="100%" height="300" id="gmap_canvas"
-                              src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
                               frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            <a href="https://123movies-to.org"></a><br>
+                            <a href="#"></a><br>
 
                             <a href="https://www.embedgooglemap.net">embed google maps wordpress</a>
                           </div>
@@ -312,6 +314,7 @@
       <!-- <script src="/js/drug.js"></script> -->
       <script src="/js/alert.js"></script>
       <script src="/js/drug/address.js"></script>
+      <script src="/js/location/findPharmacy.js"></script>
       <script src="/js/admin/medic/regist.js"></script>
       <script src="/js/admin/medic/chosen.jquery.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

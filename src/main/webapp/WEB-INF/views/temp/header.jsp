@@ -152,7 +152,7 @@
                                     <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
 								</sec:authorize>
-								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
@@ -191,20 +191,12 @@
   </div>
 </div>
 </sec:authorize>
-
-<div class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-    <div class="toast-header">
-      <img src="#" class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
+    
+<!--출력되는 웹알림 담아주는 곳 -->
+<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 75px !important; overflow-y: auto; height:400px;">
 </div>
+
+
 <!-- End Header Area -->
 
 <script type="text/javascript">

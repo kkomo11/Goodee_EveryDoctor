@@ -1,6 +1,5 @@
 package com.goodee.everydoctor.user;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -70,7 +68,7 @@ public class UserVO implements UserDetails, OAuth2User{
 	@Override
 	public Map<String, Object> getAttributes() {
 		// TODO Auto-generated method stub
-		return null;
+		return  this.attributes;
 	}
 
 	
