@@ -34,7 +34,7 @@
             let userID = Math.floor((Math.random() * 1000) + 1);
             $("#userspan").text(userID);
 
-            let urlEndPoint = 'http://localhost/subscribe?userID=' + userID;
+            let urlEndPoint = 'http://localhost:81/subscribe?userID=' + userID;
             let eventSource = new EventSource(urlEndPoint);
 
             eventSource.addEventListener("latestNews",function(event){

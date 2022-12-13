@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalCategoryVO;
+import com.goodee.everydoctor.sse.NotificationController;
 import com.goodee.everydoctor.user.UserVO;
 
 @Controller
@@ -20,6 +21,8 @@ public class PetDiagnosisController {
 
 	@Autowired
 	private PetDiagnosisService petDiagnosisService;
+	@Autowired
+	private NotificationController notificationController;
 	
 	// 의사에게 신청된 진료 리스트 요청
 	@GetMapping("reservatedList")
@@ -35,6 +38,10 @@ public class PetDiagnosisController {
 	public String inputPetDiagnosis(PetDiagnosisVO petDiagnosisVO, FileVO fileVO) throws Exception {
 		
 		int result = petDiagnosisService.inputPetDiagnosis(petDiagnosisVO, fileVO);
+
+		//웹 알림입니다(title,text,url,받는사람)
+		notificationController.dispatchEventToClients("진료신청", "새 진료신청이 들어왔습니다","/pet/home", petDiagnosisVO.getPDoctorname());
+		
 		
 		return "redirect:/pet/home";
 	}
@@ -54,7 +61,6 @@ public class PetDiagnosisController {
 		} else {
 			viewName = "redirect:/pet/profile/regist";	// 없으면 등록 폼으로 이동
 		}
-		
 		mv.setViewName(viewName);
 		
 		return mv;

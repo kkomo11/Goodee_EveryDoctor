@@ -21,4 +21,5 @@ public class AgencyVO {
 	private String agencyType;
 	
 	private MultipartFile []files;
+	private AgencyWorkHourVO agencyWorkHourVO;
 }
