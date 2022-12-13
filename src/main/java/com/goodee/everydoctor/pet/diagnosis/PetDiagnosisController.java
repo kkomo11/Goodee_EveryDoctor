@@ -21,13 +21,14 @@ public class PetDiagnosisController {
 	@Autowired
 	private PetDiagnosisService petDiagnosisService;
 	
-	// 의사에게 신청된 진료 디테일 요청
-	@GetMapping("reservatedDetail")
-	public ModelAndView findReservatedDetail(Long n) throws Exception {
+	// 해당 의사가 완료한 진료 내역 리스트 요청
+	@GetMapping("completedList")
+	public ModelAndView findCompletedList(PetDiagnosisPager petDiagnosisPager, String d) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("reservatedDetail", petDiagnosisService.findReservatedDetail(n));
-		mv.setViewName("pet/diagnosis/reservatedDetail");
+		mv.addObject("completedList", petDiagnosisService.findCompletedList(petDiagnosisPager, d));
+		mv.addObject("pager", petDiagnosisPager);
+		mv.setViewName("pet/diagnosis/completedList");
 		
 		return mv;
 	}

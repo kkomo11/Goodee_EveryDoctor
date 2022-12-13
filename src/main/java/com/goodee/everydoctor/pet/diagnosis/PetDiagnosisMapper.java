@@ -11,7 +11,9 @@ import com.goodee.everydoctor.user.UserVO;
 @Mapper
 public interface PetDiagnosisMapper {
 	
-	public PetDiagnosisVO findReservatedDetail(PetDiagnosisVO petDiagnosisVO) throws Exception;
+	public Long findCompletedListCount(PetDiagnosisPager petDiagnosisPager) throws Exception;
+	
+	public List<PetDiagnosisVO> findCompletedList(PetDiagnosisPager petDiagnosisPager) throws Exception;
 	
 	public Long findReservatedListCount(PetDiagnosisPager petDiagnosisPager) throws Exception;
 	
