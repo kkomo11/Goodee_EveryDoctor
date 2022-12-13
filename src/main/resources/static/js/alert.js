@@ -49,7 +49,9 @@ $().ready(function () {
         Swal.fire({
             icon: 'success',
             title: '약 처방이 완료되었습니다.',
-            text: 'success.',
+            text: '배송정보를 확인해주세요.',
+            timer: 40000,
+            timerProgressBar: true
         });
     });
 });

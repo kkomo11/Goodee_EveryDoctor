@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.user.address.UserAddressMapper">
+
+	<insert id="insertUserAddress" parameterType="UserAddressVO" useGeneratedKeys="true" keyColumn="ADDRESSNUM">
+		INSERT INTO USERADDRESS(ADDRESSNUM, ADDRESSNICK , USERNAME, USERMAINADDR, USERSUBADDR, USERPOST) 
+		VALUE (0, #{addressNick}, #{username}, #{userMainAddr} , #{userSubAddr}, #{userPost})
+	</insert>
+	
+	<select id="getUserAddressbyUsername" parameterType="UserVO" resultType="UserAddressVO">
+		SELECT * FROM USERADDRESS WHERE USERNAME=#{username}	
+	</select>
+	
+</mapper>

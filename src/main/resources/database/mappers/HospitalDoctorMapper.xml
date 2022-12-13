@@ -5,7 +5,7 @@
 <mapper namespace="com.goodee.everydoctor.hospital.doctor.HospitalDoctorMapper">
 
 	<select id="findDoctorList" resultMap="DoctorListResult">
-		SELECT U.USERNAME, U.NAME, U.FILENAME, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME, R.ROLENAME 
+		SELECT U.USERNAME, U.NAME, U.FILENAME, M.MEDICSPECIALTY, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME, R.ROLENAME 
 		FROM USERS U
 		INNER JOIN MEDIC M 
 		ON(U.USERNAME = M.USERNAME)
@@ -30,6 +30,10 @@
 			<id column="AGENCYNUM" property="agencyNum"/>
 			<result column="AGENCYNAME" property="agencyName"/>
 		</association>
+		<association property="medicVO" javaType="MedicVO">
+			<id column="USERNAME" property="username"/>
+			<result column="MEDICSPECIALTY" property="medicSpecialty"/>
+		</association>
 		<collection property="roles" javaType="List" ofType="String">
 			<result column="ROLENAME" property="roleName"/>
 		</collection>
@@ -40,7 +44,7 @@
 	</resultMap>
 	
 	<select id="findDoctorDetail" parameterType="HospitalDoctorVO" resultMap="DoctorDetailResult">
-		SELECT U.*, M.MEDICINFO, A.*, S.SECTIONNUM, S.SECTIONNAME
+		SELECT U.*, M.MEDICINFO, M.MEDICSPECIALTY, A.*, S.SECTIONNUM, S.SECTIONNAME
 		FROM USERS U
 		INNER JOIN MEDIC M 
 		ON(U.USERNAME = M.USERNAME)
@@ -70,6 +74,7 @@
 		<association property="medicVO" javaType="MedicVO">
 			<id column="USERNAME" property="username"/>
 			<result column="MEDICINFO" property="medicInfo"/>
+			<result column="MEDICSPECIALTY" property="medicSpecialty"/>
 		</association>
 		<collection property="hospitalSectionVOs" javaType="List" ofType="HospitalSectionVO">
 			<id column="SECTIONNUM" property="sectionNum"/>

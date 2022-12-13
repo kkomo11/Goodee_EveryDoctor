@@ -10,6 +10,8 @@ import com.goodee.everydoctor.user.UserVO;
 
 @Mapper
 public interface PetDiagnosisMapper {
+	
+	public List<PetDiagnosisVO> findReservatedList(UserVO userVO) throws Exception;
 
 	public int inputPetDiagnosis(PetDiagnosisVO petDiagnosisVO) throws Exception;
 	

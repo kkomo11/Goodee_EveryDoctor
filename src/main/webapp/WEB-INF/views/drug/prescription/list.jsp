@@ -96,8 +96,8 @@
                           <div class="item-image">
                             <img src="/images/hospital/manager.jpg" alt="#">
                             <div class="content">
-                              <h7 class="title"><a href="/drug/prescription/detail">이주은매니저${doctorVO.userVO.name}</a></h7>
-                              <span class="price">수령방식</span>
+                              <h7 class="title"><a href="/drug/prescription/detail">이주은매니저${drugPrescriptionVO.userVO.username}</a></h7>
+                              <!-- <span class="price">수령방식</span> -->
                             </div>
                           </div>
                         </div>

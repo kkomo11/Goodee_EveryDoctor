@@ -1,10 +1,10 @@
-package com.goodee.everydoctor.user;
+package com.goodee.everydoctor.user.address;
 
 import lombok.Data;
 
 @Data
 public class UserAddressVO {
-	
+	private String username;
 	private Integer addressNum;
 	private String addressNick;
 	private String userMainAddr;

@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.goodee.everydoctor.user.address.UserAddressVO;
 
 import lombok.Data;
 
