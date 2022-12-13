@@ -20,5 +20,8 @@ public class LocationService {
 	public List<AgencyVO> findPharmacyList()throws Exception{
 		return locationMapper.findPharmacyList();
 	}
-
+	//24시 동물병원
+	public List<AgencyVO> findNightPharmacy()throws Exception{
+		return locationMapper.findNightPharmacy();
+	}
 }

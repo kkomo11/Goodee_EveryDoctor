@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.sse.NotificationController;
 import com.goodee.everydoctor.user.address.UserAddressVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
 
@@ -34,6 +35,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private LogoutHandlerImpl logoutHandlerImpl;
+	@Autowired
+	private NotificationController notificationController;
 	
 	//테스트 메서드
 	@GetMapping("login")
@@ -51,6 +54,8 @@ public class UserController {
 	//회원가입 GET
 	@GetMapping("registration")
 	public void registration(@ModelAttribute UserVO userVO) {
+		
+//		notificationController.dispatchEventToClients(" 우앙 ","우다다다닥","", "Doctor");
 	}
 	
 	//일반 회원가입 처리 

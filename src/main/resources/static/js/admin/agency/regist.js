@@ -40,6 +40,8 @@ let address = $("#mainAddress").val();
 // })
 
 let count = 0;
+let hospitalSectionCount = 0;
+let petSectionCount = 0;
 
 //파일 추가 버튼 클릭하면 파일추가 폼 생성
 $("#fileAddButton").click(function(){
@@ -55,7 +57,7 @@ $("#fileAddButton").click(function(){
     }
 })
 
-//지우기 버튼 이벤트 위임
+//파일 지우기 버튼 이벤트 위임
 $("#fileAdd").on("click", ".del", function(){
     $(this).parents(".file").remove();
     count--;
@@ -65,6 +67,7 @@ const agencyRole = $("#agencyRole");
 const medicRole = $("#medicRole");
 const specialty = $("#specialty");
 const medicSectionBtn = $("#medicSectionBtn");
+const medicSection = $("#medicSection");
 //신청 버튼 클릭 시
 $("#registButton").click(function(){
     //MEDICROLE에 따라 AGENCYROLE 값이 자동으로 결정
@@ -82,7 +85,7 @@ $("#registButton").click(function(){
 
     //주소 하나로 합치기
     $("#agencyAddr").val($("#mainAddress").val()+$("#detailAddress").val());
-
+    // console.log($("#testTest").val());
     $("#form").submit();
 
 })
@@ -92,6 +95,9 @@ medicRole.change(function(){
     if(medicRole.val() == '의사'){
         specialty.empty();
         medicSectionBtn.empty();
+        medicSection.empty();
+        hospitalSectionCount = 0;
+
         let specialtyAddForm = $("#specialtyAddForm").html();
         specialty.append(specialtyAddForm);
         const medicSpecialty = $("#medicSpecialty");
@@ -109,13 +115,16 @@ medicRole.change(function(){
                 console.log(result);
             }
         });
-        medicSectionBtn.append($("#medicSectionBtnForm").html());
+        medicSectionBtn.append($("#hospitalSectionBtnForm").html());
 
         //확인
         console.log(medicSpecialty);
     }else if(medicRole.val() == '수의사'){
         specialty.empty();
         medicSectionBtn.empty();
+        medicSection.empty();
+        petSectionCount = 0;
+
         let specialtyAddForm = $("#specialtyAddForm").html();
         specialty.append(specialtyAddForm);
         const medicSpecialty = $("#medicSpecialty");
@@ -133,16 +142,51 @@ medicRole.change(function(){
                 console.log(result);
             }
         });
-        medicSectionBtn.append($("#medicSectionBtnForm").html());
+        medicSectionBtn.append($("#petSectionBtnForm").html());
     }else{
         specialty.empty();
         medicSectionBtn.empty();
     }
 })
 
-// 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
-medicSectionBtn.on("click", ".sectionAddBtn", function(){
-    console.log("진료과목 추가 버튼");
+// 병원 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
+medicSectionBtn.on("click", "#hospitalSectionAddBtn", function(){
+    if(hospitalSectionCount < 3){
+        console.log("진료과목 추가");
+
+        let hospitalSectionListForm = $("#hospitalSectionListForm").html();
+        medicSection.append(hospitalSectionListForm);
+        hospitalSectionCount++;
+    }else{
+        alert('진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
+    }
+})
+
+// 동물병원 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
+medicSectionBtn.on("click", "#petSectionAddBtn", function(){
+    if(petSectionCount < 3){
+        console.log("진료과목 추가");
+
+        let petSectionListForm = $("#petSectionListForm").html();
+        medicSection.append(petSectionListForm);
+        petSectionCount++;
+    }else{
+        alert('진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
+    }
+})
+
+//병원 진료과목 지우기 버튼 이벤트 위임
+medicSection.on("click", ".del", function(){
+    $(this).parent().prev().remove();
+    $(this).parent().remove();
+    hospitalSectionCount--;
+})
+
+//동물병원 진료과목 지우기 버튼 이벤트 위임
+medicSection.on("click", ".del", function(){
+    $(this).parent().prev().remove();
+    $(this).parent().remove();
+    petSectionCount--;
 })
 
 function secure(){
