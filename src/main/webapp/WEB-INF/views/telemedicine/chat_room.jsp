@@ -30,6 +30,20 @@
         .btn.active span:last-child  {
             display: none;
         }
+
+        .remoteWrap {
+            position: relative;
+            padding: 0;
+        }
+
+        .localWrap {
+            position: absolute;
+            height: 20%;
+            width: 20%;
+            right: 0;
+            bottom: 0;
+            padding: 0;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/telemedicine.css"/>
 </head>
@@ -84,13 +98,13 @@
 
         <div class="row justify-content-around mb-3">
             <div class="col-lg-8">
-                <div class="col-lg-12 mb-3">
-                    <!-- 내 화면 -->
-                    <video id="local_video" autoplay playsinline></video>
-                </div>
                 <!-- 상대 화면 -->
-                <div class="col-lg-12 mb-3">
+                <div class="col-lg-12 mb-3 remoteWrap">
                     <video id="remote_video" autoplay playsinline></video>
+                    <div class="col-lg-12 localWrap">
+                        <!-- 내 화면 -->
+                        <video id="local_video" autoplay playsinline></video>
+                    </div>
                 </div>
             </div>
             <!-- 채팅 자리 -->
