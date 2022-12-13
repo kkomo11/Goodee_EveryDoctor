@@ -64,6 +64,10 @@ public class Pager {
 		if(curBlock==totalBlock) {
 			this.lastNum=totalPage;
 		}
+		
+		if(totalPage == 0) {
+			this.lastNum = 1L;
+		}
 
 		//7. 이전 다음 블럭의 유무
 		if(curBlock>1) {
