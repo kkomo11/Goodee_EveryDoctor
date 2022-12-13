@@ -75,8 +75,8 @@
                 var lat = position.coords.latitude, // 위도
                     lon = position.coords.longitude; // 경도
 
-                let imageSrc="/images/location/locate.png",
-                imageSize= new kakao.maps.Size(64, 69),  //마커이미지의 크기
+                let imageSrc="/images/location/person2.png",
+                imageSize= new kakao.maps.Size(60, 59),  //마커이미지의 크기
                 imageOption ={offset: new kakao.maps.Point(27, 69)}   //마커이미지의 옵션 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
 
                 

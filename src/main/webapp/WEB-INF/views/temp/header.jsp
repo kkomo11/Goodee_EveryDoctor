@@ -136,6 +136,7 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
+                                <input id="AuthProfile" value="${member.fileName}" type="hidden">
                                 <input id="name" value="${member.username}" style="display:none;">
                                     ${member.name}님 환영합니다.
 
@@ -152,7 +153,7 @@
                                     <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
 								</sec:authorize>
-								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
@@ -192,9 +193,11 @@
 </div>
 </sec:authorize>
     
-<div id="toastAlert" class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
-
+<!--출력되는 웹알림 담아주는 곳 -->
+<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 75px !important; overflow-y: auto; height:400px;">
 </div>
+
+
 <!-- End Header Area -->
 
 <script type="text/javascript">

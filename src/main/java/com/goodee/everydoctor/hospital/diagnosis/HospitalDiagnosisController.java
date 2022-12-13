@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalHomeService;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
+import com.goodee.everydoctor.sse.NotificationController;
 
 @Controller
 @RequestMapping("/hospital/diagnosis/*")
@@ -20,6 +21,8 @@ public class HospitalDiagnosisController {
 	
 	@Autowired
 	private HospitalHomeService hospitalHomeService;
+	@Autowired
+	private NotificationController notificationController;
 
 	@GetMapping("reservation")
 	public ModelAndView loadHospitalDiagnosis(ModelAndView modelAndView, HospitalDiagnosisVO diagnosisVO) throws Exception {
@@ -27,13 +30,15 @@ public class HospitalDiagnosisController {
 		modelAndView.setViewName("hospital/diagnosis");
 		modelAndView.addObject("diagnosisVO", diagnosisVO);
 		modelAndView.addObject("sectionList", sectionList);
+		notificationController.dispatchEventToClients("새 진료신청", diagnosisVO.getDoctorName()+"님 진료신청이 들어왔습니다", "/hospital/doctor/management", "Doctor");
 		return modelAndView;
 	}
 	
 	@PostMapping("reservation")
 	public String inputHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, FileVO fileVO) throws Exception {
 		
-		
+		//웹 알림 띄우기
+		notificationController.dispatchEventToClients("진료신청",hospitalDiagnosisVO.getDansCategory(), "/hospital/doctor/management",hospitalDiagnosisVO.getDoctorName());//상단,내용,버튼url,받는사람 순
 		
 		return "redirect:/user/mydiaglist";
 	}

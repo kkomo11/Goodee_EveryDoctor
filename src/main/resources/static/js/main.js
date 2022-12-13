@@ -117,7 +117,7 @@ Author: GrayGrids
 			'<div id='+articleData.toastId+' class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
 				'<div class="toast-header">'+
 					'<strong class="me-auto">'+articleData.title+'</strong>'+
-					'<small>11 mins ago</small>'+
+					'<small class="text-muted">11 mins ago</small>'+
 					'<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
 				'</div>'+
 				'<div class="toast-body">'+
@@ -133,10 +133,12 @@ Author: GrayGrids
 
 		const toastLiveExample = document.getElementById(toastname)
 		const toast = new bootstrap.Toast(toastLiveExample)
+
         
         toast.show()
 
-		i++
+		// i++
+
         
         // notifyMe();
 

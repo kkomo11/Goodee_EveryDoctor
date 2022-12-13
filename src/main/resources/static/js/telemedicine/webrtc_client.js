@@ -33,7 +33,8 @@ let localStream;
 let localVideoTracks;
 let myPeerConnection;
 
-const username = 'test';
+const username = $("#authUsername").val();
+const userprofile = $("#AuthProfile").val();
 
 // on page load runner
 //document.ready와 같은 함수
@@ -67,7 +68,7 @@ function start() {
                     // str += "<b>" + sessionId + " : " + messageData + "</b>";
                     // str += "</div></div>";
                     let str = '<li class="right">'
-                    str += '<img src="https://via.placeholder.com/300x300" alt="#">'
+                    str += '<img src="${userprofile}" alt="#">'
                     str += '<p class="text" style="padding=20px">'+ messageData
                     str += '<span class="time">'+ hours+':'+minutes+'</span>'
                     str += '</p></li>'
@@ -76,7 +77,7 @@ function start() {
                 }
                 else{ //내가 보낸 메세지가 아닐 시
                     let str = '<li class="left">';
-                    str += '<img src="https://via.placeholder.com/300x300" alt="#">';
+                    str += '<img src="#" alt="#">';
                     str += '<p class="text"  style="padding=20px">'+ messageData
                     str += '<span class="time">'+ hours+':'+minutes+'</span>'
                     str += '</p></li>'
