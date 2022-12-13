@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-12">
-					<c:import url="../../user/sidebar.jsp"></c:import>
+					<c:import url="./sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">

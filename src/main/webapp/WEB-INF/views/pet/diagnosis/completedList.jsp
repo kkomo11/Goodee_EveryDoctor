@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-12">
-					<c:import url="../../user/sidebar.jsp"></c:import>
+					<c:import url="./sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
@@ -82,9 +82,6 @@
                                         <div class="col-lg-2 col-md-2 col-12 align-right">
                                             <p>완료시간</p>
                                         </div>
-                                        <!-- <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <p>행동</p>
-                                        </div> -->
                                     </div>
                                 </div>
                                 <!-- End List Title -->
@@ -105,9 +102,6 @@
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
 		                                            <h3 class="title"><a href="/pet/diagnosis/completedDetail?n=${completed.PDansNum }">${completed.PUsername}</a></h3>
 		                                            <span class="price">${completed.PDansReqTime}</span>
-		                                            <%-- <a class="badge bg-info" data-bs-toggle="collapse" href="#collapseExample${reservated.PDansNum }" role="button" aria-expanded="false" aria-controls="collapseExample${reservated.PDansNum }">
-		                                            	상담 내용 보기
-		                                            </a> --%>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -123,19 +117,7 @@
 		                                <div class="col-lg-2 col-md-2 col-12 align-right">
 		                                    <p>${completed.PDansEndTime }</p>
 		                                </div>
-		                                <!-- <div class="col-lg-3 col-md-2 col-12 align-right">
-		                                    <ul class="action-btn">
-		                                        <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-		                                        <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-		                                        <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-		                                    </ul>
-		                                </div> -->
 		                            </div>
-		                            <%-- <div class="collapse" id="collapseExample${reservated.PDansNum }">
-										<div class="card card-body">
-											${reservated.PDansContent }
-										</div>
-									</div> --%>
 	                            </div>
 	                            <!-- End Single List -->
                             </c:forEach>
