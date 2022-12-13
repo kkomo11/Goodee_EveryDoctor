@@ -28,6 +28,7 @@ public class HospitalDiagnosisController {
 	private HospitalHomeService hospitalHomeService;
 	@Autowired
 	private HospitalDiagnosisService hospitalDiagnosisService;
+	@Autowired
 	private NotificationController notificationController;
 
 	@GetMapping("reservation")
