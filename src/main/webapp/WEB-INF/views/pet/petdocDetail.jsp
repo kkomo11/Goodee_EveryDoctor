@@ -228,6 +228,7 @@
             });
         });
         
+        //지도 JS
         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
         mapOption = {
             center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표

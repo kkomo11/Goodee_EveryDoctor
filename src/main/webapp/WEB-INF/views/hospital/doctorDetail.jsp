@@ -201,7 +201,7 @@
         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
         mapOption = {
             center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표
-            level : 4 //지도 확대레벨 
+            level : 2 //지도 확대레벨 
         };
     	
    		 let map = new kakao.maps.Map(mapContainer,mapOption);   //지도 생성
@@ -222,10 +222,21 @@
    				
    				var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
    				
+                //마커 이미지 설정
+                let imageSrc = "/images/location/hospital.png",
+                    imageSize = new kakao.maps.Size(50,50),
+                    imageOption = {offer: new kakao.maps.Point(27,69)};
+
+                //마커 이미지 생성
+                let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption),
+   		 	         markerPosition = new kakao.maps.LatLng(coords); 
+
+
    				//결과값으로 받은 위치를 마커로 표시
    				let marker = new kakao.maps.Marker({
    					map:map,
-   					position :coords
+   					position :coords,
+                    image: markerImage
    				});
    		 //마커가 지도위에 표시되도록 설정
    		 map.setCenter(coords);

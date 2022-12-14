@@ -144,6 +144,7 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
+                                <input type="hidden" id="AuthProfile" value="${member.fileName}">
                                 <input id="authUsername" value="${member.username}" style="display:none;">
                                     ${member.name}님 환영합니다.
 

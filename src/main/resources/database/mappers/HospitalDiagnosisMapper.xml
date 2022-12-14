@@ -9,4 +9,13 @@
 			VALUES (NULL, #{username}, #{dansCategory}, #{dansContent}, #{doctorName}, NOW(), 0)
 	</insert>
 	
+	<select id="findHospitalReservatedList" parameterType="HospitalDoctorVO" resultType="HospitalDiagnosisVO">
+		SELECT D.*,U.NAME AS PATIENT
+		FROM DIAGNOSIS D
+			 INNER JOIN
+			 USERS U 
+			ON D.DOCTORNAME = U.USERNAME 
+		WHERE D.DOCTORNAME  = #{username} AND D.DANSSTATUS = 0
+		ORDER BY D.DANSREQTIME ASC
+	</select>
 </mapper>

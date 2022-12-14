@@ -1,11 +1,14 @@
 package com.goodee.everydoctor.hospital.diagnosis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
 import com.goodee.everydoctor.util.FileManager;
 
 @Service
@@ -40,6 +43,11 @@ public class HospitalDiagnosisService {
 		}
 		
 		return result;
+	}
+	//요청된 진료 리스트
+	public List<HospitalDoctorVO> findHospitalReservatedList(HospitalDoctorVO hospitalDoctorVO)throws Exception{
+		
+		return  hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDoctorVO);
 	}
 
 }
