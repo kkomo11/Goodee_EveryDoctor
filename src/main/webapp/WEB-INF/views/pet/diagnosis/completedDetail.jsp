@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">${completedDetail.PUsername }</h2>
+                            <h2 class="title">${completedDetail.userVO.name }</h2>
                             <p class="location"><i class="lni lni-map-marker"></i><a>비대면</a></p>
                             <h3 class="price">${completedDetail.PDansCost }원</h3>
                             <div class="list-info">

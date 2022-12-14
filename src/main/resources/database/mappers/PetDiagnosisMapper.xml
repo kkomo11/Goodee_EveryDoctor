@@ -84,7 +84,7 @@
 	</select>
 
 	<select id="findCompletedList" parameterType="PetDiagnosisPager" resultType="PetDiagnosisVO">
-		SELECT *
+		SELECT PD.*, U.NAME AS PROTECTORNAME
 		FROM PETDIAGNOSIS PD
 		INNER JOIN USERS U 
 		ON (PD.PUSERNAME = U.USERNAME)
@@ -103,8 +103,10 @@
 	</select>
 
 	<select id="findReservatedList" parameterType="PetDiagnosisPager" resultType="PetDiagnosisVO">
-		SELECT *
+		SELECT PD.*, U.NAME AS PROTECTORNAME
 		FROM PETDIAGNOSIS PD
+		INNER JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
 		WHERE (PD.PDOCTORNAME = #{username}) AND PD.PDANSSTATUS = 0
 		ORDER BY PD.PDANSREQTIME ASC
 		LIMIT #{startRow}, #{perPage}

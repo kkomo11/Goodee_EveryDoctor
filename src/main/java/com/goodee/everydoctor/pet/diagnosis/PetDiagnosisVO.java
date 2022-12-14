@@ -44,4 +44,6 @@ public class PetDiagnosisVO {
 	
 	private List<DrugVO> petFills;		// 반려동물 약 처방 내역
 	
+	private String protectorName;		// 반려동물 보호자 이름
+	
 }

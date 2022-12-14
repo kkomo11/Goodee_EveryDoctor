@@ -56,7 +56,7 @@
                 	<div class="category-sidebar" style="margin-bottom: 1rem;">
 	                	<!-- Start Single Widget -->
 	                    <div class="single-widget search">
-	                        <h3>환자명 검색</h3>
+	                        <h3>보호자명 검색</h3>
 	                        <form action="./completedList" method="get">
 	                        	<input type="hidden" name="d" value="${user.username }">
 	                        	<input type="hidden" name="kind" value="name">
@@ -113,7 +113,7 @@
 		                                            
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
-		                                            <h3 class="title"><a href="/pet/diagnosis/completedDetail?n=${completed.PDansNum }">${completed.PUsername}</a></h3>
+		                                            <h3 class="title"><a href="/pet/diagnosis/completedDetail?n=${completed.PDansNum }">${completed.protectorName}</a></h3>
 		                                            <span class="price">${completed.reqTimeString}</span>
 		                                        </div>
 		                                    </div>
