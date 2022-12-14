@@ -111,7 +111,8 @@ function petdocListAjax(kind){
             if(item["userVO"].fileName != "" && item["userVO"].fileName != null){
                 temp = temp.replace("{userFileName}", item["userVO"].fileName);
             } else {
-                temp = temp.replace("{userFileName}", "https://via.placeholder.com/600x400");
+                temp = temp.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                // https://via.placeholder.com/600x400
             } // 프로필 사진이 없는 경우 기본 경로
             
             list.append(temp);
@@ -165,7 +166,8 @@ function petdocPagingAjax(kind, page){
             if(item["userVO"].fileName != "" && item["userVO"].fileName != null){
                 temp = temp.replace("{userFileName}", item["userVO"].fileName);
             } else {
-                temp = temp.replace("{userFileName}", "https://via.placeholder.com/600x400");
+                temp = temp.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                // https://via.placeholder.com/600x400
             } // 프로필 사진이 없는 경우 기본 경로
 
             list.append(temp);

@@ -53,6 +53,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-12">
+                	<div class="category-sidebar" style="margin-bottom: 1rem;">
+	                	<!-- Start Single Widget -->
+	                    <div class="single-widget search">
+	                        <h3>환자명 검색</h3>
+	                        <form action="./completedList" method="get">
+	                        	<input type="hidden" name="d" value="${user.username }">
+	                        	<input type="hidden" name="kind" value="name">
+	                            <input type="text" placeholder="Search Here..." name="search">
+	                            <button type="submit"><i class="lni lni-search-alt"></i></button>
+	                        </form>
+	                    </div>
+	                    <!-- End Single Widget -->
+                    </div>
 					<c:import url="./sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
@@ -67,10 +80,10 @@
                                 <!-- Start Item List Title -->
                                 <div class="item-list-title">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="col-lg-5 col-md-5 col-12">
                                             <p>진료</p>
                                         </div>
-                                        <div class="col-lg-1 col-md-1 col-12">
+                                        <div class="col-lg-2 col-md-2 col-12">
                                             <p>분류</p>
                                         </div>
                                         <div class="col-lg-1 col-md-1 col-12">
@@ -89,23 +102,23 @@
                              	<!-- Start Single List -->
 	                            <div class="single-item-list">
 		                            <div class="row align-items-center">
-		                                <div class="col-lg-6 col-md-6 col-12">
+		                                <div class="col-lg-5 col-md-5 col-12">
 		                                    <div class="item-image">
 		                                        <c:if test="${completed.PDansFiles.size() > 0 }">
 		                                        	<img src="/file/PETDANS/${completed.PDansFiles[0].fileName }" alt="#">
 		                                        </c:if>
 		                                        <c:if test="${completed.PDansFiles.size() <= 0 }">
-		                                        	<img src="https://via.placeholder.com/100x100" alt="#">
+		                                        	<img src="/images/pet/home/website_icon.svg" alt="#">
 		                                        </c:if>
 		                                            
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
 		                                            <h3 class="title"><a href="/pet/diagnosis/completedDetail?n=${completed.PDansNum }">${completed.PUsername}</a></h3>
-		                                            <span class="price">${completed.PDansReqTime}</span>
+		                                            <span class="price">${completed.reqTimeString}</span>
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <div class="col-lg-1 col-md-1 col-12">
+		                                <div class="col-lg-2 col-md-2 col-12">
 		                                    <p>${completed.PDansCategory}</p>
 		                                </div>
 		                                <div class="col-lg-1 col-md-1 col-12">
@@ -115,7 +128,7 @@
 		                                    <p>${completed.PDansCost }</p>
 		                                </div>
 		                                <div class="col-lg-2 col-md-2 col-12 align-right">
-		                                    <p>${completed.PDansEndTime }</p>
+		                                    <p>${completed.endTimeString }</p>
 		                                </div>
 		                            </div>
 	                            </div>
@@ -129,13 +142,13 @@
                                 <div class="pagination left" style="margin-left: 1rem;">
                                     <ul class="pagination-list">
                                         <c:if test="${pager.pre }">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
+                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.startNum - 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-left"></i></a></li>
                                         </c:if>
                                         <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${i }">${i }</a></li>
+                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${i }&kind=${pager.kind}&search=${pager.search}">${i }</a></li>
                                         </c:forEach>
                                         <c:if test="${pager.next }">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
+                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.lastNum + 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-right"></i></a></li>
                                         </c:if>
                                     </ul>
                                 </div>
