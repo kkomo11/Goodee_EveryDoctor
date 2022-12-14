@@ -12,5 +12,6 @@ public class UserAddressVO {
 	private Integer userPost;
 	private String addressReceiver;
 	private String addressPhone;
+	private Integer idt; // 식별자 : 몇번째 주소니?
 
 }

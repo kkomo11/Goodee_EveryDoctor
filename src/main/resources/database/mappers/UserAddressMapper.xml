@@ -13,4 +13,8 @@
 		SELECT * FROM USERADDRESS WHERE USERNAME=#{username}	
 	</select>
 	
+	<select id="getOneUserAddressbyUsername" parameterType="UserAddressVO" resultType="UserAddressVO">
+		SELECT * FROM USERADDRESS WHERE USERNAME=#{username} ORDER BY ADDRESSNUM ASC LIMIT #{idt},1
+	</select>
+	
 </mapper>
