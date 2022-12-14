@@ -100,7 +100,14 @@ public class ConsultService {
 		pager.getNum(totalCount);
 		pager.getRowNum();
 		
-		return consultMapper.findConsultList(pager);
+		List<ConsultVO> consultList = consultMapper.findConsultList(pager);
+		
+		for(ConsultVO c : consultList) {
+			List<FileVO> files = consultMapper.findFile(c);
+			c.setConsultFiles(files);
+		}
+		
+		return consultList;
 	}
 	
 	public List<HospitalCategoryVO> findAllCategories() throws Exception{

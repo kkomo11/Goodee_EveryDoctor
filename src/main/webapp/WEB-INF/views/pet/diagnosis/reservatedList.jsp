@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-12">
-					<c:import url="../../user/sidebar.jsp"></c:import>
+					<c:import url="./sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
@@ -67,10 +67,10 @@
                                 <!-- Start Item List Title -->
                                 <div class="item-list-title">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="col-lg-5 col-md-5 col-12">
                                             <p>진료</p>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
+                                        <div class="col-lg-3 col-md-3 col-12">
                                             <p>분류</p>
                                         </div>
                                         <div class="col-lg-1 col-md-1 col-12">
@@ -86,26 +86,26 @@
                              	<!-- Start Single List -->
 	                            <div class="single-item-list">
 		                            <div class="row align-items-center">
-		                                <div class="col-lg-6 col-md-6 col-12">
+		                                <div class="col-lg-5 col-md-5 col-12">
 		                                    <div class="item-image">
 		                                        <c:if test="${reservated.PDansFiles.size() > 0 }">
 		                                        	<img src="/file/PETDANS/${reservated.PDansFiles[0].fileName }" alt="#">
 		                                        </c:if>
 		                                        <c:if test="${reservated.PDansFiles.size() <= 0 }">
-		                                        	<img src="https://via.placeholder.com/100x100" alt="#">
+		                                        	<img src="/images/pet/home/website_icon.svg" alt="#">
 		                                        </c:if>
 		                                            
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
-		                                            <h3 class="title"><a>${reservated.PUsername}</a></h3>
-		                                            <span class="price">${reservated.PDansReqTime}</span>
+		                                            <h3 class="title"><a>${reservated.protectorName}</a></h3>
+		                                            <span class="price">${reservated.reqTimeString}</span>
 		                                            <a class="badge bg-info" data-bs-toggle="collapse" href="#collapseExample${reservated.PDansNum }" role="button" aria-expanded="false" aria-controls="collapseExample${reservated.PDansNum }">
 		                                            	상담 내용 보기
 		                                            </a>
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <div class="col-lg-2 col-md-2 col-12">
+		                                <div class="col-lg-3 col-md-3 col-12">
 		                                    <p>${reservated.PDansCategory}</p>
 		                                </div>
 		                                <div class="col-lg-1 col-md-1 col-12">
