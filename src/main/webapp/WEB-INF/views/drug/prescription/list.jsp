@@ -106,14 +106,15 @@
                           </div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                          <p>Car</p>
+                          <p>처방전</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                          <p>Vehicle</p>
+                          <p>받아오기</p>
                         </div>
                         <div class="col-lg-3 col-md-2 col-12 align-right">
                           <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>  
+                            <p>조제대기</p>
+                            <!-- <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>   -->
                           </ul>
                         </div>
                       </div>

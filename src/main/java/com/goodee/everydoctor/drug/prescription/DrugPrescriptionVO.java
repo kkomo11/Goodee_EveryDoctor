@@ -1,16 +1,9 @@
 package com.goodee.everydoctor.drug.prescription;
 
-import com.goodee.everydoctor.user.UserVO;
-
 import lombok.Data;
 
 @Data
 public class DrugPrescriptionVO {
-	
-	//운송장번호
-	private Long drugDeliveryNum;
-	//주문번호
-	private Long payNum;
 		
 	//약번호
 	private Long drugNum;
@@ -23,6 +16,18 @@ public class DrugPrescriptionVO {
 	//약주의사항
 	private String drugCare;
 		
-	private UserVO userVO;
+	//환자명
+	private String username;
+	//주소
+	private String userMainAddr;
+	//상세주소
+	private String userSubAddr;
+	//우편번호
+	private Integer userPost;
+	
+	//운송장번호
+		private Long drugDeliveryNum;
+		//주문번호
+		private Long payNum;
 
 }

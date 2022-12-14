@@ -45,13 +45,13 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="breadcrumbs-content">
-                <h1 class="page-title">진료내역</h1>
+                <h1 class="page-title">조제내역</h1>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
                 <li><a href="/">Home</a></li>
-                <li>진료내역</li>
+                <li>조제내역</li>
               </ul>
             </div>
           </div>
@@ -67,7 +67,7 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">진료접수</h3>
+                  <h3 class="block-title">조제접수</h3>
                   <div class="inner-block">
                     <!-- Start Post Ad Tab -->
                     <div class="post-ad-tab">

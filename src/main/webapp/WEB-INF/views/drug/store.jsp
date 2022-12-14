@@ -213,16 +213,16 @@
                               <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                   data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                  <span>약을 받을 수 있는 방법은 5가지에요.</span><i class="lni lni-plus"></i>
+                                  <span>약을 받을 수 있는 방법은 4가지에요.</span><i class="lni lni-plus"></i>
                                 </button>
                               </h2>
                               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                  <p>[퀵으로 빠르게 받기]</p>
+                                  <!-- <p>[퀵으로 빠르게 받기]</p>
                                   <p>평일 오후 9시, 주말 오후 8시까지 약값을 결제하면 처방약이 당일 퀵으로 배송돼요.
                                     퀵비는 8.000원이지만 지역,상황(우천), 주말, 시간 등에 따라 달라질 수 있어요.
-                                  </p>
+                                  </p> -->
                                   <p>[새벽배송으로 내일 아침에 받기]</p>
                                   <p>평일 오후 7시(일요일 포함), 토요일 오후 3시 까지 약값을 결제하면 처방약이 다음날 아침7시까지 배송돼요.
                                     배송비는 4.000원이에요.
@@ -284,8 +284,8 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                   <p>지역에 따라 배송 소요시간은 달라질 수 있으나 평균적으로는 아래와 같아요.</p>
-                                  <p>[퀵배달]</p>
-                                  <p>평균 3시간 이내</p>
+                                  <!-- <p>[퀵배달]</p>
+                                  <p>평균 3시간 이내</p> -->
                                   <p>[새벽 배송]</p>
                                   <p>다음 날 아침 7시까지</p>
                                   <p>[오늘 배송]</p>

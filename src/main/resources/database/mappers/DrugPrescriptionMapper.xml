@@ -6,7 +6,7 @@
 <mapper
 	namespace="com.goodee.everydoctor.drug.prescription.DrugPrescriptionMapper">
 
-	<!-- 약목록 -->
+	<!-- 진료목록 -->
 	<select id="findDrugPrescriptionList"
 		resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG
@@ -14,14 +14,14 @@
 		DRUGNUM
 	</select>
 
-	<!-- 약 상세정보 -->
+	<!-- 진료 상세정보 -->
 	<select id="findDrugPrescriptionDetail"
 		parameterType="DrugPrescriptionVO" resultType="DrugPrescriptionVO">
-		SELECT * FROM DRUG WHERE
-		DRUGNAME = #{drugName}
+		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>
 	
-	<!--운송장번호  -->
+
+	<!--운송장번호 -->
 	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">
 		SELECT * FROM
 		DRUGDELIVERY
@@ -29,15 +29,11 @@
 		ORDER BY RAND()
 		LIMIT 4;
 	</select>
-	
+
 	<!-- 증상과목 -->
-<!--  	<select id="findHospitalSection"
-		resultType="HospitalSectionVO">
-		SELECT * FROM SECTION WHERE SECTIONKIND=0
-	</select>  -->
+	<!-- <select id="findHospitalSection" resultType="HospitalSectionVO"> SELECT 
+		* FROM SECTION WHERE SECTIONKIND=0 </select> -->
 	<!-- 진료과목 -->
-<!--  	<select id="findHospitalCategory"
-		resultType="HospitalCategoryVO">
-		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
-	</select>  -->
+	<!-- <select id="findHospitalCategory" resultType="HospitalCategoryVO"> 
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0 </select> -->
 </mapper>
