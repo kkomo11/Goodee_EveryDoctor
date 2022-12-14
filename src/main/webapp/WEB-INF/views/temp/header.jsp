@@ -4,6 +4,9 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- Start Header Area -->
 <header class="header navbar-area">
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="Principal" var="member"/>
+	</sec:authorize>
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
@@ -79,17 +82,22 @@
                                       </li>
                                     </ul>
                                 </li>
+                                <sec:authorize access="hasAnyRole('DOCTOR', 'PETDOC')">
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">의사</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
-                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
-                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
-                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
+                                          <sec:authorize access="hasRole('DOCTOR')">
+                                          <li class="nav-item"><a href="item-listing-grid.html">의사</a></li>
+                                          </sec:authorize>
+                                          <sec:authorize access="hasRole('PETDOC')">
+                                          <li class="nav-item"><a href="/pet/diagnosis/reservatedList?d=${member.username }">수의사</a></li>
+                                          </sec:authorize>
                                       </ul>
                                 </li>
+                                </sec:authorize>
                                 <li class="nav-item">
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-4"

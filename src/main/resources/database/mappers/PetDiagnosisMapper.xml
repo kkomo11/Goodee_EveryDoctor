@@ -4,20 +4,29 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper">
 
-	<select id="findCompletedListCount" parameterType="PetDiagnosisPager" resultType="Long">
-		SELECT COUNT(PDANSNUM) FROM PETDIAGNOSIS WHERE PDOCTORNAME = #{username} AND PDANSSTATUS = 1
+	<select id="findPetFills" parameterType="PetDiagnosisVO" resultType="DrugVO">
+		SELECT DR.*
+		FROM PETFILLS PL
+		INNER JOIN DRUG DR
+		ON (PL.DRUGNUM = DR.DRUGNUM)
+		WHERE PL.PDANSNUM = #{pDansNum}
 	</select>
 
-	<select id="findCompletedList" parameterType="PetDiagnosisPager" resultMap="findCompletedListResult">
-		SELECT *
+	<select id="findCompletedDetail" parameterType="PetDiagnosisVO" resultMap="findCompletedDetailResult">
+		SELECT PD.*, P.*, PB.*, PB2.PETBIONAME AS REFBIONAME, U.NAME, U.PHONE, U.EMAIL, U.FILENAME AS USERFILENAME 
 		FROM PETDIAGNOSIS PD
-		LEFT JOIN PETDANSFILE PF 
-		ON(PD.PDANSNUM = PF.PETDANSNUM)
-		WHERE (PD.PDOCTORNAME = #{username}) AND PD.PDANSSTATUS = 1
-		ORDER BY PD.PDANSENDTIME DESC
+		INNER JOIN PET P
+		ON (PD.PETNUM = P.PETNUM)
+		INNER JOIN PETBIO PB 
+		ON (P.PETBIONUM = PB.PETBIONUM)
+		INNER JOIN PETBIO PB2
+		ON (PB.PETBIONUMREF = PB2.PETBIONUM)
+		INNER JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
+		WHERE PD.PDANSNUM = #{pDansNum}
 	</select>
 	
-	<resultMap type="PetDiagnosisVO" id="findCompletedListResult">
+	<resultMap type="PetDiagnosisVO" id="findCompletedDetailResult">
 		<id column="PDANSNUM" property="pDansNum"/>
 		<result column="PUSERNAME" property="pUsername"/>
 		<result column="PETNUM" property="petNum"/>
@@ -30,41 +39,78 @@
 		<result column="PDANSENDTIME" property="pDansEndTime"/>
 		<result column="PDANSCOST" property="pDansCost"/>
 		<result column="PDANSSTATUS" property="pDansStatus"/>
-		<collection property="pDansFiles" javaType="List" ofType="FileVO">
-			<id column="PETDANSFILENUM" property="fileNum"/>
-			<result column="PETDANSFILENAME" property="fileName"/>
-			<result column="PETDANSFILEORINAME" property="fileOriName"/>
-		</collection>
+		<result column="REFBIONAME" property="refBioName"/>
+		<association property="petVO" javaType="PetVO">
+			<result column="PETNAME" property="petName"/>
+			<result column="PETBIRTH" property="petBirth"/>
+			<result column="PETAGE" property="petAge"/>
+			<result column="PETSEX" property="petSex"/>
+			<result column="NEUTERED" property="neutered"/>
+			<result column="VACCINNATION" property="vaccinnation"/>
+		</association>
+		<association property="petBioVO" javaType="PetBioVO">
+			<id column="PETBIONUM" property="petBioNum"/>
+			<result column="PETBIONUMREF" property="petBioNumRef"/>
+			<result column="PETBIONAME" property="petBioName"/>
+		</association>
+		<association property="userVO" javaType="UserVO">
+			<result column="NAME" property="name"/>
+			<result column="PHONE" property="phone"/>
+			<result column="EMAIL" property="email"/>
+			<result column="USERFILENAME" property="fileName"/>
+		</association>
 	</resultMap>
+
+	<sql id="searchUser">
+		AND
+		<choose>
+			<when test="kind == 'name'">
+				U.NAME
+			</when>
+			<otherwise>
+				U.NAME
+			</otherwise>
+		</choose>
+		LIKE CONCAT('%', #{search}, '%')
+	</sql>
+
+	<select id="findCompletedListCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PDANSNUM) 
+		FROM PETDIAGNOSIS PD
+		INNER JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
+		WHERE PD.PDOCTORNAME = #{username} AND PD.PDANSSTATUS = 1 
+		<include refid="searchUser"></include>
+	</select>
+
+	<select id="findCompletedList" parameterType="PetDiagnosisPager" resultType="PetDiagnosisVO">
+		SELECT PD.*, U.NAME AS PROTECTORNAME
+		FROM PETDIAGNOSIS PD
+		INNER JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
+		WHERE (PD.PDOCTORNAME = #{username}) AND PD.PDANSSTATUS = 1
+		<include refid="searchUser"></include>
+		ORDER BY PD.PDANSENDTIME DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<select id="findFile" parameterType="PetDiagnosisVO" resultType="FileVO">
+		SELECT PETDANSFILENUM AS FILENUM, PETDANSFILENAME AS FILENAME, PETDANSFILEORINAME AS ORINAME FROM PETDANSFILE WHERE PETDANSNUM = #{pDansNum}
+	</select>
 
 	<select id="findReservatedListCount" parameterType="PetDiagnosisPager" resultType="Long">
 		SELECT COUNT(PDANSNUM) FROM PETDIAGNOSIS WHERE PDOCTORNAME = #{username} AND PDANSSTATUS = 0
 	</select>
 
-	<select id="findReservatedList" parameterType="PetDiagnosisPager" resultMap="findReservatedListResult">
-		SELECT *
+	<select id="findReservatedList" parameterType="PetDiagnosisPager" resultType="PetDiagnosisVO">
+		SELECT PD.*, U.NAME AS PROTECTORNAME
 		FROM PETDIAGNOSIS PD
-		LEFT JOIN PETDANSFILE PF 
-		ON(PD.PDANSNUM = PF.PETDANSNUM)
+		INNER JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
 		WHERE (PD.PDOCTORNAME = #{username}) AND PD.PDANSSTATUS = 0
 		ORDER BY PD.PDANSREQTIME ASC
+		LIMIT #{startRow}, #{perPage}
 	</select>
-	
-	<resultMap type="PetDiagnosisVO" id="findReservatedListResult">
-		<id column="PDANSNUM" property="pDansNum"/>
-		<result column="PUSERNAME" property="pUsername"/>
-		<result column="PETNUM" property="petNum"/>
-		<result column="PDOCTORNAME" property="pDoctorname"/>
-		<result column="PDANSCATEGORY" property="pDansCategory"/>
-		<result column="PDANSCONTENT" property="pDansContent"/>
-		<result column="PDANSREQTIME" property="pDansReqTime"/>
-		<result column="PDANSSTATUS" property="pDansStatus"/>
-		<collection property="pDansFiles" javaType="List" ofType="FileVO">
-			<id column="PETDANSFILENUM" property="fileNum"/>
-			<result column="PETDANSFILENAME" property="fileName"/>
-			<result column="PETDANSFILEORINAME" property="fileOriName"/>
-		</collection>
-	</resultMap>
 
 	<insert id="inputPetDiagnosis" parameterType="PetDiagnosisVO" useGeneratedKeys="true" keyProperty="pDansNum">
 		INSERT INTO PETDIAGNOSIS(PDANSNUM, PUSERNAME, PETNUM, PDOCTORNAME, PDANSCATEGORY, PDANSCONTENT, PDANSREQTIME, PDANSSTATUS)
