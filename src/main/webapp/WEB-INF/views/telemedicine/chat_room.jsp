@@ -44,6 +44,10 @@
             bottom: 0;
             padding: 0;
         }
+
+        .video-sticky {
+            position: sticky;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/telemedicine.css"/>
 </head>
