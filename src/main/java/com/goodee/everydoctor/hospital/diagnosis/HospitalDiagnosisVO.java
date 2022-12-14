@@ -16,4 +16,5 @@ public class HospitalDiagnosisVO {
 	private String username;
 	private String doctorName;
 	private Long dansStatus;
+	private String patient;
 }
