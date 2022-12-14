@@ -166,7 +166,7 @@
     <script type="text/template" id="consultAnswerTemplate">
 		<li>
         	<div class="comment-img">
-            	<img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="img">
+            	<img src="{userFileName}" class="rounded-circle" alt="img">
             </div>
             <div class="comment-desc">
             	<div class="desc-top">

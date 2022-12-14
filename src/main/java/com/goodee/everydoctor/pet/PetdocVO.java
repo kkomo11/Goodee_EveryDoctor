@@ -12,7 +12,7 @@ public class PetdocVO {
 
 	private UserVO userVO;
 	private MedicVO medicVO;
-	private AgencyVO agencyVO;
+	private AgencyVO agencyVO;	//AgencyWorkHourVO 포함됨
 	private HospitalSectionVO hospitalSectionVO;
 	
 }

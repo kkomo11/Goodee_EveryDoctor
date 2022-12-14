@@ -3,9 +3,10 @@ package com.goodee.everydoctor.telemedicine;
 import java.util.Objects;
 
 public class WebSocketMessage {
-    private String from;
-    private String type;
-    private String data;
+    private String from; //작성자
+    private String type; //text 메세지
+    private String data; //채팅내용
+    private String fileName; //프로필 사진
     private Object candidate;
     private Object sdp;
 
@@ -15,11 +16,13 @@ public class WebSocketMessage {
     public WebSocketMessage(final String from,
                             final String type,
                             final String data,
+                            final String fileName,
                             final Object candidate,
                             final Object sdp) {
         this.from = from;
         this.type = type;
         this.data = data;
+        this.fileName = fileName;
         this.candidate = candidate;
         this.sdp = sdp;
     }
@@ -48,7 +51,15 @@ public class WebSocketMessage {
         this.data = data;
     }
 
-    public Object getCandidate() {
+    public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public Object getCandidate() {
         return candidate;
     }
 
@@ -72,6 +83,7 @@ public class WebSocketMessage {
         return Objects.equals(getFrom(), message.getFrom()) &&
                 Objects.equals(getType(), message.getType()) &&
                 Objects.equals(getData(), message.getData()) &&
+                Objects.equals(getFileName(), message.getFileName()) &&
                 Objects.equals(getCandidate(), message.getCandidate()) &&
                 Objects.equals(getSdp(), message.getSdp());
     }
@@ -79,7 +91,7 @@ public class WebSocketMessage {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getFrom(), getType(), getData(), getCandidate(), getSdp());
+        return Objects.hash(getFrom(), getType(), getData(),getFileName(), getCandidate(), getSdp());
     }
 
     @Override
@@ -88,6 +100,7 @@ public class WebSocketMessage {
                 "from='" + from + '\'' +
                 ", type='" + type + '\'' +
                 ", data='" + data + '\'' +
+                ", fileName='" + fileName + '\'' +
                 ", candidate=" + candidate +
                 ", sdp=" + sdp +
                 '}';

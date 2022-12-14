@@ -112,12 +112,12 @@
                 </div>
             </div>
             <!-- 채팅 자리 -->
-            <div class="messages-body col-lg-4" style="height:900px">
+            <div class="messages-body col-lg-4" style="height:900px; width:420px;">
                 <div class="row" style="height:90%">
                     <div style="height:80%">
                         <!-- Start Chat List -->
                         <div class="chat-list" style="height:90%">
-                            <ul class="single-chat-head" id="msgArea" style="height:80%">
+                            <ul class="single-chat-head" id="msgArea" style="height:90%">
                             </ul>
                             <div class="reply-block">
                                 <input name="reply" type="text" id="msg" placeholder="Type your message here...">

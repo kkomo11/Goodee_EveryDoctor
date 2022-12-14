@@ -64,7 +64,7 @@ public class SignalHandler extends TextWebSocketHandler {
         // to establish peer-to-peer connection, otherwise they wait for a counterpart
     
 //    	list.add(session); //채팅
-        sendMessage(session, new WebSocketMessage("Server", MSG_TYPE_JOIN, Boolean.toString(!sessionIdToRoomMap.isEmpty()), null, null));
+        sendMessage(session, new WebSocketMessage("Server", MSG_TYPE_JOIN, Boolean.toString(!sessionIdToRoomMap.isEmpty()),null, null, null));
     }
 
     @Override
@@ -76,11 +76,14 @@ public class SignalHandler extends TextWebSocketHandler {
             String userName = message.getFrom(); // origin of the message
             String data = message.getData(); // payload
 
+            logger.info("textMessage: "+textMessage.getPayload());
             Room room;
             switch (message.getType()) {
                 // text message from client has been received
                 case MSG_TYPE_TEXT:
+                	logger.info("messageToString : ", message.toString());
                     logger.info("[ws] Text message: {}", message.getData());
+                    logger.info("text fileName : {}", message.getFileName());
                     // message.data is the text sent by client
                     // process text message if needed
                     Room rm2 = sessionIdToRoomMap.get(session.getId());
@@ -119,6 +122,7 @@ public class SignalHandler extends TextWebSocketHandler {
                                                 userName,
                                                 message.getType(),
                                                 data,
+                                                null,
                                                 candidate,
                                                 sdp));
                             }

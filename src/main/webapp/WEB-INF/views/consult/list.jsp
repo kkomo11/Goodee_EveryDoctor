@@ -186,7 +186,7 @@
 			                                                    	<img src="/file/CONSULT/${consultItem.consultFiles[0].fileName }" alt="#">
 			                                                    </c:if>
 			                                                    <c:if test="${consultItem.consultFiles.size() <= 0 }">
-			                                                    	<img src="https://via.placeholder.com/600x400" alt="#">
+			                                                    	<img src="/images/pet/home/website_icon.svg" alt="#" style="height: 10rem;">
 			                                                    </c:if>
 	                                                        </a>
 	                                                        <i class=" cross-badge lni lni-bolt"></i>
@@ -256,7 +256,7 @@
 			                                                        		<img src="/file/CONSULT/${consultItem.consultFiles[0].fileName }" alt="#">
 			                                                        	</c:if>
 			                                                        	<c:if test="${consultItem.consultFiles.size() <= 0 }">
-			                                                        		<img src="https://via.placeholder.com/600x400" alt="#">
+			                                                        		<img src="/images/pet/home/website_icon.svg" alt="#" style="height: 10rem;">
 			                                                        	</c:if>
 			                                                        	
 			                                                        </a>
