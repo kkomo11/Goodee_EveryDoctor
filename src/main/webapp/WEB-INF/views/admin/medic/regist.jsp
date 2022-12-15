@@ -124,7 +124,7 @@
                                                             </div>
                                                         </div>
                                                         <!-- 병원 진료과목 추가 버튼 -->
-                                                        <div id="medicSectionBtn">
+                                                        <div id="hospitalSectionBtn">
 
                                                         </div>
                                                     </div>
