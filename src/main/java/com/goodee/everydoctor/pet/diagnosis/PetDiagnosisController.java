@@ -24,6 +24,15 @@ public class PetDiagnosisController {
 	@Autowired
 	private NotificationController notificationController;
 	
+	@GetMapping("completedDetail")
+	public ModelAndView findCompletedDetail(Long n) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		PetDiagnosisVO petDiagnosisVO = petDiagnosisService.findCompletedDetail(n);
+		mv.addObject("completedDetail", petDiagnosisVO);
+		mv.setViewName("pet/diagnosis/completedDetail");
+		return mv;
+	}
+	
 	// 해당 의사가 완료한 진료 내역 리스트 요청
 	@GetMapping("completedList")
 	public ModelAndView findCompletedList(PetDiagnosisPager petDiagnosisPager, String d) throws Exception {

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/chatbot/chatbot3.css">
+    <link rel="stylesheet" href="/css/chatbot/chatbot.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
@@ -94,6 +94,6 @@
             <button type="button" class="ChatButton_Closed__sKzUx" id="chatbtn" data-testid="chatButton"></button>
         </div>
     </div>
-    <script src="/js/chatbot/chatbot3.js"></script>
+    <script src="/js/chatbot/chatbot.js"></script>
 </body>
 </html>

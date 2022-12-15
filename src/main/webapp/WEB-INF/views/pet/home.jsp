@@ -1130,7 +1130,7 @@
 		<div class="col-lg-3 col-md-4 col-12">
 			<div class="single-item-grid">
         		<div class="image">
-        			<a href="/pet/petdocDetail?username={doctorId}"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+        			<a href="/pet/petdocDetail?username={doctorId}"><img src="{userFileName}" alt="#" style="height: 180px;"></a>
         			<i class=" cross-badge lni lni-bolt"></i>
         			<span class="flat-badge sale">전문의</span>
         		</div>
