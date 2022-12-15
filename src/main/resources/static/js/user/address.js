@@ -6,7 +6,6 @@ const sample6_postcode = document.querySelector('#sample6_postcode');
 const sample6_address = document.querySelector('#sample6_address');
 const sample6_detailAddress = document.querySelector('#sample6_detailAddress');
 
-console.log($("#listAddrChk").val()=='false')
 
 if($("#listAddrChk").val()=='true'){
     for (sp of samplePostcode) {
@@ -14,8 +13,16 @@ if($("#listAddrChk").val()=='true'){
     }
 }
 
+//전화번호 first , last로 나누기
 $(function(){
-    console.log($("#phoneLast").val().slice(0,3))
+    for(chd of $("#phoneFirst").children()){
+        if($(chd).val()==$("#phoneLast").val().slice(0,3)){
+            $(chd).attr("selected", "selected")
+        }
+    }
+
+    $("#phoneLast").val($("#phoneLast").val().slice(3))
+    
 })
 
 function sample6_execDaumPostcode() {
@@ -55,8 +62,15 @@ $("#phoneLast").on("blur", function(){
     //readonly class="addrVals bg-light" 없애기
     //주소 수정 버튼 비활성화 주소 저장 버튼 활성화
     //post button 활성화    
-
+$("#modifyAddress").click(function(){
+    let addrBtn = document.getElementsByClassName("addrBtn");
+    console.log(addrBtn.classList)
+})
 
 
 
 //
+
+function updateAddress(){
+    console.log("updateAddress")
+}

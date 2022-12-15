@@ -149,7 +149,7 @@
                                                             <div id="phone" class="d-flex justify-content-between">
                                                                 <div class="selector-head" style="min-width: 30%;">
                                                                     <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select" readonly>
+                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select">
                                                                         <option value="010" selected="selected">010</option>
                                                                         <option value="011">011</option>
                                                                         <option value="070">070</option>
@@ -211,8 +211,8 @@
                                                             <div id="phone" class="d-flex justify-content-between">
                                                                 <div class="selector-head" style="min-width: 30%;">
                                                                     <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select">
-                                                                        <option value="010" selected="selected">010</option>
+                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select"  disabled>
+                                                                        <option value="010">010</option>
                                                                         <option value="011">011</option>
                                                                         <option value="070">070</option>
                                                                     </select>
@@ -224,7 +224,7 @@
                                                         <div class="form-group col-12">
                                                             <label>주소</label>
                                                             <div class="d-flex justify-content-between button">
-                                                                <button type="button" class="addrBtn sample-postcode searchAddress btn bg-secondary" style="width: 30%;">주소 찾기</button>
+                                                                <button type="button" class="addrBtn sample-postcode searchAddress btn bg-secondary disabled" style="width: 30%;">주소 찾기</button>
                                                                 <input type="text" class="sample-postcode sample-postcode-input" name="userPost" value="<c:out value="${listAddress[0].userPost}"></c:out>"
                                                                     style="width: 60%;" id="sample6_postcode" readonly>
                                                             </div>
@@ -241,9 +241,9 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group button mb-0 d-flex">
-                                                                <button type="button" class="btn ">주소 수정</button>
+                                                                <button type="button" class="btn" id="modifyAddress">주소 수정</button>
 
-                                                                <button type="submit" class="addrBtn btn bg-secondary">주소 저장</button>
+                                                                <button type="button" class="addrBtn btn bg-secondary disabled" onclick=updateAddress()>주소 저장</button>
                                                             </div>
                                                         </div>
                                                     </div>
