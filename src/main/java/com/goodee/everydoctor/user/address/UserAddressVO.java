@@ -9,7 +9,7 @@ public class UserAddressVO {
 	private String addressNick;
 	private String userMainAddr;
 	private String userSubAddr;
-	private Integer userPost;
+	private String userPost;
 	private String addressReceiver;
 	private String addressPhone;
 	private Integer idt; // 식별자 : 몇번째 주소니?

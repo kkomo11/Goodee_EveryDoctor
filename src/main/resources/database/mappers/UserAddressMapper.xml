@@ -17,4 +17,5 @@
 		SELECT * FROM USERADDRESS WHERE USERNAME=#{username} ORDER BY ADDRESSNUM ASC LIMIT #{idt},1
 	</select>
 	
+	
 </mapper>
