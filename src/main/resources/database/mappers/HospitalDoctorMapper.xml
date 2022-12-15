@@ -4,8 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.hospital.doctor.HospitalDoctorMapper">
 
-	<select id="findDoctorList" resultMap="DoctorListResult">
-		SELECT U.USERNAME, U.NAME, U.FILENAME, M.MEDICSPECIALTY, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME, R.ROLENAME 
+	<select id="findDoctorList" resultMap="DoctorListResult" parameterType="HospitalMainPager">
+		SELECT U.USERNAME, U.NAME, U.FILENAME, M.MEDICSPECIALTY, A.AGENCYNUM, A.AGENCYNAME, S.SECTIONNUM, S.SECTIONNAME 
 		FROM USERS U
 		INNER JOIN MEDIC M 
 		ON(U.USERNAME = M.USERNAME)
@@ -19,7 +19,13 @@
 		ON(U.USERNAME = UR.USERNAME)
 		INNER JOIN `ROLE` R 
 		ON(UR.ROLENUM = R.ROLENUM)
-		WHERE R.ROLENAME='ROLE_DOCTOR'
+		WHERE S.SECTIONNUM
+			<choose>
+				<when test="sectionNum == 0">BETWEEN 1 AND 17</when>
+				<otherwise>=#{sectionNum}</otherwise>
+			</choose>
+		GROUP BY U.USERNAME
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<resultMap type="HospitalDoctorVO" id="DoctorListResult">
@@ -34,9 +40,6 @@
 			<id column="USERNAME" property="username"/>
 			<result column="MEDICSPECIALTY" property="medicSpecialty"/>
 		</association>
-		<collection property="roles" javaType="List" ofType="String">
-			<result column="ROLENAME" property="roleName"/>
-		</collection>
 		<collection property="hospitalSectionVOs" javaType="List" ofType="HospitalSectionVO">
 			<id column="SECTIONNUM" property="sectionNum"/>
 			<result column="SECTIONNAME" property="sectionName"/>
@@ -94,4 +97,22 @@
 			<result column="SECTIONNAME" property="sectionName"/>
 		</collection>
 	</resultMap>
+	
+	<select id="findDoctorTotalCount" parameterType="HospitalMainPager" resultType="Long">
+		SELECT COUNT(U.USERNAME)
+		FROM USERS U
+		INNER JOIN MEDIC M 
+		ON(U.USERNAME = M.USERNAME)
+		INNER JOIN AGENCY A 
+		ON(M.AGENCYNUM = A.AGENCYNUM)
+		INNER JOIN MEDICSECTION MS
+		ON(M.USERNAME = MS.USERNAME)
+		INNER JOIN `SECTION` S 
+		ON(MS.SECTIONNUM = S.SECTIONNUM)
+		WHERE S.SECTIONNUM
+			<choose>
+				<when test="sectionNum == 0">BETWEEN 1 AND 17</when>
+				<otherwise>=#{sectionNum}</otherwise>
+			</choose>
+	</select>
 </mapper>

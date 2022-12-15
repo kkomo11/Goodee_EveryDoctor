@@ -127,110 +127,14 @@
     <!-- End Hero Area -->
 
     <!-- Start Items Tab Area -->
-    <a name="sign"></a>
     <section class="items-tab section custom-padding">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
                         <h2 class="wow fadeInUp" data-wow-delay=".4s">Doctor</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">증상과 진료 과목을 선택하면 전국 비대면 진료 병·의원을 한 번에 확인할 수 있어요.</p>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">진료 과목을 선택하면 전국 비대면 진료 병·의원을 한 번에 확인할 수 있어요.</p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active"
-                                data-bs-target="#nav-latest" type="button" role="tab" aria-controls="nav-latest"
-                                aria-selected="true">증상</button>
-                            <button class="nav-link" id="nav-popular-tab" data-bs-target="#nav-popular"
-                                type="button" role="tab" aria-controls="nav-popular" aria-selected="false">진료 과목</button>
-                        </div>
-                    </nav>
-                    <section class="category-page section" style="padding-top: 0;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 col-12">
-                                    <div class="category-sidebar">
-                                        <!-- Start Single Widget -->
-                                        <div class="single-widget" style="padding: 25px;">
-                                            <h3>증상</h3>
-                                            <ul class="list">
-                                                <c:forEach items="${categoryList}" var="categoryVO">
-                                                    <li>
-                                                        <a href="javascript:void(0)">
-                                                            <img class="subjectIcon"
-                                                                src="/images/hospital/home/${categoryVO.categoryIcon}">
-                                                            ${categoryVO.categoryName}
-                                                        </a>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </div>
-                                        <!-- End Single Widget -->
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-md-8 col-12">
-                                    <div class="category-grid-list">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="tab-content" id="nav-tabContent">
-                                                    <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
-                                                        aria-labelledby="nav-grid-tab">
-                                                        <div class="row" id="doctorSignList">
-
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <!-- Pagination -->
-                                                                <div class="pagination left">
-                                                                    <ul class="pagination-list">
-                                                                        <li><a href="javascript:void(0)">1</a></li>
-                                                                        <li class="active"><a
-                                                                                href="javascript:void(0)">2</a></li>
-                                                                        <li><a href="javascript:void(0)">3</a></li>
-                                                                        <li><a href="javascript:void(0)">4</a></li>
-                                                                        <li><a href="javascript:void(0)"><i
-                                                                                    class="lni lni-chevron-right"></i></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <!--/ End Pagination -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Category -->
-
-    <!-- Start Items Tab Area -->
-    <a name="subject"></a>
-    <section class="items-tab section custom-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link" id="nav-latest-tab"
-                                data-bs-target="#nav-latest" type="button" role="tab" aria-controls="nav-latest"
-                                aria-selected="false">증상</button>
-                            <button class="nav-link active"
-                                data-bs-target="#nav-popular" type="button" role="tab" aria-controls="nav-popular"
-                                aria-selected="true">진료 과목</button>
-                        </div>
-                    </nav>
                     <section class="category-page section" style="padding-top: 0;">
                         <div class="container">
                             <div class="row">
@@ -242,7 +146,7 @@
                                             <ul class="list">
                                                 <c:forEach items="${sectionList}" var="sectionVO">
                                                 	<li>
-	                                                    <a href="javascript:void(0)"><img class="subjectIcon" src="/images/hospital/home/${sectionVO.sectionIcon}">
+	                                                    <a class="selectSubject" onclick="loadDoctorList(${sectionVO.sectionNum})" href="javascript:void(0)"><img class="subjectIcon" src="/images/hospital/home/${sectionVO.sectionIcon}">
 	                                                    	${sectionVO.sectionName}
 	                                                    </a>
 	                                                </li>
