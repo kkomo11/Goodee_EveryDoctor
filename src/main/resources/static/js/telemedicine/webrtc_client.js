@@ -35,6 +35,8 @@ let myPeerConnection;
 
 const username = $("#authUsername").val();
 const userprofile = $("#AuthProfile").val();
+//12/14일날 가서 확인 해봐야 할거
+console.log('profile == ',userprofile);
 
 
 // on page load runner
@@ -51,6 +53,8 @@ function start() {
         console.log('jsonMessage : '+message);
         console.log('msg : ' + msg);
         console.log('msg.data : ' + msg.data);
+        console.log('응가 : ', message.fileName);
+        console.log('msg.fileName : ', msg.data.fileName);
         //현재시간구하기
         let now = new Date();
         let hours = now.getHours();
@@ -62,14 +66,16 @@ function start() {
                 let sessionId = message.from; //작성자
                 let messageData = message.data; //메세지 내용
                 let cur_session = username; //현재 로그인한 사람
+                let profileData = message.fileName; //상대방 프로필사진
                 //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
                 if(sessionId == cur_session){
                     // let str = "<div class='col-6'>";
                     // str += "<div class='alert alert-secondary'>";
                     // str += "<b>" + sessionId + " : " + messageData + "</b>";
                     // str += "</div></div>";
+                    
                     let str = '<li class="right">'
-                    str += '<img src="${userprofile}" alt="#">'
+                    str += '<img src="'+userprofile+'" alt="#" style="margin-right: 10px;">'
                     str += '<p class="text" style="padding=20px">'+ messageData
                     str += '<span class="time">'+ hours+':'+minutes+'</span>'
                     str += '</p></li>'
@@ -78,7 +84,7 @@ function start() {
                 }
                 else{ //내가 보낸 메세지가 아닐 시
                     let str = '<li class="left">';
-                    str += '<img src="#" alt="#">';
+                    str += '<img src="'+profileData+'" alt="#" style="margin-left: 10px;">';
                     str += '<p class="text"  style="padding=20px">'+ messageData
                     str += '<span class="time">'+ hours+':'+minutes+'</span>'
                     str += '</p></li>'
@@ -146,11 +152,12 @@ function start() {
 
     function send() {
         let msg = document.getElementById("msg");
-        console.log(username + ':' + msg.value);
+        console.log('SEND userprofile====== ',userprofile)
         sendToServer({
         from: username,
         type: 'text',
-        data: msg.value
+        data: msg.value,
+        fileName: userprofile
         });
         msg.value='';
     }

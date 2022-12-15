@@ -7,6 +7,12 @@
         
         let map = new kakao.maps.Map(mapContainer,mapOption);   //지도 생성
 
+        // 마우스 휠로 지도 확대,축소 가능여부를 설정
+        map.setZoomable(false) //true : 가능 , false : 불가능
+        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
         // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
         if (navigator.geolocation) {
             

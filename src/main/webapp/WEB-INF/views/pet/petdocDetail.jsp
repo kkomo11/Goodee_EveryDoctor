@@ -60,7 +60,13 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/images/star.png" alt="#">
+                                	<c:if test="${petdocDetail.userVO.fileName != null && petdocDetail.userVO.fileName != '' }">
+                                		<img src="${petdocDetail.userVO.fileName }" alt="#">
+                                	</c:if>
+                                	<c:if test="${petdocDetail.userVO.fileName == null || petdocDetail.userVO.fileName == '' }">
+                                		<img src="/images/pet/home/doctor_icon.svg" alt="#" style="width: 30rem; height: 30rem; margin-left: 4rem;">
+                                	</c:if>
+                                    
                                 </div>
                             </main>
                         </div>
@@ -75,7 +81,7 @@
                                     </p>
                                     <i class="lni lni-heart like"></i>
                                 </div>
-                                <img src="/images/hospital/manager.jpg" style="width: 50%; height: 50%;">
+                                <!-- <img src="/images/hospital/manager.jpg" style="width: 50%; height: 50%;"> -->
                             </div>
                             <div class="list-info">
                                 <h3 class="price mb-3"><img class="grade-star" src="/images/star.png"> 4.9</h3> 후기 2059개
@@ -90,7 +96,10 @@
                                     <li>
                                     	<sec:authorize access="isAuthenticated()">
                                     		<sec:authentication property="Principal" var="member"/>
-                                        	<a href="/pet/diagnosis/reservation?username=${member.username }&petdoc=${petdocDetail.userVO.username}" class="call" style="padding-left: 40px;">진료 신청</a>
+                                    		<c:if test="${member.username != petdocDetail.userVO.username }">
+                                    			<a href="/pet/diagnosis/reservation?username=${member.username }&petdoc=${petdocDetail.userVO.username}" class="call" style="padding-left: 40px;">진료 신청</a>
+                                    		</c:if>
+                                        	
                                         </sec:authorize>
                                         <sec:authorize access="!isAuthenticated()">
                                         	<a href="/user/login" class="call" style="padding-left: 40px;">진료 신청</a>
@@ -109,19 +118,38 @@
                         <div class="single-block description">
                             <h3>의사상세</h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable.
+                                ${petdocDetail.medicVO.medicInfo }
                             </p>
-                            <ul>
-                                <li>Model: Apple MacBook Pro 13.3-Inch MYDA2</li>
-                                <li>Apple M1 chip with 8-core CPU and 8-core GPU</li>
-                                <li>8GB RAM</li>
-                                <li>256GB SSD</li>
-                                <li>13.3-inch 2560x1600 LED-backlit Retina Display</li>
-                            </ul>
-                            <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
-                                non-characteristic words etc.</p>
+                            
+                        </div>
+                        <!-- End Single Block -->
+                        <!-- Start Single Block -->
+                        <div class="single-block description">
+                            <h3>병원정보</h3>
+                            <p>
+                                ${petdocDetail.agencyVO.agencyName }
+                            </p>
+                            <p>
+                                ${petdocDetail.agencyVO.agencyAddr }
+                            </p>
+                            <p>
+                                ${petdocDetail.agencyVO.agencyTel }
+                            </p>
+                            <div class="single-block tags">
+                            	<span>진료시간</span>
+                            	<ul>
+                            		<li><a>월요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.mon }</a></li>
+                            		<li><a>화요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.tue }</a></li>
+                            		<li><a>수요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.wed }</a></li>
+                            		<li><a>목요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.thu }</a></li>
+                            		<li><a>금요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.fri }</a></li>
+                            		<li><a>토요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.sat }</a></li>
+                            		<li><a>일요일 : ${petdocDetail.agencyVO.agencyWorkHourVO.sun }</a></li>
+                            		<li><a>휴일 : ${petdocDetail.agencyVO.agencyWorkHourVO.holiday }</a></li>
+                            		<li><a>점심 : ${petdocDetail.agencyVO.agencyWorkHourVO.lunch }</a></li>
+                            	</ul>
+                            </div>
+                            
                         </div>
                         <!-- End Single Block -->
 
@@ -130,11 +158,11 @@
                         <div class="item-details-sidebar">
                             <!-- Start Single Block -->
                             <div class="single-block tags">
-                                <h3>Tags</h3>
+                                <h3>자신있는 과목</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">이비인후과</a></li>
-                                    <li><a href="javascript:void(0)">내과</a></li>
-                                    <li><a href="javascript:void(0)">피부과</a></li>
+                                    <li><a href="javascript:void(0)">${petdocDetail.hospitalSectionVO.sectionName }</a></li>
+                                    <!-- <li><a href="javascript:void(0)">내과</a></li>
+                                    <li><a href="javascript:void(0)">피부과</a></li> -->
                                 </ul>
                             </div>
                             <!-- End Single Block -->
@@ -200,6 +228,7 @@
             });
         });
         
+        //지도 JS
         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
         mapOption = {
             center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표
