@@ -51,13 +51,15 @@ public class HospitalDiagnosisController {
 		
 		int result = hospitalDiagnosisService.inputHospitalDiagnosis(hospitalDiagnosisVO, fileVO);
 		//웹 알림 띄우기
-		notificationController.dispatchEventToClients("진료신청",hospitalDiagnosisVO.getDansCategory(), "/hospital/doctor/management",hospitalDiagnosisVO.getDoctorName());//상단,내용,버튼url,받는사람 순
+		notificationController.dispatchEventToClients("진료신청",hospitalDiagnosisVO.getDansCategory(), "/hospital/diagnosis/management",hospitalDiagnosisVO.getDoctorName());//상단,내용,버튼url,받는사람 순
 		
 		return "redirect:/user/mydiaglist";
 	}
 	
-	@GetMapping("doctorManagement")
-	public ModelAndView findHospitalReservatedList(HospitalDoctorVO hospitalDoctorVO)throws Exception{
+	@GetMapping("management")
+	public ModelAndView findHospitalReservatedList(@AuthenticationPrincipal UserVO userVO)throws Exception{
+		HospitalDoctorVO hospitalDoctorVO = new HospitalDoctorVO();
+		hospitalDoctorVO.setUsername(userVO.getUsername());
 		ModelAndView mv = new ModelAndView();
 		List<HospitalDoctorVO> al = hospitalDiagnosisService.findHospitalReservatedList(hospitalDoctorVO);
 			

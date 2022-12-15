@@ -44,7 +44,6 @@ Author: GrayGrids
         
         // show or hide the back-top-top button
 	    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-			console.log('test');
 	        $("#remote_video").addClass("video-sticky");
 	    } else {
 			$("#remote_video").removeClass("video-sticky");

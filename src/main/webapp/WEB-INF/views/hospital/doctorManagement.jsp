@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Reservated List</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />	
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
 
 	<c:import url="../temp/boot.jsp"></c:import>
@@ -27,7 +27,7 @@
     <sec:authentication property="Principal" var="user"/>
     <!-- Header -->
     <c:import url="../temp/header.jsp"></c:import>
-    
+
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -47,13 +47,13 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    
+
     <!-- Start Dashboard Section -->
     <section class="dashboard section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-12">
-					<c:import url="../pet/diagnosis/sidebar.jsp"></c:import>
+					<c:import url="sidebar.jsp"></c:import>
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
@@ -61,7 +61,7 @@
                             <h3 class="block-title">요청된 진료</h3>
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
-                                
+
                                 <!-- Start Single List -->
                                 <div class="single-list  my-items">
                                 <!-- Start Item List Title -->
@@ -89,7 +89,7 @@
 		                                <div class="col-lg-5 col-md-5 col-12">
 		                                    <div class="item-image">
 
-		                                            
+
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
 		                                            <h3 class="title"><a>${reservated.patient}</a></h3>
@@ -122,7 +122,7 @@
 	                            </div>
 	                            <!-- End Single List -->
                             </c:forEach>
-                                
+
                                     </div>
                                 </div>
                                 <!-- End Single List -->

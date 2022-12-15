@@ -44,7 +44,7 @@
 	</resultMap>
 	
 	<select id="findDoctorDetail" parameterType="HospitalDoctorVO" resultMap="DoctorDetailResult">
-		SELECT U.*, M.MEDICINFO, M.MEDICSPECIALTY, A.*, S.SECTIONNUM, S.SECTIONNAME
+		SELECT U.*, M.MEDICINFO, M.MEDICSPECIALTY, A.*, S.SECTIONNUM, S.SECTIONNAME, AH.*
 		FROM USERS U
 		INNER JOIN MEDIC M 
 		ON(U.USERNAME = M.USERNAME)
@@ -58,6 +58,8 @@
 		ON(U.USERNAME = UR.USERNAME)
 		INNER JOIN `ROLE` R 
 		ON(UR.ROLENUM = R.ROLENUM)
+		LEFT JOIN AGENCYWORKHOUR AH 
+		ON(A.AGENCYNUM = AH.AGENCYNUM)
 		WHERE U.USERNAME = #{username}
 	</select>
 	
@@ -70,6 +72,17 @@
 			<result column="AGENCYNAME" property="agencyName"/>
 			<result column="AGENCYADDR" property="agencyAddr"/>
 			<result column="AGENCYINFO" property="agencyInfo"/>
+			<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+				<result column="SUN" property="sun"/>
+				<result column="MON" property="mon"/>
+				<result column="TUE" property="tue"/>
+				<result column="WED" property="wed"/>
+				<result column="THU" property="thu"/>
+				<result column="FRI" property="fri"/>
+				<result column="SAT" property="sat"/>
+				<result column="HOLIDAY" property="holiday"/>
+				<result column="LUNCH" property="lunch"/>
+			</association>
 		</association>
 		<association property="medicVO" javaType="MedicVO">
 			<id column="USERNAME" property="username"/>

@@ -26,11 +26,6 @@ public class HospitalDoctorController {
 		return modelAndView;
 	}
 	
-	@GetMapping("management")
-	public String doctorManagement() throws Exception {
-		return "hospital/doctorManagement";
-	}
-	
 	@GetMapping("/diagnosis/detail")
 	public String diagnosisDetail() throws Exception {
 		return "hospital/diagnosisDetail";
