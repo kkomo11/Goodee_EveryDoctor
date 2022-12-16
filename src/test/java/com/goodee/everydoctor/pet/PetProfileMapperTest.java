@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.pet.profile.PetProfileService;
 import com.goodee.everydoctor.pet.profile.PetVO;
 import com.goodee.everydoctor.user.UserVO;

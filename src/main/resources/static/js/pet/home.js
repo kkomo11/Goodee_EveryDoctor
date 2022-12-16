@@ -106,9 +106,18 @@ function petdocListAjax(kind){
                     .replace("{agencyName}", item["agencyVO"].agencyName)
                     .replace("{doctorId}", item["userVO"].username)
                     .replace("{doctorId2}", item["userVO"].username);
+
+            // 프로필 사진이 있는 경우 사진의 경로를 img 태그에 넣음
+            if(item["userVO"].fileName != "" && item["userVO"].fileName != null){
+                temp = temp.replace("{userFileName}", item["userVO"].fileName);
+            } else {
+                temp = temp.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                // https://via.placeholder.com/600x400
+            } // 프로필 사진이 없는 경우 기본 경로
+            
             list.append(temp);
         });
-
+        
         let pager = result["pager"];
         pagination.empty();
         let startNum = pager.startNum;
@@ -152,6 +161,15 @@ function petdocPagingAjax(kind, page){
                     .replace("{agencyName}", item["agencyVO"].agencyName)
                     .replace("{doctorId}", item["userVO"].username)
                     .replace("{doctorId2}", item["userVO"].username);
+
+            // 프로필 사진이 있는 경우 사진의 경로를 img 태그에 넣음
+            if(item["userVO"].fileName != "" && item["userVO"].fileName != null){
+                temp = temp.replace("{userFileName}", item["userVO"].fileName);
+            } else {
+                temp = temp.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                // https://via.placeholder.com/600x400
+            } // 프로필 사진이 없는 경우 기본 경로
+
             list.append(temp);
         });
 

@@ -5,7 +5,7 @@
 <mapper namespace="com.goodee.everydoctor.pet.PetHomeMapper">
 
 	<select id="findPetdocDetail" parameterType="UserVO" resultMap="findPetdocDetailResult">
-		SELECT U.*, M.MEDICINFO, A.*, S.*, R.*
+		SELECT U.*, M.MEDICINFO, A.*, S.*, R.*, AH.*, AF.*
 		FROM USERS U
 		INNER JOIN MEDIC M 
 		ON(U.USERNAME = M.USERNAME)
@@ -19,6 +19,10 @@
 		ON(U.USERNAME = UR.USERNAME)
 		INNER JOIN `ROLE` R 
 		ON(UR.ROLENUM = R.ROLENUM)
+		INNER JOIN AGENCYWORKHOUR AH 
+		ON(A.AGENCYNUM = AH.AGENCYNUM)
+		LEFT JOIN AGENCYFILE AF 
+		ON(A.AGENCYNUM = AF.AGENCYNUM)
 		WHERE U.USERNAME = #{username}
 	</select>
 	
@@ -28,7 +32,7 @@
 			<result column="NAME" property="name"/>
 			<result column="BIRTH" property="birth"/>
 			<result column="PHONE" property="phone"/>
-			<result column="SEX" property="sex"/>
+			<result column="GENDER" property="gender"/>
 			<result column="USERREGDATE" property="userRegdate"/>
 			<result column="FILENAME" property="fileName"/>
 			<collection property="roles" javaType="List" ofType="String">
@@ -44,6 +48,17 @@
 			<result column="AGENCYADDR" property="agencyAddr"/>
 			<result column="AGENCYTEL" property="agencyTel"/>
 			<result column="AGENCYINFO" property="agencyInfo"/>
+			<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+				<result column="SUN" property="sun"/>
+				<result column="MON" property="mon"/>
+				<result column="TUE" property="tue"/>
+				<result column="WED" property="wed"/>
+				<result column="THU" property="thu"/>
+				<result column="FRI" property="fri"/>
+				<result column="SAT" property="sat"/>
+				<result column="HOLIDAY" property="holiday"/>
+				<result column="LUNCH" property="lunch"/>
+			</association>
 		</association>
 		<association property="hospitalSectionVO" javaType="HospitalSectionVO">
 			<id column="SECTIONNUM" property="sectionNum"/>

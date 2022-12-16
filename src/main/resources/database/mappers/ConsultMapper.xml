@@ -71,6 +71,10 @@
 	<select id="findConsultCategory" parameterType="ConsultVO" resultType="HospitalCategoryVO">
 		SELECT * FROM CATEGORY WHERE CATEGORYKIND = #{consultKind}
 	</select>
+	
+	<select id="findFile" parameterType="ConsultVO" resultType="FileVO">
+		SELECT CONSULTFILENUM AS FILENUM, CONSULTFILENAME AS FILENAME, CONSULTFILEORINAME AS ORINAME FROM CONSULTFILE WHERE CONSULTNUM = #{consultNum}
+	</select>
 
 	<select id="findConsultList" parameterType="Pager" resultMap="findConsultListResult">
 		SELECT *
@@ -79,8 +83,6 @@
 		ON (C.CONSULTNUM = CC.CONSULTNUM)
 		INNER JOIN CATEGORY CG
 		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
-		LEFT JOIN CONSULTFILE CF 
-		ON(C.CONSULTNUM = CF.CONSULTNUM)
 		<include refid="categorySearch"></include>
 		ORDER BY C.CONSULTNUM DESC
 		LIMIT #{startRow}, #{perPage}
@@ -102,12 +104,6 @@
 			<result column="CATEGORYICON" property="categoryIcon"/>
 		</collection>
 		
-		<collection property="consultFiles" javaType="List" ofType="FileVO">
-			<id column="CONSULTFILENUM" property="fileNum"/>
-			<result column="CONSULTFILENAME" property="fileName"/>
-			<result column="CONSULTFILEORINAME" property="fileOriName"/>
-		</collection>
-		
 	</resultMap>
 	
 	<select id="findConsultCount" parameterType="Pager" resultType="Long">
@@ -117,8 +113,6 @@
 		ON (C.CONSULTNUM = CC.CONSULTNUM)
 		INNER JOIN CATEGORY CG
 		ON (CC.CATEGORYNUM = CG.CATEGORYNUM)
-		LEFT JOIN CONSULTFILE CF 
-		ON(C.CONSULTNUM = CF.CONSULTNUM)
 		<include refid="categorySearch"></include>
 	</select>
 	

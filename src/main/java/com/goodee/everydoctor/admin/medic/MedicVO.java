@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.admin.medic;
 
+import java.util.List;
+
 import com.goodee.everydoctor.admin.agency.AgencyVO;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -17,6 +19,7 @@ public class MedicVO {
 	
 	private AgencyVO agencyVO;
 	private UserVO userVO;
+	private Integer [] sectionNums;
 	
 
 }

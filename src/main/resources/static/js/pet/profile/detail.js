@@ -88,7 +88,7 @@ petProfileDeleteBtn.on("click", function(){
                 },
                 success: function(result){ // 반려동물 프로필 삭제 성공 시
                     if(result == 1){
-                        location.href = "/"; // 이동(추후 마이페이지로 수정)
+                        location.href = "/pet/profile/myPetList?username=" + userNameInputFromController.val(); // 이동(추후 마이페이지로 수정)
                     } else {
                         alert("삭제 오류");
                     }

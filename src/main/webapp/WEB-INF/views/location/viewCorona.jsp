@@ -10,9 +10,9 @@
     <title>코로나 선별검사소</title>
     <c:import url="../temp/boot.jsp"></c:import>
     <style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 240px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 286px;height: 220px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -27,7 +27,9 @@
     #map{
         width:1400px;
         height:1000px;
-        margin-bottom: 300px;
+        /* margin-bottom: 300px; */
+        margin-left: 150px;
+
     }
     </style>
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -73,8 +75,8 @@
                 var lat = position.coords.latitude, // 위도
                     lon = position.coords.longitude; // 경도
 
-                let imageSrc="/images/location/locate.png",
-                imageSize= new kakao.maps.Size(64, 69),  //마커이미지의 크기
+                let imageSrc="/images/location/person2.png",
+                imageSize= new kakao.maps.Size(60, 59),  //마커이미지의 크기
                 imageOption ={offset: new kakao.maps.Point(27, 69)}   //마커이미지의 옵션 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
 
                 
@@ -153,6 +155,8 @@
             success : function(data){
                 // console.log(data)
                
+                console.log(data[1]);
+                console.log(data[1].agencyWorkHourVO.fri);
                 $.each(data, function(index,value){
                     // console.log('value',value)
                     //주소로 좌표를 검색합니다.
@@ -163,6 +167,13 @@
                             // console.log(status);
                             // console.log("coords ==", coords);
                             // if(bounds.contain(coords)){
+                                // console.log(data[1].AgencyWorkHourVO.mon);
+                                // console.log(data[1].AgencyWorkHourVO.tue);
+                                // console.log(data[1].AgencyWorkHourVO.wed);
+                                // console.log(data[1].AgencyWorkHourVO.fri);
+                                // console.log(data[1].AgencyWorkHourVO.sat);
+                                // console.log(data[1].AgencyWorkHourVO.holiday);
+                                // console.log(data[1].AgencyWorkHourVO.lunch);
 
                                 let imageSrc ='/images/location/location.png',
                                     imageSize = new kakao.maps.Size(43,42),
@@ -191,6 +202,18 @@
                                             let desc = $('<div class="desc"/>');
                                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
+                                            let times =$('<div class="time d-flex justify-content-center"/>')
+                                            let time1 =$('<div class="time1 me-4"/>')
+                                            let time2 =$('<div class="time2"/>')
+                                            let mon =$('<div/>').text('월요일 : '+data[index].agencyWorkHourVO.mon)
+                                            let tue =$('<div/>').text('화요일 : '+data[index].agencyWorkHourVO.tue);
+                                            let wed =$('<div/>').text('수요일 : '+data[index].agencyWorkHourVO.wed);
+                                            let thu =$('<div/>').text('목요일 : '+data[index].agencyWorkHourVO.thu);
+                                            let fri =$('<div/>').text('금요일 : '+data[index].agencyWorkHourVO.fri);
+                                            let sat =$('<div style="color:blue"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
+                                            let sun =$('<div style="color:red"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
+                                            let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
+                                            let lunch =$('<div style="text-align:center"/>').text('점심시간 : '+data[index].agencyWorkHourVO.lunch);
                   
                                             wrap.append(info);
                                             info.append(title).append(body);
@@ -200,6 +223,21 @@
                                             body.append(desc);
                                             desc.append(ellipsis);
                                             desc.append(tel);
+                                            body.append(times);
+                                            times.append(time1);
+                                            time1.append(mon);   //월요일
+                                            time1.append(wed);   //수요일
+                                            time1.append(fri);   //금요일
+                                            time1.append(sun);   //일요일
+                                            times.append(time2);
+                                            time2.append(tue);          //화요일
+                                            time2.append(thu);        //목요일
+                                            time2.append(sat);       //토요일
+                                            time2.append(holiday);  //공휴일
+                                            info.append(lunch);    //점심시간
+                                            
+
+                                            
 
                                             
                                             let content = wrap[0];

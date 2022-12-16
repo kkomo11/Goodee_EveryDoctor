@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3  col-12">
                                             <!-- Start Single Category -->
-                                            <a href="#" class="single-cat wow fadeInUp"
+                                            <a href="#petDocListSection" class="single-cat wow fadeInUp"
                                                 data-wow-delay=".8s" id="petdocListIcon">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/medical_care_icon.svg" alt="#">
@@ -185,7 +185,7 @@
     <!-- End Hero Area -->
 
     <!-- Start Items Tab Area -->
-    <section class="items-tab section custom-padding">
+    <section class="items-tab section custom-padding" id="petDocListSection">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -1130,7 +1130,7 @@
 		<div class="col-lg-3 col-md-4 col-12">
 			<div class="single-item-grid">
         		<div class="image">
-        			<a href="/pet/petdocDetail?username={doctorId}"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+        			<a href="/pet/petdocDetail?username={doctorId}"><img src="{userFileName}" alt="#" style="height: 180px;"></a>
         			<i class=" cross-badge lni lni-bolt"></i>
         			<span class="flat-badge sale">전문의</span>
         		</div>

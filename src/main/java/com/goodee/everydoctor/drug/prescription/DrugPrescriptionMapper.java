@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
+
 @Mapper
 public interface DrugPrescriptionMapper {
 
@@ -14,4 +16,6 @@ public interface DrugPrescriptionMapper {
 	public DrugPrescriptionVO findDrugPrescriptionDetail() throws Exception;
 
 	public List<DrugPrescriptionVO> findDrugPrescriptionList() throws Exception;
+	
+	public List<DrugPrescriptionVO> findDrugDeliveryNum()throws Exception;
 }

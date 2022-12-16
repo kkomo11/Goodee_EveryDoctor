@@ -264,7 +264,7 @@
                                                 </div>
                                             </div>
                                             <!-- 진료 과목 -->
-                                            <div id="medicSection">
+                                            <div id="medicSection" class="d-flex" style="align-items: center; flex-wrap: wrap;">
 
                                             </div>
 
@@ -340,7 +340,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>본인 소개글*</label>
-                                                <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요">TEST 종사자 소개글입니다</textarea>
+                                                <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" id="testTest">TEST 종사자 소개글입니다</textarea>
                                             </div>
                                         </div>
                                         <!-- 기관 운영 시간 -->
@@ -464,24 +464,55 @@
         </div>
     </script>
 
-    <!-- 진료과목 추가 버튼 -->
-    <script type="java/template" id="medicSectionBtnForm">
+    <!-- 병원진료과목 추가 버튼 -->
+    <script type="java/template" id="hospitalSectionBtnForm">
         <div class="form-group button mb-0">
-            <button type="button" class="btn sectionAddBtn">진료과목 추가</button>
+            <button type="button" class="btn" id="hospitalSectionAddBtn">진료과목 추가</button>
         </div>
     </script>
 
-    <!-- 진료과목 select 폼 -->
-    <script type="text/template" id="medicSectionForm">
+    <!-- 동물병원 진료과목 추가 버튼 -->
+    <script type="java/template" id="petSectionBtnForm">
+        <div class="form-group button mb-0">
+            <button type="button" class="btn" id="petSectionAddBtn">진료과목 추가</button>
+        </div>
+    </script>
+
+    <!-- 병원진료과목 select 폼 -->
+    <script type="java/template" id="hospitalSectionListForm">
         <div class="form-group col-6">
             <label>진료과목*</label>
             <div class="selector-head">
                 <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                <select class="user-chosen-select" name="medicRole" id="medicSection">
+                <select class="user-chosen-select col-6" name="sectionNums">
                     <option disabled selected>진료 과목을 선택해주세요</option>
-                    
+                    <c:forEach items="${hospitalSectionList}" var="hospitalList">
+                        <option value="${hospitalList.sectionNum}">${hospitalList.sectionName}</option>
+                    </c:forEach>
                 </select>
             </div>
+        </div>
+        <div class="form-group button mb-0">
+            <button type="button" class="btn del">취소</button>
+        </div>
+    </script>
+
+    <!-- 동물병원 진료과목 select 폼 -->
+    <script type="java/template" id="petSectionListForm">
+        <div class="form-group col-6">
+            <label>진료과목*</label>
+            <div class="selector-head">
+                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                <select class="user-chosen-select" name="sectionNums">
+                    <option disabled selected>진료 과목을 선택해주세요</option>
+                    <c:forEach items="${petSectionList}" var="petSectionList">
+                        <option value="${petSectionList.sectionNum}">${petSectionList.sectionName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="button mb-0">
+            <button type="button" class="btn del">취소</button>
         </div>
     </script>
 

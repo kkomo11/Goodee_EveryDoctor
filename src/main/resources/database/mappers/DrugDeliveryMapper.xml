@@ -9,13 +9,25 @@
 	<select id="findDrugDeliveryList" resultType="DrugDeliveryVO"
 		parameterType="DrugDeliveryVO">
 		SELECT * FROM DRUGDELIVERY
+		WHERE DRUGDELIVERYNUM
+		ORDER BY
+		RAND()
+		LIMIT 4;
 	</select>
 
-	<select id="findDrugDeliveryDetail" parameterType="DrugDeliveryVO"
-		resultType="DrugDeliveryVO">
+	<select id="findDrugDeliveryDetail"
+		parameterType="DrugDeliveryVO" resultType="DrugDeliveryVO">
 		SELECT * FROM DRUGDELIVERY
 		WHERE DRUGDELIVERYNUM =
 		#{drugDeliveryNum}
+	</select>
+
+	<select id="findDrugDeliveryNum" parameterType="DrugDeliveryVO"
+		resultType="DrugDeliveryVO">
+		SELECT * FROM DRUGDELIVERY
+		WHERE DRUGDELIVERYNUM
+		ORDER BY RAND()
+		LIMIT 4;
 	</select>
 
 </mapper>

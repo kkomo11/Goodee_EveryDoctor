@@ -3,17 +3,14 @@ package com.goodee.everydoctor.board.tip;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.board.BoardVO;
+
 import lombok.Data;
 
 @Data
-public class BoardTipVO {
-
-	//글번호
-	private Long boardNum;
-	//글제목
-	private String boardTitle;
-	//글내용
-	private String boardContents;
+public class BoardTipVO extends BoardVO {
+	
+	private BoardVO boardVO;
 
 	private MultipartFile [] files;
 //	private List<BoardFileVO> boardFileVOs;

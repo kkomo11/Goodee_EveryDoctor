@@ -4,6 +4,9 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- Start Header Area -->
 <header class="header navbar-area">
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="Principal" var="member"/>
+	</sec:authorize>
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
@@ -79,17 +82,22 @@
                                       </li>
                                     </ul>
                                 </li>
+                                <sec:authorize access="hasAnyRole('DOCTOR', 'PETDOC')">
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">의사</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
-                                          <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
-                                          <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
-                                          <li class="nav-item"><a href="item-details.html">Ad Details</a></li>
+                                          <sec:authorize access="hasRole('DOCTOR')">
+                                          <li class="nav-item"><a href="item-listing-grid.html">의사</a></li>
+                                          </sec:authorize>
+                                          <sec:authorize access="hasRole('PETDOC')">
+                                          <li class="nav-item"><a href="/pet/diagnosis/reservatedList?d=${member.username }">수의사</a></li>
+                                          </sec:authorize>
                                       </ul>
                                 </li>
+                                </sec:authorize>
                                 <li class="nav-item">
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
@@ -136,7 +144,8 @@
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>
-                                <input id="authUsername" value="${member.username}" type="hidden">
+                                <input type="hidden" id="AuthProfile" value="${member.fileName}">
+                                <input id="authUsername" value="${member.username}" style="display:none;">
                                     ${member.name}님 환영합니다.
 
                                 <li>
@@ -152,7 +161,7 @@
                                     <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
                                 </li>
 								</sec:authorize>
-								<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
@@ -191,20 +200,12 @@
   </div>
 </div>
 </sec:authorize>
-
-<div class="toast-container position-fixed bottom-0 p-3" style="z-index:555;">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-    <div class="toast-header">
-      <img src="#" class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
+    
+<!--출력되는 웹알림 담아주는 곳 -->
+<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 75px !important; overflow-y: auto; height:400px;">
 </div>
+
+
 <!-- End Header Area -->
 
 <script type="text/javascript">

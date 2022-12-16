@@ -59,6 +59,12 @@ function init(){
                                         .replace("{consultAnswerRegDate}", item["answerRegDate"])
                                         .replace("{consultAnswerContent}", item["answerContent"]);
 
+                if(item["userVO"].fileName != null && item["userVO"].fileName != ""){
+                    consultAnswerTemplate = consultAnswerTemplate.replace("{userFileName}", item["userVO"].fileName);
+                } else {
+                    consultAnswerTemplate = consultAnswerTemplate.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                }
+
                 consultAnswerList.append(consultAnswerTemplate);
                 
                 if(item["username"] == answerUsernameInput.val()){
@@ -115,6 +121,12 @@ consultAnswerMoreBtn.on("click", function(){
                                             .replace("{consultAnswerRegDate}", item["answerRegDate"])
                                             .replace("{consultAnswerContent}", item["answerContent"]);
     
+                    if(item["userVO"].fileName != null && item["userVO"].fileName != ""){
+                        consultAnswerTemplate = consultAnswerTemplate.replace("{userFileName}", item["userVO"].fileName);
+                    } else {
+                        consultAnswerTemplate = consultAnswerTemplate.replace("{userFileName}", "/images/pet/home/doctor_icon.svg");
+                    }
+
                     consultAnswerList.append(consultAnswerTemplate);
 
                     if(item["username"] == answerUsernameInput.val()){

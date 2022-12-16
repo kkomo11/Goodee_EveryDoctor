@@ -30,6 +30,20 @@
         .btn.active span:last-child  {
             display: none;
         }
+
+        .remoteWrap {
+            position: relative;
+            padding: 0;
+        }
+
+        .localWrap {
+            position: absolute;
+            height: 20%;
+            width: 20%;
+            right: 0;
+            bottom: 0;
+            padding: 0;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/telemedicine.css"/>
 </head>
@@ -84,22 +98,22 @@
 
         <div class="row justify-content-around mb-3">
             <div class="col-lg-8">
-                <div class="col-lg-12 mb-3">
-                    <!-- 내 화면 -->
-                    <video id="local_video" autoplay playsinline></video>
-                </div>
                 <!-- 상대 화면 -->
-                <div class="col-lg-12 mb-3">
+                <div class="col-lg-12 mb-3 remoteWrap">
                     <video id="remote_video" autoplay playsinline></video>
+                    <div class="col-lg-12 localWrap">
+                        <!-- 내 화면 -->
+                        <video id="local_video" autoplay playsinline></video>
+                    </div>
                 </div>
             </div>
             <!-- 채팅 자리 -->
-            <div class="messages-body col-lg-4" style="height:900px">
+            <div class="messages-body col-lg-4" style="height:900px; width:420px;">
                 <div class="row" style="height:90%">
                     <div style="height:80%">
                         <!-- Start Chat List -->
                         <div class="chat-list" style="height:90%">
-                            <ul class="single-chat-head" id="msgArea" style="height:80%">
+                            <ul class="single-chat-head" id="msgArea" style="height:90%">
                             </ul>
                             <div class="reply-block">
                                 <input name="reply" type="text" id="msg" placeholder="Type your message here...">
@@ -121,7 +135,7 @@
                     <div id="" class="chat-list">
                         <ul id="msgArea" class="single-chat-head"></ul>
                     </div>
-                     입력 창 
+                     입력 창
                     <div class="input-group mb-3">
                         <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="input-group-append">

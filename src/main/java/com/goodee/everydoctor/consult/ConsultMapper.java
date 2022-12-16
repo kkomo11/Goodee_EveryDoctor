@@ -13,7 +13,7 @@ public interface ConsultMapper {
 	
 	public int deleteConsult(ConsultVO consultVO) throws Exception;	//delete
 	
-	public List<FileVO> findConsultFiles(ConsultVO consultVO) throws Exception;	//update
+	public List<FileVO> findConsultFiles(ConsultVO consultVO) throws Exception;	//update, List
 	
 	public int deleteConsultCategory(ConsultVO consultVO) throws Exception;	//update, delete
 	
@@ -26,6 +26,8 @@ public interface ConsultMapper {
 	public int inputConsult(ConsultVO consultVO) throws Exception;	//input
 	
 	public List<HospitalCategoryVO> findConsultCategory(ConsultVO consultVO) throws Exception;	//input
+	
+	public List<FileVO> findFile(ConsultVO consultVO) throws Exception;		// list
 	
 	public List<ConsultVO> findConsultList(Pager pager) throws Exception;	// list
 	

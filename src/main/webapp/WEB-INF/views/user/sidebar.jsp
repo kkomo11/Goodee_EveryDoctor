@@ -17,7 +17,7 @@
                     내 프로필</a></li>
             <li><a href="/user/mydiaglist"><i class="lni lni-printer"></i> 내 진료내역</a></li>
             <li><a href="/user/petdiaglist"><i class="lni lni-bookmark"></i> 반려동물 진료내역</a></li>
-            <li><a href="#"><i class="lni lni-heart"></i> 반려동물 관리</a></li>
+            <li><a href="/pet/profile/myPetList?username=${user.username }"><i class="lni lni-heart"></i> 반려동물 관리</a></li>
             <li><a href="#"><i class="lni lni-envelope"></i> 내 주소관리</a></li>
             <li><a href="#"><i class="lni lni-circle-plus"></i> 스케줄러</a></li>
             <li><a href="#"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
