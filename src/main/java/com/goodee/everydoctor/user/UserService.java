@@ -204,7 +204,11 @@ public class UserService {
 		return result;
 	}
 	
-	public List<UserAddressVO> getAddress(UserVO userVO)throws Exception{
+	public List<UserAddressVO> getAddressList(UserVO userVO)throws Exception{
 		return addressMapper.getUserAddressbyUsername(userVO);
+	}
+	
+	public UserAddressVO getAddress(UserAddressVO userAddressVO)throws Exception{
+		return addressMapper.getOneUserAddressbyUsername(userAddressVO);
 	}
 }
