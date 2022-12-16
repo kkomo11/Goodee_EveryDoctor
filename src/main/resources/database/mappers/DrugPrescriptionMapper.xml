@@ -16,9 +16,22 @@
 
 	<!-- 진료 상세정보 -->
 	<select id="findDrugPrescriptionDetail"
-		parameterType="DrugPrescriptionVO" resultType="DrugPrescriptionVO">
+		parameterType="DrugPrescriptionVO" resultMap="findDrugPrescriptionDetail">
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>
+	
+		<resultMap type="DrugPrescriptionVO" id="findDrugPrescriptionDetail">
+			<association property="userAddressVO" javaType="UserAddressVO">
+			<id column="USERNAME" property="username"/>
+			<result column="ADDRESSNUM" property="addressNum"/>
+			<result column="ADDRESSNICK" property="addressNick"/>
+			<result column="USERMAINADDR" property="userMainAddr"/>
+			<result column="USERSUBADDR" property="userSubAddr"/>
+			<result column="USERPOST" property="userPost"/>
+			<result column="ADDRESSPECEIVER" property="addressReceiver"/>
+			<result column="ADDRESSPHONE" property="addressPhone"/>
+			</association>		
+		</resultMap>
 	
 
 	<!--운송장번호 -->
