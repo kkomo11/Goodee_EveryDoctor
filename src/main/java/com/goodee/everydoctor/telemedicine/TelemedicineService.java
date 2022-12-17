@@ -1,5 +1,7 @@
 package com.goodee.everydoctor.telemedicine;
 
+import java.util.Map;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,4 +11,5 @@ public interface TelemedicineService {
     ModelAndView displaySelectedRoom(String sid, String uuid);
     ModelAndView processRoomExit(String sid, String uuid);
     ModelAndView requestRandomRoomNumber(String uuid);
+    Map<String, Object> processRoomCreate(final String sid, final String uuid, final BindingResult bindingResult) ;
 }

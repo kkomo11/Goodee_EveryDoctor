@@ -139,26 +139,29 @@
                                     <!-- Start Item List Title -->
                                     <div class="item-list-title">
                                         <div class="row align-items-center">
-                                            <div class="col-lg-5 col-md-5 col-12">
+                                            <div class="col-md-4 col-12">
                                                 <p>진료</p>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-12">
+                                            <div class="col-md-2 col-12">
                                                 <p>진료 카테고리</p>
                                             </div>
-                                            <div class="col-lg-1 col-md-1 col-12">
+                                            <div class="col-md-1 col-12">
                                                 <p>상태</p>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-12 align-right">
+                                            <div class="col-md-2 col-12">
+                                                <p>진료방</p>
+                                            </div>
+                                            <div class="col-md-3 col-12 align-right">
                                                 <p>대기시간</p>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End List Title -->
-                                    <c:forEach items="${reservatedList}" var="reservated">
+                                    <c:forEach items="${reservatedList}" var="reservated" varStatus="status">
                                         <!-- Start Single List -->
                                         <div class="single-item-list">
                                             <div class="row align-items-center">
-                                                <div class="col-lg-5 col-md-5 col-12">
+                                                <div class="col-md-4 col-12">
                                                     <div class="item-image">
                                                         <div class="content">
                                                             <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
@@ -170,20 +173,27 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-12">
+                                                <div class="col-md-2 col-12">
                                                     <p>${reservated.dansCategory}</p>
                                                 </div>
-                                                <div class="col-lg-1 col-md-1 col-12">
+                                                <div class="col-md-1 col-12">
                                                     <p>대기</p>
                                                 </div>
-                                                <div class="col-lg-3 col-md-2 col-12 align-right">
-                                                    <ul class="action-btn">
-                                                        <li><a style="width: 48px;" href="javascript:void(0)">즉시</a></li>
-                                                        <li><a style="width: 48px;" href="javascript:void(0)">5분</a></li>
-                                                        <li><a style="width: 48px;" href="javascript:void(0)">10분</i></a></li>
+                                                <div class="col-md-2 col-12" id="roomBtn${status.count}">
+
+                                                </div>
+                                                <div class="col-md-3 col-12 align-right">
+                                                    <ul id="createRoomBtnList${status.count}" class="action-btn">
+                                                        <li><a style="width: 48px;"  onclick="createRoom(${reservated.username},${status.count})">즉시</a></li>
+                                                        <li><a style="width: 48px;" onclick="createRoom(${reservated.username},${status.count})">5분</a></li>
+                                                        <li><a style="width: 48px;" onclick="createRoom(${reservated.username},${status.count})">10분</i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
+                                                <form method="post" action="/room" id="mkRoom">
+                                                    <input type="hidden" id="uuid" name="uuid" />
+                                                    <!-- <input type="hidden" name="id" /> -->
+                                                </form>
                                             <div class="collapse" id="collapseExample${reservated.dansNum }">
                                                 <div class="card card-body">
                                                     ${reservated.dansContent}
@@ -229,5 +239,48 @@
     </a>
 
     <!-- ========================= JS here ========================= -->
+    <script type="text/javascript">
+        console.log("엑")
+
+        //
+        const uuidInput = document.querySelector('input#uuid');
+        $(function () {
+
+            function guid() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+
+            if (localStorage.getItem("uuid") === null) {
+                localStorage.setItem("uuid", guid());
+            }
+            uuidInput.value = localStorage.getItem("uuid");
+            console.log("local.uuid:" + localStorage.getItem("uuid"));
+            console.log("input.value:" + uuidInput.value);
+        });
+
+        //ajax를 요청하자
+        function createRoom(username,nb){
+            let mrdata = new FormData($("#mkRoom")[0]);
+            mrdata.append("action", "make");
+            mrdata.append("id", Number.parseInt(Math.random() * 100000000));
+            $.ajax({
+                type:"POST",
+                url:"/room",
+                cache:false,
+                contentType:false,
+                processData:false,
+                data: mrdata,
+                success:function(dt){
+                    $("#roomBtn"+nb).append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                    console.log($("#createRoomBtnList"+nb))
+
+                }
+            })
+        }
+
+    </script>
 </body>
 </html>
