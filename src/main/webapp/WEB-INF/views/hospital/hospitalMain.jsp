@@ -18,7 +18,7 @@
     <!-- Place favicon.ico in the root directory -->
     <style>
         #mainSection {
-            background-image: url('/images/hospital/home/hospitalMain.jpg');
+            background-image: url('/images/hospital/home/hospitalMain.png');
         }
 
         .hero-area.overlay::before {
