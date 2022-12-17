@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
@@ -63,8 +64,48 @@ public class FileManager extends AbstractView {
 		fi.close();
 
 	}
+	
+	public String saveFileS3(MultipartFile multipartFile, String label)throws Exception {
+		String path=base+label+"/";
+		
+		//0. 저장경로에 폴더(directory)가 없으면 만든다.
+		File file = new File(path);
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		
+		
+		
+		//1. 중복되지 않는 파일명 생성(UUID, Date)
+		String boardFileName = UUID.randomUUID().toString();
+
+		//2. 확장자
+		StringBuffer bf = new StringBuffer();
+		bf.append(boardFileName);
+
+		//파일명과 확장자 분리
+		String ex = multipartFile.getOriginalFilename();
+		ex = ex.substring(ex.lastIndexOf("."));
+
+		//bf.append(multipartFile.getOriginalFilename());
+		bf.append(ex);
+
+		boardFileName = bf.toString();
+
+		//3. File 저장
+		file = new File(path, bf.toString());
+
+		// MultipartFile
+		multipartFile.transferTo(file);
+
+		return boardFileName;
+	}
+	
+	
 
 	public String saveFile(MultipartFile multipartFile, String label)throws Exception {
+		
+		
 		String path=base+label+"/";
 		
 		//0. 저장경로에 폴더(directory)가 없으면 만든다.
