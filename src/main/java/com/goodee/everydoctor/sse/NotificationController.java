@@ -33,10 +33,10 @@ public class NotificationController {
 	@CrossOrigin
 	@RequestMapping(value="/subscribe", consumes = MediaType.ALL_VALUE)
 	public SseEmitter subscribe(@RequestParam String userID) {
+		SseEmitter se = emitters.get("Member");
 		SseEmitter sseEmitter = new SseEmitter(Long.MAX_VALUE);
 		sendInitEvent(sseEmitter);
 		emitters.put(userID, sseEmitter);
-		log.info("서브스크립 : {}", userID);
 		
 		//만료되면 삭제
 		sseEmitter.onCompletion(() -> emitters.remove(sseEmitter));
@@ -86,6 +86,8 @@ public class NotificationController {
 			} catch (IOException e) {
 				emitters.remove(sseEmitter);
 			}
+		}else {
+			log.info("알람 받을 사람이 없어요");
 		}
 	}
 	private void sendInitEvent(SseEmitter sseEmitter) {

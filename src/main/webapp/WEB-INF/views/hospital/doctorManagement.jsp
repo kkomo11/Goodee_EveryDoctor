@@ -264,7 +264,7 @@
         $('.single-item-list').click(function(e) {
             if(e.target.classList.contains('create-room')) {
                 createRoom($(this).attr('data-user-name'), $(this).find('.room-btn-wrap'), e.target.getAttribute('data-time'));
-
+                console.log(e.target.parentNode.parentNode)
             }
         })
 
@@ -274,6 +274,7 @@
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
             mrdata.append("time", delayTime);
+            mrdata.append("username",username);
             $.ajax({
                 type:"POST",
                 url:"/room",
@@ -282,7 +283,12 @@
                 processData:false,
                 data: mrdata,
                 success:function(dt){
-                    roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                    if(dt!=""){
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+
+                    }else{
+
+                    }
                 }
             })
         }
