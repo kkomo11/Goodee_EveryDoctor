@@ -1,5 +1,6 @@
 package com.goodee.everydoctor.hospital.diagnosis;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.util.FileManager;
 
 @Service
@@ -50,4 +53,25 @@ public class HospitalDiagnosisService {
 		return  hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDoctorVO);
 	}
 
+	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
+		
+		Long totalCount = hospitalDiagnosisMapper.findCompletedListCount(hospitalDiagnosisPager);
+		hospitalDiagnosisPager.getNum(totalCount);
+		hospitalDiagnosisPager.getRowNum();
+		
+		List<HospitalDiagnosisVO> dList = hospitalDiagnosisMapper.findCompletedList(hospitalDiagnosisPager);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		
+		for(HospitalDiagnosisVO d : dList) {
+			String reqTimeString = d.getDansReqTime().format(dtf);
+			String endTimeString = d.getDansEndTime().format(dtf);
+			d.setReqTimeString(reqTimeString);
+			d.setEndTimeString(endTimeString);
+			
+			List<FileVO> files = hospitalDiagnosisMapper.findFile(d);
+			d.setDansFiles(files);
+		}
+		
+		return dList;
+	}
 }

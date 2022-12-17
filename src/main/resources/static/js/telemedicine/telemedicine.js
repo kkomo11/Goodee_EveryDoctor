@@ -14,7 +14,7 @@ $(function(){
     uuidInput.value = localStorage.getItem("uuid");
     console.log("local.uuid:" + localStorage.getItem("uuid"));
     // console.log("input.value:" + uuidInput.value);
-});
+}); 
 
 function addUuidToButtonLink(button) {
     let id = 'button-link-' + button.value;
