@@ -91,7 +91,7 @@
                                         <ul class="sub-menu collapse" id="submenu-1-3">
                                           <sec:authorize access="hasRole('DOCTOR')">
                                           <li class="nav-item"><a href="/hospital/diagnosis/management">진료 대기</a></li>
-                                          <li class="nav-item"><a href="/hospital/diagnosis/management">진료 완료</a></li>
+                                          <li class="nav-item"><a href="/hospital/diagnosis/completedList?username=${member.username}">진료 완료</a></li>
                                           </sec:authorize>
                                           <sec:authorize access="hasRole('PETDOC')">
                                           <li class="nav-item"><a href="/pet/diagnosis/reservatedList?d=${member.username }">수의사</a></li>

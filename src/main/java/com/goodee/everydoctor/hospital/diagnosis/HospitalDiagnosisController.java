@@ -15,6 +15,7 @@ import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalHomeService;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
 import com.goodee.everydoctor.sse.NotificationController;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -65,6 +66,18 @@ public class HospitalDiagnosisController {
 			
 		mv.addObject("reservatedList", al);
 		mv.setViewName("/hospital/doctorManagement");
+		
+		return mv;
+	}
+	
+	// 해당 의사가 완료한 진료 내역 리스트 요청
+	@GetMapping("completedList")
+	public ModelAndView findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("completedList", hospitalDiagnosisService.findCompletedList(hospitalDiagnosisPager));
+		mv.addObject("pager", hospitalDiagnosisPager);
+		mv.setViewName("hospital/completedList");
 		
 		return mv;
 	}

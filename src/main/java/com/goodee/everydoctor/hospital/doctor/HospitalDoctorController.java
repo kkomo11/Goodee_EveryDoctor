@@ -11,7 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping("/hospital/doctor/*")
 public class HospitalDoctorController {
 	
@@ -39,6 +42,7 @@ public class HospitalDoctorController {
 		List<HospitalDoctorVO> doctorList = hospitalDoctorService.findDoctorList(HospitalMainPager);
 		modelAndView.addObject("doctorList", doctorList);
 		modelAndView.addObject("pager", HospitalMainPager);
+		
 		modelAndView.setViewName("hospital/doctorList");
 		return modelAndView;
 	}

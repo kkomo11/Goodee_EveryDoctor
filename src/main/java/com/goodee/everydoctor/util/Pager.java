@@ -1,8 +1,10 @@
 package com.goodee.everydoctor.util;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
+@Slf4j
 public class Pager {
 
 	private Long page;
@@ -55,10 +57,10 @@ public class Pager {
 		if(this.getPage()%this.getPerBlock() !=0) {
 			curBlock++;
 		}
-
 		//5. curBlock으로 startNum lastNum 구하기
 		this.startNum = (curBlock-1)*this.getPerBlock()+1;
 		this.lastNum = curBlock*this.getPerBlock();
+
 
 		//6. culBlock이 마지막block(total과 같을때)
 		if(curBlock==totalBlock) {

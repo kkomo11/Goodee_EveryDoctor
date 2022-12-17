@@ -34,6 +34,7 @@
         .remoteWrap {
             position: relative;
             padding: 0;
+            min-height: 500px;
         }
 
         .localWrap {
@@ -46,7 +47,12 @@
         }
 
         .video-sticky {
-            position: sticky;
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            right: 30px;
+            bottom: 30px;
+            z-index: 10;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/telemedicine.css"/>
