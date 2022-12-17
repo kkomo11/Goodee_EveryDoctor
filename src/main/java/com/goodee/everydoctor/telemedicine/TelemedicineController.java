@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.sse.NotificationController;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -25,6 +27,8 @@ public class TelemedicineController {
     public TelemedicineController(final TelemedicineService telemedicineService) {
         this.telemedicineService = telemedicineService;
     }
+    @Autowired
+    private NotificationController notificationController;
 
     @GetMapping({"/telemedicine"})
     public ModelAndView displayMainPage(final Long id, final String uuid) {
@@ -40,13 +44,14 @@ public class TelemedicineController {
     @PostMapping(value = "/room", params = "action=make")
     @ResponseBody
     public Map<String, Object> processRoomCreate(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding, String time) {
+    	//sid : 방번호 ,uuid: 개인식별자, binding: ??, time: 대기시간
     	log.info("dndldpdpdl   {}   {}  {} {} ", sid, uuid, binding, time);
     	
     	Map<String, Object> result =  this.telemedicineService.processRoomCreate(sid, uuid, binding);
     	
     	if(result!=null) {
-    		//알람을 보낸다.
-    		
+    		//알람을 보낸다.상단,내용,버튼url,받는사람 순
+    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "http://localhost:81/room/"+sid+"/user/"+uuid, "Member");
     	}
     	
     	return result;
