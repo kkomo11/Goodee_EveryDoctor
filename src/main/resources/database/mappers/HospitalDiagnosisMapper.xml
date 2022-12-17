@@ -14,8 +14,45 @@
 		FROM DIAGNOSIS D
 			 INNER JOIN
 			 USERS U 
-			ON D.DOCTORNAME = U.USERNAME 
+			ON D.USERNAME = U.USERNAME 
 		WHERE D.DOCTORNAME  = #{username} AND D.DANSSTATUS = 0
 		ORDER BY D.DANSREQTIME ASC
+	</select>
+	
+	<sql id="searchUser">
+		AND
+		<choose>
+			<when test="kind == 'name'">
+				U.NAME
+			</when>
+			<otherwise>
+				U.NAME
+			</otherwise>
+		</choose>
+		LIKE CONCAT('%', #{search}, '%')
+	</sql>
+	
+	<select id="findCompletedListCount" parameterType="HospitalDiagnosisPager" resultType="Long">
+		SELECT COUNT(DANSNUM) 
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U 
+		ON (D.USERNAME = U.USERNAME)
+		WHERE D.DOCTORNAME = #{username} AND D.DANSSTATUS = 1 
+		<include refid="searchUser"></include>
+	</select>
+	
+	<select id="findCompletedList" parameterType="HospitalDiagnosisPager" resultType="HospitalDiagnosisVO">
+		SELECT D.*, U.NAME AS PATIENT
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U 
+		ON (D.USERNAME = U.USERNAME)
+		WHERE (D.DOCTORNAME = #{username}) AND D.DANSSTATUS = 1
+		<include refid="searchUser"></include>
+		ORDER BY D.DANSENDTIME DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<select id="findFile" parameterType="HospitalDiagnosisVO" resultType="FileVO">
+		SELECT DANSFILENUM AS FILENUM, DANSFILENAME AS FILENAME, DANSFILEORINAME AS ORINAME FROM DANSFILE WHERE DANSNUM = #{dansNum}
 	</select>
 </mapper>

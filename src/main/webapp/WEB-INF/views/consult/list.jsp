@@ -11,12 +11,10 @@
     <title>Consult List</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link rel="stylesheet" href="/css/consult/list.css">
     <c:import url="../temp/boot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->
-
-
 </head>
 
 <body>
@@ -76,19 +74,10 @@
                         <sec:authorize access="!isAuthenticated()">
                         	<a id="consultWriteBtn" href="/user/login" class="btn btn-primary" role="button">무료 상담 신청</a>
                         </sec:authorize>
-                    	
-                        <!-- Start Single Widget -->
-                        <div class="single-widget search">
-                            <h3>Search Ads</h3>
-                            <form action="#">
-                                <input type="text" placeholder="Search Here...">
-                                <button type="submit"><i class="lni lni-search-alt"></i></button>
-                            </form>
-                        </div>
-                        <!-- End Single Widget -->
+
                         <!-- Start Single Widget -->
                         <div class="single-widget">
-                            <h3>All Categories</h3>
+                            <h3>카테고리</h3>
                             <ul class="list">
                                 <c:forEach items="${categories }" var="category">
                                 	<li>
@@ -103,48 +92,6 @@
                             </ul>
                         </div>
                         <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        <div class="single-widget range">
-                            <h3>Price Range</h3>
-                            <input type="range" class="form-range" name="range" step="1" min="100" max="10000"
-                                value="10" onchange="rangePrimary.value=value">
-                            <div class="range-inner">
-                                <label>$</label>
-                                <input type="text" id="rangePrimary" placeholder="100" />
-                            </div>
-                        </div>
-                        <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        <div class="single-widget condition">
-                            <h3>Condition</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                                <label class="form-check-label" for="flexCheckDefault1">
-                                    All
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                                <label class="form-check-label" for="flexCheckDefault3">
-                                    Used
-                                </label>
-                            </div>
-                        </div>
-                        <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        <div class="single-widget banner">
-                            <h3>Advertisement</h3>
-                            <a href="javascript:void(0)">
-                                <img src="https://via.placeholder.com/780x1300" alt="#">
-                            </a>
-                        </div>
-                        <!-- End Single Widget -->
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-12">
@@ -154,7 +101,7 @@
                                 <div class="category-grid-topbar">
                                     <div class="row align-items-center">
                                         <div class="col-lg-6 col-md-6 col-12">
-                                            <h3 class="title">Showing</h3>
+                                            <h3 class="title">정렬</h3>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <nav>
@@ -219,7 +166,7 @@
 	                                                <!-- End Single Item -->
 	                                            </div>
                                         	</c:forEach>
-                                            
+
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
@@ -258,7 +205,7 @@
 			                                                        	<c:if test="${consultItem.consultFiles.size() <= 0 }">
 			                                                        		<img src="/images/pet/home/website_icon.svg" alt="#" style="height: 10rem;">
 			                                                        	</c:if>
-			                                                        	
+
 			                                                        </a>
 			                                                        <i class=" cross-badge lni lni-bolt"></i>
 			                                                        	<c:if test="${consultItem.consultKind == 0 }">
@@ -294,7 +241,7 @@
 	                                                <!-- End Single Item -->
 	                                            </div>
                                         	</c:forEach>
-                                            
+
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
@@ -363,7 +310,7 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    
+
 </body>
 
 </html>

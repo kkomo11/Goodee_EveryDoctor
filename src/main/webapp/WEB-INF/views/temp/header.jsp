@@ -90,7 +90,8 @@
                                         aria-label="Toggle navigation">의사</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
                                           <sec:authorize access="hasRole('DOCTOR')">
-                                          <li class="nav-item"><a href="item-listing-grid.html">의사</a></li>
+                                          <li class="nav-item"><a href="/hospital/diagnosis/management">진료 대기</a></li>
+                                          <li class="nav-item"><a href="/hospital/diagnosis/completedList?username=${member.username}">진료 완료</a></li>
                                           </sec:authorize>
                                           <sec:authorize access="hasRole('PETDOC')">
                                           <li class="nav-item"><a href="/pet/diagnosis/reservatedList?d=${member.username }">수의사</a></li>
@@ -200,7 +201,7 @@
   </div>
 </div>
 </sec:authorize>
-    
+
 <!--출력되는 웹알림 담아주는 곳 -->
 <div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 75px !important; overflow-y: auto; height:400px;">
 </div>

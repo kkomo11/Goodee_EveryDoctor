@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.hospital.HospitalSectionVO;
+
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping("/hospital/doctor/*")
 public class HospitalDoctorController {
 	
@@ -26,11 +31,6 @@ public class HospitalDoctorController {
 		return modelAndView;
 	}
 	
-	@GetMapping("management")
-	public String doctorManagement() throws Exception {
-		return "hospital/doctorManagement";
-	}
-	
 	@GetMapping("/diagnosis/detail")
 	public String diagnosisDetail() throws Exception {
 		return "hospital/diagnosisDetail";
@@ -38,9 +38,11 @@ public class HospitalDoctorController {
 	
 	@GetMapping("/list")
 	@ResponseBody
-	public ModelAndView doctorList(ModelAndView modelAndView) throws Exception {
-		List<HospitalDoctorVO> doctorList = hospitalDoctorService.findDoctorList();
+	public ModelAndView doctorList(ModelAndView modelAndView, HospitalMainPager HospitalMainPager) throws Exception {
+		List<HospitalDoctorVO> doctorList = hospitalDoctorService.findDoctorList(HospitalMainPager);
 		modelAndView.addObject("doctorList", doctorList);
+		modelAndView.addObject("pager", HospitalMainPager);
+		
 		modelAndView.setViewName("hospital/doctorList");
 		return modelAndView;
 	}

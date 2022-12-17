@@ -8,10 +8,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Completed List</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />	
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
 
-	<c:import url="../../temp/boot.jsp"></c:import>
+	<c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
     <!-- Preloader -->
@@ -26,8 +26,8 @@
     <!-- /End Preloader -->
     <sec:authentication property="Principal" var="user"/>
     <!-- Header -->
-    <c:import url="../../temp/header.jsp"></c:import>
-    
+    <c:import url="../temp/header.jsp"></c:import>
+
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    
+
     <!-- Start Dashboard Section -->
     <section class="dashboard section">
         <div class="container">
@@ -58,7 +58,7 @@
 	                    <div class="single-widget search">
 	                        <h3>보호자명 검색</h3>
 	                        <form action="./completedList" method="get">
-	                        	<input type="hidden" name="d" value="${user.username }">
+	                        	<input type="hidden" name="username" value="${user.username }">
 	                        	<input type="hidden" name="kind" value="name">
 	                            <input type="text" placeholder="Search Here..." name="search">
 	                            <button type="submit"><i class="lni lni-search-alt"></i></button>
@@ -74,7 +74,7 @@
                             <h3 class="block-title">완료된 진료</h3>
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
-                                
+
                                 <!-- Start Single List -->
                                 <div class="single-list  my-items">
                                 <!-- Start Item List Title -->
@@ -104,28 +104,28 @@
 		                            <div class="row align-items-center">
 		                                <div class="col-lg-5 col-md-5 col-12">
 		                                    <div class="item-image">
-		                                        <c:if test="${completed.PDansFiles.size() > 0 }">
-		                                        	<img src="/file/PETDANS/${completed.PDansFiles[0].fileName }" alt="#">
+		                                        <c:if test="${completed.dansFiles.size() > 0 }">
+		                                        	<img src="/file/PETDANS/${completed.dansFiles[0].fileName }" alt="#">
 		                                        </c:if>
-		                                        <c:if test="${completed.PDansFiles.size() <= 0 }">
+		                                        <c:if test="${completed.dansFiles.size() <= 0 }">
 		                                        	<img src="/images/pet/home/website_icon.svg" alt="#">
 		                                        </c:if>
-		                                            
+
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
-		                                            <h3 class="title"><a href="/pet/diagnosis/completedDetail?n=${completed.PDansNum }">${completed.protectorName}</a></h3>
+		                                            <h3 class="title"><a href="/hospital/diagnosis/completedDetail?n=${completed.dansNum }">${completed.patient}</a></h3>
 		                                            <span class="price">${completed.reqTimeString}</span>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-lg-2 col-md-2 col-12">
-		                                    <p>${completed.PDansCategory}</p>
+		                                    <p>${completed.dansCategory}</p>
 		                                </div>
 		                                <div class="col-lg-1 col-md-1 col-12">
 		                                    <p>완료</p>
 		                                </div>
 		                                <div class="col-lg-2 col-md-2 col-12">
-		                                    <p>${completed.PDansCost }</p>
+		                                    <p>${completed.dansCost }</p>
 		                                </div>
 		                                <div class="col-lg-2 col-md-2 col-12 align-right">
 		                                    <p>${completed.endTimeString }</p>
@@ -134,7 +134,7 @@
 	                            </div>
 	                            <!-- End Single List -->
                             </c:forEach>
-                                
+
                                     </div>
                                 </div>
                                 <!-- End Single List -->
@@ -142,13 +142,13 @@
                                 <div class="pagination left" style="margin-left: 1rem;">
                                     <ul class="pagination-list">
                                         <c:if test="${pager.pre }">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.startNum - 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-left"></i></a></li>
+                                        	<li><a href="/hospital/diagnosis/completedList?username=${user.username }&page=${pager.startNum - 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-left"></i></a></li>
                                         </c:if>
                                         <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${i }&kind=${pager.kind}&search=${pager.search}">${i }</a></li>
+                                        	<li><a href="/hospital/diagnosis/completedList?username=${user.username }&page=${i }&kind=${pager.kind}&search=${pager.search}">${i }</a></li>
                                         </c:forEach>
                                         <c:if test="${pager.next }">
-                                        	<li><a href="/pet/diagnosis/completedList?d=${user.username }&page=${pager.lastNum + 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-right"></i></a></li>
+                                        	<li><a href="/hospital/diagnosis/completedList?username=${user.username }&page=${pager.lastNum + 1 }&kind=${pager.kind}&search=${pager.search}"><i class="lni lni-chevron-right"></i></a></li>
                                         </c:if>
                                     </ul>
                                 </div>
@@ -164,7 +164,7 @@
     <!-- End Dashboard Section -->
 
 	<!-- Footer -->
-    <c:import url="../../temp/footer.jsp"></c:import>
+    <c:import url="../temp/footer.jsp"></c:import>
     <!-- <script src="/js/user/profile.js"></script> -->
 
     <!-- ========================= scroll-top ========================= -->
