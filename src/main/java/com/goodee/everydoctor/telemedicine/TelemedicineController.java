@@ -39,13 +39,14 @@ public class TelemedicineController {
     
     @PostMapping(value = "/room", params = "action=make")
     @ResponseBody
-    public Map<String, Object> processRoomCreate(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding) {
-    	log.info("dndldpdpdl   {}   {}  {} {} ", sid, uuid, binding, "qkah");
+    public Map<String, Object> processRoomCreate(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding, String time) {
+    	log.info("dndldpdpdl   {}   {}  {} {} ", sid, uuid, binding, time);
     	
     	Map<String, Object> result =  this.telemedicineService.processRoomCreate(sid, uuid, binding);
     	
     	if(result!=null) {
     		//알람을 보낸다.
+    		
     	}
     	
     	return result;

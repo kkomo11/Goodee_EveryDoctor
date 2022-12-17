@@ -157,9 +157,9 @@
                                         </div>
                                     </div>
                                     <!-- End List Title -->
-                                    <c:forEach items="${reservatedList}" var="reservated" varStatus="status">
+                                    <c:forEach items="${reservatedList}" var="reservated">
                                         <!-- Start Single List -->
-                                        <div class="single-item-list">
+                                        <div class="single-item-list" data-user-name="${reservated.username}">
                                             <div class="row align-items-center">
                                                 <div class="col-md-4 col-12">
                                                     <div class="item-image">
@@ -179,14 +179,14 @@
                                                 <div class="col-md-1 col-12">
                                                     <p>대기</p>
                                                 </div>
-                                                <div class="col-md-2 col-12" id="roomBtn${status.count}">
+                                                <div class="col-md-2 col-12 room-btn-wrap">
 
                                                 </div>
                                                 <div class="col-md-3 col-12 align-right">
-                                                    <ul id="createRoomBtnList${status.count}" class="action-btn">
-                                                        <li><a style="width: 48px;"  onclick="createRoom(${reservated.username},${status.count})">즉시</a></li>
-                                                        <li><a style="width: 48px;" onclick="createRoom(${reservated.username},${status.count})">5분</a></li>
-                                                        <li><a style="width: 48px;" onclick="createRoom(${reservated.username},${status.count})">10분</i></a></li>
+                                                    <ul class="action-btn">
+                                                        <li><a class="create-room" data-time="0" style="width: 48px;">즉시</a></li>
+                                                        <li><a class="create-room" data-time="5" style="width: 48px;">5분</a></li>
+                                                        <li><a class="create-room" data-time="10" style="width: 48px;">10분</i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -261,11 +261,19 @@
             console.log("input.value:" + uuidInput.value);
         });
 
+        $('.single-item-list').click(function(e) {
+            if(e.target.classList.contains('create-room')) {
+                createRoom($(this).attr('data-user-name'), $(this).find('.room-btn-wrap'), e.target.getAttribute('data-time'));
+
+            }
+        })
+
         //ajax를 요청하자
-        function createRoom(username,nb){
+        function createRoom(username, roomBtn, delayTime){
             let mrdata = new FormData($("#mkRoom")[0]);
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
+            mrdata.append("time", delayTime);
             $.ajax({
                 type:"POST",
                 url:"/room",
@@ -274,9 +282,7 @@
                 processData:false,
                 data: mrdata,
                 success:function(dt){
-                    $("#roomBtn"+nb).append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
-                    console.log($("#createRoomBtnList"+nb))
-
+                    roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
                 }
             })
         }
