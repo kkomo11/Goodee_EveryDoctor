@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.util.Parser;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -35,7 +37,21 @@ public class TelemedicineServiceImpl implements TelemedicineService {
 
         return modelAndView;
     }
-
+    
+    public Map<String, Object> processRoomCreate(final String sid, final String uuid, final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // simplified version, no errors processing
+            return null;
+        }
+        Optional<Long> optionalId = parser.parseId(sid);
+        optionalId.ifPresent(id -> Optional.ofNullable(uuid).ifPresent(name -> roomService.addRoom(new Room(id))));
+        
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("uuid", uuid);
+        map.put("roomid", roomService.findRoomByStringId(sid));
+        return map;
+    }
+    
     @Override
     public ModelAndView processRoomSelection(final String sid, final String uuid, final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
