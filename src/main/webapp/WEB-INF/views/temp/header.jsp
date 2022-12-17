@@ -164,6 +164,30 @@
 								</sec:authorize>
 								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 								<a href="/telemedicine">Telemedicine</a>
+                                <!--웹알림 목록 보여주기 위함-->
+                                <li class="nav-item dropdown no-arrow mx-1">
+                                    <a class="nav-link dropdown-toggle" id="alarmBell" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                        </svg>
+                                        <!-- Counter - Alerts -->
+                                        <span class="flat-badge sale">1+</span>
+                                    </a>
+                                    <!-- Dropdown - Alerts -->
+                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" id="dropDownList" aria-labelledby="alertsDropdown">
+                                        <h6 class="dropdown-header">
+                                            Alerts Center
+                                        </h6>
+                                        <hr>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div>
+                                                <div class="small text-gray-500">December 12, 2019</div>
+                                                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">
@@ -203,14 +227,17 @@
 </sec:authorize>
 
 <!--출력되는 웹알림 담아주는 곳 -->
-<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 75px !important; overflow-y: auto; height:400px;">
+<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 72px !important; overflow-y: auto; height:400px;">
 </div>
 
 
 <!-- End Header Area -->
 
 <script type="text/javascript">
-
+$("#alarmBell").click(function(){
+    $(".mx-1").toggleClass("show");
+    $("#dropDownList").toggleClass("show");
+});
 
 
 

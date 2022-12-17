@@ -35,14 +35,16 @@ public class HospitalDiagnosisService {
 		fileVO.setLabel("DANS");
 		
 		//file도 저장하고
-		for(MultipartFile f: fileVO.getFiles()) {
-			//HDD저장 (저장경로에 label을 추가해준다.)
-			String fileName = fileManager.saveFile(f, label);
-			fileVO.setFileName(fileName);
-			fileVO.setFileOriName(f.getOriginalFilename());
-			
-			//DB저장
-			result = fileMapper.inputFile(fileVO);
+		if(fileVO.getFiles() != null) {
+			for(MultipartFile f: fileVO.getFiles()) {
+				//HDD저장 (저장경로에 label을 추가해준다.)
+				String fileName = fileManager.saveFile(f, label);
+				fileVO.setFileName(fileName);
+				fileVO.setFileOriName(f.getOriginalFilename());
+				
+				//DB저장
+				result = fileMapper.inputFile(fileVO);
+			}
 		}
 		
 		return result;

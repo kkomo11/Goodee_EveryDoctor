@@ -20,6 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class NotificationController {
 	
+	@Autowired
+	private AlarmService alarmService;
+	
 	//전체
 //	public List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 	//1:1
@@ -92,4 +95,11 @@ public class NotificationController {
 			e.printStackTrace();
 		}
 	}
+	@PostMapping("/insertAlarm")
+	public int setAlarm(AlarmVO alarmVO)throws Exception{
+		int result = alarmService.setAlarm(alarmVO);
+		
+		return result;
+	}
+	
 }
