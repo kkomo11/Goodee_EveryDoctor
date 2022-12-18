@@ -131,17 +131,14 @@
                                     <!-- Start Item List Title -->
                                     <div class="item-list-title">
                                         <div class="row align-items-center">
-                                            <div class="col-md-4 col-12">
+                                            <div class="col-md-5 col-12">
                                                 <p>진료</p>
                                             </div>
-                                            <div class="col-md-2 col-12">
+                                            <div class="col-md-3 col-12">
                                                 <p>진료 카테고리</p>
                                             </div>
                                             <div class="col-md-1 col-12">
                                                 <p>상태</p>
-                                            </div>
-                                            <div class="col-md-2 col-12">
-                                                <p>진료방</p>
                                             </div>
                                             <div class="col-md-3 col-12 align-right">
                                                 <p>대기시간</p>
@@ -151,9 +148,9 @@
                                     <!-- End List Title -->
                                     <c:forEach items="${reservatedList}" var="reservated">
                                         <!-- Start Single List -->
-                                        <div class="single-item-list" data-user-name="${reservated.username}">
+                                        <div class="single-item-list" data-user-name="${reservated.username}" data-dans-num=${reservated.dansNum }>
                                             <div class="row align-items-center">
-                                                <div class="col-md-4 col-12">
+                                                <div class="col-md-5 col-12">
                                                     <div class="item-image">
                                                         <c:if test="${reservated.dansFiles.size() > 0 }">
                                                             <img src="/file/PETDANS/${reservated.dansFiles[0].fileName }" alt="#">
@@ -171,17 +168,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-12">
+                                                <div class="col-md-3 col-12">
                                                     <p>${reservated.dansCategory}</p>
                                                 </div>
                                                 <div class="col-md-1 col-12">
                                                     <p>대기</p>
                                                 </div>
-                                                <div class="col-md-2 col-12 room-btn-wrap">
-
-                                                </div>
                                                 <div class="col-md-3 col-12 align-right">
-                                                    <ul class="action-btn">
+                                                    <ul class="action-btn" >
                                                         <li><a class="create-room" data-time="0" style="width: 48px;">즉시</a></li>
                                                         <li><a class="create-room" data-time="5" style="width: 48px;">5분</a></li>
                                                         <li><a class="create-room" data-time="10" style="width: 48px;">10분</i></a></li>
@@ -258,14 +252,16 @@
 
         $('.single-item-list').click(function(e) {
             if(e.target.classList.contains('create-room')) {
-                createRoom($(this).attr('data-user-name'), $(this).find('.room-btn-wrap'), e.target.getAttribute('data-time'));
-                console.log(e.target.parentNode.parentNode)
+                createRoom($(this).attr('data-dans-num'),$(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
+                console.log($(e.target.parentNode.parentNode))
+
             }
         })
 
         //ajax를 요청하자
-        function createRoom(username, roomBtn, delayTime){
+        function createRoom(dansnum, username, roomBtn, delayTime){
             let mrdata = new FormData($("#mkRoom")[0]);
+            mrdata.append("dansnum", dansnum);
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
             mrdata.append("time", delayTime);
@@ -279,7 +275,8 @@
                 data: mrdata,
                 success:function(dt){
                     if(dt!=""){
-                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                        roomBtn.empty()
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'/'+dansnum+'">입장</a>')
 
                     }else{
 

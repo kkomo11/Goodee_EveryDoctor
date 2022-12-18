@@ -29,4 +29,7 @@ public interface HospitalDiagnosisMapper {
 	public HospitalDiagnosisVO findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
 	
 	public List<DrugVO> findFills(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
+	
+	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum (HospitalDiagnosisVO hospitalDiagnosisVO)throws Exception;
+	
 }

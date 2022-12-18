@@ -55,7 +55,7 @@ public class HospitalDiagnosisController {
 		//웹 알림 띄우기(상단,내용,버튼url,받는사람 순)
 		notificationController.dispatchEventToClients("진료신청","["+hospitalDiagnosisVO.getDansCategory()+"]"+hospitalDiagnosisVO.getDansContent(), "/hospital/diagnosis/management",hospitalDiagnosisVO.getDoctorName());
 		
-		return "redirect:/user/mydiaglist";
+		return "redirect:/user/diagnosis/mylist";
 	}
 	
 	@GetMapping("management")
