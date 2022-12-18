@@ -31,3 +31,16 @@ deleteBtn.on("click", function(){
         });
     }
 });
+
+const reportModalBtn = $("#reportModalBtn");
+const reportForm = $("#reportForm");
+
+reportModalBtn.click(function(){
+
+    let reportFlag = confirm("신고 하시겠습니까?");
+
+    if(reportFlag){
+        reportForm.submit();
+        // location.reload();
+    }
+})

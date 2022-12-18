@@ -26,9 +26,9 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1200px;
-        height:500px;
-        margin-bottom: 300px;
+        width:1700px;
+        height:900px;
+        /* margin-bottom: 300px; */
     }
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -78,7 +78,7 @@
                 lon = position.coords.longitude; // 경도    
                 console.log("위경도====",lat,lon)
 
-                let imageSrc="/images/location/locate.png",
+                let imageSrc="/images/location/person2.png",
                     imageSize= new kakao.maps.Size(50, 50),  //마커이미지의 크기
                     imageOption ={offset: new kakao.maps.Point(27, 69)}   //마커이미지의 옵션 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
 
@@ -141,7 +141,7 @@
         let ov =[];
 
         $.ajax({
-            url : './pharmacy',
+            url : './night',
             type : 'GET',
             traditional : true,
             success : function(data){
@@ -154,8 +154,8 @@
                             let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
                             // console.log("coords ==", coords);
 
-                            let imageSrc ='/images/location/pharmacy.png',
-                                    imageSize = new kakao.maps.Size(40,42),
+                            let imageSrc ='/images/location/pharmacy2.png',
+                                    imageSize = new kakao.maps.Size(43,42),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
 
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
@@ -184,7 +184,7 @@
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                            let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
+                            // let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
 
                             wrap.append(info);
                             info.append(title).append(body);
@@ -194,7 +194,7 @@
                             body.append(desc);
                             desc.append(ellipsis);
                             desc.append(tel);
-                            desc.append(reservation);
+                            // desc.append(reservation);
                             
                             let content = wrap[0];
 

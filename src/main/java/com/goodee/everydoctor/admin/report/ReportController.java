@@ -2,6 +2,7 @@ package com.goodee.everydoctor.admin.report;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +25,26 @@ public class ReportController {
 	@Autowired
 	private ReportService reportService;
 	
-	//신고 등록 페이지
-	@GetMapping("write")
-	public void inputReport(@ModelAttribute ReportVO reportVO)throws Exception{
-		
-	}
+//	//신고 등록 페이지
+//	@GetMapping("write")
+//	public void inputReport(@ModelAttribute ReportVO reportVO)throws Exception{
+//		
+//	}
 	
 	//신고 등록
 	@PostMapping("write")
-	public ModelAndView inputReport(@Valid ReportVO reportVO, BindingResult bindingResult, ModelAndView mv)throws Exception{
-		if(bindingResult.hasErrors()) {
-			log.info("======== 검증 Error 발생 ========");
-			mv.setViewName("./write");
-			return mv;
-		}
-		
+	public String inputReport(ReportVO reportVO, String num)throws Exception{
+//		if(bindingResult.hasErrors()) {
+//			log.info("======== 검증 Error 발생 ========");
+//			mv.setViewName("./write");
+//			return mv;
+//		}
+//		String redirectUrl = req.getRequestURL().toString();
+//		log.info("========== RedirectUrl : {}",redirectUrl);
 		int result = reportService.inputReport(reportVO);
-		mv.setViewName("redirect:write");
-		return mv;
+		log.info("========= NUM: {}", num);
+//		mv.setViewName("redirect:write");
+		return "redirect:/consult/detail?consultNum="+num;
 	}
 	
 	//신고 답변 등록

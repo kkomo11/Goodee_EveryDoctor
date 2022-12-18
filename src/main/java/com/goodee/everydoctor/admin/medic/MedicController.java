@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.admin.agency.AgencyService;
 import com.goodee.everydoctor.admin.agency.AgencyVO;
+import com.goodee.everydoctor.hospital.HospitalHomeService;
+import com.goodee.everydoctor.hospital.HospitalSectionVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +27,9 @@ public class MedicController {
 	@Autowired
 	private AgencyService agencyService;
 	
+	@Autowired
+	private HospitalHomeService hospitalHomeService;
+	
 	//종사자 추가 등록
 	@GetMapping("regist")
 	public ModelAndView inputMedic()throws Exception{
@@ -33,10 +38,14 @@ public class MedicController {
 		List<AgencyVO> petHospitalList = agencyService.findPetHospitalList();
 		List<AgencyVO> pharmacyList = agencyService.findPharmacyList();
 		List<AgencyVO> petHotelList = agencyService.findPetHotelList();
+		List<HospitalSectionVO> petSectionList = agencyService.findPetHospitalSection();
+		List<HospitalSectionVO> hospitalSectionList = hospitalHomeService.findHospitalSection();
 		mv.addObject("hospitalList", hospitalList);
 		mv.addObject("petHospitalList", petHospitalList);
 		mv.addObject("pharmacyList", pharmacyList);
 		mv.addObject("petHotelList", petHotelList);
+		mv.addObject("petSectionList", petSectionList);
+		mv.addObject("hospitalSectionList", hospitalSectionList);
 		mv.setViewName("admin/medic/regist");
 		return mv;
 	}

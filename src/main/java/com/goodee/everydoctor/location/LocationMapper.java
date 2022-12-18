@@ -13,5 +13,7 @@ public interface LocationMapper {
 	//약국 list
 	public List<AgencyVO> findPharmacyList()throws Exception;
 	//24시 동물병원
+	public List<AgencyVO> findNonstopHospital()throws Exception;
+	//야간 약국
 	public List<AgencyVO> findNightPharmacy()throws Exception;
 }
