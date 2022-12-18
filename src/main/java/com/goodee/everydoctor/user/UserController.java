@@ -197,6 +197,16 @@ public class UserController {
 		return mv;
 	}
 	
+	@GetMapping("mydiagdetail")
+	public ModelAndView myDetail(ModelAndView mv)throws Exception{
+		log.info("mylist {}");
+		
+		
+		
+		mv.setViewName("user/mydiagdetail");
+		return mv;
+	}
+	
 	@GetMapping("petdiaglist")
 	public ModelAndView petList(ModelAndView mv)throws Exception{
 		log.info("mylist {}");
@@ -210,11 +220,8 @@ public class UserController {
 	@GetMapping("address")
 	public ModelAndView address(ModelAndView mv, @AuthenticationPrincipal UserVO userVO) throws Exception{
 		
-
-		
 		//기존 주소 가져와서 돌려주기
 		List<UserAddressVO>	userAddressVOs = userService.getAddressList(userVO);
-		
 		mv.addObject("listAddress", userAddressVOs);
 		mv.setViewName("/user/address");
 		
