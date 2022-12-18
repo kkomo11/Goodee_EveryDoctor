@@ -91,4 +91,9 @@ public class HospitalDiagnosisController {
 		mv.setViewName("hospital/completedDetail");
 		return mv;
 	}
+	
+	@GetMapping("prescription")
+	public String loadHospitalPrescription() throws Exception {
+		return "hospital/prescription";
+	}
 }

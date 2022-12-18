@@ -276,7 +276,7 @@
                 success:function(dt){
                     if(dt!=""){
                         roomBtn.empty()
-                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'/'+dansnum+'">입장</a>')
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'?dansnum='+dansnum+'">입장</a>')
 
                     }else{
 

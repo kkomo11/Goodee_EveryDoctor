@@ -109,7 +109,7 @@
 		<result column="DANSENDTIME" property="dansEndTime"/>
 		<result column="DANSCOST" property="dansCost"/>
 		<result column="DANSSTATUS" property="dansStatus"/>
-		<association property="userVO" javaType="UserVO">
+		<association property="patientVO" javaType="UserVO">
 			<result column="NAME" property="name"/>
 			<result column="PHONE" property="phone"/>
 			<result column="EMAIL" property="email"/>
@@ -122,6 +122,8 @@
 		FROM PRESCRIPTIONDRUG PD
 		INNER JOIN DRUG DR
 		ON (PD.DRUGNUM = DR.DRUGNUM)
-		WHERE PD.DANSNUM = #{dansNum}
+		INNER JOIN PRESCRIPTION PR
+		ON (PD.PRESCRIPTIONNUM = PR.PRESCRIPTIONNUM)
+		WHERE PR.DANSNUM = #{dansNum}
 	</select>
 </mapper>

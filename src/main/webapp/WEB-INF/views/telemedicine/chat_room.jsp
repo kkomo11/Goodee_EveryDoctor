@@ -136,24 +136,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4" id="page-content-wrap">
-                <div class="container-fluid">
-                    <div class="col-6">
-                        <h1>roomName</h1>
-                    </div>
-                     메시지 들어가는 부분
-                    <div id="" class="chat-list">
-                        <ul id="msgArea" class="single-chat-head"></ul>
-                    </div>
-                     입력 창
-                    <div class="input-group mb-3">
-                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <!-- Start Dashboard Section -->
         <section class="dashboard section">
@@ -178,7 +160,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="button" class="col-3 btn btn-primary" style="float: right;">진료 완료</button>
+                                            <a href="/hospital/diagnosis/prescription" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
                                         </form>
                                     </div>
                                 </div>

@@ -63,18 +63,18 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                	<c:if test="${completedDetail.PDansFiles.size() > 0 }">
-                                		<img src="/file/PETDANS/${completedDetail.PDansFiles[0].fileName }" id="current" alt="#" style="width: 100%; height: 25rem;">
+                                	<c:if test="${completedDetail.dansFiles.size() > 0 }">
+                                		<img src="/file/PETDANS/${completedDetail.dansFiles[0].fileName }" id="current" alt="#" style="width: 100%; height: 25rem;">
                                 	</c:if>
-                                	<c:if test="${completedDetail.PDansFiles.size() <= 0 }">
+                                	<c:if test="${completedDetail.dansFiles.size() <= 0 }">
                                 		<img src="/images/pet/home/no_image_icon.svg" id="current" alt="#" style="width: 100%; height: 25rem;">
                                 	</c:if>
 
                                 </div>
                                 <div class="images">
-                                	<c:if test="${completedDetail.PDansFiles.size() > 0 }">
-                                		<c:forEach items="${completedDetail.PDansFiles }" var="pDansFile">
-                                			<img src="/file/PETDANS/${pDansFile.fileName }" class="img" alt="#">
+                                	<c:if test="${completedDetail.dansFiles.size() > 0 }">
+                                		<c:forEach items="${completedDetail.dansFiles }" var="dansFile">
+                                			<img src="/file/PETDANS/${dansFile.fileName }" class="img" alt="#">
                                 		</c:forEach>
                                 	</c:if>
                                 </div>
@@ -83,13 +83,13 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">${completedDetail.userVO.name }</h2>
+                            <h2 class="title">${completedDetail.patientVO.name }</h2>
                             <p class="location"><i class="lni lni-map-marker"></i><a>비대면</a></p>
-                            <h3 class="price">${completedDetail.PDansCost }원</h3>
+                            <h3 class="price">${completedDetail.dansCost }원</h3>
                             <div class="list-info">
                                 <h4>부가정보</h4>
                                 <ul>
-                                    <li><span>증상분류:</span> ${completedDetail.PDansCategory }</li>
+                                    <li><span>증상분류:</span> ${completedDetail.dansCategory }</li>
                                     <li><span>신청시간:</span> ${completedDetail.reqTimeString }</li>
                                     <li><span>종료시간:</span> ${completedDetail.endTimeString }</li>
                                 </ul>
@@ -105,7 +105,7 @@
                         <div class="single-block description">
                             <h3>상담내용</h3>
                             <p>
-                                ${completedDetail.PDansContent }
+                                ${completedDetail.dansContent }
                             </p>
 
                         </div>
@@ -114,7 +114,7 @@
                         <div class="single-block description">
                             <h3>소견</h3>
                             <p>
-                                ${completedDetail.PDansResponse }
+                                ${completedDetail.dansResponse }
                             </p>
 
                         </div>
@@ -126,23 +126,23 @@
                             <div class="single-block author">
                                 <h3>신청자 정보</h3>
                                 <div class="content">
-                                	<c:if test="${completedDetail.userVO.fileName != null && completedDetail.userVO.fileName != '' }">
-                                		<img src="${completedDetail.userVO.fileName }" alt="#">
+                                	<c:if test="${completedDetail.patientVO.fileName != null && completedDetail.patientVO.fileName != '' }">
+                                		<img src="${completedDetail.patientVO.fileName }" alt="#">
                                 	</c:if>
-                                	<c:if test="${completedDetail.userVO.fileName == null || completedDetail.userVO.fileName == '' }">
+                                	<c:if test="${completedDetail.patientVO.fileName == null || completedDetail.patientVO.fileName == '' }">
                                 		<img src="/images/pet/home/user_profile_icon.svg" alt="#">
                                 	</c:if>
-                                    <h4>${completedDetail.userVO.name }</h4>
-                                    <c:if test="${completedDetail.userVO.phone != null }">
-                                    	<span>${completedDetail.userVO.phone }</span>
+                                    <h4>${completedDetail.patientVO.name }</h4>
+                                    <c:if test="${completedDetail.patientVO.phone != null }">
+                                    	<span>${completedDetail.patientVO.phone }</span>
                                     </c:if>
-                                    <c:if test="${completedDetail.userVO.phone == null }">
+                                    <c:if test="${completedDetail.patientVO.phone == null }">
                                     	<span>전화번호 등록 안됨</span>
                                     </c:if>
-                                    <c:if test="${completedDetail.userVO.email != null }">
-                                    	<a class="see-all">${completedDetail.userVO.email }</a>
+                                    <c:if test="${completedDetail.patientVO.email != null }">
+                                    	<a class="see-all">${completedDetail.patientVO.email }</a>
                                     </c:if>
-                                    <c:if test="${completedDetail.userVO.email == null }">
+                                    <c:if test="${completedDetail.patientVO.email == null }">
                                     	<a class="see-all">이메일 등록 안됨</a>
                                     </c:if>
                                 </div>
@@ -152,8 +152,8 @@
                             <div class="single-block ">
                                 <h3>약 처방</h3>
                                 <div class="content">
-                                	<c:if test="${completedDetail.petFills.size() > 0 }">
-                                		<c:forEach items="${completedDetail.petFills }" var="fill">
+                                	<c:if test="${completedDetail.fills.size() > 0 }">
+                                		<c:forEach items="${completedDetail.fills }" var="fill">
                                 			<a class="see-all">${fill.drugName }</a>
                                 			<ul>
                                 				<li>${fill.drugInfo }</li>
@@ -164,7 +164,7 @@
                                 		</c:forEach>
 
                                 	</c:if>
-                                	<c:if test="${completedDetail.petFills.size() <= 0 }">
+                                	<c:if test="${completedDetail.fills.size() <= 0 }">
                                 		<span>약 처방 안함</span>
                                 	</c:if>
                                 </div>
