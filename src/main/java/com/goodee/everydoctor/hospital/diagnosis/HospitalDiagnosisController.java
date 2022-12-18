@@ -51,8 +51,8 @@ public class HospitalDiagnosisController {
 		log.info("fileVO도 보자 {}", fileVO);
 		
 		int result = hospitalDiagnosisService.inputHospitalDiagnosis(hospitalDiagnosisVO, fileVO);
-		//웹 알림 띄우기
-		notificationController.dispatchEventToClients("진료신청",hospitalDiagnosisVO.getDansCategory(), "/hospital/diagnosis/management",hospitalDiagnosisVO.getDoctorName());//상단,내용,버튼url,받는사람 순
+		//웹 알림 띄우기(상단,내용,버튼url,받는사람 순)
+		notificationController.dispatchEventToClients("진료신청","["+hospitalDiagnosisVO.getDansCategory()+"]"+hospitalDiagnosisVO.getDansContent(), "/hospital/diagnosis/management",hospitalDiagnosisVO.getDoctorName());
 		
 		return "redirect:/user/mydiaglist";
 	}
