@@ -50,9 +50,23 @@ public class HospitalDiagnosisService {
 		return result;
 	}
 	//요청된 진료 리스트
-	public List<HospitalDoctorVO> findHospitalReservatedList(HospitalDoctorVO hospitalDoctorVO)throws Exception{
+	public List<HospitalDiagnosisVO> findHospitalReservatedList(HospitalDiagnosisPager hospitalDiagnosisPager)throws Exception{
 		
-		return  hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDoctorVO);
+		Long totalCount = hospitalDiagnosisMapper.findReservatedListCount(hospitalDiagnosisPager);
+		hospitalDiagnosisPager.getNum(totalCount);
+		hospitalDiagnosisPager.getRowNum();
+		List<HospitalDiagnosisVO> dList = hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDiagnosisPager);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		
+		for(HospitalDiagnosisVO d : dList) {
+			String reqTimeString = d.getDansReqTime().format(dtf);
+			d.setReqTimeString(reqTimeString);
+			
+			// 진료에 포함된 사진 파일 정보 db에서 가져옴 (그냥 resultMap으로 조인해서 결과를 넣으면 사진의 개수만큼 Row가 중복)
+			List<FileVO> files = hospitalDiagnosisMapper.findFile(d);
+			d.setDansFiles(files);
+		}
+		return dList;
 	}
 
 	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {

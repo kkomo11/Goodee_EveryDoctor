@@ -58,13 +58,13 @@ public class HospitalDiagnosisController {
 	}
 	
 	@GetMapping("management")
-	public ModelAndView findHospitalReservatedList(@AuthenticationPrincipal UserVO userVO)throws Exception{
-		HospitalDoctorVO hospitalDoctorVO = new HospitalDoctorVO();
-		hospitalDoctorVO.setUsername(userVO.getUsername());
+	public ModelAndView findHospitalReservatedList(@AuthenticationPrincipal UserVO userVO, HospitalDiagnosisPager hospitalDiagnosisPager)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<HospitalDoctorVO> al = hospitalDiagnosisService.findHospitalReservatedList(hospitalDoctorVO);
+		hospitalDiagnosisPager.setUsername(userVO.getUsername());
+		List<HospitalDiagnosisVO> al = hospitalDiagnosisService.findHospitalReservatedList(hospitalDiagnosisPager);
 			
 		mv.addObject("reservatedList", al);
+		mv.addObject("pager", hospitalDiagnosisPager);
 		mv.setViewName("/hospital/doctorManagement");
 		
 		return mv;
@@ -72,9 +72,9 @@ public class HospitalDiagnosisController {
 	
 	// 해당 의사가 완료한 진료 내역 리스트 요청
 	@GetMapping("completedList")
-	public ModelAndView findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
+	public ModelAndView findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager, @AuthenticationPrincipal UserVO userVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
+		hospitalDiagnosisPager.setUsername(userVO.getUsername());
 		mv.addObject("completedList", hospitalDiagnosisService.findCompletedList(hospitalDiagnosisPager));
 		mv.addObject("pager", hospitalDiagnosisPager);
 		mv.setViewName("hospital/completedList");

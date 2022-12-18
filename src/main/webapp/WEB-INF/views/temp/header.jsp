@@ -47,26 +47,8 @@
                                         data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">마이페이지</a>
-                                    <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
-                                        <li class="single-block">
-                                            <ul>
-                                                <li class="mega-menu-title">Essential Pages</li>
-                                                <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                                <li class="nav-item"><a href="item-details.html">Ads Details</a></li>
-                                                <li class="nav-item"><a href="post-item.html">Ads Post</a></li>
-                                                <li class="nav-item"><a href="pricing.html">Pricing Table</a></li>
-                                                <li class="nav-item"><a href="registration.html">Sign Up</a></li>
-                                                <li class="nav-item"><a href="login.html">Sign In</a></li>
-                                                <li class="nav-item"><a href="contact.html">Contact Us</a></li>
-                                                <li class="nav-item"><a href="faq.html">FAQ</a></li>
-                                                <li class="nav-item"><a href="404.html">Error Page</a></li>
-                                                <li class="nav-item"><a href="mail-success.html">Mail Success</a>
-                                                </li>
-                                                <li class="nav-item"><a href="coming-soon.html">Comming Soon</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
+                                    <ul class="sub-menu mega-menu collapse" id="submenu-1-4" style="width: 250px;">
+                                        <li class="single-block" style="width: 100% !important;">
                                           <ul>
                                               <li class="mega-menu-title">마이페이지</li>
                                               <li class="nav-item"><a href="/user/profile">내 프로필</a>

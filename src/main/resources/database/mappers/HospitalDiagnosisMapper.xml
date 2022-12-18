@@ -9,14 +9,14 @@
 			VALUES (NULL, #{username}, #{dansCategory}, #{dansContent}, #{doctorName}, NOW(), 0)
 	</insert>
 	
-	<select id="findHospitalReservatedList" parameterType="HospitalDoctorVO" resultType="HospitalDiagnosisVO">
+	<select id="findHospitalReservatedList" parameterType="HospitalDiagnosisPager" resultType="HospitalDiagnosisVO">
 		SELECT D.*,U.NAME AS PATIENT
 		FROM DIAGNOSIS D
-			 INNER JOIN
-			 USERS U 
-			ON D.USERNAME = U.USERNAME 
+		INNER JOIN USERS U 
+		ON D.USERNAME = U.USERNAME 
 		WHERE D.DOCTORNAME  = #{username} AND D.DANSSTATUS = 0
 		ORDER BY D.DANSREQTIME ASC
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<sql id="searchUser">
@@ -54,5 +54,9 @@
 	
 	<select id="findFile" parameterType="HospitalDiagnosisVO" resultType="FileVO">
 		SELECT DANSFILENUM AS FILENUM, DANSFILENAME AS FILENAME, DANSFILEORINAME AS ORINAME FROM DANSFILE WHERE DANSNUM = #{dansNum}
+	</select>
+	
+	<select id="findReservatedListCount" parameterType="HospitalDiagnosisPager" resultType="Long">
+		SELECT COUNT(DANSNUM) FROM DIAGNOSIS WHERE DOCTORNAME = #{username} AND DANSSTATUS = 0
 	</select>
 </mapper>

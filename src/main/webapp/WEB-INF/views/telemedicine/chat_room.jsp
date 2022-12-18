@@ -155,6 +155,40 @@
                 </div>
             </div> -->
         </div>
+        <!-- Start Dashboard Section -->
+        <section class="dashboard section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="main-content">
+                            <div class="dashboard-block mt-0" style="padding-bottom: 60px;">
+                                <div class="profile-settings-block">
+                                    <h3 class="block-title">환자 신청 내용</h3>
+                                    <div class="inner-block">
+                                        <div class="image">
+                                            <img src="/images/yeji.jpg" alt="#">
+                                        </div>
+                                        <form class="profile-setting-form" method="post" action="#">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group message">
+                                                        <label>내 증상</label>
+                                                        <textarea name="message" readonly
+                                                            onfocus="this.blur()">얼굴에 갑자기 붉은색 작은 점들이 생겼어요</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="col-3 btn btn-primary" style="float: right;">진료 완료</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Dashboard Section -->
     </div>
 </main>
 <!-- ========================= scroll-top ========================= -->

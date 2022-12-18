@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class GoodeeEveryDoctorApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 

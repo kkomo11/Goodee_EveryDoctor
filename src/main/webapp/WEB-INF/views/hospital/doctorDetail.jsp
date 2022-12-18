@@ -59,7 +59,7 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/file/profile/${doctorVO.fileName}">
+                                    <img src="${doctorVO.fileName}">
                                 </div>
                             </main>
                         </div>

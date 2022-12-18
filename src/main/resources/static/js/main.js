@@ -4,7 +4,7 @@ Author: GrayGrids
 */
 
 (function () {
-
+	
 	"use strict";
 
 	//===== Prealoder
@@ -127,7 +127,7 @@ Author: GrayGrids
 
     
 	//SSE를 페이지를 열면 연결요청을 한다.
-    let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
+    let urlEndPoint = 'http://'+window.location.host+'/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
 
 

@@ -17,7 +17,7 @@ class ReportMapperTest {
 	@Autowired
 	private UserService userService;
 
-	@Test
+//	@Test
 	void inputUsertest()throws Exception {
 		for(int i = 10; i <=10; i++) {
 			

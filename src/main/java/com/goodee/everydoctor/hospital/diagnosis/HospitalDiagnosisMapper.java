@@ -15,11 +15,13 @@ public interface HospitalDiagnosisMapper {
 	public int inputHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO);
 	
 	//요청된 진료 리스트
-	public List<HospitalDoctorVO> findHospitalReservatedList(HospitalDoctorVO hospitalDoctorVO);
+	public List<HospitalDiagnosisVO> findHospitalReservatedList(HospitalDiagnosisPager hospitalDiagnosisPager);
 	
 	public Long findCompletedListCount(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
 
 	public List<FileVO> findFile(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
 	
 	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
+	
+	public Long findReservatedListCount(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
 }
