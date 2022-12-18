@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisMapper;
-import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisPager;
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 import com.goodee.everydoctor.util.FileManager;
 
@@ -37,9 +36,9 @@ public class DrugPrescriptionService {
 //		return drugPrescriptionMapper.findDrugPrescriptionCategory();
 //	}
 
-	public DrugPrescriptionVO findDrugPrescriptionDetail()throws Exception {
+	public List<DrugPrescriptionVO> findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		// TODO Auto-generated method stub
-		return  drugPrescriptionMapper.findDrugPrescriptionDetail();
+		return  drugPrescriptionMapper.findDrugPrescriptionDetail(drugPrescriptionVO);
 	}
 
 	public List<DrugPrescriptionVO> findDrugPrescriptionList()throws Exception {

@@ -30,17 +30,28 @@ public class DrugPrescriptionController {
 	@GetMapping("detail")
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		drugPrescriptionVO=drugPrescriptionService.findDrugPrescriptionDetail();
 		//약목록
 		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
 		mv.addObject("list", ar);
-
+		
+		//처방된약
+		List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+		
+		String drugName = "";
+		for(int i = 0; i < drug.size(); i++) {
+			drugName += drug.get(i).getDrugName();
+			if(i != drug.size()-1) {
+				drugName += ", ";
+			}
+		}
+		
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
 		int randomNum = (int)(Math.random() * 3);
 		DrugPrescriptionVO deliveryNumObject = deliveryNumList.get(randomNum);
 		mv.addObject("deliveryNum", deliveryNumObject.getDrugDeliveryNum());
 
+		mv.addObject("drugName",drugName);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
 		

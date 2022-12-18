@@ -33,8 +33,6 @@ public class DrugPrescriptionVO {
 	//환자아이디
 	private String username;
 	
-	private String dansCategory;
-
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime dansReqTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
@@ -47,7 +45,7 @@ public class DrugPrescriptionVO {
 	private String reqTimeString;		// 진료 요청 시간 보기 좋게 담는 변수
 	private String endTimeString;		// 진료 종료 시간 보기 좋게 담는 변수
 	//조제상태
-	private Long prescripntionStatus;
+	private Long prescriptionStatus;
 
 	//처방전약
 	private List<DrugVO> presciptionDrug;

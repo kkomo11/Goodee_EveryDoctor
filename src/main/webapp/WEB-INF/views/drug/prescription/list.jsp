@@ -36,13 +36,13 @@
             <div class="row align-items-center">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="breadcrumbs-content">
-                  <h1 class="page-title">조제 목록</h1>
+                  <h1 class="page-title">조제 리스트</h1>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <ul class="breadcrumb-nav">
                   <li><a href="/">Home</a></li>
-                  <li>조제 목록</li>
+                  <li>조제 리스트</li>
                 </ul>
               </div>
             </div>
@@ -89,7 +89,7 @@
                               <p>분류</p>
                             </div>
                             <div class="col-lg-1 col-md-2 col-12">
-                              <p>조제상태</p>
+                              <p>조제</p>
                             </div>
                             <div class="col-lg-1 col-md-2 col-12">
                               <p>상태</p>
@@ -119,7 +119,7 @@
                                   <div class="content">
                                     <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
                                     <h3 class="title"><a
-                                        href="/drug/prescription/detail?n=${completed.dansNum }">${completed.patient}</a>
+                                        href="/drug/prescription/detail?dansNum=${completed.dansNum }">${completed.patient}</a>
                                     </h3>
                                     <span class="price">${completed.reqTimeString}</span>
                                   </div>
@@ -128,8 +128,14 @@
                               <div class="col-lg-1 col-md-1 col-12">
                                 <p>${completed.dansCategory}</p>
                               </div>
+                              <!-- 조제상태 -->
                               <div class="col-lg-1 col-md-1 col-12">
-                                <p>대기</p>
+                                <c:if test="${completed.prescriptionStatus eq 0}">
+                                  <p>대기</p>
+                                </c:if>
+                                <c:if test="${completed.prescriptionStatus eq 1}">
+                                  <p>완료</p>
+                                </c:if>
                               </div>
                               <div class="col-lg-1 col-md-1 col-12">
                                 <p>완료</p>
