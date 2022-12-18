@@ -10,7 +10,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>에브리닥터 회원가입</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />	
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
 	<c:import url="../temp/boot.jsp"></c:import>
 </head>
@@ -37,7 +37,7 @@
 
     <!-- Header -->
     <c:import url="../temp/header.jsp"></c:import>
-    
+
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -66,7 +66,7 @@
                     <div class="form-head">
                         <h4 class="title">회원가입</h4>
                         <form:form action="./registration" modelAttribute="userVO" method="post">
-                            
+
                             <div class="form-group">
                                 <label>아이디 ID</label>
                                 <div class="d-flex">
@@ -79,24 +79,24 @@
                             </div>
                             <div class="form-group">
                                 <label>성함 Name</label>
-                                <form:input path="name" />
-                                <span  class="text-danger"><form:errors path="name"></form:errors></span>
+                                <form:input path="name" id="name"/>
+                                <span  class="text-danger" id="errorName"><form:errors path="name"></form:errors></span>
                             </div>
                             <div class="" style="margin-bottom: 25px;">
-                            
+
 					      	<div class="row">
 					      		<div class="col-3">
 			                     <label>성별 Gender</label>
 					      		</div>
 					      		<div class="col-3 text-center">
 					      			<label for="genderM">남성</label>
-			                     	<input type="radio" id="genderM" name="gender" value="M"> 
+			                     	<input type="radio" id="genderM" name="gender" value="M">
 					      		</div>
 					      		<div class="col-6 text-center">
 					      			<label for="genderF">여성</label>
-			                     	<input type="radio" id="genderF" name="gender" value="F"> 
-					      		</div>	                     
-		                 	</div>			
+			                     	<input type="radio" id="genderF" name="gender" value="F">
+					      		</div>
+		                 	</div>
                             </div>
                             <div class="form-group">
                                 <label>이메일 Email</label>
@@ -105,30 +105,31 @@
                             </div>
                             <div class="form-group">
                                 <label>비밀번호 Password</label>
-                                <form:password path="password"/>
-                                <span  class="text-danger"><form:errors path="password"></form:errors></span>
+                                <form:password path="password" id="password"/>
+                                <span  class="text-danger" id="errorPassword"><form:errors path="password"></form:errors></span>
                             </div>
                             <div class="form-group">
                                 <label>비밀번호 확인 Confirm Password</label>
-                                <input name="password2" type="password">
+                                <input name="password2" id="password2" type="password">
+                                <span class="text-danger" id="errorPassword2"></span>
                             </div>
                             <div class="alt-option">
-                                
+
                             </div>
                             <div class="check-and-pass">
                                 <div class="accordion" id="accordionExample">
                                     <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" name="agree_all" > 
-                                        </div>	
+                                            <input type="checkbox" class="form-check-input" name="agree_all" >
+                                        </div>
                                         <div class= "flex-fill p-2"><span><b> 전체동의 </b></span></div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" > 
-                                        </div>	
+                                            <input type="checkbox" class="form-check-input" >
+                                        </div>
                                         <div class="accordion-item flex-fill">
-                                            <h2 class="accordion-header" id="headingOne">	                                
+                                            <h2 class="accordion-header" id="headingOne">
                                                 <button class="accordion-button collapsed" data-bs-toggle="collapse" type="button"
                                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                     <span>개인정보 수집 및 이용 동의</span><i class="lni lni-plus"></i>
@@ -144,8 +145,8 @@
                                    </div>
                                    <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" > 
-                                        </div>	
+                                            <input type="checkbox" class="form-check-input" >
+                                        </div>
                                         <div class="accordion-item flex-fill">
                                             <h2 class="accordion-header" id="headingTwo">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -170,8 +171,8 @@
                                     </div>
                                    <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" > 
-                                        </div>	
+                                            <input type="checkbox" class="form-check-input" >
+                                        </div>
                                         <div class="accordion-item flex-fill">
                                         <h2 class="accordion-header" id="headingThree">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -206,14 +207,14 @@
 
     <!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
-    
+
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>
     </a>
 
     <!-- ========================= JS here ========================= -->
-<!-- <script src="/js/user/registration.js"></script> -->
+    <script src="/js/user/registration.js"></script>
 </body>
 
 </html>
