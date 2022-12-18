@@ -41,8 +41,8 @@
 	</select>
 	
 
-	<!-- 야간 약국 -->
-	<select id="findNightPharmacy" resultMap="nightPharmacyResult">
+	<!-- 24시 동물병원 -->
+	<select id="findNonstopHospital" resultMap="nonstopHospitalResult">
 		SELECT A.*,AW.*
 		FROM AGENCY A
 			JOIN
@@ -50,7 +50,7 @@
 			 ON A.AGENCYNUM = AW.AGENCYNUM
 		WHERE AGENCYTYPE='24시'
 	</select>
-	<resultMap type="AgencyVO" id="nightPharmacyResult">
+	<resultMap type="AgencyVO" id="nonstopHospitalResult">
 		<id column="AGENCYNUM" property="agencyNum"/>
 		<result column="AGENCYNAME" property="agencyName"/>
 		<result column="AGENCYADDR" property="agencyAddr"/>
@@ -68,6 +68,33 @@
 			<result column="LUNCH" property="lunch"/>
 		</association>
 	
+	</resultMap>
+	
+	<select id="findNightPharmacy" resultMap="nightPharmacyResult">
+		SELECT *
+		FROM AGENCY A
+			 JOIN
+			 AGENCYWORKHOUR AW
+			 ON A.AGENCYNUM =AW.AGENCYNUM
+		WHERE AGENCYTYPE='야간'	 
+	</select>
+	<resultMap type="AgencyVO" id="nightPharmacyResult">
+		<id column="AGENCYNUM" property="agencyNum"/>
+		<result column="AGENCYNAME" property="agencyName"/>
+		<result column="AGENCYADDR" property="agencyAddr"/>
+		<result column="AGENCYTEL" property="agencyTel"/>
+		<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="SUN" property="sun"/>
+			<result column="MON" property="mon"/>
+			<result column="TUE" property="tue"/>
+			<result column="WED" property="wed"/>
+			<result column="THU" property="thu"/>
+			<result column="FRI" property="fri"/>
+			<result column="SAT" property="sat"/>
+			<result column="HOLIDAY" property="holiday"/>
+			<result column="LUNCH" property="lunch"/>
+		</association>	
 	</resultMap>
 	
 </mapper>

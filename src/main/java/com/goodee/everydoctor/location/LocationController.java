@@ -49,8 +49,20 @@ public class LocationController {
 	}
 	@GetMapping("location/nonstopAnimal")
 	@ResponseBody
-	public List<AgencyVO> findNightPharmacy()throws Exception{
+	public List<AgencyVO> findNonstopHospital()throws Exception{
+		List<AgencyVO> al = locationService.findNonstopHospital();
+		return al;
+	}
+	@GetMapping("location/nightPharmacy")
+	public void nightPharmacy()throws Exception{
+
+	}
+	
+	@GetMapping("location/night")
+	@ResponseBody
+	public List<AgencyVO> night()throws Exception{
 		List<AgencyVO> al = locationService.findNightPharmacy();
+				
 		return al;
 	}
 
