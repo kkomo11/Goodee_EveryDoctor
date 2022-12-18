@@ -3,6 +3,8 @@ package com.goodee.everydoctor.user;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+
 @Mapper
 public interface UserMapper {
 

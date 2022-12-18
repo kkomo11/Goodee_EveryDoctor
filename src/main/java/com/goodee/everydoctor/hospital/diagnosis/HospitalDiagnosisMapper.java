@@ -22,4 +22,7 @@ public interface HospitalDiagnosisMapper {
 	public List<FileVO> findFile(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
 	
 	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
+	
+	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum (HospitalDiagnosisVO hospitalDiagnosisVO)throws Exception;
+	
 }

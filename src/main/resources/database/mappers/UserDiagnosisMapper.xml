@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.user.UserDiagnosisMapper">
+	<select id="getHospitalDiagnosisListbyUsername" parameterType="UserVO" resultType="HospitalDiagnosisVO">
+		SELECT DU.NAME AS '의사이름', A.AGENCYNAME AS '병원이름', A.AGENCYTEL AS '병원번호', D.DANSREQTIME AS '진료시간', D.DANSCONTENT AS '증상', DF.DANSFILENAME AS '파일명', DF.DANSFILEORINAME AS '원본명' FROM DIAGNOSIS D 
+		LEFT JOIN DANSFILE DF
+		ON D.DANSNUM = DF.DANSNUM 
+		LEFT JOIN USERS DU
+		ON D.DOCTORNAME = DU.USERNAME 
+		LEFT JOIN MEDIC M 
+		ON D.DOCTORNAME = M.USERNAME
+		LEFT JOIN AGENCY A 
+		ON M.AGENCYNUM = A.AGENCYNUM 
+		WHERE D.USERNAME = #{username}
+	</select>
+	
+</mapper>
