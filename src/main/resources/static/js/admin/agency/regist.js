@@ -158,20 +158,20 @@ medicSectionBtn.on("click", "#hospitalSectionAddBtn", function(){
         medicSection.append(hospitalSectionListForm);
         hospitalSectionCount++;
     }else{
-        alert('진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
+        alert('의사 진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
     }
 })
 
 // 동물병원 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
 medicSectionBtn.on("click", "#petSectionAddBtn", function(){
-    if(petSectionCount < 3){
+    if(petSectionCount < 1){
         console.log("진료과목 추가");
 
         let petSectionListForm = $("#petSectionListForm").html();
         medicSection.append(petSectionListForm);
         petSectionCount++;
     }else{
-        alert('진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
+        alert('수의사 진료과목 추가는 최대 1개까지만 추가할 수 있습니다');
     }
 })
 
