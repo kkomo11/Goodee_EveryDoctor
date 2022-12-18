@@ -156,7 +156,7 @@
                                     <!-- End List Title -->
                                     <c:forEach items="${reservatedList}" var="reservated">
                                         <!-- Start Single List -->
-                                        <div class="single-item-list" data-user-name="${reservated.username}">
+                                        <div class="single-item-list" data-user-name="${reservated.username}" data-dans-num=${reservated.dansNum }>
                                             <div class="row align-items-center">
                                                 <div class="col-md-5 col-12">
                                                     <div class="item-image">
@@ -177,7 +177,7 @@
                                                     <p>대기</p>
                                                 </div>
                                                 <div class="col-md-3 col-12 align-right">
-                                                    <ul class="action-btn">
+                                                    <ul class="action-btn" >
                                                         <li><a class="create-room" data-time="0" style="width: 48px;">즉시</a></li>
                                                         <li><a class="create-room" data-time="5" style="width: 48px;">5분</a></li>
                                                         <li><a class="create-room" data-time="10" style="width: 48px;">10분</i></a></li>
@@ -257,15 +257,16 @@
 
         $('.single-item-list').click(function(e) {
             if(e.target.classList.contains('create-room')) {
-                createRoom($(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
+                createRoom($(this).attr('data-dans-num'),$(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
                 console.log($(e.target.parentNode.parentNode))
 
             }
         })
 
         //ajax를 요청하자
-        function createRoom(username, roomBtn, delayTime){
+        function createRoom(dansnum, username, roomBtn, delayTime){
             let mrdata = new FormData($("#mkRoom")[0]);
+            mrdata.append("dansnum", dansnum);
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
             mrdata.append("time", delayTime);
@@ -280,7 +281,7 @@
                 success:function(dt){
                     if(dt!=""){
                         roomBtn.empty()
-                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'/'+dansnum+'">입장</a>')
 
                     }else{
 

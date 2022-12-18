@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisMapper;
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 import com.goodee.everydoctor.util.Parser;
 
 import java.util.HashMap;
@@ -21,6 +23,8 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     
     private final RoomService roomService;
     private final Parser parser;
+    @Autowired
+    private HospitalDiagnosisMapper hospitalDiagnosisMapper;
 
     @Autowired
     public TelemedicineServiceImpl(final RoomService roomService, final Parser parser) {
@@ -47,6 +51,8 @@ public class TelemedicineServiceImpl implements TelemedicineService {
         optionalId.ifPresent(id -> Optional.ofNullable(uuid).ifPresent(name -> roomService.addRoom(new Room(id))));
         
         HashMap<String, Object> map = new HashMap<>();
+        
+        
         map.put("uuid", uuid);
         map.put("roomid", roomService.findRoomByStringId(sid));
         return map;
@@ -65,7 +71,7 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     }
 
     @Override
-    public ModelAndView displaySelectedRoom(final String sid, final String uuid) {
+    public ModelAndView displaySelectedRoom(final String sid, final String uuid, final String dansnum) throws Exception {
         // redirect to main page if provided data is invalid
         ModelAndView modelAndView = new ModelAndView(REDIRECT);
 
@@ -76,6 +82,15 @@ public class TelemedicineServiceImpl implements TelemedicineService {
                 // open the chat room
                 modelAndView = new ModelAndView("telemedicine/chat_room", "id", sid);
                 modelAndView.addObject("uuid", uuid);
+                
+ 
+                //get diagnosis 내용
+                HospitalDiagnosisVO diagnosisVO = new HospitalDiagnosisVO();
+                diagnosisVO.setDansNum(Long.parseLong(dansnum));
+                
+                diagnosisVO = hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(diagnosisVO);
+                
+                modelAndView.addObject("diagnosisVO",diagnosisVO);
             }
         }
 
