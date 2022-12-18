@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Reservated List</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />	
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
 
 	<c:import url="../../temp/boot.jsp"></c:import>
@@ -27,7 +27,7 @@
     <sec:authentication property="Principal" var="user"/>
     <!-- Header -->
     <c:import url="../../temp/header.jsp"></c:import>
-    
+
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    
+
     <!-- Start Dashboard Section -->
     <section class="dashboard section">
         <div class="container">
@@ -61,7 +61,7 @@
                             <h3 class="block-title">요청된 진료</h3>
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
-                                
+
                                 <!-- Start Single List -->
                                 <div class="single-list  my-items">
                                 <!-- Start Item List Title -->
@@ -94,7 +94,7 @@
 		                                        <c:if test="${reservated.PDansFiles.size() <= 0 }">
 		                                        	<img src="/images/pet/home/website_icon.svg" alt="#">
 		                                        </c:if>
-		                                            
+
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
 		                                            <h3 class="title"><a>${reservated.protectorName}</a></h3>
@@ -127,7 +127,7 @@
 	                            </div>
 	                            <!-- End Single List -->
                             </c:forEach>
-                                
+
                                     </div>
                                 </div>
                                 <!-- End Single List -->

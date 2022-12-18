@@ -192,36 +192,6 @@ public class UserController {
 		return "user/dashboard";
 	}
 	
-	@GetMapping("mydiaglist")
-	public ModelAndView myList(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
-		
-		
-		
-		mv.setViewName("user/mydiaglist");
-		return mv;
-	}
-	
-	@GetMapping("mydiagdetail")
-	public ModelAndView myDetail(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
-		
-		
-		
-		mv.setViewName("user/mydiagdetail");
-		return mv;
-	}
-	
-	@GetMapping("petdiaglist")
-	public ModelAndView petList(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
-		
-		
-		
-		mv.setViewName("user/petdiaglist");
-		return mv;
-	}
-	
 	@GetMapping("address")
 	public ModelAndView address(ModelAndView mv, @AuthenticationPrincipal UserVO userVO) throws Exception{
 		

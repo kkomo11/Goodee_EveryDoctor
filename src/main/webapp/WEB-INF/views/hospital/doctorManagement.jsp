@@ -114,21 +114,13 @@
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
-                        <div class="dashboard-block d-flex justify-content-between" style="padding-bottom: 0;">
+                        <div class="dashboard-block d-flex justify-content-between mt-0" style="padding-bottom: 0;">
                             <div>
-                                <label class="toggleLabel">
-                                    <span>화상진료</span>
-                                    <input class="toggleSwitch" role="switch" type="checkbox" />
-                                </label>
                                 <label class="toggleLabel">
                                     <span>진료 요청</span>
                                     <input class="toggleSwitch" role="switch" type="checkbox" />
                                 </label>
-                                <label>
-                                    <span class="text">최대 대기 인원</span>
-                                </label>
                             </div>
-                            <span class="text" style="color: #55DDBD;">당일 진료 내역</span>
                         </div>
                         <div class="dashboard-block mt-0">
                             <!-- Start Invoice Items Area -->
@@ -156,10 +148,16 @@
                                     <!-- End List Title -->
                                     <c:forEach items="${reservatedList}" var="reservated">
                                         <!-- Start Single List -->
-                                        <div class="single-item-list" data-user-name="${reservated.username}">
+                                        <div class="single-item-list" data-user-name="${reservated.username}" data-dans-num=${reservated.dansNum }>
                                             <div class="row align-items-center">
                                                 <div class="col-md-5 col-12">
                                                     <div class="item-image">
+                                                        <c:if test="${reservated.dansFiles.size() > 0 }">
+                                                            <img src="/file/PETDANS/${reservated.dansFiles[0].fileName }" alt="#">
+                                                        </c:if>
+                                                        <c:if test="${reservated.dansFiles.size() <= 0 }">
+                                                            <img src="/images/pet/home/website_icon.svg" alt="#">
+                                                        </c:if>
                                                         <div class="content">
                                                             <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
                                                             <h3 class="title"><a>${reservated.patient}</a></h3>
@@ -177,7 +175,7 @@
                                                     <p>대기</p>
                                                 </div>
                                                 <div class="col-md-3 col-12 align-right">
-                                                    <ul class="action-btn">
+                                                    <ul class="action-btn" >
                                                         <li><a class="create-room" data-time="0" style="width: 48px;">즉시</a></li>
                                                         <li><a class="create-room" data-time="5" style="width: 48px;">5분</a></li>
                                                         <li><a class="create-room" data-time="10" style="width: 48px;">10분</i></a></li>
@@ -199,19 +197,19 @@
                                 </div>
                             <!-- End Single List -->
                             <!-- Pagination -->
-                            <!-- <div class="pagination left" style="margin-left: 1rem;">
+                            <div class="pagination left" style="margin-left: 1rem;">
                                 <ul class="pagination-list">
                                     <c:if test="${pager.pre }">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
                                     </c:if>
                                     <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${i }">${i }</a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${i }">${i }</a></li>
                                     </c:forEach>
                                     <c:if test="${pager.next }">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
                                     </c:if>
                                 </ul>
-                            </div> -->
+                            </div>
                             <!--/ End Pagination -->
                             <!-- End Invoice Items Area -->
                             </div>
@@ -234,9 +232,6 @@
 
     <!-- ========================= JS here ========================= -->
     <script type="text/javascript">
-        console.log("엑")
-
-        //
         const uuidInput = document.querySelector('input#uuid');
         $(function () {
 
@@ -257,15 +252,16 @@
 
         $('.single-item-list').click(function(e) {
             if(e.target.classList.contains('create-room')) {
-                createRoom($(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
+                createRoom($(this).attr('data-dans-num'),$(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
                 console.log($(e.target.parentNode.parentNode))
 
             }
         })
 
         //ajax를 요청하자
-        function createRoom(username, roomBtn, delayTime){
+        function createRoom(dansnum, username, roomBtn, delayTime){
             let mrdata = new FormData($("#mkRoom")[0]);
+            mrdata.append("dansnum", dansnum);
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
             mrdata.append("time", delayTime);
@@ -280,7 +276,7 @@
                 success:function(dt){
                     if(dt!=""){
                         roomBtn.empty()
-                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'?dansnum='+dansnum+'">입장</a>')
 
                     }else{
 

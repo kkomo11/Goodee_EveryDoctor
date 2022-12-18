@@ -82,6 +82,7 @@ public class ConsultController {
 	
 	@GetMapping("list")
 	public ModelAndView getConsultListPage(Pager pager) throws Exception {
+		pager.setPerPage(6L);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("consultList", consultService.findConsultList(pager));

@@ -83,7 +83,7 @@
                                 	<li>
                                     	<a href="/consult/list?kind=category&search=${category.categoryNum }">
                                     		<c:if test="${category.categoryIcon != null }">
-                                    			<img class="categoryIconImg" src="/images/hospital/home/${category.categoryIcon }">
+                                    			<img class="categoryIconImg" src="${category.categoryIcon }">
                                     		</c:if>
                                     		${category.categoryName }
                                     	</a>
@@ -151,7 +151,7 @@
 	                                                        </h3>
 	                                                        <p class="location"><a href="/consult/detail?consultNum=${consultItem.consultNum }">
 	                                                        	<c:if test="${consultItem.hospitalCategoryVO[0].categoryIcon != null }">
-	                                                        		<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultItem.hospitalCategoryVO[0].categoryIcon }">
+	                                                        		<img class="categoryIconImg" alt="" src="${consultItem.hospitalCategoryVO[0].categoryIcon }">
 	                                                        	</c:if>
 	                                                        ${consultItem.hospitalCategoryVO[0].categoryName }</a>
 	                                                        </p>
@@ -224,7 +224,7 @@
 			                                                        </h3>
 			                                                        <p class="location"><a href="/consult/detail?consultNum=${consultItem.consultNum }">
 			                                                        	<c:if test="${consultItem.hospitalCategoryVO[0].categoryIcon != null }">
-			                                                        		<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultItem.hospitalCategoryVO[0].categoryIcon }">
+			                                                        		<img class="categoryIconImg" alt="" src="${consultItem.hospitalCategoryVO[0].categoryIcon }">
 			                                                        	</c:if>
 			                                                        ${consultItem.hospitalCategoryVO[0].categoryName }</a>
 			                                                        </p>

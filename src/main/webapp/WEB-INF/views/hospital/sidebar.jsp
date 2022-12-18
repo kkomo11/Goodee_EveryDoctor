@@ -14,7 +14,7 @@
         <ul id="sidebarMenu">
             <sec:authorize access="hasRole('DOCTOR')">
             	<li><a href="/hospital/diagnosis/management"><i class="lni lni-heart"></i>진료 대기</a></li>
-            	<li><a href="/hospital/diagnosis/management"><i class="lni lni-bookmark"></i>진료 완료</a></li>
+            	<li><a href="/hospital/diagnosis/completedList"><i class="lni lni-bookmark"></i>진료 완료</a></li>
             </sec:authorize>
         </ul>
         <div class="button">

@@ -25,20 +25,20 @@ $("#fileAdd").on("click", ".del", function(){
 
 //입력내용 검증
 //신고제목 검증
-$("#reportTitle2").blur(function(){
-        let title = $("#reportTitle2").val();
-        console.log("Title : ", title);
-        let titleResult = nullCheck(title, ".reportTitlem", "제목은");
-        check[0] = titleResult;
-})
+// $("#reportTitle2").blur(function(){
+//         let title = $("#reportTitle2").val();
+//         console.log("Title : ", title);
+//         let titleResult = nullCheck(title, ".reportTitlem", "제목은");
+//         check[0] = titleResult;
+// })
 
 
 //신고내용 검증
-$("#reportContents").blur(function(){
-    let contents = $("#reportContents").val();
-    let contentsResult = nullCheck(contents, ".reportContentsm", "내용은");
-    check[1] = contentsResult;
-})
+// $("#reportContents").blur(function(){
+//     let contents = $("#reportContents").val();
+//     let contentsResult = nullCheck(contents, ".reportContentsm", "내용은");
+//     check[1] = contentsResult;
+// })
             
 //신고 유형 검증
 let type = $("#reportTypeNum").val();

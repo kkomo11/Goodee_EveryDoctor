@@ -87,4 +87,35 @@
 		<update id="modifyMedicEnabled" parameterType="String">
 			UPDATE MEDIC SET MEDICENABLED = 1 WHERE USERNAME = #{username}
 		</update>
+		
+		<!-- 이번 달 신청된 병원 진료 수 -->
+		<select id="findMonthlyDiagnosisCount" resultType="Integer">
+			SELECT COUNT(DANSNUM) FROM DIAGNOSIS WHERE DATE_FORMAT(DANSREQTIME, "%Y-%m")=(SELECT DATE_FORMAT(CURDATE(), "%Y-%m"))
+		</select>
+		
+		<!-- 오늘 신청된 병원 진료 수 -->
+		<select id="findDailyDiagnosisCount" resultType="Integer">
+			SELECT COUNT(DANSNUM) FROM DIAGNOSIS WHERE DATE_FORMAT(DANSREQTIME, "%Y-%m-%d")=CURDATE()
+		</select>
+		
+		<!-- 이번 달 신청된 동물병원 진료 수 -->
+		<select id="findMonthlyPetDiagnosisCount" resultType="Integer">
+			SELECT COUNT(PDANSNUM) FROM PETDIAGNOSIS WHERE DATE_FORMAT(PDANSREQTIME, "%Y-%m")=(SELECT DATE_FORMAT(CURDATE(), "%Y-%m"))
+		</select>
+		
+		<!-- 오늘 신청된 동물병원 진료 수 -->
+		<select id="findDailyPetDiagnosisCount" resultType="Integer">
+			SELECT COUNT(PDANSNUM) FROM PETDIAGNOSIS WHERE DATE_FORMAT(PDANSREQTIME, "%Y-%m-%d")=CURDATE()
+		</select>
+		
+		<!-- 이번달 접수된 총 신고 수 -->
+		<select id="findThisMonthReport" resultType="Integer">
+			SELECT COUNT(REPORTNUM) FROM REPORT WHERE DATE_FORMAT(REPORTDATE, "%Y-%m")=(SELECT DATE_FORMAT(CURDATE(), "%Y-%m"))
+		</select>
+		
+		<!-- 이번 달 접수된 신고중에 답변처리 완료된 신고 -->
+		<select id="findThisMonthReportChecked" resultType="Integer">
+			SELECT COUNT(REPORTNUM) FROM REPORT WHERE DATE_FORMAT(REPORTDATE, "%Y-%m")=(SELECT DATE_FORMAT(CURDATE(), "%Y-%m"))
+			AND REPORTCHECKED = 1
+		</select>
 	</mapper>
