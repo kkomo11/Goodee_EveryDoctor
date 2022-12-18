@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisMapper;
@@ -77,13 +76,13 @@ public class DrugPrescriptionService {
 		return result;
 	}
 	
-	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
+	public List<HospitalDiagnosisVO> findCompletedList(DrugPrescriptionPager drugPrescriptionPager) throws Exception {
 		
-		Long totalCount = drugPrescriptionMapper.findCompletedListCount(hospitalDiagnosisPager);
-		hospitalDiagnosisPager.getNum(totalCount);
-		hospitalDiagnosisPager.getRowNum();
+		Long totalCount = drugPrescriptionMapper.findCompletedListCount(drugPrescriptionPager);
+		drugPrescriptionPager.getNum(totalCount);
+		drugPrescriptionPager.getRowNum();
 		
-		List<HospitalDiagnosisVO> dList = drugPrescriptionMapper.findCompletedList(hospitalDiagnosisPager);
+		List<HospitalDiagnosisVO> dList = drugPrescriptionMapper.findCompletedList(drugPrescriptionPager);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		
 		for(HospitalDiagnosisVO d : dList) {

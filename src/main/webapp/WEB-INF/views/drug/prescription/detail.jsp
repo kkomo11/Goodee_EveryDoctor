@@ -98,8 +98,8 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>처방받은 약번호</label>
-                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.dansNum}">${completed.patient}</a></h3>
+                                    <label>처방받은 약</label>
+                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.drugName}">${completed.drugName}</a></h3>
                                      <input name="price" type="text" placeholder="PRESCRIPTIONNUM">
                                   </div>
                                 </div>

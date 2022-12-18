@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisPager;
-
 @Controller
 @RequestMapping("/drug/prescription*")
 public class DrugPrescriptionController {
@@ -19,15 +17,15 @@ public class DrugPrescriptionController {
 
 	//병원에서 넘어온 진료 처방완료
 	@GetMapping("list")
-	public ModelAndView findDrugPrescriptionList(HospitalDiagnosisPager drugPrescriptionPager)throws Exception {
+	public ModelAndView findDrugPrescriptionList(DrugPrescriptionPager drugPrescriptionPager)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("completedList", drugPrescriptionService.findCompletedList(drugPrescriptionPager));
 		mv.addObject("pager", drugPrescriptionPager);
 		mv.setViewName("drug/prescription/list");
-		
+
 		return mv;
 	}
-	
+
 
 	@GetMapping("detail")
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
@@ -36,9 +34,7 @@ public class DrugPrescriptionController {
 		//약목록
 		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
 		mv.addObject("list", ar);
-		mv.addObject("completedList",drugPrescriptionService.findDrugPrescriptionDetail());
 
-		
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
 		int randomNum = (int)(Math.random() * 3);
@@ -47,6 +43,7 @@ public class DrugPrescriptionController {
 
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
+		
 		return mv;
 	}
 
