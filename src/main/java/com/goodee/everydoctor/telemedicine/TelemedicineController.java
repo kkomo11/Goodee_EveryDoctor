@@ -51,7 +51,7 @@ public class TelemedicineController {
     	
     	if(result!=null) {
     		//알람을 보낸다.상단,내용,버튼url,받는사람 순
-    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "http://localhost:81/room/"+sid+"/user/"+uuid, "Member");
+    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "/room/"+sid+"/user/"+uuid, "Member");
     	}
     	
     	return result;
