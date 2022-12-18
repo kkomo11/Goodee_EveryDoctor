@@ -6,8 +6,8 @@
 	<mapper namespace="com.goodee.everydoctor.admin.report.ReportMapper">
 		<!-- 신고 INSERT -->
 		<insert id="inputReport" parameterType="ReportVO" useGeneratedKeys="true" keyProperty="reportNum">
-			INSERT INTO REPORT (REPORTNUM, REPORTTYPENUM, REPORTERNAME, REPORTEDNAME, CONSULTNUM, REPORTTITLE, REPORTCONTENTS, REPORTCHECKED)
-			VALUES (NULL, #{reportTypeNum}, #{reporterName}, #{reportedName}, #{consultNum}, #{reportTitle}, #{reportContents}, #{reportChecked})
+			INSERT INTO REPORT (REPORTNUM, REPORTTYPENUM, REPORTERNAME, REPORTEDNAME, CONSULTNUM, REPORTTITLE, REPORTCONTENTS, REPORTCHECKED, REPORTDATE)
+			VALUES (NULL, #{reportTypeNum}, #{reporterName}, #{reportedName}, #{consultNum}, #{reportTitle}, #{reportContents}, 0, NOW())
 		</insert>
 		
 		<select id="findCount" parameterType="Pager" resultType="Long">
@@ -38,7 +38,7 @@
 				<otherwise>REPORTCONTENTS</otherwise>
 			</choose>
 			LIKE CONCAT('%',#{search},'%')
-			ORDER BY R.REPORTNUM DESC
+			ORDER BY R.REPORTCHECKED ASC, R.REPORTNUM DESC
 			LIMIT #{startRow}, #{perPage}
 		</select>
 		
@@ -59,8 +59,8 @@
 		
 		<!-- 신고 답변 달기 -->
 		<insert id="inputReportAnswer" parameterType="ReportAnswerVO">
-			INSERT INTO REPORTANSWER (REPORTANSWERNUM, REPORTNUM, REPORTANSWERCONTENTS)
-			VALUES (0, #{reportNum}, #{reportAnswerContents})
+			INSERT INTO REPORTANSWER (REPORTANSWERNUM, REPORTNUM, REPORTANSWERCONTENTS, REPORTANSWERDATE)
+			VALUES (0, #{reportNum}, #{reportAnswerContents}, NOW())
 		</insert>
 		
 		<!-- 신고 디테일 불러오기 -->
@@ -102,4 +102,8 @@
 				<result column="ORINAME" property="fileOriName"/>
 			</collection>
 		</resultMap>
+		
+		<update id="modifyReportChecked" parameterType="Integer">
+			UPDATE REPORT SET REPORTCHECKED = 1 WHERE REPORTNUM = #{reportNum}
+		</update>
 	</mapper>

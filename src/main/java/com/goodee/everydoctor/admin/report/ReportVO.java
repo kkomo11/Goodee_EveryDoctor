@@ -1,5 +1,6 @@
 package com.goodee.everydoctor.admin.report;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -17,14 +18,15 @@ public class ReportVO {
 	private int reportNum;
 	@NotNull
 	private int reportTypeNum;
-	private int reporterName;
-	private int reportedName;
+	private String reporterName;
+	private String reportedName;
 	private int consultNum;
 	@NotBlank
 	private String reportTitle;
 	@NotBlank
 	private String reportContents;
 	private int reportChecked;
+	private Date reportDate;
 	
 	private MultipartFile []files;
 	
