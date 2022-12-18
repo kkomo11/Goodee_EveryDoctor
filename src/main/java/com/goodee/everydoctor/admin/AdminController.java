@@ -92,6 +92,13 @@ public class AdminController {
 		return adminService.inputRolePetnurse(userVO);
 	}
 	
+	//관리자 승인 시 종사자 role 약사로 바꾸기
+	@PostMapping("modifyRolePharmacist")
+	@ResponseBody
+	public int inputRolePharmacist(UserVO userVO)throws Exception{
+		return adminService.inputRolePharmacist(userVO);
+	}
+	
 	//MedicEnabled 1로 수정
 	@PostMapping("modifyMedicEnabled")
 	@ResponseBody

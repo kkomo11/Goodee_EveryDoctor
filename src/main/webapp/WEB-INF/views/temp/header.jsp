@@ -38,6 +38,11 @@
                                         aria-label="Toggle navigation">선별진료소</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class=" dd-menu collapsed" href="/drug/store"
+                                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                                        aria-label="Toggle navigation">약국찾기</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="/location/viewCorona"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">24시</a>
@@ -73,7 +78,7 @@
                                               </li>
                                               <li class="nav-item"><a href="/user/mydiaglist">내 진료내역</a>
                                               </li>
-                                              <li class="nav-item"><a href="#">내 주소 관리</a></li>
+                                              <li class="nav-item"><a href="/user/address">내 주소 관리</a></li>
                                               <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
                                               <li class="nav-item"><a href="#">내 상담내역</a></li>
                                               <li class="nav-item"><a href="#">반려동물 관리</a></li>
@@ -99,49 +104,33 @@
                                       </ul>
                                 </li>
                                 </sec:authorize>
+                                <sec:authorize access="hasAnyRole('PHARMACIST')">
                                 <li class="nav-item">
                                   <a class="dd-menu collapsed" href="javascript:void(0)"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
                                       aria-label="Toggle navigation">약사</a>
                                   <ul class="sub-menu collapse" id="submenu-1-4">
-                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
-                                      </li>
+                                    <sec:authorize access="hasRole('PHARMACIST')">
+                                        <li class="nav-item"><a href="/drug/prescription/list?username=${member.username}">진료완료내역</a></li>
                                       <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
-                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
+                                    </sec:authorize>
                                   </ul>
                               </li>
+                            </sec:authorize>
                               <li class="nav-item">
                                   <a class="dd-menu collapsed" href="/admin/admin/reportList"
                                       data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
                                       aria-controls="navbarSupportedContent" aria-expanded="false"
                                       aria-label="Toggle navigation">관리자</a>
                                   <ul class="sub-menu collapse" id="submenu-1-5">
-                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a>
-                                      </li>
+                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a></li>
                                       <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
-                                      <li class="nav-item"><a href="/drug/store">약국찾기</a></li>
                                   </ul>
                               </li>
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
-                            <!-- <c:when test="${not empty check}">
-                                <c:choose>
-
-                                <c:when test="${check.adminRoleVOs[0].roleName == 'Pharmacists'}">
-                                    <div class="text-end">
-
-                                            <a style="color:black; ">${check.adminRoleVOs[0].roleName} 계정 접속중 </a>
-
-                                            <a href="/drug/prescription/list" class="btn btn-white shadow-warning text-primary prescriptionList">병원진료내역</a>
-                                            <a href ="/drug/list" class="btn btn-white shadow-warning text-primary drugList">보유약리스트</a>
-                                    </div>
-
-                                </c:when>
-                                </c:choose>
-                            </c:when> -->
-
                             <ul>
                                 <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="Principal" var="member"/>

@@ -47,7 +47,7 @@
 		(USERSROLENUM, USERNAME, ROLENUM)
 		VALUES(0, #{username}, 7)
 	</insert>
-		<insert id="inputRolePhamacist" parameterType="UserVO">
+	<insert id="inputRolePharmacist" parameterType="UserVO">
 		INSERT INTO USERSROLES
 		(USERSROLENUM, USERNAME, ROLENUM)
 		VALUES(0, #{username}, 8)

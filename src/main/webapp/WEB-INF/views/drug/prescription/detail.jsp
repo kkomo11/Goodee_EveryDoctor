@@ -98,7 +98,9 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>처방전 번호</label> <input name="price" type="text" placeholder="PRESCRIPTIONNUM">
+                                    <label>처방받은 약번호</label>
+                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.dansNum}">${completed.patient}</a></h3>
+                                     <input name="price" type="text" placeholder="PRESCRIPTIONNUM">
                                   </div>
                                 </div>
 
@@ -223,8 +225,10 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>환자명*</label> <input name="name" type="text"
-                                      placeholder="Enter your name(USERNAME)">
+                                    <label>환자명*</label>
+                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.dansNum}">${completed.patient}</a></h3>
+                                     <!-- <input name="name" type="text"
+                                      placeholder="Enter your name(USERNAME)"> -->
                                   </div>
                                 </div>
 

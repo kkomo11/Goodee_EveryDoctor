@@ -55,6 +55,11 @@ public class AdminService {
 			return userMapper.inputRolePetnurse(userVO);
 		}
 		
+		//관리자 승인 시 종사자 role 약사로 바꾸기
+		public int inputRolePharmacist(UserVO userVO)throws Exception{
+			return userMapper.inputRolePharmacist(userVO);
+		}
+		
 		//MedicEnabled 1로 tnwjd
 		public int modifyMedicEnabled(String username)throws Exception{
 			return adminMapper.modifyMedicEnabled(username);

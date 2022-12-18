@@ -13,14 +13,71 @@
 		ORDER BY
 		DRUGNUM
 	</select>
-
-	<!-- 진료 상세정보 -->
-	<select id="findDrugPrescriptionDetail"
-		parameterType="DrugPrescriptionVO" resultMap="findDrugPrescriptionDetail">
-		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
+	
+	<sql id="searchUser">
+		AND
+		<choose>
+			<when test="kind == 'name'">
+				U.NAME
+			</when>
+			<otherwise>
+				U.NAME
+			</otherwise>
+		</choose>
+		LIKE CONCAT('%', #{search}, '%')
+	</sql>
+	
+	<select id="findCompletedListCount" parameterType="HospitalDiagnosisPager" resultType="Long">
+		SELECT COUNT(DANSNUM) 
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U 
+		ON (D.USERNAME = U.USERNAME)
+		WHERE D.DANSSTATUS = 1 
+		<include refid="searchUser"></include>
 	</select>
 	
-		<resultMap type="DrugPrescriptionVO" id="findDrugPrescriptionDetail">
+	<select id="findCompletedList" parameterType="HospitalDiagnosisPager" resultType="HospitalDiagnosisVO">
+		SELECT D.*, U.NAME AS PATIENT
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U 
+		ON (D.USERNAME = U.USERNAME)
+		WHERE D.DANSSTATUS = 1
+		<include refid="searchUser"></include>
+		ORDER BY D.DANSENDTIME DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+	
+	<select id="findFile" parameterType="HospitalDiagnosisVO" resultType="FileVO">
+		SELECT DANSFILENUM AS FILENUM, DANSFILENAME AS FILENAME, DANSFILEORINAME AS ORINAME FROM DANSFILE WHERE DANSNUM = #{dansNum}
+	</select>
+	
+	<!-- 진료 상세정보 -->
+	<select id="findDrugPrescriptionDetail"
+		parameterType="DrugPrescriptionVO" resultMap="findDrugPrescriptionDetailResult">	
+		select PPR.DRUGNUM, DG.DRUGNAME  from PRESCRIPTIONDRUG PPR
+		inner join DRUG DG 
+		ON DG.DRUGNUM  = PPR.DRUGNUM 
+		WHERE PRESCRIPTIONNUM =
+		(select PPR.PRESCRIPTIONNUM from PRESCRIPTION PP
+		WHERE PP.DIAGNOSISNUM =#{dansNum})	
+	</select>
+	
+		<resultMap type="DrugPrescriptionVO" id="findDrugPrescriptionDetailResult">
+<!-- 			<association property="hospitalDiagnosisVO" javaType="HospitalDianosisVO">
+			<id column="DANSNUM" property="dansNum"/>
+			<result column="USERNAME" property="username"/>
+			<result column="DANSCATEGORY" property="dansCategory"/>
+			<result column="DANSCONTENT" property="dansContent"/>
+			<result column="DANSREQTIME" property="danReqTime"/>
+			<result column="DANSENDTIME" property="dansEndTime"/>
+			<result column="DANSCOST" property="dansCost"/>
+			<result column="DOCTORNAME" property="doctorName"/>
+			<result column="DANSSTATUS" property="dansStatus"/>
+			<result column="PATIENT" property="patient"/>
+			<result column="REQTIMESTRING" property="reqTimeString"/>
+			<result column="ENDTIMESTRING" property="endTimeString"/>	
+			</association> -->
+		
 			<association property="userAddressVO" javaType="UserAddressVO">
 			<id column="USERNAME" property="username"/>
 			<result column="ADDRESSNUM" property="addressNum"/>
@@ -33,7 +90,6 @@
 			</association>		
 		</resultMap>
 	
-
 	<!--운송장번호 -->
 	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">
 		SELECT * FROM

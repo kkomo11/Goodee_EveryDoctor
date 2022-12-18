@@ -1,5 +1,13 @@
 package com.goodee.everydoctor.drug.prescription;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.goodee.everydoctor.drug.DrugVO;
+import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 import com.goodee.everydoctor.user.address.UserAddressVO;
 
 import lombok.Data;
@@ -26,9 +34,27 @@ public class DrugPrescriptionVO {
 	//환자아이디
 	private String username;
 	
-	//처방전테이블
-	//처방전약테이블
+	private String dansCategory;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime dansReqTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime dansEndTime;
+	private Long dansCost;
+
+	private String doctorName;
+	private Long dansStatus;
+	private String patient;
+	private List<FileVO> dansFiles;
 	
+	private String reqTimeString;		// 진료 요청 시간 보기 좋게 담는 변수
+	private String endTimeString;		// 진료 종료 시간 보기 좋게 담는 변수
+	
+	//처방전테이블
+	
+	//처방전약테이블
+	private List<DrugVO> presciptionDrug;
+		
 	private UserAddressVO userAddressVO;
 
 	//운송장번호
