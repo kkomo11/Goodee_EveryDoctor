@@ -113,7 +113,7 @@
 
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
-		                                            <h3 class="title"><a href="/hospital/diagnosis/completedDetail?n=${completed.dansNum }">${completed.patient}</a></h3>
+		                                            <h3 class="title"><a href="/hospital/diagnosis/completedDetail?dansNum=${completed.dansNum }">${completed.patient}</a></h3>
 		                                            <span class="price">${completed.reqTimeString}</span>
 		                                        </div>
 		                                    </div>

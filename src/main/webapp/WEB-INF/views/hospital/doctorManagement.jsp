@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
-                        <div class="dashboard-block d-flex justify-content-between" style="padding-bottom: 0;">
+                        <div class="dashboard-block d-flex justify-content-between mt-0" style="padding-bottom: 0;">
                             <div>
                                 <label class="toggleLabel">
                                     <span>진료 요청</span>

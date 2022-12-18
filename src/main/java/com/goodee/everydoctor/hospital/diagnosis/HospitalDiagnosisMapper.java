@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
@@ -24,4 +25,8 @@ public interface HospitalDiagnosisMapper {
 	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
 	
 	public Long findReservatedListCount(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception;
+	
+	public HospitalDiagnosisVO findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
+	
+	public List<DrugVO> findFills(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
 }

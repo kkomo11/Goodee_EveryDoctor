@@ -16,6 +16,7 @@ import com.goodee.everydoctor.hospital.HospitalHomeService;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.sse.NotificationController;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -79,6 +80,15 @@ public class HospitalDiagnosisController {
 		mv.addObject("pager", hospitalDiagnosisPager);
 		mv.setViewName("hospital/completedList");
 		
+		return mv;
+	}
+	
+	@GetMapping("completedDetail")
+	public ModelAndView findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		hospitalDiagnosisVO = hospitalDiagnosisService.findCompletedDetail(hospitalDiagnosisVO);
+		mv.addObject("completedDetail", hospitalDiagnosisVO);
+		mv.setViewName("hospital/completedDetail");
 		return mv;
 	}
 }

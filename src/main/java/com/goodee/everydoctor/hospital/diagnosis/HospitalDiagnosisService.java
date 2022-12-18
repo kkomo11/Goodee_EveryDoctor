@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
@@ -89,5 +90,27 @@ public class HospitalDiagnosisService {
 		}
 		
 		return dList;
+	}
+	
+	public HospitalDiagnosisVO findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		
+		hospitalDiagnosisVO = hospitalDiagnosisMapper.findCompletedDetail(hospitalDiagnosisVO);
+		
+		// LocalDateTime을 보기 좋게 변환
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String reqTimeString = hospitalDiagnosisVO.getDansReqTime().format(dtf);
+		String endTimeString = hospitalDiagnosisVO.getDansEndTime().format(dtf);
+		
+		hospitalDiagnosisVO.setReqTimeString(reqTimeString);
+		hospitalDiagnosisVO.setEndTimeString(endTimeString);
+		
+		List<FileVO> files = hospitalDiagnosisMapper.findFile(hospitalDiagnosisVO);
+		hospitalDiagnosisVO.setDansFiles(files);
+		
+		// 약 처방 내역 정보 조회
+		List<DrugVO> fills = hospitalDiagnosisMapper.findFills(hospitalDiagnosisVO);
+		hospitalDiagnosisVO.setFills(fills);
+		
+		return hospitalDiagnosisVO;
 	}
 }

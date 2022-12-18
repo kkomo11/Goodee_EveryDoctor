@@ -59,4 +59,39 @@
 	<select id="findReservatedListCount" parameterType="HospitalDiagnosisPager" resultType="Long">
 		SELECT COUNT(DANSNUM) FROM DIAGNOSIS WHERE DOCTORNAME = #{username} AND DANSSTATUS = 0
 	</select>
+	
+	<select id="findCompletedDetail" parameterType="HospitalDiagnosisVO" resultMap="findCompletedDetailResult">
+		SELECT D.*, U.NAME, U.PHONE, U.EMAIL, U.FILENAME AS USERFILENAME 
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U
+		ON (D.USERNAME = U.USERNAME)
+		WHERE D.DANSNUM = #{dansNum}
+	</select>
+	
+	<resultMap type="HospitalDiagnosisVO" id="findCompletedDetailResult">
+		<id column="DANSNUM" property="dansNum"/>
+		<result column="USERNAME" property="username"/>
+		<result column="DOCTORNAME" property="doctorName"/>
+		<result column="DANSCATEGORY" property="dansCategory"/>
+		<result column="DANSCONTENT" property="dansContent"/>
+		<result column="DANSRESPONSE" property="dansResponse"/>
+		<result column="DANSREQTIME" property="dansReqTime"/>
+		<result column="DANSENDTIME" property="dansEndTime"/>
+		<result column="DANSCOST" property="dansCost"/>
+		<result column="DANSSTATUS" property="dansStatus"/>
+		<association property="userVO" javaType="UserVO">
+			<result column="NAME" property="name"/>
+			<result column="PHONE" property="phone"/>
+			<result column="EMAIL" property="email"/>
+			<result column="USERFILENAME" property="fileName"/>
+		</association>
+	</resultMap>
+	
+	<select id="findFills" parameterType="HospitalDiagnosisVO" resultType="DrugVO">
+		SELECT DR.*
+		FROM PRESCRIPTIONDRUG PD
+		INNER JOIN DRUG DR
+		ON (PD.DRUGNUM = DR.DRUGNUM)
+		WHERE PD.DANSNUM = #{dansNum}
+	</select>
 </mapper>
