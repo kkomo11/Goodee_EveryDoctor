@@ -139,17 +139,14 @@
                                     <!-- Start Item List Title -->
                                     <div class="item-list-title">
                                         <div class="row align-items-center">
-                                            <div class="col-md-4 col-12">
+                                            <div class="col-md-5 col-12">
                                                 <p>진료</p>
                                             </div>
-                                            <div class="col-md-2 col-12">
+                                            <div class="col-md-3 col-12">
                                                 <p>진료 카테고리</p>
                                             </div>
                                             <div class="col-md-1 col-12">
                                                 <p>상태</p>
-                                            </div>
-                                            <div class="col-md-2 col-12">
-                                                <p>진료방</p>
                                             </div>
                                             <div class="col-md-3 col-12 align-right">
                                                 <p>대기시간</p>
@@ -161,7 +158,7 @@
                                         <!-- Start Single List -->
                                         <div class="single-item-list" data-user-name="${reservated.username}">
                                             <div class="row align-items-center">
-                                                <div class="col-md-4 col-12">
+                                                <div class="col-md-5 col-12">
                                                     <div class="item-image">
                                                         <div class="content">
                                                             <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
@@ -173,14 +170,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-12">
+                                                <div class="col-md-3 col-12">
                                                     <p>${reservated.dansCategory}</p>
                                                 </div>
                                                 <div class="col-md-1 col-12">
                                                     <p>대기</p>
-                                                </div>
-                                                <div class="col-md-2 col-12 room-btn-wrap">
-
                                                 </div>
                                                 <div class="col-md-3 col-12 align-right">
                                                     <ul class="action-btn">
@@ -263,7 +257,8 @@
 
         $('.single-item-list').click(function(e) {
             if(e.target.classList.contains('create-room')) {
-                createRoom($(this).attr('data-user-name'), $(this).find('.room-btn-wrap'), e.target.getAttribute('data-time'));
+                createRoom($(this).attr('data-user-name'), $(this).find('.action-btn'), e.target.getAttribute('data-time'));
+                console.log($(e.target.parentNode.parentNode))
 
             }
         })
@@ -274,6 +269,7 @@
             mrdata.append("action", "make");
             mrdata.append("id", Number.parseInt(Math.random() * 100000000));
             mrdata.append("time", delayTime);
+            mrdata.append("username",username);
             $.ajax({
                 type:"POST",
                 url:"/room",
@@ -282,7 +278,13 @@
                 processData:false,
                 data: mrdata,
                 success:function(dt){
-                    roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+                    if(dt!=""){
+                        roomBtn.empty()
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'">입장</a>')
+
+                    }else{
+
+                    }
                 }
             })
         }

@@ -43,15 +43,16 @@ public class TelemedicineController {
     
     @PostMapping(value = "/room", params = "action=make")
     @ResponseBody
-    public Map<String, Object> processRoomCreate(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding, String time) {
+    public Map<String, Object> processRoomCreate(@ModelAttribute("id") final String sid, @ModelAttribute("uuid") final String uuid, final BindingResult binding, String time, String username) {
     	//sid : 방번호 ,uuid: 개인식별자, binding: ??, time: 대기시간
-    	log.info("dndldpdpdl   {}   {}  {} {} ", sid, uuid, binding, time);
+    	log.info("dndldpdpdl   {}   {}  {} {} ", sid, uuid, binding, username);
     	
     	Map<String, Object> result =  this.telemedicineService.processRoomCreate(sid, uuid, binding);
     	
     	if(result!=null) {
+    		log.info("이프문아 돌고있니?");
     		//알람을 보낸다.상단,내용,버튼url,받는사람 순
-    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "/room/"+sid+"/user/"+uuid, "Member");
+    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "/room/"+sid+"/user/"+uuid, username);
     	}
     	
     	return result;

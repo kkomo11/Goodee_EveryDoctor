@@ -5,8 +5,8 @@
 <mapper namespace="com.goodee.everydoctor.user.address.UserAddressMapper">
 
 	<insert id="insertUserAddress" parameterType="UserAddressVO" useGeneratedKeys="true" keyColumn="ADDRESSNUM">
-		INSERT INTO USERADDRESS(ADDRESSNUM, ADDRESSNICK , USERNAME, USERMAINADDR, USERSUBADDR, USERPOST) 
-		VALUE (0, #{addressNick}, #{username}, #{userMainAddr} , #{userSubAddr}, #{userPost})
+		INSERT INTO USERADDRESS(ADDRESSNUM, ADDRESSNICK , USERNAME, USERMAINADDR, USERSUBADDR, USERPOST, addressReceiver, addressPhone) 
+		VALUE (0, #{addressNick}, #{username}, #{userMainAddr} , #{userSubAddr}, #{userPost}, #{addressReceiver}, #{addressPhone})
 	</insert>
 	
 	<select id="getUserAddressbyUsername" parameterType="UserVO" resultType="UserAddressVO">
