@@ -64,7 +64,8 @@ function connect() {
                 $("#chatList").append(button);
             }else{
                     description = jsonArray.bubbles[0].data.description;
-                    showBotReply(description);
+                    showBotReply(description)
+                    showRestart();
             }
             $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
         });
@@ -75,14 +76,24 @@ function showRestart(){
     let re = '<div class="BubbleMessage_Footer__rIh8N" data-testid="footer">'+
                 '<div class="FooterItemGroup_FooterItemGroup__iDKwJ">'+
                    ' <div class="FooterItemGroup_Message__6GiNd">'+
-                        '<button class="FooterItem_FooterItem__zIEhd">↩️ 처음으로</button>'+
+                        '<button class="FooterItem_FooterItem__zIEhd" id="reStart">↩️ 처음으로</button>'+
                     '</div>'+
-                    '<div class="FooterItemGroup_Message__6GiNd">'+
-                        '<button class="FooterItem_FooterItem__zIEhd">🤔 원하는 내용이 아닙니다</button>'+
-                    '</div>'+
+                    // '<div class="FooterItemGroup_Message__6GiNd">'+
+                    //     '<button class="FooterItem_FooterItem__zIEhd">🤔 원하는 내용이 아닙니다</button>'+
+                    // '</div>'+
                 '</div>'+
             '</div>';
+            // bot.append(re);
+            $('#chatList').append(re);
+
 }
+
+//동적태그라서
+$("#chatList").on("click","#reStart",function(){
+    $("#chatList").append($("#first").html())
+    $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌
+})
+
 
 function showBotReply(message){
     let bot = '<li class="ChatContainer_ConversationItem__pk3IQ " data-testid="message-listitem">'
@@ -108,7 +119,8 @@ function showBotReply(message){
             +    '</div>'
             +    '</li>'
     $("#chatList").append(bot)
-    $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌
+    $("#chatList").scrollTop($("#chatList")[0].scrollHeight);   //답변이 나오는 곳으로 스크롤 focus맞춰줌
+    // return bot;
 }
 
 function showButtonReply(message){

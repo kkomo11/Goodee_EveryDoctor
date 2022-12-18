@@ -2,17 +2,24 @@ package com.goodee.everydoctor.sse;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import com.goodee.everydoctor.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -102,6 +109,19 @@ public class NotificationController {
 		int result = alarmService.setAlarm(alarmVO);
 		
 		return result;
+	}
+	@GetMapping("/alarmList")
+	@ResponseBody
+	public List<AlarmVO> findAlarmList(@AuthenticationPrincipal UserVO userVO)throws Exception{
+			ModelAndView mv = new ModelAndView();
+			AlarmVO alarmVO = new AlarmVO();
+			alarmVO.setAlarmReceiver(userVO.getUsername());
+			
+			List<AlarmVO> al = alarmService.findAlarmList(alarmVO);
+			
+			mv.addObject("alarmList", al);
+			
+			return al;
 	}
 	
 }
