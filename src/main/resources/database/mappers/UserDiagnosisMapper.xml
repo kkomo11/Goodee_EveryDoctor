@@ -2,8 +2,42 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
-<mapper namespace="com.goodee.everydoctor.user.UserDiagnosisMapper">
-	<select id="getHospitalDiagnosisListbyUsername" parameterType="UserVO" resultType="HospitalDiagnosisVO">
+<mapper namespace="com.goodee.everydoctor.user.diagnosis.UserDiagnosisMapper">
+	
+	<select id="findMylistCnt" parameterType="Pager" resultType="Long">
+		SELECT count(*) FROM DIAGNOSIS WHERE USERNAME = #{search};
+	</select>
+	
+	<select id="findHospitalDiagnosisListbyUsername" parameterType="Pager" resultMap="GetHospitalDiagnosisList">
+		SELECT D.DANSNUM, D.DOCTORNAME, DU.NAME , A.AGENCYNAME , A.AGENCYTEL, D.DANSREQTIME 
+		FROM DIAGNOSIS D 
+			LEFT JOIN USERS DU
+			ON D.DOCTORNAME = DU.USERNAME 
+			LEFT JOIN MEDIC M 
+			ON D.DOCTORNAME = M.USERNAME
+			LEFT JOIN AGENCY A 
+			ON M.AGENCYNUM = A.AGENCYNUM 
+		WHERE D.USERNAME = #{search}
+		ORDER BY DANSNUM DESC
+		LIMIT #{startRow},#{perPage}
+	</select>
+	
+	<resultMap type="HospitalDiagnosisVO" id="GetHospitalDiagnosisList">
+		<id column="DANSNUM" property="dansNum"/>
+		<result column="DOCTORNAME" property="doctorName" />
+		<result column="DANSREQTIME" property="dansReqTime"/>
+		<association property="medicVO" javaType="MedicVO">
+			<association property="agencyVO" javaType="AgencyVO">
+				<result column="agencyName" property="agencyName"/>
+				<result column="agencyTel" property="agencyTel"/>
+			</association>
+			<association property="userVO" javaType="UserVO">
+				<result column="name" property="name"/>
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="findHospitalDiagnosisDetail" parameterType="UserVO" resultMap="GetHospitalDiagnosisList">
 		SELECT DU.NAME AS '의사이름', A.AGENCYNAME AS '병원이름', A.AGENCYTEL AS '병원번호', D.DANSREQTIME AS '진료시간', D.DANSCONTENT AS '증상', DF.DANSFILENAME AS '파일명', DF.DANSFILEORINAME AS '원본명' FROM DIAGNOSIS D 
 		LEFT JOIN DANSFILE DF
 		ON D.DANSNUM = DF.DANSNUM 
