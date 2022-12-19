@@ -76,7 +76,12 @@
                                               <li class="nav-item"><a href="#">내 주소 관리</a></li>
                                               <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
                                               <li class="nav-item"><a href="#">내 상담내역</a></li>
-                                              <li class="nav-item"><a href="#">반려동물 관리</a></li>
+                                              <sec:authorize access="isAuthenticated()">
+                                              <li class="nav-item"><a href="/pet/profile/myPetList?username=${member.username }">반려동물 관리</a></li>
+                                              <li class="nav-item"><a href="/pay/myPay?m=${member.username }">내 결제정보</a></li>
+                                              <li class="nav-item"><a href="/pay/requestedPayList?m=${member.username }">미납된 결제</a></li>
+                                              <li class="nav-item"><a href="/pay/completedPayList?m=${member.username }">결제내역</a></li>
+                                              </sec:authorize>
                                               <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                                           </ul>
                                       </li>

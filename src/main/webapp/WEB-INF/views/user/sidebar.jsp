@@ -19,6 +19,9 @@
             <li><a href="/user/petdiaglist"><i class="lni lni-bookmark"></i> 반려동물 진료내역</a></li>
             <li><a href="/pet/profile/myPetList?username=${user.username }"><i class="lni lni-heart"></i> 반려동물 관리</a></li>
             <li><a href="#"><i class="lni lni-envelope"></i> 내 주소관리</a></li>
+            <li><a href="/pay/myPay?m=${user.username }"><i class="lni lni-pencil-alt"></i>내 결제정보</a></li>
+            <li><a href="/pay/requestedPayList?m=${user.username }"><i class="lni lni-bookmark"></i>미납된 결제</a></li>
+            <li><a href="/pay/completedPayList?m=${user.username }"><i class="lni lni-printer"></i>결제내역</a></li>
             <li><a href="#"><i class="lni lni-circle-plus"></i> 스케줄러</a></li>
             <li><a href="#"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
         </ul>

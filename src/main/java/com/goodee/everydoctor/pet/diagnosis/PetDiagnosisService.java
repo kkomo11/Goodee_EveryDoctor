@@ -2,6 +2,7 @@ package com.goodee.everydoctor.pet.diagnosis;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalCategoryVO;
+import com.goodee.everydoctor.pay.PayVO;
 import com.goodee.everydoctor.pet.profile.PetVO;
 import com.goodee.everydoctor.user.UserVO;
 import com.goodee.everydoctor.util.FileManager;
@@ -27,6 +29,56 @@ public class PetDiagnosisService {
 
 	@Autowired
 	private FileManager fileManager;
+	
+	public List<DrugVO> findDrug(DrugVO drugVO) throws Exception {
+		return petDiagnosisMapper.findDrug(drugVO);
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public int modifyPetDiagnosis(PetDiagnosisVO petDiagnosisVO, Long[] druges) throws Exception {
+		
+		int modifyResult = petDiagnosisMapper.modifyPetDiagnosis(petDiagnosisVO);
+		
+		if(druges != null) {
+			for(Long i : druges) {
+				if(i != null) {
+					DrugVO drugVO = new DrugVO();
+					drugVO.setDrugNum(i);
+					drugVO.setPDansNum(petDiagnosisVO.getPDansNum());
+					
+					petDiagnosisMapper.inputPetFill(drugVO);
+				}
+			}
+		}
+		
+		PayVO payVO = new PayVO();
+		payVO.setUsername(petDiagnosisVO.getPUsername());
+		String orderId = UUID.randomUUID().toString();
+		payVO.setOrderId(orderId);
+		payVO.setAmount(petDiagnosisVO.getPDansCost());
+		payVO.setPDansNum(petDiagnosisVO.getPDansNum());
+		
+		int inputPayResult = petDiagnosisMapper.inputReadyPay(payVO);
+		
+		int result = 0;
+		
+		if(modifyResult > 0 && inputPayResult > 0) {
+			result = 1;
+		}
+
+		return result;
+		
+	}
+	
+	public PetDiagnosisVO findDetailForPrescription(Long n) throws Exception {
+		PetDiagnosisVO petDiagnosisVO = new PetDiagnosisVO();
+		petDiagnosisVO.setPDansNum(n);
+		
+		petDiagnosisVO = petDiagnosisMapper.findDetailForPrescription(petDiagnosisVO);
+		
+		return petDiagnosisVO;
+		
+	}
 	
 	public PetDiagnosisVO findCompletedDetail(Long n) throws Exception {
 		PetDiagnosisVO petDiagnosisVO = new PetDiagnosisVO();
