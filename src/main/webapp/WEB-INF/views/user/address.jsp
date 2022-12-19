@@ -71,13 +71,14 @@
                     <div class="main-content">
                         <!-- Start Post Ad Block Area -->
                         <div class="dashboard-block mt-0">
-                            <h3 class="block-title">Post Ad</h3>
+                            <h3 class="block-title">내 주소관리</h3>
                             <div class="inner-block">
                                 <!-- Start Post Ad Tab -->
                                 <div class="post-ad-tab">
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         	<c:if test="${empty listAddress}">
+                                            <input id="listAddrChk" value="${empty listAddress}" type="hidden">
                                         	<button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-item-info" type="button" role="tab"
                                                 aria-controls="nav-item-info" aria-selected="true">
@@ -87,15 +88,27 @@
                                             </button>
                                         	</c:if>
                                         	<c:if test="${!empty listAddress}">
+                                                <input id="listAddrChk" value="${empty listAddress}" type="hidden">
 	                                        	<c:forEach items="${listAddress}" var="address" varStatus="statu" >
 	                                                
-	                                            <button class="nav-link active" id="nav-item-info-tab" data-bs-toggle="tab"
+	                                            <button class="nav-link <c:if test="${statu.first}">active</c:if>" id="nav-item-info-tab" data-bs-toggle="tab"
 	                                                data-bs-target="#nav-item-info<c:out value="${statu.count }"></c:out>" type="button" role="tab"
 	                                                aria-controls="nav-item-info" aria-selected="true">
 	                                                <span class="serial">0<c:out value="${statu.count }"></c:out></span>
 	                                                Address
 	                                                <span class="sub-title">${address.addressNick }</span>
 	                                            </button>
+	                                            <c:if test="${statu.count ne 3}">
+	                                            <c:if test="${statu.last}">
+												<button class="nav-link" id="nav-item-info-tab" data-bs-toggle="tab"
+	                                                data-bs-target="#nav-item-info" type="button" role="tab"
+	                                                aria-controls="nav-item-info" aria-selected="true">
+	                                                <span class="serial">0<c:out value="${statu.count+1}"></c:out></span>
+	                                                주소 추가
+	                                                <span class="sub-title"></span>
+	                                            </button>													
+												</c:if>	                                            
+	                                            </c:if>
 	                                            </c:forEach>
                                         	</c:if>
                                             <!-- <button class="nav-link" id="nav-item-details-tab" data-bs-toggle="tab"
@@ -114,6 +127,7 @@
                                             </button> -->
                                         </div>
                                     </nav>
+                                    <c:if test="${empty listAddress}">
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-item-info" role="tabpanel"
                                             aria-labelledby="nav-item-info-tab">
@@ -141,7 +155,7 @@
                                                                         <option value="070">070</option>
                                                                     </select>
                                                                 </div>
-                                                                <input type="text" id="phoneLast" maxlength="9" name="phone1"
+                                                                <input type="text" id="phoneLast" maxlength="9" name="phone1" 
                                                                     placeholder="입력해주세요">
                                                             </div>
                                                         </div>
@@ -173,25 +187,72 @@
                                             </div>
                                             <!-- End Post Ad Step One Content -->
                                         </div>
-                                        <div class="tab-pane fade" id="nav-item-details" role="tabpanel"
-                                            aria-labelledby="nav-item-details-tab">
-                                            <!-- Start Post Ad Step Two Content -->
-                                            <div class="step-two-content">
-                                                <form class="default-form-style" method="post" action="#">
+                                    </div>
+                                    </c:if>
+                                    <c:if test="${!empty listAddress}">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-item-info" role="tabpanel"
+                                            aria-labelledby="nav-item-info-tab">
+                                            <!-- Start Post Ad Step One Content -->
+                                            <div class="step-one-content">
+                                                <form class="default-form-style" method="post" action="address">
+                                                    <div class="row" style="display: block;">
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <label>배송지명</label>
+                                                            <input type="text" id="addressNick" name="addressNick"  readonly class="addrVals bg-light" value="<c:out value="${listAddress[0].addressNick}"></c:out>">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <label>받는 사람</label>
+                                                            <input type="text" id="addressReceiver" name="addressReceiver"  readonly class="addrVals bg-light" value="<c:out value="${listAddress[0].addressReceiver}"></c:out>">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-12">
+                                                            <input type="hidden" name="addressPhone" id="submitPhone">
+                                                            <label for="inputPhone">연락처</label>
+                                                            <div id="phone" class="d-flex justify-content-between">
+                                                                <div class="selector-head" style="min-width: 30%;">
+                                                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                                                    <select name="phone1" id="phoneFirst" class="user-chosen-select"  disabled>
+                                                                        <option value="010">010</option>
+                                                                        <option value="011">011</option>
+                                                                        <option value="070">070</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" id="phoneLast" maxlength="9" name="phone1" readonly class="addrVals bg-light" value="<c:out value="${listAddress[0].addressPhone}"></c:out>"
+                                                                    placeholder="입력해주세요">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-12">
+                                                            <label>주소</label>
+                                                            <div class="d-flex justify-content-between button">
+                                                                <button type="button" class="addrBtn sample-postcode searchAddress btn bg-secondary disabled" style="width: 30%;">주소 찾기</button>
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="userPost" value="<c:out value="${listAddress[0].userPost}"></c:out>"
+                                                                    style="width: 60%;" id="sample6_postcode" readonly>
+                                                            </div>
+                                                            <div class="d-flex mt-3">
+                                                                <label for="sample6_address"></label>
+                                                                <input type="text" class="sample-postcode sample-postcode-input" name="userMainAddr" value="<c:out value="${listAddress[0].userMainAddr}"></c:out>"
+                                                                    id="sample6_address" readonly>
+                                                            </div>
+                                                            <div class="d-flex mt-3">
+                                                                <label for="sample6_address"></label>
+                                                                <input type="text" name="userSubAddr" id="sample6_detailAddress" readonly class="addrValss bg-light" value="<c:out value="${listAddress[0].userSubAddr}"></c:out>"
+                                                                    placeholder="상세주소">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group button mb-0 d-flex">
+                                                                <button type="button" class="btn" id="modifyAddress">주소 수정</button>
+
+                                                                <button type="button" class="addrBtn btn bg-secondary disabled" onclick=updateAddress()>주소 저장</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
-                                            <!-- Start Post Ad Step Two Content -->
-                                        </div>
-                                        <div class="tab-pane fade" id="nav-user-info" role="tabpanel"
-                                            aria-labelledby="nav-user-info-tab">
-                                            <!-- Start Post Ad Step Three Content -->
-                                            <div class="step-three-content">
-                                                <form class="default-form-style" method="post" action="#">
-                                                </form>
-                                            </div>
-                                            <!-- Start Post Ad Step Three Content -->
+                                            <!-- End Post Ad Step One Content -->
                                         </div>
                                     </div>
+                                    </c:if>
                                 </div>
                                 <!-- End Post Ad Tab -->
                             </div>
@@ -206,7 +267,7 @@
 
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
-    <script src="/js/user/profile.js"></script>
+    <script src="/js/user/address.js"></script>
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
@@ -216,46 +277,7 @@
     <!-- ========================= JS here ========================= -->
     
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        const samplePostcode = document.querySelectorAll('.sample-postcode');
-        const sample6_postcode = document.querySelector('#sample6_postcode');
-        const sample6_address = document.querySelector('#sample6_address');
-        const sample6_detailAddress = document.querySelector('#sample6_detailAddress');
 
-        for (sp of samplePostcode) {
-            sp.onclick = sample6_execDaumPostcode;
-        }
-
-
-        function sample6_execDaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var addr = ''; // 주소 변수
-
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                        addr = data.roadAddress;
-                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                        addr = data.jibunAddress;
-                    }
-                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('sample6_postcode').value = data.zonecode;
-                    document.getElementById("sample6_address").value = addr;
-                    // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("sample6_detailAddress").focus();
-                }
-            }).open();
-        }
-
-        $("#phoneLast").on("blur", function(){
-            $("#submitPhone").val($("#phoneFirst").val()+$("#phoneLast").val())
-            console.log("블러", $("#submitPhone").val())
-        })
-    </script>
 
 </body>
 

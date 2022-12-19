@@ -92,12 +92,48 @@ public class AdminController {
 		return adminService.inputRolePetnurse(userVO);
 	}
 	
+	//관리자 승인 시 종사자 role 약사로 바꾸기
+	@PostMapping("modifyRolePharmacist")
+	@ResponseBody
+	public int inputRolePharmacist(UserVO userVO)throws Exception{
+		return adminService.inputRolePharmacist(userVO);
+	}
+	
 	//MedicEnabled 1로 수정
 	@PostMapping("modifyMedicEnabled")
 	@ResponseBody
 	public int modifyMedicEnabled(String username)throws Exception{
 		return adminService.modifyMedicEnabled(username);
 	}
+	
+	@GetMapping("dashboard")
+	public ModelAndView dashboard()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int findMonthlyDiagnosisCount = adminService.findMonthlyDiagnosisCount();
+		int findDailyDiagnosisCount = adminService.findDailyDiagnosisCount();
+		int findMonthlyPetDiagnosisCount = adminService.findMonthlyPetDiagnosisCount();
+		int findDailyPetDiagnosisCount = adminService.findDailyPetDiagnosisCount();
+		mv.addObject("findMonthlyDiagnosisCount", findMonthlyDiagnosisCount);
+		mv.addObject("findDailyDiagnosisCount", findDailyDiagnosisCount);
+		mv.addObject("findMonthlyPetDiagnosisCount", findMonthlyPetDiagnosisCount);
+		mv.addObject("findDailyPetDiagnosisCount", findDailyPetDiagnosisCount);
+		mv.setViewName("/admin/admin/dashboard");
+		return mv;
+	}
+	
+	//이번 달 신청된 병원 진료 수
+	@GetMapping("findDoughnutChart")
+	@ResponseBody
+	public Map<String, Object> findDashboard()throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		int findThisMonthReport = adminService.findThisMonthReport();
+		int findThisMonthReportChecked = adminService.findThisMonthReportChecked();
+		int findThisMonthReportUnchecked = findThisMonthReport - findThisMonthReportChecked;
+		map.put("findThisMonthReport", findThisMonthReport);
+		map.put("findThisMonthReportChecked", findThisMonthReportChecked);
+		map.put("findThisMonthReportUnchecked", findThisMonthReportUnchecked);
+		return map;
+	};
 	
 
 }

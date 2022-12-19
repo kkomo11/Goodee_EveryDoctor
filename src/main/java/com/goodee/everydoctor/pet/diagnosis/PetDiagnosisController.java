@@ -91,7 +91,7 @@ public class PetDiagnosisController {
 		int result = petDiagnosisService.inputPetDiagnosis(petDiagnosisVO, fileVO);
 
 		//웹 알림입니다(title,text,url,받는사람)
-		notificationController.dispatchEventToClients("진료신청", "새 진료신청이 들어왔습니다","/pet/home", petDiagnosisVO.getPDoctorname());
+		notificationController.dispatchEventToClients("진료신청","["+petDiagnosisVO.getPDansCategory()+"]"+petDiagnosisVO.getPDansContent() ,"/pet/diagnosis/reservatedList", petDiagnosisVO.getPDoctorname());
 		
 		
 		return "redirect:/pet/home";

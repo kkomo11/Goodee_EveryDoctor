@@ -35,17 +35,19 @@ public class ReportService {
 		int result = reportMapper.inputReport(reportVO);
 		
 		//받아온 파일들을 반복문 돌려서 HDD 저장 및 DB에 저장
-		for(MultipartFile f : reportVO.getFiles()) {
-			log.info("fileName : ", f.getOriginalFilename());
-			String fileName = fileManager.saveFile(f, label);
-			FileVO fileVO = new FileVO();
-			fileVO.setFileName(fileName);
-			fileVO.setNum(reportVO.getReportNum());			
-			fileVO.setFileOriName(f.getOriginalFilename());
-			fileVO.setLabel(label);
-			
-			//DB저장
-			fileMapper.inputFile(fileVO);
+		if(reportVO.getFiles() != null) {
+			for(MultipartFile f : reportVO.getFiles()) {
+				log.info("fileName : ", f.getOriginalFilename());
+				String fileName = fileManager.saveFile(f, label);
+				FileVO fileVO = new FileVO();
+				fileVO.setFileName(fileName);
+				fileVO.setNum(reportVO.getReportNum());			
+				fileVO.setFileOriName(f.getOriginalFilename());
+				fileVO.setLabel(label);
+				
+				//DB저장
+				fileMapper.inputFile(fileVO);
+			}
 		}
 		return result;
 	}
@@ -61,7 +63,14 @@ public class ReportService {
 	
 	//신고 답변 등록
 	public int inputReportAnswer(ReportAnswerVO reportAnswerVO)throws Exception{
-		return reportMapper.inputReportAnswer(reportAnswerVO);
+		int result = 0;
+		int inputResult = reportMapper.inputReportAnswer(reportAnswerVO);
+		log.info("=========== ReportNum : {}", reportAnswerVO.getReportNum());
+		int updateResult = reportMapper.modifyReportChecked(reportAnswerVO.getReportNum());
+		if(inputResult == 1 && updateResult == 1) {
+			result = 1;
+		}
+		return result;
 	}
 	
 	//신고 디테일 불러오기

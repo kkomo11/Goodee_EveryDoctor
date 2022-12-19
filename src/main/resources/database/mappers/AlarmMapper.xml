@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.sse.AlarmMapper">
+	<insert id="setAlarm" parameterType="AlarmVO">
+		INSERT INTO ALARM(ALARMCONTENTS, ALARMRECEIVER)
+		VALUES(#{alarmContents},#{alarmReceiver})
+	</insert>
+	
+	<select id="findAlarmList" parameterType="AlarmVO" resultType="AlarmVO">
+		SELECT *
+		FROM ALARM
+		WHERE ALARMRECEIVER = #{alarmReceiver}
+	</select>
+
+	
+</mapper>

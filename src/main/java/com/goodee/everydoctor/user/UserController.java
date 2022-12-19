@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -191,35 +192,21 @@ public class UserController {
 		return "user/dashboard";
 	}
 	
-	@GetMapping("mydiaglist")
-	public ModelAndView myList(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
-		
-		
-		
-		mv.setViewName("user/mydiaglist");
-		return mv;
-	}
-	
-	@GetMapping("petdiaglist")
-	public ModelAndView petList(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
-		
-		
-		
-		mv.setViewName("user/petdiaglist");
-		return mv;
-	}
-	
 	@GetMapping("address")
 	public ModelAndView address(ModelAndView mv, @AuthenticationPrincipal UserVO userVO) throws Exception{
-		//기존 주소 가져와서 돌려주기
-		List<UserAddressVO>	userAddressVOs = userService.getAddress(userVO);
 		
+		//기존 주소 가져와서 돌려주기
+		List<UserAddressVO>	userAddressVOs = userService.getAddressList(userVO);
 		mv.addObject("listAddress", userAddressVOs);
 		mv.setViewName("/user/address");
 		
 		return mv;
+	}
+	
+	@GetMapping("oneAddress")
+	public void oneAddress( UserAddressVO userAddressVO) throws Exception{
+
+		
 	}
 	
 	@PostMapping("address")

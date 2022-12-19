@@ -104,8 +104,6 @@
                                              <input type="hidden" name="reporterId" value="1">
                                              <input type="hidden" name="reportedId" value="2">
                                              <input type="hidden" name="consultNum" value="3">
-                                             <input type="hidden" name="consultNum" value="3">
-                                             <input type="hidden" name="reportChecked" value="0">
                                              <div class="row">
                                                 <!-- 신고 제목 -->
                                                 <div class="col-12">

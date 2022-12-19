@@ -3,6 +3,8 @@ package com.goodee.everydoctor.user;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+
 @Mapper
 public interface UserMapper {
 
@@ -15,6 +17,7 @@ public interface UserMapper {
 	public int inputRoleNurse(UserVO userVO)throws Exception;
 	public int inputRolePetnurse(UserVO userVO)throws Exception;
 	public int inputRoleAdmin(UserVO userVO)throws Exception;
+	public int inputRolePharmacist(UserVO userVO)throws Exception;
 	public UserVO getUserByUsername(String username)throws UsernameNotFoundException;
 	public int modifyUserMember(UserVO userVO) throws Exception;
 	public int modifyRoleMember(UserVO userVO) throws Exception;

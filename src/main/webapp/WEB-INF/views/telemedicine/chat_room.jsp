@@ -34,6 +34,7 @@
         .remoteWrap {
             position: relative;
             padding: 0;
+            min-height: 500px;
         }
 
         .localWrap {
@@ -43,6 +44,15 @@
             right: 0;
             bottom: 0;
             padding: 0;
+        }
+
+        .video-sticky {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            right: 30px;
+            bottom: 30px;
+            z-index: 10;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/telemedicine.css"/>
@@ -108,12 +118,12 @@
                 </div>
             </div>
             <!-- 채팅 자리 -->
-            <div class="messages-body col-lg-4" style="height:900px">
+            <div class="messages-body col-lg-4" style="height:900px; width:420px;">
                 <div class="row" style="height:90%">
                     <div style="height:80%">
                         <!-- Start Chat List -->
                         <div class="chat-list" style="height:90%">
-                            <ul class="single-chat-head" id="msgArea" style="height:80%">
+                            <ul class="single-chat-head" id="msgArea" style="height:90%">
                             </ul>
                             <div class="reply-block">
                                 <input name="reply" type="text" id="msg" placeholder="Type your message here...">
@@ -126,25 +136,43 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4" id="page-content-wrap">
-                <div class="container-fluid">
-                    <div class="col-6">
-                        <h1>roomName</h1>
-                    </div>
-                     메시지 들어가는 부분
-                    <div id="" class="chat-list">
-                        <ul id="msgArea" class="single-chat-head"></ul>
-                    </div>
-                     입력 창
-                    <div class="input-group mb-3">
-                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+        </div>
+        <!-- Start Dashboard Section -->
+        <section class="dashboard section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="main-content">
+                            <div class="dashboard-block mt-0" style="padding-bottom: 60px;">
+                                <div class="profile-settings-block">
+                                    <h3 class="block-title">환자 신청 내용</h3>
+                                    <div class="inner-block">
+                                        <div class="image">
+                                            <c:forEach items="${diagnosisVO.dansFiles}" var="fileVO">
+                                                <img src="${fileVO.fileName}" alt="#">
+                                            </c:forEach>
+                                        </div>
+                                        <form class="profile-setting-form" method="post" action="#">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group message">
+                                                        <label>내 증상</label>
+                                                        <textarea name="message" readonly
+                                                            onfocus="this.blur()">${diagnosisVO.dansContent}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="/hospital/diagnosis/prescription" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
-        </div>
+            </div>
+        </section>
+        <!-- End Dashboard Section -->
     </div>
 </main>
 <!-- ========================= scroll-top ========================= -->

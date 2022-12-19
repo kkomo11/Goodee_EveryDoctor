@@ -45,13 +45,13 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="breadcrumbs-content">
-                <h1 class="page-title">진료내역</h1>
+                <h1 class="page-title">조제내역</h1>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <ul class="breadcrumb-nav">
                 <li><a href="/">Home</a></li>
-                <li>진료내역</li>
+                <li>조제내역</li>
               </ul>
             </div>
           </div>
@@ -67,7 +67,7 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">진료접수</h3>
+                  <h3 class="block-title">조제접수</h3>
                   <div class="inner-block">
                     <!-- Start Post Ad Tab -->
                     <div class="post-ad-tab">
@@ -98,20 +98,22 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>처방전 번호</label> <input name="price" type="text" placeholder="PRESCRIPTIONNUM">
+                                    <label>처방받은 약</label>
+                                     <input name="price" type="text" placeholder="PRESCRIPTIONNUM" value="${drugName}" readonly>
                                   </div>
                                 </div>
 
-                                <div class="col-12">
+                                <!-- 진료 과목 증상 리스트 가져오기 -->
+                                <!-- <div class="col-12">
                                   <div class="form-group">
                                     <label>진료과목</label>
                                     <div class="selector-head">
                                       <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                                         class="user-chosen-select">
-                                        <!-- 증상 리스트 가져오기 -->
+                                        
                                         <c:forEach items="${sectionList}" var="sectionVO">
                                           <option value="${sectionVO.sectionName}" data-sub="sub1">
-                                            ${sectionVO.sectionName}
+                                            ${drugPrescriptionVO.sectionVO.sectionName}
                                           </option>
                                         </c:forEach>
                                       </select>
@@ -125,16 +127,16 @@
                                     <div class="selector-head">
                                       <span class="arrow"><i class="lni lni-chevron-down"></i></span> <select
                                         class="user-chosen-select">
-                                        <!-- 증상 리스트 가져오기 -->
+                                        
                                         <c:forEach items="${categoryList}" var="categoryVO">
                                           <option value="${categoryVO.categoryName}" data-sub="sub1">
-                                            ${categoryVO.categoryName}
+                                            ${drugPrescriptionVO.categoryVO.categoryName}
                                           </option>
                                         </c:forEach>
                                       </select>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
 
 
                                 <!-- 약목록 -->
@@ -179,6 +181,34 @@
                                   </div>
                                 </div>
 
+                                  <!-- 약추가 -->
+                                  <div class="form-group col-12">
+                                    <label>약추가</label>
+                                    <div class="selector-head">
+                                      <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                        <option value="" disabled selected>약을 선택해주세요</option>
+                                        <c:forEach items="${list}" var="vo">
+                                          <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} =>
+                                            ${vo.drugInfo}</option>
+                                        </c:forEach>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                    <!-- 약추가 -->
+                                <div class="form-group col-12">
+                                  <label>약추가</label>
+                                  <div class="selector-head">
+                                    <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
+                                      <option value="" disabled selected>약을 선택해주세요</option>
+                                      <c:forEach items="${list}" var="vo">
+                                        <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} =>
+                                          ${vo.drugInfo}</option>
+                                      </c:forEach>
+                                    </select>
+                                  </div>
+                                </div>
+
                                 <div class="col-lg-6 col-12">
                                   <label>처방전넣을수도?</label>
                                   <div class="upload-input">
@@ -199,7 +229,7 @@
                                 <div class="col-12">
                                   <div class="form-group mt-30">
                                     <label>진료상담내용</label>
-                                    <textarea name="message" placeholder="Input ad description(값 받아오기)"></textarea>
+                                    <textarea name="message" placeholder="DANSCONTENT(값 받아오기)" value="${content}"></textarea>
                                   </div>
                                 </div>
 
@@ -222,8 +252,10 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>환자명*</label> <input name="name" type="text"
-                                      placeholder="Enter your name(USERNAME)">
+                                    <label>환자명*</label>
+                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.dansNum}">${completed.patient}</a></h3>
+                                     <!-- <input name="name" type="text"
+                                      placeholder="Enter your name(USERNAME)"> -->
                                   </div>
                                 </div>
 
@@ -261,7 +293,7 @@
                                 <div class="col-12">
                                   <div class="form-group button mb-0">
                                     <!-- <button type="submit" class="btn alt-btn" id="thirdPreBtn">Previous</button> -->
-                                    <a href="/drug/delivery/list" button type="submit" id="drug" class="btn">처방하기</a>
+                                    <a href="/drug/prescription/list" button type="submit" id="drug" class="btn">처방하기</a>
                                   </div>
                                 </div>
 

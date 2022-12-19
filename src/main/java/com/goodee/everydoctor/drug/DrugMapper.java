@@ -10,6 +10,8 @@ import com.goodee.everydoctor.util.Pager;
 public interface DrugMapper {
 
 	public List<DrugVO> findDrugList(Pager pager)throws Exception;
+	
+	public List<DrugVO> findDrugListAll()throws Exception;
 
 	public DrugVO findDrugDetail(DrugVO drugVO)throws Exception;
 

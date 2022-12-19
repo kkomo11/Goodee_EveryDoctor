@@ -47,6 +47,11 @@
 		(USERSROLENUM, USERNAME, ROLENUM)
 		VALUES(0, #{username}, 7)
 	</insert>
+	<insert id="inputRolePharmacist" parameterType="UserVO">
+		INSERT INTO USERSROLES
+		(USERSROLENUM, USERNAME, ROLENUM)
+		VALUES(0, #{username}, 8)
+	</insert>
 
 	<update id="modifyUserMember" parameterType="UserVO">
 		UPDATE USERS set CI=#{ci}, BIRTH =#{birth}, PHONE =#{phone} WHERE USERNAME =#{username};

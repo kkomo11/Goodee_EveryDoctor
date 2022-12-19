@@ -9,4 +9,12 @@ public class HospitalSectionVO {
 	private String sectionName;
 	private boolean sectionKind;
 	private String sectionIcon;
+	
+	public Integer getSectionNum() {
+		
+		if(this.sectionNum == null || this.sectionNum < 1 || this.sectionNum > 17) {
+			this.sectionNum = 0;
+		}
+		return this.sectionNum;
+	}
 }

@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisMapper;
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 import com.goodee.everydoctor.util.Parser;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -19,6 +23,8 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     
     private final RoomService roomService;
     private final Parser parser;
+    @Autowired
+    private HospitalDiagnosisMapper hospitalDiagnosisMapper;
 
     @Autowired
     public TelemedicineServiceImpl(final RoomService roomService, final Parser parser) {
@@ -35,7 +41,23 @@ public class TelemedicineServiceImpl implements TelemedicineService {
 
         return modelAndView;
     }
-
+    
+    public Map<String, Object> processRoomCreate(final String sid, final String uuid, final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // simplified version, no errors processing
+            return null;
+        }
+        Optional<Long> optionalId = parser.parseId(sid);
+        optionalId.ifPresent(id -> Optional.ofNullable(uuid).ifPresent(name -> roomService.addRoom(new Room(id))));
+        
+        HashMap<String, Object> map = new HashMap<>();
+        
+        
+        map.put("uuid", uuid);
+        map.put("roomid", roomService.findRoomByStringId(sid));
+        return map;
+    }
+    
     @Override
     public ModelAndView processRoomSelection(final String sid, final String uuid, final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -49,7 +71,7 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     }
 
     @Override
-    public ModelAndView displaySelectedRoom(final String sid, final String uuid) {
+    public ModelAndView displaySelectedRoom(final String sid, final String uuid, final String dansnum) throws Exception {
         // redirect to main page if provided data is invalid
         ModelAndView modelAndView = new ModelAndView(REDIRECT);
 
@@ -60,6 +82,15 @@ public class TelemedicineServiceImpl implements TelemedicineService {
                 // open the chat room
                 modelAndView = new ModelAndView("telemedicine/chat_room", "id", sid);
                 modelAndView.addObject("uuid", uuid);
+                
+ 
+                //get diagnosis 내용
+                HospitalDiagnosisVO diagnosisVO = new HospitalDiagnosisVO();
+                diagnosisVO.setDansNum(Long.parseLong(dansnum));
+                
+                diagnosisVO = hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(diagnosisVO);
+                
+                modelAndView.addObject("diagnosisVO",diagnosisVO);
             }
         }
 

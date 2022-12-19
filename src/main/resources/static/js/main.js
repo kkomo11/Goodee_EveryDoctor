@@ -4,7 +4,7 @@ Author: GrayGrids
 */
 
 (function () {
-
+	
 	"use strict";
 
 	//===== Prealoder
@@ -41,6 +41,13 @@ Author: GrayGrids
         } else {
             backToTo.style.display = "none";
         }
+        
+        // show or hide the back-top-top button
+	    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+	        $("#remote_video").addClass("video-sticky");
+	    } else {
+			$("#remote_video").removeClass("video-sticky");
+	    }
     };
 
      //===== mobile-menu-btn
@@ -93,6 +100,23 @@ Author: GrayGrids
 
 	
 	console.log("로그")
+	// 웹알림전송하는 공간 건들지 말아주뗴옹 먀항ಠ_ಠ---------------------------------------
+
+	//현재시간 출력
+	const date = new Date();
+	const year = date.getFullYear();
+	const month = date.getMonth()+1;
+	const day = date.getDay();
+	const hour  = date.getHours();
+	const min = date.getMinutes();
+	console.log("현재시간은 ", year+'-'+month+'-'+day+'-'+hour+':'+min);
+	let current = (year+'-'+month+'-'+day+' '+hour+':'+min);
+	console.log(current)
+	console.log(year);
+	console.log(month);
+	console.log(day);
+	console.log(hour);
+	console.log(min);
 
 	const toastTrigger = document.getElementById('liveToastBtn')
 	const toastLiveExample = document.getElementById('liveToast')
@@ -103,7 +127,7 @@ Author: GrayGrids
 
     
 	//SSE를 페이지를 열면 연결요청을 한다.
-    let urlEndPoint = 'http://localhost:81/subscribe?userID='+userID;
+    let urlEndPoint = 'http://'+window.location.host+'/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
 
 
@@ -119,7 +143,7 @@ Author: GrayGrids
 			'<div id='+articleData.toastId+' class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
 				'<div class="toast-header">'+
 					'<strong class="me-auto">'+articleData.title+'</strong>'+
-					'<small class="text-muted">11 mins ago</small>'+
+					'<small class="text-muted">'+current+'</small>'+
 					'<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
 				'</div>'+
 				'<div class="toast-body">'+
@@ -138,13 +162,69 @@ Author: GrayGrids
 
         
         toast.show()
+		console.log('알림받은 사람 == ',articleData.text,current,userID)
 
-		// i++
-
-        
-        // notifyMe();
+		//웹알림 저장해야돼요 나 
+		$.ajax({
+			type:"POST",
+			url:"/insertAlarm",
+			data : {
+				alarmContents : articleData.text,
+				alarmReceiver : userID
+			},
+			success: function(data){
+				console.log('data=== ',data);
+			},
+			error: function(e){
+				console.log('error===', e);
+			}
+		});
 
     })
+
+	$("#alarmBell").click(function(){
+	$(".mx-1").toggleClass("show");
+    $("#dropDownList").toggleClass("show");
+
+		// 웹알림 리스트 불러오기
+		$.ajax({
+			type:"GET",
+			url:"/alarmList",
+			data: {
+				alarmReceiver: userID
+			},
+			success: function(data){
+				console.log('success',data);
+				$.each(data,function(index,value){
+				let date = new Date(data[index].alarmTime);
+				console.log('date == ',date);
+				// console.log('년도==',date.getFullYear())
+				// console.log('월 == ',date.getMonth());
+				// console.log('시간 == ',date.getHours());
+				// console.log('분 ==', date.getMinutes());
+				let d = date.getMinutes();
+				if (d < 10) {
+					d = '0'+(d % 10);
+				}
+				console.log(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+				let a = $('<a class="dropdown-item d-flex align-items-center" href="#"/>');
+				let tungdiv= $('<div/>');
+				let daydiv= $('<div class="small text-gray-500"/>').text(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+				let span = $('<span class="font-weight-bold">').text(data[index].alarmContents);
+
+				a.append(tungdiv);
+				tungdiv.append(daydiv);
+				tungdiv.append(span);
+				
+				$("#alarmList").after(a)
+				});
+			},
+			error: function(e){
+				console.log('error',e);
+			}
+		})
+		
+	});
     
     
 // 테스트용 알림요청

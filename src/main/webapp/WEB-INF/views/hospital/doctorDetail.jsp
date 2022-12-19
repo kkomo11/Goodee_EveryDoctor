@@ -59,7 +59,7 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/file/profile/${doctorVO.fileName}">
+                                    <img src="${doctorVO.fileName}">
                                 </div>
                             </main>
                         </div>
@@ -116,11 +116,19 @@
                         </div>
                         <!-- End Single Block -->
                         <!-- Start Single Block -->
-                        <div class="single-block description">
+                        <div class="single-block tags">
                             <h3>진료 시간</h3>
-                            <p>
-                                ${doctorVO.medicVO.medicInfo}
-                            </p>
+                            <ul>
+                                <li><a>월요일 : ${doctorVO.agencyVO.agencyWorkHourVO.mon }</a></li>
+                                <li><a>화요일 : ${doctorVO.agencyVO.agencyWorkHourVO.tue }</a></li>
+                                <li><a>수요일 : ${doctorVO.agencyVO.agencyWorkHourVO.wed }</a></li>
+                                <li><a>목요일 : ${doctorVO.agencyVO.agencyWorkHourVO.thu }</a></li>
+                                <li><a>금요일 : ${doctorVO.agencyVO.agencyWorkHourVO.fri }</a></li>
+                                <li><a>토요일 : ${doctorVO.agencyVO.agencyWorkHourVO.sat }</a></li>
+                                <li><a>일요일 : ${doctorVO.agencyVO.agencyWorkHourVO.sun }</a></li>
+                                <li><a>휴일 : ${doctorVO.agencyVO.agencyWorkHourVO.holiday }</a></li>
+                                <li><a>점심 : ${doctorVO.agencyVO.agencyWorkHourVO.lunch }</a></li>
+                            </ul>
                         </div>
                         <!-- End Single Block -->
                     </div>
@@ -138,7 +146,7 @@
                             <!-- End Single Block -->
                             <!-- Start Single Block -->
                             <div class="single-block ">
-                                <h3>Location</h3>
+                                <h3>위치</h3>
                                 <div class="mapouter">
                                     <div class="gmap_canvas" id="map" data-addr="${doctorVO.agencyVO.agencyAddr}">
                                     <iframe width="100%" height="300" id="gmap_canvas"
@@ -197,41 +205,52 @@
                 e.target.style.opacity = opacity;
             });
         });
-        
+
         let mapContainer = document.getElementById("map"),  //지도에 표시할 div
         mapOption = {
             center : new kakao.maps.LatLng(37.4787931,126.8807551), //지도 중심좌표
-            level : 4 //지도 확대레벨 
+            level : 2 //지도 확대레벨
         };
-    	
+
    		 let map = new kakao.maps.Map(mapContainer,mapOption);   //지도 생성
-   		 
+
    		 //병원주소 가져오기
    		 let addr = $("#map").attr("data-addr");
    		 console.log("addr==",addr);
-   		 
+
    		 //주소-좌표 변환 객체 생성
    		 let geocoder = new kakao.maps.services.Geocoder();
-   		 
+
    		 //주소로 좌표를 검색
    		 geocoder.addressSearch(addr,function(result,status){
    			 console.log('status==',status)
    			 console.log('result ==', result)
    			//정상 검색완료
    			if(status === kakao.maps.services.Status.OK){
-   				
+
    				var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
-   				
+
+                //마커 이미지 설정
+                let imageSrc = "/images/location/hospital.png",
+                    imageSize = new kakao.maps.Size(50,50),
+                    imageOption = {offer: new kakao.maps.Point(27,69)};
+
+                //마커 이미지 생성
+                let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption),
+   		 	         markerPosition = new kakao.maps.LatLng(coords);
+
+
    				//결과값으로 받은 위치를 마커로 표시
    				let marker = new kakao.maps.Marker({
    					map:map,
-   					position :coords
+   					position :coords,
+                    image: markerImage
    				});
    		 //마커가 지도위에 표시되도록 설정
    		 map.setCenter(coords);
    			}//if end
    		 });
-   		 
+
     </script>
 </body>
 </html>

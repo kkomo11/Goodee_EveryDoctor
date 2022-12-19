@@ -22,4 +22,8 @@ public interface ReportMapper {
 	
 	//신고 글 총 갯수 구하기
 	public Long findCount(Pager pager)throws Exception;
+	
+	//신고 답변 달면 신고글의 REPORTCHECKED 0 -> 1
+	public int modifyReportChecked(int reportNum)throws Exception;
+	
 }

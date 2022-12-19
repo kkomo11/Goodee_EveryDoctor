@@ -1,6 +1,8 @@
 package com.goodee.everydoctor.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,9 +57,48 @@ public class AdminService {
 			return userMapper.inputRolePetnurse(userVO);
 		}
 		
+
+		//관리자 승인 시 종사자 role 약사로 바꾸기
+		public int inputRolePharmacist(UserVO userVO)throws Exception{
+			return userMapper.inputRolePharmacist(userVO);
+		}
+		
 		//MedicEnabled 1로 tnwjd
+
+		//MedicEnabled 1로 변경
+
 		public int modifyMedicEnabled(String username)throws Exception{
 			return adminMapper.modifyMedicEnabled(username);
 		}
+		
+		//이번 달 신청된 병원 진료 수
+		public int findMonthlyDiagnosisCount()throws Exception{
+			return adminMapper.findMonthlyDiagnosisCount();
+		};
+		
+		//오늘 신청된 병원 진료 수
+		public int findDailyDiagnosisCount()throws Exception{
+			return adminMapper.findDailyDiagnosisCount();
+		};
+		
+		//이번 달 신청된 동물병원 진료 수
+		public int findMonthlyPetDiagnosisCount()throws Exception{
+			return adminMapper.findMonthlyPetDiagnosisCount();
+		};
+		
+		//오늘 신청된 동물병원 진료 수
+		public int findDailyPetDiagnosisCount()throws Exception{
+			return adminMapper.findDailyPetDiagnosisCount();
+		};
+		
+		//이번달 접수된 총 신고 수
+		public int findThisMonthReport()throws Exception{
+			return adminMapper.findThisMonthReport();
+		};
+		
+		//이번 달 접수된 신고중에 답변처리 완료된 신고
+		public int findThisMonthReportChecked()throws Exception{
+			return adminMapper.findThisMonthReportChecked();
+		};
 		
 }
