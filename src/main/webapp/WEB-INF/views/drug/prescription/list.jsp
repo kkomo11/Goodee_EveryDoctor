@@ -83,7 +83,7 @@
                         <div class="item-list-title">
                           <div class="row align-items-center">
                             <div class="col-lg-5 col-md-5 col-12">
-                              <p>진료</p>
+                              <p>환자명</p>
                             </div>
                             <div class="col-lg-1 col-md-2 col-12">
                               <p>분류</p>

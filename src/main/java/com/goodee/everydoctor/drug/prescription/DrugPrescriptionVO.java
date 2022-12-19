@@ -50,11 +50,6 @@ public class DrugPrescriptionVO {
 
 	//처방전약
 	private List<DrugVO> prescriptionDrug;
-	
-	private HospitalDiagnosisVO hospitalDiagnosisVO;
-		
-	private UserAddressVO userAddressVO;
-
 	//운송장번호
 	private Long drugDeliveryNum;
 	//주문번호

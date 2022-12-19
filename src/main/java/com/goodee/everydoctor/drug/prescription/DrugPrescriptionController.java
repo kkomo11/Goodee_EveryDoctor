@@ -33,7 +33,7 @@ public class DrugPrescriptionController {
 		//약목록
 		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList(drugPrescriptionVO);
 		mv.addObject("list", ar);
-				
+
 		//처방된약
 		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
@@ -44,8 +44,8 @@ public class DrugPrescriptionController {
 				drugName += ", ";
 			}
 		}*/
-		
-		
+
+
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
 		int randomNum = (int)(Math.random() * 3);
@@ -55,7 +55,7 @@ public class DrugPrescriptionController {
 		mv.addObject("drug", drug);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
-		
+
 		return mv;
 	}
 

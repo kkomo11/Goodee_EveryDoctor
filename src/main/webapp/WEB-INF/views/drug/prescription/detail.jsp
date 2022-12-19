@@ -244,7 +244,7 @@
                                 </div>
 
                                 
-                                <label>환자주소*(USERADDRESS)</label>
+                                <label>환자주소*</label>
                                 <div class="button">
                                   <input type="button" class="btn" onclick="sample6_execDaumPostcode()"
                                     value="우편번호 찾기"><br>
@@ -262,7 +262,7 @@
                                   <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
-                                      모든 이용약관 및 게시물 규칙에 동의합니다. </label>
+                                      모든 이용약관 및 규칙에 동의합니다. </label>
                                   </div>
                                 </div>
 
