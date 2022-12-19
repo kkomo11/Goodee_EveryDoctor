@@ -184,34 +184,6 @@
                                   </div>
                                 </div>
 
-                                  <!-- 약추가 -->
-                                  <div class="form-group col-12">
-                                    <label>약추가</label>
-                                    <div class="selector-head">
-                                      <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
-                                        <option value="" disabled selected>약을 선택해주세요</option>
-                                        <c:forEach items="${list}" var="vo">
-                                          <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} =>
-                                            ${vo.drugInfo}</option>
-                                        </c:forEach>
-                                      </select>
-                                    </div>
-                                  </div>
-
-                                    <!-- 약추가 -->
-                                <div class="form-group col-12">
-                                  <label>약추가</label>
-                                  <div class="selector-head">
-                                    <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
-                                      <option value="" disabled selected>약을 선택해주세요</option>
-                                      <c:forEach items="${list}" var="vo">
-                                        <option value="detail?drugName=${vo.drugName}" data-sub="sub1">${vo.drugName} =>
-                                          ${vo.drugInfo}</option>
-                                      </c:forEach>
-                                    </select>
-                                  </div>
-                                </div>
-
                                 <div class="col-lg-6 col-12">
                                   <label>처방전넣을수도?</label>
                                   <div class="upload-input">
@@ -255,10 +227,9 @@
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <label>환자명*</label>
-                                    <option value="detail?userName=${username}" data-sub="sub1">${username}
+                                    <label>회원아이디</label>
+                                    <option value="detail?userName=${username}" data-sub="sub1">${drug.username}
                                     </option>
-                                    <h3 class="title"><a href="/drug/prescription/detail?dansNum=${completed.dansNum}">${username}</a></h3>
                                      <!-- <input name="name" type="text"
                                       placeholder="Enter your name(USERNAME)"> -->
                                   </div>
