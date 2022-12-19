@@ -133,20 +133,20 @@
         // 임시 오버레이
         let temp='';
 
-        //지도의 현재 중심좌표
-        let center =map.getCenter();
-        //지도 현재영역 반환
-        let bounds = map.getBounds();
-        console.log('bounds : ', bounds);
-        console.log('bounds.String : ', bounds.toString());
-        //영억의 남서쪽 좌표를 얻어옴
-        let swLatLng = bounds.getSouthWest();
-        //영역의 북동쪽 좌표를 얻어옴
-        let neLatLng = bounds.getNorthEast();
+        // //지도의 현재 중심좌표
+        // let center =map.getCenter();
+        // //지도 현재영역 반환
+        // let bounds = map.getBounds();
+        // console.log('bounds : ', bounds);
+        // console.log('bounds.String : ', bounds.toString());
+        // //영억의 남서쪽 좌표를 얻어옴
+        // let swLatLng = bounds.getSouthWest();
+        // //영역의 북동쪽 좌표를 얻어옴
+        // let neLatLng = bounds.getNorthEast();
 
-        //영역 정보를 문자열로 얻어오기
-        let boundsStr = bounds.toString(); //((남,서)(북,동)) 형식
-        console.log('boundsStr : ',boundsStr)
+        // //영역 정보를 문자열로 얻어오기
+        // let boundsStr = bounds.toString(); //((남,서)(북,동)) 형식
+        // console.log('boundsStr : ',boundsStr)
 
         $.ajax({
             url : './ronaco',
@@ -155,10 +155,7 @@
             success : function(data){
                 // console.log(data)
                
-                console.log(data[1]);
-                console.log(data[1].agencyWorkHourVO.fri);
                 $.each(data, function(index,value){
-                    // console.log('value',value)
                     //주소로 좌표를 검색합니다.
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
@@ -168,19 +165,22 @@
                                 let imageSrc ='/images/location/location.png',
                                     imageSize = new kakao.maps.Size(43,42),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
-
+                                    
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
-                                        
-
+                                
+                                
                                 //결과값으로 받은 위치를 마커로 표시합니다.
-    
-                                    let marker = new kakao.maps.Marker({
-                                        map : map,
-                                        position : coords,
-                                        image : markerImage
-                                    });
-                                    // console.log(marker.length);
-    
+                                
+                                let marker = new kakao.maps.Marker({
+                                    map : map,
+                                    position : coords,
+                                    image : markerImage
+                                });
+                                //커스텀 오버레이를 닫기 위해 호출되는 함수입니다.
+                                function closeOverlay(){
+                                    overlay.setMap(null);
+                                }
+                                  
                                     //커스텀 오버레이에 표시할 컨텐츠 입니다.
                                             let wrap = $('<div class="wrap" />');
                                             let info = $('<div class="info" />');
@@ -188,7 +188,7 @@
                                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                                             let body = $('<div class="body" />');
                                             let img = $('<div class="img" />')
-                                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                                            let imgtag = $('<img src="/file/agency/' + data[index].fileVOs[0].fileName+ '\" width="73" height="70"/>');
                                             let desc = $('<div class="desc"/>');
                                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
@@ -196,10 +196,6 @@
                                             let time1 =$('<div class="time1 me-4"/>')
                                             let time2 =$('<div class="time2"/>')
                                             let weekday =$('<div/>').text('평일 : '+data[index].agencyWorkHourVO.mon)
-                                            // let tue =$('<div/>').text('화요일 : '+data[index].agencyWorkHourVO.tue);
-                                            // let wed =$('<div/>').text('수요일 : '+data[index].agencyWorkHourVO.wed);
-                                            // let thu =$('<div/>').text('목요일 : '+data[index].agencyWorkHourVO.thu);
-                                            // let fri =$('<div/>').text('금요일 : '+data[index].agencyWorkHourVO.fri);
                                             let sat =$('<div style="color:blue"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
                                             let sun =$('<div style="color:red"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
                                             let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
@@ -257,10 +253,6 @@
                                             // console.log(data[index]);
                                             overlay.setMap(map)
                                         });
-                                        //커스텀 오버레이를 닫기 위해 호출되는 함수입니다.
-                                        function closeOverlay(){
-                                            overlay.setMap(null);
-                                        }
                                         kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     
                                             closeOverlay();

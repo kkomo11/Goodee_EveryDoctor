@@ -10,7 +10,7 @@
 .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
 .desc .reservation {margin-top: 5px !important; margin-left: 109px !important; font-size: 15px; width: 79px; height: 30px;}
-.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 80px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;border-radius: 10%;}
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {color: #5085BB;}
 #map{
@@ -18,3 +18,4 @@
     height:500px;
     /* margin-bottom: 300px; */
 }
+
