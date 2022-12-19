@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.drug.DrugService;
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalHomeService;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
@@ -31,6 +33,8 @@ public class HospitalDiagnosisController {
 	private HospitalHomeService hospitalHomeService;
 	@Autowired
 	private HospitalDiagnosisService hospitalDiagnosisService;
+	@Autowired
+	private DrugService drugService;
 	@Autowired
 	private NotificationController notificationController;
 
@@ -93,7 +97,10 @@ public class HospitalDiagnosisController {
 	}
 	
 	@GetMapping("prescription")
-	public String loadHospitalPrescription() throws Exception {
-		return "hospital/prescription";
+	public ModelAndView loadHospitalPrescription(ModelAndView modelAndView) throws Exception {
+		List<DrugVO> ar = drugService.findDrugListAll();
+		modelAndView.addObject("drugList", ar);
+		modelAndView.setViewName("hospital/prescription");
+		return modelAndView;
 	}
 }

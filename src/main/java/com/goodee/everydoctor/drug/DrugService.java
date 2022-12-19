@@ -21,6 +21,12 @@ public class DrugService {
 		pager.getNum(drugTotalCount);
 		return drugMapper.findDrugList(pager);
 	}
+	
+	public List<DrugVO> findDrugListAll()throws Exception {
+		// TODO Auto-generated method stub
+		return drugMapper.findDrugListAll();
+	}
+
 
 	public DrugVO findDrugDetail(DrugVO drugVO)throws Exception {
 		// TODO Auto-generated method stub

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>비대면 진료 예약</title>
     <c:import url="../temp/boot.jsp"></c:import>
+    <link rel="stylesheet" href="/css/admin/medic/chosen.css">
 </head>
 
 <body>
@@ -46,129 +47,72 @@
     </div>
     <!-- End Breadcrumbs -->
 
-    <div class="col-lg-9 col-md-9 mb-5 row" style="margin: 0 auto;">
-        <div class="col">
-            <h1 style="text-align: center; ">처방전</h1>
-            <p style="text-align: center;"><br></p>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td style="text-align: center; ">NO.</td>
-                        <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</td>
-                        <td style="text-align: center; ">날짜</td>
-                        <td style="text-align: center; ">20&nbsp; &nbsp; &nbsp; 년&nbsp; &nbsp; &nbsp; 월&nbsp; &nbsp; &nbsp;
-                            일&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center; ">환자이름</td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td style="text-align: center; ">주소</td>
-                        <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center; ">병명</td>
-                        <td><br></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td style="text-align: center; ">의약품 명칭</td>
-                        <td style="text-align: center; ">용 법</td>
-                        <td style="text-align: center; ">1회 투약량</td>
-                        <td style="text-align: center; ">1일 투여횟수</td>
-                        <td style="text-align: center; ">일 수</td>
-                        <td style="text-align: center; ">증사용량</td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="text-align: center;"><br></p>
+    <!-- Start Dashboard Section -->
+    <section class="dashboard section">
+        <div class="container">
+            <div class="row" style="justify-content: center;">
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="main-content">
+                        <!-- 처방전 작성 폼 시작 -->
+                        <div class="dashboard-block mt-0 profile-settings-block">
+                            <h3 class="block-title">처방전 작성</h3>
+                            <div class="inner-block">
+                                <div class="post-ad-tab">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="hospital" role="tabpanel"
+                                            aria-labelledby="hospital-tab">
+                                            <form class="profile-setting-form default-form-style" method="post"
+                                                action="./regist" id="hospitalForm">
+                                                <div class="row" style="flex-direction: column;">
+                                                    <!-- 약품 검색 -->
+                                                    <div class="form-group col-11">
+                                                        <label>의약품 검색</label>
+                                                        <div class="selector-head">
+                                                            <select class="user-chosen-select chosen-select drugNum"
+                                                                name="agencyNum">
+                                                                <c:forEach items="${drugList}" var="drug">
+                                                                    <option value="${drug.drugNum}">
+                                                                        ${drug.drugName}
+                                                                    </option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 의사소견 입력 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>의사 소견</label>
+                                                            <textarea name="dansResponse"
+                                                                class="agencyInfo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>진료비 청구</label>
+                                                            <input style="width: 50%;" name="username" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <!-- 작성 버튼 -->
+                                                    <div class="col-12">
+                                                        <div class="form-group button mb-0 d-flex"
+                                                            style="flex-direction: row-reverse;">
+                                                            <button type="button" class="btn inputButton"
+                                                                id="inputButton">작성 완료</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <!-- End Dashboard Section -->
 
     <!-- Start Footer Area -->
     <c:import url="../temp/footer.jsp"></c:import>
@@ -179,6 +123,7 @@
         <i class="lni lni-chevron-up"></i>
     </a>
     <script type="text/javascript" src="/js/hospital/diagnosis.js"></script>
+    <script src="/js/admin/medic/chosen.jquery.js"></script>
     <script type="text/template" id="diagnosisFileInputTemplate">
             <div class="col-12 fileFrame">
                 <div class="filesInput">

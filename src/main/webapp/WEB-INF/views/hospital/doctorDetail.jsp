@@ -146,7 +146,7 @@
                             <!-- End Single Block -->
                             <!-- Start Single Block -->
                             <div class="single-block ">
-                                <h3>Location</h3>
+                                <h3>위치</h3>
                                 <div class="mapouter">
                                     <div class="gmap_canvas" id="map" data-addr="${doctorVO.agencyVO.agencyAddr}">
                                     <iframe width="100%" height="300" id="gmap_canvas"
