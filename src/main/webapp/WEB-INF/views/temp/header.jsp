@@ -70,6 +70,7 @@
                                               <li class="nav-item"><a href="/pay/completedPayList?m=${member.username }">결제내역</a></li>
                                               </sec:authorize>
                                               <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
+                                              <li class="nav-item"><a href="/board/tip/list">건강관리팁</a></li>
                                           </ul>
                                       </li>
                                     </ul>
