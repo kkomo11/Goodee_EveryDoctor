@@ -148,7 +148,9 @@
                                     <h3 class="block-title">환자 신청 내용</h3>
                                     <div class="inner-block">
                                         <div class="image">
-                                            <img src="/images/yeji.jpg" alt="#">
+                                            <c:forEach items="${diagnosisVO.dansFiles}" var="fileVO">
+                                                <img src="${fileVO.fileName}" alt="#">
+                                            </c:forEach>
                                         </div>
                                         <form class="profile-setting-form" method="post" action="#">
                                             <div class="row">
@@ -156,7 +158,7 @@
                                                     <div class="form-group message">
                                                         <label>내 증상</label>
                                                         <textarea name="message" readonly
-                                                            onfocus="this.blur()">얼굴에 갑자기 붉은색 작은 점들이 생겼어요</textarea>
+                                                            onfocus="this.blur()">${diagnosisVO.dansContent}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
