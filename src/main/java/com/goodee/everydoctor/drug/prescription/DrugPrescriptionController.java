@@ -31,23 +31,25 @@ public class DrugPrescriptionController {
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		//약목록
-		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
+		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList(drugPrescriptionVO);
 		mv.addObject("list", ar);
 		
-		//처방된약
-		List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+//		List<DrugPrescriptionVO> userName = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+//		
+//		//상담내용
+//		List<DrugPrescriptionVO> content = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		
+		//처방된약
+		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		String drugName = "";
-		for(int i = 0; i < drug.size(); i++) {
+		/*for(int i = 0; i < drug.size(); i++) {
 			drugName += drug.get(i).getDrugName();
 			if(i != drug.size()-1) {
 				drugName += ", ";
 			}
-		}
+		}*/
 		
-//		//상담내용
-//		List<DrugPrescriptionVO> content = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
-//		mv.addObject("content", content);
 		
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
@@ -55,7 +57,10 @@ public class DrugPrescriptionController {
 		DrugPrescriptionVO deliveryNumObject = deliveryNumList.get(randomNum);
 		mv.addObject("deliveryNum", deliveryNumObject.getDrugDeliveryNum());
 
-		mv.addObject("drugName",drugName);
+//		mv.addObject("userName", userName);
+		//mv.addObject("drugName",drugName);
+		mv.addObject("drug", drug);
+//		mv.addObject("content", content);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
 		

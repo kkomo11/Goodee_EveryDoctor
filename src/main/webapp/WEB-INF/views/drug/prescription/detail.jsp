@@ -97,10 +97,13 @@
                             <form class="default-form-style" method="post" action="#">
                               <div class="row">
                                 <div class="col-12">
-                                  <div class="form-group">
-                                    <label>처방받은 약</label>
-                                     <input name="price" type="text" placeholder="PRESCRIPTIONNUM" value="${drugName}" readonly>
-                                  </div>
+                                  <c:forEach items="${drug.prescriptionDrug}" var="drugVO">
+                                    <div class="form-group">
+                                      <label>처방받은 약</label>
+                                       <input name="price" type="text" placeholder="PRESCRIPTIONNUM"  readonly value="${drugVO.drugName}">
+                                    </div>
+                                  </c:forEach>
+                                  
                                 </div>
 
                                 <!-- 진료 과목 증상 리스트 가져오기 -->
@@ -229,7 +232,7 @@
                                 <div class="col-12">
                                   <div class="form-group mt-30">
                                     <label>진료상담내용</label>
-                                    <textarea name="message" placeholder="DANSCONTENT(값 받아오기)" value="${content}"></textarea>
+                                    <textarea name="message" placeholder="DANSCONTENT(값 받아오기)">${drug.dansContent}</textarea>
                                   </div>
                                 </div>
 
@@ -253,7 +256,9 @@
                                 <div class="col-12">
                                   <div class="form-group">
                                     <label>환자명*</label>
-                                    <h3 class="title"><a href="/drug/prescription/detail?n=${completed.dansNum}">${completed.patient}</a></h3>
+                                    <option value="detail?userName=${username}" data-sub="sub1">${username}
+                                    </option>
+                                    <h3 class="title"><a href="/drug/prescription/detail?dansNum=${completed.dansNum}">${username}</a></h3>
                                      <!-- <input name="name" type="text"
                                       placeholder="Enter your name(USERNAME)"> -->
                                   </div>

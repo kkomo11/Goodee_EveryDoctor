@@ -13,9 +13,9 @@ public interface DrugPrescriptionMapper {
 //
 //	public List<DrugPrescriptionVO> findDrugPrescriptionCategory() throws Exception;
 
-	public List<DrugPrescriptionVO> findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
+	public DrugPrescriptionVO findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
 
-	public List<DrugPrescriptionVO> findDrugPrescriptionList() throws Exception;
+	public List<DrugPrescriptionVO> findDrugPrescriptionList(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
 	
 	public List<DrugPrescriptionVO> findDrugDeliveryNum()throws Exception;
 	

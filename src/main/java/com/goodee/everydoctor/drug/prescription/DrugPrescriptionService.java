@@ -36,14 +36,14 @@ public class DrugPrescriptionService {
 //		return drugPrescriptionMapper.findDrugPrescriptionCategory();
 //	}
 
-	public List<DrugPrescriptionVO> findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
+	public DrugPrescriptionVO findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		// TODO Auto-generated method stub
 		return  drugPrescriptionMapper.findDrugPrescriptionDetail(drugPrescriptionVO);
 	}
 
-	public List<DrugPrescriptionVO> findDrugPrescriptionList()throws Exception {
+	public List<DrugPrescriptionVO> findDrugPrescriptionList(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		// TODO Auto-generated method stub
-		return drugPrescriptionMapper.findDrugPrescriptionList();
+		return drugPrescriptionMapper.findDrugPrescriptionList(drugPrescriptionVO);
 	}
 	
 	public  List<DrugPrescriptionVO> findDrugDeliveryNum()throws Exception {
