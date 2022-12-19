@@ -4,82 +4,125 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.user.UserVO;
 
 @Controller
 @RequestMapping("/pay/*")
 public class PayController {
 	
-	@Value("${toss.api.client.key}")
-	private String cli_key;
+	@Autowired
+	private PayService payService;
 	
-	@Value("${toss.api.base.key}")
-	private String base_key;
-
-	@GetMapping("test")
-	public String getTestPage(HttpServletRequest req) throws Exception {
+	@GetMapping("completedPayList")
+	public ModelAndView findMyCompletedPayList(PetDiagnosisPager petDiagnosisPager, String m) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
-		// 결제를 위한 빌링 객체를 받아옴
-		HttpRequest request = HttpRequest.newBuilder()
-			    .uri(URI.create("https://api.tosspayments.com/v1/billing/authorizations/card"))
-			    .header("Authorization", "Basic " + base_key)
-			    .header("Content-Type", "application/json")
-			    .method("POST", HttpRequest.BodyPublishers.ofString("{\"cardNumber\":\"4330123412341234\",\"cardExpirationYear\":\"24\",\"cardExpirationMonth\":\"07\",\"cardPassword\":\"12\",\"customerIdentityNumber\":\"881212\",\"customerKey\":\"edPkasN9Rd87s3TKiAfx3\"}"))
-			    .build();
-			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-			//System.out.println(response.body());
-			
-		String result = response.body();
+		mv.addObject("completedPayList", payService.findMyCompletedPayList(petDiagnosisPager, m));
+		mv.addObject("pager", petDiagnosisPager);
+		mv.setViewName("pay/myCompletedPayList");
 		
-		req.setAttribute("billing", result);
-		
-		return "forward:/pay/testPay";
+		return mv;
 	}
 	
-	@GetMapping("testPay")
-	public String getTestPay(HttpServletRequest req) throws Exception {
+	@PostMapping("findMyPayInfo")
+	@ResponseBody
+	public UserVO findMyPayInfo(UserVO userVO) throws Exception {
+		return payService.findMyPayInfo(userVO);
+	}
+	
+	@GetMapping("doPay")
+	public ModelAndView getDoPay(Long pn) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
-		ObjectMapper objectMapper = new ObjectMapper();	// json 변환기
-		String billingString = req.getAttribute("billing").toString();	// 변환할 json
+		mv.addObject("unpaidDetail", payService.findUnpaidDetail(pn));
+		mv.setViewName("pay/doPay");
 		
-		Map<String, String> map = objectMapper.readValue(billingString, Map.class);
-		Object card = map.get("card");
+		return mv;
+	}
+	
+	@GetMapping("requestedPayList")
+	public ModelAndView findMyRequestedPayList(PetDiagnosisPager petDiagnosisPager, String m) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("requestedPayList", payService.findMyRequestedPayList(petDiagnosisPager, m));
+		mv.addObject("pager", petDiagnosisPager);
+		boolean isPayInfoRegisted = payService.findPayInfoRegisted(m) == 1 ? true : false;
+		mv.addObject("isPayInfoRegisted", isPayInfoRegisted);
+		mv.setViewName("pay/myRequestedPayList");
+		
+		return mv;
+	}
+	
+	@GetMapping("myPay")
+	public ModelAndView findMyPay(String m) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("myPay", payService.findMyPay(m));
+		mv.setViewName("pay/myPay");
+		
+		return mv;
+	}
+	
+	@PostMapping("regist")
+	public String inputPayInfo(UserVO userVO) throws Exception {
+		int result = payService.inputPayInfo(userVO);
+		
+		return "redirect:/pay/myPay?m=" + userVO.getUsername();
+		
+	}
+	
+	@PostMapping("checkRealCard")
+	@ResponseBody
+	public Map<String, Object> checkRealCard(HttpServletRequest req, UserVO userVO) throws Exception {
+		
+		String username = userVO.getUsername();
+		String cn = userVO.getCardNumber();
+		String cey = userVO.getCardExpirationYear();
+		String cem = userVO.getCardExpirationMonth();
+		String ct = userVO.getCardTwo();
+		
+		Map<String, Object> resultMap = payService.getBilling(req, cn, cey, cem, ct, ct, username);
+		
+		return resultMap;
+		
+	}
 
-		BillingVO billingVO = objectMapper.convertValue(map, BillingVO.class);	// 빌링 객체로 변환
-		billingVO.setCardVO(objectMapper.convertValue(card, CardVO.class));	// 빌링 객체가 가지는 카드 정보 객체 변환 후 설정
+	@PostMapping("billing")
+	@ResponseBody
+	public Map<String, Object> getBilling(HttpServletRequest req, String cn, String cey, String cem, String ct, String birth, String username) throws Exception {
 		
-		// 결제 요청(Payment객체 반환받음)
-		HttpRequest request = HttpRequest.newBuilder()
-			    .uri(URI.create("https://api.tosspayments.com/v1/billing/" + billingVO.getBillingKey()))
-			    .header("Authorization", "Basic " + base_key)
-			    .header("Content-Type", "application/json")
-			    .method("POST", HttpRequest.BodyPublishers.ofString("{\"customerKey\":\"edPkasN9Rd87s3TKiAfx3\",\"amount\":15000,\"orderId\":\"ATNcD9gYoUhb6J_r9Vzx7\",\"orderName\":\"토스 티셔츠 외 2건\"}"))
-			    .build();
-			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-			
-		// 결제 요청의 응답 코드
-		int resStatusCode = response.statusCode();
+		// 4330123412341234
+		Map<String, Object> resultMap = payService.getBilling(req, cn, cey, cem, ct, birth, username);
 		
-		if(resStatusCode == 200) {
-			// 정상 응답
-		} else {
-			// 에러발생(에러객체 받음)
-			PayErrorVO payErrorVO = objectMapper.readValue(response.body(), PayErrorVO.class);
-			System.out.println(payErrorVO);
-		}
+		return resultMap;
 		
-		return "pay/test";
+	}
+	
+	@PostMapping("payment")
+	@ResponseBody
+	public Map<String, Object> getPayment(HttpServletRequest req, String bk, String username, Integer amount, String orderId, String orderName, Long pn) throws Exception {
+		
+		Map<String, Object> resultMap = payService.getPayment(req, bk, username, amount, orderId, orderName, pn);
+		
+		return resultMap;
 	}
 	
 }

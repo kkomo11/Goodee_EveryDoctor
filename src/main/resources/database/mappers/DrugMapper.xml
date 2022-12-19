@@ -22,6 +22,11 @@
 		LIMIT #{startRow} , #{perPage}
 
 	</select>
+	<!-- 약목록 -->
+	<select id="findDrugListAll" resultType="DrugVO">
+		SELECT * FROM DRUG
+		ORDER BY DRUGNUM
+	</select>
 	<!-- 약 상세정보 -->
 	<select id="findDrugDetail" parameterType="DrugVO"
 		resultType="DrugVO">

@@ -4,6 +4,56 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper">
 
+	<insert id="inputReadyPay" parameterType="PayVO">
+		INSERT INTO PAY(PAYNUM, USERNAME, ORDERID, ORDERNAME, STATUS, AMOUNT, PAYREQDATE, PDANSNUM)
+		VALUES (NULL, #{username}, #{orderId}, '반려동물 진료비', 'READY', #{amount}, now(), #{pDansNum})
+	</insert>
+
+	<select id="findDrug" parameterType="DrugVO" resultType="DrugVO">
+		SELECT DRUGNUM, DRUGNAME FROM DRUG WHERE DRUGNAME LIKE CONCAT('%', #{drugName}, '%')
+	</select>
+	
+	<insert id="inputPetFill" parameterType="DrugVO">
+		INSERT INTO PETFILLS VALUES (NULL, #{pDansNum}, #{drugNum})
+	</insert>
+	
+	<update id="modifyPetDiagnosis" parameterType="PetDiagnosisVO">
+		UPDATE PETDIAGNOSIS SET PDANSRESPONSE = #{pDansResponse}, PDANSAID = #{pDansAid}, 
+		PDANSENDTIME = now(), PDANSCOST = #{pDansCost}, PDANSSTATUS = 1
+		WHERE PDANSNUM = #{pDansNum}
+	</update>
+
+	<select id="findDetailForPrescription" parameterType="PetDiagnosisVO" resultMap="findDetailForPrescriptionResult">
+		SELECT * FROM PETDIAGNOSIS PD
+		INNER JOIN PET P
+		ON (PD.PETNUM = P.PETNUM)
+		INNER JOIN PETBIO PB
+		ON (P.PETBIONUM = PB.PETBIONUM)
+		WHERE PDANSNUM = #{pDansNum} AND PDANSSTATUS = 0
+	</select>
+	
+	<resultMap type="PetDiagnosisVO" id="findDetailForPrescriptionResult">
+		<id column="PDANSNUM" property="pDansNum"/>
+		<result column="PUSERNAME" property="pUsername"/>
+		<result column="PETNUM" property="petNum"/>
+		<result column="PDOCTORNAME" property="pDoctorname"/>
+		<result column="PDANSCATEGORY" property="pDansCategory"/>
+		<result column="PDANSCONTENT" property="pDansContent"/>
+		<association property="petVO" javaType="PetVO">
+			<result column="PETNAME" property="petName"/>
+			<result column="PETBIRTH" property="petBirth"/>
+			<result column="PETAGE" property="petAge"/>
+			<result column="PETSEX" property="petSex"/>
+			<result column="NEUTERED" property="neutered"/>
+			<result column="VACCINNATION" property="vaccinnation"/>
+		</association>
+		<association property="petBioVO" javaType="PetBioVO">
+			<id column="PETBIONUM" property="petBioNum"/>
+			<result column="PETBIONUMREF" property="petBioNumRef"/>
+			<result column="PETBIONAME" property="petBioName"/>
+		</association>
+	</resultMap>
+
 	<select id="findPetFills" parameterType="PetDiagnosisVO" resultType="DrugVO">
 		SELECT DR.*
 		FROM PETFILLS PL

@@ -6,7 +6,7 @@
 <mapper
 	namespace="com.goodee.everydoctor.drug.prescription.DrugPrescriptionMapper">
 
-	<!-- 약목록 -->
+	<!-- 진료목록 -->
 	<select id="findDrugPrescriptionList"
 		resultType="DrugPrescriptionVO">
 		SELECT * FROM DRUG
@@ -14,24 +14,62 @@
 		DRUGNUM
 	</select>
 
-	<!-- 약 상세정보 -->
+	<select id="findCompletedList"
+		parameterType="DrugPrescriptionPager" resultType="HospitalDiagnosisVO">
+		SELECT D.*, U.NAME AS PATIENT, P.PRESCRIPTIONSTATUS
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U
+		ON (D.USERNAME = U.USERNAME)
+		INNER JOIN PRESCRIPTION
+		P
+		ON (D.DANSNUM =
+		D.DANSNUM)
+		WHERE D.DANSSTATUS = 1
+		<include refid="searchUser"></include>
+		ORDER BY D.DANSENDTIME DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+
+	<!-- 진료 상세정보 -->
 	<select id="findDrugPrescriptionDetail"
 		parameterType="DrugPrescriptionVO" resultType="DrugPrescriptionVO">
-		SELECT * FROM DRUG WHERE
-		DRUGNAME = #{drugName}
+		SELECT PD.DRUGNUM, D.DRUGNAME 
+		FROM PRESCRIPTIONDRUG PD
+		INNER JOIN DRUG D
+		ON D.DRUGNUM=PD.DRUGNUM
+		WHERE PRESCRIPTIONNUM =
+		(SELECT PRESCRIPTIONNUM FROM
+		PRESCRIPTION 
+		WHERE DANSNUM =#{dansNum});
 	</select>
+	
 
-	<!-- 증상과목 -->
-	<select id="findDrugPrescriptionSection"
-		resultType="DrugPrescriptionVO">
-		SELECT * FROM SECTION WHERE SECTIONKIND=0
-	</select>
-	<!-- 진료과목 -->
-	<select id="findDrugPrescriptionCategory"
-		resultType="DrugPrescriptionVO">
-		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0
-	</select>
+	<resultMap type="DrugPrescriptionVO"
+		id="findDrugPrescriptionDetail">
+		<!-- <association property="hospitalDiagnosisVO" javaType="HospitalDianosisVO"> 
+			<id column="DANSNUM" property="dansNum"/> <result column="USERNAME" property="username"/> 
+			<result column="DANSCATEGORY" property="dansCategory"/> <result column="DANSCONTENT" 
+			property="dansContent"/> <result column="DANSREQTIME" property="danReqTime"/> 
+			<result column="DANSENDTIME" property="dansEndTime"/> <result column="DANSCOST" 
+			property="dansCost"/> <result column="DOCTORNAME" property="doctorName"/> 
+			<result column="DANSSTATUS" property="dansStatus"/> <result column="PATIENT" 
+			property="patient"/> <result column="REQTIMESTRING" property="reqTimeString"/> 
+			<result column="ENDTIMESTRING" property="endTimeString"/> </association> -->
 
+		<association property="userAddressVO"
+			javaType="UserAddressVO">
+			<id column="USERNAME" property="username" />
+			<result column="ADDRESSNUM" property="addressNum" />
+			<result column="ADDRESSNICK" property="addressNick" />
+			<result column="USERMAINADDR" property="userMainAddr" />
+			<result column="USERSUBADDR" property="userSubAddr" />
+			<result column="USERPOST" property="userPost" />
+			<result column="ADDRESSPECEIVER" property="addressReceiver" />
+			<result column="ADDRESSPHONE" property="addressPhone" />
+		</association>
+	</resultMap>
+
+	<!--운송장번호 -->
 	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">
 		SELECT * FROM
 		DRUGDELIVERY
@@ -39,4 +77,41 @@
 		ORDER BY RAND()
 		LIMIT 4;
 	</select>
+
+	<sql id="searchUser">
+		AND
+		<choose>
+			<when test="kind == 'name'">
+				U.NAME
+			</when>
+			<otherwise>
+				U.NAME
+			</otherwise>
+		</choose>
+		LIKE CONCAT('%', #{search}, '%')
+	</sql>
+
+	<select id="findCompletedListCount"
+		parameterType="DrugPrescriptionPager" resultType="Long">
+		SELECT COUNT(DANSNUM)
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U
+		ON (D.USERNAME
+		= U.USERNAME)
+		WHERE D.DANSSTATUS = 1
+		<include refid="searchUser"></include>
+	</select>
+	
+	<select id="findFile" parameterType="HospitalDiagnosisVO"
+		resultType="FileVO">
+		SELECT DANSFILENUM AS FILENUM, DANSFILENAME AS FILENAME,
+		DANSFILEORINAME AS ORINAME FROM DANSFILE WHERE DANSNUM = #{dansNum}
+	</select>
+
+	<!-- 증상과목 -->
+	<!-- <select id="findHospitalSection" resultType="HospitalSectionVO"> SELECT 
+		* FROM SECTION WHERE SECTIONKIND=0 </select> -->
+	<!-- 진료과목 -->
+	<!-- <select id="findHospitalCategory" resultType="HospitalCategoryVO"> 
+		SELECT * FROM CATEGORY WHERE CATEGORYKIND=0 </select> -->
 </mapper>

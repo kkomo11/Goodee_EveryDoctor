@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalCategoryVO;
 import com.goodee.everydoctor.sse.NotificationController;
@@ -23,6 +24,32 @@ public class PetDiagnosisController {
 	private PetDiagnosisService petDiagnosisService;
 	@Autowired
 	private NotificationController notificationController;
+	
+	@PostMapping("findDrug")
+	@ResponseBody
+	public List<DrugVO> findDrug(DrugVO drugVO) throws Exception {
+		return petDiagnosisService.findDrug(drugVO);
+	}
+	
+	@PostMapping("petPrescription")
+	public String modifyPetDiagnosis(PetDiagnosisVO petDiagnosisVO, Long[] druges) throws Exception {
+		
+		int result = petDiagnosisService.modifyPetDiagnosis(petDiagnosisVO, druges);
+		
+		return "redirect:/pet/diagnosis/completedList?d=" + petDiagnosisVO.getPDoctorname();
+	}
+	
+	@GetMapping("petPrescription")
+	public ModelAndView getPetPrescriptionPage(Long n) throws Exception {
+		// 의사가 화상 진료 후 작성할 페이지 요청
+		ModelAndView mv = new ModelAndView();
+		PetDiagnosisVO petDiagnosisVO = petDiagnosisService.findDetailForPrescription(n);
+		
+		mv.addObject("detailForPrescription", petDiagnosisVO);
+		mv.setViewName("pet/diagnosis/prescription");
+		
+		return mv;
+	}
 	
 	@GetMapping("completedDetail")
 	public ModelAndView findCompletedDetail(Long n) throws Exception {

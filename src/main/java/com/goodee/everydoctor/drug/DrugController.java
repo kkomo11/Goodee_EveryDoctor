@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.drug.prescription.DrugPrescriptionService;
 import com.goodee.everydoctor.util.Pager;
 
 @Controller
@@ -16,11 +17,12 @@ public class DrugController {
 		
 	@Autowired
 	private DrugService drugService;
-	
+
 	@GetMapping("list")
 	public ModelAndView findDrugList(Pager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<DrugVO> ar = drugService.findDrugList(pager);
+		
 		mv.addObject("list", ar);
 		mv.addObject("pager",pager);
 		mv.setViewName("drug/list");
