@@ -45,6 +45,10 @@ public class DrugPrescriptionController {
 			}
 		}
 		
+//		//상담내용
+//		List<DrugPrescriptionVO> content = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+//		mv.addObject("content", content);
+		
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
 		int randomNum = (int)(Math.random() * 3);

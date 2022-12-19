@@ -229,7 +229,7 @@
                                 <div class="col-12">
                                   <div class="form-group mt-30">
                                     <label>진료상담내용</label>
-                                    <textarea name="message" placeholder="DANSCONTENT(값 받아오기)"></textarea>
+                                    <textarea name="message" placeholder="DANSCONTENT(값 받아오기)" value="${content}"></textarea>
                                   </div>
                                 </div>
 
