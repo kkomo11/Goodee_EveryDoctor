@@ -10,9 +10,9 @@
     <title>코로나 선별검사소</title>
     <c:import url="../temp/boot.jsp"></c:import>
     <style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 198px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 185px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 180px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 286px;height: 165px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -212,15 +212,15 @@
                                             body.append(times);
                                             times.append(time1);
                                             time1.append(weekday);   //월요일
+                                            time1.append(lunch);    //점심시간
                                             // time1.append(wed);   //수요일
                                             // time1.append(fri);   //금요일
-                                            time1.append(sun);   //일요일
                                             times.append(time2);
                                             // time2.append(tue);          //화요일
                                             // time2.append(thu);        //목요일
                                             time2.append(sat);       //토요일
                                             time2.append(holiday);  //공휴일
-                                            info.append(lunch);    //점심시간
+                                            // time2.append(sun);   //일요일
                                             
 
                                             

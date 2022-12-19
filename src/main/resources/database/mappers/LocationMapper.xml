@@ -62,6 +62,7 @@
 			<result column="MON" property="mon"/>
 			<result column="SAT" property="sat"/>
 			<result column="SUN" property="sun"/>
+			<result column="HOLIDAY" property="holiday"/>
 			<result column="LUNCH" property="lunch"/>
 		</association>
 		<collection property="fileVOs" javaType="List" ofType="FileVO">

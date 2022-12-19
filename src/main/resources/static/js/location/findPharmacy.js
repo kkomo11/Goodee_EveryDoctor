@@ -152,6 +152,14 @@
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
+                            let times =$('<div class="time d-flex justify-content-center"/>')
+                            let time1 =$('<div class="time1 me-4"/>')
+                            let time2 =$('<div class="time2"/>')
+                            let weekday =$('<div/>').text('평일 : '+data[index].agencyWorkHourVO.mon)
+                            let sat =$('<div style="color:blue"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
+                            let sun =$('<div style="color:red"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
+                            // let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
+                            let lunch =$('<div style="text-align:center"/>').text('점심시간 : '+data[index].agencyWorkHourVO.lunch);
                             // let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
 
                             wrap.append(info);
@@ -162,6 +170,14 @@
                             body.append(desc);
                             desc.append(ellipsis);
                             desc.append(tel);
+                            body.append(times);
+                            times.append(time1);
+                            time1.append(weekday);   //월요일
+                            time1.append(lunch);    //점심시간
+                            times.append(time2);
+                            time2.append(sat);       //토요일
+                            time2.append(sun);   //일요일
+                          
                             // desc.append(reservation);
                             
                             let content = wrap[0];
