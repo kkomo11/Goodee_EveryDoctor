@@ -33,7 +33,7 @@
 	<!-- 진료 상세정보 -->
 	<select id="findDrugPrescriptionDetail"
 		parameterType="DrugPrescriptionVO" resultMap="findDrugPrescriptionDetail">	
-		SELECT PD.DRUGNUM, D.DRUGNAME, DN.DANSCONTENT, DN.USERNAME 
+		SELECT PD.DRUGNUM, D.DRUGNAME, DN.DANSCONTENT, DN.USERNAME
 		FROM DRUG D
 		INNER JOIN PRESCRIPTIONDRUG PD
 		ON D.DRUGNUM=PD.DRUGNUM

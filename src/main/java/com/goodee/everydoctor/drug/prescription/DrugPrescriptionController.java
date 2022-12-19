@@ -33,12 +33,7 @@ public class DrugPrescriptionController {
 		//약목록
 		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList(drugPrescriptionVO);
 		mv.addObject("list", ar);
-		
-//		List<DrugPrescriptionVO> userName = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
-//		
-//		//상담내용
-//		List<DrugPrescriptionVO> content = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
-		
+				
 		//처방된약
 		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
@@ -57,10 +52,7 @@ public class DrugPrescriptionController {
 		DrugPrescriptionVO deliveryNumObject = deliveryNumList.get(randomNum);
 		mv.addObject("deliveryNum", deliveryNumObject.getDrugDeliveryNum());
 
-//		mv.addObject("userName", userName);
-		//mv.addObject("drugName",drugName);
 		mv.addObject("drug", drug);
-//		mv.addObject("content", content);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
 		
