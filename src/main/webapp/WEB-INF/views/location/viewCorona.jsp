@@ -196,9 +196,9 @@
                                             let time1 =$('<div class="time1 me-4"/>')
                                             let time2 =$('<div class="time2"/>')
                                             let weekday =$('<div/>').text('평일 : '+data[index].agencyWorkHourVO.mon)
-                                            let sat =$('<div style="color:blue"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
-                                            let sun =$('<div style="color:red"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
-                                            let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
+                                            let sat =$('<div style="color:#5d80de"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
+                                            // let sun =$('<div style="color:#De5d5d"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
+                                            let holiday =$('<div style="color:#De5d5d"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
                                             let lunch =$('<div style="text-align:center"/>').text('점심시간 : '+data[index].agencyWorkHourVO.lunch);
                   
                                             wrap.append(info);
