@@ -128,5 +128,19 @@ public class AdminController {
 		return map;
 	};
 	
+	@GetMapping("agencyList")
+	public void agencyList()throws Exception{
+		
+	}
+	
+	@GetMapping("findAgencyList")
+	@ResponseBody
+	public Map<String, Object> findAgencyList(Pager pager)throws Exception{
+		Map<String, Object> map = new HashMap<>();
+		map.put("pager", pager);
+		map.put("list", adminService.findAgencyList(pager));
+		return map;
+	}
+	
 
 }

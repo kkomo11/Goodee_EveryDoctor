@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.goodee.everydoctor.admin.agency.AgencyVO;
 import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.user.UserMapper;
 import com.goodee.everydoctor.user.UserVO;
@@ -30,6 +31,14 @@ public class AdminService {
 			pager.getNum(totalCount);
 			pager.getRowNum();
 			return adminMapper.findCooperationList(pager);
+		}
+		
+		//특정 기관 리스트 불러오기
+		public List<AgencyVO> findAgencyList(Pager pager)throws Exception{
+			Long totalCount = adminMapper.findAgencyCount(pager);
+			pager.getNum(totalCount);
+			pager.getRowNum();
+			return adminMapper.findAgencyList(pager);
 		}
 		
 		//제휴신청 리스트 페이지 모달창에 가져올 Detail 내용
