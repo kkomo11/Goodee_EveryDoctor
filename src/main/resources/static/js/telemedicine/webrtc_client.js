@@ -4,10 +4,6 @@
 const socket = new WebSocket("ws://" + window.location.host + "/signal");
 
 // UI elements
-const videoButtonOff = document.querySelector('#video_off');
-const videoButtonOn = document.querySelector('#video_on');
-const audioButtonOff = document.querySelector('#audio_off');
-const audioButtonOn = document.querySelector('#audio_on');
 const exitButton = document.querySelector('#exit');
 const localRoom = document.querySelector('input#id').value;
 const localVideo = document.getElementById('local_video');
@@ -214,27 +210,6 @@ function stop() {
  UI Handlers
   */
 // mute video buttons handler
-videoButtonOff.onclick = () => {
-    localVideoTracks = localStream.getVideoTracks();
-    localVideoTracks.forEach(track => localStream.removeTrack(track));
-    $(localVideo).css('display', 'none');
-    log('Video Off');
-};
-videoButtonOn.onclick = () => {
-    localVideoTracks.forEach(track => localStream.addTrack(track));
-    $(localVideo).css('display', 'inline');
-    log('Video On');
-};
-
-// mute audio buttons handler
-audioButtonOff.onclick = () => {
-    localVideo.muted = true;
-    log('Audio Off');
-};
-audioButtonOn.onclick = () => {
-    localVideo.muted = false;
-    log('Audio On');
-};
 
 // room exit button handler
 exitButton.onclick = () => {

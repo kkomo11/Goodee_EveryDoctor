@@ -79,22 +79,6 @@
             <div class="d-flex justify-content-around mb-3">
                 <div id="buttons" class="row">
                     <div class="btn-group mr-2" role="group">
-                        <div class="mr-2" data-toggle="buttons">
-                            <label class="btn btn-outline-success" id="video_off">
-                                <input type="radio" name="options" style="display:none" autocomplete="off">Video On
-                            </label>
-                            <label class="btn btn-outline-warning active" id="video_on">
-                                <input type="radio" name="options" style="display:none" autocomplete="off" checked>Video Off
-                            </label>
-                        </div>
-                        <div class="mr-2" data-toggle="buttons">
-                            <label class="btn btn-outline-success" id="audio_off">
-                                <input type="radio" name="options" style="display:none" autocomplete="off">Audio On
-                            </label>
-                            <label class="btn btn-outline-warning active" id="audio_on">
-                                <input type="radio" name="options" style="display:none" autocomplete="off" checked>Audio Off
-                            </label>
-                        </div>
                         <!--<button type="button" class="btn btn-outline-success" id="audio" data-toggle="button">Audio</button>-->
                         <a href="/room/${id}/user/${uuid}/exit">
                             <button type="button" class="btn btn-outline-danger" id="exit" name="exit">

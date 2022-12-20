@@ -55,19 +55,17 @@
                         <h4 class="title">진료 신청서</h4>
                         <form class="default-form-style" action="./reservation" method="post" enctype="multipart/form-data">
                         	<input type="hidden" value="${diagnosisVO.doctorName}" name="doctorName">
-                            <c:if test="${empty diagnosisVO.doctorName}">
-                            	<div class="form-group">
-	                                <label>과목 선택</label>
-	                                <div class="selector-head">
-	                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-	                                    <select class="user-chosen-select" name="dansCategory">
-	                                        <c:forEach items="${sectionList}" var="sectionVO">
-	                                            <option value="${sectionVO.sectionName}">${sectionVO.sectionName}</option>
-	                                        </c:forEach>
-	                                    </select>
-	                                </div>
-	                            </div>
-                            </c:if>
+                            <div class="form-group">
+                                <label>과목 선택</label>
+                                <div class="selector-head">
+                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                    <select class="user-chosen-select" name="dansCategory">
+                                        <c:forEach items="${sectionList}" var="sectionVO">
+                                            <option value="${sectionVO.sectionName}">${sectionVO.sectionName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>증상 입력</label>
                                 <textarea class="form-control form-control-custom" name="dansContent"

@@ -132,9 +132,33 @@ function agencyPagingAjax(kind, page){
     })
 }
 
+//기관 삭제 Ajax
 $("#agencyListParent").on("click", ".deleteBtn", function(){
     console.log("삭제 버튼");
-    console.log($(this).attr("data-agencyNum"));
+    let agencyNum = $(this).attr("data-agencyNum");
+    console.log(agencyNum);
+    if(confirm("기관 삭제를 진행하시겠습니까?")){
+        $.ajax({
+            type: "POST",
+            url: "/admin/agency/deleteAgency",
+            data: {
+                agencyNum : agencyNum
+            },
+            
+            success: function(result){
+                if(result == 1){
+                    alert("삭제가 완료되었습니다");
+                    location.href = "./agencyList";
+                }else{
+                    alert("다시 시도해주세요");
+                }
+                
+            },
+            error: function(result){
+                console.log(result);
+            }
+        });
+    }
 })
 
 
@@ -160,5 +184,6 @@ function modifyMedicEnabled(username){
         }
     });
 }
+
 //페이지 로딩 후에 의사 제휴리스트 강제 클릭
 nav_hospital_tab.click();

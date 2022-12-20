@@ -61,7 +61,7 @@
                                         <div class="tab-pane fade show active" id="hospital" role="tabpanel"
                                             aria-labelledby="hospital-tab">
                                             <form class="profile-setting-form default-form-style" method="post"
-                                                action="./regist" id="hospitalForm">
+                                                action="/hospital/diagnosis/prescription" id="prescriptionForm">
                                                 <div class="row" style="flex-direction: column;">
                                                     <!-- 의사소견 입력 -->
                                                     <div class="col-12">
@@ -74,7 +74,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>진료비 청구</label>
-                                                            <input style="width: 50%;" name="username" type="text" />
+                                                            <input style="width: 50%;" name="dansCost" type="text" id="dansCostInput" />
                                                         </div>
                                                     </div>
                                                     <div class="button col-3">
@@ -89,7 +89,7 @@
                                                         <div class="form-group button mb-0 d-flex"
                                                             style="flex-direction: row-reverse;">
                                                             <button type="button" class="btn inputButton"
-                                                                id="inputButton">작성 완료</button>
+                                                                id="prescriptionSendBtn">작성 완료</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,6 +143,7 @@
         <i class="lni lni-chevron-up"></i>
     </a>
     <script type="text/javascript" src="/js/hospital/diagnosis.js"></script>
+    <script type="text/javascript" src="/js/hospital/prescription.js"></script>
     <script type="text/template" id="diagnosisFileInputTemplate">
         <div class="col-12 fileFrame">
             <div class="filesInput">
@@ -152,7 +153,6 @@
             </div>
         </div>
     </script>
-    <script type="text/javascript" src="/js/pet/diagnosis/prescription.js"></script>
 
     <script type="text/template" id="drugTemplate">
     		<div class="form-group">

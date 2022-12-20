@@ -45,7 +45,4 @@ public interface AdminMapper {
 		
 	//기관 리스트 페이징에 필요한 count
 	public Long findAgencyCount(Pager pager)throws Exception;
-	
-	//기관 삭제
-	public int deleteAgency(int agencyNum)throws Exception;
 }
