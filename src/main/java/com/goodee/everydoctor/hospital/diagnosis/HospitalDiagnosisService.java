@@ -123,7 +123,7 @@ public class HospitalDiagnosisService {
 		int modifyResult = hospitalDiagnosisMapper.modifyHospitalDiagnosis(hospitalDiagnosisVO);
 		HospitalPrescriptionVO hospitalPrescriptionVO = new HospitalPrescriptionVO();
 		hospitalPrescriptionVO.setDansNum(hospitalDiagnosisVO.getDansNum());
-		hospitalPrescriptionVO.setPharmacist(""); // 로그인 가능한 약사 아이디
+		hospitalPrescriptionVO.setPharmacist("pharmacist"); // 로그인 가능한 약사 아이디
 		hospitalDiagnosisMapper.inputPrescription(hospitalPrescriptionVO);
 		
 		PayVO payVO = new PayVO();

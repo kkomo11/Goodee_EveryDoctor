@@ -27,46 +27,6 @@
             font-size: 18px;
             font-weight: 500;
         }
-
-        .toggleSwitch {
-            appearance: none;
-            position: relative;
-            border: max(2px, 0.1em) solid gray;
-            border-radius: 1.25em;
-            width: 2.25em;
-            height: 1.25em;
-        }
-
-        .toggleSwitch::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            width: 1em;
-            height: 1em;
-            border-radius: 50%;
-            transform: scale(0.8);
-            background-color: gray;
-            transition: left 250ms linear;
-        }
-
-        .toggleSwitch:checked::before {
-            background-color: white;
-            left: 1em;
-        }
-
-        .toggleSwitch:checked {
-            background-color: #55DDBD;
-            border-color: #55DDBD;
-        }
-
-        .toggleSwitch:focus-visible {
-            outline-offset: max(2px, 0.1em);
-            outline: max(2px, 0.1em) solid #55DDBD;
-        }
-
-        .toggleSwitch:enabled:hover {
-            box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
-        }
     </style>
 	<c:import url="../temp/boot.jsp"></c:import>
 </head>
@@ -114,14 +74,6 @@
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
-                        <div class="dashboard-block d-flex justify-content-between mt-0" style="padding-bottom: 0;">
-                            <div>
-                                <label class="toggleLabel">
-                                    <span>진료 요청</span>
-                                    <input class="toggleSwitch" role="switch" type="checkbox" />
-                                </label>
-                            </div>
-                        </div>
                         <div class="dashboard-block mt-0">
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
