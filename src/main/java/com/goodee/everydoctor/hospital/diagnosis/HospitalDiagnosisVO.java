@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.goodee.everydoctor.drug.DrugVO;
+import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -31,6 +32,7 @@ public class HospitalDiagnosisVO {
 	private UserVO doctorVO; //의사 VO
 	private String dansResponse;
 	private List<DrugVO> fills;
+	private MedicVO medicVO; //의사 VO
 	
 	private String reqTimeString;		// 진료 요청 시간 보기 좋게 담는 변수
 	private String endTimeString;		// 진료 종료 시간 보기 좋게 담는 변수
