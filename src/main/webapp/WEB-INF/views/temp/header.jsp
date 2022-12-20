@@ -139,7 +139,6 @@
                                 </li>
 								</sec:authorize>
 								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
-								<a href="/telemedicine">Telemedicine</a>
                                 <!--웹알림 목록 보여주기 위함-->
                                 <li class="nav-item dropdown no-arrow mx-1" id="Ajaxlist">
                                     <a class="nav-link dropdown-toggle" id="alarmBell" href="javascript:void(0)" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
