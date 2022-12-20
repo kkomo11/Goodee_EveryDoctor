@@ -195,29 +195,32 @@ Author: GrayGrids
 			},
 			success: function(data){
 				console.log('success',data);
-				$.each(data,function(index,value){
-				let date = new Date(data[index].alarmTime);
-				console.log('date == ',date);
-				// console.log('년도==',date.getFullYear())
-				// console.log('월 == ',date.getMonth());
-				// console.log('시간 == ',date.getHours());
-				// console.log('분 ==', date.getMinutes());
-				let d = date.getMinutes();
-				if (d < 10) {
-					d = '0'+(d % 10);
+				if(data.length > 0){
+					$('AjaxList').attr("disabled", false);
+					$.each(data,function(index,value){
+					let date = new Date(data[index].alarmTime);
+					console.log('date == ',date);
+	
+					let d = date.getMinutes();
+					if (d < 10) {
+						d = '0'+(d % 10);
+					}
+					console.log(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+					let a = $('<a class="dropdown-item d-flex align-items-center" href="#"/>');
+					let tungdiv= $('<div/>');
+					let daydiv= $('<div class="small text-gray-500"/>').text(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+					let span = $('<span class="font-weight-bold">').text(data[index].alarmContents);
+	
+					a.append(tungdiv);
+					tungdiv.append(daydiv);
+					tungdiv.append(span);
+					
+					$("#alarmList").after(a)
+					});
+				}else{
+					let noText =  $('<div style="text-align: center;"/>').text('알람이 없습니다.')
+					$("#alarmList").after(noText)
 				}
-				console.log(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
-				let a = $('<a class="dropdown-item d-flex align-items-center" href="#"/>');
-				let tungdiv= $('<div/>');
-				let daydiv= $('<div class="small text-gray-500"/>').text(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
-				let span = $('<span class="font-weight-bold">').text(data[index].alarmContents);
-
-				a.append(tungdiv);
-				tungdiv.append(daydiv);
-				tungdiv.append(span);
-				
-				$("#alarmList").after(a)
-				});
 			},
 			error: function(e){
 				console.log('error',e);
