@@ -106,7 +106,7 @@ public class HospitalDiagnosisController {
 	@PostMapping("prescription")
 	public String modifyPetDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
 		
-		int result = hospitalDiagnosisService.modifyHospitalDiagnosis(hospitalDiagnosisVO, druges);
+		int result = hospitalDiagnosisService.modifyHospitalDiagnosis(hospitalDiagnosisVO);
 		
 		return "redirect:/pet/diagnosis/completedList?d=" + hospitalDiagnosisVO.getDoctorName();
 	}

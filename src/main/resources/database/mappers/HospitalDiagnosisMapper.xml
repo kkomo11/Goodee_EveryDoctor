@@ -132,8 +132,9 @@
 		VALUES (NULL, #{username}, #{orderId}, '반려동물 진료비', 'READY', #{amount}, now(), #{dansNum})
 	</insert>
 	
-	<insert id="inputFill" parameterType="DrugVO">
-		INSERT INTO PRESCRIPTIONDRUG VALUES 
+	<insert id="inputPrescription" parameterType="HospitalPrescriptionVO">
+		INSERT INTO PRESCRIPTION (PRESCRIPTIONNUM, DANSNUM, PRESCRIPTIONSTATUS, PHARMACIST) 
+		VALUES (NULL, #{dansNum}, 0, #{pharmacist})
 	</insert>
 	
 	<update id="modifyHospitalDiagnosis" parameterType="HospitalDiagnosisVO">
@@ -141,4 +142,9 @@
 		DANSENDTIME = now(), DANSCOST = #{dansCost}, DANSSTATUS = 1
 		WHERE DANSNUM = #{dansNum}
 	</update>
+	
+	<insert id="inputPrescriptionDrug" parameterType="HospitalPrescriptionDrugVO">
+		INSERT INTO PRESCRIPTIONDRUG (PRESCRIPTIONDRUGNUM, PRESCRIPTIONNUM, DRUGNUM, DOSE, DOSEHIT, DOSEDAYS) 
+		VALUES (NULL, #{prescriptionNum}, #{drugNum}, #{dose}, #{doseHit}, #{doseDays})
+	</insert>
 </mapper>

@@ -33,9 +33,11 @@ public interface HospitalDiagnosisMapper {
 	
 	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum (HospitalDiagnosisVO hospitalDiagnosisVO)throws Exception;
 	
-	public int inputFill(DrugVO drugVO) throws Exception;
+	public int inputPrescription(HospitalPrescriptionVO hospitalPrescriptionVO) throws Exception;
 	
 	public int inputReadyPay(PayVO payVO) throws Exception;
 	
 	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
+	
+	public int inputPrescriptionDrug(HospitalPrescriptionDrugVO hospitalPrescriptionDrugVO) throws Exception;
 }

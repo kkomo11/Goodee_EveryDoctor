@@ -36,4 +36,8 @@ public class HospitalDiagnosisVO {
 	private String endTimeString;		// 진료 종료 시간 보기 좋게 담는 변수
 	
 	private String prescriptionStatus;
+	
+	private Integer[] dose;
+	private Integer[] doseHit;
+	private Integer[] doseDays;
 }

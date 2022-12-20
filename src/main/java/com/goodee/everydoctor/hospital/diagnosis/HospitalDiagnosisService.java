@@ -118,21 +118,13 @@ public class HospitalDiagnosisService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
+	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
 		
 		int modifyResult = hospitalDiagnosisMapper.modifyHospitalDiagnosis(hospitalDiagnosisVO);
-		
-		if(druges != null) {
-			for(Long i : druges) {
-				if(i != null) {
-					DrugVO drugVO = new DrugVO();
-					drugVO.setDrugNum(i);
-					drugVO.setPDansNum(hospitalDiagnosisVO.getDansNum());
-					
-					hospitalDiagnosisMapper.inputFill(drugVO);
-				}
-			}
-		}
+		HospitalPrescriptionVO hospitalPrescriptionVO = new HospitalPrescriptionVO();
+		hospitalPrescriptionVO.setDansNum(hospitalDiagnosisVO.getDansNum());
+		hospitalPrescriptionVO.setPharmacist(""); // 로그인 가능한 약사 아이디
+		hospitalDiagnosisMapper.inputPrescription(hospitalPrescriptionVO);
 		
 		PayVO payVO = new PayVO();
 		payVO.setUsername(hospitalDiagnosisVO.getUsername());
@@ -142,6 +134,17 @@ public class HospitalDiagnosisService {
 		payVO.setDansNum(hospitalDiagnosisVO.getDansNum());
 		
 		int inputPayResult = hospitalDiagnosisMapper.inputReadyPay(payVO);
+		
+		if(hospitalDiagnosisVO.getDose() != null) {
+			for(int i=0; i<hospitalDiagnosisVO.getDose().length; i++) {
+				HospitalPrescriptionDrugVO hospitalPrescriptionDrugVO = new HospitalPrescriptionDrugVO();
+				hospitalPrescriptionDrugVO.setDose(hospitalDiagnosisVO.getDose()[i]);
+				hospitalPrescriptionDrugVO.setDoseHit(hospitalDiagnosisVO.getDoseHit()[i]);
+				hospitalPrescriptionDrugVO.setDoseDays(hospitalDiagnosisVO.getDoseDays()[i]);
+				
+				hospitalDiagnosisMapper.inputPrescriptionDrug(hospitalPrescriptionDrugVO);
+			}
+		}
 		
 		int result = 0;
 		
