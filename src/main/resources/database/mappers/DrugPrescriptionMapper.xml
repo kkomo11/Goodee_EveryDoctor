@@ -13,7 +13,14 @@
 		ORDER BY
 		DRUGNUM
 	</select>
-
+	
+	<update id="modifyPrescriptionStatus" parameterType="DrugPrescriptionVO">
+		UPDATE PRESCRIPTION
+		SET PRESCRIPTIONSTATUS = 1
+		WHERE DANSNUM =#{dansNum}
+	</update>
+	
+	<!-- 진료 대기  -->
 	<select id="findCompletedList"
 		parameterType="DrugPrescriptionPager" resultType="HospitalDiagnosisVO">
 		SELECT D.*, U.NAME AS PATIENT, P.PRESCRIPTIONSTATUS
@@ -30,7 +37,8 @@
 		ORDER BY D.DANSENDTIME DESC
 		LIMIT #{startRow}, #{perPage}
 	</select>
-
+	
+	<!-- 진료 완료  -->
 	<select id="findCompletedListResult"
 		parameterType="DrugPrescriptionPager" resultType="HospitalDiagnosisVO">
 		SELECT D.*, U.NAME AS PATIENT, P.PRESCRIPTIONSTATUS
@@ -53,7 +61,7 @@
 		parameterType="DrugPrescriptionVO"
 		resultMap="findDrugPrescriptionDetail">
 		SELECT PD.DRUGNUM, D.DRUGNAME, DN.DANSCONTENT, DN.USERNAME, DN.DANSRESPONSE,
-		UD.USERMAINADDR ,UD.USERSUBADDR ,UD.USERPOST
+		UD.USERMAINADDR ,UD.USERSUBADDR ,UD.USERPOST, DN.DANSNUM
 		FROM DRUG D
 		INNER JOIN PRESCRIPTIONDRUG PD
 		ON D.DRUGNUM=PD.DRUGNUM
@@ -127,6 +135,7 @@
 		SELECT DANSFILENUM AS FILENUM, DANSFILENAME AS FILENAME,
 		DANSFILEORINAME AS ORINAME FROM DANSFILE WHERE DANSNUM = #{dansNum}
 	</select>
+	
 
 	<!-- 증상과목 -->
 	<!-- <select id="findHospitalSection" resultType="HospitalSectionVO"> SELECT 

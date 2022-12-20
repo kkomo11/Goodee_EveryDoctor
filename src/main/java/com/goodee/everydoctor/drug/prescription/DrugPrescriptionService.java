@@ -94,6 +94,10 @@ public class DrugPrescriptionService {
 
 		return dList;
 	}
+	
+	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		return drugPrescriptionMapper.modifyPrescriptionStatus(drugPrescriptionVO);
+	}
 
 	//	//진료완료된 병원 리스트
 	//	public int inputHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, FileVO fileVO)throws Exception{

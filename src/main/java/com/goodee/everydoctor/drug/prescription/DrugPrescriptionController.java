@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,8 @@ public class DrugPrescriptionController {
 
 	@Autowired
 	private DrugPrescriptionService drugPrescriptionService;
+	
+	
 
 	//병원에서 넘어온 진료 처방완료
 	@GetMapping("list")
@@ -34,6 +37,16 @@ public class DrugPrescriptionController {
 		mv.setViewName("drug/prescription/completedList");
 
 		return mv;
+	}
+	
+	@PostMapping("prescribe")
+	public String modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		int result = drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
+		String page = "./";
+		if(result == 1) {
+			page = "drug/prescription/completedList";
+		}
+			return page;
 	}
 
 

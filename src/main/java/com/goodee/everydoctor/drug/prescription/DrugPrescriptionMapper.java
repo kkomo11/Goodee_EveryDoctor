@@ -26,5 +26,7 @@ public interface DrugPrescriptionMapper {
 	public List<HospitalDiagnosisVO> findCompletedList(DrugPrescriptionPager drugPrescriptionPager) throws Exception;
 
 	public List<HospitalDiagnosisVO> findCompletedListResult(DrugPrescriptionPager drugPrescriptionPager) throws Exception;
+	
+	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
 
 }
