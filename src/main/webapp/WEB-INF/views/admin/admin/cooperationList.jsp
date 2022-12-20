@@ -318,7 +318,7 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" id="approvalBtn">승인</button>
+                            <button type="button" class="btn btn-primary" id="approvalBtn">승인</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                           </div>
                         </div>
@@ -402,7 +402,7 @@
             <td>{agencyTel}</td>
             <td>{agencyType}</td>
             <td>{medicEnabled}</td>
-            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#cooperationDetail" data-username="{username}" data-medicRole="{medicRole}">상세보기</button></td>
+            <td><button type="button" class="btn btn-primary modalBtn" data-toggle="modal" data-target="#cooperationDetail" data-username="{username}" data-medicRole="{medicRole}" data-enabled="{enabled}">상세보기</button></td>
         </tr>
     </script>
 </body>
