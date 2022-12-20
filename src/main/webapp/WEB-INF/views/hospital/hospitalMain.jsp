@@ -66,7 +66,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3  col-12">
                                             <!-- Start Single Category -->
-                                            <a href="category.html" class="single-cat wow fadeInUp"
+                                            <a href="/hospital/diagnosis/reservation" class="single-cat wow fadeInUp"
                                                 data-wow-delay=".4s">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/online_doctor_icon.svg" alt="#">
