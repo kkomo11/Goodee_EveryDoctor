@@ -96,6 +96,7 @@ public class DrugPrescriptionService {
 	}
 	
 	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		// TODO Auto-generated method stub
 		return drugPrescriptionMapper.modifyPrescriptionStatus(drugPrescriptionVO);
 	}
 

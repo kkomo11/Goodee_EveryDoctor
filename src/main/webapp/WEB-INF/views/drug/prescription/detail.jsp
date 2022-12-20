@@ -258,7 +258,7 @@
 
                                 <div class="col-12">
                                   <div class="form-group button mb-0">
-                                    <button type="button" class="btn prescribeBtn" id="drug" data-dansNum="${completed.dansNum}">처방하기</button>
+                                    <button type="button" class="btn prescribeBtn" data-dansNum="${drug.dansNum}">처방하기</button>
                                     <!-- <a href="/drug/prescription/prescribe" id="drug" class="btn">처방하기</a> -->
                                   </div>
                                 </div>

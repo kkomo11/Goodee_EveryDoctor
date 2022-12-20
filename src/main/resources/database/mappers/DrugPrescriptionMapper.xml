@@ -14,12 +14,6 @@
 		DRUGNUM
 	</select>
 	
-	<update id="modifyPrescriptionStatus" parameterType="DrugPrescriptionVO">
-		UPDATE PRESCRIPTION
-		SET PRESCRIPTIONSTATUS = 1
-		WHERE DANSNUM =#{dansNum}
-	</update>
-	
 	<!-- 진료 대기  -->
 	<select id="findCompletedList"
 		parameterType="DrugPrescriptionPager" resultType="HospitalDiagnosisVO">
@@ -73,10 +67,10 @@
 		ON DN.USERNAME =UD.USERNAME
 		WHERE P.DANSNUM =#{dansNum};
 	</select>
-
-
+	
 	<resultMap type="DrugPrescriptionVO"
 		id="findDrugPrescriptionDetail">
+		<result column="DANSNUM" property="dansNum" />
 		<result column="DANSCONTENT" property="dansContent" />
 		<result column="DANSRESPONSE" property="dansResponse" />
 		<result column="USERNAME" property="username" />
@@ -96,6 +90,13 @@
 		</collection>
 
 	</resultMap>
+	
+		<!-- 조제 상태 -->
+	<update id="modifyPrescriptionStatus" parameterType="DrugPrescriptionVO">
+		UPDATE PRESCRIPTION
+		SET PRESCRIPTIONSTATUS = 1
+		WHERE DANSNUM =#{dansNum}
+	</update>
 
 	<!--운송장번호 -->
 	<select id="findDrugDeliveryNum" resultType="DrugPrescriptionVO">

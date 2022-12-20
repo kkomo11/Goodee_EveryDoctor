@@ -38,7 +38,7 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-	
+	//조제상태바꾸기
 	@PostMapping("prescribe")
 	public String modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
 		int result = drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
@@ -46,9 +46,8 @@ public class DrugPrescriptionController {
 		if(result == 1) {
 			page = "drug/prescription/completedList";
 		}
-			return page;
+		return page;
 	}
-
 
 	@GetMapping("detail")
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
