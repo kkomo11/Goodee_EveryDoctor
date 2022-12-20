@@ -89,11 +89,8 @@ public class AgencyService {
 	//기관 영구 삭제
 	public int deleteAgency(AgencyVO agencyVO)throws Exception{
 		List<FileVO> fileVOs = agencyMapper.findAgencyFile(agencyVO);
-		ArrayList<Boolean> deleteResults = new ArrayList<>();
-		log.info("======= 파일 있어? {}", fileVOs);
 			for(FileVO f : fileVOs) {
 				if(f != null) {
-					log.info("=======파일이 있나? : {}",f);
 					f.setLabel(label);
 					fileManager.deleteFile(f);
 				}

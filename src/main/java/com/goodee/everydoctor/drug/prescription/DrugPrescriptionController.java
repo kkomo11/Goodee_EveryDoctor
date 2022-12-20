@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.sse.NotificationController;
 
 @Controller
-@RequestMapping("/drug/prescription*")
+@RequestMapping("/drug/prescription/*")
 public class DrugPrescriptionController {
 
 	@Autowired
@@ -41,7 +43,13 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-
+	
+	//조제상태바꾸기
+	@PostMapping("prescribe")
+	@ResponseBody
+	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		 return drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
+	}
 
 	@GetMapping("detail")
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
