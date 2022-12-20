@@ -41,6 +41,7 @@
                         <a class="collapse-item" href="/admin/admin/reportList">신고리스트</a>
                         <a class="collapse-item" href="/admin/admin/cooperationList">제휴리스트</a>
                         <a class="collapse-item" href="/admin/admin/agencyList">기관리스트</a>
+                        <a class="collapse-item" href="/admin/admin/userList">회원리스트</a>
                     </div>
                 </div>
             </li>
