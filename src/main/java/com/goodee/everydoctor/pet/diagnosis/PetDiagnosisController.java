@@ -36,6 +36,9 @@ public class PetDiagnosisController {
 		
 		int result = petDiagnosisService.modifyPetDiagnosis(petDiagnosisVO, druges);
 		
+		//웹알림 url변경 필요 contents 보호자이름 잘나오는지 확인해야 함
+		notificationController.dispatchEventToClients("결제요청 알림", petDiagnosisVO.getProtectorName()+"님 진단서 작성이 완료되었습니다. 결제를 진행해 주세요!", "/pay/pay", petDiagnosisVO.getPUsername());
+		
 		return "redirect:/pet/diagnosis/completedList?d=" + petDiagnosisVO.getPDoctorname();
 	}
 	

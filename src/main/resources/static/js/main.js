@@ -181,10 +181,12 @@ Author: GrayGrids
 		});
 
     })
-
-	$("#alarmBell").click(function(){
+	//웹알람 출력해야돼요 나
+	$("#alarmBell").off('click').on('click',function(){
 	$(".mx-1").toggleClass("show");
     $("#dropDownList").toggleClass("show");
+	//웹알림 append문이 자꾸 추가돼서 클릭할때마다 지워주고 다시시작
+	$("#alarmList").siblings().empty();
 
 		// 웹알림 리스트 불러오기
 		$.ajax({
@@ -218,8 +220,9 @@ Author: GrayGrids
 					$("#alarmList").after(a)
 					});
 				}else{
-					let noText =  $('<div style="text-align: center;"/>').text('알람이 없습니다.')
+					let noText = $('<div style="text-align: center;"/>').text('알람이 없습니다.')
 					$("#alarmList").after(noText)
+					return;
 				}
 			},
 			error: function(e){

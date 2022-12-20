@@ -141,10 +141,12 @@
                                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" id="dropDownList" aria-labelledby="alertsDropdown"
                                     style="z-index:555; margin-top: 10px !important; overflow-y: auto; height:150px;">
                                         <h6 class="dropdown-header" >
-                                            Alerts Center
+                                            알림 목록
                                         </h6>
-                                        <hr id="alarmList">
-                                        <!--웹알림 목록 리스트 들어갈 자리-->
+                                        <div>
+                                            <hr id="alarmList">
+                                            <!--웹알림 목록 리스트 들어갈 자리-->
+                                        </div>
                                         <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> -->
                                     </div>
                                 </li>

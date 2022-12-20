@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.sse.NotificationController;
+
 @Controller
 @RequestMapping("/drug/prescription*")
 public class DrugPrescriptionController {
 
 	@Autowired
 	private DrugPrescriptionService drugPrescriptionService;
+	@Autowired
+	private NotificationController notificationController;
 
 	//병원에서 넘어온 진료 처방완료
 	@GetMapping("list")
@@ -22,7 +26,9 @@ public class DrugPrescriptionController {
 		mv.addObject("completedList", drugPrescriptionService.findCompletedList(drugPrescriptionPager));
 		mv.addObject("pager", drugPrescriptionPager);
 		mv.setViewName("drug/prescription/list");
-
+		
+		//웹알림을 넣어주자
+//		notificationController.dispatchEventToClients("처방전 등록완료", "", "", );
 		return mv;
 	}
 
@@ -58,6 +64,7 @@ public class DrugPrescriptionController {
 		mv.addObject("drugName",drugName);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
+		
 		
 		return mv;
 	}

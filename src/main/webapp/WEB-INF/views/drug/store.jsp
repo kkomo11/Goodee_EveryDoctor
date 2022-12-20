@@ -70,18 +70,13 @@
           </nav>
               <!-- Start Post Ad Step Three Content -->
               <div class="step-three-content">
-                <form class="default-form-style" method="post" action="#">
+                <form class="" method="post" action="#">
                   <div class="row">
                     <div class="col-12">
                       <div class="google-map">
                         <label>약국위치*</label>
-                        <div class="mapouter" style=" height:360px ">
-                          <div class="gmap_canvas" id="map" style="height:360px">
-                            <iframe width="100%" height="300" id="gmap_canvas"
-                              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            <a href="#"></a><br>
-
-                            <a href="https://www.embedgooglemap.net">embed google maps wordpress</a>
+                        <div class="mapouter" style=" height:450px ">
+                          <div class="" id="map" style="height:450px">
                           </div>
                         </div>
                       </div>
