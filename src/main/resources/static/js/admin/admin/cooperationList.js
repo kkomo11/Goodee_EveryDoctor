@@ -35,9 +35,10 @@ doctorList.on("click", ".modalBtn", function(){
     const username = $(this).attr("data-username");
     const medicRole = $(this).attr("data-medicRole");
     cooperationDetailAjax(username, medicRole);
-    // console.log("this : ", $(this).attr("data-username"));
-    console.log(medicRole);
-
+    console.log($(this).attr("data-enabled"));
+    if($(this).attr("data-enabled")==1){
+        $("#approvalBtn").prop("disabled", true);
+    }
 })
 
 //간호사 제휴 리스트 불러오기
@@ -179,15 +180,21 @@ function cooperationListAjax(kind){
         $.each(result.list, function(index, item){
             let cooperationListTemplate = $("#cooperationListTemplate");
             let temp = cooperationListTemplate.html();
-            temp = temp.replace("{name}", item.userVO.name)
-                       .replace("{medicSpecialty}", item.medicSpecialty)
-                       .replace("{agencyRole}", item.agencyVO.agencyRole)
-                       .replace("{agencyName}", item.agencyVO.agencyName)
-                       .replace("{agencyTel}", item.agencyVO.agencyTel)
-                       .replace("{agencyType}", item.agencyVO.agencyType)
-                       .replace("{username}", item.username)
-                       .replace("{medicRole}",item.medicRole)
-                       .replace("{medicEnabled}",item.medicEnabled);
+            temp = temp.replace("{name}", item.userVO.name);
+            if(item.medicSpecialty == null){
+                item.medicSpecialty = '해당없음';
+                temp = temp.replace("{medicSpecialty}", item.medicSpecialty);
+            }else{
+                temp = temp.replace("{medicSpecialty}", item.medicSpecialty);
+            }
+                temp = temp.replace("{agencyRole}", item.agencyVO.agencyRole)
+                           .replace("{agencyName}", item.agencyVO.agencyName)
+                           .replace("{agencyTel}", item.agencyVO.agencyTel)
+                           .replace("{agencyType}", item.agencyVO.agencyType)
+                           .replace("{username}", item.username)
+                           .replace("{medicRole}",item.medicRole)
+                           .replace("{medicEnabled}",item.medicEnabled)
+                           .replace("{enabled}",item.medicEnabled);
             list.append(temp); 
         })
 
@@ -238,15 +245,21 @@ function cooperationPagingAjax(kind, page){
         $.each(result.list, function(index, item){
             let cooperationListTemplate = $("#cooperationListTemplate");
             let temp = cooperationListTemplate.html();
-            temp = temp.replace("{name}", item.userVO.name)
-                       .replace("{medicSpecialty}", item.medicSpecialty)
-                       .replace("{agencyRole}", item.agencyVO.agencyRole)
-                       .replace("{agencyName}", item.agencyVO.agencyName)
-                       .replace("{agencyTel}", item.agencyVO.agencyTel)
-                       .replace("{agencyType}", item.agencyVO.agencyType)
-                       .replace("{username}", item.username)
-                       .replace("{medicRole}",item.medicRole)
-                       .replace("{medicEnabled}",item.medicEnabled);
+            temp = temp.replace("{name}", item.userVO.name);
+            if(item.medicSpecialty == null){
+                item.medicSpecialty = '해당없음';
+                temp = temp.replace("{medicSpecialty}", item.medicSpecialty);
+            }else{
+                temp = temp.replace("{medicSpecialty}", item.medicSpecialty);
+            }
+                temp = temp.replace("{agencyRole}", item.agencyVO.agencyRole)
+                           .replace("{agencyName}", item.agencyVO.agencyName)
+                           .replace("{agencyTel}", item.agencyVO.agencyTel)
+                           .replace("{agencyType}", item.agencyVO.agencyType)
+                           .replace("{username}", item.username)
+                           .replace("{medicRole}",item.medicRole)
+                           .replace("{medicEnabled}",item.medicEnabled)
+                           .replace("{enabled}",item.medicEnabled);;
             list.append(temp); 
         })
 
@@ -281,7 +294,12 @@ function cooperationDetailAjax(username, medicRole){
         
         success: function(result){
             $("#medicName").append("<strong>" + result.userVO.name + "</strong>");
-            $("#medicSpecialty").append("<strong>" + result.medicSpecialty + "</strong>");
+            if(result.medicSpecialty == null){
+                result.medicSpecialty = '해당없음';
+                $("#medicSpecialty").append("<strong>" + result.medicSpecialty + "</strong>");
+            }else{
+                $("#medicSpecialty").append("<strong>" + result.medicSpecialty + "</strong>");
+            }
             $("#medicInfo").append("<strong>" + result.medicInfo + "</strong>");
             $("#agencyName").append("<strong>" + result.agencyVO.agencyName + "</strong>");
             $("#agencyAddr").append("<strong>" + result.agencyVO.agencyAddr + "</strong>");

@@ -84,6 +84,28 @@
 			</association>
 		</resultMap>
 		
+		<select id="findAgencyCount" parameterType="Pager" resultType="Long">
+			SELECT COUNT(AGENCYNUM)
+			FROM AGENCY
+			WHERE AGENCYROLE
+			<choose>
+				<when test="kind == '병원'">=#{kind}</when>
+				<when test="kind == '동물병원'">=#{kind}</when>
+				<when test="kind == '약국'">=#{kind}</when>
+			</choose>
+		</select>
+		
+		<select id="findAgencyList" parameterType="Pager" resultType="AgencyVO">
+			SELECT * FROM AGENCY
+			WHERE AGENCYROLE 
+			<choose>
+				<when test="kind == '병원'">=#{kind}</when>
+				<when test="kind == '동물병원'">=#{kind}</when>
+				<when test="kind == '약국'">=#{kind}</when>
+			</choose>
+			LIMIT #{startRow}, #{perPage}
+		</select>
+		
 		<update id="modifyMedicEnabled" parameterType="String">
 			UPDATE MEDIC SET MEDICENABLED = 1 WHERE USERNAME = #{username}
 		</update>
@@ -118,4 +140,8 @@
 			SELECT COUNT(REPORTNUM) FROM REPORT WHERE DATE_FORMAT(REPORTDATE, "%Y-%m")=(SELECT DATE_FORMAT(CURDATE(), "%Y-%m"))
 			AND REPORTCHECKED = 1
 		</select>
+		
+		<delete id="deleteAgency" parameterType="Integer">
+			DELETE FROM AGENCY WHERE AGENCYNUM = #{agencyNum}
+		</delete>
 	</mapper>
