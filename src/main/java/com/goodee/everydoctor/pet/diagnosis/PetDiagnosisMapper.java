@@ -14,6 +14,8 @@ import com.goodee.everydoctor.user.UserVO;
 @Mapper
 public interface PetDiagnosisMapper {
 	
+	public PetDiagnosisVO findPetDiagnosisBypDansnum(PetDiagnosisVO petDiagnosisVO) throws Exception;	// 화상진료 화면에서 보여줄 진료 정보
+	
 	public int inputReadyPay(PayVO payVO) throws Exception;		// 의사가 반려동물 진단서를 작성하면 생성되는 결제 대기 정보
 	
 	public List<DrugVO> findDrug(DrugVO drugVO) throws Exception;	// 처방용 약 검색

@@ -1,8 +1,12 @@
 package com.goodee.everydoctor.admin.agency;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.goodee.everydoctor.file.FileVO;
 
 import lombok.Data;
 
@@ -22,4 +26,5 @@ public class AgencyVO {
 	
 	private MultipartFile []files;
 	private AgencyWorkHourVO agencyWorkHourVO;
+	private List<FileVO> fileVOs;
 }

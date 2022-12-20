@@ -40,11 +40,12 @@
                         <h6 class="collapse-header">리스트:</h6>
                         <a class="collapse-item" href="/admin/admin/reportList">신고리스트</a>
                         <a class="collapse-item" href="/admin/admin/cooperationList">제휴리스트</a>
+                        <a class="collapse-item" href="/admin/admin/agencyList">기관리스트</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -61,17 +62,17 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
-            <!-- Divider -->
+            <!-- Divider
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+            Heading
             <div class="sidebar-heading">
                 Addons
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            Nav Item - Pages Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -92,22 +93,22 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            Nav Item - Charts
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
+             Nav Item - Tables
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            Divider
+            <hr class="sidebar-divider d-none d-md-block"> -->
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
