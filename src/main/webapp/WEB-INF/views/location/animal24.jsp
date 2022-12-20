@@ -22,7 +22,7 @@
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
     .desc .reservation {margin-top: 5px !important; margin-left: 109px !important; font-size: 15px; width: 79px; height: 30px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;border-radius: 10%}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
@@ -145,8 +145,8 @@
             type : 'GET',
             traditional : true,
             success : function(data){
-                // console.log(data)
                 $.each(data, function(index,value){
+                    console.log('DATA= ',data[index])
                     //주소로 좌표를 검색합니다.
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         //정상적으로 검색이 완료 됐으면
@@ -180,7 +180,7 @@
                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                             let body = $('<div class="body" />');
                             let img = $('<div class="img" />')
-                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                            let imgtag = $('<img src="/file/agency/' + data[index].fileVOs[0].fileName+ '\" width="73" height="70"/>');
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);

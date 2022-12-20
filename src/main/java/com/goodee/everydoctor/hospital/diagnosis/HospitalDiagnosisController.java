@@ -44,7 +44,6 @@ public class HospitalDiagnosisController {
 		modelAndView.setViewName("hospital/diagnosis");
 		modelAndView.addObject("diagnosisVO", diagnosisVO);
 		modelAndView.addObject("sectionList", sectionList);
-		notificationController.dispatchEventToClients("새 진료신청", diagnosisVO.getDoctorName()+"님 진료신청이 들어왔습니다", "/hospital/doctor/management", "Doctor");
 		return modelAndView;
 	}
 	
