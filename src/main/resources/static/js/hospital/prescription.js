@@ -92,7 +92,7 @@ prescriptionSendBtn.on("click", () => {
     let sendFlag = validation();
 
     if(sendFlag){
-        petPrescriptionForm.submit();   // 진단서 전송
+        prescriptionForm.submit();   // 진단서 전송
     }
 
 });

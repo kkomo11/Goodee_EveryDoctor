@@ -57,7 +57,7 @@
 	</select>
 	
 	<select id="findHospitaldiagnosisByDansnum" parameterType="HospitalDiagnosisVO" resultMap="HospitalDaiagnosisVOwithUser">
-		SELECT D.DANSNUM, D.DANSCATEGORY , D.DANSCONTENT , D.DANSREQTIME , 
+		SELECT D.DANSNUM, D.DANSCATEGORY , D.DANSCONTENT , D.DANSREQTIME , U.USERNAME,
 			U.NAME , U.BIRTH , U.GENDER ,
 			DF.DANSFILENUM as FILENUM, DF.DANSFILENAME as FILENAME, DF.DANSFILEORINAME as FILEORINAME
 		FROM DIAGNOSIS D 
@@ -129,11 +129,12 @@
 	
 	<insert id="inputReadyPay" parameterType="PayVO">
 		INSERT INTO PAY(PAYNUM, USERNAME, ORDERID, ORDERNAME, STATUS, AMOUNT, PAYREQDATE, DANSNUM)
-		VALUES (NULL, #{username}, #{orderId}, '반려동물 진료비', 'READY', #{amount}, now(), #{dansNum})
+		VALUES (NULL, #{username}, #{orderId}, '진료비', 'READY', #{amount}, now(), #{dansNum})
 	</insert>
 	
-	<insert id="inputFill" parameterType="DrugVO">
-		INSERT INTO PRESCRIPTIONDRUG VALUES 
+	<insert id="inputPrescription" parameterType="HospitalPrescriptionVO" useGeneratedKeys="true" keyProperty="prescriptionNum">
+		INSERT INTO PRESCRIPTION (PRESCRIPTIONNUM, DANSNUM, PRESCRIPTIONSTATUS, PHARMACIST) 
+		VALUES (NULL, #{dansNum}, 0, #{pharmacist})
 	</insert>
 	
 	<update id="modifyHospitalDiagnosis" parameterType="HospitalDiagnosisVO">
@@ -141,4 +142,9 @@
 		DANSENDTIME = now(), DANSCOST = #{dansCost}, DANSSTATUS = 1
 		WHERE DANSNUM = #{dansNum}
 	</update>
+	
+	<insert id="inputPrescriptionDrug" parameterType="HospitalPrescriptionDrugVO">
+		INSERT INTO PRESCRIPTIONDRUG (PRESCRIPTIONDRUGNUM, PRESCRIPTIONNUM, DRUGNUM, DOSE, DOSEHIT, DOSEDAYS) 
+		VALUES (NULL, #{prescriptionNum}, #{drugNum}, #{dose}, #{doseHit}, #{doseDays})
+	</insert>
 </mapper>
