@@ -25,7 +25,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
                                 <li class="nav-item">
-                                    <a class="dd-menu collapsed active" href="/hospital/home"
+                                    <a class="dd-menu collapsed" href="/hospital/home"
                                         aria-label="Toggle navigation">병원</a>
                                 </li>
                                 <li class="nav-item">
@@ -33,9 +33,9 @@
                                         aria-label="Toggle navigation">동물병원</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class=" dd-menu collapsed" href="/drug/store"
+                                    <a class=" dd-menu collapsed" href="/admin/agency/regist"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">약국찾기</a>
+                                        aria-label="Toggle navigation">제휴문의</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="/location/viewCorona"
@@ -156,9 +156,6 @@
 								</sec:authorize>
 								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
                             </ul>
-                        </div>
-                        <div class="form-group button mb-0">
-                            <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴 신청</a>
                         </div>
                     </nav> <!-- navbar -->
                 </div>
