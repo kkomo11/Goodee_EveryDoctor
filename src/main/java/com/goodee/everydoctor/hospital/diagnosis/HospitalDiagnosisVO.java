@@ -37,7 +37,8 @@ public class HospitalDiagnosisVO {
 	
 	private String prescriptionStatus;
 	
-	private Integer[] dose;
-	private Integer[] doseHit;
+	private Long[] druges;
+	private Integer[] doses;
+	private Integer[] doseHits;
 	private Integer[] doseDays;
 }

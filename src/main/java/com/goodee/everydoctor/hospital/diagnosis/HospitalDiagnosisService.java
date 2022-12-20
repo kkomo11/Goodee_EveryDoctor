@@ -135,11 +135,13 @@ public class HospitalDiagnosisService {
 		
 		int inputPayResult = hospitalDiagnosisMapper.inputReadyPay(payVO);
 		
-		if(hospitalDiagnosisVO.getDose() != null) {
-			for(int i=0; i<hospitalDiagnosisVO.getDose().length; i++) {
+		if(hospitalDiagnosisVO.getDruges() != null) {
+			for(int i=0; i<hospitalDiagnosisVO.getDruges().length; i++) {
 				HospitalPrescriptionDrugVO hospitalPrescriptionDrugVO = new HospitalPrescriptionDrugVO();
-				hospitalPrescriptionDrugVO.setDose(hospitalDiagnosisVO.getDose()[i]);
-				hospitalPrescriptionDrugVO.setDoseHit(hospitalDiagnosisVO.getDoseHit()[i]);
+				hospitalPrescriptionDrugVO.setPrescriptionNum(hospitalPrescriptionVO.getPrescriptionNum());
+				hospitalPrescriptionDrugVO.setDrugNum(hospitalDiagnosisVO.getDruges()[i]);
+				hospitalPrescriptionDrugVO.setDose(hospitalDiagnosisVO.getDoses()[i]);
+				hospitalPrescriptionDrugVO.setDoseHit(hospitalDiagnosisVO.getDoseHits()[i]);
 				hospitalPrescriptionDrugVO.setDoseDays(hospitalDiagnosisVO.getDoseDays()[i]);
 				
 				hospitalDiagnosisMapper.inputPrescriptionDrug(hospitalPrescriptionDrugVO);
@@ -153,5 +155,9 @@ public class HospitalDiagnosisService {
 		}
 
 		return result;
+	}
+	
+	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		return hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(hospitalDiagnosisVO);
 	}
 }

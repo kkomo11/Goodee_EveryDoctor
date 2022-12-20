@@ -63,6 +63,8 @@
                                             <form class="profile-setting-form default-form-style" method="post"
                                                 action="/hospital/diagnosis/prescription" id="prescriptionForm">
                                                 <div class="row" style="flex-direction: column;">
+                                                	<input type="hidden" value="${hospitalDiagnosisVO.dansNum}" name="dansNum">
+                                                	<input type="hidden" value="${hospitalDiagnosisVO.patientVO.username}" name="username">
                                                     <!-- 의사소견 입력 -->
                                                     <div class="col-12">
                                                         <div class="form-group">
@@ -161,7 +163,10 @@
     				<button class="btn drugSearchBtn" type="button">약 찾기</button>
     			</div>
     			<label></label>
-            	<input type="text" name="druges">
+            	<input type="text" name="druges" readonly>
+				<input type="text" name="doses">
+				<input type="text" name="doseHits">
+				<input type="text" name="doseDays">
     		</div>
     	</script>
 

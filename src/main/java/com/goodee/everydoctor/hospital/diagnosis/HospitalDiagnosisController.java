@@ -96,9 +96,10 @@ public class HospitalDiagnosisController {
 	}
 	
 	@GetMapping("prescription")
-	public ModelAndView loadHospitalPrescription(ModelAndView modelAndView) throws Exception {
-		List<DrugVO> ar = drugService.findDrugListAll();
-		modelAndView.addObject("drugList", ar);
+	public ModelAndView loadHospitalPrescription(ModelAndView modelAndView, HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		
+		hospitalDiagnosisVO = hospitalDiagnosisService.findHospitaldiagnosisByDansnum(hospitalDiagnosisVO);
+		modelAndView.addObject("hospitalDiagnosisVO", hospitalDiagnosisVO);
 		modelAndView.setViewName("hospital/prescription");
 		return modelAndView;
 	}
@@ -108,6 +109,6 @@ public class HospitalDiagnosisController {
 		
 		int result = hospitalDiagnosisService.modifyHospitalDiagnosis(hospitalDiagnosisVO);
 		
-		return "redirect:/pet/diagnosis/completedList?d=" + hospitalDiagnosisVO.getDoctorName();
+		return "redirect:/hospital/diagnosis/completedList?username=" + hospitalDiagnosisVO.getDoctorName();
 	}
 }

@@ -53,7 +53,7 @@
                                               <li class="mega-menu-title">마이페이지</li>
                                               <li class="nav-item"><a href="/user/profile">내 프로필</a>
                                               </li>
-                                              <li class="nav-item"><a href="/user/mydiaglist">내 진료내역</a>
+                                              <li class="nav-item"><a href="/user/mylist">내 진료내역</a>
                                               </li>
                                               <li class="nav-item"><a href="/user/address">내 주소 관리</a></li>
                                               <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
