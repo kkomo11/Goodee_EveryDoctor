@@ -25,6 +25,16 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
+	//조제완료 
+	@GetMapping("completedList")
+	public ModelAndView findCompletedListResult(DrugPrescriptionPager drugPrescriptionPager)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("completedListResult", drugPrescriptionService.findCompletedListResult(drugPrescriptionPager));
+		mv.addObject("pager", drugPrescriptionPager);
+		mv.setViewName("drug/prescription/completedList");
+
+		return mv;
+	}
 
 
 	@GetMapping("detail")

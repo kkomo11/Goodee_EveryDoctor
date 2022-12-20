@@ -73,6 +73,28 @@ public class DrugPrescriptionService {
 		return dList;
 	}
 
+	public List<HospitalDiagnosisVO> findCompletedListResult(DrugPrescriptionPager drugPrescriptionPager) throws Exception {
+
+		Long totalCount = drugPrescriptionMapper.findCompletedListCount(drugPrescriptionPager);
+		drugPrescriptionPager.getNum(totalCount);
+		drugPrescriptionPager.getRowNum();
+
+		List<HospitalDiagnosisVO> dList = drugPrescriptionMapper.findCompletedListResult(drugPrescriptionPager);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		for(HospitalDiagnosisVO d : dList) {
+			String reqTimeString = d.getDansReqTime().format(dtf);
+			String endTimeString = d.getDansEndTime().format(dtf);
+			d.setReqTimeString(reqTimeString);
+			d.setEndTimeString(endTimeString);
+
+			List<FileVO> files = drugPrescriptionMapper.findFile(d);
+			d.setDansFiles(files);
+		}
+
+		return dList;
+	}
+
 	//	//진료완료된 병원 리스트
 	//	public int inputHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, FileVO fileVO)throws Exception{
 	//		//label
