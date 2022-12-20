@@ -65,9 +65,18 @@ public class TelemedicineController {
     
     //sid -방번호, uuid -사용자
     @GetMapping("/room/{sid}/user/{uuid}")
-    public ModelAndView displaySelectedRoom(@Nullable String dansnum, @PathVariable("sid") final String sid, @PathVariable("uuid") final String uuid) throws Exception {
+    public ModelAndView displaySelectedRoom(@Nullable String dansnum, @PathVariable("sid") final String sid, @PathVariable("uuid") final String uuid, @Nullable String pDansNum) throws Exception {
+    	ModelAndView mv = null;
     	
-        return this.telemedicineService.displaySelectedRoom(sid, uuid, dansnum);
+    	if(dansnum != null) {
+    		mv = this.telemedicineService.displaySelectedRoom(sid, uuid, dansnum, null);
+    	}
+    	
+    	if(pDansNum != null) {
+    		mv = this.telemedicineService.displaySelectedRoom(sid, uuid, null, pDansNum);
+    	}
+    	
+        return mv;
     }
 
     @GetMapping("/room/{sid}/user/{uuid}/exit")

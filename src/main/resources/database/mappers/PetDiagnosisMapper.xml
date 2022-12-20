@@ -4,6 +4,46 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper">
 
+	<select id="findPetDiagnosisBypDansnum" parameterType="PetDiagnosisVO" resultMap="findPetDiagnosisBypDansnumResult">
+		SELECT PD.PDANSNUM, PD.PDANSCATEGORY, PD.PDANSCONTENT, PD.PDANSREQTIME,
+			P.PETNAME, P.PETBIRTH, P.PETAGE, P.PETSEX, P.NEUTERED, P.VACCINNATION,
+			PB.PETBIONAME, U.NAME, PF.PETDANSFILENUM AS FILENUM, PF.PETDANSFILENAME AS FILENAME, PF.PETDANSFILEORINAME AS FILEORINAME
+		FROM PETDIAGNOSIS PD
+		INNER JOIN PET P
+		ON (PD.PETNUM = P.PETNUM)
+		INNER JOIN PETBIO PB 
+		ON (P.PETBIONUM = PB.PETBIONUM)
+		LEFT JOIN PETDANSFILE PF 
+		ON (PD.PDANSNUM = PF.PETDANSNUM)
+		LEFT JOIN USERS U 
+		ON (PD.PUSERNAME = U.USERNAME)
+			WHERE PD.PDANSNUM = #{pDansNum}
+	</select>
+	
+	<resultMap type="PetDiagnosisVO" id="findPetDiagnosisBypDansnumResult">
+		<id column="PDANSNUM" property="pDansNum"/>
+		<result column="PDANSCATEGORY" property="pDansCategory"/>
+		<result column="PDANSCONTENT" property="pDansContent"/>
+		<result column="PDANSREQTIME" property="pDansReqTime"/>
+		<result column="NAME" property="protectorName"/>
+		<association property="petVO" javaType="PetVO">
+			<result column="PETNAME" property="petName"/>
+			<result column="PETBIRTH" property="petBirth"/>
+			<result column="PETAGE" property="petAge"/>
+			<result column="PETSEX" property="petSex"/>
+			<result column="NEUTERED" property="neutered"/>
+			<result column="VACCINNATION" property="vaccinnation"/>
+		</association>
+		<association property="petBioVO" javaType="PetBioVO">
+			<result column="PETBIONAME" property="petBioName"/>
+		</association>
+		<collection property="pDansFiles" javaType="List" ofType="FileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="FILEORINAME" property="fileOriName"/>
+		</collection>
+	</resultMap>
+
 	<insert id="inputReadyPay" parameterType="PayVO">
 		INSERT INTO PAY(PAYNUM, USERNAME, ORDERID, ORDERNAME, STATUS, AMOUNT, PAYREQDATE, PDANSNUM)
 		VALUES (NULL, #{username}, #{orderId}, '반려동물 진료비', 'READY', #{amount}, now(), #{pDansNum})
