@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>기관 리스트</title>
+    <title>회원 리스트</title>
 
     <!-- Custom fonts for this template -->
     <link href="/knj/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,7 +50,7 @@
 
                     <!-- 여기부터가 메인 -->
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">기관리스트</h1>
+                    <h1 class="h3 mb-2 text-gray-800">회원리스트</h1>
 
                     <div class="row">
                         <div class="col-12">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -38,15 +39,12 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-	//조제상태바꾸기 머지가 왜 안되는거야 ? ? ?
+	
+	//조제상태바꾸기
 	@PostMapping("prescribe")
-	public String modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
-		int result = drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
-		String page = "./";
-		if(result == 1) {
-			page = "drug/prescription/completedList";
-		}
-		return page;
+	@ResponseBody
+	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		 return drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
 	}
 
 	@GetMapping("detail")
