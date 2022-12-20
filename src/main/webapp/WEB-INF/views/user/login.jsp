@@ -44,7 +44,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">Login</h1>
+                        <h1 class="page-title"> 로그인 </h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
@@ -64,48 +64,46 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                     <div class="form-head">
-                        <h4 class="title">Login</h4>
+                        <h4 class="title"> 로그인 </h4>
                         <div class="text-center">
                             <span style="color: red;">${message}</span>
                         </div>
                         <form action="./login" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 							<div class="form-group">
-                                <label>Username</label>
+                                <label>아이디</label>
                                 <input name="username" type="text" value="${cookie.rememberUN.value}">
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>비밀번호</label>
                                 <input name="password" type="password">
                             </div>
                             <div class="check-and-pass">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input width-auto"
+                                            <input type="checkbox" checked class="form-check-input width-auto"
                                                 name="rememberId">
                                             <label class="form-check-label">Remember ID</label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <a href="javascript:void(0)" class="lost-pass">Lost your password?</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="button">
-                                <button type="submit" class="btn">Login Now</button>
+                                <button type="submit" class="btn">로그인 하기</button>
                             </div>
                             <div class="alt-option">
                                 <span>Or</span>
                             </div>
                             <div class="socila-login">
                                 <ul>
-                                    <li><a href="/oauth2/authorization/kakao">카카오로그인</a></li>
-                                    <li><a href="/oauth2/authorization/naver" class="google" id="naver_id_login">네이버로그인</a>
+                                    <li><a href="/oauth2/authorization/kakao" style=" background-image: url( '/images/login/kakao_login_medium_wide.png' ); background-color:#FEE500; background-position: center; background-repeat: no-repeat;">  　</a></li>
+                                    <li><a href="/oauth2/authorization/naver" style="background-size:auto;	 background-image: url( '/images/login/naver_login.png' ); background-color:#03C75A; background-position: center; background-repeat: no-repeat;">  　</a>
                                     </li>
                                 </ul>
                             </div>
-                            <p class="outer-link">Don't have an account? <a href="registration">Register here</a>
+                            <p class="outer-link">계정이 없으신가요? <a href="registration">회원가입 하기</a>
                             </p>
                         </form>
                     </div>
