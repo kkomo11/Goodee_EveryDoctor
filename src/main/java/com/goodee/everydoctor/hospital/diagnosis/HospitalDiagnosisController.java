@@ -102,4 +102,12 @@ public class HospitalDiagnosisController {
 		modelAndView.setViewName("hospital/prescription");
 		return modelAndView;
 	}
+	
+	@PostMapping("prescription")
+	public String modifyPetDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
+		
+		int result = hospitalDiagnosisService.modifyHospitalDiagnosis(hospitalDiagnosisVO, druges);
+		
+		return "redirect:/pet/diagnosis/completedList?d=" + hospitalDiagnosisVO.getDoctorName();
+	}
 }
