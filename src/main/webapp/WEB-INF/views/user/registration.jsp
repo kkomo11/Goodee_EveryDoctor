@@ -65,7 +65,7 @@
                 <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                     <div class="form-head">
                         <h4 class="title">회원가입</h4>
-                        <form:form action="./registration" modelAttribute="userVO" method="post">
+                        <form:form action="./registration" modelAttribute="userVO" method="post" id="regiForm">
 
                             <div class="form-group">
                                 <label>아이디 ID</label>
@@ -96,6 +96,7 @@
 					      			<label for="genderF">여성</label>
 			                     	<input type="radio" id="genderF" name="gender" value="F">
 					      		</div>
+					      		<span  class="text-danger"> 　<form:errors path="gender"></form:errors></span>
 		                 	</div>
                             </div>
                             <div class="form-group">
@@ -120,13 +121,13 @@
                                 <div class="accordion" id="accordionExample">
                                     <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" name="agree_all" >
+                                            <input type="checkbox" class="form-check-input" name="agree_all" id="agree_all">
                                         </div>
                                         <div class= "flex-fill p-2"><span><b> 전체동의 </b></span></div>
                                     </div>
                                     <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" >
+                                            <input type="checkbox" class="form-check-input little-check" >
                                         </div>
                                         <div class="accordion-item flex-fill">
                                             <h2 class="accordion-header" id="headingOne">
@@ -145,7 +146,7 @@
                                    </div>
                                    <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" >
+                                            <input type="checkbox" class="form-check-input little-check" >
                                         </div>
                                         <div class="accordion-item flex-fill">
                                             <h2 class="accordion-header" id="headingTwo">
@@ -158,20 +159,20 @@
                                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                                 data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
-                                                      <p class="terms_tit">에스케이텔레콤(주), (주)케이티, LG유플러스(주) (이하 "본인확인기관")가 코리아크레딧뷰로(주) (이하 "회사")를 통해 제공하는 휴대폰 본인인증 서비스와 관련하여 고객으로부터 수집한 고유식별정보를 이용하거나 타인에게 제공할 때에는 '정보통신망 이용촉진 및 정보보호 등에 관한 법률'(이하 "정보통신망법")에 따라 고객의 동의를 얻어야 합니다.<br />※ 본 고유식별정보 처리동의는 거부할 수 있으나, 거부 시에는 휴대폰본인확인서비스를 제공받으실 수 없습니다.</p>
-      <h6>[고유식별정보의 수집 및 이용 목적]</h6>
-      <p class="terms_tit">"본인확인기관"은 휴대폰 본인인증 서비스 제공시,&nbsp;<strong>아래 두 가지 목적을 위해 고객의 고유식별정보를 처리</strong>할 수 있습니다<br /><br /><strong>① 정보통신망법 제23조의2 제2항에 따라 인터넷상에서 주민등록번호를 입력하지 않고도 본인임을 확인할 수 있는 휴대폰 본인인증 서비스를 제공하기 위해 고유식별정보를 이용<br />② '본인확인기관 지정 등에 관한 기준(방송통신위원회 고시)'에 따라 "회사"와 계약한 정보통신서비스 제공자의 연계서비스 및 중복가입확인을 위해 필요한 경우, 다른 본인확인기관이 아래의 고유식별정보를 제공받아 처리하기 위함.</strong></p>
-      <h6>[수집하는 개인정보의 항목]</h6>
-      <p class="terms_tit"><strong>① 주민등록번호(내국인)<br />② 외국인등록번호(국내거주외국인)</strong></p>
-      <h6>[개인정보의 보유 및 이용기간]</h6>
-      <p class="terms_tit">"회사"는 휴대폰 본인확인 서비스 제공, 연계서비스 및 중복가입확인을 위하여&nbsp;<strong>필요한 기간 동안 이용자의 고유식별정보를 보유</strong>합니다.<br /><br />상기 내용과 같이 고유식별정보의 처리에 동의합니다.</p>
+                                                      <p class="terms_tit">에스케이텔레콤(주), (주)케이티, LG유플러스(주) (이하 "본인확인기관")가 코리아크레딧뷰로(주) (이하 "회사")를 통해 제공하는  본인인증 서비스와 관련하여 고객으로부터 수집한 고유식별정보를 이용하거나 타인에게 제공할 때에는 '정보통신망 이용촉진 및 정보보호 등에 관한 법률'(이하 "정보통신망법")에 따라 고객의 동의를 얻어야 합니다.<br />※ 본 고유식별정보 처리동의는 거부할 수 있으나, 거부 시에는 본인확인서비스를 제공받으실 수 없습니다.</p>
+													      <h6>[고유식별정보의 수집 및 이용 목적]</h6>
+													      <p class="terms_tit">"본인확인기관"은  본인인증 서비스 제공시,&nbsp;<strong>아래 두 가지 목적을 위해 고객의 고유식별정보를 처리</strong>할 수 있습니다<br /><br /><strong>① 정보통신망법 제23조의2 제2항에 따라 인터넷상에서 주민등록번호를 입력하지 않고도 본인임을 확인할 수 있는  본인인증 서비스를 제공하기 위해 고유식별정보를 이용<br />② '본인확인기관 지정 등에 관한 기준(방송통신위원회 고시)'에 따라 "회사"와 계약한 정보통신서비스 제공자의 연계서비스 및 중복가입확인을 위해 필요한 경우, 다른 본인확인기관이 아래의 고유식별정보를 제공받아 처리하기 위함.</strong></p>
+													      <h6>[수집하는 개인정보의 항목]</h6>
+													      <p class="terms_tit"><strong>① 주민등록번호(내국인)<br />② 외국인등록번호(국내거주외국인)</strong></p>
+													      <h6>[개인정보의 보유 및 이용기간]</h6>
+													      <p class="terms_tit">"회사"는  본인확인 서비스 제공, 연계서비스 및 중복가입확인을 위하여&nbsp;<strong>필요한 기간 동안 이용자의 고유식별정보를 보유</strong>합니다.<br /><br />상기 내용과 같이 고유식별정보의 처리에 동의합니다.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                    <div class="d-flex">
                                         <div class="p-2" >
-                                            <input type="checkbox" class="form-check-input" >
+                                            <input type="checkbox" class="form-check-input little-check" >
                                         </div>
                                         <div class="accordion-item flex-fill">
                                         <h2 class="accordion-header" id="headingThree">
@@ -183,9 +184,9 @@
                                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                             data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                &lt;p&gt;제 1장 총칙<br /> <br />제 1조 (목적)<br /> <br />이 약관은 SK텔레콤주식회사(이하 &ldquo;&ldquo;회사&rdquo;&rdquo;라 합니다)가 제공하는 위치기반서비스(이하 &lsquo;서비스&rsquo;라 합니다)를 회사와 이용계약을 체결한 &lsquo;고객&rsquo;이 이용함에 있어 필요한 회사와 고객의 권리 및 의무, 기타 제반 사항을 정함을 목적으로 합니다.</p>
-    <p><br />제 2조 (약관 외 준칙)<br /> <br />이 약관에 명시되지 않은 사항에 대해서는 위치 정보의 보호 및 이용 등에 관한 법률, 전기통신사업법, 정보통신망 이용 촉진및 보호 등에 관한 법률 등 관계법령 및 회사가 정한 서비스의 세부이용지침 등의 규정에 따릅니다.</p>
-    <p><br />제 2장 서비스의 이용<br /> <br />제 3조 (가입자격)<br /> <br />① 서비스에 가입할 수 있는 자는 회사가 제공하는 &lsquo;서비스&rsquo;를 이용하고자 하는 자로서, 개인 또는 법인고객을 포함합니다.<br /> <br />② 법인 명의의 이동전화를 사용하는 고객은 법인의 사업자번호를 사용하여 서비스에 가입할 수 있습니다.<br /> <br />제 4조 (서비스 가입)<br /> <br />① 회사가 정한 본 약관에 고객이 동의하고, 회사가 승낙함으로써 서비스 가입의 효력이 발생합니다.<br /> <br />② 회사는 다음 각 호의 고객 가입신청에 대해서는 이를 승낙하지 아니할 수 있습니다.<br /> <br />1. 실명이 아니거나 다른 사람의 명의를 사용하는 등 허위로 신청하는 경우<br /> <br />2. 고객 등록 사항을 누락하거나 오기하여 신청하는 경우<br /> <br />3. 공공질서 또는 미풍양속을 저해하거나 저해할 목적으로 신청한 경우<br /> <br />4. 기타 회사가 정한 이용신청 요건이 충족되지 않았을 경우<br /> <br />제 5조 (서비스의 해지)<br /> <br />서비스 해지를 희망하는 고객은 회사가 정한 소정의 절차(유무선인터넷 홈페이지 등을 통해 공지합니다)를 통해 서비스 해지를 신청할 수 있습니다.&lt;/p&gt;
+                                                <p>제 1장 총칙<br /> <br />제 1조 (목적)<br /> <br />이 약관은 에브리닥터(이하 &ldquo;&ldquo;회사&rdquo;&rdquo;라 합니다)가 제공하는 위치기반서비스(이하 &lsquo;서비스&rsquo;라 합니다)를 회사와 이용계약을 체결한 &lsquo;고객&rsquo;이 이용함에 있어 필요한 회사와 고객의 권리 및 의무, 기타 제반 사항을 정함을 목적으로 합니다.</p>
+												    <p><br />제 2조 (약관 외 준칙)<br /> <br />이 약관에 명시되지 않은 사항에 대해서는 위치 정보의 보호 및 이용 등에 관한 법률, 전기통신사업법, 정보통신망 이용 촉진및 보호 등에 관한 법률 등 관계법령 및 회사가 정한 서비스의 세부이용지침 등의 규정에 따릅니다.</p>
+												    <p><br />제 2장 서비스의 이용<br /> <br />제 3조 (가입자격)<br /> <br />① 서비스에 가입할 수 있는 자는 회사가 제공하는 &lsquo;서비스&rsquo;를 이용하고자 하는 자로서, 개인 또는 법인고객을 포함합니다.<br /> <br />② 법인 명의의 이동전화를 사용하는 고객은 법인의 사업자번호를 사용하여 서비스에 가입할 수 있습니다.<br /> <br />제 4조 (서비스 가입)<br /> <br />① 회사가 정한 본 약관에 고객이 동의하고, 회사가 승낙함으로써 서비스 가입의 효력이 발생합니다.<br /> <br />② 회사는 다음 각 호의 고객 가입신청에 대해서는 이를 승낙하지 아니할 수 있습니다.<br /> <br />1. 실명이 아니거나 다른 사람의 명의를 사용하는 등 허위로 신청하는 경우<br /> <br />2. 고객 등록 사항을 누락하거나 오기하여 신청하는 경우<br /> <br />3. 공공질서 또는 미풍양속을 저해하거나 저해할 목적으로 신청한 경우<br /> <br />4. 기타 회사가 정한 이용신청 요건이 충족되지 않았을 경우<br /> <br />제 5조 (서비스의 해지)<br /> <br />서비스 해지를 희망하는 고객은 회사가 정한 소정의 절차(유무선인터넷 홈페이지 등을 통해 공지합니다)를 통해 서비스 해지를 신청할 수 있습니다.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +194,7 @@
                                 </div>
                             </div>
                             <div class="button">
-                                <button type="submit" class="btn">회원가입</button>
+                                <button type="button" class="btn" id="regiBtn">회원가입</button>
                             </div>
                             <p class="outer-link">계정이 있으신가요? <a href="login"> 로그인 하기</a>
                             </p>
