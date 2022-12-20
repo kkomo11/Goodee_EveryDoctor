@@ -2,15 +2,18 @@ package com.goodee.everydoctor.hospital.diagnosis;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
+import com.goodee.everydoctor.pay.PayVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.util.FileManager;
@@ -112,5 +115,40 @@ public class HospitalDiagnosisService {
 		hospitalDiagnosisVO.setFills(fills);
 		
 		return hospitalDiagnosisVO;
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
+		
+		int modifyResult = hospitalDiagnosisMapper.modifyHospitalDiagnosis(hospitalDiagnosisVO);
+		
+		if(druges != null) {
+			for(Long i : druges) {
+				if(i != null) {
+					DrugVO drugVO = new DrugVO();
+					drugVO.setDrugNum(i);
+					drugVO.setPDansNum(hospitalDiagnosisVO.getDansNum());
+					
+					hospitalDiagnosisMapper.inputFill(drugVO);
+				}
+			}
+		}
+		
+		PayVO payVO = new PayVO();
+		payVO.setUsername(hospitalDiagnosisVO.getUsername());
+		String orderId = UUID.randomUUID().toString();
+		payVO.setOrderId(orderId);
+		payVO.setAmount(hospitalDiagnosisVO.getDansCost());
+		payVO.setDansNum(hospitalDiagnosisVO.getDansNum());
+		
+		int inputPayResult = hospitalDiagnosisMapper.inputReadyPay(payVO);
+		
+		int result = 0;
+		
+		if(modifyResult > 0 && inputPayResult > 0) {
+			result = 1;
+		}
+
+		return result;
 	}
 }

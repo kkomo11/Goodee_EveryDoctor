@@ -21,7 +21,7 @@ public class HospitalDiagnosisVO {
 	private LocalDateTime dansReqTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime dansEndTime;
-	private Long dansCost;
+	private Integer dansCost;
 	private String username; //환자 아이디
 	private String doctorName; //닥터 아이디
 	private Long dansStatus; 
