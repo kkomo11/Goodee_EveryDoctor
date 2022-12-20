@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 
 @Mapper
@@ -33,5 +34,11 @@ public interface AgencyMapper {
 	
 	//동물병원 진료과목 불러오기
 	public List<HospitalSectionVO> findPetHospitalSection()throws Exception;
+	
+	//기관 삭제
+	public int deleteAgency(AgencyVO agencyVO)throws Exception;
+	
+	//기관 사진 삭제를 위한 파일 정보 불러오기
+	public List<FileVO> findAgencyFile(AgencyVO agencyVO)throws Exception;
 
 }

@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
+import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 import com.goodee.everydoctor.user.address.UserAddressVO;
 
 import lombok.Data;
@@ -30,6 +31,8 @@ public class DrugPrescriptionVO {
 	private Long dansNum;
 	//상담내용
 	private String dansContent;
+	//의사소견
+	private String dansResponse;
 	//환자아이디
 	private String username;
 	
@@ -37,21 +40,27 @@ public class DrugPrescriptionVO {
 	private LocalDateTime dansReqTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime dansEndTime;
+	//진료비
 	private Long dansCost;
+	//진료상태
 	private Long dansStatus;
+	//조제상태
+	private Long prescriptionStatus;
+	//처방번호
+	private Long prescriptionNum;
+	
+	//환자
 	private String patient;
 	private List<FileVO> dansFiles;
 	
 	private String reqTimeString;		// 진료 요청 시간 보기 좋게 담는 변수
 	private String endTimeString;		// 진료 종료 시간 보기 좋게 담는 변수
-	//조제상태
-	private Long prescriptionStatus;
 
 	//처방전약
-	private List<DrugVO> presciptionDrug;
-		
-	private UserAddressVO userAddressVO;
-
+	private List<DrugVO> prescriptionDrug;
+	
+	private List<UserAddressVO> userAddressVOs;
+	
 	//운송장번호
 	private Long drugDeliveryNum;
 	//주문번호

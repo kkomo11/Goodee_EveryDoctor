@@ -11,7 +11,7 @@
     <title>Prescription</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
 	<c:import url="../../temp/boot.jsp"></c:import>
     <!-- Place favicon.ico in the root directory -->
 
@@ -148,9 +148,9 @@
                             <div class="button col-3">
                             	<button class="btn" type="button" id="addDrugBtn">약 추가</button>
                             </div>
-                            
+
                             <div class="form-group" id="drugListFrame">
-                            	
+
                             </div>
                             <div class="button">
                                 <button type="button" class="btn" id="prescriptionSendBtn">진단서 작성 완료</button>
@@ -198,9 +198,9 @@
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>
     </a>
-    
+
     <script type="text/javascript" src="/js/pet/diagnosis/prescription.js"></script>
-    
+
     <script type="text/template" id="drugTemplate">
 		<div class="form-group">
 			<div class="button col-3">
@@ -211,11 +211,11 @@
         	<input type="text" name="druges">
 		</div>
 	</script>
-	
+
 	<script type="text/template" id="drugListTemplate">
 		<li class="list-group-item drugListItem" data-drugnum="{drugNum}" style="cursor:pointer;">{drugName}</li>
 	</script>
-    
+
 </body>
 
 </html>

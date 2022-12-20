@@ -33,11 +33,6 @@
                                         aria-label="Toggle navigation">동물병원</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class=" dd-menu collapsed" href="/location/viewCorona"
-                                        aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">선별진료소</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="/drug/store"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
                                         aria-label="Toggle navigation">약국찾기</a>
@@ -45,7 +40,7 @@
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="/location/viewCorona"
                                         aria-controls="navbarSupportedContent" aria-expanded="false"
-                                        aria-label="Toggle navigation">24시</a>
+                                        aria-label="Toggle navigation">선별진료소</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class=" dd-menu collapsed" href="javascript:void(0)"
@@ -70,6 +65,7 @@
                                               <li class="nav-item"><a href="/pay/completedPayList?m=${member.username }">결제내역</a></li>
                                               </sec:authorize>
                                               <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
+                                              <li class="nav-item"><a href="/board/tip/list">건강관리팁</a></li>
                                           </ul>
                                       </li>
                                     </ul>
@@ -103,18 +99,18 @@
                                       <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
                                     </sec:authorize>
                                   </ul>
-                              </li>
-                            </sec:authorize>
-                              <li class="nav-item">
-                                  <a class="dd-menu collapsed" href="/admin/admin/reportList"
-                                      data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
-                                      aria-controls="navbarSupportedContent" aria-expanded="false"
-                                      aria-label="Toggle navigation">관리자</a>
-                                  <ul class="sub-menu collapse" id="submenu-1-5">
-                                      <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a></li>
-                                      <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
-                                  </ul>
-                              </li>
+                                </li>
+                                </sec:authorize>
+                                <sec:authorize access="hasAnyRole('ADMIN')">
+                                    <li class="nav-item">
+                                        <a class="dd-menu collapsed" href="/admin/admin/reportList" data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">관리자</a>
+                                        <ul class="sub-menu collapse" id="submenu-1-5">
+                                            <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a></li>
+                                            <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
+                                        </ul>
+                                    </li>
+                                </sec:authorize>
                             </ul>
                         </div> <!-- navbar collapse -->
                         <div class="login-button">
@@ -161,7 +157,6 @@
                                 </li>
 								</sec:authorize>
 								<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
-								<a href="/telemedicine">Telemedicine</a>
                             </ul>
                         </div>
                         <div class="form-group button mb-0">

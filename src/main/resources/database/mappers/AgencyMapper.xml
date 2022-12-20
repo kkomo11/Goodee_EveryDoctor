@@ -42,4 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM SECTION WHERE SECTIONKIND=1
 	</select>
 	
+	<delete id="deleteAgency" parameterType="AgencyVO">
+	 	DELETE FROM AGENCY WHERE AGENCYNUM = #{agencyNum}
+	</delete>
+	
+	<select id="findAgencyFile" parameterType="AgencyVO" resultType="FileVO">
+		SELECT * FROM AGENCYFILE WHERE AGENCYNUM = #{agencyNum}
+	</select>
+	
 </mapper>
