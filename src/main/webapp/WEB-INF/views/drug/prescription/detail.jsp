@@ -258,8 +258,8 @@
 
                                 <div class="col-12">
                                   <div class="form-group button mb-0">
-                                    <!-- <button type="submit" class="btn alt-btn" id="thirdPreBtn">Previous</button> -->
-                                    <a href="/drug/prescription/completedList" button type="submit" id="drug" class="btn">처방하기</a>
+                                    <button type="button" class="btn prescribeBtn" data-dansNum="${drug.dansNum}">처방하기</button>
+                                    <!-- <a href="/drug/prescription/prescribe" id="drug" class="btn">처방하기</a> -->
                                   </div>
                                 </div>
 
@@ -290,6 +290,7 @@
 
       <!-- ========================= JS here ========================= -->
       <script src="/js/drug/address.js"></script>
+      <script src="/js/drug/prescriptionDetail.js"></script>
       <script src="/js/admin/medic/regist.js"></script>
       <script src="/js/admin/medic/chosen.jquery.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
