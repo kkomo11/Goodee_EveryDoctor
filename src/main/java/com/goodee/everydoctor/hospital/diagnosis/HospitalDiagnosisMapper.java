@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
+import com.goodee.everydoctor.pay.PayVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 
@@ -32,4 +33,9 @@ public interface HospitalDiagnosisMapper {
 	
 	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum (HospitalDiagnosisVO hospitalDiagnosisVO)throws Exception;
 	
+	public int inputFill(DrugVO drugVO) throws Exception;
+	
+	public int inputReadyPay(PayVO payVO) throws Exception;
+	
+	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception;
 }

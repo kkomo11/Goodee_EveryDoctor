@@ -25,40 +25,47 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
+	//조제완료 
+	@GetMapping("completedList")
+	public ModelAndView findCompletedListResult(DrugPrescriptionPager drugPrescriptionPager)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("completedListResult", drugPrescriptionService.findCompletedListResult(drugPrescriptionPager));
+		mv.addObject("pager", drugPrescriptionPager);
+		mv.setViewName("drug/prescription/completedList");
+
+		return mv;
+	}
 
 
 	@GetMapping("detail")
 	public ModelAndView findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		//약목록
-		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList();
+		List<DrugPrescriptionVO> ar = drugPrescriptionService.findDrugPrescriptionList(drugPrescriptionVO);
 		mv.addObject("list", ar);
-		
+
 		//처방된약
-		List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
-		
+		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		String drugName = "";
-		for(int i = 0; i < drug.size(); i++) {
+		/*for(int i = 0; i < drug.size(); i++) {
 			drugName += drug.get(i).getDrugName();
 			if(i != drug.size()-1) {
 				drugName += ", ";
 			}
-		}
-		
-//		//상담내용
-//		List<DrugPrescriptionVO> content = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
-//		mv.addObject("content", content);
-		
+		}*/
+
+
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();
 		int randomNum = (int)(Math.random() * 3);
 		DrugPrescriptionVO deliveryNumObject = deliveryNumList.get(randomNum);
 		mv.addObject("deliveryNum", deliveryNumObject.getDrugDeliveryNum());
 
-		mv.addObject("drugName",drugName);
+		mv.addObject("drug", drug);
 		mv.addObject("detail",drugPrescriptionVO);
 		mv.setViewName("drug/prescription/detail");
-		
+
 		return mv;
 	}
 

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class DrugPrescriptionPager extends Pager {
-	
+
 	private String username;
 
 }

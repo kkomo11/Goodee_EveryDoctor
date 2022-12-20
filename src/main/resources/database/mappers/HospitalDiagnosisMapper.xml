@@ -126,4 +126,19 @@
 		ON (PD.PRESCRIPTIONNUM = PR.PRESCRIPTIONNUM)
 		WHERE PR.DANSNUM = #{dansNum}
 	</select>
+	
+	<insert id="inputReadyPay" parameterType="PayVO">
+		INSERT INTO PAY(PAYNUM, USERNAME, ORDERID, ORDERNAME, STATUS, AMOUNT, PAYREQDATE, DANSNUM)
+		VALUES (NULL, #{username}, #{orderId}, '반려동물 진료비', 'READY', #{amount}, now(), #{dansNum})
+	</insert>
+	
+	<insert id="inputFill" parameterType="DrugVO">
+		INSERT INTO PRESCRIPTIONDRUG VALUES 
+	</insert>
+	
+	<update id="modifyHospitalDiagnosis" parameterType="HospitalDiagnosisVO">
+		UPDATE DIAGNOSIS SET DANSRESPONSE = #{dansResponse}, 
+		DANSENDTIME = now(), DANSCOST = #{dansCost}, DANSSTATUS = 1
+		WHERE DANSNUM = #{dansNum}
+	</update>
 </mapper>

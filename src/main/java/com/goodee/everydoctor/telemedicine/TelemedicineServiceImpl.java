@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisMapper;
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisMapper;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.util.Parser;
 
 import java.util.HashMap;
@@ -25,6 +27,9 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     private final Parser parser;
     @Autowired
     private HospitalDiagnosisMapper hospitalDiagnosisMapper;
+    
+    @Autowired
+    private PetDiagnosisMapper petDiagnosisMapper;
 
     @Autowired
     public TelemedicineServiceImpl(final RoomService roomService, final Parser parser) {
@@ -71,7 +76,7 @@ public class TelemedicineServiceImpl implements TelemedicineService {
     }
 
     @Override
-    public ModelAndView displaySelectedRoom(final String sid, final String uuid, final String dansnum) throws Exception {
+    public ModelAndView displaySelectedRoom(final String sid, final String uuid, final String dansnum, final String pDansNum) throws Exception {
         // redirect to main page if provided data is invalid
         ModelAndView modelAndView = new ModelAndView(REDIRECT);
 
@@ -83,14 +88,24 @@ public class TelemedicineServiceImpl implements TelemedicineService {
                 modelAndView = new ModelAndView("telemedicine/chat_room", "id", sid);
                 modelAndView.addObject("uuid", uuid);
                 
- 
-                //get diagnosis 내용
-                HospitalDiagnosisVO diagnosisVO = new HospitalDiagnosisVO();
-                diagnosisVO.setDansNum(Long.parseLong(dansnum));
+                if(dansnum != null) {
+                	//get diagnosis 내용
+                    HospitalDiagnosisVO diagnosisVO = new HospitalDiagnosisVO();
+                    diagnosisVO.setDansNum(Long.parseLong(dansnum));
+                    
+                    diagnosisVO = hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(diagnosisVO);
+                    
+                    modelAndView.addObject("diagnosisVO",diagnosisVO);
+                }
                 
-                diagnosisVO = hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(diagnosisVO);
-                
-                modelAndView.addObject("diagnosisVO",diagnosisVO);
+                if(pDansNum != null) {
+                	PetDiagnosisVO petDiagnosisVO = new PetDiagnosisVO();
+                	petDiagnosisVO.setPDansNum(Long.parseLong(pDansNum));
+                	
+                	petDiagnosisVO = petDiagnosisMapper.findPetDiagnosisBypDansnum(petDiagnosisVO);
+                	
+                	modelAndView.addObject("petDiagnosisVO", petDiagnosisVO);
+                }
             }
         }
 
