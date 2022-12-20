@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.user.UserVO;
 import com.goodee.everydoctor.util.Pager;
 
@@ -28,7 +29,7 @@ public class UserDiagnosisController {
 		log.info("mylist {}", userVO.getUsername());
 		Pager pager = new Pager();
 		pager.setSearch(userVO.getUsername());
-		pager.setPage(8L);
+		pager.setPerPage(8L);
 		
 		List<HospitalDiagnosisVO> hospitalDiagnosisVOs = userDiagnosisService.getMylist(pager);
 		
@@ -49,11 +50,16 @@ public class UserDiagnosisController {
 	}
 	
 	@GetMapping("petlist")
-	public ModelAndView petList(ModelAndView mv)throws Exception{
-		log.info("mylist {}");
+	public ModelAndView petList(ModelAndView mv, @AuthenticationPrincipal UserVO userVO)throws Exception{
+		log.info("mylist {}", userVO.getUsername());
+		Pager pager = new Pager();
+		pager.setSearch(userVO.getUsername());
+		pager.setPerPage(5L);
 		
+		List<PetDiagnosisVO> petDiagnosisVOs = userDiagnosisService.getPetlist(pager);
 		
-		
+		mv.addObject("diagnosisVOs", petDiagnosisVOs);
+		mv.addObject("pager", pager);
 		mv.setViewName("user/petdiaglist");
 		return mv;
 	}

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.user.UserVO;
 import com.goodee.everydoctor.util.Pager;
 
@@ -13,5 +14,6 @@ import com.goodee.everydoctor.util.Pager;
 public interface UserDiagnosisMapper {
 	public List<HospitalDiagnosisVO> findHospitalDiagnosisListbyUsername(Pager pager)throws Exception;
 	public Long findMylistCnt(Pager pager);
+	public List<PetDiagnosisVO> findPetDiagnosisListbyUsername(Pager papger)throws Exception;
 
 }
