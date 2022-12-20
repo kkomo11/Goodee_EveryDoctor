@@ -38,7 +38,7 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-	//조제상태바꾸기
+	//조제상태바꾸기 머지가 왜 안되는거야 ?
 	@PostMapping("prescribe")
 	public String modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
 		int result = drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
