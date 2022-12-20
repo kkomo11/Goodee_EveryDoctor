@@ -55,17 +55,19 @@
                         <h4 class="title">진료 신청서</h4>
                         <form class="default-form-style" action="./reservation" method="post" enctype="multipart/form-data">
                         	<input type="hidden" value="${diagnosisVO.doctorName}" name="doctorName">
-                            <div class="form-group">
-                                <label>과목 선택</label>
-                                <div class="selector-head">
-                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                                    <select class="user-chosen-select" name="dansCategory">
-                                        <c:forEach items="${sectionList}" var="sectionVO">
-                                            <option value="${sectionVO.sectionName}">${sectionVO.sectionName}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
+                            <c:if test="${empty diagnosisVO.doctorName}">
+                            	<div class="form-group">
+	                                <label>과목 선택</label>
+	                                <div class="selector-head">
+	                                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+	                                    <select class="user-chosen-select" name="dansCategory">
+	                                        <c:forEach items="${sectionList}" var="sectionVO">
+	                                            <option value="${sectionVO.sectionName}">${sectionVO.sectionName}</option>
+	                                        </c:forEach>
+	                                    </select>
+	                                </div>
+	                            </div>
+                            </c:if>
                             <div class="form-group">
                                 <label>증상 입력</label>
                                 <textarea class="form-control form-control-custom" name="dansContent"
@@ -76,18 +78,8 @@
                                     <button type="button" class="btn " id="addPhotoBtn">진료용 사진 추가</button>
                                 </div>
                             </div>
-                            <div class="col-12" id="photoFileFrame"></div>
-                            <div class="check-and-pass">
-                                <div class="row align-items-center">
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input width-auto"
-                                                id="exampleCheck1">
-                                            <label class="form-check-label">내 건강정보로 더 정확한 진료 받기</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="col-12 mb-2" id="photoFileFrame"></div>
+
                             <div class="button">
                                 <button type="submit" class="btn">진료 신청</button>
                             </div>
