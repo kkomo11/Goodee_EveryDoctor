@@ -147,7 +147,7 @@
 	                                                    </div>
 	                                                </div>
 	                                            </div>
-	                                            <a href="/hospital/diagnosis/prescription" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
+	                                            <a href="/hospital/diagnosis/prescription?dansNum=${diagnosisVO.dansNum}" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
 	                                        </form>
 	                                    </div>
                                     </c:if>

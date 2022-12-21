@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/css/tiny-slider.css" />
     <link rel="stylesheet" href="/css/glightbox.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
-    
+
     <link rel="stylesheet" href="/css/pet/home.css"/>
     <c:import url="../temp/boot.jsp"></c:import>
     <!-- chatbot -->
@@ -117,7 +117,7 @@
                                                 data-wow-delay="1s">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/stamp_icon.svg" alt="#">
-                                                </div> 
+                                                </div>
                                                 <h3>24시 병원</h3>
                                                 <!-- <h5 class="total">55</h5> -->
                                             </a>
@@ -172,36 +172,36 @@
                         <div class="tab-pane fade show active" id="nav-latest" role="tabpanel"
                             aria-labelledby="nav-latest-tab">
                             <div class="row" id="petdogList">
-                                
+
                             </div>
                             <!-- Pagination -->
                             <div class="pagination center">
                                 <ul class="pagination-list" id="petdogPagination">
-                                	
+
                                 </ul>
                             </div>
                             <!--/ End Pagination -->
                         </div>
                         <div class="tab-pane fade" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
                             <div class="row" id="petcatList">
-                                
+
                             </div>
                             <!-- Pagination -->
                             <div class="pagination center">
                                 <ul class="pagination-list" id="petcatPagination">
-                                	
+
                                 </ul>
                             </div>
                             <!--/ End Pagination -->
                         </div>
                         <div class="tab-pane fade" id="nav-random" role="tabpanel" aria-labelledby="nav-random-tab">
                             <div class="row" id="petotherList">
-                                
+
                             </div>
                             <!-- Pagination -->
                             <div class="pagination center">
                                 <ul class="pagination-list" id="petotherPagination">
-                                	
+
                                 </ul>
                             </div>
                             <!--/ End Pagination -->
@@ -290,107 +290,9 @@
     </section>
     <!-- /End Why Choose Area -->
 
-    <!-- Start Testimonials Area -->
-    <section class="testimonials section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title align-center gray-bg">
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">이용 후기</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">에브리닥터를 이용한 사람들의 솔직한 후기를 보세요</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Testimonial -->
-                    <div class="single-testimonial">
-                        <div class="quote-icon">
-                            <i class="lni lni-quotation"></i>
-                        </div>
-                        <div class="author">
-                            <img src="/images/pet/home/user_profile_icon.svg" alt="#">
-                            <h4 class="name">
-                                김만석
-                                <span class="deg">Founder & CEO</span>
-                            </h4>
-                        </div>
-                        <div class="text">
-                            <p>편리하게 집에서 진료를 받으니 좋아요. 아파서 밖에 나가기 부담될 때 정말 좋습니다.</p>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Testimonial -->
-                    <div class="single-testimonial">
-                        <div class="quote-icon">
-                            <i class="lni lni-quotation"></i>
-                        </div>
-                        <div class="author">
-                            <img src="/images/pet/home/user_profile_icon.svg" alt="#">
-                            <h4 class="name">
-                                류만기
-                                <span class="deg">Web Developer</span>
-                            </h4>
-                        </div>
-                        <div class="text">
-                            <p>이제 의료도 물리적 공간에 제한받지 않는 시대가 왔네요. 앞으로 번창하세요.</p>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Testimonial -->
-                    <div class="single-testimonial">
-                        <div class="quote-icon">
-                            <i class="lni lni-quotation"></i>
-                        </div>
-                        <div class="author">
-                            <img src="/images/pet/home/user_profile_icon.svg" alt="#">
-                            <h4 class="name">
-                                곽택기
-                                <span class="deg">Ui/Ux Designer</span>
-                            </h4>
-                        </div>
-                        <div class="text">
-                            <p>주변 사람들에게 소개해주고 싶네요. 아플 때 병원에 가는 것도 힘들고 부담되는데 에브리닥터 덕분에 삶의 질이 높아집니다.</p>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Testimonial -->
-                    <div class="single-testimonial">
-                        <div class="quote-icon">
-                            <i class="lni lni-quotation"></i>
-                        </div>
-                        <div class="author">
-                            <img src="/images/pet/home/user_profile_icon.svg" alt="#">
-                            <h4 class="name">
-                                한현식
-                                <span class="deg">Artist</span>
-                            </h4>
-                        </div>
-                        <div class="text">
-                            <p>이건 웹 서비스가 아니라 현대 예술입니다.</p>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Testimonial Area -->
-
     <!-- Start Footer Area -->
     <c:import url="../temp/footer.jsp"></c:import>
     <!--/ End Footer Area -->
-
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-        <i class="lni lni-chevron-up"></i>
-    </a>
 
     <!-- ========================= JS here ========================= -->
     <script src="/js/bootstrap.min.js"></script>
@@ -399,7 +301,7 @@
     <script src="/js/glightbox.min.js"></script>
     <script src="/js/main.js"></script>
     <script type="text/javascript">
-        //========= testimonial 
+        //========= testimonial
         tns({
             container: '.testimonial-slider',
             items: 3,
@@ -430,7 +332,7 @@
         });
     </script>
     <script src="/js/pet/home.js"></script>
-    
+
     <!-- Template -->
     <script type="text/template" id="petdocListItemTemplate">
 		<div class="col-lg-3 col-md-4 col-12">
@@ -447,12 +349,11 @@
         			</h3>
         			<p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
         				</i>{agencyName}</a></p>
-        			
         		</div>
         	</div>
 		</div>
 	</script>
-	
+
 	<script type="text/template" id="">
 		<li><a href="javascript:void(0)"><i class="lni lni-chevron-left"></i></a></li>
         <li><a href="javascript:void(0)">1</a></li>
@@ -461,7 +362,7 @@
         <li><a href="javascript:void(0)">4</a></li>
         <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
 	</script>
-    
+
 </body>
 
 </html>

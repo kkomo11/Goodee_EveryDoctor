@@ -39,6 +39,8 @@
 		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO" alias="HospitalDoctorVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalMainPager" alias="HospitalMainPager"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO" alias="HospitalDiagnosisVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalPrescriptionVO" alias="HospitalPrescriptionVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalPrescriptionDrugVO" alias="HospitalPrescriptionDrugVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisPager" alias="HospitalDiagnosisPager"/>
 		
 		<typeAlias type="com.goodee.everydoctor.admin.medic.MedicVO" alias="MedicVO"/>

@@ -118,21 +118,13 @@ public class HospitalDiagnosisService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
+	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
 		
 		int modifyResult = hospitalDiagnosisMapper.modifyHospitalDiagnosis(hospitalDiagnosisVO);
-		
-		if(druges != null) {
-			for(Long i : druges) {
-				if(i != null) {
-					DrugVO drugVO = new DrugVO();
-					drugVO.setDrugNum(i);
-					drugVO.setPDansNum(hospitalDiagnosisVO.getDansNum());
-					
-					hospitalDiagnosisMapper.inputFill(drugVO);
-				}
-			}
-		}
+		HospitalPrescriptionVO hospitalPrescriptionVO = new HospitalPrescriptionVO();
+		hospitalPrescriptionVO.setDansNum(hospitalDiagnosisVO.getDansNum());
+		hospitalPrescriptionVO.setPharmacist("pharmacist"); // 로그인 가능한 약사 아이디
+		hospitalDiagnosisMapper.inputPrescription(hospitalPrescriptionVO);
 		
 		PayVO payVO = new PayVO();
 		payVO.setUsername(hospitalDiagnosisVO.getUsername());
@@ -143,6 +135,19 @@ public class HospitalDiagnosisService {
 		
 		int inputPayResult = hospitalDiagnosisMapper.inputReadyPay(payVO);
 		
+		if(hospitalDiagnosisVO.getDruges() != null) {
+			for(int i=0; i<hospitalDiagnosisVO.getDruges().length; i++) {
+				HospitalPrescriptionDrugVO hospitalPrescriptionDrugVO = new HospitalPrescriptionDrugVO();
+				hospitalPrescriptionDrugVO.setPrescriptionNum(hospitalPrescriptionVO.getPrescriptionNum());
+				hospitalPrescriptionDrugVO.setDrugNum(hospitalDiagnosisVO.getDruges()[i]);
+				hospitalPrescriptionDrugVO.setDose(hospitalDiagnosisVO.getDoses()[i]);
+				hospitalPrescriptionDrugVO.setDoseHit(hospitalDiagnosisVO.getDoseHits()[i]);
+				hospitalPrescriptionDrugVO.setDoseDays(hospitalDiagnosisVO.getDoseDays()[i]);
+				
+				hospitalDiagnosisMapper.inputPrescriptionDrug(hospitalPrescriptionDrugVO);
+			}
+		}
+		
 		int result = 0;
 		
 		if(modifyResult > 0 && inputPayResult > 0) {
@@ -150,5 +155,9 @@ public class HospitalDiagnosisService {
 		}
 
 		return result;
+	}
+	
+	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		return hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(hospitalDiagnosisVO);
 	}
 }

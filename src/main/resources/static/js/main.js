@@ -36,11 +36,13 @@ Author: GrayGrids
 
         // show or hide the back-top-top button
         var backToTo = document.querySelector(".scroll-top");
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if(backToTo != null) {
+			if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
             backToTo.style.display = "flex";
-        } else {
-            backToTo.style.display = "none";
-        }
+	        } else {
+	            backToTo.style.display = "none";
+	        }
+		}
         
         // show or hide the back-top-top button
 	    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
@@ -106,10 +108,10 @@ Author: GrayGrids
 	const date = new Date();
 	const year = date.getFullYear();
 	const month = date.getMonth()+1;
-	const day = date.getDay();
+	const day = date.getDate();
 	const hour  = date.getHours();
 	const min = date.getMinutes();
-	console.log("현재시간은 ", year+'-'+month+'-'+day+'-'+hour+':'+min);
+	console.log("현재시간은 ", year+'-'+month+'-'+day+' '+hour+':'+min);
 	let current = (year+'-'+month+'-'+day+' '+hour+':'+min);
 	console.log(current)
 	console.log(year);
@@ -118,19 +120,21 @@ Author: GrayGrids
 	console.log(hour);
 	console.log(min);
 
+	
+	
 	const toastTrigger = document.getElementById('liveToastBtn')
 	const toastLiveExample = document.getElementById('liveToast')
 	const toast = new bootstrap.Toast(toastLiveExample)
     let userID = $("#authUsername").val()
 	
     console.log($("#authUsername").val())
-
+	
     
 	//SSE를 페이지를 열면 연결요청을 한다.
     let urlEndPoint = 'http://'+window.location.host+'/subscribe?userID='+userID;
     let eventSource = new EventSource(urlEndPoint);
-
-
+	
+	
 	//이벤트 요청을 받는다.
 	// 알림을 받는 측의 디자인과 받은 파라미터를 처리할때 변경
 	console.log(eventSource.readyState)
@@ -141,29 +145,29 @@ Author: GrayGrids
 		
 		$("#toastAlert").append(
 			'<div id='+articleData.toastId+' class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">'+
-				'<div class="toast-header">'+
+			'<div class="toast-header">'+
 					'<strong class="me-auto">'+articleData.title+'</strong>'+
-					'<small class="text-muted">'+current+'</small>'+
+					'<small class="text-muted">'+displayedAt(date)+'</small>'+
 					'<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>'+
-				'</div>'+
-				'<div class="toast-body">'+
-		  			articleData.text+
+					'</div>'+
+					'<div class="toast-body">'+
+					articleData.text+
     				'<div class="mt-2 pt-2 border-top">'+
-      					'<button type="button" class="btn btn-primary btn-sm"><a href=' +articleData.link+ ' style="color:white;">신청 바로가기</a></button>'+
-      				'</div>'+
+					'<button type="button" class="btn btn-primary btn-sm"><a href=' +articleData.link+ ' style="color:white;">신청 바로가기</a></button>'+
+					'</div>'+
 				'</div>'+
-	  		'</div>')
+				'</div>')
 
 		let toastname = articleData.toastId
         console.log(toastname)
-
+		
 		const toastLiveExample = document.getElementById(toastname)
 		const toast = new bootstrap.Toast(toastLiveExample)
-
+		
         
         toast.show()
 		console.log('알림받은 사람 == ',articleData.text,current,userID)
-
+		
 		//웹알림 저장해야돼요 나 
 		$.ajax({
 			type:"POST",
@@ -179,13 +183,15 @@ Author: GrayGrids
 				console.log('error===', e);
 			}
 		});
-
+		
     })
-
-	$("#alarmBell").click(function(){
-	$(".mx-1").toggleClass("show");
-    $("#dropDownList").toggleClass("show");
-
+	//웹알람 출력해야돼요 나
+	$("#alarmBell").off('click').on('click',function(){
+		$(".mx-1").toggleClass("show");
+		$("#dropDownList").toggleClass("show");
+		//웹알림 append문이 자꾸 추가돼서 클릭할때마다 지워주고 다시시작
+		$("#alarmList").siblings().empty();
+		
 		// 웹알림 리스트 불러오기
 		$.ajax({
 			type:"GET",
@@ -198,19 +204,20 @@ Author: GrayGrids
 				if(data.length > 0){
 					$('AjaxList').attr("disabled", false);
 					$.each(data,function(index,value){
-					let date = new Date(data[index].alarmTime);
-					console.log('date == ',date);
-	
-					let d = date.getMinutes();
-					if (d < 10) {
-						d = '0'+(d % 10);
+						let date = new Date(data[index].alarmTime);
+						// console.log('date == ',date);
+						
+						
+						let d = date.getMinutes();
+						if (d < 10) {
+							d = '0'+(d % 10);
 					}
-					console.log(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+					console.log(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+d);
 					let a = $('<a class="dropdown-item d-flex align-items-center" href="#"/>');
 					let tungdiv= $('<div/>');
-					let daydiv= $('<div class="small text-gray-500"/>').text(date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+d);
+					let daydiv= $('<div class="small text-gray-500"/>').text(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+d);
 					let span = $('<span class="font-weight-bold">').text(data[index].alarmContents);
-	
+					
 					a.append(tungdiv);
 					tungdiv.append(daydiv);
 					tungdiv.append(span);
@@ -218,8 +225,9 @@ Author: GrayGrids
 					$("#alarmList").after(a)
 					});
 				}else{
-					let noText =  $('<div style="text-align: center;"/>').text('알람이 없습니다.')
+					let noText = $('<div style="text-align: center;"/>').text('알람이 없습니다.')
 					$("#alarmList").after(noText)
+					return;
 				}
 			},
 			error: function(e){
@@ -229,18 +237,37 @@ Author: GrayGrids
 		
 	});
     
+	function displayedAt(date) {
+		const milliSeconds = new Date() - date
+		const seconds = milliSeconds / 1000
+		if (seconds < 60) return `방금 전`
+		const minutes = seconds / 60
+		if (minutes < 60) return `${Math.floor(minutes)}분 전`
+		const hours = minutes / 60
+		if (hours < 24) return `${Math.floor(hours)}시간 전`
+		const days = hours / 24
+		if (days < 7) return `${Math.floor(days)}일 전`
+		const weeks = days / 7
+		if (weeks < 5) return `${Math.floor(weeks)}주 전`
+		const months = days / 30
+		if (months < 12) return `${Math.floor(months)}개월 전`
+		const years = days / 365
+		return `${Math.floor(years)}년 전`
+	  }
+	 
+	  console.log('하 짜증나...',displayedAt(date))
     
-// 테스트용 알림요청
-// 	console.log($(toastTrigger))
-// $(toastTrigger).click(function(){
-	
-//     $.ajax({
+	// 테스트용 알림요청
+	// 	console.log($(toastTrigger))
+	// $(toastTrigger).click(function(){
+		
+		//     $.ajax({
 //         type:"POST",
 //         url:"/dispatchEventToSpecificUser",
 //         traditional:true, //배열을 전송할 때 사용(파라미터 이름 하나로 여러개를 보내야 할때)
 //         data:{
-//             title: "타이틀",
-//             text: "텍스트",
+	//             title: "타이틀",
+	//             text: "텍스트",
 //             userID:''//의사아이디
 //         },
 //         success:function(result){

@@ -25,10 +25,10 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1400px;
-        height:1000px;
+        width:1700px;
+        height:900px;
         /* margin-bottom: 300px; */
-        margin-left: 150px;
+        /* margin-left: 150px; */
 
     }
     </style>

@@ -30,13 +30,14 @@
                       <a class="dd-menu collapsed" href="/pet/home" aria-label="Toggle navigation">동물병원</a>
                     </li>
                     <li class="nav-item">
-                      <a class=" dd-menu collapsed" href="/drug/store" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">약국찾기</a>
+                      <a class=" dd-menu collapsed" href="/admin/agency/regist" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">제휴문의</a>
                     </li>
                     <li class="nav-item">
                       <a class=" dd-menu collapsed" href="/location/viewCorona" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">선별진료소</a>
                     </li>
+                    <sec:authorize access="isAuthenticated()">
                     <li class="nav-item">
                       <a class=" dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
                         data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,19 +53,18 @@
                             <li class="nav-item"><a href="/user/address">내 주소 관리</a></li>
                             <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
                             <li class="nav-item"><a href="#">내 상담내역</a></li>
-                            <sec:authorize access="isAuthenticated()">
                               <li class="nav-item"><a href="/pet/profile/myPetList?username=${member.username }">반려동물
                                   관리</a></li>
                               <li class="nav-item"><a href="/pay/myPay?m=${member.username }">내 결제정보</a></li>
                               <li class="nav-item"><a href="/pay/requestedPayList?m=${member.username }">미납된 결제</a></li>
                               <li class="nav-item"><a href="/pay/completedPayList?m=${member.username }">결제내역</a></li>
-                            </sec:authorize>
                             <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                             <li class="nav-item"><a href="/board/tip/list">건강관리팁</a></li>
                           </ul>
                         </li>
                       </ul>
                     </li>
+                    </sec:authorize>
                     <sec:authorize access="hasAnyRole('DOCTOR', 'PETDOC')">
                       <li class="nav-item">
                         <a class=" dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
@@ -103,59 +103,54 @@
                       </li>
                     </sec:authorize>
                   </ul>
-                </div> <!-- navbar collapse -->
-                <div class="login-button">
-                  <ul>
-                    <sec:authorize access="isAuthenticated()">
-                      <sec:authentication property="Principal" var="member" />
-                      <input type="hidden" id="AuthProfile" value="${member.fileName}">
-                      <input id="authUsername" value="${member.username}" style="display:none;">
-                      ${member.name}님 환영합니다.
+                </div> <!-- navbar collapse -->    
+                        <div class="login-button">
+                            <ul>
+                                <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="Principal" var="member"/>
+                                <!--웹알림 목록 보여주기 위함-->
+                                <li class="nav-item dropdown no-arrow mx-1" id="Ajaxlist" style="border-right:0px !important;">
+                                    <a id="alarmBell" href="javascript:void(0)" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                        </svg>
+                                        <!-- Counter - Alerts -->
+                                        <i class="fas fa-bell fa-fw"></i>
+                                    </a>
+                                    <!-- Dropdown - Alerts -->
+                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" id="dropDownList" aria-labelledby="alertsDropdown"
+                                    style="z-index:555; margin-top: 37px !important; overflow-y: auto; height:150px;">
+                                        <h6 class="dropdown-header" >
+                                            알림 목록
+                                        </h6>
+                                        <div>
+                                            <hr id="alarmList">
+                                            <!--웹알림 목록 리스트 들어갈 자리-->
+                                        </div>
+                                        <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> -->
+                                    </div>
+                                </li>
+                                <input type="hidden" id="AuthProfile" value="${member.fileName}">
+                                <input id="authUsername" value="${member.username}" style="display:none;">
+                                    ${member.name}님 환영합니다.
 
-                      <li>
-                        <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
-                      </li>
-                      <!--웹알림 목록 보여주기 위함-->
-                      <li class="nav-item dropdown no-arrow mx-1" id="Ajaxlist" disabled>
-                        <a class="nav-link dropdown-toggle" id="alarmBell" href="javascript:void(0)" id="alertsDropdown"
-                          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-bell" viewBox="0 0 16 16">
-                            <path
-                              d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                          </svg>
-                          <!-- Counter - Alerts -->
-                          <i class="fas fa-bell fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                          id="dropDownList" aria-labelledby="alertsDropdown"
-                          style="z-index:555; margin-top: 10px !important; overflow-y: auto; height:150px;">
-                          <h6 class="dropdown-header">
-                            Alerts Center
-                          </h6>
-                          <hr id="alarmList">
-                          <!--웹알림 목록 리스트 들어갈 자리-->
-                          <!-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> -->
+                                <li>
+                                    <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
+                                </li>
+                                </sec:authorize>
+			                    <sec:authorize access="isAnonymous()">
+			                      <li>
+			                        <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
+			                      </li>
+			                      <li>
+			                        <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
+			                      </li>
+			                    </sec:authorize>
+                            </ul>
                         </div>
-                      </li>
-                    </sec:authorize>
-
-                    <sec:authorize access="isAnonymous()">
-                      <li>
-                        <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
-                      </li>
-                      <li>
-                        <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
-                      </li>
-                    </sec:authorize>
                     <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
-                  </ul>
-                </div>
-                <div class="form-group button mb-0">
-                  <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴
-                    신청</a>
-                </div>
+
+
               </nav> <!-- navbar -->
             </div>
           </div>
@@ -191,10 +186,9 @@
       </div>
     </sec:authorize>
 
-    <!--출력되는 웹알림 담아주는 곳 -->
-    <div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5"
-      style="z-index:555; margin-top: 72px !important; overflow-y: auto; height:400px;">
-    </div>
+<!--출력되는 웹알림 담아주는 곳 -->
+<div id="toastAlert" class="toast-container position-fixed top-0 end-0 pt-5 m-5" style="z-index:555; margin-top: 50px !important; overflow-y: auto; height:400px;">
+</div>
 
 
     <!-- End Header Area -->
