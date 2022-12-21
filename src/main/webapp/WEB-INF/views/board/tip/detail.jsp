@@ -282,7 +282,7 @@
 
       <!-- ========================= JS here ========================= -->
       <script src="/js/board/boardTip.js"></script>
-      
+
     </body>
 
     </html>

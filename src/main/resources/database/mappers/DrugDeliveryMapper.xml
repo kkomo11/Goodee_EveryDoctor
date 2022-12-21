@@ -26,7 +26,8 @@
 		resultType="DrugDeliveryVO">
 		SELECT * FROM DRUGDELIVERY
 		WHERE DRUGDELIVERYNUM
-		ORDER BY RAND()
+		ORDER BY
+		RAND()
 		LIMIT 4;
 	</select>
 

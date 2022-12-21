@@ -43,7 +43,7 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-	
+
 	//조제상태바꾸기
 	@PostMapping("prescribe")
 	@ResponseBody
@@ -62,16 +62,9 @@ public class DrugPrescriptionController {
 		mv.addObject("list", ar);
 
 		//처방된약
-		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+
 		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		String drugName = "";
-		/*for(int i = 0; i < drug.size(); i++) {
-			drugName += drug.get(i).getDrugName();
-			if(i != drug.size()-1) {
-				drugName += ", ";
-			}
-		}*/
-
 
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();

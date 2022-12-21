@@ -25,13 +25,6 @@
                         </h5>
                         <p class="location"><i class="lni lni-map-marker">
                             </i>${doctorVO.agencyVO.agencyName}</p>
-                        <ul class="info">
-                            <li class="price">
-                                <img class="grade-star" src="/images/star.png"> 4.9(300+)
-                            </li>
-                            <li class="like"><i class="lni lni-heart"></i>
-                            </li>
-                        </ul>
                     </div>
                 </a>
             </div>

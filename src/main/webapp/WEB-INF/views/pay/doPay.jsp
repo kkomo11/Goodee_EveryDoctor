@@ -70,6 +70,7 @@
                     <div class="section-title">
                         <h2 class="wow fadeInUp" data-wow-delay=".4s">결제</h2>
                         <p class="wow fadeInUp" data-wow-delay=".6s">결제를 완료해주세요</p>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">약을 배송받지 않거나 처방받은 약이 없다면 약 배송 미포함을 확인하세요</p>
                     </div>
                 </div>
             </div>
@@ -93,6 +94,7 @@
                             <li>${unpaidDetail.payReqDateString }</li>
                             <li>주문번호</li>
                             <li>${unpaidDetail.orderId }</li>
+                            <li>약 배송 미포함</li>
                         </ul>
                         <input type="hidden" id="orderIdInput" value="${unpaidDetail.orderId}">
                         <input type="hidden" id="usernameInput" value="${user.username}">
@@ -107,6 +109,42 @@
                     <!-- End Single Table-->
                 </div>
                 
+                <c:if test="${unpaidDetail.orderName == '반려동물 진료비'}">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Table -->
+                    <div class="single-table wow fadeInUp" data-wow-delay=".2s">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <div class="price">
+                                <h2 class="amount">${unpaidDetail.amount + 3000 }<span class="duration">원</span></h2>
+                                <input type="hidden" id="amountDeliveryInput" value="${unpaidDetail.amount + 3000}">
+                            </div>
+                            <h4 class="title">${unpaidDetail.orderName } + 배송비</h4>
+                            <input type="hidden" id="orderNameDeliveryInput" value="${unpaidDetail.orderName}">
+                        </div>
+                        <!-- End Table Head -->
+                        <!-- Table List -->
+                        <ul class="table-list">
+                        	<li>결제 요청 시각</li>
+                            <li>${unpaidDetail.payReqDateString }</li>
+                            <li>주문번호</li>
+                            <li>${unpaidDetail.orderId }</li>
+                            <li>배송비 포함</li>
+                        </ul>
+                        <input type="hidden" id="orderIdDeliveryInput" value="${unpaidDetail.orderId}">
+                        <input type="hidden" id="usernameDeliveryInput" value="${user.username}">
+                        <input type="hidden" id="payNumDeliveryInput" value="${unpaidDetail.payNum}">
+                        <input type="hidden" id="pDansNumDeliveryInput" value="${unpaidDetail.PDansNum }">
+                        <!-- End Table List -->
+                        <!-- Table Bottom -->
+                        <div class="button">
+                            <button type="button" class="btn" id="doDeliveryPayBtn">결제하기</button>
+                        </div>
+                        <!-- End Table Bottom -->
+                    </div>
+                    <!-- End Single Table-->
+                </div>
+                </c:if>
             </div>
         </div>
     </section>

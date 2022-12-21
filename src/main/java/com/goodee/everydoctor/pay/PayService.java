@@ -18,8 +18,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.user.UserVO;
+import com.goodee.everydoctor.user.address.UserAddressVO;
 
 @Service
 public class PayService {
@@ -32,6 +35,43 @@ public class PayService {
 
 	@Autowired
 	private PayMapper payMapper;
+	
+	public List<PayVO> findPayAboutPetdoc(PetDiagnosisPager petDiagnosisPager) throws Exception {
+		
+		Long totalCount = payMapper.findPayAboutPetdocCount(petDiagnosisPager);
+		petDiagnosisPager.getNum(totalCount);
+		petDiagnosisPager.getRowNum();
+		
+		return payMapper.findPayAboutPetdoc(petDiagnosisPager);
+	}
+	
+	public int inputDrugDelivery(DrugDeliveryVO drugDeliveryVO) throws Exception {
+		Long drugDeliveryNum = this.findDeliveryNum();
+		drugDeliveryVO.setDrugDeliveryNum(drugDeliveryNum);
+		
+		return payMapper.inputDrugDelivery(drugDeliveryVO);
+	}
+	
+	public Long findDeliveryNum() throws Exception {
+		List<DrugDeliveryVO> drugDeliveryVOs = payMapper.findDeliveryNum();
+		int randomNum = (int)(Math.random() * 3);
+		
+		Long deliveryNum = drugDeliveryVOs.get(randomNum).getDrugDeliveryNum();
+		
+		return deliveryNum;
+	}
+	
+	public List<UserAddressVO> findUserAddress(UserAddressVO userAddressVO) throws Exception {
+		return payMapper.findUserAddress(userAddressVO);
+	}
+	
+	public int findAddressCount(UserVO userVO) throws Exception {
+		return payMapper.findAddressCount(userVO);
+	}
+	
+	public int findFillCount(PetDiagnosisVO petDiagnosisVO) throws Exception {
+		return payMapper.findFillCount(petDiagnosisVO);
+	}
 	
 	public List<PayVO> findMyCompletedPayList(PetDiagnosisPager petDiagnosisPager, String m) throws Exception {
 		petDiagnosisPager.setUsername(m);

@@ -128,10 +128,10 @@
                               <!-- 조제상태 -->
                               <div class="col-lg-1 col-md-1 col-12">
                                 <!-- <c:if test="${completed.prescriptionStatus eq 0}"> -->
-                                  <p>대기</p>
+                                <p>대기</p>
                                 <!-- </c:if> -->
                                 <!-- <c:if test="${completed.prescriptionStatus eq 1}"> -->
-                                  <p>완료</p>
+                                <p>완료</p>
                                 <!-- </c:if> -->
                               </div>
                               <div class="col-lg-2 col-md-1 col-12">

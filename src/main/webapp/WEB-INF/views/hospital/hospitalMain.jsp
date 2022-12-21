@@ -267,10 +267,6 @@
     <c:import url="../temp/footer.jsp"></c:import>
     <!--/ End Footer Area -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-        <i class="lni lni-chevron-up"></i>
-    </a>
     <script src="/js/hospital/hospitalMain.js"></script>
 </body>
 </html>

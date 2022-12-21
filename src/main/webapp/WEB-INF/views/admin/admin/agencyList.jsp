@@ -25,7 +25,8 @@
 
     <!-- Custom styles for this page -->
     <link href="/knj/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css?after" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css?after" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
 
@@ -60,11 +61,11 @@
                                         data-bs-target="#nav-latest" type="button" role="tab" aria-controls="nav-latest"
                                         aria-selected="true">병원</button>
                                     <button class="nav-link" id="nav-petHospital-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-petHospital" type="button" role="tab" aria-controls="nav-petHospital"
-                                        aria-selected="false">동물병원</button>
+                                        data-bs-target="#nav-petHospital" type="button" role="tab"
+                                        aria-controls="nav-petHospital" aria-selected="false">동물병원</button>
                                     <button class="nav-link" id="nav-pharmacy-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-pharmacy" type="button" role="tab" aria-controls="nav-pharmacy"
-                                        aria-selected="false">약국</button>
+                                        data-bs-target="#nav-pharmacy" type="button" role="tab"
+                                        aria-controls="nav-pharmacy" aria-selected="false">약국</button>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
@@ -90,15 +91,17 @@
                                     <!-- Pagination -->
                                     <div class="container">
                                         <nav aria-label="Page navigation example">
-                                            <ul class="pagination" style="justify-content: center;" id="hospitalPagination">
-                                                    
+                                            <ul class="pagination" style="justify-content: center;"
+                                                id="hospitalPagination">
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
                                 <!-- 간호사 제휴 리스트 -->
-                                <div class="tab-pane fade" id="nav-petHospital" role="tabpanel" aria-labelledby="nav-petHospital-tab">
+                                <div class="tab-pane fade" id="nav-petHospital" role="tabpanel"
+                                    aria-labelledby="nav-petHospital-tab">
                                     <div class="row">
                                         <table class="table table-bordered" width="100%" cellspacing="0">
                                             <thead>
@@ -111,22 +114,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="petHospitalList">
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
                                     <!-- Pagination -->
                                     <div class="container">
                                         <nav aria-label="Page navigation example">
-                                            <ul class="pagination" style="justify-content: center;" id="petHospitalPagination">
-                                                    
+                                            <ul class="pagination" style="justify-content: center;"
+                                                id="petHospitalPagination">
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
                                 <!-- 수의사 제휴 리스트 -->
-                                <div class="tab-pane fade" id="nav-pharmacy" role="tabpanel" aria-labelledby="nav-pharmacy-tab">
+                                <div class="tab-pane fade" id="nav-pharmacy" role="tabpanel"
+                                    aria-labelledby="nav-pharmacy-tab">
                                     <div class="row">
                                         <table class="table table-bordered" width="100%" cellspacing="0">
                                             <thead>
@@ -139,45 +144,46 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="pharmacyList">
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
                                     <!-- Pagination -->
                                     <div class="container">
                                         <nav aria-label="Page navigation example">
-                                            <ul class="pagination" style="justify-content: center;" id="pharmacyPagination">
-                                                    
+                                            <ul class="pagination" style="justify-content: center;"
+                                                id="pharmacyPagination">
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!--/ End Pagination -->
                                 </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-                <!-- /.container-fluid -->
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
 
-            
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
-        <!-- End of Content Wrapper -->
-        
+        <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
     </div>
     <!-- End of Page Wrapper -->
 
@@ -223,8 +229,10 @@
     <!-- Page level custom scripts -->
     <script src="/knj/js/demo/datatables-demo.js"></script>
     <script src="/js/admin/admin/agencyList.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
 
     <!-- Template -->
     <script type="text/template" id="agencyListTemplate">

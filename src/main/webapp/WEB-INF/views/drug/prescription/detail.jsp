@@ -100,10 +100,11 @@
                                   <c:forEach items="${drug.prescriptionDrug}" var="drugVO">
                                     <div class="form-group">
                                       <label>처방받은 약</label>
-                                       <input name="price" type="text" placeholder="PRESCRIPTIONNUM"  readonly value="${drugVO.drugName}">
+                                      <input name="price" type="text" placeholder="PRESCRIPTIONNUM" readonly
+                                        value="${drugVO.drugName}">
                                     </div>
                                   </c:forEach>
-                                  
+
                                 </div>
 
                                 <!-- 진료 과목 증상 리스트 가져오기 -->
@@ -183,7 +184,8 @@
                                 <div class="col-12">
                                   <div class="form-group mt-30">
                                     <label>의사소견</label>
-                                    <textarea name="message" placeholder="DANSRESPONSE...">${drug.dansResponse}</textarea>
+                                    <textarea name="message"
+                                      placeholder="DANSRESPONSE...">${drug.dansResponse}</textarea>
                                   </div>
                                 </div>
 
@@ -234,7 +236,8 @@
                                     <select class="user-chosen-select chosen-select agencyNum" name="agencyNum">
                                       <option value="" disabled selected>주소를 선택해주세요</option>
                                       <c:forEach items="${drug.userAddressVOs}" var="userAddr">
-                                        <option value="${userAddr.userMainAddr}" data-sub="sub1">${userAddr.userMainAddr}=>
+                                        <option value="${userAddr.userMainAddr}" data-sub="sub1">
+                                          ${userAddr.userMainAddr}=>
                                           ${userAddr.userSubAddr},${userAddr.userPost}</option>
                                       </c:forEach>
                                     </select>
@@ -259,7 +262,8 @@
 
                                 <div class="col-12">
                                   <div class="form-group button mb-0">
-                                    <button type="button" class="btn prescribeBtn" id="drug" data-dansNum="${drug.dansNum}">처방하기</button>
+                                    <button type="button" class="btn prescribeBtn" id="drug"
+                                      data-dansNum="${drug.dansNum}">처방하기</button>
                                     <!-- <a href="/drug/prescription/prescribe" id="drug" class="btn">처방하기</a> -->
                                   </div>
                                 </div>
