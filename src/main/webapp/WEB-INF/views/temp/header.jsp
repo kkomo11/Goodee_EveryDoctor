@@ -30,8 +30,8 @@
                       <a class="dd-menu collapsed" href="/pet/home" aria-label="Toggle navigation">동물병원</a>
                     </li>
                     <li class="nav-item">
-                      <a class=" dd-menu collapsed" href="/drug/store" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">약국찾기</a>
+                      <a class=" dd-menu collapsed" href="/admin/agency/regist" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">제휴문의</a>
                     </li>
                     <li class="nav-item">
                       <a class=" dd-menu collapsed" href="/location/viewCorona" aria-controls="navbarSupportedContent"
@@ -151,10 +151,6 @@
                     </sec:authorize>
                     <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
                   </ul>
-                </div>
-                <div class="form-group button mb-0">
-                  <a href="/admin/agency/regist" type="button" class="btn" style="margin-left: 4px !important;">제휴
-                    신청</a>
                 </div>
               </nav> <!-- navbar -->
             </div>
