@@ -36,11 +36,13 @@ Author: GrayGrids
 
         // show or hide the back-top-top button
         var backToTo = document.querySelector(".scroll-top");
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if(backToTo != null) {
+			if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
             backToTo.style.display = "flex";
-        } else {
-            backToTo.style.display = "none";
-        }
+	        } else {
+	            backToTo.style.display = "none";
+	        }
+		}
         
         // show or hide the back-top-top button
 	    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {

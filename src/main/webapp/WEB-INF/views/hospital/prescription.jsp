@@ -164,9 +164,11 @@
     			</div>
     			<label></label>
             	<input type="text" name="druges" readonly>
-				<input type="text" name="doses">
-				<input type="text" name="doseHits">
-				<input type="text" name="doseDays">
+				<div style="display: flex;">
+					<input type="text" name="doses" placeholder="1회 투약량">
+					<input type="text" name="doseHits" placeholder="1일 투여 횟수">
+					<input type="text" name="doseDays" placeholder="총 투약 일수">
+				</div>
     		</div>
     	</script>
 
