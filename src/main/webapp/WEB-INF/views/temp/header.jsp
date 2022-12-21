@@ -61,6 +61,7 @@
                             </sec:authorize>
                             <li class="nav-item"><a href="/drug/delivery/list">배송조회</a></li>
                             <li class="nav-item"><a href="/board/tip/list">건강관리팁</a></li>
+                            <li class="nav-item"><a href="/admin/medic/regist">기관 추가 인원 등록</a></li>
                           </ul>
                         </li>
                       </ul>

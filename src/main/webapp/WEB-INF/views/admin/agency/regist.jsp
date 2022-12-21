@@ -294,7 +294,7 @@
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>상호명*</label>
-                                                    <input name="agencyName" placeholder="상호명" id="agencyName" />
+                                                    <input name="agencyName" placeholder="상호명을 입력해주세요" id="agencyName" />
                                                     <div class="agencyNamem" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
@@ -303,7 +303,7 @@
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>전화번호*</label>
-                                                <input name="agencyTel" type="text" placeholder="02-111-1111" value="02-111-1111" id="agencyTel" />
+                                                <input name="agencyTel" type="text" placeholder="02-111-1111" id="agencyTel" />
                                                 <div class="agencyTelm" style="color: #55DDBD;"></div>
                                             </div>
                                         </div>
@@ -333,14 +333,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>기관 소개글*</label>
-                                                <textarea name="agencyInfo" placeholder="기관에 대한 정보를 입력해주세요">TEST 기관 소개글입니다</textarea>
+                                                <textarea name="agencyInfo" placeholder="기관에 대한 정보를 입력해주세요"></textarea>
                                             </div>
                                         </div>
                                         <!-- 종사자 소개글 입력 -->
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>본인 소개글*</label>
-                                                <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" id="testTest">TEST 종사자 소개글입니다</textarea>
+                                                <textarea name="medicInfo" placeholder="본인에 대한 정보를 입력해주세요" id="testTest"></textarea>
                                             </div>
                                         </div>
                                         <!-- 기관 운영 시간 -->
@@ -351,68 +351,68 @@
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>월요일</label>
-                                                    <input name="mon" type="text" id="mon" />
+                                                    <input name="mon" type="text" id="mon" placeholder="08:00~18:00"/>
                                                     <div class="m" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>화요일</label>
-                                                    <input name="tue" type="text" id="tue" />
+                                                    <input name="tue" type="text" id="tue" placeholder="08:00~18:00"/>
                                                     <div class="m" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>수요일</label>
-                                                    <input name="wed" type="text" id="wed" />
+                                                    <input name="wed" type="text" id="wed" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>목요일</label>
-                                                    <input name="thu" type="text" id="thu" />
+                                                    <input name="thu" type="text" id="thu" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>금요일</label>
-                                                    <input name="fri" type="text" id="fri" />
+                                                    <input name="fri" type="text" id="fri" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>토요일</label>
-                                                    <input name="sat" type="text" id="sat" />
+                                                    <input name="sat" type="text" id="sat" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>일요일</label>
-                                                    <input name="sun" type="text" id="sun" />
+                                                    <input name="sun" type="text" id="sun" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>공휴일</label>
-                                                    <input name="holiday" type="text" id="holiday" />
+                                                    <input name="holiday" type="text" id="holiday" placeholder="08:00~18:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <div class="form-group">
                                                     <label>점심시간</label>
-                                                    <input name="lunch" type="text" id="lunch" />
+                                                    <input name="lunch" type="text" id="lunch" placeholder="12:00~13:00"/>
                                                     <div class="agencyTelm" style="color: #55DDBD;"></div>
                                                 </div>
                                             </div>
                                         <!-- AGENCYTYPE 임의로 값 입력 -->
-                                        <input type="hidden" value="" name="agencyType" />
+                                        <input type="hidden" value="일반" name="agencyType" />
                                         <!-- USERNAME 임의로 값 입력 -->
                                         <!-- <input type="hidden" value="TestDoc1" name="username" /> -->
                                         <!-- 파일추가 버튼 누르면 파일추가 폼 생성되는 부분 -->

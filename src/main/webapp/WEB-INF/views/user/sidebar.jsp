@@ -22,6 +22,7 @@
             <li><a href="/pay/requestedPayList?m=${user.username }"><i class="lni lni-bookmark"></i>미납된 결제</a></li>
             <li><a href="/pay/completedPayList?m=${user.username }"><i class="lni lni-printer"></i>결제내역</a></li>
             <li><a href="#"><i class="lni lni-trash"></i> 회원 탈퇴</a></li>
+            <li><a href="/admin/medic/regist"><i class="lni lni-pencil-alt"></i>기관 추가 인원 등록</a></li>
         </ul>
         <div class="button">
             <a class="btn" href="/logout">로그아웃</a>
