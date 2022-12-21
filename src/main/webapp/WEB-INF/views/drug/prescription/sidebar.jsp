@@ -13,8 +13,8 @@
     <div class="dashboard-menu">
         <ul id="sidebarMenu">
             <sec:authorize access="hasRole('PHARMACIST')">
-            	<li><a href="/drug/prescription/list?username=pharmacist"><i class="lni lni-bookmark"></i>진료 대기</a></li>
-            	<li><a href="/drug/prescription/completedList?username=pharmacist"><i class="lni lni-heart"></i>진료 완료</a></li>
+            	<li><a href="/drug/prescription/list"><i class="lni lni-bookmark"></i>진료 대기</a></li>
+            	<li><a href="/drug/prescription/completedList"><i class="lni lni-heart"></i>진료 완료</a></li>
             </sec:authorize>
         </ul>
         <div class="button">
