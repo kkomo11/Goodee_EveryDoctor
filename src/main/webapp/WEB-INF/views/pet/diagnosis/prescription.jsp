@@ -142,7 +142,7 @@
                             	<textarea rows="3" cols="100" name="pDansAid" id="pDansAidInput"></textarea>
                             </div>
                             <div class="form-group">
-                            	<label>진료비</label>
+                            	<label>진료비 (약 비용도 포함해서 작성해주세요)</label>
                             	<input type="text" name="pDansCost" id="pDansCostInput">
                             </div>
                             <div class="button col-3">
