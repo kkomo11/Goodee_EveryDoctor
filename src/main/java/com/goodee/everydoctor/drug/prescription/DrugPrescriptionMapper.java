@@ -9,10 +9,6 @@ import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
 @Mapper
 public interface DrugPrescriptionMapper {
 
-	//	public List<DrugPrescriptionVO> findDrugPrescriptionSection() throws Exception;
-	//
-	//	public List<DrugPrescriptionVO> findDrugPrescriptionCategory() throws Exception;
-
 	public DrugPrescriptionVO findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
 
 	public List<DrugPrescriptionVO> findDrugPrescriptionList(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
@@ -26,7 +22,7 @@ public interface DrugPrescriptionMapper {
 	public List<HospitalDiagnosisVO> findCompletedList(DrugPrescriptionPager drugPrescriptionPager) throws Exception;
 
 	public List<HospitalDiagnosisVO> findCompletedListResult(DrugPrescriptionPager drugPrescriptionPager) throws Exception;
-	
+
 	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception;
 
 }

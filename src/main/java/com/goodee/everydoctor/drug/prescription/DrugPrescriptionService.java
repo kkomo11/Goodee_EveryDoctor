@@ -19,22 +19,6 @@ public class DrugPrescriptionService {
 
 	@Autowired
 	private DrugPrescriptionMapper drugPrescriptionMapper;
-	@Autowired
-	private HospitalDiagnosisMapper hospitalDiagnosisMapper;
-	@Autowired
-	private FileManager fileManager;
-	@Autowired
-	private FileMapper fileMapper;
-
-	//	public List<DrugPrescriptionVO> findDrugPrecriptionSection()throws Exception {
-	//		// TODO Auto-generated method stub
-	//		return drugPrescriptionMapper.findDrugPrescriptionSection();
-	//	}
-	//
-	//	public List<DrugPrescriptionVO> findDrugPrescriptionCategory()throws Exception {
-	//		// TODO Auto-generated method stub
-	//		return drugPrescriptionMapper.findDrugPrescriptionCategory();
-	//	}
 
 	public DrugPrescriptionVO findDrugPrescriptionDetail(DrugPrescriptionVO drugPrescriptionVO)throws Exception {
 		// TODO Auto-generated method stub
@@ -94,35 +78,10 @@ public class DrugPrescriptionService {
 
 		return dList;
 	}
-	
+
 	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
 		// TODO Auto-generated method stub
 		return drugPrescriptionMapper.modifyPrescriptionStatus(drugPrescriptionVO);
 	}
-
-	//	//진료완료된 병원 리스트
-	//	public int inputHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, FileVO fileVO)throws Exception{
-	//		//label
-	//		String label = "DANS";
-	//
-	//		//DB에 저장
-	//		int result = hospitalDiagnosisMapper.inputHospitalDiagnosis(hospitalDiagnosisVO);
-	//		fileVO.setNum(hospitalDiagnosisVO.getDansNum().intValue());
-	//		fileVO.setLabel("DANS");
-	//
-	//		//file도 저장
-	//		for(MultipartFile f: fileVO.getFiles()) {
-	//			//HDD저장 (저장경로에 label을 추가해준다.)
-	//			String fileName = fileManager.saveFile(f, label);
-	//			fileVO.setFileName(fileName);
-	//			fileVO.setFileOriName(f.getOriginalFilename());
-	//
-	//			//DB저장
-	//			result = fileMapper.inputFile(fileVO);
-	//		}
-	//
-	//		return result;
-	//	}
-
 
 }

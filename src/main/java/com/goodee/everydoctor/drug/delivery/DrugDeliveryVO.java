@@ -18,18 +18,8 @@ public class DrugDeliveryVO {
 	//택배 회사 이름
 	private String name;
 
-	//	//Status 뭔지 모름
-	//	private String msg;
-	//	private boolean status;
-	//	sweet tracker
-	//	//택배 회사 코드
-	//	private String t_code;
-	//	//운송장 번호
-	//	private String t_invoice;
-	//	발급받은 키
-
 	private MultipartFile []files;
-	
+
 	// 주소번호
 	private Integer addressNum;
 

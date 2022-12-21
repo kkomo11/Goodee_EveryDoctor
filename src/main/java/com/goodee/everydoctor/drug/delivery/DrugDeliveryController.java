@@ -32,20 +32,4 @@ public class DrugDeliveryController {
 
 	}
 
-	//	@GetMapping("detail")
-	//	public ModelAndView findDrugDeliveryDetail(DrugDeliveryVO drugDeliveryVO)throws Exception {
-	//		ModelAndView mv = new ModelAndView();
-	//		drugDeliveryVO=drugDeliveryService.findDrugDeliveryDetail(drugDeliveryVO);
-	//		mv.addObject("detail",drugDeliveryVO);
-	//		mv.setViewName("drug/delivery/detail");
-	//		return mv;
-	//	}
-
-	//	@RequestMapping(value="http://info.sweettracker.co.kr/tracking/5")
-	////	@RequestMapping("list")
-	//	public String urlMethod(HttpServletRequest request , HttpServletResponse response, Model model) throws Exception {		
-	//		// url.jsp라는 이름을 가진 팝업 생성
-	//		return "popUp";
-	//	}
-
 }

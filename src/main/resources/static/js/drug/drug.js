@@ -9,26 +9,26 @@ const thirdPreBtn = $("#thirdPreBtn");  // 세번째 단계 뒤로 버튼
 const submitBtn = $("#submitBtn");  // 세번째 단계 전송 버튼
 const reservationForm = $("#reservationForm");  // 전송 폼
 
-firstNextBtn.on("click", function(){
+firstNextBtn.on("click", function () {
   nav_item_details_tab.click();
 });
 
-secondPreBtn.on("click", function(){
+secondPreBtn.on("click", function () {
   nav_item_info_tab.click();
 });
 
-secondNextBtn.on("click", function(){
+secondNextBtn.on("click", function () {
   nav_user_info_tab.click();
 });
 
-thirdPreBtn.on("click", function(){
+thirdPreBtn.on("click", function () {
   nav_item_details_tab.click();
 });
 
-submitBtn.on("click", function(){
+submitBtn.on("click", function () {
   let submitFlag = validation();
 
-  if(submitFlag){
-      reservationForm.submit();
+  if (submitFlag) {
+    reservationForm.submit();
   }
 });
