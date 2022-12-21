@@ -138,14 +138,14 @@
                                     <a href="/logout"><i class="lni lni-enter"></i> 로그아웃</a>
                                 </li>
                                 </sec:authorize>
-                                <sec:authorize access="isAnonymous()">
-                                  <li>
-                                    <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
-                                  </li>
-                                  <li>
-                                    <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
-                                  </li>
-                                </sec:authorize>
+			                    <sec:authorize access="isAnonymous()">
+			                      <li>
+			                        <a href="/user/login"><i class="lni lni-enter"></i> 로그인</a>
+			                      </li>
+			                      <li>
+			                        <a href="/user/registration"><i class="lni lni-user"></i> 회원가입</a>
+			                      </li>
+			                    </sec:authorize>
                             </ul>
                         </div>
                     <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
