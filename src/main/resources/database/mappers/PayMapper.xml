@@ -4,6 +4,48 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
 <mapper namespace="com.goodee.everydoctor.pay.PayMapper">
 
+	<select id="findPayAboutPetdocCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PAYNUM)
+		FROM PAY P
+		INNER JOIN PETDIAGNOSIS PD 
+		ON (P.PDANSNUM = PD.PDANSNUM)
+		WHERE PD.PDOCTORNAME = #{username}
+	</select>
+
+	<select id="findPayAboutPetdoc" parameterType="PetDiagnosisPager" resultType="PayVO">
+		SELECT P.ORDERNAME, P.AMOUNT, P.PDANSNUM, P.STATUS
+		FROM PAY P
+		INNER JOIN PETDIAGNOSIS PD 
+		ON (P.PDANSNUM = PD.PDANSNUM)
+		WHERE PD.PDOCTORNAME = #{username}
+		ORDER BY P.PAYNUM DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+
+	<insert id="inputDrugDelivery" parameterType="DrugDeliveryVO">
+		INSERT INTO DRUGDELIVERY VALUES (#{drugDeliveryNum}, #{payNum}, #{addressNum})
+	</insert>
+
+	<select id="findDeliveryNum" resultType="DrugDeliveryVO">
+		SELECT DRUGDELIVERYNUM FROM DRUGDELIVERY WHERE PAYNUM IS NULL
+	</select>
+	
+	<select id="findUserAddress" parameterType="UserAddressVO" resultType="UserAddressVO">
+		SELECT UA.* 
+		FROM USERS U
+		INNER JOIN USERADDRESS UA 
+		ON (U.USERNAME = UA.USERNAME)
+		WHERE U.USERNAME = #{username}
+	</select>
+	
+	<select id="findAddressCount" parameterType="UserVO" resultType="Integer">
+		SELECT COUNT(ADDRESSNUM) FROM USERADDRESS WHERE USERNAME = #{username}
+	</select>
+
+	<select id="findFillCount" parameterType="PetDiagnosisVO" resultType="Integer">
+		SELECT COUNT(PETFILLNUM) FROM PETFILLS WHERE PDANSNUM = #{pDansNum}
+	</select>
+
 	<select id="findMyCompletedPayListCount" parameterType="PetDiagnosisPager" resultType="Long">
 		SELECT COUNT(PAYNUM) FROM PAY WHERE USERNAME = #{username} AND STATUS = 'DONE'
 	</select>

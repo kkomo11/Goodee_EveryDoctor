@@ -16,8 +16,6 @@ public class DrugPrescriptionController {
 
 	@Autowired
 	private DrugPrescriptionService drugPrescriptionService;
-	
-	
 
 	//병원에서 넘어온 진료 처방완료
 	@GetMapping("list")
@@ -39,12 +37,12 @@ public class DrugPrescriptionController {
 
 		return mv;
 	}
-	
+
 	//조제상태바꾸기
 	@PostMapping("prescribe")
 	@ResponseBody
 	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
-		 return drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
+		return drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
 	}
 
 	@GetMapping("detail")
@@ -55,16 +53,9 @@ public class DrugPrescriptionController {
 		mv.addObject("list", ar);
 
 		//처방된약
-		//List<DrugPrescriptionVO> drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
+
 		DrugPrescriptionVO drug = drugPrescriptionService.findDrugPrescriptionDetail(drugPrescriptionVO);
 		String drugName = "";
-		/*for(int i = 0; i < drug.size(); i++) {
-			drugName += drug.get(i).getDrugName();
-			if(i != drug.size()-1) {
-				drugName += ", ";
-			}
-		}*/
-
 
 		//운송장번호 랜덤출력
 		List<DrugPrescriptionVO> deliveryNumList = drugPrescriptionService.findDrugDeliveryNum();

@@ -16,13 +16,6 @@
     </head>
 
     <body>
-      <!--[if lte IE 9]>
-          <p class="browserupgrade">
-            You are using an <strong>outdated</strong> browser. Please
-            <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-            your experience and security.
-          </p>
-        <![endif]-->
 
       <!-- Preloader -->
       <div class="preloader">
@@ -65,14 +58,15 @@
               <div class="main-content">
                 <!-- Start Post Ad Block Area -->
                 <div class="dashboard-block mt-0">
-                  <h3 class="block-title">보유 약 현황
+                  <h3 class="block-title">
+                    보유 약 현황
                     <!-- 검색창 -->
                     <div class="row mb-3">
                       <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
 
                         <div class="navbar bg-light">
-                          <label class="visually-hidden" for="Kind">Kind</label>
-                          <select name="kind" class="form-select" id="Kind">
+                          <label class="visually-hidden" for="Kind">Kind</label> <select name="kind" class="form-select"
+                            id="Kind">
                             <option class="kinds" value="drugName">약이름</option>
                             <option class="kinds" value="drugInfo">약정보</option>
                           </select>
@@ -85,9 +79,11 @@
                               placeholder="Search">
                           </div>
                         </div>
-                         <div class="navbar bg-light">
-                                  <button class="btn btn-outline-success" type="submit"><i class="lni lni-search-alt"></i> Search</button>
-                                </div>
+                        <div class="navbar bg-light">
+                          <button class="btn btn-outline-success" type="submit">
+                            <i class="lni lni-search-alt"></i> Search
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </h3>
@@ -117,8 +113,7 @@
                       <nav aria-label="Page navigation example">
                         <ul class="pagination-list">
                           <c:if test="${pager.pre}">
-                            <li class="page-item">
-                              <a class="page-link"
+                            <li class="page-item"><a class="page-link"
                                 href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">&laquo;</a>
                             </li>
                           </c:if>
@@ -127,8 +122,7 @@
                                 href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
                           </c:forEach>
                           <c:if test="${pager.next}">
-                            <li class="page-item">
-                              <a class="page-link"
+                            <li class="page-item"><a class="page-link"
                                 href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">&raquo;</a>
                             </li>
                           </c:if>

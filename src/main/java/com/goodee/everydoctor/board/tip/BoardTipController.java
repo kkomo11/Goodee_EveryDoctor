@@ -16,7 +16,7 @@ public class BoardTipController {
 
 	@GetMapping("list")
 	public void findBoardTipList(BoardTipVO boardTipVO)throws Exception {
-		
+
 	}
 
 	@GetMapping("detail")

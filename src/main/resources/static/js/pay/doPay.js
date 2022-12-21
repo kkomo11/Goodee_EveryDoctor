@@ -1,5 +1,6 @@
 
 const doPayBtn = $("#doPayBtn");
+const doDeliveryPayBtn = $("#doDeliveryPayBtn");
 
 doPayBtn.on("click", () => {
     const usernameInput = $("#usernameInput");      // 유저이름창
@@ -95,5 +96,69 @@ doPayBtn.on("click", () => {
             }
         });
     }
+
+});
+
+doDeliveryPayBtn.on("click", () => {
+    const usernameDeliveryInput = $("#usernameDeliveryInput");      // 유저이름창
+    const amountDeliveryInput = $("#amountDeliveryInput");          // 결제금액창
+    const orderNameDeliveryInput = $("#orderNameDeliveryInput");    // 주문이름창
+    const orderIdDeliveryInput = $("#orderIdDeliveryInput");        // 주문아이디창
+    const payNumDeliveryInput = $("#payNumDeliveryInput");          // 결제번호창
+    const pDansNumDeliveryInput = $("#pDansNumDeliveryInput");      // 반려동물 진료번호창
+
+    let fillCount = 0;
+    let addressCount = 0;
+
+    // 배송 결제 버튼을 누르면 먼저 처방받은 약이 있나 확인
+    $.ajax({
+        type: "POST",
+        url: "/pay/findFillCount",
+        data: {
+            pDansNum: pDansNumDeliveryInput.val()
+        },
+        success: result => {
+            fillCount = result;
+
+            if(fillCount > 0){
+
+                // 처방 받은 약이 있으면 등록된 배송지가 있나 체크
+                $.ajax({
+                    type: "POST",
+                    url: "/pay/findAddressCount",
+                    data: {
+                        username: usernameDeliveryInput.val()
+                    },
+                    success: result => {
+                        addressCount = result;
+
+                        // 등록된 배송지가 1개 이상 있으면 페이지 이동
+                        if(addressCount > 0){
+                            let doPayDeliveryFlag = confirm("배송지를 선택하고 결제가 진행됩니다");
+        
+                            if(doPayDeliveryFlag){
+                                location.href = "/pay/doDeliveryPay?pn=" + payNumDeliveryInput.val() + "&username=" + usernameDeliveryInput.val() + 
+                                    "&orderId=" + orderIdDeliveryInput.val() + "&orderName=" + orderNameDeliveryInput.val() + 
+                                    "&amount=" + amountDeliveryInput.val();
+                            }
+                        } else {
+                            alert("배송지를 먼저 등록해주세요");
+                            location.href = "/user/address";
+                        }
+
+                    },
+                    error: result => {
+                        console.log(result);
+                    }
+                });
+
+            } else {
+                alert("해당 진료에서 처방받은 약이 없습니다.");
+            }
+        },
+        error: result => {
+            console.log(result);
+        }
+    });
 
 });
