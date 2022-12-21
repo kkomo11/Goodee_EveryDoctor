@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                   <ul id="nav" class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="dd-menu collapsed active" href="/hospital/home" aria-label="Toggle navigation">병원</a>
+                      <a class="dd-menu collapsed" href="/hospital/home" aria-label="Toggle navigation">병원</a>
                     </li>
                     <li class="nav-item">
                       <a class="dd-menu collapsed" href="/pet/home" aria-label="Toggle navigation">동물병원</a>
@@ -99,13 +99,7 @@
                     </sec:authorize>
                     <sec:authorize access="hasAnyRole('ADMIN')">
                       <li class="nav-item">
-                        <a class="dd-menu collapsed" href="/admin/admin/reportList" data-bs-toggle="collapse"
-                          data-bs-target="#submenu-1-5" aria-controls="navbarSupportedContent" aria-expanded="false"
-                          aria-label="Toggle navigation">관리자</a>
-                        <ul class="sub-menu collapse" id="submenu-1-5">
-                          <li class="nav-item"><a href="/drug/prescription/list">병원진료내역</a></li>
-                          <li class="nav-item"><a href="/drug/list">보유약현황</a></li>
-                        </ul>
+                        <a class="dd-menu collapsed" href="/admin/admin/dashboard" aria-label="Toggle navigation">관리자</a>
                       </li>
                     </sec:authorize>
                   </ul>

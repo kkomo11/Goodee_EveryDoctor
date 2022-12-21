@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/admin/dashboard">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -40,7 +40,6 @@
                 <a class="collapse-item" href="/admin/admin/reportList">신고리스트</a>
                 <a class="collapse-item" href="/admin/admin/cooperationList">제휴리스트</a>
                 <a class="collapse-item" href="/admin/admin/agencyList">기관리스트</a>
-                <a class="collapse-item" href="/admin/admin/userList">회원리스트</a>
             </div>
         </div>
     </li>
