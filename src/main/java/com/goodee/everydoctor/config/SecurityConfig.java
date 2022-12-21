@@ -52,13 +52,13 @@ public class SecurityConfig {
 		
 		//요청 권한 허용
 		httpSecurity.authorizeRequests()
-					.antMatchers( "/user/login", "/user/registration","/pet/findPetdocList","/drug/store","/location/viewCorona","/consult/list","/consult/answer/count","/consult/answer/list").permitAll()
+					.antMatchers( "/user/login", "/user/registration","/pet/findPetdocList","/drug/store","/location/viewCorona","/consult/list","/consult/answer/count","/consult/answer/list","/login/**").permitAll()
 					.antMatchers("/pay/payAboutPetdocList").hasAuthority("PETDOC")
 					.antMatchers("/subscribe", "/hospital/diagnosis/**","/consult/**", "/pay/**").authenticated()
 					.antMatchers("/consult/answer/**").hasAnyAuthority("DOCTOR", "NURSE", "PETDOC", "PETNURSE")
-					.antMatchers("/hospital/**", "/pet/home").permitAll()
-					.antMatchers("/pet/petdocDetail").permitAll()
-					.anyRequest().authenticated();
+					.antMatchers("/hospital/**", "/pet/home","/pet/petdocDetail").permitAll()
+					.anyRequest().permitAll();
+//					.anyRequest().authenticated();
 		
 		//로그인
 		httpSecurity.formLogin()
