@@ -29,5 +29,8 @@ public class DrugDeliveryVO {
 	//	발급받은 키
 
 	private MultipartFile []files;
+	
+	// 주소번호
+	private Integer addressNum;
 
 }

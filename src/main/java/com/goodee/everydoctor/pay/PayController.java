@@ -7,6 +7,7 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.goodee.everydoctor.drug.delivery.DrugDeliveryVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.user.UserVO;
+import com.goodee.everydoctor.user.address.UserAddressVO;
 
 @Controller
 @RequestMapping("/pay/*")
@@ -30,6 +34,59 @@ public class PayController {
 	
 	@Autowired
 	private PayService payService;
+	
+	@GetMapping("payAboutPetdocList")
+	public ModelAndView findPayAboutPetdoc(PetDiagnosisPager petDiagnosisPager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("payList", payService.findPayAboutPetdoc(petDiagnosisPager));
+		mv.addObject("pager", petDiagnosisPager);
+		
+		mv.setViewName("pay/payAboutPetdocList");
+		
+		return mv;
+	}
+	
+	@PostMapping("inputDrugDelivery")
+	@ResponseBody
+	public int inputDrugDelivery(DrugDeliveryVO drugDeliveryVO) throws Exception {
+		return payService.inputDrugDelivery(drugDeliveryVO);
+	}
+	
+	@PostMapping("findAddressCount")
+	@ResponseBody
+	public int findAddressCount(UserVO userVO) throws Exception {
+		return payService.findAddressCount(userVO);
+	}
+	
+	@PostMapping("findFillCount")
+	@ResponseBody
+	public int findFillCount(PetDiagnosisVO petDiagnosisVO) throws Exception {
+		return payService.findFillCount(petDiagnosisVO);
+	}
+	
+	@GetMapping("doDeliveryPay")
+	public ModelAndView getDoDeliveryPage(Long pn, String username, String orderId, String orderName, Integer amount) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		PayVO deliveryPayVO = new PayVO();
+		deliveryPayVO.setPayNum(pn);
+		deliveryPayVO.setUsername(username);
+		deliveryPayVO.setOrderId(orderId);
+		deliveryPayVO.setOrderName(orderName);
+		deliveryPayVO.setAmount(amount);
+		
+		UserAddressVO userAddressVO = new UserAddressVO();
+		userAddressVO.setUsername(username);
+		List<UserAddressVO> addrList = payService.findUserAddress(userAddressVO);
+		
+		mv.addObject("deliveryPayVO", deliveryPayVO);
+		mv.addObject("addrList", addrList);
+		
+		mv.setViewName("pay/doDeliveryPay");
+		
+		return mv;
+	}
 	
 	@GetMapping("completedPayList")
 	public ModelAndView findMyCompletedPayList(PetDiagnosisPager petDiagnosisPager, String m) throws Exception {
