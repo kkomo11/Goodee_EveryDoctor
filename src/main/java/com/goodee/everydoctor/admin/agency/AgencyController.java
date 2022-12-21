@@ -72,5 +72,11 @@ public class AgencyController {
 	public List<HospitalSectionVO> findPetHospitalSection()throws Exception{
 		return agencyService.findPetHospitalSection();
 	}
+	
+	@PostMapping("deleteAgency")
+	@ResponseBody
+	public int deleteAgency(AgencyVO agencyVO)throws Exception{
+		return agencyService.deleteAgency(agencyVO);
+	}
 
 }

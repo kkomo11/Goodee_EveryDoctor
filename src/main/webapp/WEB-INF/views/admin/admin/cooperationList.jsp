@@ -81,7 +81,7 @@
                                 <div class="tab-pane fade active show" id="nav-latest" role="tabpanel"
                                     aria-labelledby="nav-latest-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>
@@ -112,7 +112,7 @@
                                 <!-- 간호사 제휴 리스트 -->
                                 <div class="tab-pane fade" id="nav-nurse" role="tabpanel" aria-labelledby="nav-nurse-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>
@@ -143,7 +143,7 @@
                                 <!-- 수의사 제휴 리스트 -->
                                 <div class="tab-pane fade" id="nav-petDoc" role="tabpanel" aria-labelledby="nav-petDoc-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>
@@ -174,7 +174,7 @@
                                 <!-- 수간호사 제휴 리스트 -->
                                 <div class="tab-pane fade" id="nav-petNurse" role="tabpanel" aria-labelledby="nav-petNurse-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>
@@ -205,7 +205,7 @@
                                 <!-- 약사 제휴 리스트 -->
                                 <div class="tab-pane fade" id="nav-pharmacy" role="tabpanel" aria-labelledby="nav-pharmacy-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>
@@ -236,7 +236,7 @@
                                 <!-- 보호소 제휴 리스트 -->
                                 <div class="tab-pane fade" id="nav-petHotel" role="tabpanel" aria-labelledby="nav-petHotel-tab">
                                     <div class="row">
-                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-bordered" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>이름</th>

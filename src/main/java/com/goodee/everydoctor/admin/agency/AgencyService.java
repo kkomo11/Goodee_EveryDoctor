@@ -1,5 +1,6 @@
 package com.goodee.everydoctor.admin.agency;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,18 @@ public class AgencyService {
 	//동물병원 진료과목 불러오기
 	public List<HospitalSectionVO> findPetHospitalSection()throws Exception{
 		return agencyMapper.findPetHospitalSection();
+	}
+	
+	//기관 영구 삭제
+	public int deleteAgency(AgencyVO agencyVO)throws Exception{
+		List<FileVO> fileVOs = agencyMapper.findAgencyFile(agencyVO);
+			for(FileVO f : fileVOs) {
+				if(f != null) {
+					f.setLabel(label);
+					fileManager.deleteFile(f);
+				}
+			}
+		return agencyMapper.deleteAgency(agencyVO);
 	}
 	
 }
