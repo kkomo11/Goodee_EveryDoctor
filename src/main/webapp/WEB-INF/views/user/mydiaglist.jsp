@@ -119,7 +119,7 @@
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
 	                                            <ul class="action-btn">
-	                                                <li><a href="/hospital/diagnosis/reservation?doctorName=${diagnosisVO.doctorName}" style="width: 100px; border-radius: 10%; margin-right: 5px;">다시 접수하기</a></li>
+	                                                <li><a href="javascript:void(0)" style="width: 100px; border-radius: 10%; margin-right: 5px;">다시 접수하기</a></li>
 	                                            </ul>
 	                                        </div>
 	                                    </div>
