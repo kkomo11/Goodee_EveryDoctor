@@ -97,7 +97,7 @@
                                     </li>
                                     <li>
                                         <c:if test="${consultDetail.hospitalCategoryVO[0].categoryIcon != null }">
-	                                     	<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultDetail.hospitalCategoryVO[0].categoryIcon }">
+	                                     	<img class="categoryIconImg" alt="" src="${consultDetail.hospitalCategoryVO[0].categoryIcon }">
 	                                    </c:if>
 	                                    ${consultDetail.hospitalCategoryVO[0].categoryName }
                                     </li>

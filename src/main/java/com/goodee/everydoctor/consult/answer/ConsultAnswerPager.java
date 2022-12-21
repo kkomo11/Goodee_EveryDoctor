@@ -13,7 +13,7 @@ public class ConsultAnswerPager {
 	private Long consultNum;
 	
 	public ConsultAnswerPager() {
-		this.perPage=10L;
+		this.perPage=5L;
 	}
 
 	//1. mapper에서 사용할 값 계산
@@ -24,8 +24,8 @@ public class ConsultAnswerPager {
 	//2. Jsp에서 사용할 값 계산
 	public void getNum(Long totalCount)throws Exception {
 		//2. totalCount로 totalPage구하기
-		this.totalPage = totalCount/(this.getPerPage() / 2);
-		if(totalCount%(this.getPerPage() / 2) != 0) {
+		this.totalPage = totalCount / this.getPerPage();
+		if(totalCount % this.getPerPage() != 0) {
 			totalPage++;
 		}
 
@@ -46,7 +46,7 @@ public class ConsultAnswerPager {
 
 	public Long getPerPage() {
 		if(this.perPage==null) {
-			this.perPage=10L;
+			this.perPage=5L;
 		}
 		return perPage;
 	}
