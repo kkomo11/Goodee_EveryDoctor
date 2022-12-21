@@ -16,7 +16,7 @@ $(".prescribeBtn").click(function() {
             Swal.fire("약 처방이 완료되었습니다.");
             location.href = "/drug/prescription/completedList";
         }else{
-            alert("처방이 실패했습니다");
+          Swal.fire("처방이 실패했습니다");
         }
         
     },
