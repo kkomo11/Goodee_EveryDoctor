@@ -107,7 +107,7 @@
                               <div class="col-lg-5 col-md-5 col-12">
                                 <div class="item-image">
                                   <c:if test="${completed.dansFiles.size() > 0 }">
-                                    <img src="/file/PETDANS/${completed.dansFiles[0].fileName }" alt="#">
+                                    <img src="/file/DANS/${completed.dansFiles[0].fileName }" alt="#">
                                   </c:if>
                                   <c:if test="${completed.dansFiles.size() <= 0 }">
                                     <img src="/images/pet/home/website_icon.svg" alt="#">
