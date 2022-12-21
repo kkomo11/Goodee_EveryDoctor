@@ -48,6 +48,9 @@ public class DrugPrescriptionController {
 	@PostMapping("prescribe")
 	@ResponseBody
 	public int modifyPrescriptionStatus(DrugPrescriptionVO drugPrescriptionVO) throws Exception {
+		notificationController.dispatchEventToClients("처방전 완료", drugPrescriptionVO.getUsername()+"님의 처방전이 완료되어 택배 배송준비 시작합니다.", "", drugPrescriptionVO.getUsername());
+			System.out.println("되나요 상태님 가져오는거요? "+ drugPrescriptionVO.getUsername());
+			System.out.println("되나요 상태님 가져오는거요?222 "+ drugPrescriptionVO.getPatient());
 		 return drugPrescriptionService.modifyPrescriptionStatus(drugPrescriptionVO);
 	}
 

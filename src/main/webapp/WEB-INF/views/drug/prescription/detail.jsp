@@ -209,6 +209,7 @@
                                     <label>회원아이디</label>
                                     <option value="detail?userName=${username}" data-sub="sub1">${drug.username}
                                     </option>
+                                    <input type="hidden" id="alarmID" value="${drug.username}">
                                      <!-- <input name="name" type="text"
                                       placeholder="Enter your name(USERNAME)"> -->
                                   </div>

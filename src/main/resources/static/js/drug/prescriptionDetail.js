@@ -4,11 +4,13 @@ $(".prescribeBtn").click(function() {
   $(".prescribeBtn").attr("data-dansNum");
   console.log($(".prescribeBtn").attr("data-dansNum"));
   let dansNum = $(".prescribeBtn").attr("data-dansNum");
+  let username = $("#alarmID").val();
   $.ajax({
     type: "POST",
     url: "/drug/prescription/prescribe",
     data: {
-        dansNum : dansNum
+        dansNum : dansNum,
+        username : username
     },
     
     success: function(result){
