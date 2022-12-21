@@ -48,11 +48,10 @@
                             <li class="mega-menu-title">마이페이지</li>
                             <li class="nav-item"><a href="/user/profile">내 프로필</a>
                             </li>
-                            <li class="nav-item"><a href="/user/mydiaglist">내 진료내역</a>
+                            <li class="nav-item"><a href="/user/diagnosis/mylist">내 진료내역</a>
                             </li>
                             <li class="nav-item"><a href="/user/address">내 주소 관리</a></li>
-                            <li class="nav-item"><a href="/user/petdiaglist">반려동물 진료내역</a></li>
-                            <li class="nav-item"><a href="#">내 상담내역</a></li>
+                            <li class="nav-item"><a href="/user/diagnosis/petlist">반려동물 진료내역</a></li>
                               <li class="nav-item"><a href="/pet/profile/myPetList?username=${member.username }">반려동물
                                   관리</a></li>
                               <li class="nav-item"><a href="/pay/myPay?m=${member.username }">내 결제정보</a></li>
