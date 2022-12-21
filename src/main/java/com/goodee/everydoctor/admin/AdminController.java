@@ -24,13 +24,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/admin/admin/*")
 public class AdminController {
-	
+
 	@Autowired
 	private ReportService reportService;
-	
+
 	@Autowired
 	private AdminService adminService;
-	
+
 	//신고리스트
 	@GetMapping("reportList")
 	public ModelAndView findReportList(Pager pager)throws Exception{
@@ -41,12 +41,12 @@ public class AdminController {
 		mv.setViewName("/admin/admin/reportList");
 		return mv;
 	}
-	
+
 	@GetMapping("cooperationList")
 	public void cooperationList()throws Exception{
-		
+
 	}
-	
+
 	//제휴신청 리스트 불러오기
 	@GetMapping("findCooperationList")
 	@ResponseBody
@@ -56,56 +56,56 @@ public class AdminController {
 		map.put("list", adminService.findCooperationList(pager));
 		return map;
 	}
-	
+
 	//제휴신청 리스트 모달창에 가져올 Detail 내용
 	@GetMapping("findCooperationDetail")
 	@ResponseBody
 	public MedicVO findCooperationDetail(String username)throws Exception{
 		return adminService.findCooperationDetail(username);
 	}
-	
+
 	//관리자 승인 시 종사자 role 의사로 바꾸기
 	@PostMapping("modifyRoleDoctor")
 	@ResponseBody
 	public int inputRoleDoctor(UserVO userVO)throws Exception{
 		return adminService.inputRoleDoctor(userVO);
 	}
-	
+
 	//관리자 승인 시 종사자 role 간호사로 바꾸기
 	@PostMapping("modifyRoleNurse")
 	@ResponseBody
 	public int inputRoleNurse(UserVO userVO)throws Exception{
 		return adminService.inputRoleNurse(userVO);
 	}
-	
+
 	//관리자 승인 시 종사자 role 수의사로 바꾸기
 	@PostMapping("modifyRolePetDoc")
 	@ResponseBody
 	public int inputRolePetDoc(UserVO userVO)throws Exception{
 		return adminService.inputRolePetDoc(userVO);
 	}
-			
+
 	//관리자 승인 시 종사자 role 수간호사로 바꾸기
 	@PostMapping("modifyRolePetNurse")
 	@ResponseBody
 	public int inputRolePetnurse(UserVO userVO)throws Exception{
 		return adminService.inputRolePetnurse(userVO);
 	}
-	
+
 	//관리자 승인 시 종사자 role 약사로 바꾸기
 	@PostMapping("modifyRolePharmacist")
 	@ResponseBody
 	public int inputRolePharmacist(UserVO userVO)throws Exception{
 		return adminService.inputRolePharmacist(userVO);
 	}
-	
+
 	//MedicEnabled 1로 수정
 	@PostMapping("modifyMedicEnabled")
 	@ResponseBody
 	public int modifyMedicEnabled(String username)throws Exception{
 		return adminService.modifyMedicEnabled(username);
 	}
-	
+
 	@GetMapping("dashboard")
 	public ModelAndView dashboard()throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -120,7 +120,7 @@ public class AdminController {
 		mv.setViewName("/admin/admin/dashboard");
 		return mv;
 	}
-	
+
 	//이번 달 신청된 병원 진료 수
 	@GetMapping("findDoughnutChart")
 	@ResponseBody
@@ -134,12 +134,12 @@ public class AdminController {
 		map.put("findThisMonthReportUnchecked", findThisMonthReportUnchecked);
 		return map;
 	};
-	
+
 	@GetMapping("agencyList")
 	public void agencyList()throws Exception{
-		
+
 	}
-	
+
 	@GetMapping("findAgencyList")
 	@ResponseBody
 	public Map<String, Object> findAgencyList(Pager pager)throws Exception{
@@ -148,6 +148,6 @@ public class AdminController {
 		map.put("list", adminService.findAgencyList(pager));
 		return map;
 	}
-	
+
 
 }

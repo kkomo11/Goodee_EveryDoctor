@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>회원 리스트</title>
+    <title>기관 리스트</title>
 
     <!-- Custom fonts for this template -->
     <link href="/knj/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

@@ -1,12 +1,8 @@
 package com.goodee.everydoctor.admin;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.goodee.everydoctor.admin.agency.AgencyVO;
 import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.user.UserMapper;
@@ -71,11 +67,8 @@ public class AdminService {
 		public int inputRolePharmacist(UserVO userVO)throws Exception{
 			return userMapper.inputRolePharmacist(userVO);
 		}
-		
-		//MedicEnabled 1로 tnwjd
 
 		//MedicEnabled 1로 변경
-
 		public int modifyMedicEnabled(String username)throws Exception{
 			return adminMapper.modifyMedicEnabled(username);
 		}
