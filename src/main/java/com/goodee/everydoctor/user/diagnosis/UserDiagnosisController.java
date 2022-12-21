@@ -56,7 +56,6 @@ public class UserDiagnosisController {
 		pager.setPerPage(5L);
 		
 		List<PetDiagnosisVO> petDiagnosisVOs = userDiagnosisService.getPetlist(pager);
-		log.info("mylist {}", petDiagnosisVOs.get(0).getPDansNum());
 		
 		mv.addObject("diagnosisVOs", petDiagnosisVOs);
 		mv.addObject("pager", pager);

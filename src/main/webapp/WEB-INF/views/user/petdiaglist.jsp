@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,7 +123,9 @@
 	                                            <p>${diagnosisVO.medicVO.agencyVO.agencyTel}</p>
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
-	                                            ${diagnosisVO.getPDansReqTime()}
+	                                        	<fmt:parseDate value="${diagnosisVO.getPDansReqTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="parseDT" type="both"></fmt:parseDate>
+												<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${parseDT}"/>					                     
+												  
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
 	                                            <ul class="action-btn">
