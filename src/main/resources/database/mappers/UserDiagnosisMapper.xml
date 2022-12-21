@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="findHospitalDiagnosisListbyUsername" parameterType="Pager" resultMap="GetHospitalDiagnosisList">
-		SELECT D.DANSNUM, D.DOCTORNAME, DU.NAME , A.AGENCYNAME , A.AGENCYTEL, D.DANSREQTIME 
+		SELECT D.DANSNUM, D.DOCTORNAME, D.DANSREQTIME, DU.NAME , A.AGENCYNAME , A.AGENCYTEL 
 		FROM DIAGNOSIS D 
 			LEFT JOIN USERS DU
 			ON D.DOCTORNAME = DU.USERNAME 
@@ -27,17 +27,17 @@
 		<result column="DOCTORNAME" property="doctorName" />
 		<result column="DANSREQTIME" property="dansReqTime"/>
 		<association property="medicVO" javaType="MedicVO">
+			<association property="userVO" javaType="UserVO">
+				<result column="name" property="name"/>
+			</association>
 			<association property="agencyVO" javaType="AgencyVO">
 				<result column="agencyName" property="agencyName"/>
 				<result column="agencyTel" property="agencyTel"/>
 			</association>
-			<association property="userVO" javaType="UserVO">
-				<result column="name" property="name"/>
-			</association>
 		</association>
 	</resultMap>
 	
-	<select id="findHospitalDiagnosisDetail" parameterType="UserVO" resultMap="GetHospitalDiagnosisList">
+	<select id="findPetDiagnosisListbyUsername" parameterType="UserVO" resultMap="GetPetDiagnosisList">
 		SELECT DU.NAME AS '의사이름', A.AGENCYNAME AS '병원이름', A.AGENCYTEL AS '병원번호', D.DANSREQTIME AS '진료시간', D.DANSCONTENT AS '증상', DF.DANSFILENAME AS '파일명', DF.DANSFILEORINAME AS '원본명' FROM DIAGNOSIS D 
 		LEFT JOIN DANSFILE DF
 		ON D.DANSNUM = DF.DANSNUM 
@@ -49,5 +49,20 @@
 		ON M.AGENCYNUM = A.AGENCYNUM 
 		WHERE D.USERNAME = #{username}
 	</select>
+	
+	<resultMap type="PetDiagnosisVO" id="GetPetDiagnosisList">
+		<id column="PDANSNUM" property="pDansNum"/>
+		<result column="DOCTORNAME" property="doctorName" />
+		<result column="DANSREQTIME" property="dansReqTime"/>
+		<association property="medicVO" javaType="MedicVO">
+			<association property="userVO" javaType="UserVO">
+				<result column="name" property="name"/>
+			</association>
+			<association property="agencyVO" javaType="AgencyVO">
+				<result column="agencyName" property="agencyName"/>
+				<result column="agencyTel" property="agencyTel"/>
+			</association>
+		</association>
+	</resultMap>
 	
 </mapper>

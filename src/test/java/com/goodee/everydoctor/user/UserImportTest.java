@@ -30,7 +30,7 @@ class UserImportTest {
 	
 
 
-	@Test
+//	@Test
 	void certificationTest() throws Exception{
 		IamportClient client = new IamportClient(apiKey,apiSecret);
 		log.info("아임포트 key {}   secret {}", apiKey, apiSecret);

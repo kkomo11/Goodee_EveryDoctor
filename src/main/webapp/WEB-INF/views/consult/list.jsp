@@ -83,7 +83,7 @@
                                 	<li>
                                     	<a href="/consult/list?kind=category&search=${category.categoryNum }">
                                     		<c:if test="${category.categoryIcon != null }">
-                                    			<img class="categoryIconImg" src="/images/hospital/home/${category.categoryIcon }">
+                                    			<img class="categoryIconImg" src="${category.categoryIcon }">
                                     		</c:if>
                                     		${category.categoryName }
                                     	</a>
@@ -151,7 +151,7 @@
 	                                                        </h3>
 	                                                        <p class="location"><a href="/consult/detail?consultNum=${consultItem.consultNum }">
 	                                                        	<c:if test="${consultItem.hospitalCategoryVO[0].categoryIcon != null }">
-	                                                        		<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultItem.hospitalCategoryVO[0].categoryIcon }">
+	                                                        		<img class="categoryIconImg" alt="" src="${consultItem.hospitalCategoryVO[0].categoryIcon }">
 	                                                        	</c:if>
 	                                                        ${consultItem.hospitalCategoryVO[0].categoryName }</a>
 	                                                        </p>
@@ -224,7 +224,7 @@
 			                                                        </h3>
 			                                                        <p class="location"><a href="/consult/detail?consultNum=${consultItem.consultNum }">
 			                                                        	<c:if test="${consultItem.hospitalCategoryVO[0].categoryIcon != null }">
-			                                                        		<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultItem.hospitalCategoryVO[0].categoryIcon }">
+			                                                        		<img class="categoryIconImg" alt="" src="${consultItem.hospitalCategoryVO[0].categoryIcon }">
 			                                                        	</c:if>
 			                                                        ${consultItem.hospitalCategoryVO[0].categoryName }</a>
 			                                                        </p>
@@ -272,34 +272,6 @@
         </div>
     </section>
     <!-- End Items Listing List -->
-
-    <!-- Start Newsletter Area -->
-    <div class="newsletter section">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="title">
-                            <i class="lni lni-alarm"></i>
-                            <h2>Newsletter</h2>
-                            <p>We don't send spam so don't worry.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="form">
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Your email address" type="email">
-                                <div class="button">
-                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter Area -->
 
     <!-- Start Footer Area -->
     <c:import url="../temp/footer.jsp"></c:import>

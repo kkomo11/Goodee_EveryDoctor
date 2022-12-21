@@ -27,46 +27,6 @@
             font-size: 18px;
             font-weight: 500;
         }
-
-        .toggleSwitch {
-            appearance: none;
-            position: relative;
-            border: max(2px, 0.1em) solid gray;
-            border-radius: 1.25em;
-            width: 2.25em;
-            height: 1.25em;
-        }
-
-        .toggleSwitch::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            width: 1em;
-            height: 1em;
-            border-radius: 50%;
-            transform: scale(0.8);
-            background-color: gray;
-            transition: left 250ms linear;
-        }
-
-        .toggleSwitch:checked::before {
-            background-color: white;
-            left: 1em;
-        }
-
-        .toggleSwitch:checked {
-            background-color: #55DDBD;
-            border-color: #55DDBD;
-        }
-
-        .toggleSwitch:focus-visible {
-            outline-offset: max(2px, 0.1em);
-            outline: max(2px, 0.1em) solid #55DDBD;
-        }
-
-        .toggleSwitch:enabled:hover {
-            box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
-        }
     </style>
 	<c:import url="../temp/boot.jsp"></c:import>
 </head>
@@ -114,22 +74,6 @@
                 </div>
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
-                        <div class="dashboard-block d-flex justify-content-between" style="padding-bottom: 0;">
-                            <div>
-                                <label class="toggleLabel">
-                                    <span>화상진료</span>
-                                    <input class="toggleSwitch" role="switch" type="checkbox" />
-                                </label>
-                                <label class="toggleLabel">
-                                    <span>진료 요청</span>
-                                    <input class="toggleSwitch" role="switch" type="checkbox" />
-                                </label>
-                                <label>
-                                    <span class="text">최대 대기 인원</span>
-                                </label>
-                            </div>
-                            <span class="text" style="color: #55DDBD;">당일 진료 내역</span>
-                        </div>
                         <div class="dashboard-block mt-0">
                             <!-- Start Invoice Items Area -->
                             <div class="invoice-items default-list-style">
@@ -160,6 +104,12 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-5 col-12">
                                                     <div class="item-image">
+                                                        <c:if test="${reservated.dansFiles.size() > 0 }">
+                                                            <img src="/file/PETDANS/${reservated.dansFiles[0].fileName }" alt="#">
+                                                        </c:if>
+                                                        <c:if test="${reservated.dansFiles.size() <= 0 }">
+                                                            <img src="/images/pet/home/website_icon.svg" alt="#">
+                                                        </c:if>
                                                         <div class="content">
                                                             <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
                                                             <h3 class="title"><a>${reservated.patient}</a></h3>
@@ -199,19 +149,19 @@
                                 </div>
                             <!-- End Single List -->
                             <!-- Pagination -->
-                            <!-- <div class="pagination left" style="margin-left: 1rem;">
+                            <div class="pagination left" style="margin-left: 1rem;">
                                 <ul class="pagination-list">
                                     <c:if test="${pager.pre }">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${pager.startNum - 1 }"><i class="lni lni-chevron-left"></i></a></li>
                                     </c:if>
                                     <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${i }">${i }</a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${i }">${i }</a></li>
                                     </c:forEach>
                                     <c:if test="${pager.next }">
-                                        <li><a href="/pet/diagnosis/reservatedList?d=${user.username }&page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
+                                        <li><a href="/hospital/diagnosis/management?page=${pager.lastNum + 1 }"><i class="lni lni-chevron-right"></i></a></li>
                                     </c:if>
                                 </ul>
-                            </div> -->
+                            </div>
                             <!--/ End Pagination -->
                             <!-- End Invoice Items Area -->
                             </div>
@@ -234,9 +184,6 @@
 
     <!-- ========================= JS here ========================= -->
     <script type="text/javascript">
-        console.log("엑")
-
-        //
         const uuidInput = document.querySelector('input#uuid');
         $(function () {
 
@@ -281,7 +228,7 @@
                 success:function(dt){
                     if(dt!=""){
                         roomBtn.empty()
-                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'/'+dansnum+'">입장</a>')
+                        roomBtn.append('<a class="btn btn-primary" href="/room/'+dt.roomid.id+'/user/'+dt.uuid+'?dansnum='+dansnum+'">입장</a>')
 
                     }else{
 

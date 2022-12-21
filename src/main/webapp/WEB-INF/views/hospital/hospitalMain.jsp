@@ -66,7 +66,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3  col-12">
                                             <!-- Start Single Category -->
-                                            <a href="category.html" class="single-cat wow fadeInUp"
+                                            <a href="/hospital/diagnosis/reservation" class="single-cat wow fadeInUp"
                                                 data-wow-delay=".4s">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/online_doctor_icon.svg" alt="#">
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3  col-12">
                                             <!-- Start Single Category -->
-                                            <a href="/board/tip/list" class="single-cat wow fadeInUp"
+                                            <a href="/location/nightPharmacy" class="single-cat wow fadeInUp"
                                                 data-wow-delay="1s">
                                                 <div class="icon">
                                                     <img src="/images/pet/home/stamp_icon.svg" alt="#">
@@ -267,10 +267,6 @@
     <c:import url="../temp/footer.jsp"></c:import>
     <!--/ End Footer Area -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-        <i class="lni lni-chevron-up"></i>
-    </a>
     <script src="/js/hospital/hospitalMain.js"></script>
 </body>
 </html>

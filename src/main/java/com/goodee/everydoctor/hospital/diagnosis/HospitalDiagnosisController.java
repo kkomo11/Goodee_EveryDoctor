@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.drug.DrugService;
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalHomeService;
 import com.goodee.everydoctor.hospital.HospitalSectionVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.sse.NotificationController;
 import com.goodee.everydoctor.user.UserVO;
 
@@ -31,6 +34,8 @@ public class HospitalDiagnosisController {
 	@Autowired
 	private HospitalDiagnosisService hospitalDiagnosisService;
 	@Autowired
+	private DrugService drugService;
+	@Autowired
 	private NotificationController notificationController;
 
 	@GetMapping("reservation")
@@ -39,7 +44,6 @@ public class HospitalDiagnosisController {
 		modelAndView.setViewName("hospital/diagnosis");
 		modelAndView.addObject("diagnosisVO", diagnosisVO);
 		modelAndView.addObject("sectionList", sectionList);
-		notificationController.dispatchEventToClients("새 진료신청", diagnosisVO.getDoctorName()+"님 진료신청이 들어왔습니다", "/hospital/doctor/management", "Doctor");
 		return modelAndView;
 	}
 	
@@ -58,13 +62,13 @@ public class HospitalDiagnosisController {
 	}
 	
 	@GetMapping("management")
-	public ModelAndView findHospitalReservatedList(@AuthenticationPrincipal UserVO userVO)throws Exception{
-		HospitalDoctorVO hospitalDoctorVO = new HospitalDoctorVO();
-		hospitalDoctorVO.setUsername(userVO.getUsername());
+	public ModelAndView findHospitalReservatedList(@AuthenticationPrincipal UserVO userVO, HospitalDiagnosisPager hospitalDiagnosisPager)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<HospitalDoctorVO> al = hospitalDiagnosisService.findHospitalReservatedList(hospitalDoctorVO);
+		hospitalDiagnosisPager.setUsername(userVO.getUsername());
+		List<HospitalDiagnosisVO> al = hospitalDiagnosisService.findHospitalReservatedList(hospitalDiagnosisPager);
 			
 		mv.addObject("reservatedList", al);
+		mv.addObject("pager", hospitalDiagnosisPager);
 		mv.setViewName("/hospital/doctorManagement");
 		
 		return mv;
@@ -72,13 +76,39 @@ public class HospitalDiagnosisController {
 	
 	// 해당 의사가 완료한 진료 내역 리스트 요청
 	@GetMapping("completedList")
-	public ModelAndView findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
+	public ModelAndView findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager, @AuthenticationPrincipal UserVO userVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
+		hospitalDiagnosisPager.setUsername(userVO.getUsername());
 		mv.addObject("completedList", hospitalDiagnosisService.findCompletedList(hospitalDiagnosisPager));
 		mv.addObject("pager", hospitalDiagnosisPager);
 		mv.setViewName("hospital/completedList");
 		
 		return mv;
+	}
+	
+	@GetMapping("completedDetail")
+	public ModelAndView findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		hospitalDiagnosisVO = hospitalDiagnosisService.findCompletedDetail(hospitalDiagnosisVO);
+		mv.addObject("completedDetail", hospitalDiagnosisVO);
+		mv.setViewName("hospital/completedDetail");
+		return mv;
+	}
+	
+	@GetMapping("prescription")
+	public ModelAndView loadHospitalPrescription(ModelAndView modelAndView, HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		
+		hospitalDiagnosisVO = hospitalDiagnosisService.findHospitaldiagnosisByDansnum(hospitalDiagnosisVO);
+		modelAndView.addObject("hospitalDiagnosisVO", hospitalDiagnosisVO);
+		modelAndView.setViewName("hospital/prescription");
+		return modelAndView;
+	}
+	
+	@PostMapping("prescription")
+	public String modifyPetDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO, Long[] druges) throws Exception {
+		
+		int result = hospitalDiagnosisService.modifyHospitalDiagnosis(hospitalDiagnosisVO);
+		
+		return "redirect:/hospital/diagnosis/completedList?username=" + hospitalDiagnosisVO.getDoctorName();
 	}
 }

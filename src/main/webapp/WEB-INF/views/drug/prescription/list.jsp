@@ -1,244 +1,194 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <!DOCTYPE html>
-    <html class="no-js" lang="zxx">
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+      <!DOCTYPE html>
+      <html>
 
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>진료내역</title>
-      <meta name="description" content="" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <c:import url="../../temp/boot.jsp"></c:import>
-      <!-- ========================= CSS here ========================= -->
-      <link rel="stylesheet" href="/css/drug/drug.css" type="text/css" />
-    </head>
+      <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>약 처방</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Place favicon.ico in the root directory -->
 
-    <body>
-      <!--[if lte IE 9]>
-          <p class="browserupgrade">
-            You are using an <strong>outdated</strong> browser. Please
-            <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-            your experience and security.
-          </p>
-        <![endif]-->
+        <c:import url="../../temp/boot.jsp"></c:import>
+      </head>
 
-      <!-- Preloader -->
-      <div class="preloader">
-        <div class="preloader-inner">
-          <div class="preloader-icon">
-            <span></span> <span></span>
+      <body>
+        <!-- Preloader -->
+        <div class="preloader">
+          <div class="preloader-inner">
+            <div class="preloader-icon">
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- /End Preloader -->
+        <!-- /End Preloader -->
+        <sec:authentication property="Principal" var="user" />
+        <!-- Header -->
+        <c:import url="../../temp/header.jsp"></c:import>
 
-      <!-- Header -->
-      <c:import url="../../temp/header.jsp"></c:import>
-
-      <!-- Start Breadcrumbs -->
-      <div class="breadcrumbs">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6 col-12">
-              <div class="breadcrumbs-content">
-                <h1 class="page-title">진료 접수</h1>
+        <!-- Start Breadcrumbs -->
+        <div class="breadcrumbs">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                  <h1 class="page-title">조제 리스트</h1>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                  <li><a href="/">Home</a></li>
+                  <li>조제 리스트</li>
+                </ul>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
-              <ul class="breadcrumb-nav">
-                <li><a href="/">Home</a></li>
-                <li>진료 접수</li>
-              </ul>
-            </div>
           </div>
         </div>
-      </div>
-      <!-- End Breadcrumbs -->
+        <!-- End Breadcrumbs -->
 
-      <!-- Start Dashboard Section -->
-      <section class="dashboard section">
-        <div class="container">
-          <div class="row">
-              <!-- Start Dashboard Sidebar -->
-            <div class="col-md-12 col-12">
-              <div class="main-content">
-                <div class="dashboard-block mt-0">
-                  <button id="alertStart">성공버튼</button>
-                  <button id="errorStart">실패버튼</button>
-                  <button id="confirmStart">정말 할거야?</button>
-                  <h3 class="block-title">진료 내역</h3>
-
-                  <!-- Start Items Area -->
-                  <div class="my-items">
-                    <!-- Start List Title -->
-                    <div class="item-list-title">
-                      <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-5 col-12">
-                          <p>환자명</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>시간</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>주소</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                          <p>조제상태</p>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End List Title -->
-                    <!-- Start Single List -->
-                    <div class="single-item-list">
-                      <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-5 col-12">
-                          <div class="item-image">
-                            <img src="/images/hospital/manager.jpg" alt="#">
-                            <div class="content">
-                              <h7 class="title"><a href="/drug/prescription/detail">이주은매니저${drugPrescriptionVO.userVO.username}</a></h7>
-                              <!-- <span class="price">수령방식</span> -->
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>Electronic</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>New</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                          <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Single List -->
-                    <!-- Start Single List -->
-                    <div class="single-item-list">
-                      <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-5 col-12">
-                          <div class="item-image">
-                            <img src="https://via.placeholder.com/100x100" alt="#">
-                            <div class="content">
-                              <h3 class="title"><a href="javascript:void(0)">New Ferrari F80 Car</a></h3>
-                              <span class="price">$13000</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>Car</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>Vehicle</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                          <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Single List -->
-                    <!-- Start Single List -->
-                    <div class="single-item-list">
-                      <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-5 col-12">
-                          <div class="item-image">
-                            <img src="https://via.placeholder.com/100x100" alt="#">
-                            <div class="content">
-                              <h3 class="title"><a href="javascript:void(0)">Rick Morton- Magicius Chase</a></h3>
-                              <span class="price">$500</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>Electronic</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>New</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                          <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Single List -->
-                    <!-- Start Single List -->
-                    <div class="single-item-list">
-                      <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-5 col-12">
-                          <div class="item-image">
-                            <img src="https://via.placeholder.com/100x100" alt="#">
-                            <div class="content">
-                              <h3 class="title"><a href="javascript:void(0)">HP Laptop 6560b core i7</a></h3>
-                              <span class="price">$750</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>Electronic</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                          <p>New</p>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                          <ul class="action-btn">
-                            <li><a href="javascript:void(0)"><i class="lni lni-pencil"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-eye"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-trash"></i></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Single List -->
-                    <!-- 페이징처리 -->
-                    <!-- <div class="pagination left">
-                        <nav aria-label="Page navigation example">
-                          <ul class="pagination-list">
-                            <c:if test="${pager.pre}">
-                              <li class="page-item"><a class="page-link"
-                                  href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a>
-                              </li>
-                            </c:if>
-                            <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                              <li class="page-item"><a class="page-link"
-                                  href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
-                            </c:forEach>
-                            <li class="page-item ${pager.next?'':'disabled'}"><a class="page-link"
-                                href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div> -->
+        <!-- Start Dashboard Section -->
+        <section class="dashboard section">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-12 col-12">
+                <div class="category-sidebar" style="margin-bottom: 1rem;">
+                  <!-- Start Single Widget -->
+                  <div class="single-widget search">
+                    <h3>보호자명 검색</h3>
+                    <form action="./completedList" method="get">
+                      <input type="hidden" name="username" value="${user.username }">
+                      <input type="hidden" name="kind" value="name">
+                      <input type="text" placeholder="Search Here..." name="search">
+                      <button type="submit"><i class="lni lni-search-alt"></i></button>
+                    </form>
                   </div>
-                  <!-- End Items Area -->
+                  <!-- End Single Widget -->
+                </div>
+                <c:import url="./sidebar.jsp"></c:import>
+              </div>
+              <div class="col-lg-9 col-md-12 col-12">
+                <div class="main-content">
+                  <div class="dashboard-block mt-0">
+                    <h3 class="block-title">진료대기</h3>
+                    <!-- Start Invoice Items Area -->
+                    <div class="invoice-items default-list-style">
+
+                      <!-- Start Single List -->
+                      <div class="single-list  my-items">
+                        <!-- Start Item List Title -->
+                        <div class="item-list-title">
+                          <div class="row align-items-center">
+                            <div class="col-lg-5 col-md-5 col-12">
+                              <p>환자명</p>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-12">
+                              <p>분류</p>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-12">
+                              <p>조제</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                              <p>진료비</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12 align-right">
+                              <p>완료시간</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End List Title -->
+                        <c:forEach items="${completedList}" var="completed">
+                          <!-- Start Single List -->
+                          <div class="single-item-list">
+                            <div class="row align-items-center">
+                              <div class="col-lg-5 col-md-5 col-12">
+                                <div class="item-image">
+                                  <c:if test="${completed.dansFiles.size() > 0 }">
+                                    <img src="/file/PETDANS/${completed.dansFiles[0].fileName }" alt="#">
+                                  </c:if>
+                                  <c:if test="${completed.dansFiles.size() <= 0 }">
+                                    <img src="/images/pet/home/website_icon.svg" alt="#">
+                                  </c:if>
+
+                                  <div class="content">
+                                    <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
+                                    <h3 class="title"><a
+                                        href="/drug/prescription/detail?dansNum=${completed.dansNum }">${completed.patient}</a>
+                                    </h3>
+                                    <span class="price">${completed.reqTimeString}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-1 col-md-1 col-12">
+                                <p>${completed.dansCategory}</p>
+                              </div>
+                              <!-- 조제상태 -->
+                              <div class="col-lg-1 col-md-1 col-12">
+                                <c:if test="${completed.prescriptionStatus eq 0}">
+                                  <p>대기</p>
+                                </c:if>
+                                <c:if test="${completed.prescriptionStatus eq 1}">
+                                  <p>완료</p>
+                                </c:if>
+                              </div>
+                              <div class="col-lg-2 col-md-1 col-12">
+                                <p>${completed.dansCost }</p>
+                              </div>
+                              <div class="col-lg-2 col-md-2 col-12 align-right">
+                                <p>${completed.endTimeString }</p>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Single List -->
+                        </c:forEach>
+
+                      </div>
+                    </div>
+                    <!-- End Single List -->
+                    <!-- Pagination -->
+                    <div class="pagination left" style="margin-left: 1rem;">
+                      <ul class="pagination-list">
+                        <c:if test="${pager.pre }">
+                          <li><a
+                              href="/drug/prescription/list?username=${user.username }&page=${pager.startNum - 1 }&kind=${pager.kind}&search=${pager.search}"><i
+                                class="lni lni-chevron-left"></i></a></li>
+                        </c:if>
+                        <c:forEach begin="${pager.startNum }" end="${pager.lastNum }" step="1" var="i">
+                          <li><a
+                              href="/drug/prescription/list?username=${user.username }&page=${i }&kind=${pager.kind}&search=${pager.search}">${i
+                              }</a></li>
+                        </c:forEach>
+                        <c:if test="${pager.next }">
+                          <li><a
+                              href="/drug/prescription/list?username=${user.username }&page=${pager.lastNum + 1 }&kind=${pager.kind}&search=${pager.search}"><i
+                                class="lni lni-chevron-right"></i></a></li>
+                        </c:if>
+                      </ul>
+                    </div>
+                    <!--/ End Pagination -->
+                  </div>
+                  <!-- End Invoice Items Area -->
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- End Dashboard Section -->
+          </div>
+        </section>
+        <!-- End Dashboard Section -->
 
-      <!-- Footer -->
-      <c:import url="../../temp/footer.jsp"></c:import>
+        <!-- Footer -->
+        <c:import url="../../temp/footer.jsp"></c:import>
+        <!-- <script src="/js/user/profile.js"></script> -->
 
-      <!-- ========================= scroll-top ========================= -->
-      <a href="#" class="scroll-top btn-hover"> <i class="lni lni-chevron-up"></i>
-      </a>
+        <!-- ========================= scroll-top ========================= -->
+        <a href="#" class="scroll-top btn-hover">
+          <i class="lni lni-chevron-up"></i>
+        </a>
 
-      <!-- ========================= JS here ========================= -->
-      <!-- <script src="/js/drug.js"></script> -->
-      <script src="/js/drug/address.js"></script>
-      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    </body>
+        <!-- ========================= JS here ========================= -->
+      </body>
 
-    </html>
+      </html>

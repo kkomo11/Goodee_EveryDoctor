@@ -1,21 +1,18 @@
 package com.goodee.everydoctor.admin.medic;
 
-import java.lang.ProcessHandle.Info;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 public class MedicService {
-	
+
 	@Autowired
 	private MedicMapper medicMapper;
-	
+
 	//종사자 정보 등록
 	public int inputMedic(MedicVO medicVO)throws Exception{
 		int inputSectionResult = 1;
@@ -28,7 +25,7 @@ public class MedicService {
 		for(Integer nums: medicVO.getSectionNums()) {
 			medicSectionVO.setSectionNum(nums);
 			medicSectionVO.setUsername(username);
-			
+
 			int result = medicMapper.inputMedicSection(medicSectionVO);
 			medicSectionResult.add(result);
 		}
@@ -42,5 +39,5 @@ public class MedicService {
 		log.info("=========== MedicSection 인풋결과 : {}", inputResult);
 		return inputResult;
 	}
-	
+
 }

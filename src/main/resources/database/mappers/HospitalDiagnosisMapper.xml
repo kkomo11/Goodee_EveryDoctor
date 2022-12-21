@@ -9,14 +9,14 @@
 			VALUES (NULL, #{username}, #{dansCategory}, #{dansContent}, #{doctorName}, NOW(), 0)
 	</insert>
 	
-	<select id="findHospitalReservatedList" parameterType="HospitalDoctorVO" resultType="HospitalDiagnosisVO">
+	<select id="findHospitalReservatedList" parameterType="HospitalDiagnosisPager" resultType="HospitalDiagnosisVO">
 		SELECT D.*,U.NAME AS PATIENT
 		FROM DIAGNOSIS D
-			 INNER JOIN
-			 USERS U 
-			ON D.USERNAME = U.USERNAME 
+		INNER JOIN USERS U 
+		ON D.USERNAME = U.USERNAME 
 		WHERE D.DOCTORNAME  = #{username} AND D.DANSSTATUS = 0
 		ORDER BY D.DANSREQTIME ASC
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<sql id="searchUser">
@@ -57,7 +57,7 @@
 	</select>
 	
 	<select id="findHospitaldiagnosisByDansnum" parameterType="HospitalDiagnosisVO" resultMap="HospitalDaiagnosisVOwithUser">
-		SELECT D.DANSNUM, D.DANSCATEGORY , D.DANSCONTENT , D.DANSREQTIME , 
+		SELECT D.DANSNUM, D.DANSCATEGORY , D.DANSCONTENT , D.DANSREQTIME , U.USERNAME,
 			U.NAME , U.BIRTH , U.GENDER ,
 			DF.DANSFILENUM as FILENUM, DF.DANSFILENAME as FILENAME, DF.DANSFILEORINAME as FILEORINAME
 		FROM DIAGNOSIS D 
@@ -85,4 +85,66 @@
 			<result column="fileOriName" property="fileOriName"/>
 		</collection>
 	</resultMap>
+	
+	<select id="findReservatedListCount" parameterType="HospitalDiagnosisPager" resultType="Long">
+		SELECT COUNT(DANSNUM) FROM DIAGNOSIS WHERE DOCTORNAME = #{username} AND DANSSTATUS = 0
+	</select>
+	
+	<select id="findCompletedDetail" parameterType="HospitalDiagnosisVO" resultMap="findCompletedDetailResult">
+		SELECT D.*, U.NAME, U.PHONE, U.EMAIL, U.FILENAME AS USERFILENAME 
+		FROM DIAGNOSIS D
+		INNER JOIN USERS U
+		ON (D.USERNAME = U.USERNAME)
+		WHERE D.DANSNUM = #{dansNum}
+	</select>
+	
+	<resultMap type="HospitalDiagnosisVO" id="findCompletedDetailResult">
+		<id column="DANSNUM" property="dansNum"/>
+		<result column="USERNAME" property="username"/>
+		<result column="DOCTORNAME" property="doctorName"/>
+		<result column="DANSCATEGORY" property="dansCategory"/>
+		<result column="DANSCONTENT" property="dansContent"/>
+		<result column="DANSRESPONSE" property="dansResponse"/>
+		<result column="DANSREQTIME" property="dansReqTime"/>
+		<result column="DANSENDTIME" property="dansEndTime"/>
+		<result column="DANSCOST" property="dansCost"/>
+		<result column="DANSSTATUS" property="dansStatus"/>
+		<association property="patientVO" javaType="UserVO">
+			<result column="NAME" property="name"/>
+			<result column="PHONE" property="phone"/>
+			<result column="EMAIL" property="email"/>
+			<result column="USERFILENAME" property="fileName"/>
+		</association>
+	</resultMap>
+	
+	<select id="findFills" parameterType="HospitalDiagnosisVO" resultType="DrugVO">
+		SELECT DR.*
+		FROM PRESCRIPTIONDRUG PD
+		INNER JOIN DRUG DR
+		ON (PD.DRUGNUM = DR.DRUGNUM)
+		INNER JOIN PRESCRIPTION PR
+		ON (PD.PRESCRIPTIONNUM = PR.PRESCRIPTIONNUM)
+		WHERE PR.DANSNUM = #{dansNum}
+	</select>
+	
+	<insert id="inputReadyPay" parameterType="PayVO">
+		INSERT INTO PAY(PAYNUM, USERNAME, ORDERID, ORDERNAME, STATUS, AMOUNT, PAYREQDATE, DANSNUM)
+		VALUES (NULL, #{username}, #{orderId}, '진료비', 'READY', #{amount}, now(), #{dansNum})
+	</insert>
+	
+	<insert id="inputPrescription" parameterType="HospitalPrescriptionVO" useGeneratedKeys="true" keyProperty="prescriptionNum">
+		INSERT INTO PRESCRIPTION (PRESCRIPTIONNUM, DANSNUM, PRESCRIPTIONSTATUS, PHARMACIST) 
+		VALUES (NULL, #{dansNum}, 0, #{pharmacist})
+	</insert>
+	
+	<update id="modifyHospitalDiagnosis" parameterType="HospitalDiagnosisVO">
+		UPDATE DIAGNOSIS SET DANSRESPONSE = #{dansResponse}, 
+		DANSENDTIME = now(), DANSCOST = #{dansCost}, DANSSTATUS = 1
+		WHERE DANSNUM = #{dansNum}
+	</update>
+	
+	<insert id="inputPrescriptionDrug" parameterType="HospitalPrescriptionDrugVO">
+		INSERT INTO PRESCRIPTIONDRUG (PRESCRIPTIONDRUGNUM, PRESCRIPTIONNUM, DRUGNUM, DOSE, DOSEHIT, DOSEDAYS) 
+		VALUES (NULL, #{prescriptionNum}, #{drugNum}, #{dose}, #{doseHit}, #{doseDays})
+	</insert>
 </mapper>

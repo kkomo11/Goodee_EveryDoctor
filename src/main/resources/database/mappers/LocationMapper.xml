@@ -5,12 +5,15 @@
 <mapper namespace="com.goodee.everydoctor.location.LocationMapper">
 	<!-- 선별검사소 지도찍기 -->
 	<select id="findCoronaList" resultMap="CoronaResult">
-	SELECT A.AGENCYNAME,A.AGENCYADDR,A.AGENCYTEL,AW.*
+	SELECT A.AGENCYNAME,A.AGENCYADDR,A.AGENCYTEL,AW.*,AF.AGENCYFILENAME AS FILENAME
 		FROM AGENCY A
-			 JOIN
-			 AGENCYWORKHOUR AW
-			 ON A.AGENCYNUM = AW.AGENCYNUM 
-		WHERE A.AGENCYROLE = '선별진료소'
+			INNER JOIN
+			AGENCYWORKHOUR AW
+			ON A.AGENCYNUM = AW.AGENCYNUM 
+			LEFT JOIN 
+			AGENCYFILE AF 
+			ON A.AGENCYNUM = AF.AGENCYNUM 
+		WHERE AGENCYROLE='선별진료소'
 			  AND
 			  (A.AGENCYADDR REGEXP '구로|서울|올림픽|중랑구|은평구|동작구')
 			  
@@ -32,23 +35,91 @@
 			<result column="HOLIDAY" property="holiday"/>
 			<result column="LUNCH" property="lunch"/>
 		</association>
+		<collection property="fileVOs" javaType="List" ofType="FileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</collection>
 	</resultMap>
 	<!-- 약국 지도찍기 -->
-	<select id="findPharmacyList" resultType="AgencyVO">
-		SELECT * 
-		FROM AGENCY 
+	<select id="findPharmacyList" resultMap="PharmacyListResult">
+		SELECT A.*,AW.*,AF.AGENCYFILENAME AS FILENAME
+		FROM AGENCY A
+			INNER JOIN
+			AGENCYWORKHOUR AW
+			ON A.AGENCYNUM = AW.AGENCYNUM 
+			LEFT JOIN 
+			AGENCYFILE AF 
+			ON A.AGENCYNUM = AF.AGENCYNUM 
 		WHERE AGENCYROLE='약국'
 	</select>
+	<resultMap type="AgencyVO" id="PharmacyListResult">
+		<id column="agencyNum" property="agencyNum"/>
+		<result column="agencyName" property="agencyName"/>
+		<result column="agencyAddr" property="agencyAddr"/>
+		<result column="agencyTel" property="agencyTel"/>
+		<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="MON" property="mon"/>
+			<result column="SAT" property="sat"/>
+			<result column="SUN" property="sun"/>
+			<result column="HOLIDAY" property="holiday"/>
+			<result column="LUNCH" property="lunch"/>
+		</association>
+		<collection property="fileVOs" javaType="List" ofType="FileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</collection>
+		
+	
+	</resultMap>
 	
 
-	<!-- 야간 약국 -->
-	<select id="findNightPharmacy" resultMap="nightPharmacyResult">
-		SELECT A.*,AW.*
+	<!-- 24시 동물병원 -->
+	<select id="findNonstopHospital" resultMap="nonstopHospitalResult">
+		SELECT A.*,AW.*,AF.AGENCYFILENAME AS FILENAME
 		FROM AGENCY A
-			JOIN
-			 AGENCYWORKHOUR AW 
-			 ON A.AGENCYNUM = AW.AGENCYNUM
+			INNER JOIN
+			AGENCYWORKHOUR AW
+			ON A.AGENCYNUM = AW.AGENCYNUM 
+			LEFT JOIN 
+			AGENCYFILE AF 
+			ON A.AGENCYNUM = AF.AGENCYNUM 
 		WHERE AGENCYTYPE='24시'
+	</select>
+	<resultMap type="AgencyVO" id="nonstopHospitalResult">
+		<id column="AGENCYNUM" property="agencyNum"/>
+		<result column="AGENCYNAME" property="agencyName"/>
+		<result column="AGENCYADDR" property="agencyAddr"/>
+		<result column="AGENCYTEL" property="agencyTel"/>
+		<association property="agencyWorkHourVO" javaType="AgencyWorkHourVO">
+			<id column="AGENCYNUM" property="agencyNum"/>
+			<result column="SUN" property="sun"/>
+			<result column="MON" property="mon"/>
+			<result column="TUE" property="tue"/>
+			<result column="WED" property="wed"/>
+			<result column="THU" property="thu"/>
+			<result column="FRI" property="fri"/>
+			<result column="SAT" property="sat"/>
+			<result column="HOLIDAY" property="holiday"/>
+			<result column="LUNCH" property="lunch"/>
+		</association>
+		<collection property="fileVOs" javaType="List" ofType="FileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</collection>
+	
+	</resultMap>
+	
+	<select id="findNightPharmacy" resultMap="nightPharmacyResult">
+		SELECT A.*,AW.*,AF.AGENCYFILENAME AS FILENAME
+		FROM AGENCY A
+			INNER JOIN
+			AGENCYWORKHOUR AW
+			ON A.AGENCYNUM = AW.AGENCYNUM 
+			LEFT JOIN 
+			AGENCYFILE AF 
+			ON A.AGENCYNUM = AF.AGENCYNUM 
+		WHERE AGENCYTYPE='야간'	 
 	</select>
 	<resultMap type="AgencyVO" id="nightPharmacyResult">
 		<id column="AGENCYNUM" property="agencyNum"/>
@@ -66,8 +137,11 @@
 			<result column="SAT" property="sat"/>
 			<result column="HOLIDAY" property="holiday"/>
 			<result column="LUNCH" property="lunch"/>
-		</association>
-	
+		</association>	
+		<collection property="fileVOs" javaType="List" ofType="FileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</collection>
 	</resultMap>
 	
 </mapper>

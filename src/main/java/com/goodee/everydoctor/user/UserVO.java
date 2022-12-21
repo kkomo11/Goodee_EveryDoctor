@@ -50,6 +50,12 @@ public class UserVO implements UserDetails, OAuth2User{
 	//OAuth2User, Token 등 정보를 저장
 	private Map<String, Object> attributes;
 	
+	//결제정보
+	private String cardNumber;
+	private String cardExpirationYear;
+	private String cardExpirationMonth;
+	private String cardTwo;
+	
 	@Override
 	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {

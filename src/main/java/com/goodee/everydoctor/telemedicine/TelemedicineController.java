@@ -2,6 +2,8 @@ package com.goodee.everydoctor.telemedicine;
 
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -54,17 +56,27 @@ public class TelemedicineController {
     	if(result!=null) {
     		log.info("이프문아 돌고있니?");
     		//알람을 보낸다.상단,내용,버튼url,받는사람 순
-    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "/room/"+sid+"/user/"+uuid+"/"+dansnum, username);
+    		notificationController.dispatchEventToClients("진료가 곧 시작돼요", "진료를 위한 방이 개설되었습니다 버튼을 통해 진료를 받아보세요!", "/room/"+sid+"/user/"+uuid+"?dansnum="+dansnum, username);
     	}
     	
     	return result;
     }
     
+    
     //sid -방번호, uuid -사용자
-    @GetMapping("/room/{sid}/user/{uuid}/{dansnum}")
-    public ModelAndView displaySelectedRoom(@PathVariable("dansnum")String dansnum, @PathVariable("sid") final String sid, @PathVariable("uuid") final String uuid) throws Exception {
+    @GetMapping("/room/{sid}/user/{uuid}")
+    public ModelAndView displaySelectedRoom(@Nullable String dansnum, @PathVariable("sid") final String sid, @PathVariable("uuid") final String uuid, @Nullable String pDansNum) throws Exception {
+    	ModelAndView mv = null;
     	
-        return this.telemedicineService.displaySelectedRoom(sid, uuid, dansnum);
+    	if(dansnum != null) {
+    		mv = this.telemedicineService.displaySelectedRoom(sid, uuid, dansnum, null);
+    	}
+    	
+    	if(pDansNum != null) {
+    		mv = this.telemedicineService.displaySelectedRoom(sid, uuid, null, pDansNum);
+    	}
+    	
+        return mv;
     }
 
     @GetMapping("/room/{sid}/user/{uuid}/exit")

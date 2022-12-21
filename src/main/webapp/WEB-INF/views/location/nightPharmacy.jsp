@@ -10,9 +10,9 @@
     <title>약국찾기</title>
     <c:import url="../temp/boot.jsp"></c:import>
     <style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 185px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 286px;height: 165px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -22,13 +22,13 @@
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
     .desc .reservation {margin-top: 5px !important; margin-left: 109px !important; font-size: 15px; width: 79px; height: 30px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;border-radius: 10%}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1200px;
-        height:500px;
-        margin-bottom: 300px;
+        width:1700px;
+        height:900px;
+        /* margin-bottom: 300px; */
     }
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -78,7 +78,7 @@
                 lon = position.coords.longitude; // 경도    
                 console.log("위경도====",lat,lon)
 
-                let imageSrc="/images/location/locate.png",
+                let imageSrc="/images/location/person2.png",
                     imageSize= new kakao.maps.Size(50, 50),  //마커이미지의 크기
                     imageOption ={offset: new kakao.maps.Point(27, 69)}   //마커이미지의 옵션 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
 
@@ -141,21 +141,22 @@
         let ov =[];
 
         $.ajax({
-            url : './pharmacy',
+            url : './night',
             type : 'GET',
             traditional : true,
             success : function(data){
-                // console.log(data)
                 $.each(data, function(index,value){
                     //주소로 좌표를 검색합니다.
+                    console.log('data',data[index])
+                    
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         //정상적으로 검색이 완료 됐으면
                         if(status === kakao.maps.services.Status.OK){
                             let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
                             // console.log("coords ==", coords);
 
-                            let imageSrc ='/images/location/pharmacy.png',
-                                    imageSize = new kakao.maps.Size(40,42),
+                            let imageSrc ='/images/location/pharmacy2.png',
+                                    imageSize = new kakao.maps.Size(43,42),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
 
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
@@ -180,11 +181,19 @@
                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                             let body = $('<div class="body" />');
                             let img = $('<div class="img" />')
-                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                            let imgtag = $('<img src="/file/agency/' + data[index].fileVOs[0].fileName+ '\" width="73" height="70">');
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                            let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
+                            let times =$('<div class="time d-flex justify-content-center"/>')
+                            let time1 =$('<div class="time1 me-4"/>')
+                            let time2 =$('<div class="time2"/>')
+                            let weekday =$('<div/>').text('평일 : '+data[index].agencyWorkHourVO.mon)
+                            let sat =$('<div style="color:#5d80de"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
+                            let sun =$('<div style="color:#De5d5d"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
+                            // let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
+                            let lunch =$('<div style="text-align:center"/>').text('점심시간 : '+data[index].agencyWorkHourVO.lunch);
+                            // let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
 
                             wrap.append(info);
                             info.append(title).append(body);
@@ -194,7 +203,15 @@
                             body.append(desc);
                             desc.append(ellipsis);
                             desc.append(tel);
-                            desc.append(reservation);
+                            body.append(times);
+                            times.append(time1);
+                            time1.append(weekday);   //월요일
+                            time1.append(lunch);    //점심시간
+                            times.append(time2);
+                            time2.append(sat);       //토요일
+                            time2.append(sun);   //일요일
+                            // time2.append(holiday);  //공휴일
+                            // desc.append(reservation);
                             
                             let content = wrap[0];
 

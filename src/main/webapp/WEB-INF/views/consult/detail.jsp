@@ -75,9 +75,16 @@
                         </div>
                         <div class="post-details">
                             <div class="detail-inner">
-                                <h2 class="post-title">
-                                    <a href="blog-single.html">${consultDetail.consultTitle }</a>
-                                </h2>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                    <h2 class="post-title">
+                                        <a href="blog-single.html">${consultDetail.consultTitle }</a>
+                                    </h2>
+                                    <c:if test="${consultDetail.username != member.username}">
+                                        <div class="form-group button mb-0">
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#reportModal">신고하기</button>
+                                        </div>
+                                    </c:if>
+                                </div>  
                                 <!-- post meta -->
                                 <ul class="custom-flex post-meta">
                                     <li>
@@ -90,7 +97,7 @@
                                     </li>
                                     <li>
                                         <c:if test="${consultDetail.hospitalCategoryVO[0].categoryIcon != null }">
-	                                     	<img class="categoryIconImg" alt="" src="/images/hospital/home/${consultDetail.hospitalCategoryVO[0].categoryIcon }">
+	                                     	<img class="categoryIconImg" alt="" src="${consultDetail.hospitalCategoryVO[0].categoryIcon }">
 	                                    </c:if>
 	                                    ${consultDetail.hospitalCategoryVO[0].categoryName }
                                     </li>
@@ -148,8 +155,79 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Blog Singel Area -->
+        <!-- End Blog Singel Area -->
+        
+        <!-- Modal -->
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="reportModalLabel">신고</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="default-form-style" method="post" action="/admin/report/write" enctype="multipart/form-data" id="reportForm">
+                            <!-- 더미값 -->
+                            <input type="hidden" name="reporterName" value="${member.username}">
+                            <input type="hidden" name="reportedName" value="${consultDetail.username}">
+                            <input type="hidden" name="consultNum" value="${consultDetail.consultNum}">
+                            <input type="hidden" name="num" value="${consultDetail.consultNum}">
+                            <div class="row">
+                                <!-- 신고 제목 -->
+                                <div class="col-12">
+                                    <div class="form-group" id="title">
+                                        <label>제목*</label> 
+                                        <input name="reportTitle" placeholder="제목을 입력해주세요" id="reportTitle2" />
+                                        <!-- 신고 제목 검증 메세지 -->
+                                        <div class="reportTitlem m" style="color: #55DDBD;"></div>
+                                    </div>
+                                </div>
+                                <!-- 신고 유형 -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>신고유형*</label>
+                                        <div class="selector-head">
+                                            <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                                            <select class="user-chosen-select" name="reportTypeNum" id="reportTypeNum">
+                                                <option disabled selected>신고 유형을 선택해주세요</option>
+                                                <option value="1">서비스와 관련 없는 내용</option>
+                                                <option value="2">개인정보 유출 위험</option>
+                                                <option value="3">광고 또는 홍보 글</option>
+                                                <option value="4">음란성, 욕설 등 부적절한 내용</option>
+                                                <option value="5">기타</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 신고 내용 -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>신고내용*</label>
+                                        <textarea name="reportContents" id="reportContents"></textarea>
+                                        <!-- 신고 내용 검증 메세지 -->
+                                        <div class="reportContentsm m" style="color: #55DDBD;"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 파일추가 버튼 누르면 파일추가 폼 생성되는 부분 -->
+                                <div id="fileAdd"></div>
+                                
+                                <!-- 파일 추가 버튼 -->
+                                <div class="col-12">
+                                    <div class="form-group button mb-0">
+                                        <button type="button" id="fileAddButton" class="btn">파일추가</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="reportModalBtn" data-bs-dismiss="modal">신고하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Start Footer Area -->
     <c:import url="../temp/footer.jsp"></c:import>
@@ -162,6 +240,7 @@
     
     <script type="text/javascript" src="/js/consult/detail.js"></script>
     <script type="text/javascript" src="/js/consult/answer/write.js"></script>
+    <script type="text/javascript" src="/js/admin/report/write.js"></script>
     
     <script type="text/template" id="consultAnswerTemplate">
 		<li>
@@ -179,6 +258,18 @@
         	</div>
         </li>
 	</script>
+
+    <!-- 신고하기 파일추가 폼 -->
+    <script type="java/template" id="fileAddForm">
+        <div class="col-12 d-flex file">
+           <div class="form-group upload-image">
+              <input name="files" type="file" placeholder="첨부파일명">
+           </div>
+           <div class="form-group button mb-0">
+              <button type="button" class="btn del">취소</button>
+           </div>
+       </div>
+     </script>
 
 </body>
 

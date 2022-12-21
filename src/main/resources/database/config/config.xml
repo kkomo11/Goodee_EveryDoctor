@@ -13,6 +13,7 @@
 		<typeAlias type="com.goodee.everydoctor.consult.answer.ConsultAnswerPager" alias="ConsultAnswerPager"/>
 		<typeAlias type="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO" alias="PetDiagnosisVO"/>
 		<typeAlias type="com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager" alias="PetDiagnosisPager"/>
+		<typeAlias type="com.goodee.everydoctor.pay.PayVO" alias="PayVO"/>
 		<typeAlias type="com.goodee.everydoctor.sse.AlarmVO" alias="AlarmVO"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
@@ -23,6 +24,7 @@
 		<typeAlias type="com.goodee.everydoctor.drug.DrugVO" alias="DrugVO"/>
 		<typeAlias type="com.goodee.everydoctor.drug.delivery.DrugDeliveryVO" alias="DrugDeliveryVO"/>
 		<typeAlias type="com.goodee.everydoctor.drug.prescription.DrugPrescriptionVO" alias="DrugPrescriptionVO"/>
+		<typeAlias type="com.goodee.everydoctor.drug.prescription.DrugPrescriptionPager" alias="DrugPrescriptionPager"/>
 		<typeAlias type="com.goodee.everydoctor.board.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.goodee.everydoctor.board.tip.BoardTipVO" alias="BoardTipVO"/>
 		<typeAlias type="com.goodee.everydoctor.file.FileVO" alias="FileVO"/>
@@ -37,6 +39,8 @@
 		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO" alias="HospitalDoctorVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.doctor.HospitalMainPager" alias="HospitalMainPager"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO" alias="HospitalDiagnosisVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalPrescriptionVO" alias="HospitalPrescriptionVO"/>
+		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalPrescriptionDrugVO" alias="HospitalPrescriptionDrugVO"/>
 		<typeAlias type="com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisPager" alias="HospitalDiagnosisPager"/>
 		
 		<typeAlias type="com.goodee.everydoctor.admin.medic.MedicVO" alias="MedicVO"/>

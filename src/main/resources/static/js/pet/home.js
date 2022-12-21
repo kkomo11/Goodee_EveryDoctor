@@ -201,3 +201,11 @@ nav_dog_tab.click();
     let scrollX = this.scrollX;
     console.log("X :", scrollX, " Y:", scrollY);
 });*/
+
+
+/*<ul class="info">
+    <li class="price">평점</li>
+    <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+    </li>
+</ul>*/
+// 의사 리스트에서 평점 부분 제거

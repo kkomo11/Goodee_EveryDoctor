@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.HospitalCategoryVO;
 import com.goodee.everydoctor.sse.NotificationController;
@@ -23,6 +24,35 @@ public class PetDiagnosisController {
 	private PetDiagnosisService petDiagnosisService;
 	@Autowired
 	private NotificationController notificationController;
+	
+	@PostMapping("findDrug")
+	@ResponseBody
+	public List<DrugVO> findDrug(DrugVO drugVO) throws Exception {
+		return petDiagnosisService.findDrug(drugVO);
+	}
+	
+	@PostMapping("petPrescription")
+	public String modifyPetDiagnosis(PetDiagnosisVO petDiagnosisVO, Long[] druges) throws Exception {
+		
+		int result = petDiagnosisService.modifyPetDiagnosis(petDiagnosisVO, druges);
+		
+		//웹알림 url변경 필요 contents 보호자이름 잘나오는지 확인해야 함
+		notificationController.dispatchEventToClients("결제요청 알림", petDiagnosisVO.getProtectorName()+"님 진단서 작성이 완료되었습니다. 결제를 진행해 주세요!", "/pay/pay", petDiagnosisVO.getPUsername());
+		
+		return "redirect:/pet/diagnosis/completedList?d=" + petDiagnosisVO.getPDoctorname();
+	}
+	
+	@GetMapping("petPrescription")
+	public ModelAndView getPetPrescriptionPage(Long n) throws Exception {
+		// 의사가 화상 진료 후 작성할 페이지 요청
+		ModelAndView mv = new ModelAndView();
+		PetDiagnosisVO petDiagnosisVO = petDiagnosisService.findDetailForPrescription(n);
+		
+		mv.addObject("detailForPrescription", petDiagnosisVO);
+		mv.setViewName("pet/diagnosis/prescription");
+		
+		return mv;
+	}
 	
 	@GetMapping("completedDetail")
 	public ModelAndView findCompletedDetail(Long n) throws Exception {

@@ -15,12 +15,19 @@
 		LIKE CONCAT('%', #{search}, '%')
 	</sql>
 	<!-- 약목록 -->
-	<select id="findDrugList" resultType="DrugVO" parameterType="Pager">
+	<select id="findDrugList" resultType="DrugVO"
+		parameterType="Pager">
 		SELECT * FROM DRUG
 		<include refid="search"></include>
 		ORDER BY DRUGNUM
 		LIMIT #{startRow} , #{perPage}
 
+	</select>
+	<!-- 약목록 -->
+	<select id="findDrugListAll" resultType="DrugVO">
+		SELECT * FROM DRUG
+		ORDER
+		BY DRUGNUM
 	</select>
 	<!-- 약 상세정보 -->
 	<select id="findDrugDetail" parameterType="DrugVO"
@@ -28,12 +35,13 @@
 		SELECT * FROM DRUG WHERE DRUGNAME = #{drugName}
 	</select>
 
-	<select id="findDrugTotalCount" resultType="Long" parameterType="Pager">
+	<select id="findDrugTotalCount" resultType="Long"
+		parameterType="Pager">
 		SELECT COUNT(DRUGNUM)
 		FROM DRUG
 		<include refid="search"></include>
 	</select>
-		
+
 </mapper>
 
 	

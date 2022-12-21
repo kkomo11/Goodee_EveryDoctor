@@ -96,13 +96,13 @@
                                                 약국
                                                 <span class="sub-title">약사 추가 등록</span>
                                             </button>
-                                            <button class="nav-link" id="pethotel-tab" data-bs-toggle="tab"
+                                            <!-- <button class="nav-link" id="pethotel-tab" data-bs-toggle="tab"
                                                 data-bs-target="#pethotel" type="button" role="tab"
                                                 aria-controls="pethotel" aria-selected="false">
                                                 <span class="serial">04</span>
                                                 보호소
                                                 <span class="sub-title">보호소 관리자 추가 등록</span>
-                                            </button>
+                                            </button> -->
                                         </div>
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
@@ -112,7 +112,7 @@
                                             <form class="profile-setting-form default-form-style" method="post" action="./regist" id="hospitalForm">
                                                 <div class="row" style="flex-direction: column;">
                                                     <!-- Role 선택 -->
-                                                    <div class="col-lg-6 col-12">
+                                                    <div class="col-lg-6 col-12 d-flex" style="justify-content: space-between; align-items: baseline;">
                                                         <div class="form-group">
                                                             <div class="radioFrame">
                                                                 <p class="radioDetailFrameFirst">
@@ -123,6 +123,15 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        <!-- 병원 진료과목 추가 버튼 -->
+                                                        <div id="hospitalSectionBtn">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 병원 진료 과목 -->
+                                                    <div id="hospitalSection" class="d-flex" style="align-items: center; flex-wrap: wrap;">
+
                                                     </div>
 
                                                     <!-- 전문의 여부 -->
@@ -179,7 +188,7 @@
                                             <form class="profile-setting-form default-form-style" method="post" action="./regist" id="petForm">
                                                 <div class="row" style="flex-direction: column;">
                                                     <!-- 역할 선택 -->
-                                                    <div class="col-lg-6 col-12">
+                                                    <div class="col-lg-6 col-12 d-flex" style="justify-content: space-between; align-items: baseline;">
                                                         <div class="form-group">
                                                             <div class="radioFrame">
                                                                 <p class="radioDetailFrameFirst">
@@ -190,6 +199,15 @@
                                                                 </p>
                                                             </div>
                                                         </div>
+                                                        <!-- 동물병원 진료과목 추가 버튼 -->
+                                                        <div id="petSectionBtn">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- 동물병원 진료 과목 -->
+                                                    <div id="petSection" class="d-flex" style="align-items: center; flex-wrap: wrap;">
+
                                                     </div>
 
                                                     <!-- 전문의 여부 -->
@@ -387,6 +405,58 @@
             </select>
         </div>
      </script>
+
+     <!-- 병원진료과목 추가 버튼 -->
+    <script type="java/template" id="hospitalSectionBtnForm">
+        <div class="form-group button mb-0">
+            <button type="button" class="btn" id="hospitalSectionAddBtn">진료과목 추가</button>
+        </div>
+    </script>
+
+    <!-- 동물병원 진료과목 추가 버튼 -->
+    <script type="java/template" id="petSectionBtnForm">
+        <div class="form-group button mb-0">
+            <button type="button" class="btn" id="petSectionAddBtn">진료과목 추가</button>
+        </div>
+    </script>
+
+    <!-- 병원진료과목 select 폼 -->
+    <script type="java/template" id="hospitalSectionListForm">
+        <div class="form-group col-6">
+            <label>진료과목*</label>
+            <div class="selector-head">
+                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                <select class="user-chosen-select col-6" name="sectionNums">
+                    <option disabled selected>진료 과목을 선택해주세요</option>
+                    <c:forEach items="${hospitalSectionList}" var="hospitalList">
+                        <option value="${hospitalList.sectionNum}">${hospitalList.sectionName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group button mb-0">
+            <button type="button" class="btn del">취소</button>
+        </div>
+    </script>
+
+    <!-- 동물병원 진료과목 select 폼 -->
+    <script type="java/template" id="petSectionListForm">
+        <div class="form-group col-6">
+            <label>진료과목*</label>
+            <div class="selector-head">
+                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                <select class="user-chosen-select" name="sectionNums">
+                    <option disabled selected>진료 과목을 선택해주세요</option>
+                    <c:forEach items="${petSectionList}" var="petSectionList">
+                        <option value="${petSectionList.sectionNum}">${petSectionList.sectionName}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="button mb-0">
+            <button type="button" class="btn del">취소</button>
+        </div>
+    </script>
 </body>
 
 </html>

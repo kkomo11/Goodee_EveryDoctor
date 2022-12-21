@@ -1,4 +1,6 @@
 let count = 0;
+let hospitalSectionCount = 0;
+let petSectionCount = 0;
 
 //파일 추가 버튼 클릭하면 파일추가 폼 생성
 $("#fileAddButton").click(function(){
@@ -23,10 +25,16 @@ $("#fileAdd").on("click", ".del", function(){
 const doctorSpecialty = $("#doctorSpecialty");
 const petdoctorSpecialty = $("#petdoctorSpecialty");
 const neuteredInput = $(".neuteredInput");
+const hospitalSectionBtn = $("#hospitalSectionBtn");
+const petSectionBtn = $("#petSectionBtn");
+const hospitalSection = $("#hospitalSection");
+const petSection = $("#petSection");
+
 //전문의 여부 추가
 neuteredInput.change(function(){
     if(neuteredInput[0].checked){
         doctorSpecialty.empty();
+        hospitalSectionBtn.empty();
         let doctorSpecialtyAddForm = $("#doctorSpecialtyAddForm").html();
         doctorSpecialty.append(doctorSpecialtyAddForm);
         const doctorMedicSpecialty = $("#doctorMedicSpecialty");
@@ -45,13 +53,16 @@ neuteredInput.change(function(){
                 console.log(result);
             }
         });
+        hospitalSectionBtn.append($("#hospitalSectionBtnForm").html());
     }else{
         doctorSpecialty.empty();
+        hospitalSectionBtn.empty();
     }
     
     if(neuteredInput[2].checked){
         // console.log(petHospitalInput.val());
         petdoctorSpecialty.empty();
+        petSectionBtn.empty();
         let petDoctorSpecialtyAddForm = $("#petDoctorSpecialtyAddForm").html();
         petdoctorSpecialty.append(petDoctorSpecialtyAddForm);
         const petDoctorMedicSpecialty = $("#petDoctorMedicSpecialty");
@@ -70,8 +81,38 @@ neuteredInput.change(function(){
                 console.log(result);
             }
         });
+        petSectionBtn.append($("#petSectionBtnForm").html());
     }else{
         petdoctorSpecialty.empty();
+        petSectionBtn.empty();
+    }
+})
+
+
+
+// 병원 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
+hospitalSectionBtn.on("click", "#hospitalSectionAddBtn", function(){
+    if(hospitalSectionCount < 3){
+        console.log("진료과목 추가");
+
+        let hospitalSectionListForm = $("#hospitalSectionListForm").html();
+        hospitalSection.append(hospitalSectionListForm);
+        hospitalSectionCount++;
+    }else{
+        alert('의사 진료과목 추가는 최대 3개까지만 추가할 수 있습니다');
+    }
+})
+
+// 동물병원 진료과목 추가버튼 누르면 과목 리스트 select form으로 불러오기
+petSectionBtn.on("click", "#petSectionAddBtn", function(){
+    if(petSectionCount < 1){
+        console.log("진료과목 추가");
+
+        let petSectionListForm = $("#petSectionListForm").html();
+        petSection.append(petSectionListForm);
+        petSectionCount++;
+    }else{
+        alert('수의사 진료과목 추가는 최대 1개까지만 추가할 수 있습니다');
     }
 })
 

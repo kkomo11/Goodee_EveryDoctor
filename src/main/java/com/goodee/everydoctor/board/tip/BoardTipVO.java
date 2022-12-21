@@ -13,6 +13,5 @@ public class BoardTipVO extends BoardVO {
 	private BoardVO boardVO;
 
 	private MultipartFile [] files;
-//	private List<BoardFileVO> boardFileVOs;
 
 }

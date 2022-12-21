@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,22 +80,6 @@
             <div class="d-flex justify-content-around mb-3">
                 <div id="buttons" class="row">
                     <div class="btn-group mr-2" role="group">
-                        <div class="mr-2" data-toggle="buttons">
-                            <label class="btn btn-outline-success" id="video_off">
-                                <input type="radio" name="options" style="display:none" autocomplete="off">Video On
-                            </label>
-                            <label class="btn btn-outline-warning active" id="video_on">
-                                <input type="radio" name="options" style="display:none" autocomplete="off" checked>Video Off
-                            </label>
-                        </div>
-                        <div class="mr-2" data-toggle="buttons">
-                            <label class="btn btn-outline-success" id="audio_off">
-                                <input type="radio" name="options" style="display:none" autocomplete="off">Audio On
-                            </label>
-                            <label class="btn btn-outline-warning active" id="audio_on">
-                                <input type="radio" name="options" style="display:none" autocomplete="off" checked>Audio Off
-                            </label>
-                        </div>
                         <!--<button type="button" class="btn btn-outline-success" id="audio" data-toggle="button">Audio</button>-->
                         <a href="/room/${id}/user/${uuid}/exit">
                             <button type="button" class="btn btn-outline-danger" id="exit" name="exit">
@@ -118,7 +103,7 @@
                 </div>
             </div>
             <!-- 채팅 자리 -->
-            <div class="messages-body col-lg-4" style="height:900px; width:420px;">
+            <div class="messages-body col-lg-4" style="height:800px; width:420px;">
                 <div class="row" style="height:90%">
                     <div style="height:80%">
                         <!-- Start Chat List -->
@@ -136,25 +121,118 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4" id="page-content-wrap">
-                <div class="container-fluid">
-                    <div class="col-6">
-                        <h1>roomName</h1>
-                    </div>
-                     메시지 들어가는 부분
-                    <div id="" class="chat-list">
-                        <ul id="msgArea" class="single-chat-head"></ul>
-                    </div>
-                     입력 창
-                    <div class="input-group mb-3">
-                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
+        <sec:authorize access="hasAnyRole('DOCTOR', 'PETDOC')">
+	        <!-- Start Dashboard Section -->
+	        <section class="dashboard section">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-lg-12 col-md-12 col-12">
+	                        <div class="main-content">
+	                            <div class="dashboard-block mt-0" style="padding-bottom: 60px;">
+	                                <div class="profile-settings-block">
+	                                    <h3 class="block-title">환자 신청 내용</h3>
+	                                    <c:if test="${!empty diagnosisVO }">
+		                                    <div class="inner-block">
+		                                        <div class="image">
+		                                            <c:forEach items="${diagnosisVO.dansFiles}" var="fileVO">
+		                                                <img src="${fileVO.fileName}" alt="#">
+		                                            </c:forEach>
+		                                        </div>
+		                                        <form class="profile-setting-form" method="post" action="#">
+		                                            <div class="row">
+		                                                <div class="col-12">
+		                                                    <div class="form-group message">
+		                                                        <label>내 증상</label>
+		                                                        <textarea name="message" readonly
+		                                                            onfocus="this.blur()">${diagnosisVO.dansContent}</textarea>
+		                                                    </div>
+		                                                </div>
+		                                            </div>
+		                                            <a href="/hospital/diagnosis/prescription?dansNum=${diagnosisVO.dansNum}" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
+		                                        </form>
+		                                    </div>
+	                                    </c:if>
+	                                    
+	                                    <c:if test="${!empty petDiagnosisVO }">
+		                                    <div class="inner-block">
+		                                        <div class="image">
+		                                            <c:forEach items="${petDiagnosisVO.PDansFiles}" var="fileVO">
+		                                                <img src="/file/PETDANS/${fileVO.fileName}" alt="#">
+		                                            </c:forEach>
+		                                        </div>
+		                                        <form class="profile-setting-form" method="post" action="#">
+		                                            <div class="row">
+		                                                <div class="col-12">
+		                                                	<div class="form-group">
+		                                                		<label>보호자명</label>
+		                                                		<input type="text" readonly="readonly" value="${petDiagnosisVO.protectorName }">
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물명</label>
+		                                                		<input type="text" readonly="readonly" value="${petDiagnosisVO.petVO.petName }">
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물 생일</label>
+		                                                		<input type="text" readonly="readonly" value="${petDiagnosisVO.petVO.petBirth }">
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물 나이</label>
+		                                                		<input type="text" readonly="readonly" value="${petDiagnosisVO.petVO.petAge }">
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물 성별</label>
+		                                                		<c:if test="${petDiagnosisVO.petVO.petSex == 0 }">
+		                                                			<input type="text" readonly="readonly" value="암">
+		                                                		</c:if>
+		                                                		<c:if test="${petDiagnosisVO.petVO.petSex == 1 }">
+		                                                			<input type="text" readonly="readonly" value="수">
+		                                                		</c:if>
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물 중성화여부</label>
+		                                                		<c:if test="${petDiagnosisVO.petVO.neutered == 0 }">
+		                                                			<input type="text" readonly="readonly" value="안함">
+		                                                		</c:if>
+		                                                		<c:if test="${petDiagnosisVO.petVO.neutered == 1 }">
+		                                                			<input type="text" readonly="readonly" value="함">
+		                                                		</c:if>
+		                                                	</div>
+		                                                	<div class="form-group">
+		                                                		<label>반려동물 예방접종 정보</label>
+		                                                		<c:if test="${petDiagnosisVO.petVO.vaccinnation == 0 }">
+		                                                			<input type="text" readonly="readonly" value="안함">
+		                                                		</c:if>
+		                                                		<c:if test="${petDiagnosisVO.petVO.vaccinnation == 1 }">
+		                                                			<input type="text" readonly="readonly" value="부분접종">
+		                                                		</c:if>
+		                                                		<c:if test="${petDiagnosisVO.petVO.vaccinnation == 2 }">
+		                                                			<input type="text" readonly="readonly" value="함">
+		                                                		</c:if>
+		                                                		<c:if test="${petDiagnosisVO.petVO.vaccinnation == 3 }">
+		                                                			<input type="text" readonly="readonly" value="모르겠음">
+		                                                		</c:if>
+		                                                	</div>
+		                                                    <div class="form-group message">
+		                                                        <label>상담 내용</label>
+		                                                        <textarea name="message" readonly
+		                                                            onfocus="this.blur()">${petDiagnosisVO.PDansContent}</textarea>
+		                                                    </div>
+		                                                </div>
+		                                            </div>
+		                                            <a href="/pet/diagnosis/petPrescription?n=${petDiagnosisVO.PDansNum }" class="col-3 btn btn-primary" style="float: right;">진료 종료</a>
+		                                        </form>
+		                                    </div>
+	                                    </c:if>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </section>
+	        <!-- End Dashboard Section -->
+        </sec:authorize>
     </div>
 </main>
 <!-- ========================= scroll-top ========================= -->

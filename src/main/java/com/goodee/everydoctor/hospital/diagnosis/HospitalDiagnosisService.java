@@ -2,14 +2,18 @@ package com.goodee.everydoctor.hospital.diagnosis;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileMapper;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.doctor.HospitalDoctorVO;
+import com.goodee.everydoctor.pay.PayVO;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisPager;
 import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.util.FileManager;
@@ -50,9 +54,23 @@ public class HospitalDiagnosisService {
 		return result;
 	}
 	//요청된 진료 리스트
-	public List<HospitalDoctorVO> findHospitalReservatedList(HospitalDoctorVO hospitalDoctorVO)throws Exception{
+	public List<HospitalDiagnosisVO> findHospitalReservatedList(HospitalDiagnosisPager hospitalDiagnosisPager)throws Exception{
 		
-		return  hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDoctorVO);
+		Long totalCount = hospitalDiagnosisMapper.findReservatedListCount(hospitalDiagnosisPager);
+		hospitalDiagnosisPager.getNum(totalCount);
+		hospitalDiagnosisPager.getRowNum();
+		List<HospitalDiagnosisVO> dList = hospitalDiagnosisMapper.findHospitalReservatedList(hospitalDiagnosisPager);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		
+		for(HospitalDiagnosisVO d : dList) {
+			String reqTimeString = d.getDansReqTime().format(dtf);
+			d.setReqTimeString(reqTimeString);
+			
+			// 진료에 포함된 사진 파일 정보 db에서 가져옴 (그냥 resultMap으로 조인해서 결과를 넣으면 사진의 개수만큼 Row가 중복)
+			List<FileVO> files = hospitalDiagnosisMapper.findFile(d);
+			d.setDansFiles(files);
+		}
+		return dList;
 	}
 
 	public List<HospitalDiagnosisVO> findCompletedList(HospitalDiagnosisPager hospitalDiagnosisPager) throws Exception {
@@ -75,5 +93,71 @@ public class HospitalDiagnosisService {
 		}
 		
 		return dList;
+	}
+	
+	public HospitalDiagnosisVO findCompletedDetail(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		
+		hospitalDiagnosisVO = hospitalDiagnosisMapper.findCompletedDetail(hospitalDiagnosisVO);
+		
+		// LocalDateTime을 보기 좋게 변환
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String reqTimeString = hospitalDiagnosisVO.getDansReqTime().format(dtf);
+		String endTimeString = hospitalDiagnosisVO.getDansEndTime().format(dtf);
+		
+		hospitalDiagnosisVO.setReqTimeString(reqTimeString);
+		hospitalDiagnosisVO.setEndTimeString(endTimeString);
+		
+		List<FileVO> files = hospitalDiagnosisMapper.findFile(hospitalDiagnosisVO);
+		hospitalDiagnosisVO.setDansFiles(files);
+		
+		// 약 처방 내역 정보 조회
+		List<DrugVO> fills = hospitalDiagnosisMapper.findFills(hospitalDiagnosisVO);
+		hospitalDiagnosisVO.setFills(fills);
+		
+		return hospitalDiagnosisVO;
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	public int modifyHospitalDiagnosis(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		
+		int modifyResult = hospitalDiagnosisMapper.modifyHospitalDiagnosis(hospitalDiagnosisVO);
+		HospitalPrescriptionVO hospitalPrescriptionVO = new HospitalPrescriptionVO();
+		hospitalPrescriptionVO.setDansNum(hospitalDiagnosisVO.getDansNum());
+		hospitalPrescriptionVO.setPharmacist("pharmacist"); // 로그인 가능한 약사 아이디
+		hospitalDiagnosisMapper.inputPrescription(hospitalPrescriptionVO);
+		
+		PayVO payVO = new PayVO();
+		payVO.setUsername(hospitalDiagnosisVO.getUsername());
+		String orderId = UUID.randomUUID().toString();
+		payVO.setOrderId(orderId);
+		payVO.setAmount(hospitalDiagnosisVO.getDansCost());
+		payVO.setDansNum(hospitalDiagnosisVO.getDansNum());
+		
+		int inputPayResult = hospitalDiagnosisMapper.inputReadyPay(payVO);
+		
+		if(hospitalDiagnosisVO.getDruges() != null) {
+			for(int i=0; i<hospitalDiagnosisVO.getDruges().length; i++) {
+				HospitalPrescriptionDrugVO hospitalPrescriptionDrugVO = new HospitalPrescriptionDrugVO();
+				hospitalPrescriptionDrugVO.setPrescriptionNum(hospitalPrescriptionVO.getPrescriptionNum());
+				hospitalPrescriptionDrugVO.setDrugNum(hospitalDiagnosisVO.getDruges()[i]);
+				hospitalPrescriptionDrugVO.setDose(hospitalDiagnosisVO.getDoses()[i]);
+				hospitalPrescriptionDrugVO.setDoseHit(hospitalDiagnosisVO.getDoseHits()[i]);
+				hospitalPrescriptionDrugVO.setDoseDays(hospitalDiagnosisVO.getDoseDays()[i]);
+				
+				hospitalDiagnosisMapper.inputPrescriptionDrug(hospitalPrescriptionDrugVO);
+			}
+		}
+		
+		int result = 0;
+		
+		if(modifyResult > 0 && inputPayResult > 0) {
+			result = 1;
+		}
+
+		return result;
+	}
+	
+	public HospitalDiagnosisVO findHospitaldiagnosisByDansnum(HospitalDiagnosisVO hospitalDiagnosisVO) throws Exception {
+		return hospitalDiagnosisMapper.findHospitaldiagnosisByDansnum(hospitalDiagnosisVO);
 	}
 }

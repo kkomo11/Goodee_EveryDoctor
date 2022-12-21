@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<mapper namespace="com.goodee.everydoctor.pay.PayMapper">
+
+	<select id="findPayAboutPetdocCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PAYNUM)
+		FROM PAY P
+		INNER JOIN PETDIAGNOSIS PD 
+		ON (P.PDANSNUM = PD.PDANSNUM)
+		WHERE PD.PDOCTORNAME = #{username}
+	</select>
+
+	<select id="findPayAboutPetdoc" parameterType="PetDiagnosisPager" resultType="PayVO">
+		SELECT P.ORDERNAME, P.AMOUNT, P.PDANSNUM, P.STATUS
+		FROM PAY P
+		INNER JOIN PETDIAGNOSIS PD 
+		ON (P.PDANSNUM = PD.PDANSNUM)
+		WHERE PD.PDOCTORNAME = #{username}
+		ORDER BY P.PAYNUM DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+
+	<insert id="inputDrugDelivery" parameterType="DrugDeliveryVO">
+		INSERT INTO DRUGDELIVERY VALUES (#{drugDeliveryNum}, #{payNum}, #{addressNum})
+	</insert>
+
+	<select id="findDeliveryNum" resultType="DrugDeliveryVO">
+		SELECT DRUGDELIVERYNUM FROM DRUGDELIVERY WHERE PAYNUM IS NULL
+	</select>
+	
+	<select id="findUserAddress" parameterType="UserAddressVO" resultType="UserAddressVO">
+		SELECT UA.* 
+		FROM USERS U
+		INNER JOIN USERADDRESS UA 
+		ON (U.USERNAME = UA.USERNAME)
+		WHERE U.USERNAME = #{username}
+	</select>
+	
+	<select id="findAddressCount" parameterType="UserVO" resultType="Integer">
+		SELECT COUNT(ADDRESSNUM) FROM USERADDRESS WHERE USERNAME = #{username}
+	</select>
+
+	<select id="findFillCount" parameterType="PetDiagnosisVO" resultType="Integer">
+		SELECT COUNT(PETFILLNUM) FROM PETFILLS WHERE PDANSNUM = #{pDansNum}
+	</select>
+
+	<select id="findMyCompletedPayListCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PAYNUM) FROM PAY WHERE USERNAME = #{username} AND STATUS = 'DONE'
+	</select>
+
+	<select id="findMyCompletedPayList" parameterType="PetDiagnosisPager" resultType="PayVO">
+		SELECT * FROM PAY WHERE USERNAME = #{username} AND STATUS = 'DONE'
+		ORDER BY APPROVEDAT DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+
+	<update id="modifyUnpaidDetail" parameterType="PayVO">
+		UPDATE PAY SET PAYMENTKEY = #{paymentKey}, `TYPE` = #{type}, `METHOD` = #{method}, STATUS = #{status},
+		TOTALAMOUNT = #{totalAmount}, REQUESTEDAT = #{requestedAt}, APPROVEDAT = #{approvedAt}, LASTTRANSACTIONKEY = #{lastTransactionKey}, RECEIPTURL = #{receiptUrl},
+		PAYCARDNUMBER = #{payCardNumber}, PAYCARDCOMPANY = #{payCardCompany}, PAYCARDTYPE = #{payCardType}
+		WHERE PAYNUM = #{payNum}
+	</update>
+
+	<select id="findMyPayInfo" parameterType="UserVO" resultType="UserVO">
+		SELECT USERNAME, CARDNUMBER, CARDEXPIRATIONYEAR, CARDEXPIRATIONMONTH, CARDTWO, BIRTH
+		FROM USERS WHERE USERNAME = #{username}
+	</select>
+
+	<select id="findUnpaidDetail" parameterType="PayVO" resultType="PayVO">
+		SELECT * FROM PAY WHERE PAYNUM = #{payNum}
+	</select>
+	
+	<select id="findPayInfoRegisted" parameterType="UserVO" resultType="Integer">
+		SELECT COUNT(CARDNUMBER) FROM USERS WHERE USERNAME = #{username}
+	</select>
+
+	<select id="findMyRequestedPayListCount" parameterType="PetDiagnosisPager" resultType="Long">
+		SELECT COUNT(PAYNUM) FROM PAY WHERE USERNAME = #{username} AND STATUS = 'READY'
+	</select>
+
+	<select id="findMyRequestedPayList" parameterType="PetDiagnosisPager" resultType="PayVO">
+		SELECT * FROM PAY WHERE USERNAME = #{username} AND STATUS = 'READY'
+		ORDER BY PAYNUM DESC
+		LIMIT #{startRow}, #{perPage}
+	</select>
+
+	<select id="findMyPay" parameterType="UserVO" resultType="UserVO">
+		SELECT USERNAME, CARDNUMBER, CARDEXPIRATIONYEAR, CARDEXPIRATIONMONTH
+		FROM USERS WHERE USERNAME = #{username}
+	</select>
+
+	<update id="inputPayInfo" parameterType="UserVO">
+		UPDATE USERS SET CARDNUMBER = #{cardNumber}, CARDEXPIRATIONYEAR = #{cardExpirationYear}, 
+			CARDEXPIRATIONMONTH = #{cardExpirationMonth}, CARDTWO = #{cardTwo}
+			WHERE USERNAME = #{username}
+	</update>
+	
+</mapper>

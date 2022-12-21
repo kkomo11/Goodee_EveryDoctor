@@ -10,9 +10,9 @@
     <title>코로나 선별검사소</title>
     <c:import url="../temp/boot.jsp"></c:import>
     <style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 198px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 185px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 180px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info {width: 286px;height: 165px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -25,10 +25,10 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1400px;
-        height:1000px;
+        width:1700px;
+        height:900px;
         /* margin-bottom: 300px; */
-        margin-left: 150px;
+        /* margin-left: 150px; */
 
     }
     </style>
@@ -133,20 +133,20 @@
         // 임시 오버레이
         let temp='';
 
-        //지도의 현재 중심좌표
-        let center =map.getCenter();
-        //지도 현재영역 반환
-        let bounds = map.getBounds();
-        console.log('bounds : ', bounds);
-        console.log('bounds.String : ', bounds.toString());
-        //영억의 남서쪽 좌표를 얻어옴
-        let swLatLng = bounds.getSouthWest();
-        //영역의 북동쪽 좌표를 얻어옴
-        let neLatLng = bounds.getNorthEast();
+        // //지도의 현재 중심좌표
+        // let center =map.getCenter();
+        // //지도 현재영역 반환
+        // let bounds = map.getBounds();
+        // console.log('bounds : ', bounds);
+        // console.log('bounds.String : ', bounds.toString());
+        // //영억의 남서쪽 좌표를 얻어옴
+        // let swLatLng = bounds.getSouthWest();
+        // //영역의 북동쪽 좌표를 얻어옴
+        // let neLatLng = bounds.getNorthEast();
 
-        //영역 정보를 문자열로 얻어오기
-        let boundsStr = bounds.toString(); //((남,서)(북,동)) 형식
-        console.log('boundsStr : ',boundsStr)
+        // //영역 정보를 문자열로 얻어오기
+        // let boundsStr = bounds.toString(); //((남,서)(북,동)) 형식
+        // console.log('boundsStr : ',boundsStr)
 
         $.ajax({
             url : './ronaco',
@@ -155,10 +155,7 @@
             success : function(data){
                 // console.log(data)
                
-                console.log(data[1]);
-                console.log(data[1].agencyWorkHourVO.fri);
                 $.each(data, function(index,value){
-                    // console.log('value',value)
                     //주소로 좌표를 검색합니다.
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
@@ -168,19 +165,22 @@
                                 let imageSrc ='/images/location/location.png',
                                     imageSize = new kakao.maps.Size(43,42),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
-
+                                    
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
-                                        
-
+                                
+                                
                                 //결과값으로 받은 위치를 마커로 표시합니다.
-    
-                                    let marker = new kakao.maps.Marker({
-                                        map : map,
-                                        position : coords,
-                                        image : markerImage
-                                    });
-                                    // console.log(marker.length);
-    
+                                
+                                let marker = new kakao.maps.Marker({
+                                    map : map,
+                                    position : coords,
+                                    image : markerImage
+                                });
+                                //커스텀 오버레이를 닫기 위해 호출되는 함수입니다.
+                                function closeOverlay(){
+                                    overlay.setMap(null);
+                                }
+                                  
                                     //커스텀 오버레이에 표시할 컨텐츠 입니다.
                                             let wrap = $('<div class="wrap" />');
                                             let info = $('<div class="info" />');
@@ -188,7 +188,7 @@
                                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                                             let body = $('<div class="body" />');
                                             let img = $('<div class="img" />')
-                                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                                            let imgtag = $('<img src="/file/agency/' + data[index].fileVOs[0].fileName+ '\" width="73" height="70"/>');
                                             let desc = $('<div class="desc"/>');
                                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
@@ -196,13 +196,9 @@
                                             let time1 =$('<div class="time1 me-4"/>')
                                             let time2 =$('<div class="time2"/>')
                                             let weekday =$('<div/>').text('평일 : '+data[index].agencyWorkHourVO.mon)
-                                            // let tue =$('<div/>').text('화요일 : '+data[index].agencyWorkHourVO.tue);
-                                            // let wed =$('<div/>').text('수요일 : '+data[index].agencyWorkHourVO.wed);
-                                            // let thu =$('<div/>').text('목요일 : '+data[index].agencyWorkHourVO.thu);
-                                            // let fri =$('<div/>').text('금요일 : '+data[index].agencyWorkHourVO.fri);
-                                            let sat =$('<div style="color:blue"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
-                                            let sun =$('<div style="color:red"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
-                                            let holiday =$('<div style="color:red"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
+                                            let sat =$('<div style="color:#5d80de"/>').text('토요일 : '+data[index].agencyWorkHourVO.sat);
+                                            // let sun =$('<div style="color:#De5d5d"/>').text('일요일 : '+data[index].agencyWorkHourVO.sun);
+                                            let holiday =$('<div style="color:#De5d5d"/>').text('공휴일 : '+data[index].agencyWorkHourVO.holiday);
                                             let lunch =$('<div style="text-align:center"/>').text('점심시간 : '+data[index].agencyWorkHourVO.lunch);
                   
                                             wrap.append(info);
@@ -216,15 +212,15 @@
                                             body.append(times);
                                             times.append(time1);
                                             time1.append(weekday);   //월요일
+                                            time1.append(lunch);    //점심시간
                                             // time1.append(wed);   //수요일
                                             // time1.append(fri);   //금요일
-                                            time1.append(sun);   //일요일
                                             times.append(time2);
                                             // time2.append(tue);          //화요일
                                             // time2.append(thu);        //목요일
                                             time2.append(sat);       //토요일
                                             time2.append(holiday);  //공휴일
-                                            info.append(lunch);    //점심시간
+                                            // time2.append(sun);   //일요일
                                             
 
                                             
@@ -257,10 +253,6 @@
                                             // console.log(data[index]);
                                             overlay.setMap(map)
                                         });
-                                        //커스텀 오버레이를 닫기 위해 호출되는 함수입니다.
-                                        function closeOverlay(){
-                                            overlay.setMap(null);
-                                        }
                                         kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     
                                             closeOverlay();

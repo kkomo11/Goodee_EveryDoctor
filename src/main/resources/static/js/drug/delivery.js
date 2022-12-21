@@ -24,16 +24,16 @@
 //  window.open('http://info.sweettracker.co.kr/tracking/5', '배송팝업', 'width=500, height=700, scrollbars=yes, resizable=no')
 
 //배송 팝업 창
-function popUp(){
+function popUp() {
   let option = "width = 500, height = 700, top = 100, left = 200, scrollbars=yes, resizable=no"
-  let pop_title = "Smart" ;
+  let pop_title = "Smart";
 
-  window.open("", pop_title, option) ;
-  
-  let frmData = document.frmData ;
-  frmData.target = pop_title ;
-  
-  frmData.submit() ;
+  window.open("", pop_title, option);
+
+  let frmData = document.frmData;
+  frmData.target = pop_title;
+
+  frmData.submit();
 
 }
 

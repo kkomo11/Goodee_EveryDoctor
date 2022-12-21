@@ -15,15 +15,19 @@ public class DrugService {
 	private DrugMapper drugMapper;
 
 	public List<DrugVO> findDrugList(Pager pager)throws Exception {
-		// TODO Auto-generated method stub
 		Long drugTotalCount = drugMapper.findDrugTotalCount(pager); //페이지토탈
 		pager.getRowNum();
 		pager.getNum(drugTotalCount);
 		return drugMapper.findDrugList(pager);
 	}
+	
+	public List<DrugVO> findDrugListAll()throws Exception {
+		
+		return drugMapper.findDrugListAll();
+	}
+
 
 	public DrugVO findDrugDetail(DrugVO drugVO)throws Exception {
-		// TODO Auto-generated method stub
 		return drugMapper.findDrugDetail(drugVO);
 	}
 	

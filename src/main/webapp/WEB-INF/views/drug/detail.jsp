@@ -11,7 +11,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <c:import url="../temp/boot.jsp"></c:import>
       <!-- ========================= CSS here ========================= -->
-      <link rel="stylesheet" href="/css/drug/drug.css" type="text/css"/>
+      <link rel="stylesheet" href="/css/drug/drug.css" type="text/css" />
     </head>
 
     <body>
@@ -74,12 +74,12 @@
                         <th>약사용법</th>
                         <th>약주의사항</th>
                       </tr>
-                    
-                        <tr class="table-success">
-                          <td>${detail.drugInfo}</td>
-                          <td>${detail.drugUse}</td>
-                          <td>${detail.drugCare}</td>
-                        </tr>
+
+                      <tr class="table-success">
+                        <td>${detail.drugInfo}</td>
+                        <td>${detail.drugUse}</td>
+                        <td>${detail.drugCare}</td>
+                      </tr>
 
                     </table>
                   </div>

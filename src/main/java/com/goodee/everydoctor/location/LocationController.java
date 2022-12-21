@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodee.everydoctor.admin.agency.AgencyVO;
+import com.goodee.everydoctor.file.FileVO;
 
 @Controller
 //@RequestMapping("location/*")
@@ -26,6 +27,7 @@ public class LocationController {
 	@ResponseBody
 	public List<AgencyVO> findCoronaList()throws Exception{
 		List<AgencyVO> al = locationService.findCoronaList();
+		List<FileVO> al2;
 		return al;
 	}
 	@GetMapping("findPharmacy")
@@ -49,8 +51,20 @@ public class LocationController {
 	}
 	@GetMapping("location/nonstopAnimal")
 	@ResponseBody
-	public List<AgencyVO> findNightPharmacy()throws Exception{
+	public List<AgencyVO> findNonstopHospital()throws Exception{
+		List<AgencyVO> al = locationService.findNonstopHospital();
+		return al;
+	}
+	@GetMapping("location/nightPharmacy")
+	public void nightPharmacy()throws Exception{
+
+	}
+	
+	@GetMapping("location/night")
+	@ResponseBody
+	public List<AgencyVO> night()throws Exception{
 		List<AgencyVO> al = locationService.findNightPharmacy();
+				
 		return al;
 	}
 

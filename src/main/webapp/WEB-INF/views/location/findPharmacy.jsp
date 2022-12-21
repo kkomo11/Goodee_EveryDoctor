@@ -229,13 +229,15 @@
                             function closeOverlay(){
                                 overlay.setMap(null);
                             }
+
+                           
                             let wrap = $('<div class="wrap" />');
                             let info = $('<div class="info" />');
                             let title = $('<div class="title" />').text(data[index].agencyName);
                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                             let body = $('<div class="body" />');
                             let img = $('<div class="img" />')
-                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                            let imgtag = $('<img src="#" width="73" height="70">')
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);

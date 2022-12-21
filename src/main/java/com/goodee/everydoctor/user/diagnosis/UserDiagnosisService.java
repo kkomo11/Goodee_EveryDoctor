@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.hospital.diagnosis.HospitalDiagnosisVO;
+import com.goodee.everydoctor.pet.diagnosis.PetDiagnosisVO;
 import com.goodee.everydoctor.user.address.UserAddressMapper;
 import com.goodee.everydoctor.user.address.UserAddressVO;
 import com.goodee.everydoctor.user.security.LogoutHandlerImpl;
@@ -45,6 +46,15 @@ public class UserDiagnosisService {
 		pager.getRowNum();
 		
 		return diagnosisMapper.findHospitalDiagnosisListbyUsername(pager);
+	}
+	
+	public List<PetDiagnosisVO> getPetlist(Pager pager)throws Exception{
+		Long cnt = diagnosisMapper.findMylistCnt(pager);
+		log.info("count {}", cnt);
+		pager.getNum(cnt);
+		pager.getRowNum();
+		
+		return diagnosisMapper.findPetDiagnosisListbyUsername(pager);
 	}
 	
 }

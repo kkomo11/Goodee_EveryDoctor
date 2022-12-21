@@ -22,13 +22,13 @@
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .tel {font-size: 11px;color: #888;margin-top: -2px;}
     .desc .reservation {margin-top: 5px !important; margin-left: 109px !important; font-size: 15px; width: 79px; height: 30px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;border-radius: 10%}
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
     #map{
-        width:1200px;
-        height:500px;
-        margin-bottom: 300px;
+        width:1700px;
+        height:900px;
+        /* margin-bottom: 300px; */
     }
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -145,8 +145,8 @@
             type : 'GET',
             traditional : true,
             success : function(data){
-                // console.log(data)
                 $.each(data, function(index,value){
+                    console.log('DATA= ',data[index])
                     //주소로 좌표를 검색합니다.
                     geocoder.addressSearch(data[index].agencyAddr,function(result,status){
                         //정상적으로 검색이 완료 됐으면
@@ -154,8 +154,8 @@
                             let coords = new kakao.maps.LatLng(result[0].y, result[0].x)
                             // console.log("coords ==", coords);
 
-                            let imageSrc ='/images/location/pets.png',
-                                    imageSize = new kakao.maps.Size(50,50),
+                            let imageSrc ='/images/location/heart.png',
+                                    imageSize = new kakao.maps.Size(45,45),
                                     imageOption = {offset: new kakao.maps.Point(20,42)}
 
                                 let markerImage = new kakao.maps.MarkerImage(imageSrc,imageSize,imageOption);
@@ -180,11 +180,11 @@
                             let close = $('<div class="close" title="닫기" />').click(closeOverlay);
                             let body = $('<div class="body" />');
                             let img = $('<div class="img" />')
-                            let imgtag = $('<img src="/images/location/geolocation2.png" width="73" height="70">')
+                            let imgtag = $('<img src="/file/agency/' + data[index].fileVOs[0].fileName+ '\" width="73" height="70"/>');
                             let desc = $('<div class="desc"/>');
                             let ellipsis = $('<div class="ellipsis"/>').text(data[index].agencyAddr);
                             let tel = $('<div class="tel"/>').text(data[index].agencyTel);
-                            let reservation = $('<button class="btn btn-outline-secondary reservation" type="button" onclick="notifyMe()" />').text(' 직접수령 ')
+                        
 
                             wrap.append(info);
                             info.append(title).append(body);
@@ -194,7 +194,7 @@
                             body.append(desc);
                             desc.append(ellipsis);
                             desc.append(tel);
-                            desc.append(reservation);
+                            // desc.append(reservation);
                             
                             let content = wrap[0];
 
