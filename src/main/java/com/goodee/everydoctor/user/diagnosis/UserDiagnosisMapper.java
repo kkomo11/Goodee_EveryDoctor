@@ -14,6 +14,7 @@ import com.goodee.everydoctor.util.Pager;
 public interface UserDiagnosisMapper {
 	public List<HospitalDiagnosisVO> findHospitalDiagnosisListbyUsername(Pager pager)throws Exception;
 	public Long findMylistCnt(Pager pager);
-	public List<PetDiagnosisVO> findPetDiagnosisListbyUsername(Pager papger)throws Exception;
+	public List<PetDiagnosisVO> findPetDiagnosisListbyUsername(Pager pager)throws Exception;
+	public Long findPetListCnt(Pager pager);
 
 }

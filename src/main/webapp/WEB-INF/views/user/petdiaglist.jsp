@@ -82,45 +82,51 @@
                                 <div class="item-list-title">
                                     <div class="row align-items-center">
                                         <div class="col-lg-2 col-md-2 col-12">
-                                            <p>반려동물이름</p>
+                                            <p>반려동물</p>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-12">
+                                        <div class="col-lg-2 col-md-2 col-12">
                                             <p>병원이름</p>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-12">
+                                            <p>의사이름</p>
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-12">
                                             <p>병원번호</p>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-12">
+                                        <div class="col-lg-2 col-md-2 col-12">
                                             <p>진료시간</p>
                                         </div>
-                                        <div class="col-lg-2 col-md-3 col-12"></div>
+                                        <div class="col-lg-1 col-md-1 col-12"></div>
                                     </div>
                                 </div>
                                 <!-- End List Title -->
-                                <c:forEach items="${diagnosisVOs }" var="diagnosisVO">
+                                <c:forEach items="${diagnosisVOs}" var="diagnosisVO">
 	                                <!-- Start Single List -->
-	                                <div class="diagnosis-detail single-item-list" data-dansnum="${diagnosisVO.dansNum}">
-	                                    <div class="row align-items-center">
+	                                <div class="diagnosis-detail single-item-list" data-dansnum="${diagnosisVO.getPDansNum()}">
+	                                    <div class="row">
 	                                        <div class="col-lg-2 col-md-2 col-12">
-	                                            <div class="item-image" style="padding-left: 0;">
-	                                                <div class="content">
-                                                        <img src="/resources/static/images/defaultProfile.png">
-	                                                    <h3 class="title"><a href="javascript:void(0)">ee${diagnosisVO.medicVO.userVO.name}</a></h3>
+	                                                <p>${diagnosisVO.petVO.petName }</p>
+	                                            <%-- <div class="item-image" style="padding-left: 0;">
+	                                                <div class="">
+                                                        <img src="/file/PET/${diagnosisVO.petVO.petFileName}">
 	                                                </div>
-	                                            </div>
+	                                            </div> --%>
 	                                        </div>
-	                                        <div class="col-lg-3 col-md-3 col-12">
+	                                        <div class="col-lg-2 col-md-2 col-12">
 	                                            <p>${diagnosisVO.medicVO.agencyVO.agencyName}</p>
+	                                        </div>
+	                                        <div class="col-lg-2 col-md-2 col-12">
+	                                            <p>${diagnosisVO.medicVO.userVO.name}</p>
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
 	                                            <p>${diagnosisVO.medicVO.agencyVO.agencyTel}</p>
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
-	                                            ${diagnosisVO.dansReqTime}
+	                                            ${diagnosisVO.getPDansReqTime()}
 	                                        </div>
 	                                        <div class="col-lg-2 col-md-2 col-12">
 	                                            <ul class="action-btn">
-	                                                <li><a href="/hospital/diagnosis/reservation?doctorName=${diagnosisVO.doctorName}" style="width: 100px; border-radius: 10%; margin-right: 5px;">다시 접수하기</a></li>
+	                                                <li><a href="/pet/diagnosis/reservation?username=${diagnosisVO.getPUsername()}&petdoc=${diagnosisVO.getPDoctorname()}" style="width: 100px; border-radius: 10%; margin-right: 5px;">다시 접수하기</a></li>
 	                                            </ul>
 	                                        </div>
 	                                    </div>

@@ -37,23 +37,35 @@
 		</association>
 	</resultMap>
 	
-	<select id="findPetDiagnosisListbyUsername" parameterType="UserVO" resultMap="GetPetDiagnosisList">
-		SELECT DU.NAME AS '의사이름', A.AGENCYNAME AS '병원이름', A.AGENCYTEL AS '병원번호', D.DANSREQTIME AS '진료시간', D.DANSCONTENT AS '증상', DF.DANSFILENAME AS '파일명', DF.DANSFILEORINAME AS '원본명' FROM DIAGNOSIS D 
-		LEFT JOIN DANSFILE DF
-		ON D.DANSNUM = DF.DANSNUM 
-		LEFT JOIN USERS DU
-		ON D.DOCTORNAME = DU.USERNAME 
-		LEFT JOIN MEDIC M 
-		ON D.DOCTORNAME = M.USERNAME
-		LEFT JOIN AGENCY A 
-		ON M.AGENCYNUM = A.AGENCYNUM 
-		WHERE D.USERNAME = #{username}
+	
+	<select id="findPetListCnt" parameterType="Pager" resultType="Long">
+		SELECT COUNT(*) from PETDIAGNOSIS WHERE PUSERNAME =#{search};
+	</select>
+	
+	<select id="findPetDiagnosisListbyUsername" parameterType="Pager" resultMap="GetPetDiagnosisList">
+		SELECT PD.PDANSNUM ,PD.pUsername,
+			IFNULL(P.PETNAME,"없는펫") AS PETNAME, P.PETFILENAME ,
+			PD.PDOCTORNAME ,U.NAME, 
+			IFNULL(A.AGENCYNAME,"삭제된 병원")AS AGENCYNAME, IFNULL(A.AGENCYTEL,"")AS AGENCYTEL, 
+			PD.PDANSREQTIME
+		FROM PETDIAGNOSIS PD	
+			LEFT JOIN USERS U
+			ON U.USERNAME = PD.PDOCTORNAME
+			LEFT JOIN MEDIC M
+			ON PD.PDOCTORNAME = M.USERNAME 
+			LEFT JOIN AGENCY A 
+			ON A.AGENCYNUM = M.AGENCYNUM 
+			LEFT JOIN PET P 
+			ON PD.PETNUM = P.PETNUM
+		WHERE PD.PUSERNAME = #{search}
+		ORDER BY PDANSNUM DESC;		
 	</select>
 	
 	<resultMap type="PetDiagnosisVO" id="GetPetDiagnosisList">
 		<id column="PDANSNUM" property="pDansNum"/>
-		<result column="DOCTORNAME" property="doctorName" />
-		<result column="DANSREQTIME" property="dansReqTime"/>
+		<result column="pUsername" property="pUsername"/>
+		<result column="pDoctorname" property="pDoctorname" />
+		<result column="PDANSREQTIME" property="pDansReqTime"/>
 		<association property="medicVO" javaType="MedicVO">
 			<association property="userVO" javaType="UserVO">
 				<result column="name" property="name"/>
@@ -62,6 +74,10 @@
 				<result column="agencyName" property="agencyName"/>
 				<result column="agencyTel" property="agencyTel"/>
 			</association>
+		</association>
+		<association property="petVO">
+			<result column="petName" property="petName"/>
+			<result column="petFileName" property="petFileName"/>
 		</association>
 	</resultMap>
 	

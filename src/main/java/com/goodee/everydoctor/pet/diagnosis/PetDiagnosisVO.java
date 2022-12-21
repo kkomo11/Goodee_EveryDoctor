@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.goodee.everydoctor.admin.medic.MedicVO;
 import com.goodee.everydoctor.drug.DrugVO;
 import com.goodee.everydoctor.file.FileVO;
 import com.goodee.everydoctor.pet.profile.PetBioVO;
@@ -45,5 +46,7 @@ public class PetDiagnosisVO {
 	private List<DrugVO> petFills;		// 반려동물 약 처방 내역
 	
 	private String protectorName;		// 반려동물 보호자 이름
+	
+	private MedicVO medicVO; //진료의사 정보
 	
 }

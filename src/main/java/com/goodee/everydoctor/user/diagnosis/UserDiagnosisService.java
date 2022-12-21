@@ -49,7 +49,7 @@ public class UserDiagnosisService {
 	}
 	
 	public List<PetDiagnosisVO> getPetlist(Pager pager)throws Exception{
-		Long cnt = diagnosisMapper.findMylistCnt(pager);
+		Long cnt = diagnosisMapper.findPetListCnt(pager);
 		log.info("count {}", cnt);
 		pager.getNum(cnt);
 		pager.getRowNum();

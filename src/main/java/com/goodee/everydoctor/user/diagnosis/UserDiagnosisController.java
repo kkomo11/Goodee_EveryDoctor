@@ -51,12 +51,12 @@ public class UserDiagnosisController {
 	
 	@GetMapping("petlist")
 	public ModelAndView petList(ModelAndView mv, @AuthenticationPrincipal UserVO userVO)throws Exception{
-		log.info("mylist {}", userVO.getUsername());
 		Pager pager = new Pager();
 		pager.setSearch(userVO.getUsername());
 		pager.setPerPage(5L);
 		
 		List<PetDiagnosisVO> petDiagnosisVOs = userDiagnosisService.getPetlist(pager);
+		log.info("mylist {}", petDiagnosisVOs.get(0).getPDansNum());
 		
 		mv.addObject("diagnosisVOs", petDiagnosisVOs);
 		mv.addObject("pager", pager);
