@@ -57,8 +57,8 @@ public class SecurityConfig {
 					.antMatchers("/subscribe", "/hospital/diagnosis/**","/consult/**", "/pay/**").authenticated()
 					.antMatchers("/consult/answer/**").hasAnyAuthority("DOCTOR", "NURSE", "PETDOC", "PETNURSE")
 					.antMatchers("/hospital/**", "/pet/home","/pet/petdocDetail").permitAll()
-					.anyRequest().permitAll();
-//					.anyRequest().authenticated();
+//					.anyRequest().permitAll();
+					.anyRequest().authenticated();
 		
 		//로그인
 		httpSecurity.formLogin()
