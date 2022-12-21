@@ -14,6 +14,12 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
+        <a class="nav-link" href="/hospital/home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>메인으로 돌아가기</span></a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="/admin/admin/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
