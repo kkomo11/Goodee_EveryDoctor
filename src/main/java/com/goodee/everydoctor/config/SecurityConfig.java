@@ -52,11 +52,11 @@ public class SecurityConfig {
 		
 		//요청 권한 허용
 		httpSecurity.authorizeRequests()
-					.antMatchers( "/user/login", "/user/registration","/pet/findPetdocList","/drug/store","/location/viewCorona","/consult/list","/consult/answer/count","/consult/answer/list","/login/**").permitAll()
+					.antMatchers( "/user/login", "/user/registration","/pet/findPetdocList","/drug/store","/location/viewCorona","/consult/list","/consult/answer/count","/consult/answer/list","/login/**","/member/logoutResult").permitAll()
 					.antMatchers("/pay/payAboutPetdocList").hasAuthority("PETDOC")
 					.antMatchers("/subscribe", "/hospital/diagnosis/**","/consult/**", "/pay/**").authenticated()
 					.antMatchers("/consult/answer/**").hasAnyAuthority("DOCTOR", "NURSE", "PETDOC", "PETNURSE")
-					.antMatchers("/hospital/**", "/pet/home","/pet/petdocDetail").permitAll()
+//					.antMatchers("/hospital/**", "/pet/home","/pet/petdocDetail","/oauth/**","/oauth2/**").permitAll()
 					.anyRequest().permitAll();
 //					.anyRequest().authenticated();
 		

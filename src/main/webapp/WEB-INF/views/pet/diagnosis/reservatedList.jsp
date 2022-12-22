@@ -98,7 +98,7 @@
 		                                        <div class="content">
 		                                            <!-- 엄밀히 따지면 멤버변수명이 아니라 getter명이라 getter명으로 맨 앞을 대문자로 바꿨더니 된다. -->
 		                                            <h3 class="title"><a>${reservated.protectorName}</a></h3>
-		                                            <span class="price">${reservated.reqTimeString}</span>
+		                                            <span class="price">${reservated.getReqTimeString()}</span>
 		                                            <a class="badge bg-info" data-bs-toggle="collapse" href="#collapseExample${reservated.PDansNum }" role="button" aria-expanded="false" aria-controls="collapseExample${reservated.PDansNum }">
 		                                            	상담 내용 보기
 		                                            </a>

@@ -96,13 +96,13 @@
                                                 약국
                                                 <span class="sub-title">약사 추가 등록</span>
                                             </button>
-                                            <button class="nav-link" id="pethotel-tab" data-bs-toggle="tab"
+                                            <!-- <button class="nav-link" id="pethotel-tab" data-bs-toggle="tab"
                                                 data-bs-target="#pethotel" type="button" role="tab"
                                                 aria-controls="pethotel" aria-selected="false">
                                                 <span class="serial">04</span>
                                                 보호소
                                                 <span class="sub-title">보호소 관리자 추가 등록</span>
-                                            </button>
+                                            </button> -->
                                         </div>
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">

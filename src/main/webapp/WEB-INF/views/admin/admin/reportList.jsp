@@ -58,11 +58,11 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">신고리스트</h6>
-                            <div class="form-check form-switch">
+                            <!-- <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch"
                                     id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">답변 미완료된 글만 보기</label>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="card-body">
                             <section class="container col-lg-6" id="listSearchFrame">

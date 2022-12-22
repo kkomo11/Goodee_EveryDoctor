@@ -71,9 +71,9 @@
                                     <button class="nav-link" id="nav-pharmacy-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-pharmacy" type="button" role="tab" aria-controls="nav-pharmacy"
                                         aria-selected="false">약사 제휴</button>
-                                    <button class="nav-link" id="nav-petHotel-tab" data-bs-toggle="tab"
+                                    <!-- <button class="nav-link" id="nav-petHotel-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-petHotel" type="button" role="tab" aria-controls="nav-petHotel"
-                                        aria-selected="false">보호소관리자 제휴</button>
+                                        aria-selected="false">보호소관리자 제휴</button> -->
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
