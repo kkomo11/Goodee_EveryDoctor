@@ -63,7 +63,7 @@ function validation(cn, cey, cem, ct){
 
     let check = /^[0-9]+$/; // 숫자만 입력했는지 체크
 
-    if(cn.length != 16 || !check.test(cn) || cn.length != 20){
+    if((cn.length < 16 || cn.length > 20) || !check.test(cn)){
         alert("카드번호를 올바르게 입력하세요");
         cardNumberInput.focus();
         return false;
