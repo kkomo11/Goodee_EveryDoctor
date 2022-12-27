@@ -30,6 +30,18 @@ const petSectionBtn = $("#petSectionBtn");
 const hospitalSection = $("#hospitalSection");
 const petSection = $("#petSection");
 
+//병원 부분 진료과목 취소 버튼 클릭시 해당부분 삭제
+hospitalSection.on("click", ".del", function(){
+    $(this).parent().prev().remove();
+    $(this).parent().remove();
+})
+
+//동물병원 부분 진료과목 취소 버튼 클릭시 해당부분 삭제
+petSection.on("click", ".del", function(){
+    $(this).parent().prev().remove();
+    $(this).parent().remove();
+})
+
 //전문의 여부 추가
 neuteredInput.change(function(){
     if(neuteredInput[0].checked){
@@ -57,6 +69,7 @@ neuteredInput.change(function(){
     }else{
         doctorSpecialty.empty();
         hospitalSectionBtn.empty();
+        hospitalSection.empty();
     }
     
     if(neuteredInput[2].checked){
@@ -85,6 +98,7 @@ neuteredInput.change(function(){
     }else{
         petdoctorSpecialty.empty();
         petSectionBtn.empty();
+        petSection.empty();
     }
 })
 

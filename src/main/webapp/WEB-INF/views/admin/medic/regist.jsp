@@ -175,7 +175,7 @@
                                                     <!-- 기관 등록 신청 버튼 -->
                                                     <div class="col-12">
                                                         <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
-                                                            <button type="button" class="btn inputButton" id="inputButton">기관 등록 신청</button>
+                                                            <button type="button" class="btn inputButton" id="inputButton">종사자 등록 신청</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -251,7 +251,7 @@
                                                     <!-- 기관 등록 신청 버튼 -->
                                                     <div class="col-12">
                                                         <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
-                                                            <button type="button" class="btn inputButton">기관 등록 신청</button>
+                                                            <button type="button" class="btn inputButton">종사자 등록 신청</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,7 +298,7 @@
                                                     <!-- 기관 등록 신청 버튼 -->
                                                     <div class="col-12">
                                                         <div class="form-group button mb-0 d-flex" style="flex-direction: row-reverse;">
-                                                            <button type="button" class="btn inputButton">기관 등록 신청</button>
+                                                            <button type="button" class="btn inputButton">종사자 등록 신청</button>
                                                         </div>
                                                     </div>
                                                     <!-- 역할 입력 -->
@@ -422,40 +422,40 @@
 
     <!-- 병원진료과목 select 폼 -->
     <script type="java/template" id="hospitalSectionListForm">
-        <div class="form-group col-6">
-            <label>진료과목*</label>
-            <div class="selector-head">
-                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                <select class="user-chosen-select col-6" name="sectionNums">
-                    <option disabled selected>진료 과목을 선택해주세요</option>
-                    <c:forEach items="${hospitalSectionList}" var="hospitalList">
-                        <option value="${hospitalList.sectionNum}">${hospitalList.sectionName}</option>
-                    </c:forEach>
-                </select>
+            <div class="form-group col-6">
+                <label>진료과목*</label>
+                <div class="selector-head">
+                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                    <select class="user-chosen-select col-6" name="sectionNums">
+                        <option disabled selected>진료 과목을 선택해주세요</option>
+                        <c:forEach items="${hospitalSectionList}" var="hospitalList">
+                            <option value="${hospitalList.sectionNum}">${hospitalList.sectionName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group button mb-0">
-            <button type="button" class="btn del">취소</button>
-        </div>
+            <div class="form-group button mb-0">
+                <button type="button" class="btn del">취소</button>
+            </div>
     </script>
 
     <!-- 동물병원 진료과목 select 폼 -->
     <script type="java/template" id="petSectionListForm">
-        <div class="form-group col-6">
-            <label>진료과목*</label>
-            <div class="selector-head">
-                <span class="arrow"><i class="lni lni-chevron-down"></i></span>
-                <select class="user-chosen-select" name="sectionNums">
-                    <option disabled selected>진료 과목을 선택해주세요</option>
-                    <c:forEach items="${petSectionList}" var="petSectionList">
-                        <option value="${petSectionList.sectionNum}">${petSectionList.sectionName}</option>
-                    </c:forEach>
-                </select>
+            <div class="form-group col-6">
+                <label>진료과목*</label>
+                <div class="selector-head">
+                    <span class="arrow"><i class="lni lni-chevron-down"></i></span>
+                    <select class="user-chosen-select" name="sectionNums">
+                        <option disabled selected>진료 과목을 선택해주세요</option>
+                        <c:forEach items="${petSectionList}" var="petSectionList">
+                            <option value="${petSectionList.sectionNum}">${petSectionList.sectionName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="button mb-0">
-            <button type="button" class="btn del">취소</button>
-        </div>
+            <div class="button mb-0">
+                <button type="button" class="btn del">취소</button>
+            </div>
     </script>
 </body>
 
