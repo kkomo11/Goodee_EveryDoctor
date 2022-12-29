@@ -109,7 +109,12 @@
                                                 <td>${list.reportTypeVO.reportTypeName}</td>
                                                 <td>${list.consultNum}</td>
                                                 <td>${list.reportTitle}</td>
-                                                <td>${list.reportChecked}</td>
+                                                <td>
+	                                                <c:choose>
+	                                                    <c:when test="${list.reportChecked == 0}">미답변</c:when>
+	                                                    <c:otherwise>답변완료</c:otherwise>
+	                                                </c:choose>
+                                                </td>
                                                 <td><button type="button" class="btn btn-primary modalBtn"
                                                         data-toggle="modal" data-target="#reportDetail">상세보기</button>
                                                 </td>

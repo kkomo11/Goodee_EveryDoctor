@@ -52,7 +52,7 @@ public class ReportService {
 		Long totalCount = reportMapper.findCount(pager);
 		pager.getRowNum();
 		pager.getNum(totalCount);
-
+		
 		return reportMapper.findReportList(pager);
 	}
 
