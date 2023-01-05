@@ -55,7 +55,6 @@ neuteredInput.change(function(){
         $.ajax({
             type: "GET",
             url: "/hospital/home/section",
-
             success: function(result){
                     $.each(result, function(index, item){
                         doctorMedicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");
@@ -71,9 +70,7 @@ neuteredInput.change(function(){
         hospitalSectionBtn.empty();
         hospitalSection.empty();
     }
-    
     if(neuteredInput[2].checked){
-        // console.log(petHospitalInput.val());
         petdoctorSpecialty.empty();
         petSectionBtn.empty();
         let petDoctorSpecialtyAddForm = $("#petDoctorSpecialtyAddForm").html();
@@ -84,7 +81,6 @@ neuteredInput.change(function(){
         $.ajax({
             type: "GET",
             url: "/admin/agency/petHospitalSection",
-
             success: function(result){
                     $.each(result, function(index, item){
                         petDoctorMedicSpecialty.append("<option value=" + item.sectionName + ">" + item.sectionName + "</option>");

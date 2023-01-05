@@ -19,16 +19,7 @@ public class ReportController {
 	//신고 등록
 	@PostMapping("write")
 	public String inputReport(ReportVO reportVO, String num)throws Exception{
-		//		if(bindingResult.hasErrors()) {
-		//			log.info("======== 검증 Error 발생 ========");
-		//			mv.setViewName("./write");
-		//			return mv;
-		//		}
-		//		String redirectUrl = req.getRequestURL().toString();
-		//		log.info("========== RedirectUrl : {}",redirectUrl);
 		int result = reportService.inputReport(reportVO);
-		log.info("========= NUM: {}", num);
-		//		mv.setViewName("redirect:write");
 		return "redirect:/consult/detail?consultNum="+num;
 	}
 

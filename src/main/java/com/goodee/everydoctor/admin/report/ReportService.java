@@ -60,7 +60,6 @@ public class ReportService {
 	public int inputReportAnswer(ReportAnswerVO reportAnswerVO)throws Exception{
 		int result = 0;
 		int inputResult = reportMapper.inputReportAnswer(reportAnswerVO);
-		log.info("=========== ReportNum : {}", reportAnswerVO.getReportNum());
 		int updateResult = reportMapper.modifyReportChecked(reportAnswerVO.getReportNum());
 		if(inputResult == 1 && updateResult == 1) {
 			result = 1;

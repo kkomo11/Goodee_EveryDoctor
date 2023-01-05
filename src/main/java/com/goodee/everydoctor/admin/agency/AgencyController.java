@@ -43,20 +43,16 @@ public class AgencyController {
 	@PostMapping("regist")
 	public ModelAndView inputAgency(AgencyVO agencyVO, MedicVO medicVO, AgencyWorkHourVO agencyWorkHourVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		log.info("======== AgencyController 실행 ========");
 		//기관 정보 INSERT
 		int agencyResult = agencyService.inputAgency(agencyVO);
-		log.info("===== agencyResult : {}", agencyResult);
 		//기관 AgencyNum 받아오기
 		medicVO.setAgencyNum(agencyVO.getAgencyNum());
 		//종사자 정보 등록
 		int medicResult = medicService.inputMedic(medicVO);
-		log.info("===== medicResult : {}", medicResult);
 		//기관 운영시간 참조할 agencyNum Set
 		agencyWorkHourVO.setAgencyNum(agencyVO.getAgencyNum());
 		//기관 운영시간 INSERT
 		int agencyWorkHourResult = agencyService.inputAgencyWorkHour(agencyWorkHourVO);
-		log.info("===== workHourResult : {}", agencyWorkHourResult);
 
 		mv.setViewName("redirect:regist");
 		return mv;
